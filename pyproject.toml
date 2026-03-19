@@ -5,6 +5,7 @@ description = "Experimental framework for testing and mutating the GEPA prompt e
 requires-python = ">=3.12,<3.15"
 dependencies = [
     "gepa[full]",
+    "dspy",
     "boto3",
     "pandas",
     "numpy",
@@ -32,6 +33,13 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "W"]
+
+[tool.uv]
+# Exclude gepa/ from workspace discovery so it's treated as a path dependency, not a workspace member
+workspace = { exclude = ["gepa"] }
+
+[tool.uv.sources]
+gepa = { path = "./gepa", editable = true }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
