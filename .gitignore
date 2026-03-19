@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data and results
+data/raw/
+data/results/
+*.parquet
+*.csv
+!data/.gitkeep
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Claude worklog
+.claude/worklog.md
+
+# AWS
+.aws/
+
+# Experiment artifacts
+runs/
