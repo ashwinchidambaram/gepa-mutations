@@ -1,4 +1,8 @@
-"""LiveBench-Math benchmark loader."""
+"""LiveBench-Math benchmark loader.
+
+Source: HF `livebench/math` (368 math questions).
+Question text is in `turns[0]`, answer in `ground_truth`.
+"""
 
 from __future__ import annotations
 
@@ -13,68 +17,34 @@ from gepa_mutations.benchmarks.loader import BenchmarkData
 def load_livebench(seed: int = 0) -> BenchmarkData:
     """Load LiveBench-Math benchmark (White et al. 2025).
 
-    - Source: HF livebench dataset, math category
+    - Source: HF `livebench/math`, split `test` (368 examples)
     - Shuffle with python seed 0
-    - Split: 150/300/300
+    - Split proportional: ~73/147/148
     """
-    # Try loading LiveBench math subset
-    try:
-        dataset = load_dataset("livebench/livebench", split="test")
-        # Filter for math category
-        examples = []
-        for item in dataset:
-            category = item.get("category", item.get("task", ""))
-            if "math" in str(category).lower():
-                question = item.get("question", item.get("input", ""))
-                answer = item.get("answer", item.get("ground_truth", ""))
-                examples.append(
-                    dspy.Example(
-                        input=str(question),
-                        answer=str(answer),
-                    ).with_inputs("input")
-                )
-    except Exception:
-        # Fallback: try alternative dataset identifier
-        try:
-            dataset = load_dataset("LiveBench/LiveBench", "math", split="test")
-            examples = []
-            for item in dataset:
-                question = item.get("question", item.get("input", ""))
-                answer = item.get("answer", item.get("ground_truth", ""))
-                examples.append(
-                    dspy.Example(
-                        input=str(question),
-                        answer=str(answer),
-                    ).with_inputs("input")
-                )
-        except Exception:
-            # Last resort: try loading all and filtering
-            dataset = load_dataset("LiveBench/LiveBench", split="test")
-            examples = []
-            for item in dataset:
-                question = item.get("question", item.get("input", item.get("problem", "")))
-                answer = item.get("answer", item.get("ground_truth", item.get("solution", "")))
-                examples.append(
-                    dspy.Example(
-                        input=str(question),
-                        answer=str(answer),
-                    ).with_inputs("input")
-                )
+    dataset = load_dataset("livebench/math", split="test")
+
+    examples = []
+    for item in dataset:
+        # Question is in turns[0], answer in ground_truth
+        question = item["turns"][0] if item.get("turns") else ""
+        answer = item.get("ground_truth", "")
+
+        examples.append(
+            dspy.Example(
+                input=str(question),
+                answer=str(answer),
+            ).with_inputs("input")
+        )
 
     random.Random(0).shuffle(examples)
 
-    # Adjust splits based on available data
+    # 368 examples — proportional split: 20%/40%/40%
     n = len(examples)
-    if n >= 750:
-        trainset = examples[:150]
-        valset = examples[150:450]
-        testset = examples[450:750]
-    else:
-        t = max(1, n // 5)
-        v = max(1, (n - t) // 2)
-        trainset = examples[:t]
-        valset = examples[t : t + v]
-        testset = examples[t + v :]
+    t = max(1, n // 5)
+    v = max(1, (n - t) // 2)
+    trainset = examples[:t]
+    valset = examples[t : t + v]
+    testset = examples[t + v :]
 
     return BenchmarkData(
         train=trainset,
@@ -82,7 +52,7 @@ def load_livebench(seed: int = 0) -> BenchmarkData:
         test=testset,
         metadata={
             "name": "livebench",
-            "source": "LiveBench",
+            "source": "livebench/math",
             "total_examples": n,
             "shuffle_seed": 0,
         },

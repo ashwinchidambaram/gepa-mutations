@@ -1,4 +1,8 @@
-"""PUPA benchmark loader."""
+"""PUPA benchmark loader.
+
+Reference: GEPA tests use Columbia-NLP/PUPA with config pupa_tnb.
+See gepa/tests/test_pareto_frontier_types/test_pareto_frontier_types.py
+"""
 
 from __future__ import annotations
 
@@ -11,49 +15,32 @@ from gepa_mutations.benchmarks.loader import BenchmarkData
 
 
 def load_pupa(seed: int = 0) -> BenchmarkData:
-    """Load PUPA benchmark (Li et al. 2025).
+    """Load PUPA benchmark (Columbia-NLP, privacy-preserving delegation).
 
-    - Source: HF dataset (searching for the right identifier)
+    - Source: HF `Columbia-NLP/PUPA` config `pupa_tnb` (237 examples)
     - Shuffle seed 0
-    - Split: 150/300/300
+    - Split proportional (small dataset): ~47/95/95
     """
-    # PUPA dataset - try known identifiers
-    try:
-        dataset = load_dataset("liyucheng/pupa", split="test")
-    except Exception:
-        try:
-            dataset = load_dataset("PUPA-benchmark/PUPA", split="test")
-        except Exception:
-            # Fallback: try loading from a generic name
-            dataset = load_dataset("liyucheng/PUPA", split="test")
+    dataset = load_dataset("Columbia-NLP/PUPA", "pupa_tnb", split="train")
 
     examples = []
     for item in dataset:
-        question = item.get("question", item.get("input", item.get("problem", "")))
-        answer = item.get("answer", item.get("output", item.get("label", "")))
-
         examples.append(
             dspy.Example(
-                input=str(question),
-                answer=str(answer),
+                input=item["user_query"],
+                answer=item["redacted_query"],
             ).with_inputs("input")
         )
 
     random.Random(0).shuffle(examples)
 
-    # If dataset is small, adjust split sizes
+    # 237 examples total — proportional split: 20%/40%/40%
     n = len(examples)
-    if n >= 750:
-        trainset = examples[:150]
-        valset = examples[150:450]
-        testset = examples[450:750]
-    else:
-        # Proportional split: 20%/40%/40%
-        t = max(1, n // 5)
-        v = max(1, (n - t) // 2)
-        trainset = examples[:t]
-        valset = examples[t : t + v]
-        testset = examples[t + v :]
+    t = max(1, n // 5)
+    v = max(1, (n - t) // 2)
+    trainset = examples[:t]
+    valset = examples[t : t + v]
+    testset = examples[t + v :]
 
     return BenchmarkData(
         train=trainset,
@@ -61,7 +48,8 @@ def load_pupa(seed: int = 0) -> BenchmarkData:
         test=testset,
         metadata={
             "name": "pupa",
-            "source": "pupa",
+            "source": "Columbia-NLP/PUPA",
+            "config": "pupa_tnb",
             "total_examples": n,
             "shuffle_seed": 0,
         },
