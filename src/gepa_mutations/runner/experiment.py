@@ -364,24 +364,38 @@ class ExperimentRunner:
 
         predictor = dspy.ChainOfThought(MathSolverSignature)
         prompt_text = prompt["system_prompt"]
+        total = len(testset)
 
         correct = 0
-        for example in testset:
+        errors = 0
+        for i, example in enumerate(testset):
             try:
                 prediction = _run_llm(example, prompt_text, predictor)
                 score, _ = _math_metric(example, prediction)
                 correct += score
-            except Exception:
-                pass
+            except Exception as e:
+                errors += 1
+                if errors <= 3:
+                    console.print(f"  [dim]Test eval error on example {i}: {e}[/dim]")
 
-        return correct / len(testset) if testset else 0.0
+            if (i + 1) % 10 == 0 or (i + 1) == total:
+                pct = (i + 1) / total * 100
+                acc = correct / (i + 1) * 100
+                console.print(
+                    f"  Test eval: {i+1}/{total} ({pct:.0f}%) | "
+                    f"correct: {correct}/{i+1} ({acc:.1f}%) | errors: {errors}"
+                )
+
+        return correct / total if total else 0.0
 
     def _evaluate_qa(self, prompt: dict[str, str], testset: list, lm: LM) -> float:
         """Evaluate using direct LM calls (for QA benchmarks)."""
         prompt_text = prompt["system_prompt"]
-        correct = 0
+        total = len(testset)
 
-        for example in testset:
+        correct = 0
+        errors = 0
+        for i, example in enumerate(testset):
             try:
                 messages = [
                     {"role": "system", "content": prompt_text},
@@ -391,10 +405,20 @@ class ExperimentRunner:
                 answer = str(example.answer).lower()
                 if answer in response.lower():
                     correct += 1
-            except Exception:
-                pass
+            except Exception as e:
+                errors += 1
+                if errors <= 3:
+                    console.print(f"  [dim]Test eval error on example {i}: {e}[/dim]")
 
-        return correct / len(testset) if testset else 0.0
+            if (i + 1) % 10 == 0 or (i + 1) == total:
+                pct = (i + 1) / total * 100
+                acc = correct / (i + 1) * 100
+                console.print(
+                    f"  Test eval: {i+1}/{total} ({pct:.0f}%) | "
+                    f"correct: {correct}/{i+1} ({acc:.1f}%) | errors: {errors}"
+                )
+
+        return correct / total if total else 0.0
 
     def _config_snapshot(
         self, benchmark: str, seed: int, subset: int | None, use_merge: bool
