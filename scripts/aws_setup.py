@@ -134,6 +134,16 @@ def create_iam_role(iam, topic_arn: str) -> str:
                 ],
                 "Resource": f"arn:aws:ssm:{REGION}:*:parameter/{PROJECT}/*",
             },
+            {
+                "Effect": "Allow",
+                "Action": "ec2:TerminateInstances",
+                "Resource": "*",
+                "Condition": {
+                    "StringEquals": {
+                        "ec2:ResourceTag/Project": PROJECT,
+                    }
+                },
+            },
         ],
     }
 
