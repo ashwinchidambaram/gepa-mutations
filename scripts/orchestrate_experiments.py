@@ -31,12 +31,55 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import os
 import sys
 import time
+import urllib.parse
+import urllib.request
 from itertools import product
 
 import boto3
 from botocore.exceptions import ClientError
+
+
+# ============================================================================
+# Telegram helper (for orchestrator-side notifications)
+# ============================================================================
+
+def _send_telegram(message: str) -> None:
+    """Send a Telegram message using the bot token from .env or environment.
+
+    Silent on any failure -- notifications are best-effort.
+    """
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
+
+    # Fall back to .env file in the project root
+    if not token or not chat_id:
+        env_path = os.path.join(os.path.dirname(__file__), "..", ".env")
+        if os.path.exists(env_path):
+            with open(env_path) as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("TELEGRAM_BOT_TOKEN="):
+                        token = line.split("=", 1)[1]
+                    elif line.startswith("TELEGRAM_CHAT_ID="):
+                        chat_id = line.split("=", 1)[1]
+
+    if not token or not chat_id:
+        return
+
+    try:
+        url = f"https://api.telegram.org/bot{token}/sendMessage"
+        data = urllib.parse.urlencode({
+            "chat_id": chat_id,
+            "text": message,
+            "parse_mode": "HTML",
+        }).encode()
+        req = urllib.request.Request(url, data=data, method="POST")
+        urllib.request.urlopen(req, timeout=10)
+    except Exception:
+        pass  # Best-effort
 
 # ---------------------------------------------------------------------------
 # Configuration — update REPO_URL before first use
@@ -211,8 +254,45 @@ log() {{ echo "$(date -u '+%Y-%m-%d %H:%M:%S') $*" >> $LOG; }}
 TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 300")
 INSTANCE_ID=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-id)
 
+# ------- Telegram notification helper -------
+send_telegram() {{
+    local MSG="$1"
+    if [ -f /root/gepa-mutations/.env ]; then
+        local TG_TOKEN=$(grep '^TELEGRAM_BOT_TOKEN=' /root/gepa-mutations/.env | cut -d= -f2-)
+        local TG_CHAT=$(grep '^TELEGRAM_CHAT_ID=' /root/gepa-mutations/.env | cut -d= -f2-)
+        if [ -n "$TG_TOKEN" ] && [ -n "$TG_CHAT" ]; then
+            curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN/sendMessage" \
+                -d "chat_id=$TG_CHAT" \
+                --data-urlencode "text=$MSG" \
+                -d "parse_mode=HTML" > /dev/null 2>&1 || true
+        fi
+    fi
+}}
+
+# ------- hourly progress monitor (background) -------
+hourly_monitor() {{
+    while true; do
+        sleep 3600
+        if [ -f /tmp/gepa_exit_code ]; then
+            break  # experiment finished, stop monitoring
+        fi
+        local UPTIME_HRS=$(awk '{{printf "%.1f", $1/3600}}' /proc/uptime)
+        local TAIL_LOG=$(tail -5 $LOG 2>/dev/null | head -3)
+        send_telegram "<b>Hourly Update</b>
+Experiment: <code>{exp['id']}</code>
+Instance: <code>$INSTANCE_ID</code>
+Uptime: ${{UPTIME_HRS}}h
+Recent log:
+<pre>${{TAIL_LOG}}</pre>"
+    done
+}}
+hourly_monitor &
+MONITOR_PID=$!
+
 cleanup() {{
     log "Cleanup: uploading and terminating"
+    # Stop hourly monitor
+    kill $MONITOR_PID 2>/dev/null || true
     aws s3 cp $LOG s3://{BUCKET}/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/ec2.log --region us-east-1 || true
     [ -d /root/gepa-mutations/runs ] && aws s3 sync /root/gepa-mutations/runs/ s3://{BUCKET}/runs/ --region us-east-1 || true
     # update manifest
@@ -236,6 +316,46 @@ try:
 except Exception as exc:
     print(f'manifest update failed: {{exc}}')
 " 2>/dev/null || true
+    # ------- send completion notification -------
+    EXIT_CODE=$(cat /tmp/gepa_exit_code 2>/dev/null || echo "1")
+    if [ "$EXIT_CODE" = "0" ]; then
+        # Extract test score from result.json if available
+        TEST_SCORE=$(python3 -c "
+import json, glob
+files = glob.glob('/root/gepa-mutations/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/result.json')
+if files:
+    d = json.load(open(files[0]))
+    print(f\"{{d.get('test_score', 0)*100:.2f}}%\")
+else:
+    print('N/A')
+" 2>/dev/null || echo "N/A")
+        WALL_CLOCK=$(python3 -c "
+import json, glob
+files = glob.glob('/root/gepa-mutations/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/result.json')
+if files:
+    d = json.load(open(files[0]))
+    wc = d.get('wall_clock_seconds', 0)
+    h, m = int(wc//3600), int((wc%3600)//60)
+    print(f'{{h}}h {{m}}m')
+else:
+    print('N/A')
+" 2>/dev/null || echo "N/A")
+        send_telegram "Experiment complete
+Method: <code>{exp['method']}</code>
+Benchmark: <code>{exp['benchmark']}</code>
+Seed: <code>{exp['seed']}</code>
+Test score: <b>${{TEST_SCORE}}</b>
+Wall clock: ${{WALL_CLOCK}}
+Instance: <code>${{INSTANCE_ID}}</code>"
+    else
+        send_telegram "Experiment FAILED
+Method: <code>{exp['method']}</code>
+Benchmark: <code>{exp['benchmark']}</code>
+Seed: <code>{exp['seed']}</code>
+Exit code: ${{EXIT_CODE}}
+Instance: <code>${{INSTANCE_ID}}</code>
+Last log line: <pre>$(tail -1 $LOG 2>/dev/null)</pre>"
+    fi
     aws ec2 terminate-instances --instance-ids $INSTANCE_ID --region us-east-1 || true
 }}
 trap cleanup EXIT
@@ -271,6 +391,14 @@ try:
 except Exception as exc:
     print(f'Warning: {{exc}}')
 " 2>/dev/null || true
+
+# ------- send start notification -------
+send_telegram "Experiment started
+Method: <code>{exp['method']}</code>
+Benchmark: <code>{exp['benchmark']}</code>
+Seed: <code>{exp['seed']}</code>
+Phase: {exp['phase']}
+Instance: <code>${{INSTANCE_ID}}</code>"
 
 # ------- run experiment -------
 case "{exp['method']}" in
@@ -518,8 +646,38 @@ def print_status(manifest: dict) -> None:
     print(f"{'='*70}\n")
 
 
+def _manifest_summary_text(manifest: dict) -> str:
+    """Build a compact HTML summary of manifest status for Telegram."""
+    exps = manifest["experiments"]
+    total = len(exps)
+    done = sum(1 for e in exps if e["status"] == "completed")
+    failed = sum(1 for e in exps if e["status"] == "failed")
+    active = sum(1 for e in exps if e["status"] in ("launched", "running"))
+    pend = sum(1 for e in exps if e["status"] == "pending")
+
+    lines = [
+        "<b>GEPA Orchestrator Status</b>",
+        f"Completed: {done}/{total}  |  Active: {active}",
+        f"Pending: {pend}  |  Failed: {failed}",
+    ]
+
+    # Per-phase breakdown
+    for phase in sorted({e["phase"] for e in exps}):
+        phase_exps = [e for e in exps if e["phase"] == phase]
+        p_done = sum(1 for e in phase_exps if e["status"] == "completed")
+        p_active = sum(1 for e in phase_exps if e["status"] in ("launched", "running"))
+        p_fail = sum(1 for e in phase_exps if e["status"] == "failed")
+        gate = "OPEN" if can_start_phase(phase, manifest) else "BLOCKED"
+        lines.append(f"  P{phase}[{gate}]: {p_done}/{len(phase_exps)} done, {p_active} active, {p_fail} fail")
+
+    return "\n".join(lines)
+
+
 def poll_loop(interval: int = 900) -> None:
     """Continuously launch batches until all experiments finish."""
+    _send_telegram("<b>GEPA Orchestrator started</b>\nPolling every "
+                   f"{interval}s for experiment completion.")
+
     while True:
         manifest = download_manifest()
         print_status(manifest)
@@ -530,9 +688,14 @@ def poll_loop(interval: int = 900) -> None:
         )
         if all_done:
             print("All experiments complete.")
+            summary = _manifest_summary_text(manifest)
+            _send_telegram(f"{summary}\n\n<b>All experiments finished.</b>")
             break
 
         manifest = launch_batch(manifest)
+
+        # Send Telegram status update each poll cycle
+        _send_telegram(_manifest_summary_text(manifest))
 
         print(f"Next check in {interval}s ...")
         time.sleep(interval)

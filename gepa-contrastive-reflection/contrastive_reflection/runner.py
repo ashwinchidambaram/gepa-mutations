@@ -135,9 +135,12 @@ def run_contrastive_reflection(
     if max_metric_calls is None:
         max_metric_calls = PAPER_ROLLOUTS["gepa"].get(benchmark, 5000)
 
-    # 7. Metrics callback
+    # 7. Metrics callbacks
+    from contrastive_reflection.callbacks import ContrastiveMetricsCallback
+
     metrics_cb = MetricsCallback(benchmark=benchmark, seed=seed)
-    callbacks: list[Any] = [metrics_cb]
+    contrastive_cb = ContrastiveMetricsCallback()
+    callbacks: list[Any] = [metrics_cb, contrastive_cb]
 
     # 8. Seed candidate
     seed_prompt = BENCHMARK_SEED_PROMPTS.get(benchmark, SEED_PROMPT)
@@ -308,13 +311,16 @@ def run_contrastive_reflection(
         test_example_ids=test_eval.example_ids,
     )
 
-    # 20. Save results
+    # 20. Save results (combine standard + contrastive metrics)
+    combined_metrics = metrics_cb.metrics.to_dict()
+    combined_metrics["contrastive_reflection"] = contrastive_cb.metrics.to_dict()
+
     save_result(
         benchmark=benchmark,
         seed=seed,
         result_data=exp_result.to_dict(),
         config_data=exp_result.config_snapshot,
-        metrics_data=exp_result.metrics,
+        metrics_data=combined_metrics,
         method=mutation_name,
     )
     console.print(f"  Results saved to runs/{benchmark}/{mutation_name}/{seed}/")

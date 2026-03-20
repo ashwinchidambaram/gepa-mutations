@@ -96,6 +96,15 @@ class ContrastiveReflectionProposer(ReflectiveMutationProposer):
         self.contrastive_config = contrastive_config
         self.contrastive_index = ContrastiveTrainIndex()
 
+        # Find ContrastiveMetricsCallback in callbacks list (if present)
+        from contrastive_reflection.callbacks import ContrastiveMetricsCallback
+
+        self._contrastive_cb: ContrastiveMetricsCallback | None = None
+        for cb in (callbacks or []):
+            if isinstance(cb, ContrastiveMetricsCallback):
+                self._contrastive_cb = cb
+                break
+
     def propose(self, state: GEPAState) -> CandidateProposal | None:
         """Propose a new candidate with contrastive-augmented reflection.
 
@@ -370,6 +379,15 @@ class ContrastiveReflectionProposer(ReflectiveMutationProposer):
             },
             step=i,
         )
+
+        # Record contrastive metrics via direct callback
+        if self._contrastive_cb is not None:
+            self._contrastive_cb.record_iteration(
+                iteration=i,
+                num_pairs_found=num_contrastive_pairs_found,
+                num_pairs_used=len(contrastive_pairs),
+                score_gaps=[p["score_gap"] for p in contrastive_pairs],
+            )
 
         return CandidateProposal(
             candidate=new_candidate,

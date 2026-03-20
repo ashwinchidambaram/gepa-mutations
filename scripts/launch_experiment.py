@@ -47,10 +47,84 @@ log() {{ echo "$(date -u '+%Y-%m-%d %H:%M:%S') $*" >> $LOG; }}
 TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 300")
 INSTANCE_ID=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-id)
 
+# ------- Telegram notification helper -------
+send_telegram() {{
+    local MSG="$1"
+    if [ -f /root/gepa-mutations/.env ]; then
+        local TG_TOKEN=$(grep '^TELEGRAM_BOT_TOKEN=' /root/gepa-mutations/.env | cut -d= -f2-)
+        local TG_CHAT=$(grep '^TELEGRAM_CHAT_ID=' /root/gepa-mutations/.env | cut -d= -f2-)
+        if [ -n "$TG_TOKEN" ] && [ -n "$TG_CHAT" ]; then
+            curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN/sendMessage" \
+                -d "chat_id=$TG_CHAT" \
+                --data-urlencode "text=$MSG" \
+                -d "parse_mode=HTML" > /dev/null 2>&1 || true
+        fi
+    fi
+}}
+
+# ------- hourly progress monitor (background) -------
+hourly_monitor() {{
+    while true; do
+        sleep 3600
+        if [ -f /tmp/gepa_exit_code ]; then
+            break  # experiment finished, stop monitoring
+        fi
+        local UPTIME_HRS=$(awk '{{printf "%.1f", $1/3600}}' /proc/uptime)
+        local TAIL_LOG=$(tail -5 $LOG 2>/dev/null | head -3)
+        send_telegram "<b>Hourly Update</b>
+Experiment: <code>gepa/{benchmark}/seed={seed}</code>
+Instance: <code>$INSTANCE_ID</code>
+Uptime: ${{UPTIME_HRS}}h
+Recent log:
+<pre>${{TAIL_LOG}}</pre>"
+    done
+}}
+hourly_monitor &
+MONITOR_PID=$!
+
 cleanup() {{
     log "Cleanup: uploading and terminating"
+    # Stop hourly monitor
+    kill $MONITOR_PID 2>/dev/null || true
     aws s3 cp $LOG s3://gepa-mutations-results/runs/{benchmark}/gepa/{seed}/ec2.log --region us-east-1 || true
     [ -d /root/gepa-mutations/runs ] && aws s3 sync /root/gepa-mutations/runs/ s3://gepa-mutations-results/runs/ --region us-east-1 || true
+    # ------- send completion notification -------
+    EXIT_CODE=${{GEPA_EXIT_CODE:-1}}
+    if [ "$EXIT_CODE" = "0" ]; then
+        TEST_SCORE=$(python3 -c "
+import json, glob
+files = glob.glob('/root/gepa-mutations/runs/{benchmark}/gepa/{seed}/result.json')
+if files:
+    d = json.load(open(files[0]))
+    print(f\"{{d.get('test_score', 0)*100:.2f}}%\")
+else:
+    print('N/A')
+" 2>/dev/null || echo "N/A")
+        WALL_CLOCK=$(python3 -c "
+import json, glob
+files = glob.glob('/root/gepa-mutations/runs/{benchmark}/gepa/{seed}/result.json')
+if files:
+    d = json.load(open(files[0]))
+    wc = d.get('wall_clock_seconds', 0)
+    h, m = int(wc//3600), int((wc%3600)//60)
+    print(f'{{h}}h {{m}}m')
+else:
+    print('N/A')
+" 2>/dev/null || echo "N/A")
+        send_telegram "Baseline experiment complete
+Benchmark: <code>{benchmark}</code>
+Seed: <code>{seed}</code>
+Test score: <b>${{TEST_SCORE}}</b>
+Wall clock: ${{WALL_CLOCK}}
+Instance: <code>${{INSTANCE_ID}}</code>"
+    else
+        send_telegram "Baseline experiment FAILED
+Benchmark: <code>{benchmark}</code>
+Seed: <code>{seed}</code>
+Exit code: ${{EXIT_CODE}}
+Instance: <code>${{INSTANCE_ID}}</code>
+Last log line: <pre>$(tail -1 $LOG 2>/dev/null)</pre>"
+    fi
     aws ec2 terminate-instances --instance-ids $INSTANCE_ID --region us-east-1 || true
 }}
 trap cleanup EXIT
@@ -69,9 +143,18 @@ rm -rf gepa/.venv gepa/uv.lock
 aws s3 cp s3://gepa-mutations-results/config/.env .env --region us-east-1 >> $LOG 2>&1
 uv sync >> $LOG 2>&1
 
+# ------- send start notification -------
+send_telegram "Baseline experiment started
+Benchmark: <code>{benchmark}</code>
+Seed: <code>{seed}</code>
+Merge: {'yes' if use_merge else 'no'}
+Instance: <code>${{INSTANCE_ID}}</code>"
+
 log "Starting: gepa-mutations run {benchmark} --seed {seed} {merge_flag}"
 uv run gepa-mutations run {benchmark} --seed {seed} {merge_flag} >> $LOG 2>&1
-log "Exit code: $?"
+GEPA_EXIT_CODE=$?
+echo $GEPA_EXIT_CODE > /tmp/gepa_exit_code
+log "Exit code: $GEPA_EXIT_CODE"
 """
 
 
@@ -114,6 +197,10 @@ def launch(
         IamInstanceProfile={"Name": INSTANCE_PROFILE_NAME},
         SecurityGroupIds=[sg_id],
         UserData=user_data,
+        MetadataOptions={
+            "HttpTokens": "required",
+            "InstanceMetadataTags": "enabled",
+        },
         InstanceMarketOptions={
             "MarketType": "spot",
             "SpotOptions": {
