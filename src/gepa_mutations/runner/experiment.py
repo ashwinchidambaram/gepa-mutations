@@ -6,9 +6,7 @@ implementations per benchmark, matching the paper's exact configuration.
 
 from __future__ import annotations
 
-import threading
 import time
-from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -382,111 +380,8 @@ class ExperimentRunner:
     def _evaluate_on_test(
         self, benchmark: str, best_prompt: dict[str, str], testset: list
     ) -> TestEvalResult:
-        """Evaluate the best prompt on the test set."""
-        if self._uses_dspy(benchmark):
-            scores = self._evaluate_dspy(best_prompt, testset)
-        else:
-            qa_lm = self._build_qa_task_lm()
-            adapter = get_adapter(benchmark, task_lm=qa_lm)
-            scores = self._evaluate_qa(best_prompt, testset, qa_lm, adapter)
-
-        total = len(testset)
-        example_ids = [f"{benchmark}_test_{i}" for i in range(total)]
-        mean_score = sum(scores) / total if total else 0.0
-        return TestEvalResult(score=mean_score, example_scores=scores, example_ids=example_ids)
-
-    def _evaluate_dspy(self, prompt: dict[str, str], testset: list) -> list[float]:
-        """Evaluate using dspy (for math benchmarks) — parallel."""
-        from gepa_mutations.benchmarks.evaluators import _math_metric, _run_llm
-        from gepa_mutations.benchmarks.signatures import MathSolverSignature
-
-        prompt_text = prompt["system_prompt"]
-        total = len(testset)
-        workers = self.settings.test_eval_workers
-
-        # Shared state for progress logging
-        lock = threading.Lock()
-        completed = [0]
-        correct_sum = [0.0]
-        error_count = [0]
-
-        def eval_one(example):
-            # Each thread gets its own predictor (not thread-safe to share)
-            predictor = dspy.ChainOfThought(MathSolverSignature)
-            try:
-                prediction = _run_llm(example, prompt_text, predictor)
-                score, _ = _math_metric(example, prediction)
-            except Exception as e:
-                score = 0.0
-                with lock:
-                    error_count[0] += 1
-                    if error_count[0] <= 3:
-                        console.print(f"  [dim]Test eval error: {e}[/dim]")
-
-            with lock:
-                correct_sum[0] += score
-                completed[0] += 1
-                done = completed[0]
-                if done % 10 == 0 or done == total:
-                    pct = done / total * 100
-                    acc = correct_sum[0] / done * 100
-                    console.print(
-                        f"  Test eval: {done}/{total} ({pct:.0f}%) | "
-                        f"correct: {correct_sum[0]:.1f}/{done} ({acc:.1f}%) | errors: {error_count[0]}"
-                    )
-
-            return score
-
-        with ThreadPoolExecutor(max_workers=workers) as pool:
-            scores = list(pool.map(eval_one, testset))
-
-        return scores
-
-    def _evaluate_qa(self, prompt: dict[str, str], testset: list, lm: LM, adapter) -> list[float]:
-        """Evaluate using adapter scoring and parallel LM calls."""
-        prompt_text = prompt["system_prompt"]
-        total = len(testset)
-        workers = self.settings.test_eval_workers
-
-        # Shared state for progress logging
-        lock = threading.Lock()
-        completed = [0]
-        correct_sum = [0.0]
-        error_count = [0]
-
-        def eval_one(example):
-            try:
-                messages = [
-                    {"role": "system", "content": prompt_text},
-                    {"role": "user", "content": example.input},
-                ]
-                response = lm(messages)
-                score, _ = adapter._score(example, response)
-            except Exception as e:
-                score = 0.0
-                with lock:
-                    error_count[0] += 1
-                    if error_count[0] <= 3:
-                        console.print(f"  [dim]Test eval error: {e}[/dim]")
-
-            with lock:
-                correct_sum[0] += score
-                completed[0] += 1
-                done = completed[0]
-                if done % 10 == 0 or done == total:
-                    pct = done / total * 100
-                    acc = correct_sum[0] / done * 100
-                    console.print(
-                        f"  Test eval: {done}/{total} ({pct:.0f}%) | "
-                        f"correct: {correct_sum[0]:.1f}/{done} ({acc:.1f}%) | errors: {error_count[0]}"
-                    )
-
-            return score
-
-        with ThreadPoolExecutor(max_workers=workers) as pool:
-            scores = list(pool.map(eval_one, testset))
-
-        return scores
+        from gepa_mutations.base import evaluate_on_test
+        return evaluate_on_test(benchmark, best_prompt, testset, self.settings)
 
     def _config_snapshot(
         self, benchmark: str, seed: int, subset: int | None, use_merge: bool

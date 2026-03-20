@@ -1,11 +1,15 @@
+<p align="center">
+  <img src="assets/logo.svg" alt="AC" width="80" height="80" />
+</p>
+
 # gepa-mutations
 
 An exploratory research project for understanding, evaluating, and extending the [GEPA (Genetic-Pareto)](https://arxiv.org/abs/2507.19457) prompt evolution framework. GEPA uses natural language reflection and Pareto-based selection to optimize LLM prompts, achieving results that outperform reinforcement learning approaches like GRPO while using up to 35x fewer rollouts.
 
 This project has two phases:
 
-1. **Reproduce** the GEPA paper's results with experimental rigor to establish a reliable baseline
-2. **Mutate** GEPA's core algorithms to explore whether further performance improvements are possible
+1. **Reproduce** the GEPA paper's results with experimental rigor to establish a reliable baseline — framework complete, smoke tests passing on PUPA and LiveBench; remaining benchmarks being verified
+2. **Mutate** GEPA's core algorithms to explore whether further performance improvements are possible — three mutations selected and scaffolded as editable packages, implementation in progress
 
 ## Background
 
@@ -24,12 +28,12 @@ Reproduce the paper's Qwen3-8B experiments as faithfully as possible:
 
 | Benchmark | Paper Baseline | Paper GEPA | Our Result |
 |-----------|---------------|------------|------------|
-| HotpotQA | 42.33 | 62.33 | — |
-| IFBench | 36.90 | 38.61 | — |
-| HoVer | 35.33 | 52.33 | — |
-| PUPA | 80.82 | 91.85 | — |
-| AIME-2025 | 27.33 | 32.00 | — |
-| LiveBench-Math | 48.70 | 51.95 | — |
+| HotpotQA | 42.33 | 62.33 | verifying |
+| IFBench | 36.90 | 38.61 | verifying |
+| HoVer | 35.33 | 52.33 | verifying |
+| PUPA | 80.82 | 91.85 | smoke tests passing |
+| AIME-2025 | 27.33 | 32.00 | verifying |
+| LiveBench-Math | 48.70 | 51.95 | smoke tests passing |
 
 **Model**: Qwen3-8B via OpenRouter (`qwen/qwen3-8b`)
 **Inference params**: temperature=0.6, top_p=0.95, top_k=20, context=16K
@@ -64,15 +68,15 @@ Per-benchmark tolerance: ±2pp (IFBench), ±3pp (HotpotQA, HoVer, PUPA, LiveBenc
 
 ## Phase 2: Mutations
 
-Once baseline reproduction is established, test mutations to GEPA's core components:
+Three mutations to GEPA's core algorithms have been selected and scaffolded as separate editable packages at the root of the repository. Each is compared against the Phase 1 baseline to measure impact. Implementation is in progress.
 
-- **Candidate Selection** — alternatives to Pareto sampling (epsilon-greedy, top-k, beam search)
-- **Reflection Strategy** — modified meta-prompts, multi-step reflection, chain-of-thought reflection
-- **Crossover Operators** — alternative merge strategies beyond the paper's system-aware merge
-- **Population Dynamics** — varying population size, elitism strategies, diversity preservation
-- **Feedback Functions** — richer diagnostic signals, structured vs. free-form feedback
+### Selected Mutations
 
-Each mutation is compared against the Phase 1 baseline to measure impact.
+- **best_of_k** (`gepa-best-of-k/`) — Generates K independent mutations per GEPA iteration, evaluates all K candidates, and keeps only the best. Tests whether increasing exploration breadth improves prompt quality relative to GEPA's single-candidate-per-round default.
+
+- **contrastive_reflection** (`gepa-contrastive-reflection/`) — Injects successful candidate snippets from the current Pareto frontier into the reflection prompt. Tests whether showing the reflection LLM "what worked elsewhere" improves the quality of proposed prompt improvements.
+
+- **failure_stratified_k** (`gepa-failure-stratified-k/`) — Extends best_of_k by partitioning the pool of failing examples across K candidates, so each candidate sees a different subset of failure patterns during its iteration. Tests whether targeted failure exposure improves candidate diversity and overall prompt quality.
 
 ## Setup
 
@@ -137,38 +141,43 @@ gepa-mutations upload runs/
 
 ```
 gepa-mutations/
-├── gepa/                       # Official GEPA source v0.1.1 (reference, do not modify)
+├── gepa/                           # Official GEPA source v0.1.1 (reference, do not modify)
+├── gepa-best-of-k/                 # Mutation 1: generate K mutations per iteration, keep the best
+├── gepa-contrastive-reflection/    # Mutation 2: inject successful candidate snippets into reflection
+├── gepa-failure-stratified-k/      # Mutation 3: partition failing examples across K candidates
 ├── src/gepa_mutations/
-│   ├── cli.py                  # CLI entry point (run, status, compare, upload)
-│   ├── config.py               # Settings, paper baselines, rollout budgets
+│   ├── cli.py                      # CLI entry point (run, status, compare, upload)
+│   ├── config.py                   # Settings, paper baselines, rollout budgets
+│   ├── base.py                     # MutationConfig + run_mutation() for Phase 2
 │   ├── runner/
-│   │   ├── experiment.py       # ExperimentRunner using gepa.api.optimize()
-│   │   └── callbacks.py        # MetricsCallback for diagnostic capture
+│   │   ├── experiment.py           # ExperimentRunner using gepa.api.optimize()
+│   │   └── callbacks.py            # MetricsCallback for diagnostic capture
 │   ├── benchmarks/
-│   │   ├── loader.py           # BenchmarkData + load_benchmark() dispatcher
-│   │   ├── evaluators.py       # GEPAAdapter implementations per benchmark
-│   │   ├── signatures.py       # DSPy signatures (MathSolverSignature)
-│   │   ├── aime.py             # AIME-2025 loader (MathArena/aime_2025)
-│   │   ├── hotpotqa.py         # HotpotQA loader (distractor setting)
-│   │   ├── ifbench.py          # IFBench loader (multi-constraint)
-│   │   ├── hover.py            # HoVer loader (fact verification)
-│   │   ├── pupa.py             # PUPA loader
-│   │   └── livebench.py        # LiveBench-Math loader
+│   │   ├── loader.py               # BenchmarkData + load_benchmark() dispatcher
+│   │   ├── evaluators.py           # GEPAAdapter implementations per benchmark
+│   │   ├── signatures.py           # DSPy signatures (MathSolverSignature)
+│   │   ├── aime.py                 # AIME-2025 loader (MathArena/aime_2025)
+│   │   ├── hotpotqa.py             # HotpotQA loader (distractor setting)
+│   │   ├── ifbench.py              # IFBench loader (multi-constraint)
+│   │   ├── hover.py                # HoVer loader (fact verification)
+│   │   ├── pupa.py                 # PUPA loader
+│   │   └── livebench.py            # LiveBench-Math loader
 │   ├── notifications/
-│   │   └── notifier.py         # Telegram + SNS notification system
+│   │   └── notifier.py             # Telegram + SNS notification system
 │   ├── storage/
-│   │   ├── local.py            # Local filesystem persistence (runs/<bm>/<method>/<seed>/)
-│   │   └── s3.py               # S3 upload/download/list
-│   ├── analysis/
-│   │   ├── statistics.py       # Bootstrap CIs, Cohen's d, reproduction verdict
-│   │   └── visualize.py        # Comparison bar charts, convergence curves
-│   └── mutations/              # GEPA mutation variants (Phase 2)
+│   │   ├── local.py                # Local filesystem persistence (runs/<bm>/<method>/<seed>/)
+│   │   └── s3.py                   # S3 upload/download/list
+│   └── analysis/
+│       ├── statistics.py           # Bootstrap CIs, Cohen's d, reproduction verdict
+│       └── visualize.py            # Comparison bar charts, convergence curves
+├── docs/                           # Project-level planning docs, mutation selection report, ideas
 ├── scripts/
-│   ├── aws_setup.py            # Idempotent AWS infrastructure setup
-│   └── launch_experiment.py    # EC2 spot instance experiment launcher
-├── configs/                    # Experiment configurations
-├── notebooks/                  # Jupyter notebooks for analysis
-├── data/                       # Local data cache
+│   ├── aws_setup.py                # Idempotent AWS infrastructure setup
+│   └── launch_experiment.py        # EC2 spot instance experiment launcher
+├── configs/                        # Experiment configurations
+├── notebooks/                      # Jupyter notebooks for analysis
+├── data/                           # Local data cache
+├── logs/                           # Smoke test and experiment log output (gitignored)
 └── tests/
 ```
 

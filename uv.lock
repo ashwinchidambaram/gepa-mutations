@@ -986,11 +986,15 @@ name = "gepa-failure-stratified-k"
 version = "0.1.0"
 source = { editable = "gepa-failure-stratified-k" }
 dependencies = [
+    { name = "gepa-best-of-k" },
     { name = "gepa-mutations" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "gepa-mutations" }]
+requires-dist = [
+    { name = "gepa-best-of-k" },
+    { name = "gepa-mutations" },
+]
 
 [[package]]
 name = "gepa-mutations"

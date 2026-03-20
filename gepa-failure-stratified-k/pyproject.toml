@@ -3,7 +3,7 @@ name = "gepa-failure-stratified-k"
 version = "0.1.0"
 description = "failure_stratified_k mutation: partition failing examples across K candidates"
 requires-python = ">=3.12"
-dependencies = ["gepa-mutations"]
+dependencies = ["gepa-mutations", "gepa-best-of-k"]
 
 [build-system]
 requires = ["hatchling"]

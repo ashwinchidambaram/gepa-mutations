@@ -61,6 +61,8 @@ class MutationConfig:
     reflection_minibatch_size: int = 3
     reflection_prompt_template: str | dict[str, str] | None = None
     max_metric_calls: int | None = None  # None = use paper budget
+    mutation_candidates: int = 1  # K value for best-of-K mutation
+    use_failure_stratified_k: bool = False  # Enable failure stratification across K candidates
 
 
 # ---------------------------------------------------------------------------
