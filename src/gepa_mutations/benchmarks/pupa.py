@@ -29,6 +29,7 @@ def load_pupa(seed: int = 0) -> BenchmarkData:
             dspy.Example(
                 input=item["user_query"],
                 answer=item["redacted_query"],
+                pii_units=str(item.get("pii_units", "")),
             ).with_inputs("input")
         )
 

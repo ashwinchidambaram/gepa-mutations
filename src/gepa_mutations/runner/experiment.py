@@ -41,6 +41,7 @@ class LM:
         self.completion_kwargs: dict[str, Any] = {
             **({"temperature": temperature} if temperature is not None else {}),
             **({"max_tokens": max_tokens} if max_tokens is not None else {}),
+            "timeout": kwargs.pop("timeout", 120),
             **kwargs,
         }
 
@@ -76,7 +77,10 @@ SEED_PROMPT = (
 # Benchmark-specific seed prompts
 BENCHMARK_SEED_PROMPTS = {
     "aime": SEED_PROMPT,
-    "livebench": SEED_PROMPT,
+    "livebench": (
+        "Solve the math problem step by step. Provide the final answer in the exact "
+        "format requested (number, expression, comma-separated list, etc.)."
+    ),
     "hotpotqa": (
         "Answer the question by reasoning step by step through the provided context. "
         "Give a concise, factual answer."
@@ -90,7 +94,9 @@ BENCHMARK_SEED_PROMPTS = {
         "provided evidence. Reason through the evidence step by step."
     ),
     "pupa": (
-        "Analyze the problem carefully and provide a clear, well-reasoned answer."
+        "Rewrite the user's query to remove all personally identifiable information (PII) "
+        "such as names, addresses, phone numbers, and emails. Replace PII with generic "
+        "placeholders while preserving the query's meaning and intent."
     ),
 }
 
@@ -137,6 +143,7 @@ class ExperimentRunner:
             top_p=self.settings.gepa_top_p,
             top_k=self.settings.gepa_top_k,
             max_tokens=self.settings.gepa_max_context,
+            timeout=120,
         )
 
     def _build_reflection_lm(self) -> LM:
@@ -163,8 +170,8 @@ class ExperimentRunner:
         return BENCHMARK_SEED_PROMPTS.get(benchmark, SEED_PROMPT)
 
     def _uses_dspy(self, benchmark: str) -> bool:
-        """Check if benchmark uses dspy (math benchmarks) vs direct LM calls."""
-        return benchmark in ("aime", "livebench")
+        """Check if benchmark uses dspy (AIME only) vs direct LM calls."""
+        return benchmark == "aime"
 
     def run(
         self,

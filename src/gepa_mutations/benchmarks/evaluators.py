@@ -298,6 +298,113 @@ class HoVerAdapter(QAAdapter):
 
 
 # ---------------------------------------------------------------------------
+# PUPA Adapter (PII redaction quality + leakage detection)
+# Reference: gepa/tests/test_pareto_frontier_types/test_pareto_frontier_types.py
+# ---------------------------------------------------------------------------
+
+class PUPAAdapter(QAAdapter):
+    """GEPAAdapter for PUPA: privacy-preserving query redaction.
+
+    Scoring: average of (quality, leakage_score).
+    - quality: LLM-as-judge comparing response to gold redaction (0-1)
+    - leakage: fraction of PII units NOT leaked in response (0-1)
+    """
+
+    def _score(self, example: dspy.Example, response: str) -> tuple[float, str]:
+        # PII leakage check
+        pii_units_raw = getattr(example, "pii_units", "")
+        if isinstance(pii_units_raw, list):
+            pii_list = [str(p).strip() for p in pii_units_raw if str(p).strip()]
+        else:
+            pii_list = [p.strip() for p in str(pii_units_raw).split("||") if p.strip()]
+
+        if pii_list:
+            leaked = sum(1 for pii in pii_list if pii and pii in response)
+            leakage_score = 1.0 - (leaked / len(pii_list))
+        else:
+            leakage_score = 1.0
+
+        # Simple quality: check if response resembles the gold redaction
+        # (LLM-as-judge is expensive; use string similarity for smoke tests)
+        gold = str(example.answer).strip().lower()
+        resp = response.strip().lower()
+
+        # Check overlap: what fraction of gold words appear in response
+        gold_words = set(gold.split())
+        resp_words = set(resp.split())
+        if gold_words:
+            overlap = len(gold_words & resp_words) / len(gold_words)
+        else:
+            overlap = 0.0
+
+        quality = min(1.0, overlap)
+        total_score = (quality + leakage_score) / 2
+
+        feedback_parts = [
+            f"Quality (word overlap): {quality:.2f}",
+            f"Leakage score: {leakage_score:.2f} ({len(pii_list)} PII units checked)",
+            f"Total: {total_score:.2f}",
+        ]
+        if leakage_score < 1.0:
+            feedback_parts.append(
+                f"WARNING: PII leakage detected ({int((1-leakage_score)*len(pii_list))}/{len(pii_list)} units leaked)"
+            )
+        feedback = "\n".join(feedback_parts)
+
+        return total_score, feedback
+
+
+# ---------------------------------------------------------------------------
+# LiveBench-Math Adapter (string comparison for diverse answer formats)
+# ---------------------------------------------------------------------------
+
+class LiveBenchAdapter(QAAdapter):
+    """GEPAAdapter for LiveBench-Math: string comparison scoring.
+
+    LiveBench answers are diverse: comma-separated sequences, LaTeX expressions,
+    zero-padded numbers, letter choices. Uses normalized string comparison.
+    """
+
+    def _score(self, example: dspy.Example, response: str) -> tuple[float, str]:
+        expected = str(example.answer).strip()
+        response_clean = response.strip()
+
+        # Try exact match first (normalized whitespace)
+        if self._normalize(expected) == self._normalize(response_clean):
+            return 1.0, f"Correct (exact match). Expected: '{expected}'"
+
+        # Check if expected answer appears in the response
+        if self._normalize(expected) in self._normalize(response_clean):
+            return 1.0, f"Correct (contained). Expected: '{expected}'"
+
+        # Try matching just the last line or boxed answer
+        for line in reversed(response_clean.split("\n")):
+            line = line.strip()
+            if self._normalize(expected) == self._normalize(line):
+                return 1.0, f"Correct (last line match). Expected: '{expected}'"
+            # Check for \boxed{answer} pattern
+            if "\\boxed{" in line:
+                boxed = line.split("\\boxed{")[-1].rstrip("}")
+                if self._normalize(expected) == self._normalize(boxed):
+                    return 1.0, f"Correct (boxed match). Expected: '{expected}'"
+
+        return 0.0, (
+            f"Incorrect. Expected: '{expected}'. "
+            f"Response did not contain the expected answer."
+        )
+
+    @staticmethod
+    def _normalize(s: str) -> str:
+        """Normalize whitespace and common formatting for comparison."""
+        import re
+        s = s.lower().strip()
+        s = re.sub(r"\s+", " ", s)
+        # Remove trailing periods, commas
+        s = s.rstrip(".,;")
+        return s
+
+
+# ---------------------------------------------------------------------------
 # Factory function
 # ---------------------------------------------------------------------------
 
@@ -320,9 +427,8 @@ def get_adapter(benchmark: str, task_lm=None):
     elif benchmark == "hover":
         return HoVerAdapter(task_lm)
     elif benchmark == "pupa":
-        return QAAdapter(task_lm)  # Default QA scoring
+        return PUPAAdapter(task_lm)
     elif benchmark == "livebench":
-        # LiveBench-Math uses the AIME-style math evaluator
-        return AIMEAdapter()
+        return LiveBenchAdapter(task_lm)
     else:
         raise ValueError(f"Unknown benchmark: {benchmark}")
