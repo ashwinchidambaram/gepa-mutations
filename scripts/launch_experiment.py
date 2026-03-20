@@ -25,10 +25,10 @@ from botocore.exceptions import ClientError
 REGION = "us-east-1"
 PROJECT = "gepa-mutations"
 INSTANCE_TYPE = "t3.medium"
-AMI_ID = "ami-0c7217cdde317cfec"  # Ubuntu 22.04 LTS us-east-1 (update as needed)
+AMI_ID = "ami-00de3875b03809ec5"  # Ubuntu 22.04 LTS us-east-1 (update as needed)
 INSTANCE_PROFILE_NAME = "gepa-mutations-ec2-profile"
 SG_NAME = "gepa-mutations-sg"
-REPO_URL = "https://github.com/YOUR_ORG/gepa-mutations.git"  # Update with actual repo
+REPO_URL = "https://github.com/ashwinchidambaram/gepa-mutations.git"  # Update with actual repo
 
 
 def _user_data_script(

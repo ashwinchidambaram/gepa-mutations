@@ -186,12 +186,11 @@ def create_security_group(ec2) -> str:
         sg_id = response["GroupId"]
 
         # Remove default ingress rules (egress-only)
-        ec2.revoke_security_group_ingress(
-            GroupId=sg_id,
-            IpPermissions=ec2.describe_security_groups(GroupIds=[sg_id])["SecurityGroups"][0].get(
-                "IpPermissions", []
-            ),
+        existing_ingress = ec2.describe_security_groups(GroupIds=[sg_id])["SecurityGroups"][0].get(
+            "IpPermissions", []
         )
+        if existing_ingress:
+            ec2.revoke_security_group_ingress(GroupId=sg_id, IpPermissions=existing_ingress)
         print(f"  Created security group: {sg_id}")
         return sg_id
     except ClientError as e:

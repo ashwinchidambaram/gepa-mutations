@@ -45,11 +45,11 @@ REGION = "us-east-1"
 PROJECT = "gepa-mutations"
 BUCKET = "gepa-mutations-results"
 INSTANCE_TYPE = "t3.medium"
-AMI_ID = "ami-0c7217cdde317cfec"  # Ubuntu 22.04 LTS us-east-1
+AMI_ID = "ami-00de3875b03809ec5"  # Ubuntu 22.04 LTS us-east-1
 INSTANCE_PROFILE = "gepa-mutations-ec2-profile"
 SG_NAME = "gepa-mutations-sg"
 MAX_CONCURRENT = 10
-REPO_URL = "https://github.com/YOUR_ORG/gepa-mutations.git"  # <-- UPDATE
+REPO_URL = "https://github.com/ashwinchidambaram/gepa-mutations.git"  # <-- UPDATE
 BRANCH = "master"
 
 SEEDS = [42, 123, 456, 789, 1024]
