@@ -15,6 +15,9 @@ dependencies = [
     "rich",
     "python-telegram-bot",
     "pydantic-settings",
+    "gepa-best-of-k",
+    "gepa-contrastive-reflection",
+    "gepa-failure-stratified-k",
 ]
 
 [project.scripts]
@@ -35,11 +38,14 @@ target-version = "py312"
 select = ["E", "F", "I", "W"]
 
 [tool.uv]
-# Exclude gepa/ from workspace discovery so it's treated as a path dependency, not a workspace member
-workspace = { exclude = ["gepa"] }
+# Exclude submodule and mutation packages from workspace discovery
+workspace = { exclude = ["gepa", "gepa-best-of-k", "gepa-contrastive-reflection", "gepa-failure-stratified-k"] }
 
 [tool.uv.sources]
 gepa = { path = "./gepa", editable = true }
+gepa-best-of-k = { path = "./gepa-best-of-k", editable = true }
+gepa-contrastive-reflection = { path = "./gepa-contrastive-reflection", editable = true }
+gepa-failure-stratified-k = { path = "./gepa-failure-stratified-k", editable = true }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

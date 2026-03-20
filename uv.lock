@@ -960,6 +960,39 @@ requires-dist = [
 provides-extras = ["full", "dspy", "test", "build", "dev", "gskill"]
 
 [[package]]
+name = "gepa-best-of-k"
+version = "0.1.0"
+source = { editable = "gepa-best-of-k" }
+dependencies = [
+    { name = "gepa-mutations" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "gepa-mutations" }]
+
+[[package]]
+name = "gepa-contrastive-reflection"
+version = "0.1.0"
+source = { editable = "gepa-contrastive-reflection" }
+dependencies = [
+    { name = "gepa-mutations" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "gepa-mutations" }]
+
+[[package]]
+name = "gepa-failure-stratified-k"
+version = "0.1.0"
+source = { editable = "gepa-failure-stratified-k" }
+dependencies = [
+    { name = "gepa-mutations" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "gepa-mutations" }]
+
+[[package]]
 name = "gepa-mutations"
 version = "0.1.0"
 source = { editable = "." }
@@ -967,6 +1000,9 @@ dependencies = [
     { name = "boto3" },
     { name = "dspy" },
     { name = "gepa", extra = ["full"] },
+    { name = "gepa-best-of-k" },
+    { name = "gepa-contrastive-reflection" },
+    { name = "gepa-failure-stratified-k" },
     { name = "matplotlib" },
     { name = "numpy" },
     { name = "pandas", version = "2.3.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
@@ -983,6 +1019,9 @@ requires-dist = [
     { name = "boto3" },
     { name = "dspy" },
     { name = "gepa", extras = ["full"], editable = "gepa" },
+    { name = "gepa-best-of-k", editable = "gepa-best-of-k" },
+    { name = "gepa-contrastive-reflection", editable = "gepa-contrastive-reflection" },
+    { name = "gepa-failure-stratified-k", editable = "gepa-failure-stratified-k" },
     { name = "matplotlib" },
     { name = "numpy" },
     { name = "pandas" },
