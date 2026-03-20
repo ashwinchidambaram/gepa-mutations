@@ -6,6 +6,7 @@ Reference: gepa/examples/aime_math/utils.py and gepa/src/gepa/core/adapter.py
 
 from __future__ import annotations
 
+import re
 from collections.abc import Mapping, Sequence
 from typing import Any, NamedTuple
 
@@ -188,7 +189,7 @@ class QAAdapter:
 
         for example in batch:
             try:
-                response = self._generate(prompt, example.input)
+                response = self._generate(prompt, example.input) or ""
                 score, feedback = self._score(example, response)
             except Exception as e:
                 response = ""
@@ -249,8 +250,190 @@ class QAAdapter:
 # IFBench Adapter (fraction of constraints satisfied)
 # ---------------------------------------------------------------------------
 
+# IFBench constraint checkers — programmatic verification of structural
+# requirements from allenai/IF_multi_constraints_upto5 (IFEval-style).
+# Constraints are natural language descriptions like:
+#   "Your response should contain at least 3 paragraphs."
+#   "Include the keyword 'ocean' in your response."
+#   "Your entire response should be in English, and in all uppercase."
+#   "Your response must contain at least 200 words."
+
+def _check_ifbench_constraint(constraint: str, response: str) -> bool:
+    """Programmatically check a single IFBench constraint against a response.
+
+    Handles common IFEval constraint types with regex-based parsing.
+    Returns False (conservative) for unrecognized constraint types.
+    """
+    c = constraint.strip()
+    c_lower = c.lower()
+
+    # --- Word count constraints ---
+    # "at least N words" / "no more than N words" / "exactly N words"
+    m = re.search(r"(?:at\s+least|minimum\s+(?:of\s+)?|no\s+(?:fewer|less)\s+than)\s+(\d+)\s+words", c_lower)
+    if m:
+        min_words = int(m.group(1))
+        word_count = len(response.split())
+        return word_count >= min_words
+
+    m = re.search(r"(?:at\s+most|no\s+more\s+than|maximum\s+(?:of\s+)?|not\s+exceed|fewer\s+than)\s+(\d+)\s+words", c_lower)
+    if m:
+        max_words = int(m.group(1))
+        word_count = len(response.split())
+        # "fewer than N" means < N; "at most N" / "no more than N" means <= N
+        if "fewer than" in c_lower:
+            return word_count < max_words
+        return word_count <= max_words
+
+    m = re.search(r"(?:exactly|precisely)\s+(\d+)\s+words", c_lower)
+    if m:
+        target = int(m.group(1))
+        return len(response.split()) == target
+
+    # --- Sentence count constraints ---
+    m = re.search(r"(?:at\s+least|minimum\s+(?:of\s+)?)\s+(\d+)\s+sentence", c_lower)
+    if m:
+        min_sentences = int(m.group(1))
+        sentences = [s.strip() for s in re.split(r'[.!?]+', response) if s.strip()]
+        return len(sentences) >= min_sentences
+
+    m = re.search(r"(?:at\s+most|no\s+more\s+than)\s+(\d+)\s+sentence", c_lower)
+    if m:
+        max_sentences = int(m.group(1))
+        sentences = [s.strip() for s in re.split(r'[.!?]+', response) if s.strip()]
+        return len(sentences) <= max_sentences
+
+    # --- Paragraph count constraints ---
+    m = re.search(r"(?:at\s+least|minimum\s+(?:of\s+)?)\s+(\d+)\s+paragraph", c_lower)
+    if m:
+        min_paras = int(m.group(1))
+        paragraphs = [p.strip() for p in response.split("\n\n") if p.strip()]
+        return len(paragraphs) >= min_paras
+
+    m = re.search(r"(?:at\s+most|no\s+more\s+than)\s+(\d+)\s+paragraph", c_lower)
+    if m:
+        max_paras = int(m.group(1))
+        paragraphs = [p.strip() for p in response.split("\n\n") if p.strip()]
+        return len(paragraphs) <= max_paras
+
+    m = re.search(r"(?:exactly|precisely)\s+(\d+)\s+paragraph", c_lower)
+    if m:
+        target = int(m.group(1))
+        paragraphs = [p.strip() for p in response.split("\n\n") if p.strip()]
+        return len(paragraphs) == target
+
+    # --- Keyword inclusion ---
+    # "include the keyword 'X'" / "must contain the keyword 'X'"
+    # Also handles: "include the keywords 'X', 'Y', and 'Z'"
+    m = re.search(r"(?:include|contain|use)\s+(?:the\s+)?keywords?\s+(.+)", c_lower)
+    if m:
+        keywords_str = m.group(1)
+        # Extract quoted keywords
+        keywords = re.findall(r"['\"]([^'\"]+)['\"]", keywords_str)
+        if not keywords:
+            # Try unquoted single keyword
+            keywords = [keywords_str.strip().rstrip(".")]
+        response_lower = response.lower()
+        return all(kw.lower() in response_lower for kw in keywords)
+
+    # --- Keyword/phrase forbidden ---
+    m = re.search(r"(?:do\s+not|don'?t|avoid|never)\s+(?:use|include|contain|mention)\s+(?:the\s+)?(?:word|keyword|phrase|term)s?\s+(.+)", c_lower)
+    if m:
+        keywords_str = m.group(1)
+        keywords = re.findall(r"['\"]([^'\"]+)['\"]", keywords_str)
+        if not keywords:
+            keywords = [keywords_str.strip().rstrip(".")]
+        response_lower = response.lower()
+        return all(kw.lower() not in response_lower for kw in keywords)
+
+    # --- All uppercase ---
+    if re.search(r"(?:all|entire|whole)\s+(?:response\s+)?(?:should\s+be\s+)?(?:in\s+)?(?:all\s+)?uppercase", c_lower):
+        # Check that all alphabetic characters are uppercase
+        alpha_chars = [ch for ch in response if ch.isalpha()]
+        return len(alpha_chars) > 0 and all(ch.isupper() for ch in alpha_chars)
+
+    # --- All lowercase ---
+    if re.search(r"(?:all|entire|whole)\s+(?:response\s+)?(?:should\s+be\s+)?(?:in\s+)?(?:all\s+)?lowercase", c_lower):
+        alpha_chars = [ch for ch in response if ch.isalpha()]
+        return len(alpha_chars) > 0 and all(ch.islower() for ch in alpha_chars)
+
+    # --- Title case ---
+    if "title case" in c_lower or "capitalize each word" in c_lower:
+        words = response.split()
+        if not words:
+            return False
+        return all(w[0].isupper() for w in words if w and w[0].isalpha())
+
+    # --- Bullet points / numbered list ---
+    m = re.search(r"(?:at\s+least|minimum\s+(?:of\s+)?)\s+(\d+)\s+(?:bullet\s+point|item)", c_lower)
+    if m:
+        min_items = int(m.group(1))
+        bullet_lines = [line for line in response.split("\n")
+                       if re.match(r'\s*[-*\u2022]\s', line) or re.match(r'\s*\d+[.)]\s', line)]
+        return len(bullet_lines) >= min_items
+
+    # --- Response format: starts with / ends with ---
+    m = re.search(r"(?:start|begin)\s+(?:your\s+)?(?:response\s+)?with\s+['\"]([^'\"]+)['\"]", c_lower)
+    if m:
+        start_text = m.group(1)
+        return response.strip().lower().startswith(start_text.lower())
+
+    m = re.search(r"end\s+(?:your\s+)?(?:response\s+)?with\s+['\"]([^'\"]+)['\"]", c_lower)
+    if m:
+        end_text = m.group(1)
+        return response.strip().lower().endswith(end_text.lower())
+
+    # --- Letter count constraints ---
+    m = re.search(r"(?:at\s+least|minimum\s+(?:of\s+)?)\s+(\d+)\s+(?:letter|character)", c_lower)
+    if m:
+        min_letters = int(m.group(1))
+        letter_count = sum(1 for ch in response if ch.isalpha())
+        return letter_count >= min_letters
+
+    # --- Comma-separated items ---
+    m = re.search(r"(?:at\s+least|minimum\s+(?:of\s+)?)\s+(\d+)\s+comma[- ]?separated", c_lower)
+    if m:
+        min_items = int(m.group(1))
+        # Count items in the longest comma-separated sequence
+        items = [item.strip() for item in response.split(",") if item.strip()]
+        return len(items) >= min_items
+
+    # --- Section / heading constraints ---
+    m = re.search(r"(?:at\s+least|minimum\s+(?:of\s+)?)\s+(\d+)\s+(?:section|heading)", c_lower)
+    if m:
+        min_sections = int(m.group(1))
+        headings = [line for line in response.split("\n")
+                   if re.match(r'\s*#{1,6}\s', line) or (line.strip().isupper() and len(line.strip()) > 2)]
+        return len(headings) >= min_sections
+
+    # --- No commas ---
+    if re.search(r"(?:do\s+not|don'?t|avoid|no)\s+(?:use\s+)?commas?", c_lower):
+        return "," not in response
+
+    # --- Specific language / format pattern (e.g., "in English") ---
+    # Skip these — can't easily verify language programmatically
+
+    # --- Placeholder/format patterns ---
+    # "wrap your response in double quotes"
+    if "wrap" in c_lower and "double quote" in c_lower:
+        stripped = response.strip()
+        return stripped.startswith('"') and stripped.endswith('"')
+
+    # "put your response in a markdown code block"
+    if "markdown code block" in c_lower or "code block" in c_lower:
+        return "```" in response
+
+    # --- Fallback: unrecognized constraint → conservative (fail) ---
+    # This prevents inflated scores from unrecognized constraint types.
+    return False
+
+
 class IFBenchAdapter(QAAdapter):
-    """GEPAAdapter for IFBench: scores fraction of constraints satisfied."""
+    """GEPAAdapter for IFBench: scores fraction of constraints satisfied.
+
+    Uses programmatic constraint checking for common IFEval constraint types
+    (word count, paragraph count, keyword inclusion, case requirements, etc.).
+    Unrecognized constraint types conservatively score as not satisfied.
+    """
 
     def _score(self, example: dspy.Example, response: str) -> tuple[float, str]:
         constraints = example.constraints if hasattr(example, "constraints") else []
@@ -260,8 +443,8 @@ class IFBenchAdapter(QAAdapter):
         satisfied = 0
         feedback_parts = []
         for constraint in constraints:
-            constraint_lower = constraint.lower().strip()
-            if constraint_lower in response.lower():
+            passed = _check_ifbench_constraint(constraint, response)
+            if passed:
                 satisfied += 1
                 feedback_parts.append(f"  - SATISFIED: {constraint}")
             else:
@@ -276,24 +459,103 @@ class IFBenchAdapter(QAAdapter):
 
 
 # ---------------------------------------------------------------------------
-# HoVer Adapter (label match: SUPPORTS/REFUTES/NOT ENOUGH INFO)
+# HoVer Adapter (label match: SUPPORTED / NOT_SUPPORTED)
 # ---------------------------------------------------------------------------
 
+def _extract_hover_verdict(response: str) -> str | None:
+    """Extract the verdict label from a HoVer model response.
+
+    The model reasons about whether a claim is supported, so "supported"
+    appears in nearly every response. We need to extract the actual verdict,
+    not just check for substring presence.
+
+    Strategy (ordered by specificity):
+    1. Look for explicit verdict patterns (e.g. "Final answer: NOT_SUPPORTED")
+    2. Find the LAST occurrence of NOT_SUPPORTED or SUPPORTED (the conclusion)
+    3. If only one label appears, use that
+
+    Returns "supported", "not_supported", or None if no verdict found.
+    """
+    resp = response.strip()
+
+    # Normalize common variations: NOT SUPPORTED -> NOT_SUPPORTED
+    # This handles "NOT SUPPORTED", "Not Supported", etc.
+    resp_normalized = re.sub(r'\bnot[\s_-]+supported\b', 'NOT_SUPPORTED', resp, flags=re.IGNORECASE)
+
+    # 1. Check for explicit verdict patterns first
+    # Patterns like: "Final answer: SUPPORTED", "Verdict: NOT_SUPPORTED",
+    # "Therefore, the claim is SUPPORTED", "The answer is NOT_SUPPORTED"
+    verdict_patterns = [
+        r'(?:final\s+(?:answer|verdict|conclusion|determination)|verdict|conclusion|determination|answer)\s*[:=]\s*(NOT_SUPPORTED|SUPPORTED)',
+        r'(?:the\s+claim\s+is|this\s+claim\s+is|claim\s+is)\s+(NOT_SUPPORTED|SUPPORTED)',
+        r'(?:therefore|thus|hence|so|in\s+conclusion)\s*,?\s*(?:the\s+claim\s+is\s+)?(NOT_SUPPORTED|SUPPORTED)',
+        r'\*\*(NOT_SUPPORTED|SUPPORTED)\*\*',  # **SUPPORTED** markdown bold
+    ]
+    last_match_pos = -1
+    last_match_label = None
+
+    for pattern in verdict_patterns:
+        for m in re.finditer(pattern, resp_normalized, re.IGNORECASE):
+            if m.start() > last_match_pos:
+                last_match_pos = m.start()
+                last_match_label = m.group(1).lower().replace(" ", "_").replace("-", "_")
+
+    if last_match_label is not None:
+        return last_match_label
+
+    # 2. Find the LAST occurrence of each label in the response.
+    # The final mention is most likely the verdict (after reasoning).
+    last_not_supported = -1
+    last_supported = -1
+
+    for m in re.finditer(r'\bNOT_SUPPORTED\b', resp_normalized, re.IGNORECASE):
+        last_not_supported = m.start()
+
+    for m in re.finditer(r'\bSUPPORTED\b', resp_normalized, re.IGNORECASE):
+        # Only count standalone SUPPORTED, not part of NOT_SUPPORTED
+        pos = m.start()
+        # Check this isn't the SUPPORTED part of NOT_SUPPORTED
+        prefix_start = max(0, pos - 4)
+        prefix = resp_normalized[prefix_start:pos]
+        if not re.search(r'NOT[_\s-]$', prefix, re.IGNORECASE):
+            last_supported = pos
+
+    # Return whichever appeared last (the verdict after reasoning)
+    if last_not_supported > last_supported:
+        return "not_supported"
+    elif last_supported > last_not_supported:
+        return "supported"
+
+    # 3. No label found at all
+    return None
+
+
 class HoVerAdapter(QAAdapter):
-    """GEPAAdapter for HoVer: fact verification label match."""
+    """GEPAAdapter for HoVer: fact verification label match.
+
+    Extracts the verdict label from the model response rather than simple
+    substring matching, to avoid false positives from reasoning text.
+    """
 
     LABELS = {"supported", "not_supported"}
 
     def _score(self, example: dspy.Example, response: str) -> tuple[float, str]:
         expected = str(example.answer).lower().strip()
-        response_lower = response.lower().strip()
+        predicted = _extract_hover_verdict(response)
 
-        # Check if the expected label appears in the response
-        if expected in response_lower:
-            return 1.0, f"Correct. The response contains the expected label '{expected}'."
+        if predicted is None:
+            return 0.0, (
+                f"Incorrect. Could not extract a verdict from the response. "
+                f"The expected label is '{expected}'. "
+                f"Ensure your response clearly states SUPPORTED or NOT_SUPPORTED as the final verdict."
+            )
+
+        if predicted == expected:
+            return 1.0, f"Correct. Extracted verdict '{predicted}' matches expected '{expected}'."
+
         return 0.0, (
-            f"Incorrect. The expected label is '{expected}'. "
-            f"Your response did not contain this label."
+            f"Incorrect. Extracted verdict '{predicted}' does not match expected '{expected}'. "
+            f"Ensure your final answer clearly states the correct verdict."
         )
 
 
@@ -396,7 +658,6 @@ class LiveBenchAdapter(QAAdapter):
     @staticmethod
     def _normalize(s: str) -> str:
         """Normalize whitespace and common formatting for comparison."""
-        import re
         s = s.lower().strip()
         s = re.sub(r"\s+", " ", s)
         # Remove trailing periods, commas

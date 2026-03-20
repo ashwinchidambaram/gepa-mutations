@@ -89,3 +89,93 @@ if (i + 1) % 10 == 0:
 
 ---
 
+## Issue 7: Contrastive reflection finds 0 pairs on small subsets
+
+**Observed**: During smoke tests (subset=5), contrastive_reflection found 0 contrastive pairs on most iterations for most benchmarks. Only PUPA generated meaningful pairs.
+
+**Root cause**: With subset=5, the seed prompt often scores perfectly on all 5 training examples, so there are no failures to contrast against. The `min_score_gap=0.1` threshold further filters out weak contrasts.
+
+**Impact**: The contrastive mutation effectively degrades to vanilla GEPA on small subsets. Full runs with larger subsets (≥20) needed for meaningful comparison.
+
+**Proposed fix**: None — expected behavior. Document that contrastive_reflection requires larger subsets.
+
+---
+
+## Issue 8: AIME smoke tests show DSPy JSON mode / thinking mode incompatibility
+
+**Observed**: AIME runs produce warnings about `enable_thinking` + `JSON mode` incompatibility on OpenRouter (Alibaba backend). 8-14 test eval errors per run from structured output format issues.
+
+**Root cause**: Qwen3-8B on OpenRouter has a `thinking` mode that conflicts with dspy's JSON-structured output requests. Framework recovers gracefully (scores 0 for failed examples).
+
+**Impact**: Reduces effective test set size by ~5-10%. Not a blocker but inflates error rates.
+
+**Proposed fix**: Consider adding `extra_body={"enable_thinking": false}` to the dspy LM config.
+
+---
+
+## Issue 9: Missing pupa/gepa and livebench/gepa baseline results
+
+**Observed**: After clearing stale old-format results (2026-03-20), gepa baseline results for PUPA and LiveBench were not re-run. Mutation results exist but have no baseline.
+
+**Root cause**: Stale results deleted during cleanup; mutation smoke test agents only ran mutations, not baselines.
+
+**Proposed fix**: Re-run `uv run gepa-mutations run pupa --subset 5 --seed 42 --max-metric-calls 50` and same for livebench.
+
+---
+
+## Issue 10: BestOfKMetricsCallback required direct wiring fix
+
+**Observed**: `BestOfKMetricsCallback.on_candidate_accepted()` was dead code — `CandidateAcceptedEvent` doesn't carry proposal metadata.
+
+**Fix applied**: Added `record_iteration()` method called directly by `BestOfKProposer`. Committed in `632d87e`.
+
+---
+
+## Issue 11: IFBench evaluator is broken — substring containment, not structural compliance (CRITICAL)
+
+**Observed**: IFBench scores 100% (300/300) across all methods. Paper GEPA gets 38.61%.
+
+**Root cause**: `IFBenchAdapter._score()` in `evaluators.py` checks `constraint.lower() in response.lower()`. IFBench constraints are structural requirements ("at least 3 paragraphs", "include the word 'ocean'"), not literal substrings. Almost any response contains short constraint words as substrings.
+
+**Impact**: IFBench results are meaningless. BLOCKER for full IFBench experiments.
+
+**Proposed fix**: Implement proper IFEval-style programmatic constraint checking (paragraph counting, word presence, format verification).
+
+---
+
+## Issue 12: HoVer evaluator is broken — substring match on "supported" in reasoning (CRITICAL)
+
+**Observed**: HoVer scores 95.67% across all methods. Paper GEPA gets 52.33%.
+
+**Root cause**: `HoVerAdapter._score()` checks `expected.lower() in response.lower()`. Labels are "supported" / "not_supported". Since the model is prompted to reason about whether claims are SUPPORTED or NOT_SUPPORTED, the word "supported" appears in almost every response's reasoning chain — even when arguing for NOT_SUPPORTED.
+
+**Impact**: HoVer results are meaningless. BLOCKER for full HoVer experiments.
+
+**Proposed fix**: Extract the verdict label from the response (last occurrence of SUPPORTED/NOT_SUPPORTED, or structured output) rather than substring matching the full reasoning chain.
+
+---
+
+## Issue 13: AIME test set has duplicated questions — 30 questions tiled 5x = 150 (CRITICAL)
+
+**Observed**: AIME test scores show a perfectly repeating pattern with period 30 across all 150 test examples. Scores at positions 30-59 are identical to 60-89, 90-119, and 120-149.
+
+**Root cause**: The AIME test set loader likely repeats the 30 AIME-2025 problems 5 times (matching the paper's "5 runs per question" protocol, but implemented as dataset duplication rather than repeated evaluation).
+
+**Impact**: Inflates apparent N (150 vs actual 30 unique questions). AIME scores biased and confidence intervals invalid. Paper reports 32% on the same 30 questions.
+
+**Proposed fix**: Verify AIME dataset loader. If the 5x repetition is intentional (per-question variance), aggregate scores should average across the 5 runs per question, not treat them as independent examples.
+
+---
+
+## Issue 14: Contrastive reflection catastrophic regression on AIME (-20.7pp)
+
+**Observed**: contrastive_reflection scored 46.67% on AIME vs baseline 67.33% (-20.7pp). The evolved prompt is identical to the seed prompt on multiple benchmarks, suggesting the contrastive mechanism is not producing useful mutations.
+
+**Root cause**: With subset=5, the contrastive index rarely accumulates enough data to find meaningful contrastive pairs (min_score_gap=0.1). On most iterations, 0 contrastive pairs are found, and the mutation degrades to vanilla GEPA. The AIME regression may be stochastic eval noise on the seed prompt, not caused by contrastive injection.
+
+**Impact**: Contrastive reflection needs larger subsets (≥20) to be meaningful. AIME result should be monitored on full runs.
+
+**Proposed fix**: No code fix needed. Monitor AIME closely in first full-scale seed. If >10pp below baseline after full run, investigate.
+
+---
+

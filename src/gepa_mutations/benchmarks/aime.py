@@ -15,8 +15,8 @@ def load_aime(seed: int = 0) -> BenchmarkData:
 
     - Train source: AI-MO/aimo-validation-aime from HF, shuffled with Random(0)
     - Split: 50/50 into train/val
-    - Test source: MathArena/aime_2025 from HF
-    - Test set duplicated 5x (5 runs per question, per paper protocol)
+    - Test source: MathArena/aime_2025 from HF (30 unique problems)
+    - Test set is NOT duplicated — multi-seed variance comes from run_multi_seed()
     """
     # Train/val from AIMO validation set (matches utils.py:46-54)
     train_split = []
@@ -49,8 +49,11 @@ def load_aime(seed: int = 0) -> BenchmarkData:
             ).with_inputs("input")
         )
 
-    # IMPORTANT: Test set duplicated 5x per paper protocol (5 runs per question)
-    testset = test_split * 5
+    # Test set: 30 unique AIME-2025 problems, no duplication.
+    # The paper evaluates each problem once per seed. Multiple seeds (5 independent
+    # runs) are handled by run_multi_seed(), not by duplicating the test set.
+    # Reference: gepa/examples/aime_math/utils.py:66 — `testset = test_split`
+    testset = test_split
 
     return BenchmarkData(
         train=trainset,
@@ -60,7 +63,7 @@ def load_aime(seed: int = 0) -> BenchmarkData:
             "name": "aime",
             "train_source": "AI-MO/aimo-validation-aime",
             "test_source": "MathArena/aime_2025",
-            "test_duplication": 5,
+            "num_test_questions": len(test_split),
             "shuffle_seed": 0,
         },
     )
