@@ -136,13 +136,8 @@ def create_iam_role(iam, topic_arn: str) -> str:
             },
             {
                 "Effect": "Allow",
-                "Action": "ec2:TerminateInstances",
+                "Action": ["ec2:TerminateInstances", "ec2:DescribeInstances"],
                 "Resource": "*",
-                "Condition": {
-                    "StringEquals": {
-                        "ec2:ResourceTag/Project": PROJECT,
-                    }
-                },
             },
         ],
     }
