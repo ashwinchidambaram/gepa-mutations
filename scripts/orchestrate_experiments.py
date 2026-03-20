@@ -45,7 +45,7 @@ REGION = "us-east-1"
 PROJECT = "gepa-mutations"
 BUCKET = "gepa-mutations-results"
 INSTANCE_TYPE = "t3.medium"
-AMI_ID = "ami-0c421724a94bba6d6"  # Ubuntu 22.04 LTS us-east-1
+AMI_ID = "ami-0c421724a94bba6d6"  # Amazon Linux 2023 us-east-1
 INSTANCE_PROFILE = "gepa-mutations-ec2-profile"
 SG_NAME = "gepa-mutations-sg"
 MAX_CONCURRENT = 10
@@ -205,221 +205,120 @@ def _result_exists_in_s3(exp: dict) -> bool:
 def _user_data(exp: dict) -> str:
     """Return the full cloud-init bash script for *exp*."""
     return f"""#!/bin/bash
-set -euxo pipefail
-exec > >(tee /var/log/gepa-experiment.log) 2>&1
-echo "=== GEPA experiment {exp['id']} starting at $(date -u) ==="
+LOG=/var/log/gepa-experiment.log
+log() {{ echo "$(date -u '+%Y-%m-%d %H:%M:%S') $*" >> $LOG; }}
 
-# ------- parameters (injected at launch) -------
-EXPERIMENT_ID="{exp['id']}"
-METHOD="{exp['method']}"
-BENCHMARK="{exp['benchmark']}"
-SEED={exp['seed']}
-K_VALUE={exp.get('k', 0)}
-BRANCH="{BRANCH}"
-REPO_URL="{REPO_URL}"
-REGION="{REGION}"
-PROJECT="{PROJECT}"
-S3_BUCKET="{BUCKET}"
+TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 300")
+INSTANCE_ID=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-id)
 
-# ------- IMDSv2 token -------
-IMDS_TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" \\
-    -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
-INSTANCE_ID=$(curl -s -H "X-aws-ec2-metadata-token: $IMDS_TOKEN" \\
-    http://169.254.169.254/latest/meta-data/instance-id)
-
-# ------- self-termination trap -------
 cleanup() {{
-    EXIT_CODE=$?
-    echo "=== CLEANUP exit=$EXIT_CODE at $(date -u) ==="
-    cd /home/ubuntu/gepa-mutations 2>/dev/null || true
-    aws s3 sync runs/ "s3://$S3_BUCKET/runs/" --quiet 2>/dev/null || true
-    aws s3 cp /var/log/gepa-experiment.log \\
-        "s3://$S3_BUCKET/logs/$INSTANCE_ID/experiment.log" 2>/dev/null || true
+    log "Cleanup: uploading and terminating"
+    aws s3 cp $LOG s3://{BUCKET}/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/ec2.log --region us-east-1 || true
+    [ -d /root/gepa-mutations/runs ] && aws s3 sync /root/gepa-mutations/runs/ s3://{BUCKET}/runs/ --region us-east-1 || true
     # update manifest
     python3 -c "
 import json, boto3, datetime
-s3 = boto3.client('s3', region_name='$REGION')
+s3 = boto3.client('s3', region_name='us-east-1')
 try:
-    obj = s3.get_object(Bucket='$S3_BUCKET', Key='status/manifest.json')
+    obj = s3.get_object(Bucket='{BUCKET}', Key='status/manifest.json')
     m = json.loads(obj['Body'].read())
     for e in m['experiments']:
-        if e['id'] == '$EXPERIMENT_ID':
-            e['status'] = 'completed' if $EXIT_CODE == 0 else 'failed'
+        if e['id'] == '{exp['id']}':
+            import subprocess, sys
+            exit_code = int(open('/tmp/gepa_exit_code').read().strip()) if __import__('os').path.exists('/tmp/gepa_exit_code') else 1
+            e['status'] = 'completed' if exit_code == 0 else 'failed'
             e['completed_at'] = datetime.datetime.utcnow().isoformat()
-            if $EXIT_CODE != 0:
-                e['error'] = 'exit $EXIT_CODE'
+            if exit_code != 0:
+                e['error'] = f'exit {{exit_code}}'
             break
-    s3.put_object(Bucket='$S3_BUCKET', Key='status/manifest.json',
+    s3.put_object(Bucket='{BUCKET}', Key='status/manifest.json',
                   Body=json.dumps(m, indent=2))
 except Exception as exc:
     print(f'manifest update failed: {{exc}}')
 " 2>/dev/null || true
-    aws ec2 terminate-instances --instance-ids "$INSTANCE_ID" --region "$REGION" || true
+    aws ec2 terminate-instances --instance-ids $INSTANCE_ID --region us-east-1 || true
 }}
 trap cleanup EXIT
 
-# ------- heartbeat (every 5 min) + checkpoint sync -------
-(
-    while true; do
-        sleep 300
-        python3 -c "
-import json, datetime, os, subprocess
-hb = {{
-    'instance_id': '$INSTANCE_ID',
-    'experiment_id': '$EXPERIMENT_ID',
-    'timestamp': datetime.datetime.utcnow().isoformat(),
-    'uptime_seconds': float(open('/proc/uptime').read().split()[0]),
-    'experiment_alive': subprocess.run(
-        ['pgrep', '-f', 'best_of_k|contrastive_reflection|failure_stratified_k|gepa-mutations'],
-        capture_output=True).returncode == 0,
-}}
-# parse latest metrics if available
-import glob
-for mf in glob.glob('/home/ubuntu/gepa-mutations/runs/**/metrics.json', recursive=True):
-    try:
-        with open(mf) as fh:
-            md = json.load(fh)
-            hb['iterations'] = md.get('total_iterations', 0)
-            hb['metric_calls'] = md.get('total_metric_calls', 0)
-            hb['acceptance_rate'] = md.get('acceptance_rate', 0)
-    except: pass
-print(json.dumps(hb))
-" 2>/dev/null | aws s3 cp - "s3://$S3_BUCKET/logs/$INSTANCE_ID/heartbeat.json" --quiet 2>/dev/null || true
-        # checkpoint sync
-        cd /home/ubuntu/gepa-mutations 2>/dev/null && \\
-            aws s3 sync runs/ "s3://$S3_BUCKET/runs/" --exclude "*.pyc" --quiet 2>/dev/null || true
-    done
-) &
-
-# ------- spot interruption monitor -------
-(
-    while true; do
-        HTTP=$(curl -s -o /dev/null -w "%{{http_code}}" \\
-            -H "X-aws-ec2-metadata-token: $IMDS_TOKEN" \\
-            http://169.254.169.254/latest/meta-data/spot/instance-action 2>/dev/null || echo 000)
-        if [ "$HTTP" = "200" ]; then
-            echo "SPOT INTERRUPTION at $(date -u)"
-            cd /home/ubuntu/gepa-mutations 2>/dev/null && \\
-                aws s3 sync runs/ "s3://$S3_BUCKET/runs/" --quiet 2>/dev/null || true
-            sleep 120
-        fi
-        sleep 5
-    done
-) &
-
-# ------- install deps -------
-export DEBIAN_FRONTEND=noninteractive
-apt-get update -qq && apt-get install -y -qq git curl > /dev/null 2>&1
-curl -LsSf https://astral.sh/uv/install.sh | sh
+log "=== GEPA Experiment: {exp['id']} ==="
+yum install -y git >> $LOG 2>&1
+curl -LsSf https://astral.sh/uv/install.sh | sh >> $LOG 2>&1
 export PATH="/root/.local/bin:$PATH"
 
-# ------- clone repo -------
-cd /home/ubuntu
-git clone --branch "$BRANCH" "$REPO_URL" gepa-mutations
+cd /root
+git clone --depth 1 --branch {BRANCH} {REPO_URL} >> $LOG 2>&1
 cd gepa-mutations
-
-if [ ! -d "gepa/src" ]; then
-    git submodule update --init --recursive 2>/dev/null || \\
-    git clone --branch v0.1.1 https://github.com/gepa-ai/gepa.git gepa
-fi
+git clone --depth 1 --branch v0.1.1 https://github.com/gepa-ai/gepa.git gepa >> $LOG 2>&1
 rm -rf gepa/.venv gepa/uv.lock
 
-# ------- secrets -------
-export OPENROUTER_API_KEY=$(aws ssm get-parameter \\
-    --name "/$PROJECT/openrouter-api-key" --with-decryption \\
-    --query "Parameter.Value" --output text --region "$REGION")
-export HF_TOKEN=$(aws ssm get-parameter \\
-    --name "/$PROJECT/hf-token" --with-decryption \\
-    --query "Parameter.Value" --output text --region "$REGION")
-export TELEGRAM_BOT_TOKEN=$(aws ssm get-parameter \\
-    --name "/$PROJECT/telegram-bot-token" --with-decryption \\
-    --query "Parameter.Value" --output text --region "$REGION" 2>/dev/null || echo "")
-export TELEGRAM_CHAT_ID=$(aws ssm get-parameter \\
-    --name "/$PROJECT/telegram-chat-id" --with-decryption \\
-    --query "Parameter.Value" --output text --region "$REGION" 2>/dev/null || echo "")
-
-if [ -z "$OPENROUTER_API_KEY" ] || [ "$OPENROUTER_API_KEY" = "REPLACE_WITH_YOUR_KEY" ]; then
-    echo "FATAL: OpenRouter API key not set in SSM"
-    exit 1
-fi
-
-# ------- install python deps -------
-uv sync
-
-# ------- restore checkpoint from S3 (resume after interruption) -------
-RUN_DIR="runs/$BENCHMARK/$METHOD/$SEED"
-aws s3 sync "s3://$S3_BUCKET/$RUN_DIR/" "$RUN_DIR/" --quiet 2>/dev/null || true
-if [ -d "$RUN_DIR/gepa_state" ]; then
-    echo "Resuming from S3 checkpoint"
-fi
+aws s3 cp s3://{BUCKET}/config/.env .env --region us-east-1 >> $LOG 2>&1
+uv sync >> $LOG 2>&1
 
 # ------- update manifest to running -------
 python3 -c "
 import json, boto3, datetime
-s3 = boto3.client('s3', region_name='$REGION')
+s3 = boto3.client('s3', region_name='us-east-1')
 try:
-    obj = s3.get_object(Bucket='$S3_BUCKET', Key='status/manifest.json')
+    obj = s3.get_object(Bucket='{BUCKET}', Key='status/manifest.json')
     m = json.loads(obj['Body'].read())
     for e in m['experiments']:
-        if e['id'] == '$EXPERIMENT_ID':
+        if e['id'] == '{exp['id']}':
             e['status'] = 'running'
-            e['instance_id'] = '$INSTANCE_ID'
             e['started_at'] = datetime.datetime.utcnow().isoformat()
             break
-    s3.put_object(Bucket='$S3_BUCKET', Key='status/manifest.json',
+    s3.put_object(Bucket='{BUCKET}', Key='status/manifest.json',
                   Body=json.dumps(m, indent=2))
 except Exception as exc:
     print(f'Warning: {{exc}}')
 " 2>/dev/null || true
 
 # ------- run experiment -------
-case "$METHOD" in
+case "{exp['method']}" in
     best_of_k_K*)
-        K=$(echo "$METHOD" | sed 's/best_of_k_K//')
+        K=$(echo "{exp['method']}" | sed 's/best_of_k_K//')
+        log "Starting: best_of_k K=$K benchmark={exp['benchmark']} seed={exp['seed']}"
         uv run python -c "
 from best_of_k.runner import run_best_of_k
 from gepa_mutations.base import MutationConfig
 config = MutationConfig(
-    mutation_name='$METHOD',
-    description='Best-of-K with K=$K',
-    benchmark='$BENCHMARK',
-    seed=$SEED,
-    mutation_candidates=int('$K'),
+    mutation_name='{exp['method']}',
+    benchmark='{exp['benchmark']}',
+    seed={exp['seed']},
+    mutation_candidates={exp.get('k', 1)},
 )
-run_best_of_k(config=config, k=int('$K'))
-"
+run_best_of_k(config=config, k={exp.get('k', 1)})
+" >> $LOG 2>&1
         ;;
     contrastive_reflection)
+        log "Starting: contrastive_reflection benchmark={exp['benchmark']} seed={exp['seed']}"
         uv run python -c "
 from contrastive_reflection.runner import run_contrastive_reflection
-run_contrastive_reflection(benchmark='$BENCHMARK', seed=$SEED)
-"
+run_contrastive_reflection(benchmark='{exp['benchmark']}', seed={exp['seed']})
+" >> $LOG 2>&1
         ;;
     failure_stratified_k_K*)
-        K=$(echo "$METHOD" | sed 's/failure_stratified_k_K//')
+        K=$(echo "{exp['method']}" | sed 's/failure_stratified_k_K//')
+        log "Starting: failure_stratified_k K=$K benchmark={exp['benchmark']} seed={exp['seed']}"
         uv run python -c "
 from failure_stratified_k.runner import run_failure_stratified_k
 from gepa_mutations.base import MutationConfig
 config = MutationConfig(
-    mutation_name='$METHOD',
-    description='Failure-stratified K with K=$K',
-    benchmark='$BENCHMARK',
-    seed=$SEED,
-    mutation_candidates=int('$K'),
-    use_failure_stratified_k=True,
+    mutation_name='{exp['method']}',
+    benchmark='{exp['benchmark']}',
+    seed={exp['seed']},
+    mutation_candidates={exp.get('k', 3)},
 )
-run_failure_stratified_k(config=config, k=int('$K'))
-"
+run_failure_stratified_k(config=config, k={exp.get('k', 3)})
+" >> $LOG 2>&1
         ;;
     *)
-        echo "ERROR: Unknown method $METHOD"
+        log "ERROR: Unknown method {exp['method']}"
         exit 1
         ;;
 esac
 
-# ------- final upload -------
-aws s3 sync runs/ "s3://$S3_BUCKET/runs/" --quiet
-echo "=== Experiment $EXPERIMENT_ID completed at $(date -u) ==="
+echo $? > /tmp/gepa_exit_code
+log "Exit code: $(cat /tmp/gepa_exit_code)"
 """
 
 

@@ -25,7 +25,7 @@ from botocore.exceptions import ClientError
 REGION = "us-east-1"
 PROJECT = "gepa-mutations"
 INSTANCE_TYPE = "t3.medium"
-AMI_ID = "ami-0c421724a94bba6d6"  # Ubuntu 22.04 LTS us-east-1 (update as needed)
+AMI_ID = "ami-0c421724a94bba6d6"  # Amazon Linux 2023 us-east-1
 INSTANCE_PROFILE_NAME = "gepa-mutations-ec2-profile"
 SG_NAME = "gepa-mutations-sg"
 REPO_URL = "https://github.com/ashwinchidambaram/gepa-mutations.git"  # Update with actual repo
@@ -41,76 +41,37 @@ def _user_data_script(
     merge_flag = "" if use_merge else "--no-merge"
 
     return f"""#!/bin/bash
-set -euxo pipefail
+LOG=/var/log/gepa-experiment.log
+log() {{ echo "$(date -u '+%Y-%m-%d %H:%M:%S') $*" >> $LOG; }}
 
-# Trap: auto-terminate on exit (success or failure)
+TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 300")
+INSTANCE_ID=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-id)
+
 cleanup() {{
-    echo "Experiment finished (exit code $?). Self-terminating..."
-    # Upload any partial results
-    cd /home/ubuntu/gepa-mutations && \\
-        uv run gepa-mutations upload runs/ 2>/dev/null || true
-    # Self-terminate
-    INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
-    aws ec2 terminate-instances --instance-ids "$INSTANCE_ID" --region {REGION}
+    log "Cleanup: uploading and terminating"
+    aws s3 cp $LOG s3://gepa-mutations-results/runs/{benchmark}/gepa/{seed}/ec2.log --region us-east-1 || true
+    [ -d /root/gepa-mutations/runs ] && aws s3 sync /root/gepa-mutations/runs/ s3://gepa-mutations-results/runs/ --region us-east-1 || true
+    aws ec2 terminate-instances --instance-ids $INSTANCE_ID --region us-east-1 || true
 }}
 trap cleanup EXIT
 
-# Install uv
-curl -LsSf https://astral.sh/uv/install.sh | sh
-export PATH="$HOME/.local/bin:$PATH"
+log "=== GEPA Experiment: {benchmark} seed={seed} ==="
+yum install -y git >> $LOG 2>&1
+curl -LsSf https://astral.sh/uv/install.sh | sh >> $LOG 2>&1
+export PATH="/root/.local/bin:$PATH"
 
-# Clone repo
-cd /home/ubuntu
-git clone --branch {branch} {REPO_URL}
+cd /root
+git clone --depth 1 --branch {branch} {REPO_URL} >> $LOG 2>&1
 cd gepa-mutations
-
-# Clone GEPA source (v0.1.1) if not already in the repo
-if [ ! -d "gepa/src" ]; then
-    git clone --branch v0.1.1 https://github.com/gepa-ai/gepa.git gepa
-fi
-# Remove any nested venv/lock that would confuse uv
+git clone --depth 1 --branch v0.1.1 https://github.com/gepa-ai/gepa.git gepa >> $LOG 2>&1
 rm -rf gepa/.venv gepa/uv.lock
 
-# Fetch secrets from SSM
-export OPENROUTER_API_KEY=$(aws ssm get-parameter --name "/{PROJECT}/openrouter-api-key" \\
-    --with-decryption --query "Parameter.Value" --output text --region {REGION})
-export HF_TOKEN=$(aws ssm get-parameter --name "/{PROJECT}/hf-token" \\
-    --with-decryption --query "Parameter.Value" --output text --region {REGION})
-export TELEGRAM_BOT_TOKEN=$(aws ssm get-parameter --name "/{PROJECT}/telegram-bot-token" \\
-    --with-decryption --query "Parameter.Value" --output text --region {REGION})
-export TELEGRAM_CHAT_ID=$(aws ssm get-parameter --name "/{PROJECT}/telegram-chat-id" \\
-    --with-decryption --query "Parameter.Value" --output text --region {REGION})
+aws s3 cp s3://gepa-mutations-results/config/.env .env --region us-east-1 >> $LOG 2>&1
+uv sync >> $LOG 2>&1
 
-# Install dependencies
-uv sync
-
-# Start spot interruption monitor in background
-python3 -c "
-import threading, time, urllib.request, sys, signal
-def monitor():
-    while True:
-        try:
-            req = urllib.request.Request('http://169.254.169.254/latest/meta-data/spot/instance-action')
-            urllib.request.urlopen(req, timeout=2)
-            print('SPOT INTERRUPTION DETECTED - flushing checkpoint...')
-            # Signal main process to save state
-            import os; os.kill(os.getppid(), signal.SIGUSR1)
-            time.sleep(120)
-        except (urllib.error.HTTPError, urllib.error.URLError):
-            pass
-        time.sleep(5)
-t = threading.Thread(target=monitor, daemon=True)
-t.start()
-while True: time.sleep(3600)
-" &
-
-# Run experiment
-uv run gepa-mutations run {benchmark} --seed {seed} {merge_flag}
-
-# Upload results to S3
-uv run gepa-mutations upload runs/
-
-echo "Experiment completed successfully!"
+log "Starting: gepa-mutations run {benchmark} --seed {seed} {merge_flag}"
+uv run gepa-mutations run {benchmark} --seed {seed} {merge_flag} >> $LOG 2>&1
+log "Exit code: $?"
 """
 
 
