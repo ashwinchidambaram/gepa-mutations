@@ -37,6 +37,15 @@ class IterationMetrics:
 
 
 @dataclass
+class ConvergencePoint:
+    """A single point on the dense score-vs-rollout convergence curve."""
+
+    rollout_idx: int
+    iteration: int
+    running_best_val_score: float
+
+
+@dataclass
 class RunMetrics:
     """Aggregated metrics for a complete GEPA optimization run."""
 
@@ -49,6 +58,7 @@ class RunMetrics:
     start_time: float = 0.0
     end_time: float = 0.0
     valset_scores: list[dict[str, Any]] = field(default_factory=list)
+    convergence_curve: list[ConvergencePoint] = field(default_factory=list)
 
     @property
     def total_wall_clock(self) -> float:
@@ -99,6 +109,14 @@ class RunMetrics:
                 for it in self.iterations
             ],
             "valset_scores": self.valset_scores,
+            "convergence_curve": [
+                {
+                    "rollout_idx": pt.rollout_idx,
+                    "iteration": pt.iteration,
+                    "running_best_val_score": pt.running_best_val_score,
+                }
+                for pt in self.convergence_curve
+            ],
         }
 
 
@@ -112,6 +130,10 @@ class MetricsCallback:
         self.metrics = RunMetrics(benchmark=benchmark, seed=seed)
         self._iteration_start_time: float = 0.0
         self._current_iteration: IterationMetrics | None = None
+        self._running_best_val_score: float = 0.0
+        # Starts at 0; does not include seed evaluation cost (budget hook
+        # is registered after seed eval in GEPA's engine).
+        self._current_rollout_idx: int = 0
 
     def on_optimization_start(self, event: dict[str, Any]) -> None:
         self.metrics.start_time = time.time()
@@ -135,6 +157,14 @@ class MetricsCallback:
             self._current_iteration.wall_clock_seconds = time.time() - self._iteration_start_time
             self._current_iteration.proposal_accepted = event.get("proposal_accepted", False)
             self.metrics.iterations.append(self._current_iteration)
+
+            # Emit dense convergence point every iteration
+            self.metrics.convergence_curve.append(ConvergencePoint(
+                rollout_idx=self._current_rollout_idx,
+                iteration=self._current_iteration.iteration,
+                running_best_val_score=self._running_best_val_score,
+            ))
+
             self._current_iteration = None
 
     def on_candidate_selected(self, event: dict[str, Any]) -> None:
@@ -170,15 +200,19 @@ class MetricsCallback:
             self._current_iteration.pareto_displaced = event.get("displaced_candidates", [])
 
     def on_budget_updated(self, event: dict[str, Any]) -> None:
+        self._current_rollout_idx = event.get("metric_calls_used", 0)
         if self._current_iteration is not None:
-            self._current_iteration.metric_calls_used = event.get("metric_calls_used", 0)
+            self._current_iteration.metric_calls_used = self._current_rollout_idx
             self._current_iteration.metric_calls_delta = event.get("metric_calls_delta", 0)
 
     def on_valset_evaluated(self, event: dict[str, Any]) -> None:
+        avg_score = event.get("average_score", 0.0)
+        if avg_score > self._running_best_val_score:
+            self._running_best_val_score = avg_score
         self.metrics.valset_scores.append({
             "iteration": event.get("iteration"),
             "candidate_idx": event.get("candidate_idx"),
-            "average_score": event.get("average_score"),
+            "average_score": avg_score,
             "is_best_program": event.get("is_best_program"),
         })
 

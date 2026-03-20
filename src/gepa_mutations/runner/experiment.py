@@ -6,7 +6,9 @@ implementations per benchmark, matching the paper's exact configuration.
 
 from __future__ import annotations
 
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -19,6 +21,7 @@ from gepa_mutations.benchmarks.evaluators import get_adapter
 from gepa_mutations.benchmarks.loader import load_benchmark
 from gepa_mutations.config import PAPER_ROLLOUTS, Settings
 from gepa_mutations.runner.callbacks import MetricsCallback
+from gepa_mutations.runner.timeout import call_with_timeout
 from gepa_mutations.storage.local import save_result
 
 
@@ -51,11 +54,15 @@ class LM:
         else:
             messages = prompt
 
-        completion = litellm.completion(
+        timeout_budget = self.completion_kwargs.get("timeout", 120) + 30
+
+        completion = call_with_timeout(
+            litellm.completion,
             model=self.model,
             messages=messages,
             num_retries=self.num_retries,
             drop_params=True,
+            timeout_seconds=timeout_budget,
             **self.completion_kwargs,
         )
         return completion.choices[0].message.content
@@ -102,6 +109,15 @@ BENCHMARK_SEED_PROMPTS = {
 
 
 @dataclass
+class TestEvalResult:
+    """Per-example test evaluation results for bootstrap CIs and paired comparisons."""
+
+    score: float
+    example_scores: list[float] = field(default_factory=list)
+    example_ids: list[str] = field(default_factory=list)
+
+
+@dataclass
 class ExperimentResult:
     """Result of a single GEPA experiment run."""
 
@@ -113,12 +129,16 @@ class ExperimentResult:
     rollout_count: int
     config_snapshot: dict[str, Any]
     wall_clock_seconds: float
+    method: str = "gepa"
     metrics: dict[str, Any] | None = None
     all_candidates: list[dict[str, str]] = field(default_factory=list)
+    test_example_scores: list[float] = field(default_factory=list)
+    test_example_ids: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "benchmark": self.benchmark,
+            "method": self.method,
             "seed": self.seed,
             "test_score": self.test_score,
             "val_score": self.val_score,
@@ -126,6 +146,8 @@ class ExperimentResult:
             "rollout_count": self.rollout_count,
             "wall_clock_seconds": self.wall_clock_seconds,
             "num_candidates": len(self.all_candidates),
+            "test_example_scores": self.test_example_scores,
+            "test_example_ids": self.test_example_ids,
         }
 
 
@@ -288,8 +310,8 @@ class ExperimentRunner:
 
         # Evaluate best prompt on test set
         console.print(f"\n[bold]Evaluating on test set ({len(testset)} examples)...[/bold]")
-        test_score = self._evaluate_on_test(benchmark, best_prompt, testset)
-        console.print(f"  Test score: {test_score:.4f} ({test_score * 100:.2f}%)")
+        test_eval = self._evaluate_on_test(benchmark, best_prompt, testset)
+        console.print(f"  Test score: {test_eval.score:.4f} ({test_eval.score * 100:.2f}%)")
 
         wall_clock = time.time() - start_time
 
@@ -297,14 +319,17 @@ class ExperimentRunner:
         exp_result = ExperimentResult(
             benchmark=benchmark,
             seed=seed,
-            test_score=test_score,
+            test_score=test_eval.score,
             val_score=val_score,
             best_prompt=best_prompt,
             rollout_count=result.total_metric_calls or 0,
             config_snapshot=self._config_snapshot(benchmark, seed, subset, use_merge),
             wall_clock_seconds=wall_clock,
+            method="gepa",
             metrics=metrics_cb.metrics.to_dict(),
             all_candidates=result.candidates,
+            test_example_scores=test_eval.example_scores,
+            test_example_ids=test_eval.example_ids,
         )
 
         # Save results
@@ -356,76 +381,112 @@ class ExperimentRunner:
 
     def _evaluate_on_test(
         self, benchmark: str, best_prompt: dict[str, str], testset: list
-    ) -> float:
+    ) -> TestEvalResult:
         """Evaluate the best prompt on the test set."""
         if self._uses_dspy(benchmark):
-            return self._evaluate_dspy(best_prompt, testset)
+            scores = self._evaluate_dspy(best_prompt, testset)
         else:
             qa_lm = self._build_qa_task_lm()
-            return self._evaluate_qa(best_prompt, testset, qa_lm)
+            adapter = get_adapter(benchmark, task_lm=qa_lm)
+            scores = self._evaluate_qa(best_prompt, testset, qa_lm, adapter)
 
-    def _evaluate_dspy(self, prompt: dict[str, str], testset: list) -> float:
-        """Evaluate using dspy (for math benchmarks)."""
+        total = len(testset)
+        example_ids = [f"{benchmark}_test_{i}" for i in range(total)]
+        mean_score = sum(scores) / total if total else 0.0
+        return TestEvalResult(score=mean_score, example_scores=scores, example_ids=example_ids)
+
+    def _evaluate_dspy(self, prompt: dict[str, str], testset: list) -> list[float]:
+        """Evaluate using dspy (for math benchmarks) — parallel."""
         from gepa_mutations.benchmarks.evaluators import _math_metric, _run_llm
         from gepa_mutations.benchmarks.signatures import MathSolverSignature
 
-        predictor = dspy.ChainOfThought(MathSolverSignature)
         prompt_text = prompt["system_prompt"]
         total = len(testset)
+        workers = self.settings.test_eval_workers
 
-        correct = 0
-        errors = 0
-        for i, example in enumerate(testset):
+        # Shared state for progress logging
+        lock = threading.Lock()
+        completed = [0]
+        correct_sum = [0.0]
+        error_count = [0]
+
+        def eval_one(example):
+            # Each thread gets its own predictor (not thread-safe to share)
+            predictor = dspy.ChainOfThought(MathSolverSignature)
             try:
                 prediction = _run_llm(example, prompt_text, predictor)
                 score, _ = _math_metric(example, prediction)
-                correct += score
             except Exception as e:
-                errors += 1
-                if errors <= 3:
-                    console.print(f"  [dim]Test eval error on example {i}: {e}[/dim]")
+                score = 0.0
+                with lock:
+                    error_count[0] += 1
+                    if error_count[0] <= 3:
+                        console.print(f"  [dim]Test eval error: {e}[/dim]")
 
-            if (i + 1) % 10 == 0 or (i + 1) == total:
-                pct = (i + 1) / total * 100
-                acc = correct / (i + 1) * 100
-                console.print(
-                    f"  Test eval: {i+1}/{total} ({pct:.0f}%) | "
-                    f"correct: {correct}/{i+1} ({acc:.1f}%) | errors: {errors}"
-                )
+            with lock:
+                correct_sum[0] += score
+                completed[0] += 1
+                done = completed[0]
+                if done % 10 == 0 or done == total:
+                    pct = done / total * 100
+                    acc = correct_sum[0] / done * 100
+                    console.print(
+                        f"  Test eval: {done}/{total} ({pct:.0f}%) | "
+                        f"correct: {correct_sum[0]:.1f}/{done} ({acc:.1f}%) | errors: {error_count[0]}"
+                    )
 
-        return correct / total if total else 0.0
+            return score
 
-    def _evaluate_qa(self, prompt: dict[str, str], testset: list, lm: LM) -> float:
-        """Evaluate using direct LM calls (for QA benchmarks)."""
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            scores = list(pool.map(eval_one, testset))
+
+        return scores
+
+    def _evaluate_qa(self, prompt: dict[str, str], testset: list, lm: LM, adapter) -> list[float]:
+        """Evaluate using adapter scoring and parallel LM calls."""
         prompt_text = prompt["system_prompt"]
         total = len(testset)
+        workers = self.settings.test_eval_workers
 
-        correct = 0
-        errors = 0
-        for i, example in enumerate(testset):
+        # Shared state for progress logging
+        lock = threading.Lock()
+        completed = [0]
+        correct_sum = [0.0]
+        error_count = [0]
+
+        def eval_one(example):
             try:
                 messages = [
                     {"role": "system", "content": prompt_text},
                     {"role": "user", "content": example.input},
                 ]
                 response = lm(messages)
-                answer = str(example.answer).lower()
-                if answer in response.lower():
-                    correct += 1
+                score, _ = adapter._score(example, response)
             except Exception as e:
-                errors += 1
-                if errors <= 3:
-                    console.print(f"  [dim]Test eval error on example {i}: {e}[/dim]")
+                score = 0.0
+                with lock:
+                    error_count[0] += 1
+                    if error_count[0] <= 3:
+                        console.print(f"  [dim]Test eval error: {e}[/dim]")
 
-            if (i + 1) % 10 == 0 or (i + 1) == total:
-                pct = (i + 1) / total * 100
-                acc = correct / (i + 1) * 100
-                console.print(
-                    f"  Test eval: {i+1}/{total} ({pct:.0f}%) | "
-                    f"correct: {correct}/{i+1} ({acc:.1f}%) | errors: {errors}"
-                )
+            with lock:
+                correct_sum[0] += score
+                completed[0] += 1
+                done = completed[0]
+                if done % 10 == 0 or done == total:
+                    pct = done / total * 100
+                    acc = correct_sum[0] / done * 100
+                    console.print(
+                        f"  Test eval: {done}/{total} ({pct:.0f}%) | "
+                        f"correct: {correct_sum[0]:.1f}/{done} ({acc:.1f}%) | errors: {error_count[0]}"
+                    )
 
-        return correct / total if total else 0.0
+            return score
+
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            scores = list(pool.map(eval_one, testset))
+
+        return scores
 
     def _config_snapshot(
         self, benchmark: str, seed: int, subset: int | None, use_merge: bool

@@ -28,6 +28,9 @@ class Settings(BaseSettings):
     gepa_top_k: int = 20
     gepa_max_context: int = 16384
 
+    # Test evaluation
+    test_eval_workers: int = 10
+
 
 # Paper baseline scores for comparison (Table 1: Qwen3-8B test set)
 PAPER_BASELINES = {
