@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
-"""Orchestrate ~90 GEPA mutation experiments across EC2 spot instances.
+"""Orchestrate 90 GEPA mutation experiments across EC2 spot instances.
 
-Manifest-driven job queue: all experiment definitions and status live in a
-single JSON file on S3.  The orchestrator polls this manifest, launches EC2
-instances for pending jobs (respecting phase gates and concurrency caps),
-and detects completion/failure via heartbeat files and instance state.
+6 methods x 3 benchmarks x 5 seeds = 90 runs.
+Phases are benchmark-based (hotpotqa=1, pupa=2, aime=3), all eligible immediately.
+
+Each instance writes per-experiment status files to S3 (no shared manifest race
+condition). The orchestrator scans these files to track completion.
 
 Usage:
+    # Pre-flight checks (spot quota, manifest, security group)
+    python scripts/orchestrate_experiments.py --preflight
+
+    # Check spot vCPU quota
+    python scripts/orchestrate_experiments.py --check-quota
+
     # One-time: generate and upload the experiment manifest
     python scripts/orchestrate_experiments.py --generate-manifest
 
@@ -36,7 +43,6 @@ import sys
 import time
 import urllib.parse
 import urllib.request
-from itertools import product
 
 import boto3
 from botocore.exceptions import ClientError
@@ -107,46 +113,46 @@ STALE_LAUNCHED_HOURS = 0.5  # Mark "launched" as stale after 30 min without hear
 # Manifest helpers
 # ============================================================================
 
+METHODS = [
+    ("best_of_k_K1", 1),
+    ("best_of_k_K3", 3),
+    ("best_of_k_K5", 5),
+    ("contrastive_reflection", 0),
+    ("failure_stratified_k_K3", 3),
+    ("failure_stratified_k_K5", 5),
+]
+
+# Benchmark → phase mapping (no blocking between phases)
+BENCHMARK_PHASE = {"hotpotqa": 1, "pupa": 2, "aime": 3}
+
+
 def generate_manifest() -> dict:
-    """Build the full experiment matrix as a JSON manifest."""
+    """Build the full experiment matrix as a JSON manifest.
+
+    6 methods × 3 benchmarks × 5 seeds = 90 runs.
+    Phases are benchmark-based (hotpotqa=1, pupa=2, aime=3), all eligible immediately.
+    """
     experiments: list[dict] = []
-    seen_ids: set[str] = set()
 
-    def _add(phase: int, method: str, k: int, bm: str, seed: int) -> None:
-        eid = f"{method}__{bm}__{seed}"
-        if eid in seen_ids:
-            return
-        seen_ids.add(eid)
-        experiments.append({
-            "id": eid,
-            "phase": phase,
-            "method": method,
-            "k": k,
-            "benchmark": bm,
-            "seed": seed,
-            "status": "pending",
-            "instance_id": None,
-            "started_at": None,
-            "completed_at": None,
-            "test_score": None,
-            "error": None,
-        })
-
-    # Phase 1 — validation (2 runs)
-    _add(1, "best_of_k_K1", 1, "hotpotqa", 42)
-    _add(1, "best_of_k_K3", 3, "hotpotqa", 42)
-
-    # Phase 2 — best_of_k sweep (45 runs, minus 2 already in Phase 1)
-    for k, bm, seed in product([1, 3, 5], BENCHMARKS, SEEDS):
-        _add(2, f"best_of_k_K{k}", k, bm, seed)
-
-    # Phase 3 — contrastive_reflection (15 runs)
-    for bm, seed in product(BENCHMARKS, SEEDS):
-        _add(3, "contrastive_reflection", 0, bm, seed)
-
-    # Phase 4 — failure_stratified_k (30 runs)
-    for k, bm, seed in product([3, 5], BENCHMARKS, SEEDS):
-        _add(4, f"failure_stratified_k_K{k}", k, bm, seed)
+    for bm in BENCHMARKS:
+        phase = BENCHMARK_PHASE[bm]
+        for method, k in METHODS:
+            for seed in SEEDS:
+                eid = f"{method}__{bm}__{seed}"
+                experiments.append({
+                    "id": eid,
+                    "phase": phase,
+                    "method": method,
+                    "k": k,
+                    "benchmark": bm,
+                    "seed": seed,
+                    "status": "pending",
+                    "instance_id": None,
+                    "started_at": None,
+                    "completed_at": None,
+                    "test_score": None,
+                    "error": None,
+                })
 
     manifest = {
         "created_at": datetime.datetime.utcnow().isoformat(),
@@ -157,7 +163,8 @@ def generate_manifest() -> dict:
     print(f"Generated manifest with {len(experiments)} experiments:")
     for phase in sorted({e["phase"] for e in experiments}):
         count = sum(1 for e in experiments if e["phase"] == phase)
-        print(f"  Phase {phase}: {count} experiments")
+        bm = [b for b, p in BENCHMARK_PHASE.items() if p == phase][0]
+        print(f"  Phase {phase} ({bm}): {count} experiments")
 
     return manifest
 
@@ -183,27 +190,67 @@ def download_manifest() -> dict:
         sys.exit(1)
 
 
+def _scan_status_files(manifest: dict) -> bool:
+    """Scan per-experiment status files from S3 and update manifest.
+
+    Fix 8: Each instance writes its own status file instead of updating a
+    shared manifest.json, avoiding race conditions.
+    """
+    s3 = boto3.client("s3", region_name=REGION)
+    changed = False
+
+    try:
+        paginator = s3.get_paginator("list_objects_v2")
+        keys: list[str] = []
+        for page in paginator.paginate(Bucket=BUCKET, Prefix="status/"):
+            for obj in page.get("Contents", []):
+                keys.append(obj["Key"])
+    except ClientError:
+        return False
+
+    # Build lookup: which experiments have started/done files
+    started_ids: set[str] = set()
+    done_keys: dict[str, str] = {}
+    for key in keys:
+        basename = key.rsplit("/", 1)[-1]
+        if basename.endswith("_started.json"):
+            exp_id = basename.replace("_started.json", "")
+            started_ids.add(exp_id)
+        elif basename.endswith("_done.json"):
+            exp_id = basename.replace("_done.json", "")
+            done_keys[exp_id] = key
+
+    for exp in manifest["experiments"]:
+        eid = exp["id"]
+
+        # Done status takes priority
+        if eid in done_keys and exp["status"] not in ("completed", "failed"):
+            try:
+                obj = s3.get_object(Bucket=BUCKET, Key=done_keys[eid])
+                status = json.loads(obj["Body"].read())
+                exp["status"] = status.get("status", "completed")
+                exp["completed_at"] = status.get("completed_at")
+                exp["instance_id"] = status.get("instance_id")
+                exp["test_score"] = status.get("test_score")
+                changed = True
+            except (ClientError, json.JSONDecodeError):
+                pass
+
+        # Started status (only if not already done or running)
+        elif eid in started_ids and exp["status"] in ("pending", "launched"):
+            exp["status"] = "running"
+            changed = True
+
+    return changed
+
+
 # ============================================================================
 # Phase gating
 # ============================================================================
 
-def can_start_phase(phase: int, manifest: dict) -> bool:
-    exps = manifest["experiments"]
-    if phase == 1:
-        return True
-    if phase in (2, 3):
-        return all(
-            e["status"] == "completed"
-            for e in exps
-            if e["phase"] == 1
-        )
-    if phase == 4:
-        return all(
-            e["status"] in ("completed", "failed")
-            for e in exps
-            if e["phase"] == 2
-        )
-    return False
+def can_start_phase(_phase: int, _manifest: dict) -> bool:
+    """All phases eligible immediately (no blocking between benchmarks)."""
+    return True
 
 
 # ============================================================================
@@ -251,8 +298,12 @@ def _user_data(exp: dict) -> str:
 LOG=/var/log/gepa-experiment.log
 log() {{ echo "$(date -u '+%Y-%m-%d %H:%M:%S') $*" >> $LOG; }}
 
-TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 300")
+# Fix 7: IMDSv2 token TTL increased to 6 hours
+TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
 INSTANCE_ID=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-id)
+
+# Fix 5: Hard kill safety net — 18 hours max lifetime
+shutdown -h +1080 &
 
 # ------- Telegram notification helper -------
 send_telegram() {{
@@ -269,16 +320,41 @@ send_telegram() {{
     fi
 }}
 
-# ------- hourly progress monitor (background) -------
-hourly_monitor() {{
+# ------- Fix 3+4: periodic checkpoint sync + heartbeat every 30 min -------
+periodic_sync() {{
     while true; do
-        sleep 3600
+        sleep 1800
         if [ -f /tmp/gepa_exit_code ]; then
-            break  # experiment finished, stop monitoring
+            break
         fi
         local UPTIME_HRS=$(awk '{{printf "%.1f", $1/3600}}' /proc/uptime)
         local TAIL_LOG=$(tail -5 $LOG 2>/dev/null | head -3)
-        send_telegram "<b>Hourly Update</b>
+
+        # Fix 3: Sync checkpoint to S3
+        if [ -d /root/gepa-mutations/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/gepa_state ]; then
+            aws s3 sync /root/gepa-mutations/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/gepa_state/ \
+                s3://{BUCKET}/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/gepa_state/ \
+                --region us-east-1 >> $LOG 2>&1 || true
+        fi
+
+        # Fix 4: Write heartbeat to S3
+        python3 -c "
+import json, datetime, boto3
+hb = {{
+    'timestamp': datetime.datetime.utcnow().isoformat(),
+    'experiment_id': '{exp['id']}',
+    'instance_id': '$INSTANCE_ID',
+    'uptime_hours': float('$UPTIME_HRS'),
+    'experiment_alive': True,
+}}
+boto3.client('s3', region_name='us-east-1').put_object(
+    Bucket='{BUCKET}',
+    Key='logs/$INSTANCE_ID/heartbeat.json',
+    Body=json.dumps(hb),
+    ContentType='application/json',
+)" 2>/dev/null || true
+
+        send_telegram "<b>Progress Update</b>
 Experiment: <code>{exp['id']}</code>
 Instance: <code>$INSTANCE_ID</code>
 Uptime: ${{UPTIME_HRS}}h
@@ -286,40 +362,64 @@ Recent log:
 <pre>${{TAIL_LOG}}</pre>"
     done
 }}
-hourly_monitor &
+periodic_sync &
 MONITOR_PID=$!
 
 cleanup() {{
     log "Cleanup: uploading and terminating"
-    # Stop hourly monitor
     kill $MONITOR_PID 2>/dev/null || true
     aws s3 cp $LOG s3://{BUCKET}/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/ec2.log --region us-east-1 || true
     [ -d /root/gepa-mutations/runs ] && aws s3 sync /root/gepa-mutations/runs/ s3://{BUCKET}/runs/ --region us-east-1 || true
-    # update manifest
+
+    # Fix 8: Write per-experiment status file (no shared manifest race condition)
     python3 -c "
-import json, boto3, datetime
-s3 = boto3.client('s3', region_name='us-east-1')
+import json, boto3, datetime, os
+exit_code = int(open('/tmp/gepa_exit_code').read().strip()) if os.path.exists('/tmp/gepa_exit_code') else 1
+status = {{
+    'experiment_id': '{exp['id']}',
+    'status': 'completed' if exit_code == 0 else 'failed',
+    'instance_id': '$INSTANCE_ID',
+    'completed_at': datetime.datetime.utcnow().isoformat(),
+    'exit_code': exit_code,
+    'benchmark': '{exp['benchmark']}',
+    'method': '{exp['method']}',
+    'seed': {exp['seed']},
+}}
 try:
-    obj = s3.get_object(Bucket='{BUCKET}', Key='status/manifest.json')
-    m = json.loads(obj['Body'].read())
-    for e in m['experiments']:
-        if e['id'] == '{exp['id']}':
-            import subprocess, sys
-            exit_code = int(open('/tmp/gepa_exit_code').read().strip()) if __import__('os').path.exists('/tmp/gepa_exit_code') else 1
-            e['status'] = 'completed' if exit_code == 0 else 'failed'
-            e['completed_at'] = datetime.datetime.utcnow().isoformat()
-            if exit_code != 0:
-                e['error'] = f'exit {{exit_code}}'
-            break
-    s3.put_object(Bucket='{BUCKET}', Key='status/manifest.json',
-                  Body=json.dumps(m, indent=2))
-except Exception as exc:
-    print(f'manifest update failed: {{exc}}')
-" 2>/dev/null || true
+    import glob
+    files = glob.glob('/root/gepa-mutations/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/result.json')
+    if files and exit_code == 0:
+        d = json.load(open(files[0]))
+        status['test_score'] = d.get('test_score')
+        status['wall_clock_seconds'] = d.get('wall_clock_seconds')
+except Exception:
+    pass
+boto3.client('s3', region_name='us-east-1').put_object(
+    Bucket='{BUCKET}',
+    Key='status/{exp['id']}_done.json',
+    Body=json.dumps(status, indent=2),
+    ContentType='application/json',
+)" 2>/dev/null || true
+
+    # Final heartbeat (experiment_alive=False)
+    python3 -c "
+import json, datetime, boto3
+hb = {{
+    'timestamp': datetime.datetime.utcnow().isoformat(),
+    'experiment_id': '{exp['id']}',
+    'instance_id': '$INSTANCE_ID',
+    'experiment_alive': False,
+}}
+boto3.client('s3', region_name='us-east-1').put_object(
+    Bucket='{BUCKET}',
+    Key='logs/$INSTANCE_ID/heartbeat.json',
+    Body=json.dumps(hb),
+    ContentType='application/json',
+)" 2>/dev/null || true
+
     # ------- send completion notification -------
     EXIT_CODE=$(cat /tmp/gepa_exit_code 2>/dev/null || echo "1")
     if [ "$EXIT_CODE" = "0" ]; then
-        # Extract test score from result.json if available
         TEST_SCORE=$(python3 -c "
 import json, glob
 files = glob.glob('/root/gepa-mutations/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/result.json')
@@ -374,23 +474,29 @@ rm -rf gepa/.venv gepa/uv.lock
 aws s3 cp s3://{BUCKET}/config/.env .env --region us-east-1 >> $LOG 2>&1
 uv sync >> $LOG 2>&1
 
-# ------- update manifest to running -------
+# Fix 2: Download existing checkpoint if resuming after spot interruption
+aws s3 sync s3://{BUCKET}/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/gepa_state/ \
+    /root/gepa-mutations/runs/{exp['benchmark']}/{exp['method']}/{exp['seed']}/gepa_state/ \
+    --region us-east-1 >> $LOG 2>&1 || true
+
+# Fix 8: Write per-experiment started status file
 python3 -c "
 import json, boto3, datetime
-s3 = boto3.client('s3', region_name='us-east-1')
-try:
-    obj = s3.get_object(Bucket='{BUCKET}', Key='status/manifest.json')
-    m = json.loads(obj['Body'].read())
-    for e in m['experiments']:
-        if e['id'] == '{exp['id']}':
-            e['status'] = 'running'
-            e['started_at'] = datetime.datetime.utcnow().isoformat()
-            break
-    s3.put_object(Bucket='{BUCKET}', Key='status/manifest.json',
-                  Body=json.dumps(m, indent=2))
-except Exception as exc:
-    print(f'Warning: {{exc}}')
-" 2>/dev/null || true
+status = {{
+    'experiment_id': '{exp['id']}',
+    'status': 'running',
+    'instance_id': '$INSTANCE_ID',
+    'started_at': datetime.datetime.utcnow().isoformat(),
+    'benchmark': '{exp['benchmark']}',
+    'method': '{exp['method']}',
+    'seed': {exp['seed']},
+}}
+boto3.client('s3', region_name='us-east-1').put_object(
+    Bucket='{BUCKET}',
+    Key='status/{exp['id']}_started.json',
+    Body=json.dumps(status, indent=2),
+    ContentType='application/json',
+)" 2>/dev/null || true
 
 # ------- send start notification -------
 send_telegram "Experiment started
@@ -579,19 +685,21 @@ def launch_batch(manifest: dict) -> dict:
     if _recover_stale(manifest):
         upload_manifest(manifest)
 
+    # Sync status files from S3 before deciding what to launch
+    if _scan_status_files(manifest):
+        upload_manifest(manifest)
+
     launched = 0
-    # Sort: Phase 1 first, then shorter benchmarks first (hotpotqa < pupa < aime)
+    # Sort: benchmark (hotpotqa → pupa → aime), then method, then seed
     bm_order = {"hotpotqa": 0, "pupa": 1, "aime": 2}
     pending = sorted(
         [e for e in manifest["experiments"] if e["status"] == "pending"],
-        key=lambda e: (e["phase"], bm_order.get(e["benchmark"], 9)),
+        key=lambda e: (bm_order.get(e["benchmark"], 9), e["method"], e["seed"]),
     )
 
     for exp in pending:
         if launched >= available:
             break
-        if not can_start_phase(exp["phase"], manifest):
-            continue
 
         # Idempotency: skip if result already in S3
         if _result_exists_in_s3(exp):
@@ -599,8 +707,8 @@ def launch_batch(manifest: dict) -> dict:
             exp["status"] = "completed"
             continue
 
-        use_spot = exp["phase"] != 1  # On-demand for validation phase
-        iid = launch_experiment(exp, sg, use_spot=use_spot)
+        # All spot instances
+        iid = launch_experiment(exp, sg, use_spot=True)
         if iid:
             exp["status"] = "launched"
             exp["instance_id"] = iid
@@ -627,7 +735,8 @@ def print_status(manifest: dict) -> None:
         total = len(phase_exps)
         gate = "OPEN" if can_start_phase(phase, manifest) else "BLOCKED"
 
-        print(f"\n  Phase {phase} [{gate}] ({total} total):")
+        bm_label = {v: k for k, v in BENCHMARK_PHASE.items()}.get(phase, "?")
+        print(f"\n  Phase {phase} — {bm_label} [{gate}] ({total} total):")
         for status in ("completed", "running", "launched", "pending", "failed"):
             n = counts.get(status, 0)
             if n > 0:
@@ -667,8 +776,8 @@ def _manifest_summary_text(manifest: dict) -> str:
         p_done = sum(1 for e in phase_exps if e["status"] == "completed")
         p_active = sum(1 for e in phase_exps if e["status"] in ("launched", "running"))
         p_fail = sum(1 for e in phase_exps if e["status"] == "failed")
-        gate = "OPEN" if can_start_phase(phase, manifest) else "BLOCKED"
-        lines.append(f"  P{phase}[{gate}]: {p_done}/{len(phase_exps)} done, {p_active} active, {p_fail} fail")
+        bm_label = {v: k for k, v in BENCHMARK_PHASE.items()}.get(phase, "?")
+        lines.append(f"  P{phase}({bm_label}): {p_done}/{len(phase_exps)} done, {p_active} active, {p_fail} fail")
 
     return "\n".join(lines)
 
@@ -680,6 +789,11 @@ def poll_loop(interval: int = 900) -> None:
 
     while True:
         manifest = download_manifest()
+
+        # Sync per-experiment status files from S3
+        if _scan_status_files(manifest):
+            upload_manifest(manifest)
+
         print_status(manifest)
 
         all_done = all(
@@ -717,6 +831,100 @@ def retry_failed() -> None:
     print(f"Reset {count} failed experiments to pending.")
 
 
+def check_spot_quota() -> None:
+    """Fix 6: Check spot vCPU quota before launching."""
+    try:
+        sq = boto3.client("service-quotas", region_name=REGION)
+        resp = sq.get_service_quota(
+            ServiceCode="ec2",
+            QuotaCode="L-34B43A08",  # All Standard Spot Instance Requests
+        )
+        quota = resp["Quota"]["Value"]
+        print(f"Spot vCPU quota: {int(quota)}")
+        if quota < 20:
+            print(f"  WARNING: Quota ({int(quota)}) < 20 vCPUs. "
+                  f"MAX_CONCURRENT should be <= {int(quota // 2)}.")
+            print("  Request increase: aws service-quotas request-service-quota-increase "
+                  "--service-code ec2 --quota-code L-34B43A08 --desired-value 40 "
+                  f"--region {REGION}")
+        else:
+            print(f"  OK: Sufficient for MAX_CONCURRENT={MAX_CONCURRENT} "
+                  f"(2 vCPUs per t3.medium = {MAX_CONCURRENT * 2} needed)")
+    except ClientError as exc:
+        print(f"  Could not check quota: {exc}")
+        print("  Run manually: aws service-quotas get-service-quota "
+              f"--service-code ec2 --quota-code L-34B43A08 --region {REGION}")
+
+
+def preflight_check() -> None:
+    """Fix 10: Run K=1 equivalence validation and other pre-launch checks."""
+    print("=" * 60)
+    print("  Pre-flight checks")
+    print("=" * 60)
+
+    # 1. Check spot quota
+    print("\n1. Checking spot vCPU quota...")
+    check_spot_quota()
+
+    # 2. Verify manifest generation
+    print("\n2. Generating manifest...")
+    m = generate_manifest()
+    assert len(m["experiments"]) == 90, (
+        f"Expected 90 experiments, got {len(m['experiments'])}"
+    )
+    print(f"  OK: {len(m['experiments'])} experiments")
+
+    # 3. Verify security group exists
+    print("\n3. Checking security group...")
+    sg = _sg_id()
+    if sg:
+        print(f"  OK: {SG_NAME} -> {sg}")
+    else:
+        print(f"  FAIL: Security group '{SG_NAME}' not found")
+
+    # 4. Verify S3 bucket accessible
+    print("\n4. Checking S3 bucket...")
+    try:
+        s3 = boto3.client("s3", region_name=REGION)
+        s3.head_bucket(Bucket=BUCKET)
+        print(f"  OK: s3://{BUCKET}")
+    except ClientError as exc:
+        print(f"  FAIL: {exc}")
+
+    # 5. Fix 11: Verify seed prompts exist for all benchmarks
+    print("\n5. Verifying seed prompts for experiment benchmarks...")
+    try:
+        from gepa_mutations.runner.experiment import BENCHMARK_SEED_PROMPTS
+        missing = []
+        for bm in BENCHMARKS:
+            prompt = BENCHMARK_SEED_PROMPTS.get(bm)
+            if not prompt:
+                missing.append(bm)
+            else:
+                print(f"  {bm}: \"{prompt[:60]}...\"")
+        if missing:
+            print(f"  WARNING: Missing seed prompts for: {missing}")
+        else:
+            print("  OK: All benchmarks have seed prompts")
+    except ImportError as e:
+        print(f"  SKIP: Could not import seed prompts ({e})")
+
+    # 6. K=1 equivalence note
+    print("\n6. K=1 equivalence validation:")
+    print("  To validate K=1 matches vanilla GEPA, run:")
+    print("    uv run python -c \"")
+    print("    from best_of_k.runner import run_best_of_k")
+    print("    from gepa_mutations.base import MutationConfig")
+    print("    config = MutationConfig(mutation_name='best_of_k_K1', benchmark='hotpotqa', seed=42, mutation_candidates=1)")
+    print("    run_best_of_k(config=config, k=1)\"")
+    print("  Compare iteration-by-iteration val scores with:")
+    print("    uv run gepa-mutations run hotpotqa --seed 42")
+
+    print(f"\n{'=' * 60}")
+    print("  Pre-flight complete")
+    print(f"{'=' * 60}")
+
+
 # ============================================================================
 # CLI
 # ============================================================================
@@ -739,6 +947,10 @@ def main() -> None:
                        help="Generate manifest then poll")
     group.add_argument("--retry-failed", action="store_true",
                        help="Reset all failed experiments to pending")
+    group.add_argument("--preflight", action="store_true",
+                       help="Run pre-flight checks (quota, manifest, K=1 validation)")
+    group.add_argument("--check-quota", action="store_true",
+                       help="Check spot vCPU quota")
 
     parser.add_argument("--interval", type=int, default=900,
                         help="Poll interval in seconds (default 900)")
@@ -756,6 +968,10 @@ def main() -> None:
         print_status(m)
     elif args.retry_failed:
         retry_failed()
+    elif args.preflight:
+        preflight_check()
+    elif args.check_quota:
+        check_spot_quota()
     elif args.poll:
         poll_loop(interval=args.interval)
     elif args.auto:

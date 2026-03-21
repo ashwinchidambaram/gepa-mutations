@@ -143,6 +143,50 @@ def analyze_benchmark(
     )
 
 
+def multiple_comparison_correction(
+    p_values: list[float],
+    alpha: float = 0.05,
+    method: str = "benjamini-hochberg",
+) -> list[tuple[float, bool]]:
+    """Apply multiple comparison correction to p-values.
+
+    Fix 12: With 6 methods × 3 benchmarks = 18 comparisons, naive alpha=0.05
+    gives inflated false positive rate. Apply correction.
+
+    Args:
+        p_values: Raw p-values from pairwise comparisons.
+        alpha: Family-wise error rate.
+        method: "bonferroni" or "benjamini-hochberg".
+
+    Returns:
+        List of (adjusted_p, is_significant) tuples.
+    """
+    n = len(p_values)
+    if n == 0:
+        return []
+
+    if method == "bonferroni":
+        adjusted = [min(p * n, 1.0) for p in p_values]
+        return [(adj, adj < alpha) for adj in adjusted]
+
+    # Benjamini-Hochberg (less conservative, controls FDR)
+    indexed = sorted(enumerate(p_values), key=lambda x: x[1])
+    adjusted = [0.0] * n
+
+    for rank, (orig_idx, p) in enumerate(indexed, 1):
+        adjusted[orig_idx] = min(p * n / rank, 1.0)
+
+    # Enforce monotonicity (step-up)
+    sorted_indices = [idx for idx, _ in indexed]
+    for i in range(n - 2, -1, -1):
+        adjusted[sorted_indices[i]] = min(
+            adjusted[sorted_indices[i]],
+            adjusted[sorted_indices[i + 1]] if i + 1 < n else 1.0,
+        )
+
+    return [(adj, adj < alpha) for adj in adjusted]
+
+
 def reproduction_verdict(
     benchmark_stats: list[BenchmarkStats],
 ) -> ReproductionReport:

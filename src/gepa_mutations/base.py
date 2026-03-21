@@ -114,12 +114,31 @@ def evaluate_on_test(
     testset: list,
     settings: Settings,
 ) -> TestEvalResult:
-    """Evaluate the best prompt on the test set."""
+    """Evaluate the best prompt on the test set.
+
+    Uses temperature=0 for deterministic test evaluation (Fix 9).
+    """
     workers = settings.test_eval_workers
     if _uses_dspy(benchmark):
+        # Use temperature=0 for deterministic test evaluation
+        test_lm = dspy.LM(
+            f"openrouter/{settings.gepa_model}",
+            temperature=0,
+            top_p=settings.gepa_top_p,
+            top_k=settings.gepa_top_k,
+            max_tokens=settings.gepa_max_context,
+        )
+        dspy.configure(lm=test_lm)
         scores = _evaluate_dspy(best_prompt, testset, workers)
     else:
-        qa_lm = build_qa_task_lm(settings)
+        # Use temperature=0 for deterministic test evaluation
+        qa_lm = LM(
+            f"openrouter/{settings.gepa_model}",
+            temperature=0,
+            max_tokens=settings.gepa_max_context,
+            top_p=settings.gepa_top_p,
+            top_k=settings.gepa_top_k,
+        )
         adapter = get_adapter(benchmark, task_lm=qa_lm)
         scores = _evaluate_qa(best_prompt, testset, qa_lm, adapter, workers)
 

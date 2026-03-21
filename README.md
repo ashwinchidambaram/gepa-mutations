@@ -68,7 +68,7 @@ Per-benchmark tolerance: ±2pp (IFBench), ±3pp (HotpotQA, HoVer, PUPA, LiveBenc
 
 ## Phase 2: Mutations
 
-Three mutations to GEPA's core algorithms have been selected and scaffolded as separate editable packages at the root of the repository. Each is compared against the Phase 1 baseline to measure impact. Implementation is in progress.
+Three mutations to GEPA's core algorithms have been implemented, reviewed, and smoke-tested as separate editable packages at the root of the repository. Full experiment deployment ready: 6 methods x 3 benchmarks x 5 seeds = 90 runs across EC2 spot instances.
 
 ### Selected Mutations
 
@@ -173,7 +173,10 @@ gepa-mutations/
 ├── docs/                           # Project-level planning docs, mutation selection report, ideas
 ├── scripts/
 │   ├── aws_setup.py                # Idempotent AWS infrastructure setup
-│   └── launch_experiment.py        # EC2 spot instance experiment launcher
+│   ├── launch_experiment.py        # EC2 spot instance experiment launcher
+│   ├── orchestrate_experiments.py   # Full experiment orchestrator (90 runs)
+│   ├── check_health.py             # Health check for running instances
+│   └── emergency_cleanup.py        # Emergency instance termination
 ├── configs/                        # Experiment configurations
 ├── notebooks/                      # Jupyter notebooks for analysis
 ├── data/                           # Local data cache

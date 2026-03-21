@@ -13,13 +13,9 @@ Safety:
 from __future__ import annotations
 
 import argparse
-import base64
-import json
-import sys
 import time
 
 import boto3
-from botocore.exceptions import ClientError
 
 # Configuration
 REGION = "us-east-1"
@@ -44,8 +40,12 @@ def _user_data_script(
 LOG=/var/log/gepa-experiment.log
 log() {{ echo "$(date -u '+%Y-%m-%d %H:%M:%S') $*" >> $LOG; }}
 
-TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 300")
+# Fix 7: IMDSv2 token TTL increased to 6 hours
+TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
 INSTANCE_ID=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-id)
+
+# Fix 5: Hard kill safety net — 18 hours max lifetime
+shutdown -h +1080 &
 
 # ------- Telegram notification helper -------
 send_telegram() {{
@@ -62,16 +62,41 @@ send_telegram() {{
     fi
 }}
 
-# ------- hourly progress monitor (background) -------
-hourly_monitor() {{
+# ------- Fix 3+4: periodic checkpoint sync + heartbeat every 30 min -------
+periodic_sync() {{
     while true; do
-        sleep 3600
+        sleep 1800
         if [ -f /tmp/gepa_exit_code ]; then
-            break  # experiment finished, stop monitoring
+            break
         fi
         local UPTIME_HRS=$(awk '{{printf "%.1f", $1/3600}}' /proc/uptime)
         local TAIL_LOG=$(tail -5 $LOG 2>/dev/null | head -3)
-        send_telegram "<b>Hourly Update</b>
+
+        # Fix 3: Sync checkpoint to S3
+        if [ -d /root/gepa-mutations/runs/{benchmark}/gepa/{seed}/gepa_state ]; then
+            aws s3 sync /root/gepa-mutations/runs/{benchmark}/gepa/{seed}/gepa_state/ \
+                s3://gepa-mutations-results/runs/{benchmark}/gepa/{seed}/gepa_state/ \
+                --region us-east-1 >> $LOG 2>&1 || true
+        fi
+
+        # Fix 4: Write heartbeat to S3
+        python3 -c "
+import json, datetime, boto3
+hb = {{
+    'timestamp': datetime.datetime.utcnow().isoformat(),
+    'experiment_id': 'gepa__{benchmark}__{seed}',
+    'instance_id': '$INSTANCE_ID',
+    'uptime_hours': float('$UPTIME_HRS'),
+    'experiment_alive': True,
+}}
+boto3.client('s3', region_name='us-east-1').put_object(
+    Bucket='gepa-mutations-results',
+    Key='logs/$INSTANCE_ID/heartbeat.json',
+    Body=json.dumps(hb),
+    ContentType='application/json',
+)" 2>/dev/null || true
+
+        send_telegram "<b>Progress Update</b>
 Experiment: <code>gepa/{benchmark}/seed={seed}</code>
 Instance: <code>$INSTANCE_ID</code>
 Uptime: ${{UPTIME_HRS}}h
@@ -79,15 +104,31 @@ Recent log:
 <pre>${{TAIL_LOG}}</pre>"
     done
 }}
-hourly_monitor &
+periodic_sync &
 MONITOR_PID=$!
 
 cleanup() {{
     log "Cleanup: uploading and terminating"
-    # Stop hourly monitor
     kill $MONITOR_PID 2>/dev/null || true
     aws s3 cp $LOG s3://gepa-mutations-results/runs/{benchmark}/gepa/{seed}/ec2.log --region us-east-1 || true
     [ -d /root/gepa-mutations/runs ] && aws s3 sync /root/gepa-mutations/runs/ s3://gepa-mutations-results/runs/ --region us-east-1 || true
+
+    # Final heartbeat (experiment_alive=False)
+    python3 -c "
+import json, datetime, boto3
+hb = {{
+    'timestamp': datetime.datetime.utcnow().isoformat(),
+    'experiment_id': 'gepa__{benchmark}__{seed}',
+    'instance_id': '$INSTANCE_ID',
+    'experiment_alive': False,
+}}
+boto3.client('s3', region_name='us-east-1').put_object(
+    Bucket='gepa-mutations-results',
+    Key='logs/$INSTANCE_ID/heartbeat.json',
+    Body=json.dumps(hb),
+    ContentType='application/json',
+)" 2>/dev/null || true
+
     # ------- send completion notification -------
     EXIT_CODE=${{GEPA_EXIT_CODE:-1}}
     if [ "$EXIT_CODE" = "0" ]; then
@@ -142,6 +183,11 @@ rm -rf gepa/.venv gepa/uv.lock
 
 aws s3 cp s3://gepa-mutations-results/config/.env .env --region us-east-1 >> $LOG 2>&1
 uv sync >> $LOG 2>&1
+
+# Fix 2: Download existing checkpoint if resuming after spot interruption
+aws s3 sync s3://gepa-mutations-results/runs/{benchmark}/gepa/{seed}/gepa_state/ \
+    /root/gepa-mutations/runs/{benchmark}/gepa/{seed}/gepa_state/ \
+    --region us-east-1 >> $LOG 2>&1 || true
 
 # ------- send start notification -------
 send_telegram "Baseline experiment started
