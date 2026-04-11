@@ -172,19 +172,6 @@ class ExperimentRunner:
     def __init__(self, settings: Settings | None = None):
         self.settings = settings or Settings()
 
-    def _build_task_lm(self) -> dspy.LM:
-        """Build the task LM (dspy.LM for math benchmarks)."""
-        return dspy.LM(
-            model_id(self.settings),
-            temperature=self.settings.gepa_temperature,
-            top_p=self.settings.gepa_top_p,
-            top_k=self.settings.gepa_top_k,
-            max_tokens=self.settings.max_tokens_math,
-            timeout=self.settings.lm_timeout,
-            extra_body=THINKING_DISABLED_EXTRA_BODY,
-            **api_base_kwargs(self.settings),
-        )
-
     def _build_reflection_lm(self) -> LM:
         """Build the reflection LM (gepa.lm.LM with explicit params)."""
         return LM(

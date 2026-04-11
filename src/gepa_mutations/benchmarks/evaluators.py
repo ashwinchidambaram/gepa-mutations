@@ -20,9 +20,6 @@ logger = logging.getLogger(__name__)
 # silently burning rollout budget when the inference endpoint is down.
 MAX_CONSECUTIVE_EVAL_ERRORS = 10
 
-from gepa_mutations.benchmarks.signatures import MathSolverSignature
-
-
 # ---------------------------------------------------------------------------
 # Type aliases
 # ---------------------------------------------------------------------------
@@ -72,12 +69,6 @@ def _math_metric(example: dspy.Example, prediction: dspy.Prediction) -> tuple[fl
     status = "correct" if score == 1.0 else "incorrect"
     feedback = f"Your answer is {status}. The correct answer is '{correct_answer}'.{solution_suffix}"
     return score, feedback
-
-
-def _run_llm(example: dspy.Example, prompt: str, predictor: dspy.ChainOfThought) -> dspy.Prediction:
-    """Run the LLM on a single example. Matches utils.py:15-18."""
-    predictor.predict.signature.instructions = prompt
-    return predictor(input=example.input)
 
 
 # ---------------------------------------------------------------------------
@@ -281,9 +272,14 @@ class QAAdapter:
         )
 
     def _score(self, example: dspy.Example, response: str) -> tuple[float, str]:
-        """Default: answer containment check."""
+        """Default: answer containment check with word-boundary matching.
+
+        Uses word boundaries to avoid false positives from short answers (e.g.
+        'yes' matching inside 'yesterday', 'no' inside 'another').
+        """
         answer = str(example.answer)
-        if answer.lower() in response.lower():
+        pattern = r'\b' + re.escape(answer.lower()) + r'\b'
+        if re.search(pattern, response.lower()):
             return 1.0, f"Correct. The response contains the expected answer '{answer}'."
         return 0.0, (
             f"Incorrect. The correct answer is '{answer}'. "
@@ -448,12 +444,15 @@ def _check_ifbench_constraint(constraint: str, response: str) -> bool:
         end_text = m.group(1)
         return response.strip().lower().endswith(end_text.lower())
 
-    # --- Letter count constraints ---
-    m = re.search(r"(?:at\s+least|minimum\s+(?:of\s+)?)\s+(\d+)\s+(?:letter|character)", c_lower)
+    # --- Letter / character count constraints ---
+    # "letter" → count only alphabetic chars; "character" → count all chars including spaces.
+    m = re.search(r"(?:at\s+least|minimum\s+(?:of\s+)?)\s+(\d+)\s+(letter|character)", c_lower)
     if m:
-        min_letters = int(m.group(1))
-        letter_count = sum(1 for ch in response if ch.isalpha())
-        return letter_count >= min_letters
+        min_count = int(m.group(1))
+        if m.group(2) == "letter":
+            return sum(1 for ch in response if ch.isalpha()) >= min_count
+        else:
+            return len(response) >= min_count
 
     # --- Comma-separated items ---
     m = re.search(r"(?:at\s+least|minimum\s+(?:of\s+)?)\s+(\d+)\s+comma[- ]?separated", c_lower)
@@ -666,16 +665,24 @@ class PUPAAdapter(QAAdapter):
         Reference: gepa/tests/test_pareto_frontier_types/test_pareto_frontier_types.py
         """
         try:
-            prompt = (
-                "You are a strict grader evaluating privacy-preserving query rewriting.\n"
-                "Compare the assistant's rewritten query to the gold-standard redaction.\n\n"
-                f"GOLD REDACTION:\n{gold.strip()}\n\n"
-                f"ASSISTANT RESPONSE:\n{resp.strip()}\n\n"
-                "Return only a number between 0 and 1."
-            )
             if self._judge_lm is None:
                 return self._word_overlap_quality(gold, resp)
-            raw = self._judge_lm(prompt)
+            messages = [
+                {
+                    "role": "system",
+                    "content": "You are a strict grader evaluating privacy-preserving query rewriting. Return only a number between 0 and 1.",
+                },
+                {
+                    "role": "user",
+                    "content": (
+                        "Compare the assistant's rewritten query to the gold-standard redaction.\n\n"
+                        f"GOLD REDACTION:\n{gold.strip()}\n\n"
+                        f"ASSISTANT RESPONSE:\n{resp.strip()}\n\n"
+                        "Score (0=completely wrong, 1=perfect match):"
+                    ),
+                },
+            ]
+            raw = self._judge_lm(messages)
             try:
                 score = float(raw.strip())
             except (ValueError, TypeError):
@@ -745,8 +752,11 @@ class LiveBenchAdapter(QAAdapter):
         if self._normalize(expected) == self._normalize(response_clean):
             return 1.0, f"Correct (exact match). Expected: '{expected}'"
 
-        # Check if expected answer appears in the response
-        if self._normalize(expected) in self._normalize(response_clean):
+        # Check if expected answer appears in the response (word-boundary to avoid
+        # false positives when the expected answer is a short string like "1" or "A").
+        norm_exp = self._normalize(expected)
+        norm_resp = self._normalize(response_clean)
+        if re.search(r'\b' + re.escape(norm_exp) + r'\b', norm_resp):
             return 1.0, f"Correct (contained). Expected: '{expected}'"
 
         # Try matching just the last line or boxed answer

@@ -19,13 +19,21 @@ def load_hover(seed: int = 0) -> BenchmarkData:
     """
     dataset = load_dataset("bdsaglam/hover", split="train")
 
+    # Label mapping for bdsaglam/hover. Verify against dataset if scores look inverted:
+    #   dataset.features["label"] will show the ClassLabel names in index order.
+    # Standard HoVer convention: 0=NOT_SUPPORTED, 1=SUPPORTED (binary split).
     label_map = {0: "not_supported", 1: "supported"}
 
     examples = []
     for item in dataset:
         claim = item.get("claim", "")
         label_id = item.get("label", 0)
-        label = label_map.get(label_id, "not_supported")
+        if label_id not in label_map:
+            raise ValueError(
+                f"Unexpected HoVer label id {label_id!r}. "
+                f"Known ids: {list(label_map)}. Update label_map if the dataset schema changed."
+            )
+        label = label_map[label_id]
 
         # Build context from supporting facts if available
         context = ""
@@ -49,7 +57,7 @@ def load_hover(seed: int = 0) -> BenchmarkData:
             ).with_inputs("input")
         )
 
-    random.Random(0).shuffle(examples)
+    random.Random(seed).shuffle(examples)
 
     trainset = examples[:150]
     valset = examples[150:450]
@@ -63,6 +71,6 @@ def load_hover(seed: int = 0) -> BenchmarkData:
             "name": "hover",
             "source": "bdsaglam/hover",
             "split_sizes": "150/300/300",
-            "shuffle_seed": 0,
+            "shuffle_seed": seed,
         },
     )

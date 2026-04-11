@@ -25,15 +25,21 @@ def load_pupa(seed: int = 0) -> BenchmarkData:
 
     examples = []
     for item in dataset:
+        pii_raw = item.get("pii_units", "")
+        if isinstance(pii_raw, list):
+            # Preserve list as ||-delimited string so the evaluator can split it back out.
+            pii_str = "||".join(str(p) for p in pii_raw)
+        else:
+            pii_str = str(pii_raw)
         examples.append(
             dspy.Example(
                 input=item["user_query"],
                 answer=item["redacted_query"],
-                pii_units=str(item.get("pii_units", "")),
+                pii_units=pii_str,
             ).with_inputs("input")
         )
 
-    random.Random(0).shuffle(examples)
+    random.Random(seed).shuffle(examples)
 
     # 237 examples total — proportional split: 20%/40%/40%
     n = len(examples)
@@ -52,6 +58,6 @@ def load_pupa(seed: int = 0) -> BenchmarkData:
             "source": "Columbia-NLP/PUPA",
             "config": "pupa_tnb",
             "total_examples": n,
-            "shuffle_seed": 0,
+            "shuffle_seed": seed,
         },
     )

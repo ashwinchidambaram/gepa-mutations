@@ -12,7 +12,6 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from typing import Any
 
-import dspy
 from gepa.api import optimize
 from rich.console import Console
 
@@ -20,7 +19,6 @@ from gepa_mutations.benchmarks.evaluators import get_adapter
 from gepa_mutations.benchmarks.loader import load_benchmark
 from gepa_mutations.config import (
     PAPER_ROLLOUTS,
-    THINKING_DISABLED_EXTRA_BODY,
     Settings,
     api_base_kwargs,
     model_id,
@@ -89,20 +87,6 @@ def build_reflection_lm(settings: Settings) -> LM:
     )
 
 
-def build_task_lm(settings: Settings) -> dspy.LM:
-    """Build the task LM (dspy.LM for math benchmarks)."""
-    return dspy.LM(
-        model_id(settings),
-        temperature=settings.gepa_temperature,
-        top_p=settings.gepa_top_p,
-        top_k=settings.gepa_top_k,
-        max_tokens=settings.max_tokens_math,
-        timeout=settings.lm_timeout,
-        extra_body=THINKING_DISABLED_EXTRA_BODY,
-        **api_base_kwargs(settings),
-    )
-
-
 def build_qa_task_lm(settings: Settings) -> LM:
     """Build the task LM for QA benchmarks (direct LiteLLM calls)."""
     return LM(
@@ -144,54 +128,15 @@ def evaluate_on_test(
     return TestEvalResult(score=mean_score, example_scores=scores, example_ids=example_ids)
 
 
-def _evaluate_dspy(prompt: dict[str, str], testset: list, workers: int = 10) -> list[float]:
-    """Evaluate using dspy (for math benchmarks) — parallel."""
-    from gepa_mutations.benchmarks.evaluators import _math_metric, _run_llm
-    from gepa_mutations.benchmarks.signatures import MathSolverSignature
-
-    prompt_text = prompt["system_prompt"]
-    total = len(testset)
-
-    lock = threading.Lock()
-    completed = [0]
-    correct_sum = [0.0]
-    error_count = [0]
-
-    def eval_one(example):
-        predictor = dspy.ChainOfThought(MathSolverSignature)
-        score = 0.0
-        try:
-            prediction = _run_llm(example, prompt_text, predictor)
-            score, _ = _math_metric(example, prediction)
-        except Exception as e:
-            score = 0.0
-            with lock:
-                error_count[0] += 1
-                if error_count[0] <= 3:
-                    console.print(f"  [dim]Test eval error: {e}[/dim]")
-
-        with lock:
-            correct_sum[0] += score
-            completed[0] += 1
-            done = completed[0]
-            if done % 10 == 0 or done == total:
-                pct = done / total * 100
-                acc = correct_sum[0] / done * 100
-                console.print(
-                    f"  Test eval: {done}/{total} ({pct:.0f}%) | "
-                    f"correct: {correct_sum[0]:.1f}/{done} ({acc:.1f}%) | errors: {error_count[0]}"
-                )
-
-        return score
-
-    with ThreadPoolExecutor(max_workers=workers) as pool:
-        scores = list(pool.map(eval_one, testset))
-
-    return scores
+_MAX_CONSECUTIVE_TEST_ERRORS = 10
 
 
 def _evaluate_qa(prompt: dict[str, str], testset: list, lm: LM, adapter, workers: int = 10) -> list[float]:
-    """Evaluate using adapter scoring and parallel LM calls."""
+    """Evaluate using adapter scoring and parallel LM calls.
+
+    Aborts if consecutive LM errors exceed _MAX_CONSECUTIVE_TEST_ERRORS to
+    prevent silently scoring an entire test set as 0 when the endpoint is down.
+    """
     prompt_text = prompt["system_prompt"]
     total = len(testset)
 
@@ -199,8 +144,12 @@ def _evaluate_qa(prompt: dict[str, str], testset: list, lm: LM, adapter, workers
     completed = [0]
     correct_sum = [0.0]
     error_count = [0]
+    consecutive_errors = [0]
+    abort_exc: list[Exception] = []
 
     def eval_one(example):
+        if abort_exc:
+            return 0.0
         score = 0.0
         try:
             messages = [
@@ -209,12 +158,20 @@ def _evaluate_qa(prompt: dict[str, str], testset: list, lm: LM, adapter, workers
             ]
             response = lm(messages)
             score, _ = adapter._score(example, response)
+            with lock:
+                consecutive_errors[0] = 0
         except Exception as e:
             score = 0.0
             with lock:
                 error_count[0] += 1
+                consecutive_errors[0] += 1
                 if error_count[0] <= 3:
                     console.print(f"  [dim]Test eval error: {e}[/dim]")
+                if consecutive_errors[0] >= _MAX_CONSECUTIVE_TEST_ERRORS and not abort_exc:
+                    abort_exc.append(RuntimeError(
+                        f"Aborting test evaluation: {consecutive_errors[0]} consecutive LM errors. "
+                        f"Last error: {e}"
+                    ))
 
         with lock:
             correct_sum[0] += score
@@ -232,6 +189,9 @@ def _evaluate_qa(prompt: dict[str, str], testset: list, lm: LM, adapter, workers
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
         scores = list(pool.map(eval_one, testset))
+
+    if abort_exc:
+        raise abort_exc[0]
 
     return scores
 
