@@ -4,7 +4,7 @@
 #
 # Usage: bash scripts/serve_mlx_0.6b_mac.sh
 
-python -m mlx_lm.server \
+.venv/bin/python -m mlx_lm.server \
   --model mlx-community/Qwen3-0.6B-4bit \
   --port 8132 \
   --host 127.0.0.1

@@ -36,7 +36,10 @@ def _env_model_tag() -> str:
     Checks model family first so size suffixes don't collide across families
     (e.g. Gemma "4b" vs Qwen3 "4b" → different tags).
     """
-    m = os.environ.get("GEPA_MODEL", "").lower()
+    raw = os.environ.get("GEPA_MODEL", "").lower()
+    # Strip quantization suffix (e.g. "-4bit", "-8bit") so it doesn't collide with
+    # model-size tokens — e.g. "qwen3-0.6b-4bit" contains "4b" via the "-4bit" suffix.
+    m = _re.sub(r"-\d+bit$", "", raw)
 
     # Qwen3 family
     if "qwen" in m:

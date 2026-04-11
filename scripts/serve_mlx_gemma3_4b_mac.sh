@@ -4,7 +4,7 @@
 #
 # Usage: bash scripts/serve_mlx_gemma3_4b_mac.sh
 
-python -m mlx_lm.server \
+.venv/bin/python -m mlx_lm.server \
   --model mlx-community/gemma-3-4b-it-4bit \
   --port 8134 \
   --host 127.0.0.1

@@ -4,7 +4,7 @@
 #
 # Usage: bash scripts/serve_mlx_llama_1b_mac.sh
 
-python -m mlx_lm.server \
+.venv/bin/python -m mlx_lm.server \
   --model mlx-community/Llama-3.2-1B-Instruct-4bit \
   --port 8137 \
   --host 127.0.0.1

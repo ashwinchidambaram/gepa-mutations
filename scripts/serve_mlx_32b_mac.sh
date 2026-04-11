@@ -5,7 +5,7 @@
 #
 # Usage: bash scripts/serve_mlx_32b_mac.sh
 
-python -m mlx_lm.server \
+.venv/bin/python -m mlx_lm.server \
   --model mlx-community/Qwen3-32B-4bit \
   --port 8131 \
   --host 127.0.0.1
