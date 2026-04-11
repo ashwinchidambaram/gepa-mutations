@@ -35,6 +35,8 @@ def _env_model_tag() -> str:
     m = os.environ.get("GEPA_MODEL", "").lower()
     if "27b" in m:
         return "qwen3-27b-awq"
+    if "32b" in m:
+        return "qwen3-32b"
     if "14b" in m:
         return "qwen3-14b"
     if "8b" in m:

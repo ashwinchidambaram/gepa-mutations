@@ -70,37 +70,28 @@ EXPERIMENT_DURATION_MINS: dict[tuple[str, str], float] = {
 
 _ACTIVE_BENCHMARKS = set(BENCHMARKS)
 
-# Model definitions
-# cluster = node currently serving this model (updated 2026-04-10: bourbaki/ansatz/deepseek down,
-#           substituted with manifold/sapphire/sar-gpu-vm on capstone partition)
+# Model definitions — Mac branch (MLX-LM, localhost)
 MODELS = [
     {
-        "tag":        "qwen3-27b-awq",
-        "display":    "Qwen3-27B-AWQ",
-        "cluster":    "manifold (capstone)",
-        "health_url": "http://10.0.10.69:8124/v1/models",
-        "log_glob":   "orchestrator_27b.log",
-    },
-    {
-        "tag":        "qwen3-8b",
-        "display":    "Qwen3-8B",
-        "cluster":    "archimedes",
-        "health_url": "http://10.0.10.58:8125/v1/models",
-        "log_glob":   "orchestrator_8b.log",
+        "tag":        "qwen3-1.7b",
+        "display":    "Qwen3-1.7B",
+        "cluster":    "Mac (MLX, localhost:8125)",
+        "health_url": "http://localhost:8125/v1/models",
+        "log_glob":   "orchestrator_1b.log",
     },
     {
         "tag":        "qwen3-4b",
         "display":    "Qwen3-4B",
-        "cluster":    "sapphire (capstone)",
-        "health_url": "http://10.0.100.99:8126/v1/models",
+        "cluster":    "Mac (MLX, localhost:8126)",
+        "health_url": "http://localhost:8126/v1/models",
         "log_glob":   "orchestrator_4b.log",
     },
     {
-        "tag":        "qwen3-1.7b",
-        "display":    "Qwen3-1.7B",
-        "cluster":    "sar-gpu-vm (capstone)",
-        "health_url": "http://10.0.50.99:8127/v1/models",
-        "log_glob":   "orchestrator_1b.log",
+        "tag":        "qwen3-32b",
+        "display":    "Qwen3-32B",
+        "cluster":    "Mac (MLX, localhost:8131)",
+        "health_url": "http://localhost:8131/v1/models",
+        "log_glob":   "orchestrator_32b.log",
     },
 ]
 
