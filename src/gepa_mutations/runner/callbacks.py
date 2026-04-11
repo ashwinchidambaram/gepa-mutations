@@ -321,7 +321,7 @@ class ProgressStreamerCallback:
         elapsed = time.time() - self._start_time if self._start_time else 0
         pct = (self._rollouts_used / self._rollout_budget * 100) if self._rollout_budget else 0
         eta_seconds = None
-        if self._rollouts_used > 0 and self._rollout_budget > 0:
+        if self._rollouts_used > 0 and self._rollout_budget > 0 and elapsed > 0:
             rate = self._rollouts_used / elapsed
             remaining = self._rollout_budget - self._rollouts_used
             eta_seconds = round(remaining / rate)

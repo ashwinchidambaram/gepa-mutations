@@ -100,11 +100,6 @@ def build_qa_task_lm(settings: Settings) -> LM:
     )
 
 
-def _uses_dspy(benchmark: str) -> bool:
-    """Check if benchmark uses dspy (AIME only) vs direct LM calls."""
-    return benchmark == "aime"
-
-
 def evaluate_on_test(
     benchmark: str,
     best_prompt: dict[str, str],
