@@ -31,20 +31,37 @@ from pathlib import Path
 
 
 def _env_model_tag() -> str:
-    """Derive model_tag from GEPA_MODEL environment variable."""
+    """Derive a stable run-directory tag from GEPA_MODEL environment variable.
+
+    Checks model family first so size suffixes don't collide across families
+    (e.g. Gemma "4b" vs Qwen3 "4b" → different tags).
+    """
     m = os.environ.get("GEPA_MODEL", "").lower()
-    if "27b" in m:
-        return "qwen3-27b-awq"
-    if "32b" in m:
-        return "qwen3-32b"
-    if "14b" in m:
-        return "qwen3-14b"
-    if "8b" in m:
-        return "qwen3-8b"
-    if "4b" in m:
-        return "qwen3-4b"
-    if "1.7b" in m or "1b" in m:
-        return "qwen3-1.7b"
+
+    # Qwen3 family
+    if "qwen" in m:
+        if "27b" in m:  return "qwen3-27b-awq"
+        if "32b" in m:  return "qwen3-32b"
+        if "14b" in m:  return "qwen3-14b"
+        if "8b"  in m:  return "qwen3-8b"
+        if "4b"  in m:  return "qwen3-4b"
+        if "1.7b" in m: return "qwen3-1.7b"
+        if "0.6b" in m: return "qwen3-0.6b"
+
+    # Gemma 3 family
+    if "gemma" in m:
+        if "27b" in m:  return "gemma3-27b"
+        if "12b" in m:  return "gemma3-12b"
+        if "4b"  in m:  return "gemma3-4b"
+        if "1b"  in m:  return "gemma3-1b"
+
+    # Llama family (3.x)
+    if "llama" in m:
+        if "70b" in m:  return "llama3-70b"
+        if "8b"  in m:  return "llama3-8b"
+        if "3b"  in m:  return "llama3-3b"
+        if "1b"  in m:  return "llama3-1b"
+
     return ""  # empty = no model prefix (backward compatible)
 
 _MODEL_TAG = _env_model_tag()

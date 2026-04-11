@@ -1,13 +1,39 @@
 # gepa-mutations — Mac Instance
 
 This is the **`sweep/mac` branch**. This Claude Code instance runs on a MacBook Pro M5 Max
-(48GB unified memory) and handles the **small models + a new large model**: Qwen3-1.7B,
-Qwen3-4B, and Qwen3-32B, all served locally via **MLX-LM**.
+(48GB unified memory) and handles all **small and cross-architecture models** via **MLX-LM**.
 
-Large models (8B, 14B, 27B-AWQ) run independently on the SLURM cluster (`sweep/cluster`
-branch). This instance operates completely autonomously — no coordination needed.
+Large Qwen3 models (8B, 14B, 27B-AWQ) run independently on the SLURM cluster (`sweep/cluster`).
+This instance operates completely autonomously — no coordination needed.
 
-**Scaling curve:** **1.7B, 4B, 32B → this Mac** | 8B, 14B, 27B-AWQ → cluster
+---
+
+## Models (10 total)
+
+### Qwen3 — scaling curve extension
+| Model | Port | Memory | MLX model ID |
+|-------|------|--------|-------------|
+| Qwen3-0.6B | 8132 | ~0.4 GB | `mlx-community/Qwen3-0.6B-4bit` |
+| Qwen3-1.7B | 8125 | ~1 GB | `mlx-community/Qwen3-1.7B-4bit` |
+| Qwen3-4B | 8126 | ~3 GB | `mlx-community/Qwen3-4B-4bit` |
+| Qwen3-32B | 8131 | ~20 GB | `mlx-community/Qwen3-32B-4bit` |
+
+### Gemma 3 — cross-architecture (Google)
+| Model | Port | Memory | MLX model ID |
+|-------|------|--------|-------------|
+| Gemma 3 1B | 8133 | ~0.6 GB | `mlx-community/gemma-3-1b-it-4bit` |
+| Gemma 3 4B | 8134 | ~2.5 GB | `mlx-community/gemma-3-4b-it-4bit` |
+| Gemma 3 12B | 8135 | ~7 GB | `mlx-community/gemma-3-12b-it-4bit` |
+| Gemma 3 27B | 8136 | ~15 GB | `mlx-community/gemma-3-27b-it-4bit` |
+
+### Llama 3.2 — cross-architecture (Meta)
+| Model | Port | Memory | MLX model ID |
+|-------|------|--------|-------------|
+| Llama 3.2 1B | 8137 | ~0.6 GB | `mlx-community/Llama-3.2-1B-Instruct-4bit` |
+| Llama 3.2 3B | 8138 | ~2 GB | `mlx-community/Llama-3.2-3B-Instruct-4bit` |
+
+**Combined scaling curve (Mac + cluster):** 0.6B → 1.7B → 4B → 8B → 12B → 14B → 27B → 32B
+plus Gemma 3 and Llama 3.2 for cross-architecture validation.
 
 ---
 
@@ -26,159 +52,154 @@ uv sync
 # 3. Install MLX-LM (Apple Silicon only)
 pip install mlx-lm
 
-# 4. Create .env with Telegram credentials (optional but recommended)
+# 4. Create .env with Telegram credentials
 cp .env.example .env
 # edit .env: add TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID
 
-# 5. Pre-download models (do this while you have a good connection)
-python -c "from mlx_lm import load; load('mlx-community/Qwen3-1.7B-4bit')"
-python -c "from mlx_lm import load; load('mlx-community/Qwen3-4B-4bit')"
-python -c "from mlx_lm import load; load('mlx-community/Qwen3-32B-4bit')"
+# 5. Pre-download all models (do once on a good connection)
+python -c "
+from mlx_lm import load
+models = [
+    'mlx-community/Qwen3-0.6B-4bit',
+    'mlx-community/Qwen3-1.7B-4bit',
+    'mlx-community/Qwen3-4B-4bit',
+    'mlx-community/Qwen3-32B-4bit',
+    'mlx-community/gemma-3-1b-it-4bit',
+    'mlx-community/gemma-3-4b-it-4bit',
+    'mlx-community/gemma-3-12b-it-4bit',
+    'mlx-community/gemma-3-27b-it-4bit',
+    'mlx-community/Llama-3.2-1B-Instruct-4bit',
+    'mlx-community/Llama-3.2-3B-Instruct-4bit',
+]
+for m in models:
+    print(f'Downloading {m}...')
+    load(m)
+    print('  done')
+"
 ```
-
----
-
-## Active Models
-
-| Model | MLX model ID | Port | Memory (~) |
-|-------|-------------|------|------------|
-| Qwen3-1.7B | `mlx-community/Qwen3-1.7B-4bit` | 8125 | ~1 GB |
-| Qwen3-4B | `mlx-community/Qwen3-4B-4bit` | 8126 | ~3 GB |
-| Qwen3-32B | `mlx-community/Qwen3-32B-4bit` | 8131 | ~20 GB |
-
-All three fit simultaneously in 48GB with ~24GB to spare for the OS and other processes.
 
 ---
 
 ## Step 1: Start Inference Servers
 
-Open three terminal tabs (or use tmux). Each server runs in the foreground:
+48GB fits all small models simultaneously (~14GB) or the large group together (~42GB).
+See [CLAUDE/mac_setup.md](CLAUDE/mac_setup.md) for recommended memory groupings.
 
 ```bash
-# Terminal 1 — Qwen3-1.7B
-bash scripts/serve_mlx_1b_mac.sh
+mkdir -p logs
 
-# Terminal 2 — Qwen3-4B
-bash scripts/serve_mlx_4b_mac.sh
+# Small models — run all at once (~14GB total)
+bash scripts/serve_mlx_0.6b_mac.sh   &> logs/mlx_0.6b.log   &
+bash scripts/serve_mlx_1b_mac.sh     &> logs/mlx_1b.log     &
+bash scripts/serve_mlx_4b_mac.sh     &> logs/mlx_4b.log     &
+bash scripts/serve_mlx_gemma3_1b_mac.sh  &> logs/mlx_gemma3_1b.log  &
+bash scripts/serve_mlx_gemma3_4b_mac.sh  &> logs/mlx_gemma3_4b.log  &
+bash scripts/serve_mlx_llama_1b_mac.sh   &> logs/mlx_llama_1b.log   &
+bash scripts/serve_mlx_llama_3b_mac.sh   &> logs/mlx_llama_3b.log   &
 
-# Terminal 3 — Qwen3-32B (loads ~20GB; takes ~30s to be ready)
-bash scripts/serve_mlx_32b_mac.sh
+# Large models — run together or individually (~42GB if all three at once)
+bash scripts/serve_mlx_32b_mac.sh        &> logs/mlx_32b.log        &
+bash scripts/serve_mlx_gemma3_12b_mac.sh &> logs/mlx_gemma3_12b.log &
+bash scripts/serve_mlx_gemma3_27b_mac.sh &> logs/mlx_gemma3_27b.log &
 ```
 
-Or run all three in the background:
+Verify:
 ```bash
-bash scripts/serve_mlx_1b_mac.sh  &> logs/mlx_1b.log &
-bash scripts/serve_mlx_4b_mac.sh  &> logs/mlx_4b.log &
-bash scripts/serve_mlx_32b_mac.sh &> logs/mlx_32b.log &
-```
-
-Verify servers are up:
-```bash
-curl -sf http://localhost:8125/v1/models && echo "1.7B OK"
-curl -sf http://localhost:8126/v1/models && echo "4B OK"
-curl -sf http://localhost:8131/v1/models && echo "32B OK"
+for port in 8125 8126 8131 8132 8133 8134 8135 8136 8137 8138; do
+  curl -sf http://localhost:$port/v1/models > /dev/null && echo "port $port OK" || echo "port $port DOWN"
+done
 ```
 
 ---
 
 ## Step 2: Smoke Test
 
-Always smoke-test before a full sweep:
-
 ```bash
-export GEPA_MODEL="mlx-community/Qwen3-1.7B-4bit" GEPA_BASE_URL="http://localhost:8125/v1"
-.venv/bin/python scripts/run_all_local.py --smoke-test --workers 3 \
-  --benchmark hotpotqa pupa ifbench
+declare -A MODELS
+MODELS["mlx-community/Qwen3-0.6B-4bit"]=8132
+MODELS["mlx-community/Qwen3-1.7B-4bit"]=8125
+MODELS["mlx-community/Qwen3-4B-4bit"]=8126
+MODELS["mlx-community/Qwen3-32B-4bit"]=8131
+MODELS["mlx-community/gemma-3-1b-it-4bit"]=8133
+MODELS["mlx-community/gemma-3-4b-it-4bit"]=8134
+MODELS["mlx-community/gemma-3-12b-it-4bit"]=8135
+MODELS["mlx-community/gemma-3-27b-it-4bit"]=8136
+MODELS["mlx-community/Llama-3.2-1B-Instruct-4bit"]=8137
+MODELS["mlx-community/Llama-3.2-3B-Instruct-4bit"]=8138
 
-export GEPA_MODEL="mlx-community/Qwen3-4B-4bit" GEPA_BASE_URL="http://localhost:8126/v1"
-.venv/bin/python scripts/run_all_local.py --smoke-test --workers 3 \
-  --benchmark hotpotqa pupa ifbench
-
-export GEPA_MODEL="mlx-community/Qwen3-32B-4bit" GEPA_BASE_URL="http://localhost:8131/v1"
-.venv/bin/python scripts/run_all_local.py --smoke-test --workers 2 \
-  --benchmark hotpotqa pupa ifbench
+for model in "${!MODELS[@]}"; do
+  port="${MODELS[$model]}"
+  export GEPA_MODEL="$model" GEPA_BASE_URL="http://localhost:$port/v1"
+  .venv/bin/python scripts/run_all_local.py --smoke-test --workers 3 \
+    --benchmark hotpotqa pupa ifbench
+done
 ```
 
 ---
 
 ## Step 3: Full Sweep
 
-300 experiments per model (5 benchmarks × 12 methods × 5 seeds). Run all three in parallel:
+300 experiments per model (5 benchmarks × 12 methods × 5 seeds).
 
 ```bash
-mkdir -p logs
+# Helper — launch one orchestrator in the background
+launch() {
+  local model=$1 port=$2 tag=$3 workers=$4
+  export GEPA_MODEL="$model" GEPA_BASE_URL="http://localhost:$port/v1"
+  nohup .venv/bin/python scripts/run_all_local.py --workers $workers \
+    --benchmark hotpotqa hover pupa ifbench livebench \
+    &> logs/orchestrator_${tag}.log &
+  echo "Launched $tag (PID $!)"
+}
 
-# Qwen3-1.7B
-export GEPA_MODEL="mlx-community/Qwen3-1.7B-4bit" GEPA_BASE_URL="http://localhost:8125/v1"
-nohup .venv/bin/python scripts/run_all_local.py --workers 6 \
-  --benchmark hotpotqa hover pupa ifbench livebench \
-  &> logs/orchestrator_1b.log &
+# Qwen3
+launch mlx-community/Qwen3-0.6B-4bit  8132 0.6b  8
+launch mlx-community/Qwen3-1.7B-4bit  8125 1b    6
+launch mlx-community/Qwen3-4B-4bit    8126 4b    6
+launch mlx-community/Qwen3-32B-4bit   8131 32b   3
 
-# Qwen3-4B
-export GEPA_MODEL="mlx-community/Qwen3-4B-4bit" GEPA_BASE_URL="http://localhost:8126/v1"
-nohup .venv/bin/python scripts/run_all_local.py --workers 6 \
-  --benchmark hotpotqa hover pupa ifbench livebench \
-  &> logs/orchestrator_4b.log &
+# Gemma 3
+launch mlx-community/gemma-3-1b-it-4bit   8133 gemma3_1b   8
+launch mlx-community/gemma-3-4b-it-4bit   8134 gemma3_4b   6
+launch mlx-community/gemma-3-12b-it-4bit  8135 gemma3_12b  4
+launch mlx-community/gemma-3-27b-it-4bit  8136 gemma3_27b  3
 
-# Qwen3-32B (fewer workers — 32B is slower per call)
-export GEPA_MODEL="mlx-community/Qwen3-32B-4bit" GEPA_BASE_URL="http://localhost:8131/v1"
-nohup .venv/bin/python scripts/run_all_local.py --workers 3 \
-  --benchmark hotpotqa hover pupa ifbench livebench \
-  &> logs/orchestrator_32b.log &
+# Llama 3.2
+launch mlx-community/Llama-3.2-1B-Instruct-4bit 8137 llama_1b 8
+launch mlx-community/Llama-3.2-3B-Instruct-4bit 8138 llama_3b 6
 ```
-
-The orchestrator is idempotent — safe to restart, skips completed experiments.
 
 ---
 
 ## Monitoring
 
-No automated crons needed — check progress manually:
-
 ```bash
-# Check how many results exist per model
-find runs/qwen3-1.7b -name result.json | wc -l
-find runs/qwen3-4b -name result.json | wc -l
-find runs/qwen3-32b -name result.json | wc -l
+# Progress counts
+for tag in qwen3-0.6b qwen3-1.7b qwen3-4b qwen3-32b \
+           gemma3-1b gemma3-4b gemma3-12b gemma3-27b \
+           llama3-1b llama3-3b; do
+  count=$(find runs/$tag -name result.json 2>/dev/null | wc -l | tr -d ' ')
+  echo "$tag: $count / 300"
+done
 
-# Watch orchestrator logs live
-tail -f logs/orchestrator_32b.log
-
-# Send a manual Telegram update
+# Telegram update
 .venv/bin/python scripts/monitor_multi_model.py --mode 30min
+
+# Live log
+tail -f logs/orchestrator_gemma3_27b.log
 ```
 
 ---
-
-## Results
-
-Results land in `runs/` (local, gitignored):
-```
-runs/qwen3-1.7b/<benchmark>/<method>/<seed>/result.json
-runs/qwen3-4b/...
-runs/qwen3-32b/...
-```
-
-`result.json` key fields: `test_score`, `train_scores`, `elapsed`.
-
----
-
-## Known Issues / MLX Notes
-
-- **Mac-specific:** MLX-LM does not support `--enforce-eager` or `--dtype auto` flags — those are vLLM-only. The serve scripts use only MLX-compatible flags.
-- **Thinking mode:** Qwen3 models have a thinking mode. MLX-LM serves them without special flags; the orchestrator sends standard chat completions.
-- **Concurrency:** MLX-LM server handles concurrent requests but is single-process. Keep workers ≤ 6 for 1.7B/4B, ≤ 3 for 32B to avoid OOM.
-- **gepa submodule patch:** `gepa/src/gepa/core/state.py` has an `os.makedirs` patch — do NOT pull submodule upstream without re-applying it. See [CLAUDE/known_bugs_and_fixes.md](CLAUDE/known_bugs_and_fixes.md).
 
 ## Reference Docs
 
-- [CLAUDE/mac_setup.md](CLAUDE/mac_setup.md) — MLX setup, model IDs, memory requirements, serve script flags
-- [CLAUDE/sweep_execution.md](CLAUDE/sweep_execution.md) — full orchestrator reference (env vars, run directory layout, execution order)
-- [CLAUDE/known_bugs_and_fixes.md](CLAUDE/known_bugs_and_fixes.md) — gepa state fix, _env_model_tag collision, etc.
+- [CLAUDE/mac_setup.md](CLAUDE/mac_setup.md) — model IDs, memory groupings, serve script flags
+- [CLAUDE/sweep_execution.md](CLAUDE/sweep_execution.md) — orchestrator reference, run directory layout
+- [CLAUDE/known_bugs_and_fixes.md](CLAUDE/known_bugs_and_fixes.md) — gepa state fix, etc.
 
 ## Conventions
 
 - Paper hyperparameters: `temp=0.6`, `top_p=0.95`, `top_k=20`, `minibatch=3`
-- Paper baseline scores in `src/gepa_mutations/config.py`
 - AIME excluded from active sweep
 - Always smoke test before full sweeps
+- gepa submodule is patched — do NOT pull upstream without re-applying the makedirs fix
