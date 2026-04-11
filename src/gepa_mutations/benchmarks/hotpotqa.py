@@ -34,7 +34,7 @@ def load_hotpotqa(seed: int = 0) -> BenchmarkData:
             ).with_inputs("input")
         )
 
-    random.Random(0).shuffle(examples)
+    random.Random(seed).shuffle(examples)
 
     trainset = examples[:150]
     valset = examples[150:450]
@@ -48,6 +48,6 @@ def load_hotpotqa(seed: int = 0) -> BenchmarkData:
             "name": "hotpotqa",
             "source": "hotpot_qa/distractor",
             "split_sizes": "150/300/300",
-            "shuffle_seed": 0,
+            "shuffle_seed": seed,
         },
     )

@@ -36,7 +36,7 @@ def load_livebench(seed: int = 0) -> BenchmarkData:
             ).with_inputs("input")
         )
 
-    random.Random(0).shuffle(examples)
+    random.Random(seed).shuffle(examples)
 
     # 368 examples — proportional split: 20%/40%/40%
     n = len(examples)
@@ -54,6 +54,6 @@ def load_livebench(seed: int = 0) -> BenchmarkData:
             "name": "livebench",
             "source": "livebench/math",
             "total_examples": n,
-            "shuffle_seed": 0,
+            "shuffle_seed": seed,
         },
     )
