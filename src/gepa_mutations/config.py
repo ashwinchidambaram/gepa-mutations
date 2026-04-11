@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from pydantic_settings import BaseSettings
@@ -118,16 +119,46 @@ def model_tag(settings: Settings) -> str:
     """Derive a filesystem-safe model tag from the GEPA_MODEL env var.
 
     Used to namespace result directories: runs/{model_tag}/{benchmark}/{method}/{seed}/
+
+    Uses token-boundary matching so that the "-4bit" quantization suffix in MLX model
+    IDs (e.g. "Qwen3-32B-4bit") does not trigger the "4b" size check.  A size token
+    is considered a match only when it is preceded by a non-alphanumeric character and
+    followed by a non-alphanumeric character or end-of-string.
     """
     m = settings.gepa_model.lower()
-    if "27b" in m:
-        return "qwen3-27b-awq"
-    if "8b" in m:
-        return "qwen3-8b"
-    if "4b" in m:
-        return "qwen3-4b"
-    if "1.7b" in m or "1b" in m:
-        return "qwen3-1.7b"
+
+    def _has_size(size: str) -> bool:
+        """Return True if `size` appears as a standalone token in the model name."""
+        return bool(re.search(rf'(?:^|[^a-z0-9]){re.escape(size)}(?:[^a-z0-9]|$)', m))
+
+    # Gemma family — detect before generic size checks
+    if "gemma" in m:
+        for size in ["27b", "12b", "4b", "1b"]:
+            if _has_size(size):
+                return f"gemma3-{size}"
+        return "gemma3"
+
+    # Llama family
+    if "llama" in m:
+        for size in ["70b", "8b", "3b", "1b"]:
+            if _has_size(size):
+                return f"llama3.2-{size}"
+        return "llama"
+
+    # Qwen3 — check largest sizes first to avoid "14b" matching "4b"
+    for size, tag in [
+        ("32b", "qwen3-32b"),
+        ("27b", "qwen3-27b-awq"),
+        ("14b", "qwen3-14b"),
+        ("8b", "qwen3-8b"),
+        ("4b", "qwen3-4b"),
+        ("1.7b", "qwen3-1.7b"),
+        ("0.6b", "qwen3-0.6b"),
+        ("1b", "qwen3-1b"),
+    ]:
+        if _has_size(size):
+            return tag
+
     # Fallback: sanitize the model name
     return m.replace("/", "-").replace(":", "-").replace(" ", "-")
 

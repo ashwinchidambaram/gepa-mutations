@@ -116,11 +116,6 @@ def build_qa_task_lm(settings: Settings) -> LM:
     )
 
 
-def _uses_dspy(benchmark: str) -> bool:
-    """Check if benchmark uses dspy (AIME only) vs direct LM calls."""
-    return benchmark == "aime"
-
-
 def evaluate_on_test(
     benchmark: str,
     best_prompt: dict[str, str],
@@ -142,52 +137,6 @@ def evaluate_on_test(
     example_ids = [f"{benchmark}_test_{i}" for i in range(total)]
     mean_score = sum(scores) / total if total else 0.0
     return TestEvalResult(score=mean_score, example_scores=scores, example_ids=example_ids)
-
-
-def _evaluate_dspy(prompt: dict[str, str], testset: list, workers: int = 10) -> list[float]:
-    """Evaluate using dspy (for math benchmarks) — parallel."""
-    from gepa_mutations.benchmarks.evaluators import _math_metric, _run_llm
-    from gepa_mutations.benchmarks.signatures import MathSolverSignature
-
-    prompt_text = prompt["system_prompt"]
-    total = len(testset)
-
-    lock = threading.Lock()
-    completed = [0]
-    correct_sum = [0.0]
-    error_count = [0]
-
-    def eval_one(example):
-        predictor = dspy.ChainOfThought(MathSolverSignature)
-        score = 0.0
-        try:
-            prediction = _run_llm(example, prompt_text, predictor)
-            score, _ = _math_metric(example, prediction)
-        except Exception as e:
-            score = 0.0
-            with lock:
-                error_count[0] += 1
-                if error_count[0] <= 3:
-                    console.print(f"  [dim]Test eval error: {e}[/dim]")
-
-        with lock:
-            correct_sum[0] += score
-            completed[0] += 1
-            done = completed[0]
-            if done % 10 == 0 or done == total:
-                pct = done / total * 100
-                acc = correct_sum[0] / done * 100
-                console.print(
-                    f"  Test eval: {done}/{total} ({pct:.0f}%) | "
-                    f"correct: {correct_sum[0]:.1f}/{done} ({acc:.1f}%) | errors: {error_count[0]}"
-                )
-
-        return score
-
-    with ThreadPoolExecutor(max_workers=workers) as pool:
-        scores = list(pool.map(eval_one, testset))
-
-    return scores
 
 
 def _evaluate_qa(prompt: dict[str, str], testset: list, lm: LM, adapter, workers: int = 10) -> list[float]:
