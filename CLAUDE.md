@@ -1,76 +1,147 @@
-# gepa-mutations
+# gepa-mutations — Cluster Instance
 
-## Project Overview
+This is the **`sweep/cluster` branch**. This Claude Code instance operates the SLURM cluster
+and runs experiments for the **large models only**: Qwen3-8B, Qwen3-14B, Qwen3-27B-AWQ.
 
-Experimental framework for reproducing and extending the GEPA prompt evolution framework
-(arXiv:2507.19457, ICLR 2026 Oral). Phase 1 reproduces paper results across 5 benchmarks
-and 12 methods. Phase 2 introduces mutations to the core GEPA algorithm.
+Small models (1.7B, 4B) have been retired from the cluster and moved to the Mac (`sweep/mac`
+branch). A separate Claude Code instance on the Mac handles those independently via MLX-LM.
+The Mac also runs Qwen3-32B — a new size not covered here.
 
-## Tech Stack
+**Scaling curve:** 1.7B, 4B, 32B → Mac | **8B, 14B, 27B-AWQ → this cluster**
 
-- Python 3.12, `uv` for dependency management, `.venv/` at repo root
-- `gepa/` — official GEPA package as git submodule (v0.1.1, patched — see CLAUDE/known_bugs_and_fixes.md)
-- Inference: local vLLM cluster serving Qwen3 models (1.7B through 27B-AWQ) over OpenAI-compatible API
-- Notifications: Telegram bot (bot token + chat ID from `.env`)
-- Storage: local `runs/` directory (NFS-mounted, gitignored)
+---
 
-## Directory Structure
+## Active Models
 
-```
-gepa/                    — GEPA submodule (v0.1.1, do NOT pull upstream without re-applying patches)
-src/gepa_mutations/      — shared infrastructure
-  runner/                — experiment runner, LM wrapper, timeout, callbacks
-  benchmarks/            — dataset loaders + scoring (HotpotQA, IFBench, LiveBench, HoVer, PUPA)
-  base.py                — MutationConfig + run_mutation() for Phase 2
-  notifications/         — Telegram notification system
-  config.py              — Settings (pydantic-settings), paper baseline scores
-methods/                 — one subdirectory per mutation method (editable packages)
-  best_of_k/
-  contrastive_reflection/
-  failure_stratified_k/
-  synaptic_pruning/
-  tournament/
-  slime_mold/
-  ant_colony/
-  active_minibatch/
-  contrastive_synthesis/
-  ecological_succession/
-  modular/
-scripts/
-  run_all_local.py       — multi-worker experiment orchestrator
-  monitor_multi_model.py — Telegram monitoring (15-min per-model + 30-min consolidated)
-  check_node_recovery.sh — cron: pings downed nodes, alerts on recovery
-  smoke_test_all.py      — pre-sweep smoke test runner
-  serve_vllm_*.sh        — SLURM job scripts to launch vLLM per node
-CLAUDE/                  — Claude knowledge docs (see below)
-docs/                    — project planning, mutation selection report
-configs/                 — experiment configurations
-notebooks/               — analysis notebooks
-data/                    — local dataset cache (raw/ gitignored)
-tests/                   — test suite
-runs/                    — experiment results (gitignored)
-logs/                    — orchestrator and SLURM logs (gitignored)
+| Model | Node | GPU | Port | Partition |
+|-------|------|-----|------|-----------|
+| Qwen3-27B-AWQ | manifold | RTX 5090 32GB | 8124 | capstone (8h, chain jobs) |
+| Qwen3-8B | archimedes | RTX 5090 32GB | 8125 | ray-cluster (90d) |
+| Qwen3-14B | kolmogorov | RTX 4090 24GB | 8128 | student-gpu (2h, chain jobs) |
+
+---
+
+## Step 1: Start Inference Servers
+
+```bash
+# 27B-AWQ on manifold — chain 3 jobs for 24h coverage (capstone = 8h max)
+J1=$(sbatch scripts/serve_vllm_27b_manifold.sh | awk '{print $4}')
+J2=$(sbatch --dependency=afterany:$J1 scripts/serve_vllm_27b_manifold.sh | awk '{print $4}')
+J3=$(sbatch --dependency=afterany:$J2 scripts/serve_vllm_27b_manifold.sh | awk '{print $4}')
+
+# 8B on archimedes — single long-running job (ray-cluster = 90d)
+sbatch scripts/serve_vllm_8b.sh
+
+# 14B on kolmogorov — chain 8 jobs for 16h coverage (student-gpu = 2h max)
+J1=$(sbatch scripts/serve_vllm_14b_kolmogorov.sh | awk '{print $4}')
+J2=$(sbatch --dependency=afterany:$J1 scripts/serve_vllm_14b_kolmogorov.sh | awk '{print $4}')
+J3=$(sbatch --dependency=afterany:$J2 scripts/serve_vllm_14b_kolmogorov.sh | awk '{print $4}')
+# add more links as needed
 ```
 
-## CLAUDE/ Knowledge Folder
+Verify servers are up before launching experiments:
+```bash
+curl -sf http://10.0.10.69:8124/v1/models && echo "27B OK"
+curl -sf http://10.0.10.58:8125/v1/models && echo "8B OK"
+curl -sf http://10.0.10.52:8128/v1/models && echo "14B OK"
+```
 
-Critical operational knowledge for Claude in future sessions:
+---
 
-- [CLAUDE/cluster_infrastructure.md](CLAUDE/cluster_infrastructure.md) — nodes, IPs, ports, GPU specs, partition limits, vLLM env
-- [CLAUDE/sweep_execution.md](CLAUDE/sweep_execution.md) — how to launch/resume the multi-model sweep
-- [CLAUDE/monitoring.md](CLAUDE/monitoring.md) — cron setup, Telegram alerts, health checks
-- [CLAUDE/known_bugs_and_fixes.md](CLAUDE/known_bugs_and_fixes.md) — gepa state save fix, vLLM IPC path fix, 14b/4b collision, etc.
+## Step 2: Smoke Test
+
+Always smoke-test before a full sweep. Run against all three models:
+
+```bash
+for MODEL_ARG in "Qwen/Qwen3-27B-AWQ|http://10.0.10.69:8124/v1" \
+                 "Qwen/Qwen3-8B|http://10.0.10.58:8125/v1" \
+                 "Qwen/Qwen3-14B|http://10.0.10.52:8128/v1"; do
+  MODEL=$(echo $MODEL_ARG | cut -d'|' -f1)
+  URL=$(echo $MODEL_ARG | cut -d'|' -f2)
+  export GEPA_MODEL="$MODEL" GEPA_BASE_URL="$URL"
+  .venv/bin/python scripts/run_all_local.py --smoke-test --workers 4 \
+    --benchmark hotpotqa pupa ifbench
+done
+```
+
+---
+
+## Step 3: Full Sweep
+
+300 experiments per model (5 benchmarks × 12 methods × 5 seeds). Run all three in parallel:
+
+```bash
+# 27B-AWQ
+export GEPA_MODEL="Qwen/Qwen3-27B-AWQ" GEPA_BASE_URL="http://10.0.10.69:8124/v1"
+nohup .venv/bin/python scripts/run_all_local.py --workers 8 \
+  --benchmark hotpotqa hover pupa ifbench livebench \
+  &> logs/orchestrator_27b.log &
+
+# 8B
+export GEPA_MODEL="Qwen/Qwen3-8B" GEPA_BASE_URL="http://10.0.10.58:8125/v1"
+nohup .venv/bin/python scripts/run_all_local.py --workers 10 \
+  --benchmark hotpotqa hover pupa ifbench livebench \
+  &> logs/orchestrator_8b.log &
+
+# 14B
+export GEPA_MODEL="Qwen/Qwen3-14B" GEPA_BASE_URL="http://10.0.10.52:8128/v1"
+nohup .venv/bin/python scripts/run_all_local.py --workers 6 \
+  --benchmark hotpotqa hover pupa ifbench livebench \
+  &> logs/orchestrator_14b.log &
+```
+
+The orchestrator is idempotent — safe to restart, skips completed experiments.
+
+---
+
+## Monitoring
+
+```bash
+# Per-model Telegram updates (one message per model)
+.venv/bin/python scripts/monitor_multi_model.py --mode 15min
+
+# Consolidated health dashboard (one message)
+.venv/bin/python scripts/monitor_multi_model.py --mode 30min
+```
+
+Cron jobs run these automatically. Check actual GPU load directly:
+```bash
+curl -s http://10.0.10.58:8125/metrics | grep num_requests_running
+```
+
+---
+
+## Results
+
+```
+runs/qwen3-27b-awq/<benchmark>/<method>/<seed>/result.json
+runs/qwen3-8b/...
+runs/qwen3-14b/...
+```
+
+`result.json` key fields: `test_score`, `train_scores`, `elapsed`.
+
+---
+
+## Worktree Layout
+
+```
+/users/achidamb/projects/gepa-mutations/   ← master branch (shared reference)
+/users/achidamb/projects/gepa-cluster/     ← this worktree (sweep/cluster)
+```
+
+---
+
+## Reference Docs
+
+- [CLAUDE/cluster_infrastructure.md](CLAUDE/cluster_infrastructure.md) — all nodes, IPs, ports, GPU specs, partition limits, vLLM env
+- [CLAUDE/sweep_execution.md](CLAUDE/sweep_execution.md) — full orchestrator reference, worker counts, execution order
+- [CLAUDE/monitoring.md](CLAUDE/monitoring.md) — cron setup, Telegram, health checks, snapshot file
+- [CLAUDE/known_bugs_and_fixes.md](CLAUDE/known_bugs_and_fixes.md) — gepa state fix, vLLM IPC bug, 14b/4b tag collision
 
 ## Conventions
 
-- Paper hyperparameters by default: `temp=0.6`, `top_p=0.95`, `top_k=20`, `minibatch=3`, round-robin module selection
-- Paper baseline scores stored in `src/gepa_mutations/config.py`
-- Model access: `GEPA_MODEL` env var selects model; `GEPA_BASE_URL` sets vLLM endpoint
-- Run results: `runs/<model-tag>/<benchmark>/<method>/<seed>/result.json`
-- AIME excluded from active sweep (no timing data, not in BENCHMARK_PRIORITY)
-- Always smoke test before launching full sweeps; get explicit go/no-go from user
-
-## Phases
-
-1. **Reproduce** — run all 300 experiments/model (5 benchmarks × 12 methods × 5 seeds) across all model sizes
-2. **Mutate** — introduce algorithmic mutations to GEPA; compare against Phase 1 baselines
+- Paper hyperparameters: `temp=0.6`, `top_p=0.95`, `top_k=20`, `minibatch=3`
+- Paper baseline scores in `src/gepa_mutations/config.py`
+- AIME excluded from active sweep
+- Always smoke test before full sweeps; get explicit go/no-go before launching

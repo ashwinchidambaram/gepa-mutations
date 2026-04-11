@@ -70,9 +70,7 @@ EXPERIMENT_DURATION_MINS: dict[tuple[str, str], float] = {
 
 _ACTIVE_BENCHMARKS = set(BENCHMARKS)
 
-# Model definitions
-# cluster = node currently serving this model (updated 2026-04-10: bourbaki/ansatz/deepseek down,
-#           substituted with manifold/sapphire/sar-gpu-vm on capstone partition)
+# Model definitions — cluster branch (1.7B and 4B retired to Mac/sweep/mac)
 MODELS = [
     {
         "tag":        "qwen3-27b-awq",
@@ -89,18 +87,11 @@ MODELS = [
         "log_glob":   "orchestrator_8b.log",
     },
     {
-        "tag":        "qwen3-4b",
-        "display":    "Qwen3-4B",
-        "cluster":    "sapphire (capstone)",
-        "health_url": "http://10.0.100.99:8126/v1/models",
-        "log_glob":   "orchestrator_4b.log",
-    },
-    {
-        "tag":        "qwen3-1.7b",
-        "display":    "Qwen3-1.7B",
-        "cluster":    "sar-gpu-vm (capstone)",
-        "health_url": "http://10.0.50.99:8127/v1/models",
-        "log_glob":   "orchestrator_1b.log",
+        "tag":        "qwen3-14b",
+        "display":    "Qwen3-14B",
+        "cluster":    "kolmogorov (student-gpu)",
+        "health_url": "http://10.0.10.52:8128/v1/models",
+        "log_glob":   "orchestrator_14b.log",
     },
 ]
 
