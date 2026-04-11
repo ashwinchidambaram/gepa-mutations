@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     gepa_max_context: int = 16384
 
     # Model endpoint (empty = provider default, e.g. OpenRouter)
-    api_base_url: str = ""
+    gepa_base_url: str = ""
     model_prefix: str = "openrouter"
     api_key: str = ""
 
@@ -165,8 +165,8 @@ def model_tag(settings: Settings) -> str:
 
 def api_base_kwargs(settings: Settings) -> dict[str, Any]:
     """Return api_base/api_key kwarg dict if a custom endpoint is configured."""
-    if settings.api_base_url:
-        kw: dict[str, Any] = {"api_base": settings.api_base_url}
+    if settings.gepa_base_url:
+        kw: dict[str, Any] = {"api_base": settings.gepa_base_url}
         if settings.api_key:
             kw["api_key"] = settings.api_key
         return kw

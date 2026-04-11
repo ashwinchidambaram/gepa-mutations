@@ -101,6 +101,20 @@ METHOD_PRIORITY = {
 # Benchmark run order: fastest wall-clock first (actual durations, not paper rollout budget)
 BENCHMARK_PRIORITY = {"ifbench": 0, "pupa": 1, "livebench": 2, "hotpotqa": 3, "hover": 4, "aime": 5}
 
+# Method execution tiers within each benchmark:
+#   Tier 0: fast/medium mutations — see mutation results early
+#   Tier 1: heavy/rollout-heavy mutations — most expensive
+#   Tier 2: gepa baseline — run last as reference point for comparison
+METHOD_TIER = {
+    # Tier 0 — fast to medium mutations
+    "modular": 0, "active_minibatch": 0, "contrastive_synthesis": 0,
+    "ecological_succession": 0, "synaptic_pruning": 0, "slime_mold": 0, "ant_colony": 0,
+    # Tier 1 — heavy / rollout-heavy mutations
+    "tournament": 1, "best_of_k_K3": 1, "failure_stratified_k_K3": 1, "contrastive_reflection": 1,
+    # Tier 2 — gepa baseline (last, for final comparison)
+    "gepa": 2,
+}
+
 # Measured average wall-clock duration in minutes per (benchmark, method) from 27B runs.
 # Within each benchmark, experiments are ordered by this — fastest first.
 # Pairs not listed fall back to: 10000 + METHOD_PRIORITY * 100 (always after measured entries).
@@ -202,7 +216,8 @@ class Experiment:
             (self.benchmark, self.method),
             10000 + METHOD_PRIORITY.get(self.method, 99) * 100,
         )
-        return (BENCHMARK_PRIORITY.get(self.benchmark, 99), duration, self.seed)
+        tier = METHOD_TIER.get(self.method, 1)
+        return (BENCHMARK_PRIORITY.get(self.benchmark, 99), tier, duration, self.seed)
 
     def __str__(self) -> str:
         return f"{self.benchmark}/{self.method}/seed={self.seed}"
