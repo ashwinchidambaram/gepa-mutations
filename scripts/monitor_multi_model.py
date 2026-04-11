@@ -70,29 +70,23 @@ EXPERIMENT_DURATION_MINS: dict[tuple[str, str], float] = {
 
 _ACTIVE_BENCHMARKS = set(BENCHMARKS)
 
-# Model definitions — cluster branch (1.7B and 4B retired to Mac/sweep/mac)
+# Model definitions — cluster (vLLM) + Mac (MLX-LM)
 MODELS = [
-    {
-        "tag":        "qwen3-27b-awq",
-        "display":    "Qwen3-27B-AWQ",
-        "cluster":    "manifold (capstone)",
-        "health_url": "http://10.0.10.69:8124/v1/models",
-        "log_glob":   "orchestrator_27b.log",
-    },
-    {
-        "tag":        "qwen3-8b",
-        "display":    "Qwen3-8B",
-        "cluster":    "archimedes",
-        "health_url": "http://10.0.10.58:8125/v1/models",
-        "log_glob":   "orchestrator_8b.log",
-    },
-    {
-        "tag":        "qwen3-14b",
-        "display":    "Qwen3-14B",
-        "cluster":    "kolmogorov (student-gpu)",
-        "health_url": "http://10.0.10.52:8128/v1/models",
-        "log_glob":   "orchestrator_14b.log",
-    },
+    # ── Cluster (vLLM) ─────────────────────────────────────────────────────
+    {"tag": "qwen3-27b-awq", "display": "Qwen3-27B-AWQ", "cluster": "manifold (capstone)",      "health_url": "http://10.0.10.69:8124/v1/models", "log_glob": "orchestrator_27b.log"},
+    {"tag": "qwen3-8b",      "display": "Qwen3-8B",      "cluster": "archimedes",               "health_url": "http://10.0.10.58:8125/v1/models", "log_glob": "orchestrator_8b.log"},
+    {"tag": "qwen3-14b",     "display": "Qwen3-14B",     "cluster": "kolmogorov (student-gpu)", "health_url": "http://10.0.10.52:8128/v1/models", "log_glob": "orchestrator_14b.log"},
+    # ── Mac (MLX-LM) ───────────────────────────────────────────────────────
+    {"tag": "qwen3-0.6b",  "display": "Qwen3-0.6B",  "cluster": "Mac (MLX :8132)", "health_url": "http://localhost:8132/v1/models", "log_glob": "orchestrator_0.6b.log"},
+    {"tag": "qwen3-1.7b",  "display": "Qwen3-1.7B",  "cluster": "Mac (MLX :8125)", "health_url": "http://localhost:8125/v1/models", "log_glob": "orchestrator_1b.log"},
+    {"tag": "qwen3-4b",    "display": "Qwen3-4B",    "cluster": "Mac (MLX :8126)", "health_url": "http://localhost:8126/v1/models", "log_glob": "orchestrator_4b.log"},
+    {"tag": "qwen3-32b",   "display": "Qwen3-32B",   "cluster": "Mac (MLX :8131)", "health_url": "http://localhost:8131/v1/models", "log_glob": "orchestrator_32b.log"},
+    {"tag": "gemma3-1b",   "display": "Gemma3-1B",   "cluster": "Mac (MLX :8133)", "health_url": "http://localhost:8133/v1/models", "log_glob": "orchestrator_gemma3_1b.log"},
+    {"tag": "gemma3-4b",   "display": "Gemma3-4B",   "cluster": "Mac (MLX :8134)", "health_url": "http://localhost:8134/v1/models", "log_glob": "orchestrator_gemma3_4b.log"},
+    {"tag": "gemma3-12b",  "display": "Gemma3-12B",  "cluster": "Mac (MLX :8135)", "health_url": "http://localhost:8135/v1/models", "log_glob": "orchestrator_gemma3_12b.log"},
+    {"tag": "gemma3-27b",  "display": "Gemma3-27B",  "cluster": "Mac (MLX :8136)", "health_url": "http://localhost:8136/v1/models", "log_glob": "orchestrator_gemma3_27b.log"},
+    {"tag": "llama3-1b",   "display": "Llama3.2-1B", "cluster": "Mac (MLX :8137)", "health_url": "http://localhost:8137/v1/models", "log_glob": "orchestrator_llama_1b.log"},
+    {"tag": "llama3-3b",   "display": "Llama3.2-3B", "cluster": "Mac (MLX :8138)", "health_url": "http://localhost:8138/v1/models", "log_glob": "orchestrator_llama_3b.log"},
 ]
 
 
