@@ -1,5 +1,9 @@
 """Experiment configuration matching GEPA paper parameters."""
 
+from __future__ import annotations
+
+from typing import Any
+
 from pydantic_settings import BaseSettings
 
 
@@ -28,8 +32,19 @@ class Settings(BaseSettings):
     gepa_top_k: int = 20
     gepa_max_context: int = 16384
 
+    # Model endpoint (empty = provider default, e.g. OpenRouter)
+    api_base_url: str = ""
+    model_prefix: str = "openrouter"
+    api_key: str = ""
+
     # Test evaluation
     test_eval_workers: int = 10
+
+    # LM call settings (tuned for local non-thinking inference, 0.5ms LAN)
+    lm_timeout: int = 60
+    max_tokens_qa: int = 512        # hotpotqa, hover, pupa, ifbench — short answers
+    max_tokens_math: int = 4096     # aime, livebench — needs to show work; 1024 truncates AIME reasoning
+    max_tokens_reflection: int = 2048  # reflection LM generates new system prompts
 
 
 # Paper baseline scores for comparison (Table 1: Qwen3-8B test set)
@@ -86,4 +101,49 @@ PAPER_HYPERPARAMS = {
         "top_k": 20,
         "max_context": 16384,
     },
+}
+
+
+# ---------------------------------------------------------------------------
+# Model helpers (here to avoid circular imports between base.py / experiment.py)
+# ---------------------------------------------------------------------------
+
+
+def model_id(settings: Settings) -> str:
+    """Build the full LiteLLM model ID from settings."""
+    return f"{settings.model_prefix}/{settings.gepa_model}"
+
+
+def model_tag(settings: Settings) -> str:
+    """Derive a filesystem-safe model tag from the GEPA_MODEL env var.
+
+    Used to namespace result directories: runs/{model_tag}/{benchmark}/{method}/{seed}/
+    """
+    m = settings.gepa_model.lower()
+    if "27b" in m:
+        return "qwen3-27b-awq"
+    if "8b" in m:
+        return "qwen3-8b"
+    if "4b" in m:
+        return "qwen3-4b"
+    if "1.7b" in m or "1b" in m:
+        return "qwen3-1.7b"
+    # Fallback: sanitize the model name
+    return m.replace("/", "-").replace(":", "-").replace(" ", "-")
+
+
+def api_base_kwargs(settings: Settings) -> dict[str, Any]:
+    """Return api_base/api_key kwarg dict if a custom endpoint is configured."""
+    if settings.api_base_url:
+        kw: dict[str, Any] = {"api_base": settings.api_base_url}
+        if settings.api_key:
+            kw["api_key"] = settings.api_key
+        return kw
+    return {}
+
+
+# extra_body to disable thinking on Qwen3-series models (thinking is on by default)
+THINKING_DISABLED_EXTRA_BODY: dict[str, Any] = {
+    "chat_template_kwargs": {"enable_thinking": False},
+    "include_reasoning": False,
 }

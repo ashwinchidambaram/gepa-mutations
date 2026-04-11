@@ -6,12 +6,19 @@ Reference: gepa/examples/aime_math/utils.py and gepa/src/gepa/core/adapter.py
 
 from __future__ import annotations
 
+import logging
 import re
 from collections.abc import Mapping, Sequence
 from typing import Any, NamedTuple
 
 import dspy
 from gepa.core.adapter import EvaluationBatch
+
+logger = logging.getLogger(__name__)
+
+# Abort evaluate() batch after this many consecutive LM errors to avoid
+# silently burning rollout budget when the inference endpoint is down.
+MAX_CONSECUTIVE_EVAL_ERRORS = 10
 
 from gepa_mutations.benchmarks.signatures import MathSolverSignature
 
@@ -80,14 +87,48 @@ def _run_llm(example: dspy.Example, prompt: str, predictor: dspy.ChainOfThought)
 class AIMEAdapter:
     """GEPAAdapter for AIME-2025 math benchmark.
 
-    Uses dspy.ChainOfThought with MathSolverSignature, matching the paper.
-    The task LM must be configured via dspy.configure(lm=...) before use.
+    Uses direct LiteLLM calls (via the task_lm callable) with regex-based
+    integer extraction. This avoids DSPy's JSONAdapter which fails when the
+    model outputs mathematical set notation like {Z}, {i+1}, etc.
     """
 
     propose_new_texts = None  # Use GEPA's default reflective mutation proposer
 
-    def __init__(self):
-        self._predictor = dspy.ChainOfThought(MathSolverSignature)
+    def __init__(self, task_lm):
+        self._lm = task_lm
+
+    def _generate(self, prompt: str, question: str) -> str:
+        messages = [
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": question},
+        ]
+        return self._lm(messages)
+
+    @staticmethod
+    def _extract_integer(response: str) -> str | None:
+        """Extract final integer answer from model response.
+
+        Tries patterns in order:
+        1. Explicit "Final answer: N" or "Answer: N" at end of response
+        2. Last standalone integer (0-999) in the response
+        Returns None if no integer found.
+        """
+        # Pattern 1: explicit answer declaration
+        for pattern in [
+            r"(?:final\s+answer|answer)\s*[=:]\s*(\d+)",
+            r"(?:the\s+answer\s+is|therefore|thus|so)\s+(\d+)",
+            r"\\boxed\{(\d+)\}",
+        ]:
+            matches = list(re.finditer(pattern, response, re.IGNORECASE))
+            if matches:
+                return matches[-1].group(1)
+
+        # Pattern 2: last standalone integer in response
+        integers = re.findall(r"\b(\d{1,3})\b", response)
+        if integers:
+            return integers[-1]
+
+        return None
 
     def evaluate(
         self,
@@ -100,15 +141,29 @@ class AIMEAdapter:
         scores: list[float] = []
         trajectories: list[TrajectoryRecord] | None = [] if capture_traces else None
 
+        consecutive_errors = 0
+
         for example in batch:
             try:
-                prediction = _run_llm(example, prompt, self._predictor)
+                response = self._generate(prompt, example.input) or ""
+                answer_text = self._extract_integer(response) or ""
+                # Create a pseudo-prediction for _math_metric
+                prediction = type("Prediction", (), {"answer": answer_text})()
                 score, feedback = _math_metric(example, prediction)
-                answer_text = prediction.answer
+                consecutive_errors = 0
             except Exception as e:
+                consecutive_errors += 1
                 score = 0.0
                 feedback = f"Evaluation error: {e}"
                 answer_text = ""
+                response = ""
+                if consecutive_errors <= 3:
+                    logger.warning("AIME eval error (%d consecutive): %s", consecutive_errors, e)
+                if consecutive_errors >= MAX_CONSECUTIVE_EVAL_ERRORS:
+                    raise RuntimeError(
+                        f"Aborting AIME evaluation: {consecutive_errors} consecutive LM errors. "
+                        f"Last error: {e}"
+                    ) from e
 
             outputs.append({"answer": answer_text})
             scores.append(score)
@@ -117,7 +172,7 @@ class AIMEAdapter:
                 trajectories.append(TrajectoryRecord(
                     example=example,
                     prompt=prompt,
-                    output=answer_text,
+                    output=response,
                     score=score,
                     feedback=feedback,
                 ))
@@ -187,14 +242,25 @@ class QAAdapter:
         scores: list[float] = []
         trajectories: list[TrajectoryRecord] | None = [] if capture_traces else None
 
+        consecutive_errors = 0
+
         for example in batch:
             try:
                 response = self._generate(prompt, example.input) or ""
                 score, feedback = self._score(example, response)
+                consecutive_errors = 0
             except Exception as e:
+                consecutive_errors += 1
                 response = ""
                 score = 0.0
                 feedback = f"Evaluation error: {e}"
+                if consecutive_errors <= 3:
+                    logger.warning("QA eval error (%d consecutive): %s", consecutive_errors, e)
+                if consecutive_errors >= MAX_CONSECUTIVE_EVAL_ERRORS:
+                    raise RuntimeError(
+                        f"Aborting QA evaluation: {consecutive_errors} consecutive LM errors. "
+                        f"Last error: {e}"
+                    ) from e
 
             outputs.append({"response": response})
             scores.append(score)
@@ -572,6 +638,57 @@ class PUPAAdapter(QAAdapter):
     - leakage: fraction of PII units NOT leaked in response (0-1)
     """
 
+    def __init__(self, task_lm_callable, *, judge_lm=None):
+        super().__init__(task_lm_callable)
+        self._judge_lm = judge_lm
+
+    # ------------------------------------------------------------------
+    # Quality scoring helpers
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _word_overlap_quality(gold: str, resp: str) -> float:
+        """Word-overlap quality score between gold redaction and response."""
+        gold_lower = gold.strip().lower()
+        resp_lower = resp.strip().lower()
+        gold_words = set(gold_lower.split())
+        resp_words = set(resp_lower.split())
+        if gold_words:
+            overlap = len(gold_words & resp_words) / len(gold_words)
+        else:
+            overlap = 0.0
+        return min(1.0, overlap)
+
+    def _judge_quality(self, gold: str, resp: str) -> float:
+        """LLM-as-judge quality score comparing response to gold redaction.
+
+        Falls back to word-overlap on any failure.
+        Reference: gepa/tests/test_pareto_frontier_types/test_pareto_frontier_types.py
+        """
+        try:
+            prompt = (
+                "You are a strict grader evaluating privacy-preserving query rewriting.\n"
+                "Compare the assistant's rewritten query to the gold-standard redaction.\n\n"
+                f"GOLD REDACTION:\n{gold.strip()}\n\n"
+                f"ASSISTANT RESPONSE:\n{resp.strip()}\n\n"
+                "Return only a number between 0 and 1."
+            )
+            if self._judge_lm is None:
+                return self._word_overlap_quality(gold, resp)
+            raw = self._judge_lm(prompt)
+            try:
+                score = float(raw.strip())
+            except (ValueError, TypeError):
+                # Regex fallback: extract first float-like substring
+                m = re.search(r"(\d*\.?\d+)", raw)
+                if m:
+                    score = float(m.group(1))
+                else:
+                    return self._word_overlap_quality(gold, resp)
+            return max(0.0, min(1.0, score))
+        except Exception:
+            return self._word_overlap_quality(gold, resp)
+
     def _score(self, example: dspy.Example, response: str) -> tuple[float, str]:
         # PII leakage check
         pii_units_raw = getattr(example, "pii_units", "")
@@ -581,29 +698,22 @@ class PUPAAdapter(QAAdapter):
             pii_list = [p.strip() for p in str(pii_units_raw).split("||") if p.strip()]
 
         if pii_list:
-            leaked = sum(1 for pii in pii_list if pii and pii in response)
+            leaked = sum(1 for pii in pii_list if pii and pii.lower() in response.lower())
             leakage_score = 1.0 - (leaked / len(pii_list))
         else:
             leakage_score = 1.0
 
-        # Simple quality: check if response resembles the gold redaction
-        # (LLM-as-judge is expensive; use string similarity for smoke tests)
-        gold = str(example.answer).strip().lower()
-        resp = response.strip().lower()
-
-        # Check overlap: what fraction of gold words appear in response
-        gold_words = set(gold.split())
-        resp_words = set(resp.split())
-        if gold_words:
-            overlap = len(gold_words & resp_words) / len(gold_words)
+        # Quality: LLM-as-judge when available, else word-overlap fallback
+        gold = str(example.answer)
+        if self._judge_lm is not None:
+            quality = self._judge_quality(gold, response)
         else:
-            overlap = 0.0
-
-        quality = min(1.0, overlap)
+            quality = self._word_overlap_quality(gold, response)
         total_score = (quality + leakage_score) / 2
 
+        quality_method = "LLM-as-judge" if self._judge_lm is not None else "word overlap"
         feedback_parts = [
-            f"Quality (word overlap): {quality:.2f}",
+            f"Quality ({quality_method}): {quality:.2f}",
             f"Leakage score: {leakage_score:.2f} ({len(pii_list)} PII units checked)",
             f"Total: {total_score:.2f}",
         ]
@@ -646,7 +756,18 @@ class LiveBenchAdapter(QAAdapter):
                 return 1.0, f"Correct (last line match). Expected: '{expected}'"
             # Check for \boxed{answer} pattern
             if "\\boxed{" in line:
-                boxed = line.split("\\boxed{")[-1].rstrip("}")
+                # Brace-depth parsing to handle nested braces like \boxed{\frac{1}{2}}
+                raw = line.split("\\boxed{", 1)[-1]
+                depth, end = 1, len(raw)
+                for ci, ch in enumerate(raw):
+                    if ch == "{":
+                        depth += 1
+                    elif ch == "}":
+                        depth -= 1
+                        if depth == 0:
+                            end = ci
+                            break
+                boxed = raw[:end]
                 if self._normalize(expected) == self._normalize(boxed):
                     return 1.0, f"Correct (boxed match). Expected: '{expected}'"
 
@@ -680,7 +801,9 @@ def get_adapter(benchmark: str, task_lm=None):
         A GEPAAdapter instance.
     """
     if benchmark == "aime":
-        return AIMEAdapter()
+        if task_lm is None:
+            raise ValueError("AIMEAdapter requires task_lm — pass a QA-style LM callable")
+        return AIMEAdapter(task_lm)
     elif benchmark == "hotpotqa":
         return QAAdapter(task_lm)
     elif benchmark == "ifbench":
@@ -688,7 +811,7 @@ def get_adapter(benchmark: str, task_lm=None):
     elif benchmark == "hover":
         return HoVerAdapter(task_lm)
     elif benchmark == "pupa":
-        return PUPAAdapter(task_lm)
+        return PUPAAdapter(task_lm, judge_lm=task_lm)
     elif benchmark == "livebench":
         return LiveBenchAdapter(task_lm)
     else:

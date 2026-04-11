@@ -6,6 +6,7 @@ implementations per benchmark, matching the paper's exact configuration.
 
 from __future__ import annotations
 
+import re
 import time
 from dataclasses import dataclass, field
 from typing import Any
@@ -17,10 +18,21 @@ from rich.console import Console
 
 from gepa_mutations.benchmarks.evaluators import get_adapter
 from gepa_mutations.benchmarks.loader import load_benchmark
-from gepa_mutations.config import PAPER_ROLLOUTS, Settings
-from gepa_mutations.runner.callbacks import MetricsCallback
+from gepa_mutations.config import (
+    PAPER_ROLLOUTS,
+    THINKING_DISABLED_EXTRA_BODY,
+    Settings,
+    api_base_kwargs,
+    model_id,
+)
+from gepa_mutations.runner.callbacks import MetricsCallback, ProgressStreamerCallback
 from gepa_mutations.runner.timeout import call_with_timeout
 from gepa_mutations.storage.local import save_result
+from gepa_mutations.metrics.collector import MetricsCollector
+from gepa_mutations.metrics.tracked_lm import TrackedLM
+from gepa_mutations.config import model_tag as get_model_tag
+
+_THINK_RE = re.compile(r"<think>.*?</think>", re.DOTALL)
 
 
 class LM:
@@ -42,7 +54,9 @@ class LM:
         self.completion_kwargs: dict[str, Any] = {
             **({"temperature": temperature} if temperature is not None else {}),
             **({"max_tokens": max_tokens} if max_tokens is not None else {}),
-            "timeout": kwargs.pop("timeout", 120),
+            "timeout": kwargs.pop("timeout", 60),
+            # Disable Qwen3-series thinking mode — enabled by default, corrupts evals
+            "extra_body": {**THINKING_DISABLED_EXTRA_BODY, **kwargs.pop("extra_body", {})},
             **kwargs,
         }
 
@@ -52,7 +66,7 @@ class LM:
         else:
             messages = prompt
 
-        timeout_budget = self.completion_kwargs.get("timeout", 120) + 30
+        timeout_budget = self.completion_kwargs.get("timeout", 60) + 30
 
         completion = call_with_timeout(
             litellm.completion,
@@ -63,7 +77,10 @@ class LM:
             timeout_seconds=timeout_budget,
             **self.completion_kwargs,
         )
-        return completion.choices[0].message.content
+        self._last_usage = getattr(completion, "usage", None)
+        content = completion.choices[0].message.content or ""
+        # Safety net: strip any residual <think>...</think> blocks
+        return _THINK_RE.sub("", content).strip()
 
     def __repr__(self) -> str:
         return f"LM(model={self.model!r})"
@@ -158,32 +175,38 @@ class ExperimentRunner:
     def _build_task_lm(self) -> dspy.LM:
         """Build the task LM (dspy.LM for math benchmarks)."""
         return dspy.LM(
-            f"openrouter/{self.settings.gepa_model}",
+            model_id(self.settings),
             temperature=self.settings.gepa_temperature,
             top_p=self.settings.gepa_top_p,
             top_k=self.settings.gepa_top_k,
-            max_tokens=self.settings.gepa_max_context,
-            timeout=120,
+            max_tokens=self.settings.max_tokens_math,
+            timeout=self.settings.lm_timeout,
+            extra_body=THINKING_DISABLED_EXTRA_BODY,
+            **api_base_kwargs(self.settings),
         )
 
     def _build_reflection_lm(self) -> LM:
         """Build the reflection LM (gepa.lm.LM with explicit params)."""
         return LM(
-            f"openrouter/{self.settings.gepa_model}",
+            model_id(self.settings),
             temperature=self.settings.gepa_temperature,
-            max_tokens=self.settings.gepa_max_context,
+            max_tokens=self.settings.max_tokens_reflection,
             top_p=self.settings.gepa_top_p,
             top_k=self.settings.gepa_top_k,
+            timeout=self.settings.lm_timeout,
+            **api_base_kwargs(self.settings),
         )
 
     def _build_qa_task_lm(self) -> LM:
         """Build the task LM for QA benchmarks (gepa.lm.LM for direct calls)."""
         return LM(
-            f"openrouter/{self.settings.gepa_model}",
+            model_id(self.settings),
             temperature=self.settings.gepa_temperature,
-            max_tokens=self.settings.gepa_max_context,
+            max_tokens=self.settings.max_tokens_qa,
             top_p=self.settings.gepa_top_p,
             top_k=self.settings.gepa_top_k,
+            timeout=self.settings.lm_timeout,
+            **api_base_kwargs(self.settings),
         )
 
     def _get_seed_prompt(self, benchmark: str) -> str:
@@ -225,8 +248,8 @@ class ExperimentRunner:
         )
 
         # Apply subset if requested
-        trainset = data.train[:subset] if subset else data.train
-        valset = data.val[:subset] if subset else data.val
+        trainset = data.train[:subset] if subset is not None else data.train
+        valset = data.val[:subset] if subset is not None else data.val
         testset = data.test
 
         if dry_run:
@@ -242,31 +265,36 @@ class ExperimentRunner:
                 wall_clock_seconds=0.0,
             )
 
-        # Configure task LM
-        if self._uses_dspy(benchmark):
-            task_lm = self._build_task_lm()
-            dspy.configure(lm=task_lm)
-            adapter = get_adapter(benchmark)
-        else:
-            qa_lm = self._build_qa_task_lm()
-            adapter = get_adapter(benchmark, task_lm=qa_lm)
+        # Configure task LM — AIME uses direct LM calls (not DSPy) to avoid
+        # JSONAdapter failures from math set notation in model responses.
+        qa_lm = self._build_qa_task_lm()
+        collector = MetricsCollector()
+        tracked_qa_lm = TrackedLM(qa_lm, collector, role="task")
+        adapter = get_adapter(benchmark, task_lm=tracked_qa_lm)
 
         # Build reflection LM (explicit params, not bare string)
         reflection_lm = self._build_reflection_lm()
+        tracked_reflection_lm = TrackedLM(reflection_lm, collector, role="reflection")
 
         # Rollout budget
         if max_metric_calls is None:
             max_metric_calls = PAPER_ROLLOUTS["gepa"].get(benchmark, 5000)
 
-        # Metrics callback
-        metrics_cb = MetricsCallback(benchmark=benchmark, seed=seed)
+        # Run directory for GEPA state persistence
+        _mtag = get_model_tag(self.settings)
+        run_dir = f"runs/{_mtag}/{benchmark}/gepa/{seed}/gepa_state"
+
+        # Metrics callback (with intermediate checkpointing)
+        metrics_cb = MetricsCallback(benchmark=benchmark, seed=seed, run_dir=run_dir)
+
+        # Progress streamer (writes progress.json + JSONL event log)
+        progress_cb = ProgressStreamerCallback(
+            benchmark=benchmark, seed=seed, run_dir=run_dir,
+        )
 
         # Seed candidate
         seed_prompt = self._get_seed_prompt(benchmark)
         seed_candidate = {"system_prompt": seed_prompt}
-
-        # Run directory for GEPA state persistence
-        run_dir = f"runs/{benchmark}/gepa/{seed}/gepa_state"
 
         console.print(f"[bold]Running GEPA optimization[/bold]")
         console.print(f"  Benchmark: {benchmark}, Seed: {seed}")
@@ -279,7 +307,7 @@ class ExperimentRunner:
             trainset=trainset,
             valset=valset,
             adapter=adapter,
-            reflection_lm=reflection_lm,
+            reflection_lm=tracked_reflection_lm,
             candidate_selection_strategy="pareto",
             frontier_type="instance",
             skip_perfect_score=True,
@@ -291,7 +319,7 @@ class ExperimentRunner:
             cache_evaluation=True,
             seed=seed,
             run_dir=run_dir,
-            callbacks=[metrics_cb],
+            callbacks=[metrics_cb, progress_cb],
             display_progress_bar=True,
             raise_on_exception=True,
         )
@@ -313,6 +341,29 @@ class ExperimentRunner:
 
         wall_clock = time.time() - start_time
 
+        # Build token-tracked metrics (merge with GEPA-specific callback data)
+        token_metrics = collector.finalize(
+            test_score=test_eval.score,
+            best_prompt=best_prompt,
+            test_example_scores=test_eval.example_scores,
+            test_example_ids=test_eval.example_ids,
+            model=model_id(self.settings),
+            model_tag=get_model_tag(self.settings),
+            benchmark=benchmark,
+            seed=seed,
+            method="gepa",
+        )
+        # Combine: GEPA-specific fields take precedence, token fields fill the gap
+        gepa_metrics = metrics_cb.metrics.to_dict()
+        combined_metrics = {**token_metrics, **gepa_metrics}
+        # Ensure token fields from collector are always present (gepa_metrics lacks them)
+        for k in ["total_tokens", "task_input_tokens", "task_output_tokens",
+                  "reflection_input_tokens", "reflection_output_tokens",
+                  "model", "model_tag"]:
+            combined_metrics[k] = token_metrics.get(k, 0)
+
+        mtagval = get_model_tag(self.settings)
+
         # Build experiment result
         exp_result = ExperimentResult(
             benchmark=benchmark,
@@ -324,21 +375,22 @@ class ExperimentRunner:
             config_snapshot=self._config_snapshot(benchmark, seed, subset, use_merge),
             wall_clock_seconds=wall_clock,
             method="gepa",
-            metrics=metrics_cb.metrics.to_dict(),
+            metrics=combined_metrics,
             all_candidates=result.candidates,
             test_example_scores=test_eval.example_scores,
             test_example_ids=test_eval.example_ids,
         )
 
-        # Save results
+        # Save results (model_tag namespaces the output directory)
         save_result(
             benchmark=benchmark,
             seed=seed,
             result_data=exp_result.to_dict(),
             config_data=exp_result.config_snapshot,
-            metrics_data=exp_result.metrics,
+            metrics_data=combined_metrics,
+            model_tag=mtagval,
         )
-        console.print(f"  Results saved to runs/{benchmark}/gepa/{seed}/")
+        console.print(f"  Results saved to runs/{mtagval}/{benchmark}/gepa/{seed}/")
 
         return exp_result
 
@@ -391,7 +443,7 @@ class ExperimentRunner:
             "seed": seed,
             "subset": subset,
             "use_merge": use_merge,
-            "model": f"openrouter/{self.settings.gepa_model}",
+            "model": model_id(self.settings),
             "temperature": self.settings.gepa_temperature,
             "top_p": self.settings.gepa_top_p,
             "top_k": self.settings.gepa_top_k,

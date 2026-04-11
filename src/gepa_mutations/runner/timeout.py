@@ -25,6 +25,9 @@ def call_with_timeout(fn, *args, timeout_seconds: int = 150, **kwargs) -> Any:
     Raises:
         TimeoutError: If *fn* doesn't return within *timeout_seconds*.
     """
-    with ThreadPoolExecutor(max_workers=1) as pool:
-        future = pool.submit(fn, *args, **kwargs)
+    pool = ThreadPoolExecutor(max_workers=1)
+    future = pool.submit(fn, *args, **kwargs)
+    try:
         return future.result(timeout=timeout_seconds)
+    finally:
+        pool.shutdown(wait=False, cancel_futures=True)

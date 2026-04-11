@@ -18,7 +18,9 @@ from typing import Any
 RUNS_DIR = Path("runs")
 
 
-def _run_dir(benchmark: str, method: str = "gepa", seed: int = 0) -> Path:
+def _run_dir(benchmark: str, method: str = "gepa", seed: int = 0, model_tag: str = "") -> Path:
+    if model_tag:
+        return RUNS_DIR / model_tag / benchmark / method / str(seed)
     return RUNS_DIR / benchmark / method / str(seed)
 
 
@@ -30,12 +32,13 @@ def save_result(
     metrics_data: dict[str, Any] | None = None,
     state_obj: Any = None,
     method: str = "gepa",
+    model_tag: str = "",
 ) -> Path:
     """Save experiment results to local filesystem.
 
     Returns the run directory path.
     """
-    run_path = _run_dir(benchmark, method, seed)
+    run_path = _run_dir(benchmark, method, seed, model_tag=model_tag)
     run_path.mkdir(parents=True, exist_ok=True)
 
     # Config snapshot
@@ -59,9 +62,9 @@ def save_result(
     return run_path
 
 
-def load_result(benchmark: str, seed: int, method: str = "gepa") -> dict[str, Any]:
+def load_result(benchmark: str, seed: int, method: str = "gepa", model_tag: str = "") -> dict[str, Any]:
     """Load experiment result from local filesystem."""
-    run_path = _run_dir(benchmark, method, seed)
+    run_path = _run_dir(benchmark, method, seed, model_tag=model_tag)
     result_file = run_path / "result.json"
 
     if not result_file.exists():
@@ -71,9 +74,9 @@ def load_result(benchmark: str, seed: int, method: str = "gepa") -> dict[str, An
         return json.load(f)
 
 
-def load_metrics(benchmark: str, seed: int, method: str = "gepa") -> dict[str, Any] | None:
+def load_metrics(benchmark: str, seed: int, method: str = "gepa", model_tag: str = "") -> dict[str, Any] | None:
     """Load metrics data if available."""
-    run_path = _run_dir(benchmark, method, seed)
+    run_path = _run_dir(benchmark, method, seed, model_tag=model_tag)
     metrics_file = run_path / "metrics.json"
 
     if not metrics_file.exists():
@@ -83,9 +86,9 @@ def load_metrics(benchmark: str, seed: int, method: str = "gepa") -> dict[str, A
         return json.load(f)
 
 
-def load_config(benchmark: str, seed: int, method: str = "gepa") -> dict[str, Any]:
+def load_config(benchmark: str, seed: int, method: str = "gepa", model_tag: str = "") -> dict[str, Any]:
     """Load experiment config snapshot."""
-    run_path = _run_dir(benchmark, method, seed)
+    run_path = _run_dir(benchmark, method, seed, model_tag=model_tag)
     config_file = run_path / "config.json"
 
     if not config_file.exists():
@@ -95,13 +98,13 @@ def load_config(benchmark: str, seed: int, method: str = "gepa") -> dict[str, An
         return json.load(f)
 
 
-def list_runs(benchmark: str | None = None, method: str = "gepa") -> list[dict[str, Any]]:
+def list_runs(benchmark: str | None = None, method: str = "gepa", model_tag: str = "") -> list[dict[str, Any]]:
     """List all completed runs, optionally filtered by benchmark.
 
     Returns list of dicts with keys: benchmark, method, seed, path.
     """
     runs = []
-    base = RUNS_DIR
+    base = RUNS_DIR / model_tag if model_tag else RUNS_DIR
 
     if not base.exists():
         return runs

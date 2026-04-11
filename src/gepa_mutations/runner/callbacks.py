@@ -126,8 +126,9 @@ class MetricsCallback:
     Implements the GEPACallback protocol by defining the relevant on_* methods.
     """
 
-    def __init__(self, benchmark: str, seed: int):
+    def __init__(self, benchmark: str, seed: int, run_dir: str | Path | None = None):
         self.metrics = RunMetrics(benchmark=benchmark, seed=seed)
+        self._run_dir = Path(run_dir) if run_dir else None
         self._iteration_start_time: float = 0.0
         self._current_iteration: IterationMetrics | None = None
         self._running_best_val_score: float = 0.0
@@ -166,6 +167,10 @@ class MetricsCallback:
             ))
 
             self._current_iteration = None
+
+            # Periodic checkpoint (every 100 iterations)
+            if self._run_dir:
+                self.on_iteration_end_checkpoint(self._run_dir)
 
     def on_candidate_selected(self, event: dict[str, Any]) -> None:
         if self._current_iteration is not None:
@@ -216,9 +221,135 @@ class MetricsCallback:
             "is_best_program": event.get("is_best_program"),
         })
 
+    def on_iteration_end_checkpoint(self, run_dir: str | Path) -> None:
+        """Save intermediate metrics checkpoint if enough iterations have passed."""
+        if len(self.metrics.iterations) % 100 == 0 and len(self.metrics.iterations) > 0:
+            checkpoint_path = Path(run_dir) / "metrics_checkpoint.json"
+            checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                with open(checkpoint_path, "w") as f:
+                    json.dump(self.metrics.to_dict(), f)
+            except Exception:
+                pass  # Never crash the optimization for a checkpoint
+
     def save(self, output_path: str | Path) -> None:
         """Save metrics to a JSON file."""
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         with open(output_path, "w") as f:
             json.dump(self.metrics.to_dict(), f, indent=2)
+
+
+class ProgressStreamerCallback:
+    """Writes real-time progress to progress.json and appends JSONL event log.
+
+    Designed to be polled by external monitoring (cron, dashboards) for
+    within-run visibility into multi-hour optimization runs.
+    """
+
+    def __init__(
+        self,
+        benchmark: str,
+        seed: int,
+        run_dir: str | Path,
+        progress_every_n_rollouts: int = 50,
+    ):
+        self.benchmark = benchmark
+        self.seed = seed
+        self.run_dir = Path(run_dir)
+        self.progress_every_n_rollouts = progress_every_n_rollouts
+
+        self._start_time: float = 0.0
+        self._rollouts_used: int = 0
+        self._rollout_budget: int = 0
+        self._best_val_score: float = 0.0
+        self._iteration: int = 0
+        self._last_reported_rollout: int = 0
+        self._accepted: int = 0
+        self._total_iterations: int = 0
+
+        self._progress_path = self.run_dir / "progress.json"
+        self._jsonl_path = self.run_dir / "run_events.jsonl"
+        self.run_dir.mkdir(parents=True, exist_ok=True)
+
+    def on_optimization_start(self, event: dict[str, Any]) -> None:
+        self._start_time = time.time()
+        self._rollout_budget = event.get("max_metric_calls", 0)
+        self._write_progress()
+
+    def on_optimization_end(self, event: dict[str, Any]) -> None:
+        self._total_iterations = event.get("total_iterations", self._iteration)
+        self._rollouts_used = event.get("total_metric_calls", self._rollouts_used)
+        self._write_progress()
+
+    def on_iteration_start(self, event: dict[str, Any]) -> None:
+        self._iteration = event.get("iteration", self._iteration + 1)
+
+    def on_iteration_end(self, event: dict[str, Any]) -> None:
+        accepted = event.get("proposal_accepted", False)
+        self._total_iterations = self._iteration
+        if accepted:
+            self._accepted += 1
+        self._append_jsonl({
+            "event": "iteration_end",
+            "iteration": self._iteration,
+            "rollouts": self._rollouts_used,
+            "best_val_score": self._best_val_score,
+            "accepted": accepted,
+            "wall_clock": round(time.time() - self._start_time, 1),
+        })
+
+    def on_budget_updated(self, event: dict[str, Any]) -> None:
+        self._rollouts_used = event.get("metric_calls_used", 0)
+        if self._rollouts_used - self._last_reported_rollout >= self.progress_every_n_rollouts:
+            self._last_reported_rollout = self._rollouts_used
+            self._write_progress()
+
+    def on_valset_evaluated(self, event: dict[str, Any]) -> None:
+        avg_score = event.get("average_score", 0.0)
+        if avg_score > self._best_val_score:
+            self._best_val_score = avg_score
+
+    def on_candidate_accepted(self, event: dict[str, Any]) -> None:
+        pass  # tracked via on_iteration_end
+
+    def on_candidate_rejected(self, event: dict[str, Any]) -> None:
+        pass
+
+    def _write_progress(self) -> None:
+        """Write current progress snapshot to progress.json (atomic overwrite)."""
+        elapsed = time.time() - self._start_time if self._start_time else 0
+        pct = (self._rollouts_used / self._rollout_budget * 100) if self._rollout_budget else 0
+        eta_seconds = None
+        if self._rollouts_used > 0 and self._rollout_budget > 0:
+            rate = self._rollouts_used / elapsed
+            remaining = self._rollout_budget - self._rollouts_used
+            eta_seconds = round(remaining / rate)
+
+        data = {
+            "benchmark": self.benchmark,
+            "seed": self.seed,
+            "rollouts_used": self._rollouts_used,
+            "rollout_budget": self._rollout_budget,
+            "progress_pct": round(pct, 1),
+            "best_val_score": round(self._best_val_score, 4),
+            "iteration": self._iteration,
+            "acceptance_rate": round(self._accepted / max(self._total_iterations, 1), 3),
+            "wall_clock_seconds": round(elapsed, 1),
+            "eta_seconds": eta_seconds,
+        }
+        try:
+            tmp = self._progress_path.with_suffix(".tmp")
+            with open(tmp, "w") as f:
+                json.dump(data, f)
+            tmp.rename(self._progress_path)
+        except Exception:
+            pass  # Never crash the optimization
+
+    def _append_jsonl(self, record: dict[str, Any]) -> None:
+        """Append a single JSON line to the event log."""
+        try:
+            with open(self._jsonl_path, "a") as f:
+                f.write(json.dumps(record) + "\n")
+        except Exception:
+            pass  # Never crash the optimization

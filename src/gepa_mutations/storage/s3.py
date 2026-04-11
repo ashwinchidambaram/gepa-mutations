@@ -57,14 +57,15 @@ def download_results(
     local_path = Path(local_dir) / benchmark / method / str(seed)
     local_path.mkdir(parents=True, exist_ok=True)
 
-    response = s3.list_objects_v2(Bucket=bucket_name, Prefix=prefix)
-    for obj in response.get("Contents", []):
-        key = obj["Key"]
-        filename = key[len(prefix) :]
-        if filename:
-            target = local_path / filename
-            target.parent.mkdir(parents=True, exist_ok=True)
-            s3.download_file(bucket_name, key, str(target))
+    paginator = s3.get_paginator("list_objects_v2")
+    for page in paginator.paginate(Bucket=bucket_name, Prefix=prefix):
+        for obj in page.get("Contents", []):
+            key = obj["Key"]
+            filename = key[len(prefix):]
+            if filename:
+                target = local_path / filename
+                target.parent.mkdir(parents=True, exist_ok=True)
+                s3.download_file(bucket_name, key, str(target))
 
     return local_path
 
@@ -83,17 +84,17 @@ def list_results(
         prefix = f"runs/{benchmark}/{method}/"
 
     results = []
-    response = s3.list_objects_v2(Bucket=bucket_name, Prefix=prefix, Delimiter="/")
-
-    for common_prefix in response.get("CommonPrefixes", []):
-        path = common_prefix["Prefix"]
-        parts = path.strip("/").split("/")
-        if len(parts) >= 4:
-            results.append({
-                "benchmark": parts[1],
-                "method": parts[2],
-                "seed": parts[3],
-                "s3_path": f"s3://{bucket_name}/{path}",
-            })
+    paginator = s3.get_paginator("list_objects_v2")
+    for page in paginator.paginate(Bucket=bucket_name, Prefix=prefix, Delimiter="/"):
+        for common_prefix in page.get("CommonPrefixes", []):
+            path = common_prefix["Prefix"]
+            parts = path.strip("/").split("/")
+            if len(parts) >= 4:
+                results.append({
+                    "benchmark": parts[1],
+                    "method": parts[2],
+                    "seed": parts[3],
+                    "s3_path": f"s3://{bucket_name}/{path}",
+                })
 
     return results

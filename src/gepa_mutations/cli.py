@@ -165,7 +165,7 @@ def _print_results_table(results) -> None:
 
     # Summary row
     test_scores = [r.test_score for r in results]
-    mean = sum(test_scores) / len(test_scores)
+    mean = sum(test_scores) / len(test_scores) if test_scores else 0.0
     table.add_row("---", "---", "---", "---", "---")
     table.add_row("Mean", f"{mean * 100:.2f}%", "", "", "")
 

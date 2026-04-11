@@ -18,6 +18,14 @@ dependencies = [
     "gepa-best-of-k",
     "gepa-contrastive-reflection",
     "gepa-failure-stratified-k",
+    "gepa-synaptic-pruning",
+    "gepa-tournament",
+    "gepa-slime-mold",
+    "gepa-ant-colony",
+    "gepa-active-minibatch",
+    "gepa-contrastive-synthesis",
+    "gepa-ecological-succession",
+    "gepa-modular",
 ]
 
 [project.scripts]
@@ -38,14 +46,22 @@ target-version = "py312"
 select = ["E", "F", "I", "W"]
 
 [tool.uv]
-# Exclude submodule and mutation packages from workspace discovery
-workspace = { exclude = ["gepa", "gepa-best-of-k", "gepa-contrastive-reflection", "gepa-failure-stratified-k"] }
+# Exclude submodule and method packages from workspace discovery
+workspace = { exclude = ["gepa", "methods/best_of_k", "methods/contrastive_reflection", "methods/failure_stratified_k", "methods/synaptic_pruning", "methods/tournament", "methods/slime_mold", "methods/ant_colony", "methods/active_minibatch", "methods/contrastive_synthesis", "methods/ecological_succession", "methods/modular"] }
 
 [tool.uv.sources]
 gepa = { path = "./gepa", editable = true }
-gepa-best-of-k = { path = "./gepa-best-of-k", editable = true }
-gepa-contrastive-reflection = { path = "./gepa-contrastive-reflection", editable = true }
-gepa-failure-stratified-k = { path = "./gepa-failure-stratified-k", editable = true }
+gepa-best-of-k = { path = "./methods/best_of_k", editable = true }
+gepa-contrastive-reflection = { path = "./methods/contrastive_reflection", editable = true }
+gepa-failure-stratified-k = { path = "./methods/failure_stratified_k", editable = true }
+gepa-synaptic-pruning = { path = "./methods/synaptic_pruning", editable = true }
+gepa-tournament = { path = "./methods/tournament", editable = true }
+gepa-slime-mold = { path = "./methods/slime_mold", editable = true }
+gepa-ant-colony = { path = "./methods/ant_colony", editable = true }
+gepa-active-minibatch = { path = "./methods/active_minibatch", editable = true }
+gepa-contrastive-synthesis = { path = "./methods/contrastive_synthesis", editable = true }
+gepa-ecological-succession = { path = "./methods/ecological_succession", editable = true }
+gepa-modular = { path = "./methods/modular", editable = true }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

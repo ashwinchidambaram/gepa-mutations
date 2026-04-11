@@ -23,7 +23,9 @@ env/
 
 # OS
 .DS_Store
+**/.DS_Store
 Thumbs.db
+temp/
 
 # Data and results
 data/raw/
@@ -35,16 +37,20 @@ data/results/
 # Notebooks checkpoints
 .ipynb_checkpoints/
 
-# Claude
+# Claude Code session files (auto-generated, not for version control)
 .claude/
-CLAUDE.md
 claude_agents/
 
 # AWS
 .aws/
 
-# Logs
-logs/*.log
+# Logs and runtime state
+logs/
+.multi_model_snapshot.json
 
 # Experiment artifacts
 runs/
+plots/
+
+# Compiler caches
+torchinductor_*/

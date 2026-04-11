@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import logging
 from typing import Any
 
@@ -30,16 +31,16 @@ class Notifier:
             self._sns_client = boto3.client("sns")
         return self._sns_client
 
-    async def send_telegram(self, message: str) -> None:
-        """Send a message via Telegram bot."""
+    def send_telegram(self, message: str) -> None:
+        """Send an HTML-formatted message via Telegram bot (sync wrapper)."""
         bot = self._get_telegram()
         if bot and self.settings.telegram_chat_id:
             try:
-                await bot.send_message(
+                asyncio.run(bot.send_message(
                     chat_id=self.settings.telegram_chat_id,
                     text=message,
-                    parse_mode="Markdown",
-                )
+                    parse_mode="HTML",
+                ))
             except Exception as e:
                 logger.warning(f"Telegram notification failed: {e}")
 
@@ -56,45 +57,52 @@ class Notifier:
             except Exception as e:
                 logger.warning(f"SNS notification failed: {e}")
 
+    def _send(self, msg: str) -> None:
+        """Send via all configured channels."""
+        self.send_telegram(msg)
+
     def notify_start(self, benchmark: str, seed: int, config: dict[str, Any]) -> None:
         """Notify that an experiment has started."""
         msg = (
-            f"*GEPA Experiment Started*\n"
-            f"Benchmark: `{benchmark}`\n"
-            f"Seed: `{seed}`\n"
-            f"Model: `{config.get('model', 'unknown')}`\n"
-            f"Rollout budget: `{config.get('rollout_budget', 'unknown')}`"
+            f"🚀 <b>GEPA Experiment Started</b>\n"
+            f"Benchmark: <code>{benchmark}</code>  ·  Seed: <code>{seed}</code>\n"
+            f"Model: <code>{config.get('model', 'unknown')}</code>\n"
+            f"Rollout budget: <code>{config.get('rollout_budget', 'unknown')}</code>"
         )
         logger.info(msg)
+        self._send(msg)
 
     def notify_progress(
         self, benchmark: str, seed: int, iteration: int, score: float
     ) -> None:
         """Notify progress update."""
         msg = (
-            f"*GEPA Progress*\n"
-            f"Benchmark: `{benchmark}` | Seed: `{seed}`\n"
-            f"Iteration: `{iteration}` | Best score: `{score:.4f}`"
+            f"📈 <b>GEPA Progress</b>\n"
+            f"Benchmark: <code>{benchmark}</code>  ·  Seed: <code>{seed}</code>\n"
+            f"Iteration: <code>{iteration}</code>  ·  Best score: <code>{score:.4f}</code>"
         )
         logger.info(msg)
+        self._send(msg)
 
     def notify_complete(
         self, benchmark: str, seed: int, test_score: float, wall_clock: float
     ) -> None:
         """Notify that an experiment has completed."""
         msg = (
-            f"*GEPA Experiment Complete*\n"
-            f"Benchmark: `{benchmark}` | Seed: `{seed}`\n"
-            f"Test score: `{test_score * 100:.2f}%`\n"
-            f"Wall clock: `{wall_clock:.0f}s`"
+            f"✅ <b>GEPA Experiment Complete</b>\n"
+            f"Benchmark: <code>{benchmark}</code>  ·  Seed: <code>{seed}</code>\n"
+            f"Test score: <code>{test_score * 100:.2f}%</code>\n"
+            f"Wall clock: <code>{wall_clock:.0f}s</code>"
         )
         logger.info(msg)
+        self._send(msg)
 
     def notify_error(self, benchmark: str, seed: int, error: str) -> None:
         """Notify that an experiment has failed."""
         msg = (
-            f"*GEPA Experiment FAILED*\n"
-            f"Benchmark: `{benchmark}` | Seed: `{seed}`\n"
-            f"Error: `{error[:200]}`"
+            f"❌ <b>GEPA Experiment FAILED</b>\n"
+            f"Benchmark: <code>{benchmark}</code>  ·  Seed: <code>{seed}</code>\n"
+            f"Error: <code>{error[:200]}</code>"
         )
         logger.error(msg)
+        self._send(msg)

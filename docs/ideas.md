@@ -1,614 +1,598 @@
-# Phase 2 Mutation Ideas -- Canonical Write-Up
+# Novel Prompt Optimization Ideas
 
-Eight mutation experiments targeting different components of GEPA's optimization loop.
-Each mutation modifies one or more aspects of the `optimize()` pipeline to test a specific
-hypothesis about prompt evolution dynamics.
+30 experimental methodologies for prompt optimization, designed to beat GEPA on cost, speed, and quality. Organized in three sets based on how they were derived.
 
-This document is the canonical reference produced by synthesizing three independent analyses
-(Code Explorer, Paper Researcher, AI Research Team) against the v0.1.1 GEPA codebase.
+**Evaluation criteria (all ideas measured against GEPA baseline):**
+- Cost less compute (fewer total rollouts)
+- Are overall cheaper (fewer LLM calls)
+- Are faster at optimization (lower wall-clock time)
+- Are better at prompt optimization across all benchmarks
 
----
+**GEPA baseline per iteration:** 2N rollouts (N with traces + N without) + 1 reflection LLM call. For aime (7051 budget), that's ~3500 iterations.
 
-## Summary Table
-
-| # | Canonical Name              | Source | Priority | Prior Result    | Mechanism Target         | Status     |
-|---|----------------------------|--------|----------|-----------------|--------------------------|------------|
-| 1 | best_of_k                  | v2     | 1/8      | +0.300 (AIME)   | Mutation quality          | Validated  |
-| 2 | contrastive_reflection     | v3     | 2/8      | Untested        | Reflection signal         | Untested   |
-| 3 | stratified_batch           | v3     | 3/8      | Untested        | Training distribution     | Untested   |
-| 4 | structured_dpg             | v2     | 4/8      | 0.100 (no gain) | Reflection decomposition  | Needs retest |
-| 5 | lesson_memory              | v2     | 5/8      | 0.100 (no gain) | Cross-iteration learning  | Needs retest |
-| 6 | phenotypic_diversity       | v2     | 6/8      | 0.100 (no gain) | Population diversity      | Needs retest |
-| 7 | boltzmann_selection        | v2     | 7/8      | 0.100 (no gain) | Candidate selection       | Diagnostic |
-| 8 | failure_stratified_k       | v3     | 8/8      | Untested        | K-candidate specialization| Untested   |
-
-**Key findings from synthesis:**
-- Agent C listed `contrastive_reflection` twice (as #4 and #7); these are the same mutation.
-  The correct count is 8 unique mutations.
-- All v2 results used gpt-oss-20b on AIME with budget=50, seed=0. Only `best_of_k` (K=3)
-  produced a measurable gain (0.100 -> 0.400). All others produced 1 candidate matching
-  baseline. These tests were heavily budget-constrained and should not be treated as definitive.
-- v3 mutations (#2 contrastive_reflection, #3 stratified_batch, #8 failure_stratified_k)
-  have never been tested and carry the highest information value.
-- The binding constraint for budget=50 runs is **mutation quality** (number of accepted
-  candidates). Mutations targeting selection/diversity (#6, #7) require larger Pareto
-  fronts that only materialize with longer runs or stronger models.
+**Constraint:** All methods must use a single model (no multi-model cascades or ensembles of different model sizes).
 
 ---
 
-## 1. Best-of-K Mutation Sampling (`best_of_k`)
+## Top 15 Most Promising Ideas
 
-**Source:** v2
-**Priority:** 1/8
+The following 15 ideas (marked with a star in their titles below) were selected as the most promising to experiment with:
 
-**Description:** Instead of proposing a single mutated prompt per iteration, generate K
-independent mutations from the same parent candidate and reflective dataset, evaluate all
-K on the same minibatch, and keep only the best-scoring one. This directly increases the
-expected quality of each accepted mutation at the cost of K times the reflection + evaluation
-budget per iteration.
+**From Set 1 (experiment-informed):**
+- #1 Evaluation-Free Screening (EFS)
+- #2 Active Minibatch Selection (AMS)
+- #4 Contrastive Synthesis Reflection (CSR)
+- #6 Failure-Clustered Targeted Mutation (FCTM)
+- #7 Reflection Trajectory Caching (RTC)
 
-**Hypothesis:** Generating K=3 mutation candidates per iteration will increase the number
-of accepted candidates by at least 2x compared to K=1, translating to +3-10 percentage
-points on benchmarks where the baseline produces fewer than 5 accepted candidates in a
-full run (AIME, IFBench). The effect will be strongest on tasks where the reflection LM
-produces high-variance but occasionally good mutations.
+**From Set A (novel independent):**
+- A3 Tournament Selection (PTS)
+- A4 Adversarial Minimax (AMPO)
+- A5 Modular Decomposition (PDMO)
+- A8 Constraint/Principle Optimization (CFPO)
+- A10 Dual Critic-Guided (DCGO)
 
-**Parameters and Sweep Values:**
-- `mutation_candidates`: [1, 3, 5, 7] (default: 1, paper default: 1)
-
-**Paper Baseline Comparison:** Compare against GEPA scores from Table 1. K=1 should
-reproduce baseline exactly; K>1 consumes budget faster but should produce higher peak
-scores within the same wallclock time.
-
-**Prior Results (v2/v3):** K=3 on AIME (budget=50, gpt-oss-20b): 0.400 (4/10) vs
-baseline 0.100 (1/10). The only mutation with a measurable gain in v2 testing.
-
-**Implementation Notes:**
-- GEPA components modified: `ReflectiveMutationProposer.propose()` (K-loop around
-  `propose_new_texts()` + minibatch eval), `api.py` (new parameter)
-- New classes/methods: None; extends existing `propose()` with K-loop
-- Known bugs in v2/v3 code:
-  - Callback undercounting: K evaluations fire but only 1 `on_evaluation_end` callback
-    is emitted. Fix: emit K evaluation events or a single event with K sub-results.
-  - No deduplication of identical mutations across K candidates. Fix: hash-compare
-    proposed texts and skip duplicates to save budget.
-- Integration point: Inside `ReflectiveMutationProposer.propose()`, after building
-  the reflective dataset but before returning the `CandidateProposal`. The K-loop
-  calls `propose_new_texts()` K times, evaluates each on the same minibatch, and
-  returns only the best-scoring proposal.
-
-**MutationConfig Compatibility:**
-- Existing fields that apply: all current fields (K=1 reproduces baseline)
-- New fields needed:
-  - `mutation_candidates: int = 1`
+**From Set B (nature-inspired):**
+- B1 Slime Mold Pruning (SMNO)
+- B2 Immune Clonal Selection (ISCSH)
+- B5 Synaptic Pruning (SPDO)
+- B6 Ecological Succession (ESO)
+- B9 Ant Colony Components (ACPCO)
 
 ---
 
-## 2. Contrastive Reflection (`contrastive_reflection`)
+## Set 1: Ideas Informed by Current Experiments (CR/BoK/FSK Findings)
 
-**Source:** v3
-**Priority:** 2/8
-
-**Description:** After evaluating the current candidate on a minibatch, search the existing
-candidate pool for candidates that solved examples the current candidate failed on. Inject
-a short snippet (up to 300 characters) of the successful candidate's prompt text into the
-reflection prompt, giving the reflection LM a concrete signal about what distinguishes
-success from failure on specific examples.
-
-**Hypothesis:** Contrastive snippets will produce more targeted mutations on tasks with
-diverse failure modes, increasing accepted-candidate rate by 30-50% compared to baseline
-reflection. Expected gain: +1-3 percentage points on HotpotQA, HoVer, IFBench where
-failure patterns are heterogeneous. Effect will be minimal on AIME/math where failures
-are more uniform.
-
-**Parameters and Sweep Values:**
-- `use_contrastive_reflection`: [True, False] (default: False)
-- `contrastive_snippet_length`: [150, 300, 500] (default: 300)
-
-**Paper Baseline Comparison:** Compare against GEPA scores from Table 1. The mutation
-only activates when the Pareto front contains 2+ candidates with complementary success
-patterns, so early iterations may behave identically to baseline.
-
-**Prior Results (v2/v3):** Never tested standalone. No empirical data available.
-
-**Implementation Notes:**
-- GEPA components modified: `reflective_mutation.py` (new `_build_contrastive_text()`
-  method), `instruction_proposal.py` (accepts contrastive text in prompt), `api.py`
-  (new parameter)
-- New classes/methods: `_build_contrastive_text()` on `ReflectiveMutationProposer`
-- Known bugs in v2/v3 code:
-  - **Val/train ID mismatch (critical):** The contrastive search looks up val subscores
-    (`state.prog_candidate_val_subscores`) using train-set IDs from the minibatch.
-    Train and val sets use different ID spaces, so the lookup will miss all matches.
-    Fix: either search using val IDs mapped from train examples, or build a separate
-    contrastive index on train-set evaluations.
-  - Only the first component's snippet is shown even in multi-component candidates.
-    Fix: include snippets for all components being updated.
-- Integration point: In `ReflectiveMutationProposer.propose()`, after `capture_traces`
-  eval and before calling `propose_new_texts()`. The contrastive text is prepended to
-  the reflective dataset or injected via a modified prompt template.
-
-**MutationConfig Compatibility:**
-- Existing fields that apply: `reflection_prompt_template` (contrastive text may be
-  injected via template modification)
-- New fields needed:
-  - `use_contrastive_reflection: bool = False`
-  - `contrastive_snippet_length: int = 300`
+These build on the key insight from our experiments: **context quality matters more than search quantity** (CR matches/beats BoK at half the cost).
 
 ---
 
-## 3. Difficulty-Stratified Batch Sampling (`stratified_batch`)
+### 1. Evaluation-Free Screening (EFS) *
 
-**Source:** v3
-**Priority:** 3/8
+**Core idea:** Before spending rollouts evaluating a proposed mutation, ask the reflection LLM itself: "Given this example and this prompt, would the output be correct?" Use the LLM's own prediction as a cheap proxy score. Only spend real rollouts on candidates that pass the screen.
 
-**Description:** Replace the default `EpochShuffledBatchSampler` with a
-`DifficultyStratifiedBatchSampler` that partitions training examples into easy, medium,
-and hard strata based on the current best candidate's validation scores. Each minibatch
-is composed by drawing from all three strata, ensuring the reflection LM sees a balanced
-mix of difficulty levels rather than a random sample that may be skewed toward easy
-examples.
+**Why it's novel:** Current methods treat reflection and evaluation as separate phases. EFS fuses them -- the same LLM call that proposes a mutation also predicts its quality. This is analogous to speculative decoding in inference, but applied to prompt optimization.
 
-**Hypothesis:** Stratified sampling will produce mutations that generalize better across
-difficulty levels, reducing the variance of validation scores by 20-40% compared to
-epoch-shuffled sampling. Expected gain: +1-2 percentage points on benchmarks with
-bimodal difficulty distributions (HotpotQA, HoVer). Minimal effect on uniformly
-difficult benchmarks (AIME).
+**Cost:** Each screening call is ~100 tokens (much cheaper than a full task eval with chain-of-thought). If 60% of mutations are screened out, you save ~60% of rollout budget while keeping the good candidates. **~0.6x GEPA rollouts.**
 
-**Parameters and Sweep Values:**
-- `batch_sampler`: ["epoch_shuffled", "difficulty_stratified"] (default: "epoch_shuffled")
-- `stratified_easy_threshold`: [0.6, 0.7, 0.8] (default: 0.7)
-- `stratified_hard_threshold`: [0.2, 0.3, 0.4] (default: 0.3)
+**How it differs from GEPA:** GEPA always evaluates every proposed mutation. EFS adds a cheap filter between proposal and evaluation, skipping obviously bad candidates before they consume rollouts.
 
-**Paper Baseline Comparison:** Compare against GEPA scores from Table 1 with
-epoch_shuffled sampler (paper default). The mutation is most informative on benchmarks
-with at least 30 training examples to ensure meaningful stratification.
-
-**Prior Results (v2/v3):** Never tested standalone. No empirical data available.
-
-**Implementation Notes:**
-- GEPA components modified: `batch_sampler.py` (new `DifficultyStratifiedBatchSampler`
-  class), `api.py` (extended `batch_sampler` string factory)
-- New classes/methods: `DifficultyStratifiedBatchSampler(BatchSampler)` -- drop-in
-  replacement implementing the `BatchSampler` protocol
-- Known bugs in v2/v3 code:
-  - **Train/val ID mismatch (critical):** Uses `state.prog_candidate_val_subscores` to
-    compute difficulty but receives the train `DataLoader`. If train and val use different
-    ID spaces (which they do in most benchmarks), the difficulty lookup fails and the
-    sampler degrades to random sampling silently. Fix: build difficulty scores from
-    train-set evaluation history, or map val scores to train IDs via content matching.
-  - No epoch tracking: unlike `EpochShuffledBatchSampler`, does not maintain epoch
-    state, so coverage guarantees are lost. Fix: add epoch cycling within each stratum.
-- Integration point: Drop-in replacement for `batch_sampler` parameter in `optimize()`.
-  The `api.py` factory maps the string `"difficulty_stratified"` to the new class.
-
-**MutationConfig Compatibility:**
-- Existing fields that apply: `reflection_minibatch_size` (determines total batch size,
-  divided across strata)
-- New fields needed:
-  - `batch_sampler: str = "epoch_shuffled"` (already exists as optimize() param but
-    not in MutationConfig; must be added)
-  - `stratified_easy_threshold: float = 0.7`
-  - `stratified_hard_threshold: float = 0.3`
+**Risk:** LLM self-predictions may not be well-calibrated. Even modest accuracy saves compute, but overconfident screening could reject good candidates.
 
 ---
 
-## 4. Structured DPG Reflection (`structured_dpg`)
+### 2. Active Minibatch Selection (AMS) *
 
-**Source:** v2
-**Priority:** 4/8
+**Core idea:** Instead of epoch-shuffled random minibatches, use information from the Pareto frontier to select maximally informative examples each iteration. Specifically, pick examples where (a) the current best candidate fails, AND (b) at least one other frontier candidate succeeds -- these are the examples where reflection has the most signal.
 
-**Description:** Replace GEPA's single-pass reflection (one LM call that produces the
-new prompt) with a three-phase Diagnose-Prescribe-Generate (DPG) pipeline. Phase 1
-(Diagnose) identifies specific failure patterns in the reflective dataset. Phase 2
-(Prescribe) proposes concrete changes to address each failure. Phase 3 (Generate)
-produces the new prompt text incorporating the prescribed changes. Each phase is a
-separate LM call.
+**Why it's novel:** Standard GEPA treats all training examples as equally informative. AMS exploits the fact that GEPA already tracks per-example scores across all candidates (in `EvaluationCache`). This is essentially active learning applied to the minibatch sampling policy, which hasn't been explored in prompt optimization.
 
-**Hypothesis:** Decomposing reflection into 3 sequential LM calls will produce more
-targeted mutations on tasks with structured failure modes, increasing accepted-candidate
-rate by 25-50% compared to single-pass reflection. Expected gain: +1-3 percentage points
-on IFBench (constraint failures), HoVer (label matching), and AIME (reasoning errors).
-The effect will be model-dependent: stronger models benefit more from structured prompting
-while weaker models may produce vague diagnoses that compound errors across phases.
+**Cost:** Zero extra LLM calls -- it's a CPU-only change to the `BatchSampler`. The improvement comes from faster convergence (fewer iterations to reach the same quality), meaning fewer total rollouts. **~0.6-0.8x GEPA total cost, same per-iteration cost.**
 
-**Parameters and Sweep Values:**
-- `reflection_strategy`: ["default", "structured"] (default: "default")
+**How it differs from GEPA:** Replaces `EpochShuffledBatchSampler` with an information-theoretic sampler. Same cost per iteration, fewer iterations needed.
 
-**Paper Baseline Comparison:** Compare against GEPA scores from Table 1. Structured DPG
-uses 3x the reflection LM tokens per iteration, so the fair comparison holds total
-reflection token budget constant by reducing the number of iterations proportionally.
-
-**Prior Results (v2/v3):** AIME (budget=50, gpt-oss-20b): 0.100 (1/10), matching
-baseline. Only 1 candidate was found. The structured path produced vague diagnoses like
-"the model needs to think harder" rather than actionable prescriptions. This is likely
-a model capability issue -- stronger reflection LMs may benefit more.
-
-**Implementation Notes:**
-- GEPA components modified: `reflective_mutation.py` (strategy dispatch in
-  `propose_new_texts()`), `instruction_proposal.py` (new `run_structured()` method),
-  `api.py` (new parameter)
-- New classes/methods: `run_structured()` (3-phase DPG pipeline),
-  `_format_samples_static()` (text-only sample formatter for structured path)
-- Known bugs in v2/v3 code:
-  - No Image handling in the structured path: if the reflective dataset contains
-    `Image` objects, `_format_samples_static()` will fail or produce placeholder text.
-    Fix: use the same `format_samples()` renderer from `InstructionProposalSignature`.
-  - No contrastive injection in structured path: if `use_contrastive_reflection=True`
-    is set alongside `reflection_strategy="structured"`, the contrastive text is
-    silently dropped. Fix: inject contrastive text into the Diagnose phase.
-- Integration point: In `ReflectiveMutationProposer.propose_new_texts()`, a strategy
-  dispatch selects between the default `InstructionProposalSignature.run()` and the new
-  `run_structured()` based on the `reflection_strategy` parameter.
-
-**MutationConfig Compatibility:**
-- Existing fields that apply: `reflection_prompt_template` (used for the Generate
-  phase; Diagnose and Prescribe use hardcoded prompts)
-- New fields needed:
-  - `reflection_strategy: str = "default"`
+**Risk:** Information-theoretic sampling might overfit to "interesting" examples and miss simpler patterns.
 
 ---
 
-## 5. Cross-Iteration Lesson Memory (`lesson_memory`)
+### 3. Prompt Delta Optimization (PDO)
 
-**Source:** v2
-**Priority:** 5/8
+**Core idea:** Instead of proposing entire new prompts from scratch, propose small edits (insertions, deletions, rewrites of specific sentences) to the current prompt. The reflection call outputs a structured diff, not a complete rewrite.
 
-**Description:** Maintain a rolling window buffer of "lessons" learned from previous
-mutation attempts. Each lesson records what was tried, whether it improved scores, and
-a brief summary of the change. Before each reflection, the buffer contents are rendered
-and injected into the reflection prompt, giving the LM context about what has already
-been attempted and what worked or failed.
+**Why it's novel:** All current prompt optimization methods (GEPA, DSPy MIPRO, EvoPrompt) operate on full prompt strings. PDO constrains the mutation space to local edits, which (a) makes the search space much smaller, (b) makes it easier for the reflection LLM to reason about what specifically to change, and (c) enables tracking which edit operations tend to help (building an edit history).
 
-**Hypothesis:** Lesson memory will reduce redundant mutations (attempting changes similar
-to previously rejected ones) and amplify successful patterns, increasing the diversity
-of accepted candidates by 20-40%. Expected gain: +1-3 percentage points on longer runs
-(budget >= 200) where the optimization has time to accumulate meaningful lessons. Effect
-will be negligible on short runs (budget <= 50) where the buffer never fills.
+**Cost:** Same as GEPA per iteration, but faster convergence because each mutation is more targeted. Also enables rollback of specific edits that didn't help. **~0.7-0.9x GEPA total cost.**
 
-**Parameters and Sweep Values:**
-- `use_lesson_memory`: [True, False] (default: False)
-- `lesson_window_size`: [3, 5, 10] (default: 5)
-- `lesson_max_rejected`: [1, 2, 3] (default: 2)
+**How it differs from GEPA:** Changes the granularity of mutation from whole-prompt to sentence-level edits. The reflection prompt becomes "what specific sentence should change and why" rather than "write a whole new system prompt."
 
-**Paper Baseline Comparison:** Compare against GEPA scores from Table 1. Lesson memory
-adds a fixed token overhead per reflection call (proportional to window size), so the
-comparison should control for total reflection tokens.
-
-**Prior Results (v2/v3):** AIME (budget=50, gpt-oss-20b): 0.100 (1/10), matching
-baseline. The budget was likely too short for the lesson buffer to accumulate useful
-signal. Retest with budget >= 200 and a benchmark with more training examples.
-
-**Implementation Notes:**
-- GEPA components modified: NEW `lesson_memory.py` module, `api.py` (new parameter),
-  `reflective_mutation.py` (records lessons, injects into reflection), `instruction_proposal.py`
-  (accepts `<lessons>` placeholder or prepend)
-- New classes/methods: `Lesson` (dataclass: iteration, change_summary, accepted,
-  score_delta), `LessonMemory` (deque-based rolling window, render method)
-- Known bugs in v2/v3 code:
-  - **"Accepted" flag mismatch:** The lesson's `accepted` flag is computed at the
-    proposer level (new subsample score > old subsample score) but the engine may still
-    reject the candidate after full val-set evaluation. This means some "accepted"
-    lessons in the buffer actually correspond to rejected candidates. Fix: record the
-    lesson after the engine's final accept/reject decision via a callback.
-- Integration point: `LessonMemory` is instantiated in `optimize()` and passed to
-  `ReflectiveMutationProposer`. After each mutation attempt, a lesson is recorded.
-  Before each `propose_new_texts()` call, rendered lessons are injected into the
-  reflective dataset or prompt template.
-
-**MutationConfig Compatibility:**
-- Existing fields that apply: `reflection_prompt_template` (lessons may be injected
-  via a `<lessons>` placeholder)
-- New fields needed:
-  - `use_lesson_memory: bool = False`
-  - `lesson_window_size: int = 5`
-  - `lesson_max_rejected: int = 2`
+**Risk:** May miss improvements that require restructuring the entire prompt.
 
 ---
 
-## 6. Phenotypic Diversity Pressure (`phenotypic_diversity`)
+### 4. Contrastive Synthesis Reflection (CSR) *
 
-**Source:** v2
-**Priority:** 6/8
+**Core idea:** Go beyond CR's passive injection. Instead of just showing contrastive pairs in the `<side_info>` section and letting the reflection LLM figure it out, add an explicit synthesis step: a cheap LLM call that analyzes 3-5 contrastive pairs and extracts the abstract principle ("Prompt A works better on math problems because it explicitly asks for step-by-step reasoning, while Prompt B just asks for the answer"). Feed the synthesized principle -- not the raw pairs -- into reflection.
 
-**Description:** After evaluating a new candidate on the full validation set, check
-whether its per-example success pattern (binary vector of which examples it solves)
-overlaps excessively with any existing candidate on the Pareto front. If the overlap
-exceeds a threshold, the candidate is flagged as a "phenotypic duplicate" -- it solves
-essentially the same subset of problems as an existing candidate and thus adds no
-diversity to the front.
+**Why it's novel:** CR shows raw evidence; CSR shows distilled insight. This is the difference between handing someone 5 case studies vs. handing them the conclusion. The synthesis step compresses information and makes it more actionable for the mutation LLM.
 
-This mutation also includes a companion `DiverseParetoSelector` in `candidate_selector.py`
-that biases parent selection toward candidates whose success patterns are least covered
-by recent mutations.
+**Cost:** One additional cheap LLM call per iteration (short input, short output -- maybe 500 tokens total). But the improved reflection quality should reduce the number of iterations needed. **~0.8-0.9x GEPA total cost.**
 
-**Hypothesis:** Phenotypic deduplication will increase the effective diversity of the
-Pareto front by blocking redundant candidates, leading to more diverse parent selection
-and higher-quality mutations. Expected gain: +0-2 percentage points, but primarily
-visible on longer runs (budget >= 500) where the Pareto front grows large enough for
-duplicates to appear. Effect is front-size-dependent.
+**How it differs from CR:** CR injects raw contrastive pairs. CSR distills them into principles first. Think of it as "CR with a reasoning layer."
 
-**Parameters and Sweep Values:**
-- `phenotypic_dedup_threshold`: [0.7, 0.8, 0.9, None] (default: None = disabled)
-- `diversity_decay`: [0.2, 0.3, 0.5] (default: 0.3, for DiverseParetoSelector)
-- `diversity_window`: [2, 3, 5] (default: 3, for DiverseParetoSelector)
-
-**Paper Baseline Comparison:** Compare against GEPA scores from Table 1. Phenotypic
-diversity is most informative on benchmarks with large validation sets (HotpotQA: 100+,
-HoVer: 100+) where the success vectors have meaningful structure.
-
-**Prior Results (v2/v3):** AIME (budget=50, gpt-oss-20b): 0.100 (1/10), matching
-baseline. Only 1 candidate was produced, so the dedup logic never activated.
-Inconclusive -- the mutation needs a run that produces multiple candidates.
-
-**Implementation Notes:**
-- GEPA components modified: `engine.py` (new `_is_phenotypic_duplicate()` method after
-  val-set eval), `candidate_selector.py` (new `DiverseParetoSelector`), `api.py`
-  (new parameters)
-- New classes/methods: `_is_phenotypic_duplicate()` on `GEPAEngine`,
-  `DiverseParetoSelector(CandidateSelector)` (in `candidate_selector.py`)
-- Known bugs in v2/v3 code:
-  - **Not actually blocking (critical):** The `_is_phenotypic_duplicate()` method sets
-    a trace flag but does NOT prevent the candidate from being added to the state.
-    It is informational only. Fix: add a conditional branch in `_run_full_eval_and_add()`
-    that skips `state.update_state_with_new_program()` when the duplicate flag is set.
-  - **Asymmetric overlap:** Only checks whether the new candidate's successes are a
-    subset of an existing candidate's, not vice versa. A candidate that solves a strict
-    superset would not be flagged. This may be intentional (supersets are strictly
-    better) but should be documented.
-- Integration point: In `GEPAEngine._run_full_eval_and_add()`, after `_evaluate_on_valset()`
-  returns scores but before `state.update_state_with_new_program()`. The duplicate check
-  compares the binary success vector (score >= threshold) against all existing candidates.
-
-**MutationConfig Compatibility:**
-- Existing fields that apply: `candidate_selection_strategy` (set to `"diverse_pareto"`
-  for the companion selector)
-- New fields needed:
-  - `phenotypic_dedup_threshold: float | None = None`
-  - `diversity_decay: float = 0.3`
-  - `diversity_window: int = 3`
+**Risk:** The synthesis step might over-simplify or misinterpret the contrastive evidence.
 
 ---
 
-## 7. Boltzmann Candidate Selection (`boltzmann_selection`)
+### 5. Progressive Model Cascade (PMC)
 
-**Source:** v2
-**Priority:** 7/8
+**Core idea:** Run prompt optimization in two phases. Phase 1: use a cheap/fast model (e.g., Qwen-7B or even the task model itself) as the reflection LLM for broad exploration -- many iterations cheaply. Phase 2: switch to a strong model (Qwen-27B or Claude) for refinement, starting from Phase 1's best candidate. Allocate 70% of budget to Phase 1, 30% to Phase 2.
 
-**Description:** Replace GEPA's Pareto-based candidate selection with a Boltzmann
-(softmax) selector. Instead of sampling uniformly from the Pareto front, candidates are
-selected with probability proportional to exp(score / temperature). Lower temperatures
-concentrate selection on the best candidates; higher temperatures spread selection more
-evenly. This provides a smooth interpolation between greedy (temperature -> 0) and
-uniform (temperature -> infinity) selection.
+**Why it's novel:** All current methods use a single reflection model throughout. PMC applies the curriculum learning insight -- cheap models can identify promising directions even if they can't write perfect prompts. The expensive model then polishes the promising directions.
 
-**Hypothesis:** Boltzmann selection with temperature=0.5 will slightly improve convergence
-speed over Pareto selection by concentrating mutations on higher-scoring parents while
-maintaining some exploration. Expected gain: +0-1 percentage points. This is primarily
-a diagnostic mutation -- it tests whether parent selection strategy matters at all when
-mutation quality is the binding constraint.
+**Cost:** Phase 1 is ~4x cheaper per iteration (7B vs 27B). If Phase 1 handles 70% of iterations, total cost drops by ~50% while final quality remains similar. **~0.5x GEPA reflection cost.**
 
-**Parameters and Sweep Values:**
-- `candidate_selection_strategy`: ["pareto", "boltzmann"] (default: "pareto")
-- `boltzmann_temperature`: [0.1, 0.3, 0.5, 1.0] (default: 0.5)
+**How it differs from GEPA:** Replaces the fixed reflection LM with a two-stage cascade. Same task evaluator throughout (so rollout costs are unchanged), but reflection costs drop significantly.
 
-**Paper Baseline Comparison:** Compare against GEPA scores from Table 1 with Pareto
-selection. The mutation is only informative when the candidate pool has 3+ candidates,
-so it should be tested on longer runs or combined with `best_of_k`.
-
-**Prior Results (v2/v3):** AIME (budget=50, gpt-oss-20b): 0.100 (1/10), matching
-baseline. 3 candidates were produced (same as baseline), suggesting selection strategy
-had no effect when mutation quality is the bottleneck.
-
-**Implementation Notes:**
-- GEPA components modified: `candidate_selector.py` (new `BoltzmannCandidateSelector`
-  class), `api.py` (extended selector factory)
-- New classes/methods: `BoltzmannCandidateSelector(CandidateSelector)` with
-  temperature-scaled softmax over `state.program_full_scores_val_set`
-- Known bugs in v2/v3 code:
-  - Temperature is hardcoded at 0.5 in the `api.py` factory. Fix: add
-    `boltzmann_temperature` parameter to `optimize()` and pass through to the factory.
-  - The `DiverseParetoSelector` (from mutation #6) was added in the same diff as
-    `"diverse_pareto"` -- these are separate mutations sharing a file.
-- Implementation is numerically stable (log-sum-exp trick).
-- Integration point: Drop-in replacement for the `candidate_selection_strategy`
-  parameter. The factory in `api.py` maps `"boltzmann"` to
-  `BoltzmannCandidateSelector(temperature=0.5, rng=rng)`.
-
-**MutationConfig Compatibility:**
-- Existing fields that apply: `candidate_selection_strategy` (set to `"boltzmann"`)
-- New fields needed:
-  - `boltzmann_temperature: float = 0.5`
+**Risk:** Cheap model's exploration might lead to dead ends that the expensive model can't recover from.
 
 ---
 
-## 8. Failure-Stratified K (`failure_stratified_k`)
+### 6. Failure-Clustered Targeted Mutation (FCTM) *
 
-**Source:** v3
-**Priority:** 8/8
+**Core idea:** Before each mutation cycle, cluster the failing examples by failure type (wrong format, wrong reasoning, partial credit, etc.) using embedding similarity on the LLM's outputs. Generate one targeted mutation per failure cluster (e.g., "fix the formatting failures" separately from "fix the reasoning failures"). This naturally produces diverse mutations without the overhead of BoK's K-sampling.
 
-**Description:** A refinement of `best_of_k` (mutation #1). Instead of generating K
-independent mutations from the same reflective dataset, partition the reflective dataset's
-failing examples across the K candidates so each candidate focuses on a different subset
-of failures. This aims to produce K diverse mutations that each specialize in fixing a
-different failure mode, rather than K similar mutations that address the same obvious
-failure.
+**Why it's novel:** FSK partitions failures randomly (round-robin/worst-first). FCTM partitions them semantically. This means each mutation addresses a coherent failure mode rather than an arbitrary subset. The mutations are diverse because the failure modes are different, not because we generate K random variants.
 
-**Hypothesis:** Failure-stratified K will produce more diverse accepted candidates than
-standard best-of-K, with complementary success patterns that improve the Pareto front
-more efficiently. Expected gain: +0.5-2 percentage points over best_of_k on benchmarks
-with heterogeneous failure modes (HotpotQA, HoVer, IFBench). Effect is minimal on
-benchmarks with homogeneous failures (AIME).
+**Cost:** One embedding call to cluster failures (cheap, can use a small embedding model), then N mutation calls where N = number of clusters (typically 2-4). Comparable to BoK but with much more targeted mutations. **~1.5x GEPA per iteration (but fewer iterations needed).**
 
-**Parameters and Sweep Values:**
-- `use_failure_stratified_k`: [True, False] (default: False)
-- `mutation_candidates`: [3, 5, 7] (default: 1; must be > 1 for stratification to activate)
+**How it differs from FSK:** FSK assigns failures arbitrarily to K buckets. FCTM discovers natural failure clusters. This should produce better mutations because each one addresses a coherent problem.
 
-**Paper Baseline Comparison:** Compare against both baseline GEPA and `best_of_k` with
-the same K. The mutation tests whether specialization of K candidates outperforms
-independent sampling of K candidates.
-
-**Prior Results (v2/v3):** Never tested standalone. No empirical data available.
-
-**Implementation Notes:**
-- GEPA components modified: `reflective_mutation.py` (new
-  `_stratify_reflective_dataset()` method), `api.py` (new parameter)
-- New classes/methods: `_stratify_reflective_dataset()` on `ReflectiveMutationProposer`
-  -- partitions the failing examples into K groups for K iterations of the K-loop
-- Known bugs in v2/v3 code:
-  - **Degenerate with 1 failing example:** If only 1 example failed in the minibatch,
-    all K candidates receive the same single-example dataset, making stratification
-    identical to standard best-of-K. Fix: fall back to standard K-sampling when
-    failing examples < K.
-  - **Silent no-op at K=1:** If `mutation_candidates=1`, the stratification code path
-    is entered but produces a single partition identical to the full dataset. Fix:
-    either skip stratification when K=1 or validate K>1 at config time.
-  - Requires `mutation_candidates > 1` (from mutation #1) to function.
-- Integration point: Inside the K-loop in `ReflectiveMutationProposer.propose()`,
-  before each call to `propose_new_texts()`. The reflective dataset is partitioned
-  so candidate k receives failing examples in partition k.
-
-**MutationConfig Compatibility:**
-- Existing fields that apply: `mutation_candidates` (from mutation #1)
-- New fields needed:
-  - `use_failure_stratified_k: bool = False`
+**Risk:** Clustering quality depends on the embedding model. Poor clusters = poor mutations.
 
 ---
 
-## Cross-Check Notes and Inconsistencies Resolved
+### 7. Reflection Trajectory Caching (RTC) *
 
-### Naming Resolutions
+**Core idea:** Cache the reflection patterns -- not just the evaluation scores. When the reflection LLM sees a failure pattern it has seen before (e.g., "model outputs raw number instead of boxed answer"), reuse the previous mutation strategy instead of generating a new reflection. Detect pattern similarity using a hash of the failure type (extractable from trajectories).
 
-| Agent A Name                       | Agent C Name             | Canonical Name            | Rationale                          |
-|-----------------------------------|--------------------------|---------------------------|------------------------------------|
-| Best-of-K Mutation Sampling       | best_of_k                | `best_of_k`               | Concise, matches API param         |
-| Cross-Iteration Lesson Memory     | lesson_memory            | `lesson_memory`            | Shorter, clear                     |
-| Phenotypic Diversity Pressure     | phenotypic_diversity     | `phenotypic_diversity`     | Matches the mechanism              |
-| Boltzmann Candidate Selection     | boltzmann_selection      | `boltzmann_selection`      | Matches API string                 |
-| Structured DPG Reflection         | structured_dpg           | `structured_dpg`           | DPG is the key distinguisher       |
-| Difficulty-Stratified Batch       | stratified_batch         | `stratified_batch`         | Shorter, clear                     |
-| Contrastive Reflection            | contrastive_reflection   | `contrastive_reflection`   | Direct, unambiguous                |
-| Failure-Stratified K / Diverse K  | failure_stratified_k     | `failure_stratified_k`     | Distinguishes from generic K       |
+**Why it's novel:** GEPA treats every iteration's reflection as independent. In practice, the same failure patterns recur across iterations (especially early on when the prompt is bad in systematic ways). RTC amortizes the reflection cost by reusing successful mutation strategies for recurring problems.
 
-### Agent C Duplicate Error
+**Cost:** Dramatically lower -- reflection calls drop to zero for repeated failure patterns. The first time a pattern is seen, full reflection runs. After that, cached. Over a 7000-rollout run, this could cut reflection calls by 50-70%. **~0.3-0.5x GEPA reflection cost, same rollout cost.**
 
-Agent C listed `contrastive_reflection` as both #4 and #7, giving it two priority
-rankings. This is a single mutation. The correct canonical list has 8 unique mutations.
-Agent C's `boltzmann_selection` was omitted from their numbering as a result. The
-priority ranking in this document resolves the conflict.
+**How it differs from GEPA:** Adds a cache layer before the reflection LLM. Same quality (the cached mutations were already validated), much lower cost.
 
-### Priority Ranking Disagreement
-
-Agent B ranked `failure_stratified_k` at #2 ("best-formed hypothesis") while Agent C
-ranked it at #8. The synthesis ranks it at #8 because: (a) it depends on `best_of_k`
-(#1) working first, (b) it adds complexity without independent empirical evidence,
-(c) it has a degenerate failure mode with few failing examples. It remains a valuable
-refinement to test after `best_of_k` is validated on more benchmarks.
-
-Agent B ranked `boltzmann_selection` at #7 and Agent C omitted it from ranking.
-Both agree it is low-leverage. Placed at #7 as a diagnostic mutation.
-
-### v2/v3 Relationship
-
-Agent A confirmed: v3 is a strict byte-identical superset of v2 for shared files.
-v3 adds mutations #2 (`contrastive_reflection`), #3 (`stratified_batch`), and
-#8 (`failure_stratified_k`). All v2 mutations (#1, #4, #5, #6, #7) are present
-in v3 unchanged.
+**Risk:** Cached strategies may become stale as the prompt evolves (a fix that worked at iteration 10 might not apply at iteration 500).
 
 ---
 
-## MutationConfig Gap Assessment
+### 8. Pareto-Guided Crossover (PGC)
 
-### Current MutationConfig Fields
+**Core idea:** Instead of mutating a single parent candidate, perform structured crossover between two Pareto-frontier candidates that have complementary strengths -- i.e., Candidate A excels on examples where B fails, and vice versa. The reflection call receives both candidates and their performance profiles, and is asked to synthesize a child that combines their strengths.
 
-```python
-@dataclass
-class MutationConfig:
-    mutation_name: str
-    description: str = ""
-    benchmark: str = "hotpotqa"
-    seed: int = 42
-    subset: int | None = None
-    candidate_selection_strategy: str | Any = "pareto"
-    frontier_type: str = "instance"
-    module_selector: str = "round_robin"
-    use_merge: bool = True
-    max_merge_invocations: int = 5
-    merge_val_overlap_floor: int = 5
-    reflection_minibatch_size: int = 3
-    reflection_prompt_template: str | dict[str, str] | None = None
-    max_metric_calls: int | None = None
+**Why it's novel:** GEPA's merge proposer exists but operates differently -- it merges candidates that are close in score space. PGC explicitly selects candidates with complementary failure profiles, which is more likely to produce genuine improvement. This is inspired by genetic algorithm crossover but guided by the Pareto frontier's diversity.
+
+**Cost:** Same as GEPA per iteration (one reflection call, one evaluation). The improvement comes from better parent selection, not more compute. **~1.0x GEPA per iteration, fewer iterations to converge.**
+
+**How it differs from GEPA:** GEPA mutates one parent. PGC synthesizes from two complementary parents. Uses the frontier's diversity as a feature rather than just a selection mechanism.
+
+**Risk:** Combining two prompts may produce incoherent results if the strengths aren't compositional.
+
+---
+
+### 9. Implicit Optimization via Example Curation (IOEC)
+
+**Core idea:** Instead of optimizing the system prompt directly, optimize the set of few-shot examples included in the prompt. Start with no examples, then iteratively: (a) find training examples the current prompt fails on, (b) generate a correct solution for each, (c) add the best (example, solution) pair to the prompt as a few-shot demonstration. The "mutation" is adding/removing/replacing a few-shot example rather than rewriting instructions.
+
+**Why it's novel:** Most prompt optimization focuses on instruction text. IOEC optimizes the demonstration component, which is often more impactful for complex tasks (especially reasoning-heavy ones like AIME). Few-shot example selection has been studied, but iterative curation with failure-guided selection hasn't been combined with GEPA's framework.
+
+**Cost:** Much cheaper per iteration -- no reflection LLM call needed. The "mutation" is just selecting which example to add/remove, which can be done with heuristics on the evaluation scores. Only cost is the task evaluation. **~0.5x GEPA per iteration (no reflection call).**
+
+**How it differs from GEPA:** Changes what gets optimized (examples vs. instructions). Can also be combined with GEPA as a hybrid (optimize both instructions and examples jointly).
+
+**Risk:** Some tasks don't benefit from few-shot examples (or the prompt gets too long).
+
+---
+
+### 10. Self-Consistency Guided Optimization (SCGO)
+
+**Core idea:** Use self-consistency (run the task model multiple times on each example and check agreement) as a free signal for identifying which examples the current prompt is fragile on. Examples with low self-consistency (model gives different answers across runs) are the most improvable -- small prompt changes can flip them. Focus reflection on these fragile examples rather than hard failures.
+
+**Why it's novel:** Standard GEPA uses a single evaluation per example and focuses on failures. But failures come in two types: (a) hard failures (the model fundamentally can't solve this) and (b) fragile examples (the model sometimes gets it right). Optimizing for (b) has much higher ROI because a prompt tweak can reliably flip fragile examples to correct.
+
+**Cost:** Requires K task evals per example (K=3-5) on the initial pass to estimate consistency, but this cost is amortized -- once you know which examples are fragile, you can focus all subsequent iterations on them. Over a full run, total rollouts may decrease because you converge faster. **~0.8-1.2x GEPA total, depending on how many fragile examples exist.**
+
+**How it differs from GEPA:** Adds a consistency-based example importance signal. Changes which examples get attention during reflection, leading to more impactful mutations.
+
+**Risk:** Initial consistency estimation is expensive (3-5x for first pass). May not help if most failures are "hard" rather than "fragile."
+
+---
+
+### Set 1 Top 5 (excluding #5 PMC, per user request)
+
+| Rank | Idea | Why |
+|------|------|-----|
+| 1 | **#2 Active Minibatch Selection** | Zero extra cost, purely smarter data selection. Infrastructure already exists (EvaluationCache). Easiest to implement. |
+| 2 | **#4 Contrastive Synthesis Reflection** | Natural evolution of CR (our best finding). One cheap extra call distills raw pairs into principles. |
+| 3 | **#7 Reflection Trajectory Caching** | Biggest cost savings (50-70% fewer reflection calls). Same failure patterns genuinely recur. |
+| 4 | **#1 Evaluation-Free Screening** | 40% rollout savings. Composable with every other method. |
+| 5 | **#6 Failure-Clustered Targeted Mutation** | Semantic upgrade over FSK. Makes diversity meaningful, not random. |
+
+---
+
+## Set A: Novel Ideas (Independent of Current Experiments)
+
+These don't build on GEPA, CR, BoK, or FSK at all -- they're fundamentally different approaches to the prompt optimization problem.
+
+---
+
+### A1. Zero-Shot Prompt Synthesis (ZPS)
+
+**Core idea:** Skip iterative optimization entirely. In a single LLM call, provide: (a) 10 diverse training examples spanning difficulty levels, (b) the evaluation metric definition, (c) 5 failed outputs from a blank/naive prompt with error analysis. Ask the LLM to write the optimal prompt in one shot, given full context about what the task needs and what goes wrong without a good prompt.
+
+**Why it could beat GEPA:** GEPA spends thousands of rollouts discovering things the LLM could infer from a handful of examples. A strong reflection model (Claude/GPT-4) can often write a near-optimal prompt if given enough context about the task structure. ZPS frontloads all the context instead of discovering it iteratively.
+
+**Cost:** 1 reflection call + ~15 task evaluations (5 for failure analysis, 10 for final scoring). **~0.2% of GEPA's rollout budget.** Even if it only reaches 75% of GEPA's quality, the cost-quality tradeoff is extraordinary.
+
+**Risk:** May hit a quality ceiling on complex tasks where the failure modes aren't obvious from 5 examples. But it could serve as initialization for any iterative method -- ZPS + 500 rollouts of GEPA might beat 7000 rollouts of GEPA from a blank seed.
+
+---
+
+### A2. Surrogate-Guided Bayesian Prompt Optimization (SBPO)
+
+**Core idea:** Embed each candidate prompt into a continuous vector (using a text embedding model like E5 or GTE). After evaluating ~50 prompts, train a Gaussian Process (GP) regressor mapping embedding vectors to scores. Use the GP's acquisition function (Expected Improvement or UCB) to propose the region of embedding space most likely to contain a high-scoring prompt. Decode that region back to text by asking the LLM: "Write a prompt whose meaning is similar to [nearest evaluated prompt] but shifted toward [direction of improvement]."
+
+**Why it could beat GEPA:** GEPA searches in text space, which is combinatorially enormous and discrete. SBPO searches in a low-dimensional continuous space where Bayesian optimization is provably efficient. The GP provides uncertainty estimates -- it knows where it hasn't explored, enabling principled exploration-exploitation tradeoff rather than GEPA's heuristic Pareto selection.
+
+**Cost:** ~50-100 task evaluations to train the surrogate + ~20-30 more guided by the GP. **Total ~80-130 evaluations vs GEPA's thousands (~1-2%).** The GP inference and embedding calls are negligible.
+
+**Risk:** The embedding space may not preserve the structure that matters for prompt quality (semantic similarity != functional similarity). Mitigation: use a task-specific embedding or learn the embedding jointly.
+
+---
+
+### A3. Prompt Tournament Selection (PTS) *
+
+**Core idea:** Generate a large, diverse pool of 64 candidate prompts in a single batched LLM call (ask for 64 different approaches to the task). Run a single-elimination tournament: randomly pair prompts, evaluate each pair on a small shared subset (5 examples), advance the winner. After 6 rounds (log2(64)), you have the champion. Optionally, run a "consolation bracket" to identify 2nd and 3rd place for ensemble or merge.
+
+**Why it could beat GEPA:** GEPA evaluates sequentially (propose one, evaluate, propose another). PTS evaluates comparatively -- you only need to determine which of two prompts is better, not their absolute scores. Comparative evaluation on 5 examples is much more reliable than absolute scoring because the noise cancels out (same 5 examples for both). Total evaluations: 63 matchups x 5 examples x 2 prompts = 630 rollouts.
+
+**Cost:** 1 batch LLM call for generation + 630 task evaluations. **~9% of GEPA's budget** for a 7051-rollout benchmark. Much faster wall-clock because matchups within a round can run in parallel.
+
+**Risk:** The initial pool quality matters -- if no good prompt is in the starting 64, the tournament can't find one. Mitigation: use diverse generation strategies (chain-of-thought, few-shot, structured, etc.) and allow a "wildcard" round where top-8 losers get one mutation chance.
+
+---
+
+### A4. Adversarial Minimax Prompt Optimization (AMPO) *
+
+**Core idea:** Instead of maximizing average score (what GEPA does), minimize worst-case failure. Two-player game: an "attacker" LLM identifies the hardest examples for the current prompt (finds inputs most likely to cause failure), and a "defender" LLM strengthens the prompt specifically against those attacks. Iterate until the attacker can't find failures.
+
+**Why it could beat GEPA:** GEPA optimizes for average performance, which can leave systematic blind spots (the prompt might score 90% average but consistently fail on a specific example type). AMPO explicitly hunts for and eliminates blind spots. In practice, worst-case optimization often improves average-case too, because fixing systematic failures lifts the floor.
+
+**Cost:** Each iteration: 1 attack call (cheap -- just find hard examples) + 1 defense call (reflection) + ~N task evaluations. Similar per-iteration cost to GEPA, but converges faster because each iteration addresses the most impactful failure. **~0.8x GEPA total.**
+
+**Risk:** The attacker might find "impossible" examples that no prompt can solve, wasting defender iterations. Mitigation: only surface examples where at least one known prompt succeeds (proves solvability).
+
+---
+
+### A5. Prompt Decomposition and Modular Optimization (PDMO) *
+
+**Core idea:** Instead of optimizing a monolithic prompt, decompose it into independent modules: (1) task framing ("You are solving math problems"), (2) reasoning strategy ("Think step by step"), (3) format constraints ("Box your final answer"), (4) error prevention ("Double-check your arithmetic"). Optimize each module independently on a small budget (~500 rollouts each). Compose the best modules into the final prompt.
+
+**Why it could beat GEPA:** The search space for a full prompt is the product of all module spaces. By decomposing, you search each factor independently -- the total cost is the sum of factor costs, not the product. For 4 modules with 500-rollout budgets each, total cost is 2000 rollouts vs GEPA's 7000. And each module optimization converges faster because the search space is smaller.
+
+**Cost:** K x 500 rollouts where K = number of modules (typically 3-5). Plus ~100 rollouts for final composition testing. **Total: ~1600-2600 rollouts (~30-40% of GEPA).**
+
+**Risk:** Modules may interact -- the best reasoning strategy might depend on the task framing. Mitigation: after independent optimization, run a short (500-rollout) joint refinement phase on the composed prompt. Still much cheaper than monolithic optimization.
+
+---
+
+### A6. Multi-Benchmark Meta-Prompt Template (MBMT)
+
+**Core idea:** Instead of optimizing 6 separate prompts for 6 benchmarks, optimize a single meta-template with benchmark-specific slots:
+
+```
+You are an expert at {TASK_TYPE}. {DOMAIN_CONTEXT}
+When solving problems: {REASONING_STRATEGY}
+{FORMAT_INSTRUCTIONS}
+{ERROR_PREVENTION}
 ```
 
-### Fields That Need To Be Added
+Optimize the template structure and shared components across all benchmarks simultaneously. Only the slot contents are benchmark-specific (and much shorter, so cheaper to optimize individually).
 
-```python
-# --- Mutation #1: best_of_k ---
-mutation_candidates: int = 1
+**Why it could beat GEPA:** Amortizes optimization cost. Instead of 6 x 7000 = 42,000 rollouts, you spend ~5000 rollouts on the shared template + 6 x 500 = 3000 rollouts on slot customization = 8000 total. **5x cheaper across all benchmarks.** Also enables transfer learning -- what works for aime's reasoning strategy might help livebench.
 
-# --- Mutation #2: contrastive_reflection ---
-use_contrastive_reflection: bool = False
-contrastive_snippet_length: int = 300
+**Cost:** ~8000 total rollouts across all benchmarks vs 42,000 for independent GEPA. **~20% amortized cost.**
 
-# --- Mutation #3: stratified_batch ---
-batch_sampler: str = "epoch_shuffled"          # NOTE: already an optimize() param
-stratified_easy_threshold: float = 0.7         #       but missing from MutationConfig
-stratified_hard_threshold: float = 0.3
+**Risk:** Some benchmarks may need fundamentally different prompt structures. Mitigation: allow the template itself to have optional sections that can be toggled per benchmark.
 
-# --- Mutation #4: structured_dpg ---
-reflection_strategy: str = "default"
+---
 
-# --- Mutation #5: lesson_memory ---
-use_lesson_memory: bool = False
-lesson_window_size: int = 5
-lesson_max_rejected: int = 2
+### A7. Cooperative Heterogeneous Search Ensemble (CHSE)
 
-# --- Mutation #6: phenotypic_diversity ---
-phenotypic_dedup_threshold: float | None = None
-diversity_decay: float = 0.3                   # For DiverseParetoSelector
-diversity_window: int = 3                      # For DiverseParetoSelector
+**Core idea:** Run 5 fundamentally different optimization strategies in parallel, each allocated 1/5 of the total rollout budget:
+1. Random search (generate and evaluate many diverse prompts)
+2. GEPA-style reflective mutation
+3. Template-based combinatorial search
+4. Example-driven synthesis (ZPS-style, repeated with different example subsets)
+5. Compression-based (start long, prune while maintaining quality)
 
-# --- Mutation #7: boltzmann_selection ---
-boltzmann_temperature: float = 0.5
+Every 200 rollouts, all agents share their current best prompt. Each agent can adopt another's best as its starting point if it's better than its own.
 
-# --- Mutation #8: failure_stratified_k ---
-use_failure_stratified_k: bool = False
-```
+**Why it could beat GEPA:** Different strategies excel in different regions of the search space. Random search finds good starting points, reflection refines them, compression makes them efficient. The sharing mechanism means the ensemble converges to the globally best prompt regardless of which strategy found it. No single strategy needs to be optimal -- the ensemble is.
 
-### Integration Notes for MutationConfig
+**Cost:** Same total budget as GEPA, but uses it more efficiently by covering more of the search space. **Wall-clock is 5x faster if run in parallel.** Same total cost, better result.
 
-1. **`batch_sampler` gap:** The `optimize()` API already accepts `batch_sampler` as a
-   parameter, but `MutationConfig` does not expose it. The `run_mutation()` function in
-   `base.py` does not pass it through to `optimize()`. This must be fixed for mutation #3.
+**Risk:** Coordination overhead and strategy interference. Mitigation: keep sharing infrequent (every 200 rollouts) and one-directional (only share if your best beats the global best).
 
-2. **`boltzmann_temperature` threading:** The current `api.py` factory hardcodes
-   temperature=0.5 for the `"boltzmann"` selector. The temperature parameter must be
-   threaded from `MutationConfig` through `run_mutation()` to the factory. The cleanest
-   approach: pass a pre-built `BoltzmannCandidateSelector(temperature=X)` instance via
-   `candidate_selection_strategy` (which already accepts `str | Any`).
+---
 
-3. **`diversity_decay` / `diversity_window` threading:** Same pattern as boltzmann.
-   Pass a pre-built `DiverseParetoSelector(decay=X, window=Y)` via
-   `candidate_selection_strategy`.
+### A8. Constraint-First Principle Optimization (CFPO) *
 
-4. **None-defaults preserve baseline:** All new fields default to values that reproduce
-   the paper baseline exactly (mutation disabled). This ensures that a `MutationConfig`
-   with only `mutation_name` and `benchmark` set will behave identically to Phase 1
-   reproduction runs.
+**Core idea:** Instead of optimizing prompt text directly, optimize a set of abstract principles that the prompt must embody. Example principles: "always show intermediate steps", "restate the question before answering", "consider edge cases explicitly". The optimization searches over principle combinations (a much smaller discrete space -- maybe 20 candidate principles, choose 5 = C(20,5) = 15,504 combinations). For each principle combination, an LLM renders it into prompt text (cheap, deterministic). Only evaluate the rendered prompts.
 
-5. **`run_mutation()` pass-through:** The `run_mutation()` function in `base.py` must
-   be updated to forward the new MutationConfig fields to `optimize()`. Fields that
-   modify GEPA internals (mutations #1, #2, #4, #5, #6, #8) require patches to the
-   GEPA source or wrapper classes; they cannot be configured via `optimize()` kwargs
-   alone. Only mutations #3 and #7 are pure `optimize()` parameter changes.
+**Why it could beat GEPA:** The principle space is combinatorial but small (15K combinations vs infinite prompt text space). Exhaustive search is feasible with smart pruning. Each principle can be validated independently first (does adding "show steps" help on its own?), reducing the effective search space to combinations of individually useful principles.
 
-### Recommended Implementation Order
+**Cost:** ~20 individual principle evaluations (x N examples each) + ~50-100 combination evaluations. **Total: ~500-2000 rollouts (~7-30% of GEPA).**
 
-1. `best_of_k` -- validated, highest expected impact, single integration point
-2. `contrastive_reflection` -- untested but strong theoretical basis, moderate complexity
-3. `stratified_batch` -- clean drop-in replacement, fix train/val ID bug first
-4. `structured_dpg` -- retest with stronger model before investing in bug fixes
-5. `lesson_memory` -- retest with larger budget before investing in bug fixes
-6. `phenotypic_diversity` -- fix the "not actually blocking" bug, then retest
-7. `boltzmann_selection` -- diagnostic, lowest implementation effort
-8. `failure_stratified_k` -- implement after `best_of_k` is validated on more benchmarks
+**Risk:** The principle-to-prompt rendering may lose nuance. Mitigation: include a short refinement phase after finding the best principle set, using GEPA-style reflection on the rendered prompt (budget ~500 rollouts).
+
+---
+
+### A9. Score-Predictive Prompt Ranking (SPPR)
+
+**Core idea:** Train a lightweight neural network (a small transformer or MLP on top of prompt embeddings) to predict the score of a prompt on a benchmark. Training data: evaluate 100-200 diverse prompts to get (prompt, score) pairs. Once trained, use the network to score thousands of candidate prompts instantly (no task evaluation). Only run real evaluations on the top-10 predictions.
+
+**Why it could beat GEPA:** After the initial 200-evaluation training phase, candidate scoring is essentially free. You can generate and score 10,000 prompts in seconds. The quality bottleneck shifts from evaluation cost to generation diversity -- and diverse generation is cheap (one batched LLM call).
+
+**Cost:** 200 initial evaluations + 10 verification evaluations = 210 total. **~3% of GEPA's budget.** The neural network training and inference is negligible (CPU, <1 minute).
+
+**Risk:** The predictor might not generalize to prompt structures very different from its training data. Mitigation: active learning -- when the predictor is uncertain, evaluate that prompt and add it to training data.
+
+---
+
+### A10. Dual Critic-Guided Optimization (DCGO) *
+
+**Core idea:** Optimize two prompts simultaneously: a "solver" prompt (the one being optimized) and a "critic" prompt. The critic prompt takes a task input + the solver's output and predicts whether the output is correct -- it's a learned verifier. The critic is much cheaper to run than re-evaluating with ground truth (no chain-of-thought needed, just classification). Use the critic to score hundreds of solver prompt variants cheaply, then verify only the top candidates with real evaluation.
+
+**Why it could beat GEPA:** The critic acts as a cheap surrogate evaluator. After training the critic on ~100 examples with ground truth, you can "evaluate" new solver prompts at ~10x lower cost (the critic call is short and doesn't need chain-of-thought). This is similar to SPPR but uses an LLM-based critic instead of a neural network -- potentially more accurate.
+
+**Cost:** 100 evaluations to train/calibrate the critic + ~50 critic-scored iterations + ~20 real evaluations to verify top candidates = ~170 real evaluations total. **~2.5% of GEPA's budget.**
+
+**Risk:** Critic might develop blind spots (consistently approve a specific error type). Mitigation: periodically recalibrate the critic with fresh real evaluations.
+
+---
+
+## Set B: Nature-Inspired Ideas
+
+These draw inspiration from biological and natural optimization processes.
+
+---
+
+### B1. Slime Mold Network Optimization (SMNO) *
+
+**Inspired by:** *Physarum polycephalum* -- the slime mold that finds shortest paths in mazes by growing along all possible paths simultaneously, then pruning inefficient branches as nutrients flow preferentially through shorter paths.
+
+**Core idea:** Generate 20 diverse prompts (growth phase). Evaluate all 20 on a small subset (nutrient distribution). "Flow" is proportional to score -- high-scoring prompts get more "nutrients" (additional mutation attempts). Low-scoring prompts are starved (pruned). After one round: 20 -> 10. Mutate the survivors, evaluate again. 10 -> 5. Continue until 1 champion remains.
+
+**Why it could beat GEPA:** GEPA commits to a single mutation path and backtracks via the Pareto frontier. SMNO explores many paths simultaneously and prunes based on flow (score). The parallel exploration covers more of the search space, and the progressive pruning focuses resources on the most promising regions.
+
+**Cost:** Round 1: 20 x 10 = 200 rollouts. Round 2: 10 x 15 = 150. Round 3: 5 x 20 = 100. Round 4: 3 x 30 = 90. **Total: ~540 rollouts (~8% of GEPA).**
+
+**Risk:** Initial diversity quality matters. If the 20 starting prompts don't cover the good regions, pruning won't help.
+
+---
+
+### B2. Immune System Clonal Selection and Hypermutation (ISCSH) *
+
+**Inspired by:** Adaptive immune response -- the body generates billions of random antibodies, identifies which ones bind to a pathogen, then clones the winners and hypermutates the clones at a rate 10,000x higher than normal. The best-binding mutants survive; the rest die.
+
+**Core idea:** Phase 1 (generation): Generate 50 diverse prompt "antibodies" cheaply. Phase 2 (screening): Evaluate each on 3 examples -- a coarse affinity test. Phase 3 (clonal selection): Take the top 5, generate 10 aggressive mutations of each (50 mutants total) using high-temperature LLM sampling. Phase 4 (affinity maturation): Evaluate all 50 mutants on 20 examples, keep the top 3. Phase 5: Final evaluation of top 3 on full validation set.
+
+**Why it could beat GEPA:** The immune system is optimized for finding a needle in a haystack with minimal resources. The key insight is variable mutation rate: early exploration uses wild, diverse mutations (high temperature), while later refinement uses conservative mutations (low temperature). GEPA uses a fixed mutation strategy throughout.
+
+**Cost:** 50x3 + 50x20 + 3xfull_val = 150 + 1000 + ~300 = **~1450 rollouts (~20% of GEPA).**
+
+**Risk:** Coarse screening (3 examples) might eliminate good candidates that happen to fail on those specific 3 examples. Mitigation: use stratified example selection for screening.
+
+---
+
+### B3. Mycorrhizal Knowledge Network (MKN)
+
+**Inspired by:** Mycorrhizal networks -- underground fungal networks connecting trees in a forest. Larger, healthier trees share carbon and nutrients with smaller, struggling trees through the fungal network. The sharing is asymmetric (strong to weak) and happens through a shared medium.
+
+**Core idea:** Run N=5 independent GEPA-like optimization streams, each with 1/5 the budget. Maintain a shared "knowledge network" (a database of prompt components + their scores on specific example types). After each iteration, every stream deposits its discoveries (which prompt components worked for which examples). Struggling streams (low scores) can pull from the network -- accessing components that worked for similar examples in other streams. High-performing streams continue independently.
+
+**Why it could beat GEPA:** Single GEPA wastes rollouts rediscovering things. With 5 streams sharing knowledge, each discovery benefits all streams. The asymmetric sharing (struggling streams pull from successful ones) prevents the network from being dominated by one strategy.
+
+**Cost:** Same total budget as GEPA. Each stream gets budget/5. But the shared network makes each stream more efficient, so the effective budget is >budget. **1.0x total cost, ~2-3x effective search coverage.**
+
+**Risk:** The knowledge network must be structured carefully -- raw prompt sharing without context could introduce noise.
+
+---
+
+### B4. Metamorphosis-Based Prompt Restructuring (MBPR)
+
+**Inspired by:** Insect metamorphosis -- the caterpillar completely dissolves its body inside the chrysalis, then rebuilds as a butterfly using the same raw materials but a fundamentally different architecture.
+
+**Core idea:** Phase 1 (larval/caterpillar): Run standard GEPA-style optimization until convergence or plateau (~2000 rollouts). Phase 2 (chrysalis): "Dissolve" the best prompt -- ask an LLM to extract the abstract principles, strategies, and insights from the prompt WITHOUT preserving its structure. Output: a list of 5-10 principles. Phase 3 (butterfly): Rebuild the prompt from scratch using these principles but with a completely different structure (different ordering, different phrasing, different level of detail). Evaluate the new structure. Phase 4: Short refinement (~500 rollouts).
+
+**Why it could beat GEPA:** GEPA gets trapped by its prompt structure -- iterative mutation preserves the skeleton while tweaking details. Metamorphosis allows a complete structural reset while preserving the knowledge accumulated during optimization. This breaks out of structural local optima. The rebuilt prompt often outperforms the original because the dissolution step forces distillation of what actually matters.
+
+**Cost:** ~2000 + 1 LLM call + 1 LLM call + ~500 = **~2500 rollouts (~35% of GEPA).**
+
+**Risk:** The dissolution step might lose important nuances. Mitigation: keep the original prompt as a fallback and only accept the restructured version if it scores higher.
+
+---
+
+### B5. Synaptic Pruning via Developmental Optimization (SPDO) *
+
+**Inspired by:** Brain development -- infants are born with far more synaptic connections than adults. During childhood, unused connections are pruned while heavily-used connections are strengthened. The brain becomes more efficient by removing structure, not adding it.
+
+**Core idea:** Start with an extremely detailed, over-specified prompt (~2000 words covering every possible edge case, format requirement, reasoning strategy, and error prevention). Evaluate it (should score well due to thoroughness). Then iteratively prune: remove one section/sentence at a time, re-evaluate. If the score doesn't drop (or drops <1%), the section was "unused" -- permanently remove it. If the score drops significantly, that section is "load-bearing" -- keep it and strengthen it (add detail). Continue until the prompt is minimal but retains full performance.
+
+**Why it could beat GEPA:** GEPA builds up from a minimal seed, which risks missing important components. SPDO starts with "everything" and removes what's unnecessary -- guaranteed to not miss any important component. The final prompt is also more efficient at inference time (shorter prompts = cheaper/faster task model calls). The initial over-specified prompt is easy to generate (just ask the LLM to be extremely thorough).
+
+**Cost:** 1 LLM call to generate the over-specified prompt. Then ~30-50 pruning evaluations (each tests removing one component). **Total: ~200-500 rollouts (~3-7% of GEPA).**
+
+**Risk:** The initial over-specified prompt might be so verbose that it confuses the model. Mitigation: generate several versions and pick the one that scores best before starting pruning.
+
+---
+
+### B6. Ecological Succession Optimization (ESO) *
+
+**Inspired by:** Ecological succession -- bare rock -> lichens -> mosses -> grasses -> shrubs -> forest. Each stage prepares the environment for the next. Pioneer species (simple, hardy) establish first; climax species (complex, specialized) come later.
+
+**Core idea:** Optimize in stages, each building on the previous:
+- Stage 1 (pioneer): Optimize on the 20% easiest examples only (small, fast). Budget: 500 rollouts.
+- Stage 2 (shrub): Optimize on the 50% easiest examples, starting from Stage 1's best prompt. Budget: 1000 rollouts.
+- Stage 3 (forest/climax): Optimize on all examples, starting from Stage 2's best prompt. Budget: 2000 rollouts.
+
+**Why it could beat GEPA:** GEPA throws all examples at the prompt from the start, including impossible ones that waste rollouts. ESO builds competence progressively -- solving easy problems first establishes the fundamental strategies, which then transfer to harder problems. This is curriculum learning applied to prompt optimization.
+
+**Cost:** 500 + 1000 + 2000 = **3500 rollouts (~50% of GEPA).** And the curriculum structure means each rollout is more informative because the prompt-to-difficulty match is better.
+
+**Risk:** Easy-first optimization might learn strategies that don't generalize to hard problems. Mitigation: at each stage transition, allow the optimizer to restructure (not just refine) the prompt.
+
+---
+
+### B7. Quorum Sensing Convergence Detection (QSCD)
+
+**Inspired by:** Bacterial quorum sensing -- bacteria release signaling molecules. When the local concentration exceeds a threshold (indicating sufficient population density), all bacteria simultaneously switch behavior (e.g., form a biofilm). Individual bacteria can't determine the right time to switch, but the collective signal is reliable.
+
+**Core idea:** Run 7 independent prompt optimizations, each with a different seed, different initialization, and 1/7 the budget. After every 100 rollouts, each optimizer shares its current best prompt. When 4+ of the 7 converge to structurally similar prompts (measured by sentence-level overlap or embedding similarity), that's a "quorum" -- those shared structural elements are robust and not seed-dependent noise. Lock in the consensus elements and let all optimizers refine the remaining non-consensus parts.
+
+**Why it could beat GEPA:** Single GEPA can't distinguish robust improvements from lucky noise on a specific minibatch. QSCD uses cross-seed convergence as a natural noise filter. If 5/7 optimizers independently discover that "think step by step" helps, that's strong evidence. If only 1/7 includes "consider the problem from multiple angles," it's probably noise. This is ensembling applied to the optimization process, not the final prediction.
+
+**Cost:** Same total budget as GEPA (7 x budget/7). But the quorum mechanism accelerates convergence by filtering noise early. **1.0x total cost, 2-3x faster effective convergence.**
+
+**Risk:** If all 7 optimizers converge prematurely to a local optimum, quorum sensing would lock that in. Mitigation: require quorum only for structural elements, not full prompt text.
+
+---
+
+### B8. Coral Reef Niche Specialization (CRNS)
+
+**Inspired by:** Coral reef ecosystems -- extreme biodiversity in a small area because each species occupies a specific niche. No single species dominates; the ecosystem's strength comes from specialization and complementarity.
+
+**Core idea:** Instead of finding one general-purpose prompt, evolve a portfolio of 3-5 specialist prompts, each adapted to a "niche" of examples. Identify niches by clustering training examples by type (using embeddings). Optimize a specialist prompt for each cluster with a small budget (budget/5 each). At inference time, classify each test example into a niche and route it to the corresponding specialist.
+
+**Why it could beat GEPA:** One-size-fits-all prompts make compromises. A prompt optimized for step-by-step math reasoning might hurt on problems that need creative insight. CRNS eliminates this tradeoff. Each specialist can be fully optimized for its niche without compromising on others. The routing classifier is cheap (embedding similarity, no LLM call).
+
+**Cost:** Clustering: 1 embedding call. 5 specialist optimizations: 5 x budget/5 = same total budget. But each specialist converges faster (smaller, more homogeneous training set), so effective cost may be **60-70% of GEPA.** Inference cost: 1 embedding call per example + the task eval (same).
+
+**Risk:** Test examples might not fit neatly into clusters. Mitigation: include a "generalist" prompt for examples that don't clearly belong to any niche.
+
+---
+
+### B9. Ant Colony Prompt Component Optimization (ACPCO) *
+
+**Inspired by:** Ant colony optimization -- ants find shortest paths to food by depositing pheromones. More-traveled paths accumulate more pheromone and attract more ants (positive feedback). Pheromone evaporates over time (forgetting mechanism), so abandoned paths are eventually forgotten.
+
+**Core idea:** Decompose prompts into a library of ~50 atomic components (individual sentences/instructions). Each component has a "pheromone level" (initially uniform). To construct a candidate prompt, sample 8-12 components proportional to their pheromone levels. Evaluate the constructed prompt. Update pheromone: increase for all components in prompts that scored above-median, decrease (evaporate) for components in below-median prompts. Over time, high-pheromone components naturally aggregate into the best prompt.
+
+**Why it could beat GEPA:** GEPA treats the prompt as an opaque string. ACPCO treats it as a composition of independent components with measurable value. This enables: (a) credit assignment -- which specific sentence caused the improvement, (b) transfer -- good components discovered in one prompt benefit future prompts, (c) convergence detection -- when pheromone levels stabilize, you've found the optimal composition.
+
+**Cost:** ~200-500 constructed prompts evaluated. Each is cheap (pheromone sampling is instant). **Total: ~1000-2500 rollouts (~15-35% of GEPA).** The pheromone mechanism provides strong guidance after ~50 evaluations.
+
+**Risk:** Components may interact in ways the pheromone model can't capture. Mitigation: include bigram pheromone (pairs of components that work well together) in addition to unigram pheromone.
+
+---
+
+### B10. Predator-Prey Co-evolutionary Optimization (PPCO)
+
+**Inspired by:** Arms races in predator-prey evolution -- cheetahs evolve speed, gazelles evolve agility, cheetahs evolve better vision, gazelles evolve better camouflage. Both species improve because the pressure from each other is always exactly calibrated -- neither too easy nor too hard.
+
+**Core idea:** Evolve two populations simultaneously: (1) "prey" = prompt candidates trying to maximize score, (2) "predators" = adversarial example selectors trying to find examples that defeat the best prompts. The predator population evolves to present increasingly difficult, targeted challenges. The prey population evolves to handle increasingly sophisticated attacks. The co-evolutionary pressure ensures that prompts improve in the most impactful direction at every step.
+
+**Why it could beat GEPA:** GEPA evaluates on random minibatches -- many examples are "too easy" (already solved) or "too hard" (unsolvable), wasting rollouts. PPCO automatically calibrates difficulty -- the predator population ensures the prey always faces challenges at the edge of its capability, maximizing the information content of every evaluation.
+
+**Cost:** Comparable per-iteration cost to GEPA (one mutation + one evaluation), but each evaluation is maximally informative due to adversarial example selection. **Convergence in ~50-70% of GEPA's iterations.**
+
+**Risk:** Co-evolutionary dynamics can be unstable (Red Queen effect -- both populations cycle without progress). Mitigation: archive the best prompt from each generation to prevent regression.
+
+---
+
+## Master Summary Table
+
+| # | Name | Cost vs GEPA | Key Mechanism |
+|---|------|-------------|---------------|
+| **1** | Evaluation-Free Screening | ~60% | Skip bad mutations before evaluating |
+| **2** | Active Minibatch Selection | 60-80% | Pick maximally informative examples |
+| **3** | Prompt Delta Optimization | 70-90% | Edit sentences, not whole prompts |
+| **4** | Contrastive Synthesis Reflection | 80-90% | Distill contrastive pairs into principles |
+| **5** | Progressive Model Cascade | ~50% refl | Cheap model explores, expensive refines |
+| **6** | Failure-Clustered Targeted Mutation | ~150%/iter, fewer iters | Semantic failure clustering > random partition |
+| **7** | Reflection Trajectory Caching | 30-50% refl | Reuse mutation strategies for recurring failures |
+| **8** | Pareto-Guided Crossover | 100%/iter, fewer iters | Synthesize from complementary parents |
+| **9** | Implicit Optimization via Examples | ~50% | Optimize few-shot examples, not instructions |
+| **10** | Self-Consistency Guided | 80-120% | Focus on fragile examples, not hard failures |
+| **A1** | Zero-Shot Synthesis | 0.2% | One-shot generation with full context |
+| **A2** | Bayesian Surrogate | 1-2% | GP in embedding space |
+| **A3** | Tournament Selection | 9% | Single-elimination bracket |
+| **A4** | Adversarial Minimax | ~80% | Worst-case optimization |
+| **A5** | Modular Decomposition | 30-40% | Independent module optimization |
+| **A6** | Meta-Prompt Template | ~20% amortized | Shared template + slots |
+| **A7** | Heterogeneous Ensemble | 100% (5x faster wall) | Diverse parallel strategies |
+| **A8** | Constraint/Principle Optimization | 7-30% | Optimize principles, not text |
+| **A9** | Score-Predictive Network | 3% | Learned surrogate scorer |
+| **A10** | Dual Critic-Guided | 2.5% | LLM verifier as cheap evaluator |
+| **B1** | Slime Mold Pruning | 8% | Parallel exploration + progressive pruning |
+| **B2** | Immune Clonal Selection | 20% | Variable mutation rate + clone winners |
+| **B3** | Mycorrhizal Network | 100% (2-3x coverage) | Shared knowledge across streams |
+| **B4** | Metamorphosis | 35% | Dissolve + rebuild from principles |
+| **B5** | Synaptic Pruning | 3-7% | Start maximal, prune non-contributing parts |
+| **B6** | Ecological Succession | 50% | Easy->medium->hard curriculum |
+| **B7** | Quorum Sensing | 100% (2-3x faster) | Cross-seed convergence as noise filter |
+| **B8** | Coral Reef Niches | 60-70% | Specialist prompts per example cluster |
+| **B9** | Ant Colony Components | 15-35% | Pheromone-weighted component composition |
+| **B10** | Predator-Prey | 50-70% | Co-evolved adversarial example selection |
+
+---
+
+## Final Top 5: Non-Nature Ideas to Implement (Single-Model Constraint)
+
+From the 10 non-nature top picks (Set 1 + Set A), these 5 form the strongest portfolio for beating GEPA with a single model:
+
+| Rank | Idea | Cost | Rationale |
+|------|------|------|-----------|
+| 1 | **#2 Active Minibatch Selection** | 60-80% | Zero extra cost, composable with everything. Just a smarter BatchSampler using data already in EvaluationCache. Easiest to implement, guaranteed not to hurt. |
+| 2 | **A5 Modular Decomposition** | 30-40% | Most principled cost reduction. Searching 4 small independent spaces is provably cheaper than 1 large space. Short joint refinement phase handles module interactions. |
+| 3 | **A3 Tournament Selection** | 9% | Radically different paradigm. 64 diverse prompts competing head-to-head. Comparative evaluation on shared examples is statistically more powerful than absolute scoring. Can seed GEPA for a final refinement push if needed. |
+| 4 | **#4 Contrastive Synthesis Reflection** | 80-90% | Builds directly on CR (our strongest experimental finding). One cheap synthesis call distills contrastive pairs into actionable principles. Minimal implementation effort, high expected payoff. |
+| 5 | **#1 Evaluation-Free Screening** | ~60% | Composable cost multiplier -- stacks on top of any other method. LLM self-prediction filters bad mutations before they consume rollouts. Even conservative screening (reject only high-confidence "no") saves 30%+ rollouts. |
+
+**Why these 5 together:** They cover orthogonal improvement axes:
+- **AMS** improves *what data* the optimizer sees (smarter sampling)
+- **PDMO** improves *where* it searches (smaller, decomposed spaces)
+- **PTS** is a *completely different search paradigm* (comparative, not iterative)
+- **CSR** improves *what context* the reflection LLM gets (distilled insights)
+- **EFS** reduces *wasted compute* (skip bad candidates before evaluating)
+
+And critically, AMS + CSR + EFS are composable -- they can stack on top of GEPA simultaneously for a combined ~30-40% cost reduction with improved quality. PDMO and PTS are standalone alternatives that could beat GEPA outright at a fraction of the cost.
+
+**What was cut and why:**
+- **RTC (#7):** Promising but cache invalidation is tricky -- cached strategies go stale as the prompt evolves. Higher implementation risk.
+- **FCTM (#6):** 1.5x per-iteration cost is a hard sell when we're optimizing for cheaper. Needs an embedding model for clustering, adding infrastructure complexity.
+- **CFPO (A8):** The principle-to-prompt rendering step is a black box -- if it loses nuance, the whole approach fails. Less predictable than the selected 5.
+- **DCGO (A10):** Critic calibration is fragile. Blind spots in the critic silently corrupt optimization. Hard to debug.
+- **AMPO (A4):** ~80% of GEPA cost isn't cheap enough. Best for quality ceiling, not cost reduction.
+
+---
+
+## The 8 Methods We Will Test
+
+These are the final 8 methods selected for experimentation, organized by how they relate to GEPA:
+
+### Stack on GEPA (2) -- augment GEPA's existing loop
+
+| Method | Cost vs GEPA | What it improves |
+|--------|-------------|------------------|
+| **#2 Active Minibatch Selection (AMS)** | 60-80% | Smarter data selection -- pick examples where the Pareto frontier disagrees instead of random epoch-shuffled batches. Zero extra cost, just a better BatchSampler. |
+| **#4 Contrastive Synthesis Reflection (CSR)** | 80-90% | Better reflection context -- one cheap ~500-token call distills contrastive pairs into actionable principles before the reflection LLM sees them. Extends CR, our strongest finding. |
+
+### Standalone Non-Nature (2) -- replace GEPA entirely
+
+| Method | Cost vs GEPA | Paradigm |
+|--------|-------------|----------|
+| **A3 Tournament Selection (PTS)** | 9% | Generate 64 diverse prompts, single-elimination bracket on shared 5-example subsets. 630 rollouts total. Comparative evaluation, no iteration. |
+| **A5 Modular Decomposition (PDMO)** | 30-40% | Decompose prompt into 4 independent modules, optimize each on a small budget, compose + short joint refinement. Sum of small searches < one big search. |
+
+### Standalone Nature-Inspired (4) -- biologically-inspired alternatives
+
+| Method | Cost vs GEPA | Inspiration |
+|--------|-------------|-------------|
+| **B1 Slime Mold Pruning (SMNO)** | 8% | Physarum polycephalum. Generate 20 diverse prompts, evaluate all, flow resources to high-scorers, prune low-scorers. Progressive rounds: 20->10->5->3->1. ~540 rollouts. |
+| **B5 Synaptic Pruning (SPDO)** | 3-7% | Brain development. Start with a maximally detailed ~2000-word prompt, ablate one section at a time, prune non-contributing parts. 30-50 evaluations. Inverse of GEPA's additive approach. |
+| **B6 Ecological Succession (ESO)** | 50% | Forest succession. Curriculum learning: optimize on easy examples first (fast signal), then medium, then all. Each stage seeds the next. 3500 rollouts. |
+| **B9 Ant Colony Components (ACPCO)** | 15-35% | Ant colony optimization. Decompose prompts into ~50 atomic components with pheromone levels. Sample components proportionally, evaluate, update pheromone. Uniquely solves credit assignment -- which sentence matters. |
+
+### Summary
+
+| # | Method | Type | Cost vs GEPA |
+|---|--------|------|-------------|
+| 1 | AMS | Stack on GEPA | 60-80% |
+| 2 | CSR | Stack on GEPA | 80-90% |
+| 3 | PTS | Standalone | 9% |
+| 4 | PDMO | Standalone | 30-40% |
+| 5 | SMNO | Nature standalone | 8% |
+| 6 | SPDO | Nature standalone | 3-7% |
+| 7 | ESO | Nature standalone | 50% |
+| 8 | ACPCO | Nature standalone | 15-35% |

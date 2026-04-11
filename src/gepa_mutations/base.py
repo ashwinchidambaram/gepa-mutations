@@ -18,8 +18,14 @@ from rich.console import Console
 
 from gepa_mutations.benchmarks.evaluators import get_adapter
 from gepa_mutations.benchmarks.loader import load_benchmark
-from gepa_mutations.config import PAPER_ROLLOUTS, Settings
-from gepa_mutations.runner.callbacks import MetricsCallback
+from gepa_mutations.config import (
+    PAPER_ROLLOUTS,
+    THINKING_DISABLED_EXTRA_BODY,
+    Settings,
+    api_base_kwargs,
+    model_id,
+)
+from gepa_mutations.runner.callbacks import MetricsCallback, ProgressStreamerCallback
 from gepa_mutations.runner.experiment import (
     BENCHMARK_SEED_PROMPTS,
     SEED_PROMPT,
@@ -73,33 +79,40 @@ class MutationConfig:
 def build_reflection_lm(settings: Settings) -> LM:
     """Build the reflection LM wrapper."""
     return LM(
-        f"openrouter/{settings.gepa_model}",
+        model_id(settings),
         temperature=settings.gepa_temperature,
-        max_tokens=settings.gepa_max_context,
+        max_tokens=settings.max_tokens_reflection,
         top_p=settings.gepa_top_p,
         top_k=settings.gepa_top_k,
+        timeout=settings.lm_timeout,
+        **api_base_kwargs(settings),
     )
 
 
 def build_task_lm(settings: Settings) -> dspy.LM:
     """Build the task LM (dspy.LM for math benchmarks)."""
     return dspy.LM(
-        f"openrouter/{settings.gepa_model}",
+        model_id(settings),
         temperature=settings.gepa_temperature,
         top_p=settings.gepa_top_p,
         top_k=settings.gepa_top_k,
-        max_tokens=settings.gepa_max_context,
+        max_tokens=settings.max_tokens_math,
+        timeout=settings.lm_timeout,
+        extra_body=THINKING_DISABLED_EXTRA_BODY,
+        **api_base_kwargs(settings),
     )
 
 
 def build_qa_task_lm(settings: Settings) -> LM:
     """Build the task LM for QA benchmarks (direct LiteLLM calls)."""
     return LM(
-        f"openrouter/{settings.gepa_model}",
+        model_id(settings),
         temperature=settings.gepa_temperature,
-        max_tokens=settings.gepa_max_context,
+        max_tokens=settings.max_tokens_qa,
         top_p=settings.gepa_top_p,
         top_k=settings.gepa_top_k,
+        timeout=settings.lm_timeout,
+        **api_base_kwargs(settings),
     )
 
 
@@ -116,31 +129,14 @@ def evaluate_on_test(
 ) -> TestEvalResult:
     """Evaluate the best prompt on the test set.
 
-    Uses temperature=0 for deterministic test evaluation (Fix 9).
+    Uses the configured temperature (matching optimization conditions).
+    Fix 9 (temperature=0) reverted: Qwen3-8B via OpenRouter produces
+    incompatible output at temperature=0, causing all-zero QA scores.
     """
     workers = settings.test_eval_workers
-    if _uses_dspy(benchmark):
-        # Use temperature=0 for deterministic test evaluation
-        test_lm = dspy.LM(
-            f"openrouter/{settings.gepa_model}",
-            temperature=0,
-            top_p=settings.gepa_top_p,
-            top_k=settings.gepa_top_k,
-            max_tokens=settings.gepa_max_context,
-        )
-        dspy.configure(lm=test_lm)
-        scores = _evaluate_dspy(best_prompt, testset, workers)
-    else:
-        # Use temperature=0 for deterministic test evaluation
-        qa_lm = LM(
-            f"openrouter/{settings.gepa_model}",
-            temperature=0,
-            max_tokens=settings.gepa_max_context,
-            top_p=settings.gepa_top_p,
-            top_k=settings.gepa_top_k,
-        )
-        adapter = get_adapter(benchmark, task_lm=qa_lm)
-        scores = _evaluate_qa(best_prompt, testset, qa_lm, adapter, workers)
+    qa_lm = build_qa_task_lm(settings)
+    adapter = get_adapter(benchmark, task_lm=qa_lm)
+    scores = _evaluate_qa(best_prompt, testset, qa_lm, adapter, workers)
 
     total = len(testset)
     example_ids = [f"{benchmark}_test_{i}" for i in range(total)]
@@ -163,6 +159,7 @@ def _evaluate_dspy(prompt: dict[str, str], testset: list, workers: int = 10) -> 
 
     def eval_one(example):
         predictor = dspy.ChainOfThought(MathSolverSignature)
+        score = 0.0
         try:
             prediction = _run_llm(example, prompt_text, predictor)
             score, _ = _math_metric(example, prediction)
@@ -204,6 +201,7 @@ def _evaluate_qa(prompt: dict[str, str], testset: list, lm: LM, adapter, workers
     error_count = [0]
 
     def eval_one(example):
+        score = 0.0
         try:
             messages = [
                 {"role": "system", "content": prompt_text},
@@ -246,7 +244,7 @@ def config_snapshot(config: MutationConfig, settings: Settings) -> dict[str, Any
         "benchmark": config.benchmark,
         "seed": config.seed,
         "subset": config.subset,
-        "model": f"openrouter/{settings.gepa_model}",
+        "model": model_id(settings),
         "temperature": settings.gepa_temperature,
         "top_p": settings.gepa_top_p,
         "top_k": settings.gepa_top_k,
@@ -293,18 +291,14 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
     )
 
     # 2. Apply subset if specified
-    trainset = data.train[: config.subset] if config.subset else data.train
-    valset = data.val[: config.subset] if config.subset else data.val
+    trainset = data.train[: config.subset] if config.subset is not None else data.train
+    valset = data.val[: config.subset] if config.subset is not None else data.val
     testset = data.test
 
-    # 3. Build task LM and adapter
-    if _uses_dspy(config.benchmark):
-        task_lm = build_task_lm(settings)
-        dspy.configure(lm=task_lm)
-        adapter = get_adapter(config.benchmark)
-    else:
-        qa_lm = build_qa_task_lm(settings)
-        adapter = get_adapter(config.benchmark, task_lm=qa_lm)
+    # 3. Build task LM and adapter — all benchmarks use direct LM calls
+    # (AIME switched from DSPy/JSONAdapter to avoid math notation parse failures)
+    qa_lm = build_qa_task_lm(settings)
+    adapter = get_adapter(config.benchmark, task_lm=qa_lm)
 
     # 4. Build reflection LM
     reflection_lm = build_reflection_lm(settings)
@@ -314,15 +308,20 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
     if max_metric_calls is None:
         max_metric_calls = PAPER_ROLLOUTS["gepa"].get(config.benchmark, 5000)
 
-    # 6. Metrics callback
-    metrics_cb = MetricsCallback(benchmark=config.benchmark, seed=config.seed)
+    # 6. Run directory
+    run_dir = f"runs/{config.benchmark}/{config.mutation_name}/{config.seed}/gepa_state"
 
-    # 7. Seed candidate
+    # 7. Callbacks (metrics + progress streamer)
+    metrics_cb = MetricsCallback(
+        benchmark=config.benchmark, seed=config.seed, run_dir=run_dir,
+    )
+    progress_cb = ProgressStreamerCallback(
+        benchmark=config.benchmark, seed=config.seed, run_dir=run_dir,
+    )
+
+    # 8. Seed candidate
     seed_prompt = BENCHMARK_SEED_PROMPTS.get(config.benchmark, SEED_PROMPT)
     seed_candidate = {"system_prompt": seed_prompt}
-
-    # 8. Run directory
-    run_dir = f"runs/{config.benchmark}/{config.mutation_name}/{config.seed}/gepa_state"
 
     console.print(f"[bold]Running mutation: {config.mutation_name}[/bold]")
     console.print(f"  Benchmark: {config.benchmark}, Seed: {config.seed}")
@@ -352,7 +351,7 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
         cache_evaluation=True,
         seed=config.seed,
         run_dir=run_dir,
-        callbacks=[metrics_cb],
+        callbacks=[metrics_cb, progress_cb],
         display_progress_bar=True,
         raise_on_exception=True,
     )
