@@ -17,8 +17,8 @@ HF_HOME=/models/huggingface python -m vllm.entrypoints.openai.api_server \
   --model Qwen/Qwen3-14B \
   --dtype auto \
   --quantization fp8 \
-  --max-model-len 8192 \
-  --gpu-memory-utilization 0.78 \
+  --max-model-len 2048 \
+  --gpu-memory-utilization 0.70 \
   --enforce-eager \
   --host 0.0.0.0 \
   --port 8129 \
