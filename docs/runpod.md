@@ -4,7 +4,35 @@
 
 Run a clean, from-scratch 5-seed sweep for 3 model sizes (1.7B, 4B, 8B) on RunPod GPU cloud. This produces a consistent dataset on identical hardware for cross-model comparison.
 
-**Total tasks:** 183 per model (12 methods x 3 benchmarks x 5 seeds + 3 baselines) = **549 tasks across 3 models**.
+**Total tasks:** 93 per model (6 methods x 3 benchmarks x 5 seeds + 3 baselines) = **279 tasks across 3 models**.
+
+---
+
+## Method Selection
+
+Based on analysis of 44 complete 5-seed results from the SLURM cluster sweep, we trimmed from 12 methods to 6. This cuts cost ~50% while keeping all methods that showed meaningful signal.
+
+### Keep (6 methods)
+
+| Method | Type | Rationale |
+|--------|------|-----------|
+| `gepa` | Baseline | Paper-faithful control (ICLR 2026 Oral). Required for all comparisons. |
+| `best_of_k_K3` | Proposer-Replacement | Never below baseline in any cell. Top performer on multiple benchmarks. The reliable choice. |
+| `contrastive_reflection` | Proposer-Replacement | Zero extra LLM cost, always above baseline. Good "free lunch" contrast vs Best-of-K's expensive approach. |
+| `synaptic_pruning` | Standalone Search | Best single result in the sweep (27B IFBench +8.7pp). 15-100x fewer rollouts than GEPA. The efficiency story. |
+| `slime_mold` | Standalone Search | Dominates PUPA across all model scales. Inter-round mutation mechanism is unique. |
+| `tournament` | Standalone Search | Strong on PUPA and 27B HotpotQA. Contrast with Slime Mold — same population-based approach but without refinement. |
+
+### Dropped (6 methods)
+
+| Method | Reason |
+|--------|--------|
+| `failure_stratified_k_K3` | Zero 5-seed complete cells. Just Best-of-K with partitioned failures — no evidence it adds value. |
+| `active_minibatch` | Only 2 complete cells. Disagreement signal was empirically weak (0.003-0.031 range). |
+| `contrastive_synthesis` | Only 2 complete cells. Same scores as Contrastive Reflection — the extra synthesis LLM call doesn't help. Redundant. |
+| `ecological_succession` | Only 1 complete cell, weakest mutation there. Curriculum learning didn't translate. Seed-sensitive. |
+| `modular` | Only 2 complete cells, marginal gains. Composition step actively hurt performance in 5/6 runs. |
+| `ant_colony` | Only 2 complete cells, 1 below baseline. Component decomposition poorly matched to these benchmarks. |
 
 ---
 
@@ -45,9 +73,9 @@ One pod with 3 GPUs. Cheapest, simplest, shared filesystem.
 
 | Phase | Models | Est. Wall Time | Cost |
 |-------|--------|---------------|------|
-| Phase 1 | 1.7B + 8B (2 workers) | ~40h | ~$71 |
-| Phase 2 | Swap 1.7B pod → 4B | ~30h | ~$18* |
-| **Total** | | ~70h wall | **~$89** |
+| Phase 1 | 1.7B + 8B (2 workers) | ~20h | ~$35 |
+| Phase 2 | Swap 1.7B pod → 4B | ~15h | ~$9* |
+| **Total** | | ~35h wall | **~$45** |
 
 *Phase 2 only uses 1 GPU while 8B continues on the other 2.
 
@@ -55,13 +83,13 @@ One pod with 3 GPUs. Cheapest, simplest, shared filesystem.
 
 | Phase | Models | Est. Wall Time | Cost |
 |-------|--------|---------------|------|
-| Phase 1 | 1.7B + 8B (2 workers) | ~40h | ~$19 |
-| Phase 2 | Swap → 4B | ~30h | ~$5 |
-| **Total** | | ~70h wall | **~$24** |
+| Phase 1 | 1.7B + 8B (2 workers) | ~20h | ~$10 |
+| Phase 2 | Swap → 4B | ~15h | ~$2 |
+| **Total** | | ~35h wall | **~$12** |
 
 ### RTX 3090 pricing (~$0.22/GPU/hr) — if available
 
-Similar to A5000, total ~$33.
+Similar to A5000, total ~$17.
 
 **Check availability at deploy time — GPU stock fluctuates. Cheapest 24GB GPU available is the best choice.**
 
@@ -176,21 +204,27 @@ GEPA_MODEL="Qwen/Qwen3-8B" GEPA_BASE_URL="http://localhost:8125/v1" \
 ```bash
 cd /workspace/gepa-mutations
 
+# Methods to run (trimmed from 12 to 6 based on SLURM sweep analysis)
+METHODS="gepa best_of_k_K3 contrastive_reflection synaptic_pruning slime_mold tournament"
+
 # 1.7B orchestrator (all benchmarks)
 GEPA_MODEL="Qwen/Qwen3-1.7B" GEPA_BASE_URL="http://localhost:8127/v1" \
   python scripts/run_all_local.py --workers 8 --benchmark hotpotqa pupa ifbench \
+  --method $METHODS \
   > logs/orchestrator_1b_runpod.log 2>&1 &
 echo "1.7B PID: $!"
 
-# 8B orchestrator — pod 1 (hotpotqa + pupa)
+# 8B orchestrator — GPU 1 (hotpotqa + pupa)
 GEPA_MODEL="Qwen/Qwen3-8B" GEPA_BASE_URL="http://localhost:8125/v1" \
   python scripts/run_all_local.py --workers 6 --benchmark hotpotqa pupa \
+  --method $METHODS \
   > logs/orchestrator_8b_runpod.log 2>&1 &
 echo "8B-main PID: $!"
 
-# 8B orchestrator — pod 2 (ifbench)
+# 8B orchestrator — GPU 2 (ifbench)
 GEPA_MODEL="Qwen/Qwen3-8B" GEPA_BASE_URL="http://localhost:8126/v1" \
   python scripts/run_all_local.py --workers 6 --benchmark ifbench \
+  --method $METHODS \
   > logs/orchestrator_8b_ifbench_runpod.log 2>&1 &
 echo "8B-ifbench PID: $!"
 ```
@@ -240,9 +274,11 @@ CUDA_VISIBLE_DEVICES=0 python -m vllm.entrypoints.openai.api_server \
   --host 0.0.0.0 \
   --port 8127
 
-# Launch 4B orchestrator
+# Launch 4B orchestrator (same 6 methods)
+METHODS="gepa best_of_k_K3 contrastive_reflection synaptic_pruning slime_mold tournament"
 GEPA_MODEL="Qwen/Qwen3-4B" GEPA_BASE_URL="http://localhost:8127/v1" \
   python scripts/run_all_local.py --workers 8 --benchmark hotpotqa pupa ifbench \
+  --method $METHODS \
   > logs/orchestrator_4b_runpod.log 2>&1 &
 ```
 
