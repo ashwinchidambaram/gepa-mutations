@@ -20865,3 +20865,85 @@ The task is to generate a response to a given input prompt that includes specifi
 - The response must be generated without any deviation from the instructions.
 Iteration 154: New subsample score 0.0 is not better than old score 0.0, skipping
 Iteration 155: Selected program 1 score: 0.08211111111111111
+Iteration 155: Proposed new text for system_prompt: Write a detailed instruction for the assistant to follow when solving a problem. The instruction must include the following components:
+
+1. **Task Description:**  
+   The task is to write a program that checks whether a given string is a palindrome, ignoring case, punctuation, and spacing. The input will be a string, and the output should be a boolean (`true` or `false`) indicating whether the string is a palindrome after normalizing it by removing non-alphanumeric characters and converting it to lowercase. The program must be efficient and handle strings of varying lengths.
+
+2. **Constraints and Requirements:**  
+   - The input string may contain letters, numbers, spaces, and punctuation.  
+   - The program must ignore case (i.e., treat uppercase and lowercase letters as the same).  
+   - Punctuation and spaces must be removed from the string before checking.  
+   - The output must be a boolean (`true` or `false`).  
+   - The program must be written in a general-purpose programming language (e.g., Python).  
+   - The program must not use any external libraries for string manipulation.  
+   - The response must not include any repeated words.  
+   - The program must be efficient and avoid unnecessary operations.  
+   - The response must be in the Bengali language, and no other language is allowed.  
+   - The response must include the keyword **scheme** as the **16th sentence** and **scheme** as the **27th word** of that sentence.  
+   - The response must end with a postscript starting with **P.S.**.  
+
+3. **Domain-Specific Information:**  
+   - A palindrome is a string that reads the same forwards and backwards.  
+   - To determine this, we first need to normalize the string by removing all non-alphanumeric characters and converting it to lowercase.  
+   - Efficient string processing is crucial for handling long strings.  
+   - The use of a two-pointer approach can optimize the palindrome check.  
+   - The program should avoid using built-in functions that handle string cleaning unless necessary.  
+   - The normalization process must be done in-place or with minimal memory usage.  
+
+4. **Generalizable Strategy:**  
+   - Normalize the input string by removing non-alphanumeric characters and converting it to lowercase.  
+   - Use a two-pointer approach to compare characters from both ends of the string moving towards the center.  
+   - If all corresponding characters match, the string is a palindrome.  
+   - This strategy is efficient and can be applied to similar string manipulation tasks.  
+
+5. **Output Format:**  
+   - The program should return a boolean value (`true` or `false`).  
+   - The output must not include any additional text or explanation.  
+   - The response must be in the form of a function or code block.  
+   - The code should be written in a clean and readable format.  
+   - The response must be in the Bengali language, and no other language is allowed.  
+   - The response must include the keyword **scheme** as the **16th sentence** and **scheme** as the **27th word** of that sentence.  
+   - The response must end with a postscript starting with **P.S.**.  
+
+6. **Example and Feedback Analysis:**  
+   - Example input: `"Able , was I saw elba."`  
+   - Normalized string: `"ablewasisawelba"`  
+   - Expected output: `true`  
+   - Common mistakes include:  
+     - Not properly normalizing the string (e.g., not removing punctuation or spaces).  
+     - Not ignoring case.  
+     - Using repeated words in the response.  
+     - Failing to include the required keyword in the correct sentence and word position.  
+     - Not ending the response with a postscript in Bengali.  
+
+7. **Verification and Validation:**  
+   - Check that the string is properly normalized (no punctuation, spaces, or case sensitivity).  
+   - Validate that the output is a boolean and matches the expected result.  
+   - Ensure that the response is in Bengali and meets all formatting and keyword requirements.  
+   - Confirm that the postscript is present and starts with **P.S.**.  
+
+8. **Language and Style:**  
+   - The response must be written in the Bengali language.  
+   - Use formal language and avoid informal expressions.  
+   - Avoid any markdown formatting.  
+   - Avoid the use of any commas in the response.  
+   - Ensure that the response is concise and adheres strictly to the given structure.  
+
+9. **Error Handling and Edge Cases:**  
+   - Handle empty strings or strings with only non-alphanumeric characters.  
+   - Ensure the program does not crash on invalid inputs.  
+   - Handle cases where the input string is extremely long or has special characters.  
+   - Ensure the program does not include repeated words in the response.  
+
+10. **Final Output Requirements:**  
+   - The final output must be in Bengali language.  
+   - The output must be a boolean value (`true` or `false`).  
+   - The response must include the keyword **scheme** as the **16th sentence** and **scheme** as the **27th word** of that sentence.  
+   - The response must end with a postscript starting with **P.S.**.  
+   - The response must not include any repeated words.  
+   - The response must not include any commas.  
+   - The response must be in the form of a function or code block.  
+   - The code must be written in a clean and readable format.
+Iteration 155: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 156: Selected program 6 score: 0.08133333333333333
