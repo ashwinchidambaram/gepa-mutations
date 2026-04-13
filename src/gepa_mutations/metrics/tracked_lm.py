@@ -33,7 +33,14 @@ class TrackedLM:
         self._role = role
 
     def __call__(self, prompt: str | list[dict[str, Any]]) -> str:
-        result = self._lm(prompt)
+        try:
+            result = self._lm(prompt)
+        except Exception:
+            if self._role == "task":
+                self._collector.task_error_count += 1
+            else:
+                self._collector.reflection_error_count += 1
+            raise  # re-raise so the caller's error handling still works
 
         # Extract token usage stored by the patched LM.__call__
         usage = getattr(self._lm, "_last_usage", None)

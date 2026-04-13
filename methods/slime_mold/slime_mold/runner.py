@@ -271,6 +271,15 @@ def run_slime_mold(
     test_eval = evaluate_on_test(benchmark, best_prompt, testset, settings)
     console.print(f"  Test score: {test_eval.score:.4f} ({test_eval.score * 100:.2f}%)")
 
+    # Evaluate best prompt on train set
+    console.print(f"\n[bold]Evaluating on train set ({len(trainset)} examples)...[/bold]")
+    train_eval = evaluate_on_test(benchmark, best_prompt, trainset, settings)
+    console.print(f"  Train score: {train_eval.score:.4f}")
+
+    # Evaluate best prompt on val set (per-example scores)
+    console.print(f"\n[bold]Evaluating on val set ({len(valset)} examples)...[/bold]")
+    val_eval = evaluate_on_test(benchmark, best_prompt, valset, settings)
+
     wall_clock = time.time() - start_time
 
     # =========================================================================
@@ -303,6 +312,10 @@ def run_slime_mold(
         seed=seed,
         method=METHOD_NAME,
     )
+    metrics_data["train_score"] = train_eval.score
+    metrics_data["train_example_scores"] = train_eval.example_scores
+    metrics_data["val_example_scores"] = val_eval.example_scores
+    metrics_data["val_example_ids"] = val_eval.example_ids
 
     exp_result = ExperimentResult(
         benchmark=benchmark,
@@ -320,6 +333,7 @@ def run_slime_mold(
         test_example_ids=test_eval.example_ids,
         seed_prompt_test_score=seed_prompt_test_score,
         seed_prompt_val_score=seed_prompt_val_score,
+        train_score=train_eval.score,
     )
 
     save_result(

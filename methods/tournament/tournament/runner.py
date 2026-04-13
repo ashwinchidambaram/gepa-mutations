@@ -315,6 +315,15 @@ def run_tournament(
     test_eval = evaluate_on_test(benchmark, best_prompt_dict, testset, settings)
     console.print(f"  Test score: {test_eval.score:.4f} ({test_eval.score * 100:.2f}%)")
 
+    # Evaluate best prompt on train set
+    console.print(f"\n[bold]Evaluating on train set ({len(trainset)} examples)...[/bold]")
+    train_eval = evaluate_on_test(benchmark, best_prompt_dict, trainset, settings)
+    console.print(f"  Train score: {train_eval.score:.4f}")
+
+    # Evaluate best prompt on val set (per-example scores)
+    console.print(f"\n[bold]Evaluating on val set ({len(valset)} examples)...[/bold]")
+    val_eval = evaluate_on_test(benchmark, best_prompt_dict, valset, settings)
+
     # =========================================================================
     # 9. Save results
     # =========================================================================
@@ -329,6 +338,10 @@ def run_tournament(
         seed=seed,
         method="tournament",
     )
+    metrics_data["train_score"] = train_eval.score
+    metrics_data["train_example_scores"] = train_eval.example_scores
+    metrics_data["val_example_scores"] = val_eval.example_scores
+    metrics_data["val_example_ids"] = val_eval.example_ids
 
     config_snap = {
         "benchmark": benchmark,
@@ -362,6 +375,7 @@ def run_tournament(
         test_example_ids=test_eval.example_ids,
         seed_prompt_test_score=seed_prompt_test_score,
         seed_prompt_val_score=seed_prompt_val_score,
+        train_score=train_eval.score,
     )
 
     mtagval = get_model_tag(settings)

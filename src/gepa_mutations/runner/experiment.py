@@ -151,6 +151,7 @@ class ExperimentResult:
     test_example_ids: list[str] = field(default_factory=list)
     seed_prompt_test_score: float | None = None
     seed_prompt_val_score: float | None = None
+    train_score: float | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -159,6 +160,7 @@ class ExperimentResult:
             "seed": self.seed,
             "test_score": self.test_score,
             "val_score": self.val_score,
+            "train_score": self.train_score,
             "best_prompt": self.best_prompt,
             "rollout_count": self.rollout_count,
             "wall_clock_seconds": self.wall_clock_seconds,
@@ -343,6 +345,15 @@ class ExperimentRunner:
         test_eval = self._evaluate_on_test(benchmark, best_prompt, testset)
         console.print(f"  Test score: {test_eval.score:.4f} ({test_eval.score * 100:.2f}%)")
 
+        # Evaluate best prompt on train set
+        console.print(f"\n[bold]Evaluating on train set ({len(trainset)} examples)...[/bold]")
+        train_eval = self._evaluate_on_test(benchmark, best_prompt, trainset)
+        console.print(f"  Train score: {train_eval.score:.4f}")
+
+        # Evaluate best prompt on val set (per-example scores)
+        console.print(f"\n[bold]Evaluating on val set ({len(valset)} examples)...[/bold]")
+        val_eval = self._evaluate_on_test(benchmark, best_prompt, valset)
+
         wall_clock = time.time() - start_time
 
         # Build token-tracked metrics (merge with GEPA-specific callback data)
@@ -356,6 +367,7 @@ class ExperimentRunner:
             benchmark=benchmark,
             seed=seed,
             method="gepa",
+            seed_prompt=seed_prompt,
         )
         # Combine: GEPA-specific fields take precedence, token fields fill the gap
         gepa_metrics = metrics_cb.metrics.to_dict()
@@ -365,6 +377,11 @@ class ExperimentRunner:
                   "reflection_input_tokens", "reflection_output_tokens",
                   "model", "model_tag"]:
             combined_metrics[k] = token_metrics.get(k, 0)
+        # Add train/val per-example scores
+        combined_metrics["train_score"] = train_eval.score
+        combined_metrics["train_example_scores"] = train_eval.example_scores
+        combined_metrics["val_example_scores"] = val_eval.example_scores
+        combined_metrics["val_example_ids"] = val_eval.example_ids
 
         mtagval = get_model_tag(self.settings)
 
@@ -385,6 +402,7 @@ class ExperimentRunner:
             test_example_ids=test_eval.example_ids,
             seed_prompt_test_score=seed_prompt_test_score,
             seed_prompt_val_score=seed_prompt_val_score,
+            train_score=train_eval.score,
         )
 
         # Save results (model_tag namespaces the output directory)
