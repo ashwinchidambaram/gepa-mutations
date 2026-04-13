@@ -180,8 +180,7 @@ def main():
         os.environ["GEPA_MODEL"] = args.model
     if args.base_url:
         os.environ["GEPA_BASE_URL"] = args.base_url
-        if not os.environ.get("API_BASE_URL"):
-            os.environ["API_BASE_URL"] = args.base_url
+        os.environ["API_BASE_URL"] = args.base_url
 
     model_tag = _env_model_tag()
     if not model_tag:
