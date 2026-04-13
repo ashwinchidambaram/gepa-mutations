@@ -34,6 +34,7 @@ class MetricsCollector:
     val_score_trajectory: list[tuple[int, float]] = field(default_factory=list)
     best_val_trajectory: list[tuple[int, float]] = field(default_factory=list)
     rollout_trajectory: list[tuple[int, int]] = field(default_factory=list)
+    prompt_length_trajectory: list[tuple[int, int]] = field(default_factory=list)
 
     # Method-specific metrics (each method populates its own keys)
     method_specific: dict[str, Any] = field(default_factory=dict)
@@ -68,7 +69,7 @@ class MetricsCollector:
         """Increment reflection LM error counter."""
         self.reflection_error_count += 1
 
-    def record_val_score(self, iteration: int, score: float) -> None:
+    def record_val_score(self, iteration: int, score: float, prompt_length: int | None = None) -> None:
         """Record a validation score checkpoint (for iterative methods)."""
         self.val_score_trajectory.append((iteration, score))
         self.rollout_trajectory.append((iteration, self.rollout_count))
@@ -81,6 +82,9 @@ class MetricsCollector:
             self._no_improve_count += 1
 
         self.best_val_trajectory.append((iteration, self._best_val))
+
+        if prompt_length is not None:
+            self.prompt_length_trajectory.append((self.rollout_count, prompt_length))
 
     @property
     def total_tokens(self) -> int:
@@ -166,6 +170,7 @@ class MetricsCollector:
             "val_score_trajectory": self.val_score_trajectory,
             "rollout_trajectory": self.rollout_trajectory,
             "best_val_trajectory": self.best_val_trajectory,
+            "prompt_length_trajectory": self.prompt_length_trajectory,
             # Method-specific
             **self.method_specific,
         }

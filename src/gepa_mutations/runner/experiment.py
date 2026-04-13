@@ -130,6 +130,7 @@ class TestEvalResult:
     score: float
     example_scores: list[float] = field(default_factory=list)
     example_ids: list[str] = field(default_factory=list)
+    example_outputs: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -165,6 +166,7 @@ class ExperimentResult:
             "rollout_count": self.rollout_count,
             "wall_clock_seconds": self.wall_clock_seconds,
             "num_candidates": len(self.all_candidates),
+            "all_candidates": self.all_candidates[:20],  # cap at 20
             "test_example_scores": self.test_example_scores,
             "test_example_ids": self.test_example_ids,
             "seed_prompt_test_score": self.seed_prompt_test_score,
@@ -385,6 +387,15 @@ class ExperimentRunner:
 
         mtagval = get_model_tag(self.settings)
 
+        # Build candidates_with_scores: pair each candidate with its val score
+        candidates_with_scores = []
+        for i, cand in enumerate(result.candidates[:20]):  # cap at 20
+            score = result.val_aggregate_scores[i] if i < len(result.val_aggregate_scores) else None
+            candidates_with_scores.append({
+                "system_prompt": cand.get("system_prompt", str(cand)) if isinstance(cand, dict) else str(cand),
+                "val_score": score,
+            })
+
         # Build experiment result
         exp_result = ExperimentResult(
             benchmark=benchmark,
@@ -397,13 +408,25 @@ class ExperimentRunner:
             wall_clock_seconds=wall_clock,
             method="gepa",
             metrics=combined_metrics,
-            all_candidates=result.candidates,
+            all_candidates=candidates_with_scores,
             test_example_scores=test_eval.example_scores,
             test_example_ids=test_eval.example_ids,
             seed_prompt_test_score=seed_prompt_test_score,
             seed_prompt_val_score=seed_prompt_val_score,
             train_score=train_eval.score,
         )
+
+        # Build per-example outputs list for qualitative error analysis
+        test_outputs = [
+            {
+                "example_id": test_eval.example_ids[i],
+                "input": testset[i].input if hasattr(testset[i], "input") else str(testset[i]),
+                "expected": getattr(testset[i], "output", getattr(testset[i], "answer", "")),
+                "output": test_eval.example_outputs[i] if i < len(test_eval.example_outputs) else "",
+                "score": test_eval.example_scores[i],
+            }
+            for i in range(len(testset))
+        ]
 
         # Save results (model_tag namespaces the output directory)
         save_result(
@@ -413,6 +436,7 @@ class ExperimentRunner:
             config_data=exp_result.config_snapshot,
             metrics_data=combined_metrics,
             model_tag=mtagval,
+            test_outputs=test_outputs,
         )
         console.print(f"  Results saved to runs/{mtagval}/{benchmark}/gepa/{seed}/")
 

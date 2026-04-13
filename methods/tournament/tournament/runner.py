@@ -246,18 +246,28 @@ def run_tournament(
     seed_prompt_val_score = seed_val_eval.score
 
     # Inject rollout=0 as the first trajectory point
-    collector.record_val_score(iteration=0, score=seed_prompt_val_score)
+    collector.record_val_score(iteration=0, score=seed_prompt_val_score,
+                               prompt_length=len(seed_prompt))
 
     # =========================================================================
     # 5. Generate candidate pool
     # =========================================================================
     console.print("\n[bold]Step 1: Generating candidate pool...[/bold]")
+    _stage_start = time.time()
+    _stage_rollouts_start = collector.rollout_count
     pool = _generate_candidate_pool(tracked_reflection, seed_prompt, rng, pool_size=pool_size)
+    collector.method_specific.setdefault("stage_timings", []).append({
+        "stage": "pool_generation",
+        "seconds": round(time.time() - _stage_start, 2),
+        "rollouts_used": collector.rollout_count - _stage_rollouts_start,
+    })
 
     # =========================================================================
     # 6. Run tournament bracket
     # =========================================================================
     console.print("\n[bold]Step 2: Running tournament bracket...[/bold]")
+    _stage_start = time.time()
+    _stage_rollouts_start = collector.rollout_count
     bracket = Tournament(candidates=pool, rng=rng)
     champion_prompt, matchup_results = bracket.run_tournament(
         adapter=adapter,
@@ -266,6 +276,11 @@ def run_tournament(
         collector=collector,
         budget=budget,
     )
+    collector.method_specific.setdefault("stage_timings", []).append({
+        "stage": "tournament_bracket",
+        "seconds": round(time.time() - _stage_start, 2),
+        "rollouts_used": collector.rollout_count - _stage_rollouts_start,
+    })
 
     # Extract champion's final score from the last matchup (the final)
     final_matchup = next(
@@ -294,6 +309,13 @@ def run_tournament(
             _rounds_seen[_round_num] = True
             collector.record_val_score(iteration=_round_num, score=_running_best)
 
+    # Record champion prompt length at the end of optimization
+    collector.record_val_score(
+        iteration=len(_rounds_seen) + 1,
+        score=best_val_score,
+        prompt_length=len(champion_prompt),
+    )
+
     best_prompt_dict = {"system_prompt": champion_prompt}
 
     # =========================================================================
@@ -312,8 +334,15 @@ def run_tournament(
     # 8. Evaluate on test set
     # =========================================================================
     console.print(f"\n[bold]Evaluating on test set ({len(testset)} examples)...[/bold]")
+    _stage_start = time.time()
+    _stage_rollouts_start = collector.rollout_count
     test_eval = evaluate_on_test(benchmark, best_prompt_dict, testset, settings)
     console.print(f"  Test score: {test_eval.score:.4f} ({test_eval.score * 100:.2f}%)")
+    collector.method_specific.setdefault("stage_timings", []).append({
+        "stage": "champion_eval",
+        "seconds": round(time.time() - _stage_start, 2),
+        "rollouts_used": collector.rollout_count - _stage_rollouts_start,
+    })
 
     # Evaluate best prompt on train set
     console.print(f"\n[bold]Evaluating on train set ({len(trainset)} examples)...[/bold]")

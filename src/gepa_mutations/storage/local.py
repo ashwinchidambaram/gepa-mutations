@@ -33,6 +33,7 @@ def save_result(
     state_obj: Any = None,
     method: str = "gepa",
     model_tag: str = "",
+    test_outputs: list[dict] | None = None,
 ) -> Path:
     """Save experiment results to local filesystem.
 
@@ -58,6 +59,11 @@ def save_result(
     if state_obj is not None:
         with open(run_path / "state.pkl", "wb") as f:
             pickle.dump(state_obj, f)
+
+    # Per-example model outputs for qualitative error analysis
+    if test_outputs is not None:
+        with open(run_path / "test_outputs.json", "w") as f:
+            json.dump(test_outputs, f, indent=2, default=str)
 
     return run_path
 

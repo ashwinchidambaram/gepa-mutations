@@ -241,18 +241,26 @@ def run_synaptic_pruning(
     seed_prompt_val_score = seed_val_eval.score
 
     # Inject rollout=0 as the first trajectory point
-    collector.record_val_score(iteration=0, score=seed_prompt_val_score)
+    collector.record_val_score(iteration=0, score=seed_prompt_val_score,
+                               prompt_length=len(seed_prompt))
 
     # =========================================================================
     # 5. Generate 3 over-specified initial prompts (with labeled examples)
     # =========================================================================
     console.print("\n[bold]Step 1: Generating over-specified initial prompts...[/bold]")
+    _stage_start = time.time()
+    _stage_rollouts_start = collector.rollout_count
     labeled_examples = _get_labeled_examples(trainset, n=_N_LABELED_EXAMPLES)
     console.print(f"  Using {len(labeled_examples)} labeled examples for generation")
     initial_prompts = _generate_initial_prompts(
         tracked_reflection, seed_prompt, labeled_examples, n=_N_INITIAL_PROMPTS
     )
     console.print(f"  Generated {len(initial_prompts)} initial prompts")
+    collector.method_specific.setdefault("stage_timings", []).append({
+        "stage": "initial_generation",
+        "seconds": round(time.time() - _stage_start, 2),
+        "rollouts_used": collector.rollout_count - _stage_rollouts_start,
+    })
 
     # =========================================================================
     # 6. Evaluate all initial prompts on val subset (first 20 examples)
@@ -276,7 +284,8 @@ def run_synaptic_pruning(
             best_initial_prompt = prompt_text
 
     console.print(f"  Best initial prompt score: {best_initial_score:.4f}")
-    collector.record_val_score(iteration=1, score=best_initial_score)
+    collector.record_val_score(iteration=1, score=best_initial_score,
+                               prompt_length=len(best_initial_prompt))
     original_prompt_length = len(best_initial_prompt)
 
     # =========================================================================
@@ -290,6 +299,8 @@ def run_synaptic_pruning(
     # 8. Ablation loop: evaluate each section removal
     # =========================================================================
     console.print("\n[bold]Step 4: Running section ablation...[/bold]")
+    _stage_start = time.time()
+    _stage_rollouts_start = collector.rollout_count
     base_candidate = {"system_prompt": best_initial_prompt}
 
     load_bearing_indices, prunable_indices, ablation_scores = run_ablation(
@@ -306,12 +317,20 @@ def run_synaptic_pruning(
     console.print(f"  Sections tested: {len(sections)}")
     console.print(f"  Load-bearing sections: {len(load_bearing_indices)}")
     console.print(f"  Prunable sections: {len(prunable_indices)}")
-    collector.record_val_score(iteration=2, score=best_initial_score)
+    collector.method_specific.setdefault("stage_timings", []).append({
+        "stage": "ablation",
+        "seconds": round(time.time() - _stage_start, 2),
+        "rollouts_used": collector.rollout_count - _stage_rollouts_start,
+    })
+    collector.record_val_score(iteration=2, score=best_initial_score,
+                               prompt_length=len(best_initial_prompt))
 
     # =========================================================================
     # 9. Remove all prunable sections at once and check interaction effects
     # =========================================================================
     console.print("\n[bold]Step 5: Checking interaction effects of combined pruning...[/bold]")
+    _stage_start = time.time()
+    _stage_rollouts_start = collector.rollout_count
 
     # Build the pruned prompt (keep non-prunable sections)
     kept_indices = [i for i in range(len(sections)) if i not in prunable_indices]
@@ -328,13 +347,16 @@ def run_synaptic_pruning(
             )
             console.print(f"  Combined pruning score: {combined_score:.4f} (baseline: {best_initial_score:.4f})")
             _combined_best = max(best_initial_score, combined_score)
-            collector.record_val_score(iteration=3, score=_combined_best)
+            collector.record_val_score(iteration=3, score=_combined_best,
+                                       prompt_length=len(pruned_prompt))
             combined_drop = best_initial_score - combined_score
 
             # If combined removal dropped score too much, add back sections one at a time
             # sorted by least impact (smallest score_delta, i.e., least important)
             if combined_drop > _INTERACTION_THRESHOLD and prunable_indices:
                 console.print(f"  [yellow]Combined drop {combined_drop:.4f} exceeds threshold {_INTERACTION_THRESHOLD}; recovering...[/yellow]")
+                _recovery_stage_start = time.time()
+                _recovery_rollouts_start = collector.rollout_count
 
                 # Sort prunable sections by ascending score_delta (add back least-impactful first)
                 prunable_with_delta = [
@@ -371,9 +393,21 @@ def run_synaptic_pruning(
                 pruned_sections = current_sections
                 pruned_prompt = "\n\n".join(pruned_sections)
                 console.print(f"  Score after recovery: {current_score:.4f}")
-                collector.record_val_score(iteration=4, score=max(best_initial_score, current_score))
+                collector.record_val_score(iteration=4, score=max(best_initial_score, current_score),
+                                           prompt_length=len(pruned_prompt))
+                collector.method_specific.setdefault("stage_timings", []).append({
+                    "stage": "recovery",
+                    "seconds": round(time.time() - _recovery_stage_start, 2),
+                    "rollouts_used": collector.rollout_count - _recovery_rollouts_start,
+                })
     else:
         console.print("  No prunable sections or empty result; skipping combined pruning check.")
+
+    collector.method_specific.setdefault("stage_timings", []).append({
+        "stage": "pruning",
+        "seconds": round(time.time() - _stage_start, 2),
+        "rollouts_used": collector.rollout_count - _stage_rollouts_start,
+    })
 
     # Track actual sections pruned/kept
     sections_pruned = len(sections) - len(pruned_sections)
@@ -383,6 +417,8 @@ def run_synaptic_pruning(
     # 10. Strengthen load-bearing sections via reflection LM
     # =========================================================================
     console.print("\n[bold]Step 6: Strengthening load-bearing sections...[/bold]")
+    _stage_start = time.time()
+    _stage_rollouts_start = collector.rollout_count
     strengthened_sections = list(pruned_sections)
 
     for lb_idx in load_bearing_indices:
@@ -403,16 +439,30 @@ def run_synaptic_pruning(
         console.print(f"  Strengthened section {lb_idx} (was {len(original_section)} chars, now {len(strengthened)} chars)")
 
     best_prompt_text = "\n\n".join(strengthened_sections) if strengthened_sections else best_initial_prompt
-    collector.record_val_score(iteration=5, score=best_initial_score)
+    collector.method_specific.setdefault("stage_timings", []).append({
+        "stage": "strengthening",
+        "seconds": round(time.time() - _stage_start, 2),
+        "rollouts_used": collector.rollout_count - _stage_rollouts_start,
+    })
+    collector.record_val_score(iteration=5, score=best_initial_score,
+                               prompt_length=len(best_prompt_text))
 
     # =========================================================================
     # 11. Evaluate best prompt on full valset
     # =========================================================================
     console.print("\n[bold]Step 7: Evaluating final prompt on full valset...[/bold]")
+    _stage_start = time.time()
+    _stage_rollouts_start = collector.rollout_count
     best_candidate = {"system_prompt": best_prompt_text}
     best_val_score, _ = evaluate_prompt(adapter, valset, best_candidate, collector)
     console.print(f"  Final val score: {best_val_score:.4f}")
-    collector.record_val_score(iteration=6, score=best_val_score)
+    collector.method_specific.setdefault("stage_timings", []).append({
+        "stage": "final_eval",
+        "seconds": round(time.time() - _stage_start, 2),
+        "rollouts_used": collector.rollout_count - _stage_rollouts_start,
+    })
+    collector.record_val_score(iteration=6, score=best_val_score,
+                               prompt_length=len(best_prompt_text))
 
     best_prompt_dict = {"system_prompt": best_prompt_text}
     final_prompt_length = len(best_prompt_text)

@@ -118,22 +118,32 @@ def evaluate_on_test(
     workers = settings.test_eval_workers
     qa_lm = build_qa_task_lm(settings)
     adapter = get_adapter(benchmark, task_lm=qa_lm)
-    scores = _evaluate_qa(best_prompt, testset, qa_lm, adapter, workers)
+    scores, outputs = _evaluate_qa(best_prompt, testset, qa_lm, adapter, workers)
 
     total = len(testset)
     example_ids = [f"{benchmark}_test_{i}" for i in range(total)]
     mean_score = sum(scores) / total if total else 0.0
-    return TestEvalResult(score=mean_score, example_scores=scores, example_ids=example_ids)
+    return TestEvalResult(
+        score=mean_score,
+        example_scores=scores,
+        example_ids=example_ids,
+        example_outputs=outputs,
+    )
 
 
 _MAX_CONSECUTIVE_TEST_ERRORS = 10
 
 
-def _evaluate_qa(prompt: dict[str, str], testset: list, lm: LM, adapter, workers: int = 10) -> list[float]:
+def _evaluate_qa(
+    prompt: dict[str, str], testset: list, lm: LM, adapter, workers: int = 10
+) -> tuple[list[float], list[str]]:
     """Evaluate using adapter scoring and parallel LM calls.
 
     Aborts if consecutive LM errors exceed _MAX_CONSECUTIVE_TEST_ERRORS to
     prevent silently scoring an entire test set as 0 when the endpoint is down.
+
+    Returns:
+        (scores, outputs) — per-example scores and raw model response strings.
     """
     prompt_text = prompt["system_prompt"]
     total = len(testset)
@@ -147,8 +157,9 @@ def _evaluate_qa(prompt: dict[str, str], testset: list, lm: LM, adapter, workers
 
     def eval_one(example):
         if abort_exc:
-            return 0.0
+            return 0.0, ""
         score = 0.0
+        response = ""
         try:
             messages = [
                 {"role": "system", "content": prompt_text},
@@ -183,15 +194,17 @@ def _evaluate_qa(prompt: dict[str, str], testset: list, lm: LM, adapter, workers
                     f"correct: {correct_sum[0]:.1f}/{done} ({acc:.1f}%) | errors: {error_count[0]}"
                 )
 
-        return score
+        return score, response
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        scores = list(pool.map(eval_one, testset))
+        results = list(pool.map(eval_one, testset))
 
     if abort_exc:
         raise abort_exc[0]
 
-    return scores
+    scores = [r[0] for r in results]
+    outputs = [r[1] for r in results]
+    return scores, outputs
 
 
 def config_snapshot(config: MutationConfig, settings: Settings) -> dict[str, Any]:
@@ -384,7 +397,16 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
     combined_metrics["val_example_scores"] = val_eval.example_scores
     combined_metrics["val_example_ids"] = val_eval.example_ids
 
-    # 13. Build experiment result
+    # 13. Build candidates_with_scores: pair each candidate with its val score
+    candidates_with_scores = []
+    for i, cand in enumerate(result.candidates[:20]):  # cap at 20
+        score = result.val_aggregate_scores[i] if i < len(result.val_aggregate_scores) else None
+        candidates_with_scores.append({
+            "system_prompt": cand.get("system_prompt", str(cand)) if isinstance(cand, dict) else str(cand),
+            "val_score": score,
+        })
+
+    # Build experiment result
     exp_result = ExperimentResult(
         benchmark=config.benchmark,
         seed=config.seed,
@@ -396,7 +418,7 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
         wall_clock_seconds=wall_clock,
         method=config.mutation_name,
         metrics=combined_metrics,
-        all_candidates=result.candidates,
+        all_candidates=candidates_with_scores,
         test_example_scores=test_eval.example_scores,
         test_example_ids=test_eval.example_ids,
         seed_prompt_test_score=seed_prompt_test_score,
@@ -404,7 +426,19 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
         train_score=train_eval.score,
     )
 
-    # 14. Save results (method= routes to mutation-specific directory)
+    # 14. Build per-example outputs list for qualitative error analysis
+    test_outputs = [
+        {
+            "example_id": test_eval.example_ids[i],
+            "input": testset[i].input if hasattr(testset[i], "input") else str(testset[i]),
+            "expected": getattr(testset[i], "output", getattr(testset[i], "answer", "")),
+            "output": test_eval.example_outputs[i] if i < len(test_eval.example_outputs) else "",
+            "score": test_eval.example_scores[i],
+        }
+        for i in range(len(testset))
+    ]
+
+    # 15. Save results (method= routes to mutation-specific directory)
     save_result(
         benchmark=config.benchmark,
         seed=config.seed,
@@ -413,6 +447,7 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
         metrics_data=combined_metrics,
         method=config.mutation_name,
         model_tag=_mtag,
+        test_outputs=test_outputs,
     )
     console.print(
         f"  Results saved to runs/{_mtag}/{config.benchmark}/{config.mutation_name}/{config.seed}/"

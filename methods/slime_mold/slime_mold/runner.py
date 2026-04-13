@@ -118,12 +118,15 @@ def run_slime_mold(
     seed_prompt_val_score = seed_val_eval.score
 
     # Inject rollout=0 as the first trajectory point
-    collector.record_val_score(iteration=0, score=seed_prompt_val_score)
+    collector.record_val_score(iteration=0, score=seed_prompt_val_score,
+                               prompt_length=len(seed_prompt))
 
     # =========================================================================
     # 5. Generate diverse candidates (19 + seed = 20 total)
     # =========================================================================
     console.print(f"\n[bold cyan]Generating diverse candidates...[/bold cyan]")
+    _stage_start = time.time()
+    _stage_rollouts_start = collector.rollout_count
     diverse = generate_diverse_prompts(
         reflection_lm=tracked_reflection,
         seed_prompt=seed_prompt,
@@ -138,6 +141,11 @@ def run_slime_mold(
     candidates = candidates[:20]
 
     console.print(f"  Generated {len(candidates)} candidates (including seed)")
+    collector.method_specific.setdefault("stage_timings", []).append({
+        "stage": "candidate_generation",
+        "seconds": round(time.time() - _stage_start, 2),
+        "rollouts_used": collector.rollout_count - _stage_rollouts_start,
+    })
 
     # =========================================================================
     # 6. Progressive pruning (4 rounds)
@@ -149,6 +157,7 @@ def run_slime_mold(
     }
 
     _running_best_score = 0.0
+    _running_best_prompt = seed_prompt
 
     for round_idx, (n_examples, keep_k) in enumerate(_PRUNING_SCHEDULE):
         round_num = round_idx + 1
@@ -163,6 +172,9 @@ def run_slime_mold(
             f"{len(candidates)} candidates × {n_examples} examples "
             f"→ keep top {keep_k}"
         )
+
+        _stage_start = time.time()
+        _stage_rollouts_start = collector.rollout_count
 
         # Evaluate all candidates for this round
         sorted_candidates, sorted_scores, _ = run_pruning_round(
@@ -198,7 +210,15 @@ def run_slime_mold(
 
         if best_score > _running_best_score:
             _running_best_score = best_score
-        collector.record_val_score(iteration=round_num, score=_running_best_score)
+            _running_best_prompt = sorted_candidates[0] if sorted_candidates else seed_prompt
+
+        collector.method_specific.setdefault("stage_timings", []).append({
+            "stage": f"round_{round_num}",
+            "seconds": round(time.time() - _stage_start, 2),
+            "rollouts_used": collector.rollout_count - _stage_rollouts_start,
+        })
+        collector.record_val_score(iteration=round_num, score=_running_best_score,
+                                   prompt_length=len(_running_best_prompt))
 
         # Keep top-k survivors
         survivors = sorted_candidates[:keep_k]
@@ -257,10 +277,17 @@ def run_slime_mold(
     # 8. Evaluate champion on full val set
     # =========================================================================
     console.print(f"\n[bold]Evaluating champion on full val set ({len(valset)} examples)...[/bold]")
+    _stage_start = time.time()
+    _stage_rollouts_start = collector.rollout_count
     val_score, val_scores = evaluate_prompt(
         adapter, valset, {"system_prompt": champion}, collector
     )
-    collector.record_val_score(iteration=5, score=val_score)
+    collector.method_specific.setdefault("stage_timings", []).append({
+        "stage": "champion_eval",
+        "seconds": round(time.time() - _stage_start, 2),
+        "rollouts_used": collector.rollout_count - _stage_rollouts_start,
+    })
+    collector.record_val_score(iteration=5, score=val_score, prompt_length=len(champion))
     console.print(f"  Val score: {val_score:.4f} ({val_score * 100:.2f}%)")
 
     # =========================================================================
