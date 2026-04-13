@@ -155,7 +155,7 @@ if [ "$PHASE" = "1" ]; then
 
     echo ""
     echo "--- Launching orchestrator (Qwen3-8B) ---"
-    launch_orchestrator "Qwen/Qwen3-8B" "http://localhost:8125/v1" "8b" 6 $BENCHMARKS
+    launch_orchestrator "Qwen/Qwen3-8B" "http://localhost:8125/v1" "8b" 4 $BENCHMARKS
 
     echo ""
     echo "=== Startup complete ==="
