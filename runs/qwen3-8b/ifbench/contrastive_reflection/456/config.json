@@ -1,0 +1,28 @@
+{
+  "mutation_name": "contrastive_reflection",
+  "description": "Inject contrastive snippets from high-performing candidates into reflection",
+  "benchmark": "ifbench",
+  "seed": 456,
+  "subset": null,
+  "model": "openai/Qwen/Qwen3-8B",
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 20,
+  "max_context": 20000,
+  "candidate_selection": "pareto",
+  "frontier_type": "instance",
+  "module_selector": "round_robin",
+  "use_merge": true,
+  "max_merge_invocations": 5,
+  "merge_val_overlap_floor": 5,
+  "reflection_minibatch_size": 3,
+  "reflection_prompt_template": null,
+  "max_metric_calls": 3593,
+  "rollout_budget": 3593,
+  "contrastive_config": {
+    "num_contrastive_pairs": 3,
+    "min_score_gap": 0.1,
+    "include_full_text": false,
+    "max_snippet_length": 500
+  }
+}

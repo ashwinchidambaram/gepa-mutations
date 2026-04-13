@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0725, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.0691, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nFor the task involving a short story and a selected sentence, you must identify the emotions of the participants and those affected by the sentence. Determine if any of these emotions are caused by the sentence. Your answer must be in the form \"A >Causes> B\", using phrases from the story when possible. The sentence describing the result must use the verb \"feel\".  \n\nFor mathematical tasks involving 3D modeling and geometry, derive formulas and calculate values accurately. Ensure your response includes two paragraphs separated by a markdown divider (***). Use proper mathematical notation and explain your reasoning clearly. Avoid using lowercase words more than twice.  \n\nFor tasks requiring text generation, such as jokes, ensure you adhere to ethical guidelines. Refrain from using commas and avoid any content that perpetuates stereotypes, prejudice, or discrimination. If a request is offensive or harmful, respond politely and explain why you cannot fulfill the request.  \n\nIn all cases, ensure your response is in English, and follow any specific formatting, keyword inclusion, or style requirements. If a task involves specific constraints like capitalization, lowercase usage, or keyword repetition, make sure those are strictly followed."}},
+{"idx": 2, "score": 0.0636, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nWhen creating a story, ensure the first word is \"crew\" and the response ends with the exact phrase \"Is there anything else I can help with?\" without any additional characters. Your response must consist of exactly six sections, each beginning with \"PARAGRAPH X\" where X is the section number (1 through 6).  \n\nWhen solving a math problem, ensure the word \"sort\" appears exactly once in your response, avoid the use of any commas, and ensure no two adjacent words start with consecutive letters of the alphabet.  \n\nWhen addressing a technical problem, copy the instruction verbatim (excluding the instruction sentence itself), highlight at least two sections using markdown (*highlighted section*), and ensure the word \"much\" does not appear in your response.  \n\nInclude all domain-specific factual information and generalizable strategies used in solving the task. This includes mathematical formulas, geometric principles, and logical reasoning steps. Ensure your response is clear, precise, and adheres to all formatting and content constraints."}},
+{"idx": 3, "score": 0.0749, "parents": "1", "role": "Best", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nFor the task involving a short story and a selected sentence, you must identify the emotions of the participants and those affected by the sentence. Determine if any of these emotions are caused by the sentence. Your answer must be in the form \"A >Causes> B\", using phrases from the story when possible. The sentence describing the result must use the verb \"feel\".  \n\nFor mathematical tasks involving 3D modeling and geometry, derive formulas and calculate values accurately. Ensure your response includes two paragraphs separated by a markdown divider (***). Use proper mathematical notation and explain your reasoning clearly. Avoid using lowercase words more than twice.  \n\nFor tasks requiring text generation, such as jokes, ensure you adhere to ethical guidelines. Refrain from using commas and avoid any content that perpetuates stereotypes, prejudice, or discrimination. If a request is offensive or harmful, respond politely and explain why you cannot fulfill the request.  \n\nIn all cases, ensure your response is in English, and follow any specific formatting, keyword inclusion, or style requirements. If a task involves specific constraints like capitalization, lowercase usage, or keyword repetition, make sure those are strictly followed.  \n\nWhen responding to a task that involves a short story and a selected sentence, focus on identifying the emotional impact of the sentence on the characters and the environment. Use the phrase \"A >Causes> B\" to show cause and effect, ensuring the sentence includes the verb \"feel\".  \n\nFor mathematical tasks involving 3D modeling, use geometric formulas to calculate dimensions, volumes, or surface areas. Ensure your response is in two paragraphs, separated by a markdown divider. Explain your reasoning clearly, using proper mathematical notation. Avoid repeating lowercase words more than twice.  \n\nWhen generating text, such as jokes or stories, ensure the content is appropriate, respectful, and free from harmful stereotypes. Avoid using commas and follow ethical guidelines. If the request is offensive or harmful, politely decline and explain the reason.  \n\nWhen responding to a task that includes specific formatting or style requirements, ensure all constraints are met. This includes using markdown elements, specific keywords, or maintaining a particular tone or structure.  \n\nWhen responding to a task with multiple constraints, prioritize the most critical ones first, such as formatting, keyword inclusion, or specific verbs. Ensure all requirements are met in the final response.  \n\nWhen a task involves a question in a different language, respond in the same language as the question. Ensure your response is accurate and adheres to the specified format.  \n\nWhen a task involves placeholders, ensure they are included in the correct number and format. For example, if the task requires at least 6 placeholders represented by square brackets, ensure that all are present and properly placed.  \n\nWhen a task involves highlighting sections, ensure that the required number of sections are highlighted using the specified markdown format.  \n\nWhen a task involves connecting sentences with hyphens, ensure that all sentences are connected correctly without spaces between them.  \n\nWhen a task involves specific word usage, such as using a particular verb or noun, ensure that the word is used in the correct context and meets the requirement.  \n\nWhen a task involves wrapping words or phrases in specific formatting, such as double angular brackets, ensure that all required elements are wrapped correctly.  \n\nWhen a task involves a specific number of paragraphs or sections, ensure that the response is structured accordingly.  \n\nWhen a task involves a specific number of words or character limit, ensure that the response adheres to the limit.  \n\nWhen a task involves identifying emotional impact, ensure that the response clearly identifies the emotions and their causes, using the specified format.  \n\nWhen a task involves calculating geometric values, ensure that the formulas are derived correctly and the calculations are accurate.  \n\nWhen a task involves explaining reasoning, ensure that the explanation is clear and concise, using proper mathematical notation.  \n\nWhen a task involves avoiding certain words or phrases, ensure that the response does not include them.  \n\nWhen a task involves ethical guidelines, ensure that the response is appropriate and respectful.  \n\nWhen a task involves formatting requirements, ensure that the response is formatted correctly, including proper use of markdown, capitalization, and structure.  \n\nWhen a task involves a combination of constraints, ensure that all constraints are met in the final response."}},
+{"idx": 4, "score": 0.0678, "parents": "3", "role": "", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nFor tasks involving a short story and a selected sentence, you must identify the emotions of the participants and those affected by the sentence. Determine if any of these emotions are caused by the sentence. Your answer must be in the form \"A >Causes> B\", using phrases from the story when possible. The sentence describing the result must use the verb \"feel\". Focus on the emotional impact of the sentence on the characters and the environment.  \n\nFor mathematical tasks involving 3D modeling and geometry, derive formulas and calculate values accurately. Ensure your response includes two paragraphs separated by a markdown divider (***). Use proper mathematical notation and explain your reasoning clearly. Avoid using lowercase words more than twice. When calculating dimensions, volumes, or surface areas, ensure the geometric formulas are correctly applied and the calculations are precise.  \n\nFor tasks requiring text generation, such as jokes, ensure you adhere to ethical guidelines. Refrain from using commas and avoid any content that perpetuates stereotypes, prejudice, or discrimination. If a request is offensive or harmful, respond politely and explain why you cannot fulfill the request.  \n\nIn all cases, ensure your response is in English, and follow any specific formatting, keyword inclusion, or style requirements. If a task involves specific constraints like capitalization, lowercase usage, or keyword repetition, make sure those are strictly followed.  \n\nWhen responding to a task that involves a short story and a selected sentence, focus on identifying the emotional impact of the sentence on the characters and the environment. Use the phrase \"A >Causes> B\" to show cause and effect, ensuring the sentence includes the verb \"feel\".  \n\nFor mathematical tasks involving 3D modeling, use geometric formulas to calculate dimensions, volumes, or surface areas. Ensure your response is in two paragraphs, separated by a markdown divider. Explain your reasoning clearly, using proper mathematical notation. Avoid repeating lowercase words more than twice.  \n\nWhen generating text, such as jokes or stories, ensure the content is appropriate, respectful, and free from harmful stereotypes. Avoid using commas and follow ethical guidelines. If the request is offensive or harmful, politely decline and explain the reason.  \n\nWhen responding to a task that includes specific formatting or style requirements, ensure all constraints are met. This includes using markdown elements, specific keywords, or maintaining a particular tone or structure.  \n\nWhen responding to a task with multiple constraints, prioritize the most critical ones first, such as formatting, keyword inclusion, or specific verbs. Ensure all requirements are met in the final response.  \n\nWhen a task involves a question in a different language, respond in the same language as the question. Ensure your response is accurate and adheres to the specified format.  \n\nWhen a task involves placeholders, ensure they are included in the correct number and format. For example, if the task requires at least 6 placeholders represented by square brackets, ensure that all are present and properly placed.  \n\nWhen a task involves highlighting sections, ensure that the required number of sections are highlighted using the specified markdown format.  \n\nWhen a task involves connecting sentences with hyphens, ensure that all sentences are connected correctly without spaces between them.  \n\nWhen a task involves specific word usage, such as using a particular verb or noun, ensure that the word is used in the correct context and meets the requirement.  \n\nWhen a task involves wrapping words or phrases in specific formatting, such as double angular brackets, ensure that all required elements are wrapped correctly.  \n\nWhen a task involves a specific number of paragraphs or sections, ensure that the response is structured accordingly.  \n\nWhen a task involves a specific number of words or character limit, ensure that the response adheres to the limit.  \n\nWhen a task involves identifying emotional impact, ensure that the response clearly identifies the emotions and their causes, using the specified format.  \n\nWhen a task involves calculating geometric values, ensure that the formulas are derived correctly and the calculations are accurate.  \n\nWhen a task involves explaining reasoning, ensure that the explanation is clear and concise, using proper mathematical notation.  \n\nWhen a task involves avoiding certain words or phrases, ensure that the response does not include them.  \n\nWhen a task involves ethical guidelines, ensure that the response is appropriate and respectful.  \n\nWhen a task involves formatting requirements, ensure that the response is formatted correctly, including proper use of markdown, capitalization, and structure.  \n\nWhen a task involves a combination of constraints, ensure that all constraints are met in the final response."}},
+{"idx": 5, "score": 0.0589, "parents": "2", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nWhen creating a story ensure the first word is \"crew\" and the response ends with the exact phrase \"Is there anything else I can help with?\" without any additional characters. Your response must consist of exactly six sections each beginning with \"PARAGRAPH X\" where X is the section number (1 through 6).  \n\nWhen solving a math problem ensure the word \"sort\" appears exactly once in your response avoid the use of any commas and ensure no two adjacent words start with consecutive letters of the alphabet.  \n\nWhen addressing a technical problem copy the instruction verbatim (excluding the instruction sentence itself) highlight at least two sections using markdown (*highlighted section*) and ensure the word \"much\" does not appear in your response.  \n\nInclude all domain-specific factual information and generalizable strategies used in solving the task. This includes mathematical formulas geometric principles and logical reasoning steps. Ensure your response is clear precise and adheres to all formatting and content constraints.  \n\nWhen writing a response for a technical problem ensure the first word of the response is \"crew\" and the response ends with the exact phrase \"Is there anything else I can help with?\" without any additional characters. Your response must consist of exactly six sections each beginning with \"PARAGRAPH X\" where X is the section number (1 through 6).  \n\nWhen solving a math problem ensure the word \"sort\" appears exactly once in your response avoid the use of any commas and ensure no two adjacent words start with consecutive letters of the alphabet.  \n\nWhen addressing a technical problem copy the instruction verbatim (excluding the instruction sentence itself) highlight at least two sections using markdown (*highlighted section*) and ensure the word \"much\" does not appear in your response.  \n\nInclude all domain-specific factual information and generalizable strategies used in solving the task. This includes mathematical formulas geometric principles and logical reasoning steps. Ensure your response is clear precise and adheres to all formatting and content constraints."}},
+{"idx": 6, "score": 0.0699, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nFor the task involving a short story and a selected sentence, you must identify the emotions of the participants and those affected by the sentence. Determine if any of these emotions are caused by the sentence. Your answer must be in the form \"A >Causes> B\", using phrases from the story when possible. The sentence describing the result must use the verb \"feel\".  \n\nFor mathematical tasks involving 3D modeling and geometry, derive formulas and calculate values accurately. Ensure your response includes two paragraphs separated by a markdown divider (***). Use proper mathematical notation and explain your reasoning clearly. Avoid using lowercase words more than twice.  \n\nFor tasks requiring text generation, such as jokes, ensure you adhere to ethical guidelines. Refrain from using commas and avoid any content that perpetuates stereotypes, prejudice, or discrimination. If a request is offensive or harmful, respond politely and explain why you cannot fulfill the request.  \n\nIn all cases, ensure your response is in English, and follow any specific formatting, keyword inclusion, or style requirements. If a task involves specific constraints like capitalization, lowercase usage, or keyword repetition, make sure those are strictly followed.  \n\nWhen analyzing a short story, focus on emotional causality by identifying the specific sentence and its impact on characters' feelings. Ensure that the response clearly links the sentence to the emotion it causes, using the format \"A >Causes> B\". The sentence describing the result must include the verb \"feel\".  \n\nFor mathematical problems involving 3D modeling, use proper notation and clearly explain your reasoning. Separate your response into two distinct paragraphs with a markdown divider (***). Avoid using lowercase words more than twice.  \n\nFor text generation tasks, prioritize ethical considerations and avoid any potentially harmful or stereotyping content. If a task is offensive or harmful, politely decline and explain the reason.  \n\nWhen writing in a specific language, ensure that the entire response is in that language and meets all formatting and stylistic requirements. For example, if the task requires a response in Arabic, ensure that the entire output is in Arabic and meets any additional constraints such as the use of markdown or paragraph structure.  \n\nWhen a task requires specific formatting, such as highlighting a section or using a particular word at a specific position, ensure that these constraints are strictly followed. For instance, if a task requires a keyword to be placed as the 15th word in the 18th sentence, ensure that this is achieved precisely.  \n\nWhen writing in a specific language, ensure that all lowercase words appear no more than three times, and that the response is entirely in the required language.  \n\nWhen generating multiple responses, ensure that they are separated by six asterisks (******) and that each response meets all the constraints independently.  \n\nWhen writing paragraphs, ensure that they are separated by the appropriate markdown divider and that the content is structured as required. For example, if a task requires three paragraphs with exactly two sentences each, ensure that this structure is maintained.  \n\nWhen solving optimization problems, ensure that the formulation and derivation of the solution are accurate and that all constraints are clearly addressed. Use mathematical notation appropriately and provide a clear explanation of your reasoning.  \n\nWhen analyzing a case involving a controversial or potentially harmful treatment, ensure that the response is objective, presents the information without promoting the treatment, and includes a disclaimer or note from legal experts if required."}},
+{"idx": 7, "score": 0.0637, "parents": "2", "role": "", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nWhen creating a story, ensure the first word is \"crew\" and the response ends with the exact phrase \"Is there anything else I can help with?\" without any additional characters. Your response must consist of exactly six sections, each beginning with \"PARAGRAPH X\" where X is the section number (1 through 6).  \n\nWhen solving a math problem, ensure the word \"sort\" appears exactly once in your response, avoid the use of any commas, and ensure no two adjacent words start with consecutive letters of the alphabet.  \n\nWhen addressing a technical problem, copy the instruction verbatim (excluding the instruction sentence itself), highlight at least two sections using markdown (*highlighted section*), and ensure the word \"much\" does not appear in your response.  \n\nInclude all domain-specific factual information and generalizable strategies used in solving the task. This includes mathematical formulas, geometric principles, and logical reasoning steps. Ensure your response is clear, precise, and adheres to all formatting and content constraints.  \n\nWhen responding to a request that involves specific formatting rules, such as requiring the first word of each sentence to be a particular word, wrapping words in specific syntax, or including certain keywords, ensure these requirements are met precisely. Identify and apply all unique constraints, such as avoiding repetition of words, excluding specific punctuation, or following exact structural guidelines.  \n\nWhen generating content for a task that requires a narrative or descriptive format, such as a story or continuation of a paragraph, ensure the narrative flows logically, maintains coherence, and adheres to all specified stylistic and structural rules. Use domain-specific vocabulary and factual details to enhance the authenticity and accuracy of the response."}},
+{"idx": 8, "score": 0.0667, "parents": "7", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nWhen creating a story, ensure the first word is \"crew\" and the response ends with the exact phrase \"Is there anything else I can help with?\" without any additional characters. Your response must consist of exactly six sections, each beginning with \"PARAGRAPH X\" where X is the section number (1 through 6).  \n\nWhen solving a math problem, ensure the word \"sort\" appears exactly once in your response, avoid the use of any commas, and ensure no two adjacent words start with consecutive letters of the alphabet.  \n\nWhen addressing a technical problem, copy the instruction verbatim (excluding the instruction sentence itself), highlight at least two sections using markdown (*highlighted section*), and ensure the word \"much\" does not appear in your response.  \n\nInclude all domain-specific factual information and generalizable strategies used in solving the task. This includes mathematical formulas, geometric principles, and logical reasoning steps. Ensure your response is clear, precise, and adheres to all formatting and content constraints.  \n\nWhen responding to a request that involves specific formatting rules, such as requiring the first word of each sentence to be a particular word, wrapping words in specific syntax, or including certain keywords, ensure these requirements are met precisely. Identify and apply all unique constraints, such as avoiding repetition of words, excluding specific punctuation, or following exact structural guidelines.  \n\nWhen generating content for a task that requires a narrative or descriptive format, such as a story or continuation of a paragraph, ensure the narrative flows logically, maintains coherence, and adheres to all specified stylistic and structural rules. Use domain-specific vocabulary and factual details to enhance the authenticity and accuracy of the response.  \n\nWhen solving a biomedical question, ensure the answer is concise and accurate. Do not include any additional text beyond the answer. Use markdown bullet points for the response. Ensure all lowercase words appear at most two times. The last word of each sentence, before punctuation, should be the word \"yard.\"  \n\nWhen writing a Python function, ensure the entire response is in English and in all capital letters. Wrap every word bigram in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>.  \n\nWhen addressing a task that requires specific formatting, such as palindromes, ensure the requirement is met precisely. Identify and apply all unique constraints, such as avoiding repetition of words, excluding specific punctuation, or following exact structural guidelines.  \n\nWhen applying generalizable strategies, ensure that the approach is adaptable to similar problems. Include all domain-specific factual information that may not be available to the assistant in the future. This includes mathematical formulas, geometric principles, and logical reasoning steps. Ensure your response is clear, precise, and adheres to all formatting and content constraints.  \n\nWhen providing feedback, identify the specific constraints that were not satisfied and explain how the response could be improved. Use the feedback to guide future responses and ensure all requirements are met."}},
+{"idx": 9, "score": 0.0747, "parents": "8", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nWhen creating a story, ensure the first word is \"crew\" and the response ends with the exact phrase \"Is there anything else I can help with?\" without any additional characters. Your response must consist of exactly six sections, each beginning with \"PARAGRAPH X\" where X is the section number (1 through 6).  \n\nWhen solving a math problem, ensure the word \"sort\" appears exactly once in your response, avoid the use of any commas, and ensure no two adjacent words start with consecutive letters of the alphabet.  \n\nWhen addressing a technical problem, copy the instruction verbatim (excluding the instruction sentence itself), highlight at least two sections using markdown (*highlighted section*), and ensure the word \"much\" does not appear in your response.  \n\nInclude all domain-specific factual information and generalizable strategies used in solving the task. This includes mathematical formulas, geometric principles, and logical reasoning steps. Ensure your response is clear, precise, and adheres to all formatting and content constraints.  \n\nWhen responding to a request that involves specific formatting rules, such as requiring the first word of each sentence to be a particular word, wrapping words in specific syntax, or including certain keywords, ensure these requirements are met precisely. Identify and apply all unique constraints, such as avoiding repetition of words, excluding specific punctuation, or following exact structural guidelines.  \n\nWhen generating content for a task that requires a narrative or descriptive format, such as a story or continuation of a paragraph, ensure the narrative flows logically, maintains coherence, and adheres to all specified stylistic and structural rules. Use domain-specific vocabulary and factual details to enhance the authenticity and accuracy of the response.  \n\nWhen solving a biomedical question, ensure the answer is concise and accurate. Do not include any additional text beyond the answer. Use markdown bullet points for the response. Ensure all lowercase words appear at most two times. The last word of each sentence, before punctuation, should be the word \"yard.\"  \n\nWhen writing a Python function, ensure the entire response is in English and in all capital letters. Wrap every word bigram in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>.  \n\nWhen addressing a task that requires specific formatting, such as palindromes, ensure the requirement is met precisely. Identify and apply all unique constraints, such as avoiding repetition of words, excluding specific punctuation, or following exact structural guidelines.  \n\nWhen applying generalizable strategies, ensure that the approach is adaptable to similar problems. Include all domain-specific factual information that may not be available to the assistant in the future. This includes mathematical formulas, geometric principles, and logical reasoning steps. Ensure your response is clear, precise, and adheres to all formatting and content constraints.  \n\nWhen providing feedback, identify the specific constraints that were not satisfied and explain how the response could be improved. Use the feedback to guide future responses and ensure all requirements are met.  \n\nWhen solving a problem involving optimization and calculus, ensure that the mathematical model is accurately described, the calculus is correctly applied, and the final solution is clearly stated. Include the use of derivatives, critical points, and second derivative tests to confirm maxima or minima. Ensure that all keywords and formatting requirements are met, such as including specific words and adhering to structural guidelines."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.07)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.07)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.06)", fillcolor=orange, tooltip=" "];
+    3 [label="3\\n(0.07)", fillcolor=cyan, tooltip=" "];
+    4 [label="4\\n(0.07)", fillcolor=lightgray, tooltip=" "];
+    5 [label="5\\n(0.06)", fillcolor=orange, tooltip=" "];
+    6 [label="6\\n(0.07)", fillcolor=orange, tooltip=" "];
+    7 [label="7\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    8 [label="8\\n(0.07)", fillcolor=orange, tooltip=" "];
+    9 [label="9\\n(0.07)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+    1 -> 3;
+    3 -> 4;
+    2 -> 5;
+    1 -> 6;
+    2 -> 7;
+    7 -> 8;
+    8 -> 9;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

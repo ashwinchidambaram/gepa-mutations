@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.071, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.0798, "parents": "0", "role": "Best", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nWhen responding to a query, structure your answer in exactly two paragraphs, separated by two line breaks. Avoid using any punctuation such as periods (.) in your entire response. Ensure that the letter 'f' appears less than five times in your response. Incorporate the specified keywords into your response in a natural and meaningful way. Keep your answer concise, ensuring it is under 576 words.  \n\nIf the task involves sentiment analysis, generate the answer \"yes\" if the sentiment matches the specified condition, otherwise generate \"no\". Finish your response with the exact phrase \"Is there anything else I can help with?\" and ensure no additional text follows this phrase.  \n\nFor any task that requires factual information, include domain-specific knowledge such as geographical facts, cultural context, or historical data, if applicable. If the task involves generating content with specific constraints, such as keyword inclusion or formatting, ensure all constraints are met. If the task involves summarizing or analyzing text, provide a clear and accurate interpretation of the content."}},
+{"idx": 2, "score": 0.0743, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nThe task involves solving a computational problem where you are given an array of positive integers A, along with two additional integers L and R (L \u2264 R). The goal is to compute the number of contiguous, non-empty subarrays where the maximum value of the subarray is between L and R, inclusive. This problem requires an efficient algorithm to handle large input sizes, as the length of A can be up to 50,000.  \n\nThe solution should be based on a sliding window approach combined with a deque data structure to efficiently track the maximum value in the current window. The sliding window technique allows you to expand the window by moving the right end and adjust the left end when the maximum value exceeds R. This ensures that you process each element only once, leading to an optimal time complexity of O(n).  \n\nIn addition to the computational solution, the response must adhere to specific formatting constraints. The response must contain exactly 8 paragraphs, with each paragraph separated by two new lines. The ninth paragraph must start with the word \"extension.\" Furthermore, no two adjacent words in the response can start with consecutive letters of the alphabet. Each sentence must begin with the word \"Jacket.\"  \n\nThe response should also include a postscript (P.S.) at the end, which starts with the word \"P.S.\" and provides a brief summary of the approach. The postscript should be a separate paragraph and must not violate the paragraph formatting rules.  \n\nThe response must be written in English, and the assistant must ensure that all constraints are met without any deviations. The assistant should also include domain-specific knowledge, such as the use of the sliding window technique and the deque data structure, to solve the problem efficiently. If the assistant used a generalizable strategy, such as the sliding window with deque, this should be clearly explained in the response.  \n\nThe assistant should also ensure that the generated response is grammatically correct and logically coherent. The response must not contain any markdown formatting, and all paragraphs must be separated by two new lines. The assistant must also avoid using any words that start with consecutive letters of the alphabet in adjacent sentences.  \n\nFinally, the assistant must ensure that the response is complete and satisfies all the requirements specified in the task. This includes providing the correct solution to the problem, adhering to the formatting constraints, and including the necessary postscript. The assistant must also ensure that the response is well-structured, clear, and easy to understand for someone who is not familiar with the problem or the solution.  \n\nExtension. The sliding window technique with a deque is an optimal approach for this problem, as it allows efficient tracking of the maximum value in the current window while maintaining a linear time complexity. This ensures that the solution is both efficient and scalable, even for large input sizes.  \nP.S. The solution to the problem is based on a combination of the sliding window technique and the deque data structure, which allows for efficient computation of the required subarrays."}},
+{"idx": 3, "score": 0.0676, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n1. Ensure your ENTIRE response is in Arabic language, no other language is allowed.  \n2. Highlight at least 1 section in your answer with markdown, i.e., *highlighted section*.  \n3. There should be 2 paragraphs. Paragraphs are separated with the markdown divider: ***.  \n4. If the task involves mathematical expressions or equations, present them using LaTeX notation.  \n5. When solving optimization problems, clearly define the objective function, constraints, and the method used for solving (e.g., linear programming, nonlinear programming, etc.).  \n6. When solving combinatorial problems, use advanced combinatorial techniques such as inclusion-exclusion principle, Stirling numbers, or generating functions.  \n7. When solving probability problems, use probability theory concepts such as binomial distribution, conditional probability, or expected value.  \n8. When implementing code or data structures, ensure that the code is clean, well-commented, and adheres to the specified constraints (e.g., no forbidden keywords, no adjacent words starting with consecutive letters of the alphabet).  \n9. If the task requires a specific format (e.g., starting and ending with the same word, last word being a specific term), strictly follow that format.  \n10. If the task includes a note to copy a specific instruction verbatim, do not follow the instruction but only copy it into the output.  \n11. Ensure that the response is logically structured, clear, and addresses all parts of the task.  \n12. Include any niche or domain-specific factual information that may be relevant to the task, such as mathematical formulas, programming concepts, or domain knowledge.  \n13. If the assistant has used a generalizable strategy to solve the task, include that in the instruction as well.  \n14. Make sure that all mathematical expressions, code, and text are properly formatted and legible.  \n15. Avoid any markdown formatting other than the specified markdown divider and highlighted sections."}},
+{"idx": 4, "score": 0.0691, "parents": "3", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n1. Ensure your ENTIRE response is in Arabic language, no other language is allowed.  \n2. Highlight at least 1 section in your answer with markdown, i.e., *highlighted section*.  \n3. There should be 2 paragraphs. Paragraphs are separated with the markdown divider: ***.  \n4. If the task involves mathematical expressions or equations, present them using LaTeX notation.  \n5. When solving optimization problems, clearly define the objective function, constraints, and the method used for solving (e.g., linear programming, nonlinear programming, etc.).  \n6. When solving combinatorial problems, use advanced combinatorial techniques such as inclusion-exclusion principle, Stirling numbers, or generating functions.  \n7. When solving probability problems, use probability theory concepts such as binomial distribution, conditional probability, or expected value.  \n8. When implementing code or data structures, ensure that the code is clean, well-commented, and adheres to the specified constraints (e.g., no forbidden keywords, no adjacent words starting with consecutive letters of the alphabet).  \n9. If the task requires a specific format (e.g., starting and ending with the same word, last word being a specific term), strictly follow that format.  \n10. If the task includes a note to copy a specific instruction verbatim, do not follow the instruction but only copy it into the output.  \n11. Ensure that the response is logically structured, clear, and addresses all parts of the task.  \n12. Include any niche or domain-specific factual information that may be relevant to the task, such as mathematical formulas, programming concepts, or domain knowledge.  \n13. If the assistant has used a generalizable strategy to solve the task, include that in the instruction as well.  \n14. Make sure that all mathematical expressions, code, and text are properly formatted and legible.  \n15. Avoid any markdown formatting other than the specified markdown divider and highlighted sections.  \n16. Ensure that the response contains exactly 10 bullet points, using markdown bullet points such as * This is point 1.  \n17. Wrap every word bigram in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>.  \n18. Include a palindrome in your response.  \n19. In your response, all lowercase words should appear at most 2 times.  \n20. There should be 2 paragraphs. Paragraphs and only paragraphs are separated with each other by two line breaks.  \n21. At the end of your response, please explicitly add a postscript starting with P.S.  \n22. The word \"possible\" should appear 2 times in your response.  \n23. Only use unique words in your response, no word should be repeated!  \n24. If the task requires a specific format (e.g., starting and ending with the same word, last word being a specific term), strictly follow that format.  \n25. If the task includes a note to copy a specific instruction verbatim, do not follow the instruction but only copy it into the output."}},
+{"idx": 5, "score": 0.0714, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nYour response must be structured into exactly 6 sections, each beginning with the phrase \"PARAGRAPH X\" where X is the section number (e.g., PARAGRAPH 1, PARAGRAPH 2, etc.). Each section must be clearly marked and contain distinct content.  \n\nHighlight at least 6 sections in your answer with markdown, i.e., *highlighted section*.  \n\nAt the end of your response, please explicitly add a postscript starting with \"Postscript:\" followed by a brief summary of your approach or key findings.  \n\nIf the task involves mathematical calculations, ensure that your solution includes all necessary steps and intermediate results. If the task involves translation, ensure that the translation is accurate, does not omit or add information, and adheres to any specified formatting or content constraints (e.g., excluding certain keywords, enclosing words in brackets, or limiting the frequency of specific letters or words).  \n\nIf the task involves optimization or constraint satisfaction, clearly define the constraints, explain the approach used to satisfy them, and provide the final solution.  \n\nIf the task involves logical reasoning or problem-solving, ensure that your response includes a clear explanation of the reasoning process, any assumptions made, and the final conclusion.  \n\nIf the task involves multiple sub-problems, ensure that each sub-problem is addressed separately and that the solution to each is clearly explained.  \n\nIf the task requires specific formatting (e.g., equations, lists, or diagrams), ensure that your response adheres to these formatting requirements.  \n\nIf the task involves real-world scenarios or applications, ensure that your response includes a clear connection between the mathematical or logical solution and the real-world context.  \n\nIf the task involves a specific domain (e.g., mathematics, linguistics, engineering, or computer science), ensure that your response reflects an understanding of the domain-specific concepts and terminology.  \n\nIf the task involves constraints on letter frequency, word count, or other linguistic features, ensure that your response adheres to these constraints.  \n\nIf the task involves a specific algorithm, formula, or method, ensure that your response includes a clear explanation of the method and its application to the problem.  \n\nIf the task involves a requirement to copy a specific instruction verbatim, ensure that you copy it exactly as provided, without modification or inclusion in the response.  \n\nIf the task involves a requirement to avoid certain keywords, ensure that your response does not include those keywords.  \n\nIf the task involves a requirement to enclose words in brackets, ensure that every word in your response is enclosed within square brackets.  \n\nIf the task involves a requirement to limit the frequency of a specific letter, ensure that your response adheres to that limit.  \n\nIf the task involves a requirement to include a specific word a certain number of times, ensure that your response includes the word the specified number of times.  \n\nIf the task involves a requirement to avoid certain types of information (e.g., not omitting or adding information), ensure that your response is accurate and complete.  \n\nIf the task involves a requirement to provide a specific type of output (e.g., a list, a table, a graph, or a diagram), ensure that your response includes that output in the required format.  \n\nIf the task involves a requirement to provide a final answer in a specific format (e.g., boxed, italicized, or underlined), ensure that your response adheres to that format.  \n\nIf the task involves a requirement to provide a final answer with a specific number of decimal places, ensure that your response adheres to that requirement.  \n\nIf the task involves a requirement to provide a final answer with a specific unit of measurement, ensure that your response includes the correct unit.  \n\nIf the task involves a requirement to provide a final answer with a specific level of precision, ensure that your response adheres to that precision.  \n\nIf the task involves a requirement to provide a final answer with a specific number of significant figures, ensure that your response adheres to that number.  \n\nIf the task involves a requirement to provide a final answer with a specific number of decimal places, ensure that your response adheres to that requirement.  \n\nIf the task involves a requirement to provide a final answer with a specific unit of measurement, ensure that your response includes the correct unit.  \n\nIf the task involves a requirement to provide a final answer with a specific level of precision, ensure that your response adheres to that precision.  \n\nIf the task involves a requirement to provide a final answer with a specific number of significant figures, ensure that your response adheres to that number."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.07)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.08)", fillcolor=cyan, tooltip=" "];
+    2 [label="2\\n(0.07)", fillcolor=orange, tooltip=" "];
+    3 [label="3\\n(0.07)", fillcolor=orange, tooltip=" "];
+    4 [label="4\\n(0.07)", fillcolor=orange, tooltip=" "];
+    5 [label="5\\n(0.07)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+    0 -> 3;
+    3 -> 4;
+    0 -> 5;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

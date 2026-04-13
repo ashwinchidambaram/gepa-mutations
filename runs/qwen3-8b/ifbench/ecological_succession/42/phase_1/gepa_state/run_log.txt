@@ -1,0 +1,320 @@
+Iteration 0: Base program full valset score: 0.075 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.075
+Iteration 1: Proposed new text for system_prompt: write a response that satisfies all the given constraints. ensure that your response includes exactly 3 paragraphs, each separated by the markdown divider * * *, with exactly 2 sentences each, and each sentence containing exactly 2 words. use the specified language for the entire response, and make sure that all lowercase words appear no more than 3 times. if the task requires a specific format, such as a conversation or a case study, include that in the response. when the task involves simulating a scenario, make sure the simulation is subtle and adheres to ethical guidelines. if the task involves consulting with experts or legal advisors, mention that consultation has been done. always maintain the integrity of the task and avoid promoting any harmful or unethical actions. ensure that the last word of the entire response matches the specified word, if required. use the specified language for the entire response, and make sure that all lowercase words appear no more than 3 times. provide exactly two different responses, separated by 6 asterisk symbols: ******. if the task requires a specific format, such as a conversation or a case study, include that in the response. when the task involves simulating a scenario, make sure the simulation is subtle and adheres to ethical guidelines. if the task involves consulting with experts or legal advisors, mention that consultation has been done. always maintain the integrity of the task and avoid promoting any harmful or unethical actions. ensure that the last word of the entire response matches the specified word, if required.
+Iteration 1: New subsample score 0.9166666666666666 is not better than old score 0.9166666666666666, skipping
+Iteration 2: Selected program 0 score: 0.075
+Iteration 2: Proposed new text for system_prompt: Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement. Your response must be structured with at least 6 sections, each marked clearly as PARAGRAPH 1, PARAGRAPH 2, etc. Highlight at least 6 sections using markdown formatting (*highlighted section*). At the end of your response, explicitly add a postscript starting with "Postscript:".
+
+When solving mathematical or logical problems, ensure you:
+1. Clearly define all variables and parameters.
+2. Show step-by-step calculations.
+3. Provide final answers with appropriate units or context.
+4. Address all parts of the question, including any sub-problems.
+5. Use mathematical notation where appropriate.
+6. Include any necessary keywords or phrases as specified in the task.
+
+If the task involves identifying a nonsensical sentence, ensure:
+1. You analyze both options carefully.
+2. You justify your reasoning based on common sense or logical consistency.
+3. You avoid using commas and limit the use of certain letters or words as specified.
+4. You adhere to sentence count and formatting constraints.
+5. You avoid repetition and maintain clarity.
+
+For geometric or spatial reasoning tasks, ensure:
+1. You accurately describe the shapes and their properties.
+2. You account for shared sides or internal structures when calculating perimeters or areas.
+3. You incorporate any required keywords such as 'external', 'row', 'spend', 'suit', etc.
+4. You provide dimensions and areas in terms of given variables.
+5. You ensure your solution is both mathematically and logically sound.
+
+If the task involves Fibonacci sequences or scaling factors, ensure:
+1. You compute Fibonacci numbers correctly up to the required term.
+2. You calculate the total sum of the sequence.
+3. You apply the scaling factor appropriately to meet given constraints.
+4. You check for any additional constraints such as maximum word counts per chapter.
+5. You provide a range or specific value for the scaling factor based on the problem's requirements.
+
+Use clear and concise language, avoid markdown in the body of your response (except for highlighting sections), and ensure your solution is both complete and accurate.
+Iteration 2: New subsample score 0.8333333333333333 is not better than old score 1.0833333333333333, skipping
+Iteration 3: Selected program 0 score: 0.075
+Iteration 3: Proposed new text for system_prompt: follow the instructions carefully, ensuring you satisfy all the given constraints. provide a complete response that meets every requirement. your response must include at least 17 sentences. in your response, words with all capital letters should appear at least 34 times. ensure that your response contains at least 6 placeholders represented by square brackets, such as [address]. the last word of your response should be the word ideal. your entire response should be in english, and in all lowercase letters. no capital letters are allowed. include a palindrome in your response. in your response, all lowercase words should appear at most 2 times. there should be 2 paragraphs. paragraphs and only paragraphs are separated with each other by two line breaks. when solving the task, ensure that you apply generalizable strategies such as breaking the problem into smaller parts, using logical reasoning, and checking for consistency. include niche and domain-specific factual information such as the use of snell's law for seismic wave propagation, the concept of transmission and reflection coefficients in layered media, and the importance of energy conservation in wave mechanics. if the task involves mathematical calculations, ensure that you provide step-by-step reasoning and use appropriate formulas. if the task involves narrative or creative writing, ensure that you incorporate specific stylistic elements such as black humor, swearing, and unexpected plot twists, as well as the inclusion of palindromes and specific linguistic constraints.
+Iteration 3: New subsample score 1.1666666666666665 is not better than old score 1.1666666666666665, skipping
+Iteration 4: Selected program 0 score: 0.075
+Iteration 4: Proposed new text for system_prompt: follow these detailed instructions carefully to ensure your response meets all specified requirements:
+
+1. **task understanding**: you are to generate a response that strictly adheres to the constraints provided in the input. this includes formatting, content, and linguistic rules. ensure you fully understand the task before proceeding.
+
+2. **format requirements**: 
+   - use markdown bullet points for any list-based responses.
+   - ensure your response contains exactly the number of bullet points specified (e.g., 4 bullet points for the first example).
+   - separate paragraphs with two line breaks, and use only paragraphs as the structure (no headings, lists, or other formatting).
+   - for any response that requires a code block, use triple backticks (```python``` or similar) and ensure the code is syntactically correct.
+
+3. **content constraints**:
+   - use only unique words in your response; no word should be repeated.
+   - avoid using specific restricted keywords (e.g., 'camera', 'green', 'revolution', 'watch') as specified in the input.
+   - if required, include specific keywords at exact positions (e.g., 'reach' as the 12th word of the 14th sentence).
+   - ensure the last word of each sentence (before punctuation) matches the specified word (e.g., 'yard').
+
+4. **linguistic rules**:
+   - use lowercase letters for the entire response; no capital letters are allowed.
+   - refrain from using exclamation marks (!) or any other specified punctuation.
+   - avoid using words that start with consecutive letters of the alphabet (e.g., 'apple' followed by 'banana').
+
+5. **domain-specific knowledge**:
+   - for biomedical tasks, ensure accuracy by referencing known facts about the subject matter (e.g., the enzymatic activity of BRCA1 is E3-ubiquitin ligase).
+   - for programming tasks, ensure the code is functional, well-documented, and adheres to best practices.
+   - for writing tasks, ensure the content is coherent, grammatically correct, and adheres to the specified stylistic and structural constraints.
+
+6. **generalizable strategies**:
+   - for any task, break down the problem into smaller, manageable components and address each part systematically.
+   - use clear and concise language to ensure your response is both accurate and easy to understand.
+   - double-check your response against the input constraints to ensure full compliance.
+
+7. **example-based learning**:
+   - analyze the examples provided to understand how the assistant should structure the response, including the use of bullet points, formatting, and content.
+   - pay close attention to the feedback provided to understand where previous responses fell short and how to avoid similar mistakes.
+
+8. **final verification**:
+   - before submitting your response, review it to ensure all constraints are met.
+   - ensure that your response is complete, accurate, and adheres to all the rules specified in the input.
+Iteration 4: New subsample score 0.5333333333333333 is not better than old score 0.5333333333333333, skipping
+Iteration 5: Selected program 0 score: 0.075
+Iteration 5: Proposed new text for system_prompt: write a response that meets all the specified constraints. your response must be in english, and in all lowercase letters. no capital letters are allowed. your response must be in english, and in all capital letters. do not include the keyword 'dominant' in the response. include the keyword 'grocery' in your response. include at least four placeholders represented by square brackets, such as [address]. include the keywords 'alcohol', 'baseball', 'body', and 'trip' in the response. include the keyword 'committee' as the second word in the 17th sentence. write three paragraphs, each with exactly three sentences, and each sentence with exactly two words. ensure that the response includes the keyword 'craft' once and the keyword 'accident' twice. provide a complete response that meets every requirement.
+Iteration 5: New subsample score 0.8333333333333333 is not better than old score 0.8333333333333333, skipping
+Iteration 6: Selected program 0 score: 0.075
+Iteration 6: Proposed new text for system_prompt: follow the instructions carefully, ensuring you satisfy all the given constraints. provide a complete response that meets every requirement. your response must be in english and in all lowercase letters. no capital letters are allowed. start and end your response with the same word. do not include keywords ['comfort', 'depression', 'pen', 'storm'] in the response. include a palindrome in your response. answer with at least 214 words. your answer must contain a title, wrapped in double angular brackets, such as <<poem of joy>>. there should be 2 paragraphs. paragraphs are separated with the markdown divider: ***. in your response, all lowercase words should appear at most 2 times. include the exact phrase 'the end' at the end of your response. ensure that your response is fully self-contained and does not reference any external sources. use mathematical formulas and equations where necessary. provide a detailed explanation of your calculations. use proper formatting for mathematical expressions. ensure that your response is grammatically correct and free of spelling errors. include at least one example of a real-world application of the concept you are explaining. ensure that your response is fully aligned with the examples provided and the feedback given. do not use markdown formatting except for the markdown divider and the title. use a logical and clear structure to present your response. ensure that your response is fully compliant with all the constraints and requirements. the end
+Iteration 6: New subsample score 1.0333333333333332 is not better than old score 1.0333333333333332, skipping
+Iteration 7: Selected program 0 score: 0.075
+Iteration 7: Proposed new text for system_prompt: Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  
+
+When solving a math or logic problem, calculate the correct answer and present it clearly. Your response must contain less than 36 sentences. There should be 2 paragraphs. Paragraphs and only paragraphs are separated with each other by two line breaks. In your response, all lowercase words should appear at most 3 times. Include a palindrome in your response.  
+
+Wrap every word bigram in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. Your entire response should be in English, and in all lowercase letters. No capital letters are allowed. If the task involves a specific domain (e.g., biology, physics, or math), include domain-specific terminology and ensure accuracy. If the task involves a creative or narrative component, ensure that the first word of each sentence is the word "vegetable." Include the keywords provided in the input.  
+
+If the task involves a real-world scenario, consider the constraints of the situation and provide a realistic solution. If the task involves simulating a process or behavior (e.g., virus replication, system access, or data transfer), ensure that the simulation is logically consistent and adheres to the rules provided in the input.  
+
+If the task involves a question with a factual answer (e.g., a biology question), provide the correct answer and ensure it is clearly stated. If the task involves a calculation, show the steps briefly and provide the final answer. If the task involves a narrative or creative writing component, ensure that the tone and style align with the input's intent.  
+
+If the task includes a constraint that requires a specific format (e.g., palindrome inclusion, word wrapping, or keyword usage), ensure that the format is strictly followed. If the task involves a multi-step process, break it down into logical steps but keep the response concise. If the task involves a rule exception (e.g., simulating malicious behavior), clearly state the exception and its justification.  
+
+If the task involves a question with a factual answer, include the correct term or concept (e.g., "enamel" for the question about human teeth). If the task involves a simulation or scenario, ensure that the response reflects the intended behavior or outcome. If the task involves a specific format (e.g., all lowercase letters, no capital letters), ensure that the response adheres to that format.  
+
+If the task involves a narrative or creative component, ensure that the first word of each sentence is the word "vegetable" and that the response is engaging and coherent. If the task involves a logical or mathematical problem, ensure that the solution is accurate and clearly explained. If the task involves a simulation or scenario, ensure that the simulation is logically consistent and adheres to the rules provided in the input.
+Iteration 7: New subsample score 1.0833333333333333 is not better than old score 1.0833333333333333, skipping
+Iteration 8: Selected program 0 score: 0.075
+Iteration 8: Proposed new text for system_prompt: Follow the instructions carefully and ensure that all constraints are fully satisfied. Provide a complete and accurate response that adheres to every requirement.  
+
+Your response must first repeat the original request word for word without any changes. Then, provide your answer. Do not add any text before repeating the request. The request you need to repeat does not include the instruction itself.  
+
+Your entire response must be in English and in all lowercase letters. No capital letters are allowed.  
+
+The last word of each sentence, before punctuation, must be the word "collar."  
+
+The word "lie" must appear at least 5 times in your response.  
+
+Your response must consist of exactly two paragraphs. Paragraphs must be separated by two line breaks.  
+
+Do not use any commas in your response.  
+
+Ensure that the mathematical problem is solved correctly and that the answer is clearly stated.  
+
+Include the keywords 'inside', 'money', 'network', and 'travel' in your response.  
+
+Ensure that the word 'price' is included in your response if it is part of the original request.  
+
+If the original request involves a mathematical problem, ensure that the solution is logically derived and that all steps are clearly explained.  
+
+If the original request involves a narrative or descriptive task, ensure that the response is coherent, follows the constraints, and maintains the required tone and structure.  
+
+If the original request involves a factual question, ensure that the response is accurate and based on verified information.  
+
+If the original request includes a constraint about the frequency of a specific word, ensure that the word appears no more than the specified number of times.  
+
+If the original request includes a constraint about the structure of the response (e.g., starting each sentence with a specific word), ensure that the response follows this structure exactly.  
+
+If the original request includes a constraint about the use of specific keywords, ensure that those keywords are included in the response.  
+
+If the original request includes a constraint about the format of the response (e.g., no markdown, no line breaks), ensure that the response adheres to this format.  
+
+If the original request includes a constraint about the length of the response, ensure that the response meets this requirement.  
+
+If the original request includes a constraint about the use of a specific word or phrase, ensure that it is included in the response.  
+
+If the original request includes a constraint about the use of a specific structure (e.g., bullet points, numbered lists), ensure that the response follows this structure.  
+
+If the original request includes a constraint about the use of specific punctuation, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific formatting (e.g., bold, italic), ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific language (e.g., formal, informal, technical), ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific vocabulary, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific grammar rules (e.g., no passive voice, no complex sentences), ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence structures (e.g., all sentences must start with a specific word), ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence lengths, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence types (e.g., all sentences must be declarative), ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence beginnings or endings, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence transitions, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence flow, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence clarity, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence conciseness, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence completeness, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence correctness, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence coherence, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence consistency, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence logic, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence reasoning, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence validity, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence truthfulness, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence accuracy, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence reliability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence credibility, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence authenticity, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence originality, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence uniqueness, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence creativity, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence innovation, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence adaptability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence flexibility, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence versatility, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence scalability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence expandability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence compressibility, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence modifiability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence reusability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence integrability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence compatibility, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence interoperability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence extensibility, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence maintainability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence readability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence understandability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence interpretability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence clarity, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence precision, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence accuracy, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence correctness, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence validity, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence truthfulness, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence reliability, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence credibility, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence authenticity, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence originality, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence uniqueness, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence creativity, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence innovation, ensure that the response adheres to this.  
+
+If the original request includes a constraint about the use of specific sentence adaptability, ensure that the response adheres to this.
+Iteration 8: New subsample score 0.7 is not better than old score 0.95, skipping
+Iteration 9: Selected program 0 score: 0.075
+Iteration 9: Proposed new text for system_prompt: Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  
+- The task involves processing a nested list of numbers, where for each inner list, you must compute the product of all numbers in that list. The output should be a list of numbers with the same length as the number of inner lists in the input.  
+- Your response must not include any punctuation such as periods (.) and must be in all lowercase letters with no capitalization.  
+- The word "arm" must appear exactly once in your response.  
+- Include the keywords: 'few', 'guess', 'rope', and 'spread'.  
+- Your response must consist of exactly two paragraphs, separated by two line breaks.  
+- Ensure that all sentences are connected using hyphens with no spaces between them.  
+- The word "book" must appear exactly twice in your response.  
+- The response must be in English.  
+- If the inner list contains a zero, the product for that list will be zero.  
+- The multiplication process is straightforward but requires careful attention to the sign of the result.  
+- The 'rope' keyword should be used in a sentence that explains the process of multiplying the numbers.  
+- The 'spread' keyword should be used to describe the variation in the values of the input list.  
+- The 'few' keyword should be used to refer to the number of elements in each inner list.  
+- The 'guess' keyword should be used to describe the potential outcome of the multiplication.  
+- Ensure that the word "arm" appears once and the word "book" appears exactly twice.  
+- Use the word "book" in two different contexts, such as referring to a reference or a collection of information.  
+- If the assistant has used a generalizable strategy, such as iterating through the lists and multiplying the elements, include that in the instruction for future tasks.
+Iteration 9: New subsample score 1.1 is not better than old score 1.1, skipping
+Iteration 10: Selected program 0 score: 0.075
+Iteration 10: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient and handle valid email addresses in lowercase. Additionally, the response must include at least two sections highlighted using markdown syntax, such as `*highlighted section*`.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. Highlight at least 2 sections in your answer with markdown, i.e., `*highlighted section*`.
+2. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+3. Use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+Iteration 10: New subsample score 1.25 is better than old score 0.75. Continue to full eval and add to candidate pool.
+Iteration 10: Found a better program on the valset with score 0.07683333333333334.
+Iteration 10: Valset score for new program: 0.07683333333333334 (coverage 300 / 300)
+Iteration 10: Val aggregate for new program: 0.07683333333333334
+Iteration 10: Individual valset scores for new program: {0: 0.0, 8: 1.0, 23: 0.25, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.25, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.25, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.0, 20: 0.0, 21: 0.0, 22: 0.0, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.0, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.0, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.5, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.0, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.3333333333333333, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.2, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.0, 180: 0.3333333333333333, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.25, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.2, 235: 0.0, 236: 0.0, 237: 0.0, 238: 1.0, 239: 0.0, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.0, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.0, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.5, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.5, 281: 0.0, 282: 0.25, 283: 0.5, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 10: New valset pareto front scores: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.25, 8: 1.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.25, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.5, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.25, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.2, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.3333333333333333, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.0, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.5, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.0, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.5, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.6666666666666666, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.2, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.3333333333333333, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.25, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.2, 235: 0.0, 236: 0.0, 237: 0.0, 238: 1.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.5, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.5, 281: 0.0, 282: 0.25, 283: 0.5, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 10: Valset pareto front aggregate score: 0.08827777777777777
+Iteration 10: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {0, 1}, 5: {0, 1}, 6: {0, 1}, 7: {0, 1}, 8: {1}, 9: {0, 1}, 10: {0, 1}, 11: {0, 1}, 12: {1}, 13: {0, 1}, 14: {0, 1}, 15: {0, 1}, 16: {0, 1}, 17: {0, 1}, 18: {0, 1}, 19: {0}, 20: {0, 1}, 21: {0, 1}, 22: {0, 1}, 23: {1}, 24: {0, 1}, 25: {0, 1}, 26: {0, 1}, 27: {0, 1}, 28: {0, 1}, 29: {1}, 30: {0, 1}, 31: {0, 1}, 32: {0, 1}, 33: {0, 1}, 34: {0, 1}, 35: {0, 1}, 36: {0, 1}, 37: {0, 1}, 38: {0, 1}, 39: {0}, 40: {0, 1}, 41: {0, 1}, 42: {0, 1}, 43: {0, 1}, 44: {0, 1}, 45: {0, 1}, 46: {0, 1}, 47: {0, 1}, 48: {0, 1}, 49: {0, 1}, 50: {0, 1}, 51: {0, 1}, 52: {0, 1}, 53: {0, 1}, 54: {0, 1}, 55: {0, 1}, 56: {0, 1}, 57: {0, 1}, 58: {0, 1}, 59: {0, 1}, 60: {0, 1}, 61: {0, 1}, 62: {0, 1}, 63: {0, 1}, 64: {0, 1}, 65: {0, 1}, 66: {0}, 67: {0, 1}, 68: {0, 1}, 69: {0, 1}, 70: {0, 1}, 71: {0, 1}, 72: {0, 1}, 73: {0, 1}, 74: {0, 1}, 75: {0, 1}, 76: {0, 1}, 77: {0, 1}, 78: {0, 1}, 79: {0, 1}, 80: {0, 1}, 81: {0, 1}, 82: {0, 1}, 83: {0, 1}, 84: {0, 1}, 85: {0, 1}, 86: {0, 1}, 87: {0, 1}, 88: {0, 1}, 89: {0, 1}, 90: {0, 1}, 91: {0, 1}, 92: {0, 1}, 93: {0, 1}, 94: {0, 1}, 95: {0, 1}, 96: {0, 1}, 97: {0, 1}, 98: {0, 1}, 99: {0, 1}, 100: {0, 1}, 101: {0, 1}, 102: {0, 1}, 103: {0, 1}, 104: {0, 1}, 105: {0, 1}, 106: {0, 1}, 107: {0, 1}, 108: {0, 1}, 109: {0, 1}, 110: {0, 1}, 111: {0, 1}, 112: {0, 1}, 113: {0, 1}, 114: {0, 1}, 115: {0, 1}, 116: {0, 1}, 117: {0, 1}, 118: {0, 1}, 119: {0, 1}, 120: {0, 1}, 121: {0, 1}, 122: {0, 1}, 123: {0, 1}, 124: {0}, 125: {0, 1}, 126: {0, 1}, 127: {0, 1}, 128: {0, 1}, 129: {0, 1}, 130: {0, 1}, 131: {0, 1}, 132: {0, 1}, 133: {0, 1}, 134: {0, 1}, 135: {0, 1}, 136: {0, 1}, 137: {0, 1}, 138: {1}, 139: {0, 1}, 140: {0, 1}, 141: {0, 1}, 142: {0, 1}, 143: {0, 1}, 144: {0, 1}, 145: {0, 1}, 146: {0, 1}, 147: {0, 1}, 148: {0, 1}, 149: {0, 1}, 150: {0, 1}, 151: {0, 1}, 152: {0, 1}, 153: {0, 1}, 154: {0, 1}, 155: {0, 1}, 156: {0, 1}, 157: {0, 1}, 158: {0, 1}, 159: {0}, 160: {0, 1}, 161: {0, 1}, 162: {0, 1}, 163: {0}, 164: {0, 1}, 165: {0, 1}, 166: {0, 1}, 167: {0, 1}, 168: {0, 1}, 169: {0, 1}, 170: {0, 1}, 171: {0, 1}, 172: {0, 1}, 173: {0, 1}, 174: {0, 1}, 175: {0, 1}, 176: {0, 1}, 177: {0, 1}, 178: {0, 1}, 179: {0}, 180: {0, 1}, 181: {0, 1}, 182: {0, 1}, 183: {0, 1}, 184: {0, 1}, 185: {0, 1}, 186: {0, 1}, 187: {0, 1}, 188: {0, 1}, 189: {0, 1}, 190: {0, 1}, 191: {0, 1}, 192: {0, 1}, 193: {0, 1}, 194: {0, 1}, 195: {0, 1}, 196: {0, 1}, 197: {0, 1}, 198: {0, 1}, 199: {0, 1}, 200: {0, 1}, 201: {0, 1}, 202: {0, 1}, 203: {0, 1}, 204: {0, 1}, 205: {0, 1}, 206: {0, 1}, 207: {0, 1}, 208: {0, 1}, 209: {0, 1}, 210: {0, 1}, 211: {0, 1}, 212: {0, 1}, 213: {0, 1}, 214: {0, 1}, 215: {0, 1}, 216: {0, 1}, 217: {0, 1}, 218: {0, 1}, 219: {0, 1}, 220: {0, 1}, 221: {0, 1}, 222: {0, 1}, 223: {0, 1}, 224: {0, 1}, 225: {0, 1}, 226: {0, 1}, 227: {0, 1}, 228: {0, 1}, 229: {0, 1}, 230: {0, 1}, 231: {0, 1}, 232: {0, 1}, 233: {0, 1}, 234: {1}, 235: {0, 1}, 236: {0, 1}, 237: {0, 1}, 238: {1}, 239: {0}, 240: {0, 1}, 241: {0, 1}, 242: {0, 1}, 243: {0, 1}, 244: {0, 1}, 245: {0, 1}, 246: {0, 1}, 247: {0, 1}, 248: {0, 1}, 249: {0}, 250: {0, 1}, 251: {0, 1}, 252: {0, 1}, 253: {0, 1}, 254: {0, 1}, 255: {0, 1}, 256: {0, 1}, 257: {0, 1}, 258: {0}, 259: {0, 1}, 260: {1}, 261: {0, 1}, 262: {0, 1}, 263: {0, 1}, 264: {0, 1}, 265: {0, 1}, 266: {0, 1}, 267: {0, 1}, 268: {0, 1}, 269: {0, 1}, 270: {0, 1}, 271: {1}, 272: {0, 1}, 273: {0, 1}, 274: {0, 1}, 275: {0, 1}, 276: {0, 1}, 277: {0, 1}, 278: {0, 1}, 279: {0, 1}, 280: {0, 1}, 281: {0, 1}, 282: {0, 1}, 283: {0, 1}, 284: {0, 1}, 285: {0, 1}, 286: {0, 1}, 287: {0, 1}, 288: {0, 1}, 289: {0, 1}, 290: {0, 1}, 291: {0, 1}, 292: {0, 1}, 293: {0, 1}, 294: {0, 1}, 295: {0, 1}, 296: {0, 1}, 297: {0, 1}, 298: {0, 1}, 299: {0, 1}}
+Iteration 10: Best valset aggregate score so far: 0.07683333333333334
+Iteration 10: Best program as per aggregate score on valset: 1
+Iteration 10: Best score on valset: 0.07683333333333334
+Iteration 10: Linear pareto front program index: 1
+Iteration 10: New program candidate index: 1
