@@ -256,7 +256,10 @@ class ExperimentRunner:
                 val_score=0.0,
                 best_prompt={"system_prompt": self._get_seed_prompt(benchmark)},
                 rollout_count=0,
-                config_snapshot=self._config_snapshot(benchmark, seed, subset, use_merge),
+                config_snapshot=self._config_snapshot(
+                    benchmark, seed, subset, use_merge,
+                    train_size=len(trainset), val_size=len(valset), test_size=len(testset)
+                ),
                 wall_clock_seconds=0.0,
             )
 
@@ -404,7 +407,10 @@ class ExperimentRunner:
             val_score=val_score,
             best_prompt=best_prompt,
             rollout_count=result.total_metric_calls or 0,
-            config_snapshot=self._config_snapshot(benchmark, seed, subset, use_merge),
+            config_snapshot=self._config_snapshot(
+                benchmark, seed, subset, use_merge,
+                train_size=len(trainset), val_size=len(valset), test_size=len(testset)
+            ),
             wall_clock_seconds=wall_clock,
             method="gepa",
             metrics=combined_metrics,
@@ -484,7 +490,8 @@ class ExperimentRunner:
         return evaluate_on_test(benchmark, best_prompt, testset, self.settings)
 
     def _config_snapshot(
-        self, benchmark: str, seed: int, subset: int | None, use_merge: bool
+        self, benchmark: str, seed: int, subset: int | None, use_merge: bool,
+        train_size: int = 0, val_size: int = 0, test_size: int = 0
     ) -> dict[str, Any]:
         return {
             "benchmark": benchmark,
@@ -504,4 +511,8 @@ class ExperimentRunner:
             "perfect_score": 1.0,
             "max_merge_invocations": 5,
             "cache_evaluation": True,
+            "train_size": train_size,
+            "val_size": val_size,
+            "test_size": test_size,
+            "gepa_base_url": self.settings.gepa_base_url,
         }

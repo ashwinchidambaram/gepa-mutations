@@ -5,14 +5,18 @@ Directory structure: runs/<benchmark>/<method>/<seed>/
   - result.json   — scores, best prompt, rollout count
   - metrics.json  — diagnostic metrics from callback
   - state.pkl     — GEPA state binary for post-hoc re-analysis
+  - environment.json — software/hardware environment metadata (once per model_tag)
 """
 
 from __future__ import annotations
 
 import json
 import pickle  # Required for GEPA state binary serialization (GEPAState uses pickle internally)
+import sys
+from datetime import datetime
 from pathlib import Path
 from typing import Any
+import socket
 
 
 RUNS_DIR = Path("runs")
@@ -22,6 +26,57 @@ def _run_dir(benchmark: str, method: str = "gepa", seed: int = 0, model_tag: str
     if model_tag:
         return RUNS_DIR / model_tag / benchmark / method / str(seed)
     return RUNS_DIR / benchmark / method / str(seed)
+
+
+def save_environment(model_tag: str) -> Path:
+    """Save software/hardware environment metadata once per model tag.
+
+    Creates runs/{model_tag}/environment.json with Python version, timestamp,
+    package versions, GPU info, and hostname. If the file already exists, skips
+    creation and returns the existing path.
+
+    Args:
+        model_tag: Model identifier string (e.g., "qwen3-8b", "gemma3-1b")
+
+    Returns:
+        Path to the environment.json file
+    """
+    env_path = RUNS_DIR / model_tag / "environment.json"
+
+    if env_path.exists():
+        return env_path  # already saved
+
+    env_data = {
+        "python_version": sys.version,
+        "timestamp": datetime.now().isoformat(),
+        "hostname": socket.gethostname(),
+    }
+
+    # Try to get package versions
+    for pkg, key in [("torch", "torch_version"), ("vllm", "vllm_version"), ("gepa", "gepa_version")]:
+        try:
+            mod = __import__(pkg)
+            env_data[key] = getattr(mod, "__version__", "unknown")
+        except ImportError:
+            env_data[key] = "not installed"
+
+    # Try to get GPU info via nvidia-smi
+    try:
+        import subprocess
+        result = subprocess.run(
+            ["nvidia-smi", "--query-gpu=name,memory.total,driver_version", "--format=csv,noheader"],
+            capture_output=True, text=True, timeout=10,
+        )
+        if result.returncode == 0:
+            env_data["gpu_info"] = result.stdout.strip()
+    except Exception:
+        env_data["gpu_info"] = "unavailable"
+
+    env_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(env_path, "w") as f:
+        json.dump(env_data, f, indent=2)
+
+    return env_path
 
 
 def save_result(
@@ -39,6 +94,10 @@ def save_result(
 
     Returns the run directory path.
     """
+    # Save environment metadata once per model_tag
+    if model_tag:
+        save_environment(model_tag)
+
     run_path = _run_dir(benchmark, method, seed, model_tag=model_tag)
     run_path.mkdir(parents=True, exist_ok=True)
 

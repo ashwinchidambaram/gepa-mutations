@@ -207,7 +207,10 @@ def _evaluate_qa(
     return scores, outputs
 
 
-def config_snapshot(config: MutationConfig, settings: Settings) -> dict[str, Any]:
+def config_snapshot(
+    config: MutationConfig, settings: Settings,
+    train_size: int = 0, val_size: int = 0, test_size: int = 0
+) -> dict[str, Any]:
     """Build a config dict from MutationConfig fields for result persistence."""
     return {
         "mutation_name": config.mutation_name,
@@ -230,6 +233,10 @@ def config_snapshot(config: MutationConfig, settings: Settings) -> dict[str, Any
         "reflection_prompt_template": config.reflection_prompt_template,
         "max_metric_calls": config.max_metric_calls,
         "rollout_budget": PAPER_ROLLOUTS["gepa"].get(config.benchmark),
+        "train_size": train_size,
+        "val_size": val_size,
+        "test_size": test_size,
+        "gepa_base_url": settings.gepa_base_url,
     }
 
 
@@ -414,7 +421,10 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
         val_score=val_score,
         best_prompt=best_prompt,
         rollout_count=result.total_metric_calls or 0,
-        config_snapshot=config_snapshot(config, settings),
+        config_snapshot=config_snapshot(
+            config, settings,
+            train_size=len(trainset), val_size=len(valset), test_size=len(testset)
+        ),
         wall_clock_seconds=wall_clock,
         method=config.mutation_name,
         metrics=combined_metrics,

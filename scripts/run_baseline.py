@@ -116,6 +116,10 @@ def run_baseline(benchmark: str, seed: int, model_tag: str, settings: Settings) 
     log.info("  evaluating on val set (%d examples)...", len(data.val))
     val_result = evaluate_on_test(benchmark, best_prompt, data.val, settings)
 
+    # Evaluate on train set for train_score
+    log.info("  evaluating on train set (%d examples)...", len(data.train))
+    train_result = evaluate_on_test(benchmark, best_prompt, data.train, settings)
+
     elapsed = time.time() - t0
 
     # Build result dict matching ExperimentResult.to_dict() format
@@ -125,12 +129,16 @@ def run_baseline(benchmark: str, seed: int, model_tag: str, settings: Settings) 
         "seed": seed,
         "test_score": test_result.score,
         "val_score": val_result.score,
+        "train_score": train_result.score,
         "best_prompt": best_prompt,
         "rollout_count": 0,
         "wall_clock_seconds": elapsed,
         "num_candidates": 0,
         "test_example_scores": test_result.example_scores,
         "test_example_ids": test_result.example_ids,
+        "train_example_scores": train_result.example_scores,
+        "val_example_scores": val_result.example_scores,
+        "val_example_ids": [f"{benchmark}_val_{i}" for i in range(len(data.val))],
     }
 
     # Save using existing persistence
@@ -140,19 +148,49 @@ def run_baseline(benchmark: str, seed: int, model_tag: str, settings: Settings) 
         "method": "baseline",
         "benchmark": benchmark,
         "seed": seed,
+        "train_size": len(data.train),
+        "val_size": len(data.val),
+        "test_size": len(data.test),
     }
+
+    metrics_data = {
+        "test_score": test_result.score,
+        "val_score": val_result.score,
+        "train_score": train_result.score,
+        "train_example_scores": train_result.example_scores,
+        "val_example_scores": val_result.example_scores,
+        "val_example_ids": [f"{benchmark}_val_{i}" for i in range(len(data.val))],
+        "rollout_count": 0,
+        "total_tokens": 0,
+        "method": "baseline",
+        "wall_clock_seconds": elapsed,
+    }
+
+    test_outputs = [
+        {
+            "example_id": f"{benchmark}_test_{i}",
+            "input": getattr(data.test[i], "input", str(data.test[i])),
+            "expected": getattr(data.test[i], "output", getattr(data.test[i], "answer", "")),
+            "output": test_result.example_outputs[i] if i < len(test_result.example_outputs) else "",
+            "score": test_result.example_scores[i],
+        }
+        for i in range(len(data.test))
+    ]
+
     save_result(
         benchmark=benchmark,
         seed=seed,
         result_data=result_data,
         config_data=config_data,
+        metrics_data=metrics_data,
         method="baseline",
         model_tag=model_tag,
+        test_outputs=test_outputs,
     )
 
     log.info(
-        "DONE  %s seed=%d — test_score=%.4f val_score=%.4f (%.1fs)",
-        benchmark, seed, test_result.score, val_result.score, elapsed,
+        "DONE  %s seed=%d — test_score=%.4f val_score=%.4f train_score=%.4f (%.1fs)",
+        benchmark, seed, test_result.score, val_result.score, train_result.score, elapsed,
     )
     return result_data
 
