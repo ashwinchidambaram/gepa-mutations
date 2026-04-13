@@ -11,7 +11,7 @@ set -euo pipefail
 
 PHASE="${1:-1}"
 BENCHMARKS="hotpotqa hover pupa ifbench livebench aime"
-METHODS="gepa best_of_k_K3 contrastive_reflection synaptic_pruning slime_mold tournament"
+METHODS="gepa contrastive_reflection synaptic_pruning slime_mold tournament"
 
 echo "=== RunPod Sweep — Phase $PHASE ==="
 
@@ -132,7 +132,7 @@ if [ "$PHASE" = "1" ]; then
     launch_orchestrator "Qwen/Qwen3-8B"   "http://localhost:8125/v1" "8b"   6 $BENCHMARKS
 
 # =========================================================================
-# Phase 2: swap 1.7B → 4B (GPU 0), 8B continues on GPU 2
+# Phase 2: swap 1.7B → 4B (GPU 0), 8B continues on GPU 1
 # =========================================================================
 elif [ "$PHASE" = "2" ]; then
     echo ""
