@@ -1,0 +1,462 @@
+{
+  "rollout_count": 725,
+  "reflection_call_count": 22,
+  "wall_clock_seconds": 3053.34,
+  "total_tokens": 613992,
+  "task_input_tokens": 493471,
+  "task_output_tokens": 114657,
+  "reflection_input_tokens": 3835,
+  "reflection_output_tokens": 2029,
+  "test_score": 0.7863157894736842,
+  "model": "openai/Qwen/Qwen3-14B",
+  "model_tag": "qwen3-14b",
+  "benchmark": "pupa",
+  "seed": 123,
+  "method": "slime_mold",
+  "val_score": 0.7555203619909502,
+  "prompt_length_chars": 422,
+  "prompt_length_tokens": 105,
+  "test_example_scores": [
+    0.75,
+    0.825,
+    0.975,
+    0.825,
+    0.75,
+    1.0,
+    0.5,
+    0.875,
+    0.75,
+    1.0,
+    0.25,
+    0.75,
+    0.925,
+    0.925,
+    0.5,
+    0.3,
+    1.0,
+    0.925,
+    0.575,
+    0.325,
+    0.925,
+    0.875,
+    0.8,
+    0.975,
+    1.0,
+    0.825,
+    0.3,
+    0.875,
+    0.75,
+    0.925,
+    1.0,
+    0.825,
+    0.925,
+    0.3,
+    0.75,
+    0.5,
+    0.75,
+    1.0,
+    0.925,
+    0.875,
+    0.825,
+    1.0,
+    0.8,
+    1.0,
+    0.825,
+    1.0,
+    0.975,
+    0.925,
+    1.0,
+    0.825,
+    0.575,
+    0.8,
+    0.925,
+    0.875,
+    0.825,
+    0.825,
+    0.925,
+    1.0,
+    0.925,
+    0.8,
+    0.8,
+    0.25,
+    1.0,
+    0.75,
+    0.675,
+    1.0,
+    0.3,
+    0.825,
+    0.75,
+    0.925,
+    0.975,
+    0.825,
+    0.925,
+    0.3,
+    0.825,
+    0.25,
+    0.75,
+    1.0,
+    0.75,
+    0.75,
+    1.0,
+    0.5,
+    1.0,
+    0.925,
+    0.8,
+    0.35,
+    0.55,
+    0.925,
+    1.0,
+    0.8,
+    0.25,
+    0.75,
+    0.925,
+    0.825,
+    1.0
+  ],
+  "test_example_ids": [
+    "pupa_test_0",
+    "pupa_test_1",
+    "pupa_test_2",
+    "pupa_test_3",
+    "pupa_test_4",
+    "pupa_test_5",
+    "pupa_test_6",
+    "pupa_test_7",
+    "pupa_test_8",
+    "pupa_test_9",
+    "pupa_test_10",
+    "pupa_test_11",
+    "pupa_test_12",
+    "pupa_test_13",
+    "pupa_test_14",
+    "pupa_test_15",
+    "pupa_test_16",
+    "pupa_test_17",
+    "pupa_test_18",
+    "pupa_test_19",
+    "pupa_test_20",
+    "pupa_test_21",
+    "pupa_test_22",
+    "pupa_test_23",
+    "pupa_test_24",
+    "pupa_test_25",
+    "pupa_test_26",
+    "pupa_test_27",
+    "pupa_test_28",
+    "pupa_test_29",
+    "pupa_test_30",
+    "pupa_test_31",
+    "pupa_test_32",
+    "pupa_test_33",
+    "pupa_test_34",
+    "pupa_test_35",
+    "pupa_test_36",
+    "pupa_test_37",
+    "pupa_test_38",
+    "pupa_test_39",
+    "pupa_test_40",
+    "pupa_test_41",
+    "pupa_test_42",
+    "pupa_test_43",
+    "pupa_test_44",
+    "pupa_test_45",
+    "pupa_test_46",
+    "pupa_test_47",
+    "pupa_test_48",
+    "pupa_test_49",
+    "pupa_test_50",
+    "pupa_test_51",
+    "pupa_test_52",
+    "pupa_test_53",
+    "pupa_test_54",
+    "pupa_test_55",
+    "pupa_test_56",
+    "pupa_test_57",
+    "pupa_test_58",
+    "pupa_test_59",
+    "pupa_test_60",
+    "pupa_test_61",
+    "pupa_test_62",
+    "pupa_test_63",
+    "pupa_test_64",
+    "pupa_test_65",
+    "pupa_test_66",
+    "pupa_test_67",
+    "pupa_test_68",
+    "pupa_test_69",
+    "pupa_test_70",
+    "pupa_test_71",
+    "pupa_test_72",
+    "pupa_test_73",
+    "pupa_test_74",
+    "pupa_test_75",
+    "pupa_test_76",
+    "pupa_test_77",
+    "pupa_test_78",
+    "pupa_test_79",
+    "pupa_test_80",
+    "pupa_test_81",
+    "pupa_test_82",
+    "pupa_test_83",
+    "pupa_test_84",
+    "pupa_test_85",
+    "pupa_test_86",
+    "pupa_test_87",
+    "pupa_test_88",
+    "pupa_test_89",
+    "pupa_test_90",
+    "pupa_test_91",
+    "pupa_test_92",
+    "pupa_test_93",
+    "pupa_test_94"
+  ],
+  "score_per_1k_rollouts": 1.0846,
+  "convergence_iteration": 4,
+  "val_score_trajectory": [
+    [
+      4,
+      0.7555203619909502
+    ]
+  ],
+  "rollout_trajectory": [
+    [
+      4,
+      725
+    ]
+  ],
+  "best_val_trajectory": [
+    [
+      4,
+      0.7555203619909502
+    ]
+  ],
+  "round_survivors": [
+    20,
+    10,
+    5,
+    3,
+    1
+  ],
+  "round_scores": [
+    {
+      "round": 1,
+      "candidate_rank": 0,
+      "score": 0.85
+    },
+    {
+      "round": 1,
+      "candidate_rank": 1,
+      "score": 0.8425
+    },
+    {
+      "round": 1,
+      "candidate_rank": 2,
+      "score": 0.78
+    },
+    {
+      "round": 1,
+      "candidate_rank": 3,
+      "score": 0.7678571428571429
+    },
+    {
+      "round": 1,
+      "candidate_rank": 4,
+      "score": 0.7675
+    },
+    {
+      "round": 1,
+      "candidate_rank": 5,
+      "score": 0.7525000000000001
+    },
+    {
+      "round": 1,
+      "candidate_rank": 6,
+      "score": 0.7375
+    },
+    {
+      "round": 1,
+      "candidate_rank": 7,
+      "score": 0.6964285714285714
+    },
+    {
+      "round": 1,
+      "candidate_rank": 8,
+      "score": 0.6853571428571429
+    },
+    {
+      "round": 1,
+      "candidate_rank": 9,
+      "score": 0.6814285714285714
+    },
+    {
+      "round": 1,
+      "candidate_rank": 10,
+      "score": 0.6775
+    },
+    {
+      "round": 1,
+      "candidate_rank": 11,
+      "score": 0.6560714285714286
+    },
+    {
+      "round": 1,
+      "candidate_rank": 12,
+      "score": 0.6532142857142857
+    },
+    {
+      "round": 1,
+      "candidate_rank": 13,
+      "score": 0.6525000000000001
+    },
+    {
+      "round": 1,
+      "candidate_rank": 14,
+      "score": 0.64
+    },
+    {
+      "round": 1,
+      "candidate_rank": 15,
+      "score": 0.6375
+    },
+    {
+      "round": 1,
+      "candidate_rank": 16,
+      "score": 0.6103571428571428
+    },
+    {
+      "round": 1,
+      "candidate_rank": 17,
+      "score": 0.5974999999999999
+    },
+    {
+      "round": 1,
+      "candidate_rank": 18,
+      "score": 0.5275000000000001
+    },
+    {
+      "round": 1,
+      "candidate_rank": 19,
+      "score": 0.42750000000000005
+    },
+    {
+      "round": 2,
+      "candidate_rank": 0,
+      "score": 0.8800000000000001
+    },
+    {
+      "round": 2,
+      "candidate_rank": 1,
+      "score": 0.8166666666666667
+    },
+    {
+      "round": 2,
+      "candidate_rank": 2,
+      "score": 0.8061111111111111
+    },
+    {
+      "round": 2,
+      "candidate_rank": 3,
+      "score": 0.7633333333333333
+    },
+    {
+      "round": 2,
+      "candidate_rank": 4,
+      "score": 0.6996825396825397
+    },
+    {
+      "round": 2,
+      "candidate_rank": 5,
+      "score": 0.692936507936508
+    },
+    {
+      "round": 2,
+      "candidate_rank": 6,
+      "score": 0.6922222222222222
+    },
+    {
+      "round": 2,
+      "candidate_rank": 7,
+      "score": 0.6461111111111111
+    },
+    {
+      "round": 2,
+      "candidate_rank": 8,
+      "score": 0.6227777777777778
+    },
+    {
+      "round": 2,
+      "candidate_rank": 9,
+      "score": 0.46222222222222226
+    },
+    {
+      "round": 3,
+      "candidate_rank": 0,
+      "score": 0.9175000000000001
+    },
+    {
+      "round": 3,
+      "candidate_rank": 1,
+      "score": 0.89125
+    },
+    {
+      "round": 3,
+      "candidate_rank": 2,
+      "score": 0.8074999999999999
+    },
+    {
+      "round": 3,
+      "candidate_rank": 3,
+      "score": 0.79875
+    },
+    {
+      "round": 3,
+      "candidate_rank": 4,
+      "score": 0.7262500000000001
+    },
+    {
+      "round": 4,
+      "candidate_rank": 0,
+      "score": 0.8275
+    },
+    {
+      "round": 4,
+      "candidate_rank": 1,
+      "score": 0.8198412698412698
+    },
+    {
+      "round": 4,
+      "candidate_rank": 2,
+      "score": 0.7378571428571429
+    }
+  ],
+  "pruning_history": [
+    {
+      "round": 1,
+      "n_candidates": 20,
+      "n_examples": 10,
+      "best_score": 0.85,
+      "worst_score": 0.42750000000000005
+    },
+    {
+      "round": 2,
+      "n_candidates": 10,
+      "n_examples": 15,
+      "best_score": 0.8800000000000001,
+      "worst_score": 0.46222222222222226
+    },
+    {
+      "round": 3,
+      "n_candidates": 5,
+      "n_examples": 20,
+      "best_score": 0.9175000000000001,
+      "worst_score": 0.7262500000000001
+    },
+    {
+      "round": 4,
+      "n_candidates": 3,
+      "n_examples": 30,
+      "best_score": 0.8275,
+      "worst_score": 0.7378571428571429
+    }
+  ]
+}

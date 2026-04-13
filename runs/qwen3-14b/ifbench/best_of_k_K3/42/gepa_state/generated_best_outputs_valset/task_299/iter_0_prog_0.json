@@ -1,0 +1,3 @@
+{
+    "response": "```python\nclass Node:\n    def __init__(self, data):\n        self.left = None\n        self.right = None\n        self.data = data.lower()\n\ndef insert(root, data):\n    if root is None:\n        return Node(data)\n    if data < root.data:\n        root.left = insert(root.left, data)\n    else:\n        root.right = insert(root.right, data)\n    return root\n\ndef process_characters(sequence, index=0, root=None):\n    if index >= len(sequence):\n        return root\n    current_char = sequence[index].lower()\n    root = insert(root, current_char)\n    return process_characters(sequence, index + 1, root)\n\n# Predefined alphanumeric sequence\nsequence = \"Python3Programming123\"\nroot = process_characters(sequence)\n```\n\nThat's my answer."
+}

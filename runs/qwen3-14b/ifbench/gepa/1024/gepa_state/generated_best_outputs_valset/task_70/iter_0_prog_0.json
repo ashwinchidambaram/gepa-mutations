@@ -1,0 +1,3 @@
+{
+    "response": "<<Sorting by Length with Grace>>\n\n```sql\nSELECT title, director\nFROM movies\nORDER BY \n    LENGTH(title) DESC,\n    LENGTH(director) DESC,\n    title ASC;\n```\n\nA man, a plan, a canal: Panama."
+}

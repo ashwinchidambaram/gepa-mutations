@@ -1,0 +1,229 @@
+{
+  "benchmark": "pupa",
+  "seed": 789,
+  "total_metric_calls": 3991,
+  "total_iterations": 81,
+  "best_candidate_idx": 34,
+  "total_wall_clock_seconds": 1780.5104823112488,
+  "acceptance_rate": 0.5,
+  "merge_acceptance_rate": 0.0,
+  "iterations": [
+    {
+      "iteration": 77,
+      "wall_clock_seconds": 447.11943554878235,
+      "proposal_accepted": true,
+      "candidate_idx": 7,
+      "candidate_score": 0.7167377531309419,
+      "new_candidate_idx": 35,
+      "new_score": 2.05,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 36,
+      "pareto_displaced": [],
+      "metric_calls_used": 3776,
+      "metric_calls_delta": 92
+    },
+    {
+      "iteration": 78,
+      "wall_clock_seconds": 37.58015537261963,
+      "proposal_accepted": false,
+      "candidate_idx": 34,
+      "candidate_score": 0.7583208020050125,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 2.55 not better than old score 2.575",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3782,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 79,
+      "wall_clock_seconds": 55.69625425338745,
+      "proposal_accepted": false,
+      "candidate_idx": 25,
+      "candidate_score": 0.693625239569512,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 1.425 not better than old score 1.875",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3788,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 80,
+      "wall_clock_seconds": 443.2628583908081,
+      "proposal_accepted": true,
+      "candidate_idx": 27,
+      "candidate_score": 0.6300981866430783,
+      "new_candidate_idx": 36,
+      "new_score": 2.5,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 37,
+      "pareto_displaced": [],
+      "metric_calls_used": 3887,
+      "metric_calls_delta": 93
+    },
+    {
+      "iteration": 81,
+      "wall_clock_seconds": 31.375344038009644,
+      "proposal_accepted": false,
+      "candidate_idx": 23,
+      "candidate_score": 0.7017160548429898,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 2.625 not better than old score 2.675",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3893,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 82,
+      "wall_clock_seconds": 449.6183965206146,
+      "proposal_accepted": true,
+      "candidate_idx": 12,
+      "candidate_score": 0.7089057485342316,
+      "new_candidate_idx": 37,
+      "new_score": 2.65,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 38,
+      "pareto_displaced": [],
+      "metric_calls_used": 3991,
+      "metric_calls_delta": 92
+    }
+  ],
+  "valset_scores": [
+    {
+      "iteration": 0,
+      "candidate_idx": 0,
+      "average_score": 0.7139238934440173,
+      "is_best_program": true
+    },
+    {
+      "iteration": 77,
+      "candidate_idx": 35,
+      "average_score": 0.7005636640621161,
+      "is_best_program": false
+    },
+    {
+      "iteration": 80,
+      "candidate_idx": 36,
+      "average_score": 0.5979193080741069,
+      "is_best_program": false
+    },
+    {
+      "iteration": 82,
+      "candidate_idx": 37,
+      "average_score": 0.7164904909332155,
+      "is_best_program": false
+    }
+  ],
+  "convergence_curve": [
+    {
+      "rollout_idx": 3776,
+      "iteration": 77,
+      "running_best_val_score": 0.7139238934440173
+    },
+    {
+      "rollout_idx": 3782,
+      "iteration": 78,
+      "running_best_val_score": 0.7139238934440173
+    },
+    {
+      "rollout_idx": 3788,
+      "iteration": 79,
+      "running_best_val_score": 0.7139238934440173
+    },
+    {
+      "rollout_idx": 3887,
+      "iteration": 80,
+      "running_best_val_score": 0.7139238934440173
+    },
+    {
+      "rollout_idx": 3893,
+      "iteration": 81,
+      "running_best_val_score": 0.7139238934440173
+    },
+    {
+      "rollout_idx": 3991,
+      "iteration": 82,
+      "running_best_val_score": 0.7164904909332155
+    }
+  ],
+  "contrastive_reflection": {
+    "total_iterations": 6,
+    "active_iterations": 0,
+    "active_ratio": 0.0,
+    "mean_pairs_found": 0.0,
+    "iterations": [
+      {
+        "iteration": 77,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 78,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 79,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 80,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 81,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 82,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      }
+    ]
+  },
+  "total_tokens": 776249,
+  "task_input_tokens": 674709,
+  "task_output_tokens": 84296,
+  "reflection_input_tokens": 10281,
+  "reflection_output_tokens": 6963,
+  "model": "Qwen/Qwen3-14B",
+  "model_tag": "qwen3-14b"
+}
