@@ -11,6 +11,7 @@ Directory structure: runs/<benchmark>/<method>/<seed>/
 from __future__ import annotations
 
 import json
+import os
 import pickle  # Required for GEPA state binary serialization (GEPAState uses pickle internally)
 import sys
 from datetime import datetime
@@ -20,6 +21,20 @@ import socket
 
 
 RUNS_DIR = Path("runs")
+
+
+def _atomic_json_write(path: Path, data: dict | list) -> None:
+    """Write JSON atomically: write to .tmp, validate, rename."""
+    tmp = path.with_suffix(".tmp")
+    content = json.dumps(data, indent=2, default=str)
+    with open(tmp, "w") as f:
+        f.write(content)
+        f.flush()
+        os.fsync(f.fileno())
+    # Validate: re-read and parse to catch corruption
+    with open(tmp) as f:
+        json.load(f)
+    os.rename(str(tmp), str(path))  # atomic on POSIX
 
 
 def _run_dir(benchmark: str, method: str = "gepa", seed: int = 0, model_tag: str = "") -> Path:
@@ -73,8 +88,7 @@ def save_environment(model_tag: str) -> Path:
         env_data["gpu_info"] = "unavailable"
 
     env_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(env_path, "w") as f:
-        json.dump(env_data, f, indent=2)
+    _atomic_json_write(env_path, env_data)
 
     return env_path
 
@@ -102,17 +116,14 @@ def save_result(
     run_path.mkdir(parents=True, exist_ok=True)
 
     # Config snapshot
-    with open(run_path / "config.json", "w") as f:
-        json.dump(config_data, f, indent=2, default=str)
+    _atomic_json_write(run_path / "config.json", config_data)
 
     # Result data
-    with open(run_path / "result.json", "w") as f:
-        json.dump(result_data, f, indent=2, default=str)
+    _atomic_json_write(run_path / "result.json", result_data)
 
     # Metrics
     if metrics_data is not None:
-        with open(run_path / "metrics.json", "w") as f:
-            json.dump(metrics_data, f, indent=2, default=str)
+        _atomic_json_write(run_path / "metrics.json", metrics_data)
 
     # GEPA state binary (pickle is required here as GEPAState.save() uses pickle internally)
     if state_obj is not None:
@@ -121,8 +132,7 @@ def save_result(
 
     # Per-example model outputs for qualitative error analysis
     if test_outputs is not None:
-        with open(run_path / "test_outputs.json", "w") as f:
-            json.dump(test_outputs, f, indent=2, default=str)
+        _atomic_json_write(run_path / "test_outputs.json", test_outputs)
 
     return run_path
 

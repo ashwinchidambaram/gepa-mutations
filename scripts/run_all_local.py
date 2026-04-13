@@ -209,7 +209,20 @@ class Experiment:
 
     @property
     def is_done(self) -> bool:
-        return self.result_path.exists()
+        if not self.result_path.exists():
+            return False
+        # Validate: must be valid JSON with test_score
+        try:
+            data = json.loads(self.result_path.read_text())
+            return "test_score" in data and data["test_score"] is not None
+        except (json.JSONDecodeError, OSError):
+            # Corrupt file — log and treat as not done
+            log.warning("CORRUPT result at %s — will re-run", self.result_path)
+            try:
+                self.result_path.unlink()
+            except OSError:
+                pass
+            return False
 
     @property
     def sort_key(self) -> tuple:
@@ -531,14 +544,16 @@ def _run_experiment(exp: Experiment, subset: int | None = None, max_metric_calls
 
         # Read test score from result.json
         score = None
+        train = None
         if exp.result_path.exists():
             try:
                 data = json.loads(exp.result_path.read_text())
                 score = data.get("test_score")
+                train = data.get("train_score")
             except Exception:
                 pass
 
-        log.info(f"DONE   {exp} ({elapsed:.0f}s) score={score}")
+        log.info(f"DONE   {exp} ({elapsed:.0f}s) score={score} train={train}")
         return {"exp": str(exp), "status": "ok", "elapsed": elapsed, "score": score}
 
     except subprocess.TimeoutExpired:
