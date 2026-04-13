@@ -552,6 +552,16 @@ def run_synaptic_pruning(
         train_score=train_eval.score,
     )
 
+    test_outputs = [
+        {
+            "example_id": test_eval.example_ids[i],
+            "input": getattr(testset[i], 'input', str(testset[i])),
+            "expected": getattr(testset[i], 'output', getattr(testset[i], 'answer', '')),
+            "output": test_eval.example_outputs[i] if i < len(test_eval.example_outputs) else "",
+            "score": test_eval.example_scores[i],
+        }
+        for i in range(len(testset))
+    ]
     save_result(
         benchmark=benchmark,
         seed=seed,
@@ -560,6 +570,7 @@ def run_synaptic_pruning(
         metrics_data=metrics_data,
         method="synaptic_pruning",
         model_tag=mtagval,
+        test_outputs=test_outputs,
     )
     console.print(f"  Results saved to runs/{mtagval + '/' if mtagval else ''}{benchmark}/synaptic_pruning/{seed}/")
 
