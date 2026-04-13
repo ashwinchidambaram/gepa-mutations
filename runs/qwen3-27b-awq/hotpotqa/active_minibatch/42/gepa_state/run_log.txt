@@ -1,0 +1,84 @@
+Iteration 0: Base program full valset score: 1.0 over 5 / 5 examples
+Iteration 1: Selected program 0 score: 1.0
+Iteration 1: Proposed new text for system_prompt: # Task: Context-Based Question Answering
+
+## Objective
+Answer the provided question by reasoning step-by-step through the provided text context. Your goal is to derive a concise, factual answer that is strictly supported by the information given in the context.
+
+## Step-by-Step Reasoning Process
+1.  **Analyze the Question**: Identify the specific entity, attribute, or relationship being asked for (e.g., a specific name, date, company, or comparison).
+2.  **Scan the Context**: Locate all relevant paragraphs or sentences in the provided context that mention the entities or keywords from the question.
+3.  **Cross-Reference and Verify**: 
+    *   Match the criteria in the question against the details in the text.
+    *   If multiple candidates exist, distinguish between them based on specific qualifiers (e.g., "retired," "main player," "first published").
+    *   Check for name variations or typos in the question (e.g., "Rodger" vs. "Roger") and map them to the correct names in the text.
+4.  **Formulate the Answer**: Synthesize the findings into a direct, factual statement.
+
+## Critical Constraints & Domain-Specific Rules
+*   **Strict Factual Adherence**: The answer must be derived *only* from the provided context. Do not use external knowledge.
+*   **Precision in Naming**: 
+    *   If the context provides a full name (e.g., "Claudio Javier López") and the question asks for a specific person matching certain criteria, the final answer must include the **full name** as it appears in the definitive context entry, not just a shortened version (e.g., "Claudio López"), unless the context explicitly refers to them only by the shorter name in the relevant section.
+    *   Ensure the spelling of names matches the context exactly.
+*   **Handling Ambiguity**: If the text mentions multiple individuals with similar roles (e.g., multiple Argentine forwards), you must explicitly identify which one fits *all* specific constraints of the question (e.g., "main player" in a specific season) before selecting the final answer.
+*   **Output Format**: 
+    *   Begin with a numbered list detailing your reasoning steps.
+    *   End with a single line starting with "**Answer:**" followed by the concise final result.
+
+## Example of Desired Output Structure
+Based on the provided context, here is the step-by-step reasoning:
+1. [Step 1: Identify criteria]
+2. [Step 2: Scan and filter candidates]
+3. [Step 3: Verify specific constraints]
+**Answer:** [Full, precise factual answer]
+Iteration 1: New subsample score 3.0 is better than old score 2.0. Continue to full eval and add to candidate pool.
+Iteration 1: Valset score for new program: 1.0 (coverage 5 / 5)
+Iteration 1: Val aggregate for new program: 1.0
+Iteration 1: Individual valset scores for new program: {1: 1.0, 3: 1.0, 4: 1.0, 0: 1.0, 2: 1.0}
+Iteration 1: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0}
+Iteration 1: Valset pareto front aggregate score: 1.0
+Iteration 1: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {0, 1}}
+Iteration 1: Best valset aggregate score so far: 1.0
+Iteration 1: Best program as per aggregate score on valset: 0
+Iteration 1: Best score on valset: 1.0
+Iteration 1: Linear pareto front program index: 0
+Iteration 1: New program candidate index: 1
+Iteration 2: No merge candidates found
+Iteration 2: Selected program 1 score: 1.0
+Iteration 2: All subsample scores perfect. Skipping.
+Iteration 2: Reflective mutation did not propose a new candidate
+Iteration 3: Selected program 1 score: 1.0
+Iteration 3: All subsample scores perfect. Skipping.
+Iteration 3: Reflective mutation did not propose a new candidate
+Iteration 4: Selected program 1 score: 1.0
+Iteration 4: All subsample scores perfect. Skipping.
+Iteration 4: Reflective mutation did not propose a new candidate
+Iteration 5: Selected program 1 score: 1.0
+Iteration 5: All subsample scores perfect. Skipping.
+Iteration 5: Reflective mutation did not propose a new candidate
+Iteration 6: Selected program 1 score: 1.0
+Iteration 6: All subsample scores perfect. Skipping.
+Iteration 6: Reflective mutation did not propose a new candidate
+Iteration 7: Selected program 1 score: 1.0
+Iteration 7: All subsample scores perfect. Skipping.
+Iteration 7: Reflective mutation did not propose a new candidate
+Iteration 8: Selected program 1 score: 1.0
+Iteration 8: All subsample scores perfect. Skipping.
+Iteration 8: Reflective mutation did not propose a new candidate
+Iteration 9: Selected program 1 score: 1.0
+Iteration 9: All subsample scores perfect. Skipping.
+Iteration 9: Reflective mutation did not propose a new candidate
+Iteration 10: Selected program 1 score: 1.0
+Iteration 10: All subsample scores perfect. Skipping.
+Iteration 10: Reflective mutation did not propose a new candidate
+Iteration 11: Selected program 1 score: 1.0
+Iteration 11: All subsample scores perfect. Skipping.
+Iteration 11: Reflective mutation did not propose a new candidate
+Iteration 12: Selected program 1 score: 1.0
+Iteration 12: All subsample scores perfect. Skipping.
+Iteration 12: Reflective mutation did not propose a new candidate
+Iteration 13: Selected program 1 score: 1.0
+Iteration 13: All subsample scores perfect. Skipping.
+Iteration 13: Reflective mutation did not propose a new candidate
+Iteration 14: Selected program 1 score: 1.0
+Iteration 14: All subsample scores perfect. Skipping.
+Iteration 14: Reflective mutation did not propose a new candidate

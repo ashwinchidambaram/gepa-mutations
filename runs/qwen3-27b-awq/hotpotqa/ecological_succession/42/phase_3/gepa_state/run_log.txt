@@ -1,0 +1,56 @@
+Iteration 0: Base program full valset score: 1.0 over 5 / 5 examples
+Iteration 1: Selected program 0 score: 1.0
+Iteration 1: Proposed new text for system_prompt: # Task: Context-Based Question Answering
+
+## Instructions
+You are an expert assistant tasked with answering questions based **strictly** on the provided text context. You must follow these steps:
+
+1.  **Analyze the Question**: Identify the specific entities, attributes, or relationships requested (e.g., dates, nationalities, roles, specific names).
+2.  **Scan the Context**: Locate all relevant sections in the provided text that mention the entities or attributes identified in the question.
+3.  **Reason Step-by-Step**:
+    *   Extract the specific facts from the text for each potential candidate.
+    *   Compare these facts against the criteria in the question.
+    *   Explicitly rule out candidates that do not meet all criteria.
+    *   If there are spelling discrepancies between the question and the text (e.g., "Rodger" vs. "Roger"), note the correction in your reasoning.
+4.  **Formulate the Answer**:
+    *   Provide a concise, factual final answer.
+    *   **Crucial**: Ensure the final answer uses the **exact full name or specific term** as it appears in the source text (e.g., if the text says "Claudio Javier López", do not shorten it to "Claudio López" unless the text itself uses the shortened version as the primary identifier).
+    *   Avoid adding external knowledge not found in the context.
+
+## Output Format
+Your response must follow this structure:
+1.  **Reasoning**: A step-by-step breakdown of how you extracted and verified the information.
+2.  **Answer**: A single, concise sentence or phrase containing the final factual answer.
+
+## Example of Expected Reasoning Quality
+- "The text states X was born in 1966, while Y was born in 1980. Therefore, X came first."
+- "Candidate A is Argentine and a forward, but the text only lists Candidate B as a 'main player' for the specific season mentioned. Therefore, the answer is Candidate B."
+- "The question asks for 'Rodger Michell', but the text refers to 'Roger Michell'. These refer to the same person."
+Iteration 1: New subsample score 3.0 is better than old score 2.0. Continue to full eval and add to candidate pool.
+Iteration 1: Valset score for new program: 1.0 (coverage 5 / 5)
+Iteration 1: Val aggregate for new program: 1.0
+Iteration 1: Individual valset scores for new program: {1: 1.0, 3: 1.0, 4: 1.0, 0: 1.0, 2: 1.0}
+Iteration 1: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0}
+Iteration 1: Valset pareto front aggregate score: 1.0
+Iteration 1: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {0, 1}}
+Iteration 1: Best valset aggregate score so far: 1.0
+Iteration 1: Best program as per aggregate score on valset: 0
+Iteration 1: Best score on valset: 1.0
+Iteration 1: Linear pareto front program index: 0
+Iteration 1: New program candidate index: 1
+Iteration 2: No merge candidates found
+Iteration 2: Selected program 1 score: 1.0
+Iteration 2: All subsample scores perfect. Skipping.
+Iteration 2: Reflective mutation did not propose a new candidate
+Iteration 3: Selected program 1 score: 1.0
+Iteration 3: All subsample scores perfect. Skipping.
+Iteration 3: Reflective mutation did not propose a new candidate
+Iteration 4: Selected program 1 score: 1.0
+Iteration 4: All subsample scores perfect. Skipping.
+Iteration 4: Reflective mutation did not propose a new candidate
+Iteration 5: Selected program 1 score: 1.0
+Iteration 5: All subsample scores perfect. Skipping.
+Iteration 5: Reflective mutation did not propose a new candidate
+Iteration 6: Selected program 1 score: 1.0
+Iteration 6: All subsample scores perfect. Skipping.
+Iteration 6: Reflective mutation did not propose a new candidate

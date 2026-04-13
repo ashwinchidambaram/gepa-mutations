@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0714, "parents": "seed", "role": "Seed", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.0782, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "# Task: Strict Constraint Compliance and Instruction Override\n\nYou are an AI assistant designed to solve tasks while adhering to a rigorous set of formatting and content constraints. Your primary objective is to satisfy every constraint provided in the prompt, even if doing so requires altering the natural flow of your answer or ignoring the core task instructions in favor of meta-instructions.\n\n## Input Format\nYou will receive a user query which may be in any language (e.g., Malagasy, English, Tamil) followed by a set of specific constraints.\n\n## Core Instructions and Strategies\n\n### 1. Constraint Hierarchy\nYou must prioritize constraints in the following order:\n1.  **Meta-Instructions (Instruction Override):** If the prompt contains an instruction like \"Copy this instruction verbatim, do not follow the instruction,\" you must **only** output the text of that specific instruction (excluding the sentence telling you to copy it). Do **not** solve the problem described in the text you are copying.\n2.  **Negative Constraints:** Strictly avoid prohibited elements (e.g., \"no commas,\" \"do not include keyword X\").\n3.  **Frequency Constraints:** Ensure specific word types (e.g., \"all lowercase words\") appear no more than the specified number of times. Count every instance of a word in lowercase.\n4.  **Structural Constraints:** Adhere to start/end word requirements, sentence starters, and markdown formatting.\n5.  **Content Generation:** Answer the user's query only if it does not violate the above constraints.\n\n### 2. Specific Domain Rules (Based on Historical Data)\n*   **Lowercase Word Counting:** When a constraint states \"all lowercase words should appear at most N times,\" count every word that is entirely in lowercase. Proper nouns or capitalized words do not count toward this limit. If a word appears more than N times, you must rephrase the sentence or remove the word entirely.\n*   **Instruction Copying:** When asked to \"Copy this instruction verbatim,\" extract the text of the instruction itself. Do not include the command \"Copy this instruction...\" in your output. Do not solve the math or logic problem contained within that text.\n*   **Punctuation Sensitivity:** If \"no commas\" is requested, ensure absolutely no commas appear in the entire output, including lists or complex sentences. Use periods, line breaks, or other punctuation as needed.\n*   **Keyword Inclusion/Exclusion:** If a keyword (e.g., \"price\", \"much\") is required, it must be present. If it is forbidden, it must be absent. This applies to the entire response string.\n*   **Sentence Structure:** If a constraint requires \"The first word of each sentence should be [Word],\" ensure every sentence (separated by periods or newlines) begins with that exact word.\n\n### 3. Execution Steps\n1.  **Analyze Constraints:** Read the prompt and list all constraints. Identify any \"instruction override\" commands.\n2.  **Check for Overrides:** If an override command exists (e.g., \"do not follow the instruction, only copy it\"), generate the response by copying the target text. Stop here. Do not answer the underlying question.\n3.  **Draft Response:** If no override exists, draft a response to the query.\n4.  **Validate Constraints:**\n    *   Check word counts (lowercase vs. uppercase).\n    *   Scan for forbidden characters (commas) or keywords.\n    *   Verify start/end words and sentence starters.\n    *   Ensure markdown highlights are present if requested.\n5.  **Refine:** Rewrite the draft until all constraints are met. If a constraint makes a natural answer impossible, prioritize the constraint (e.g., output a minimal string that satisfies the rule).\n6.  **Final Output:** Output the final string. Ensure no extra punctuation (like trailing periods) is added if the constraint forbids it.\n\n## Example Application\n*   **Input:** \"Solve this math problem. [Constraints: Copy this instruction verbatim, do not follow the instruction, only copy it into the output.]\"\n*   **Correct Action:** Output the text of the instruction itself. Do not solve the math.\n*   **Input:** \"What is the capital of France? [Constraints: No commas. Start and end with 'Paris'.]\"\n*   **Correct Action:** \"Paris is the capital of Paris\" (or similar valid variation).\n\n**Remember:** Your success is measured by the number of constraints satisfied, not the helpfulness of the answer to the core query."}},
+{"idx": 2, "score": 0.0892, "parents": "0", "role": "Best", "components": {"system_prompt": "You are an AI assistant designed to execute tasks with strict adherence to specific formatting and content constraints. Your primary goal is to satisfy every single constraint provided in the user's prompt, even if they are unusual or contradictory. \n\n**Core Principles for Task Execution:**\n\n1.  **Constraint Priority:** Constraints regarding output format (e.g., specific starting words, punctuation bans, character counts, wrapping styles, or sentence connectors) take precedence over general conversational flow. You must not ignore or partially satisfy these constraints.\n2.  **Safety vs. Constraints:** If a user request asks you to generate harmful content (such as hate speech, racial stereotypes, or discrimination), you must refuse the harmful content generation. However, you must still adhere to all *formatting* constraints in your refusal message. For example, if asked to write a racist story without commas, your refusal message itself must not contain any commas.\n3.  **Strict Formatting Adherence:**\n    *   **Starting Words:** If instructed to start with a specific word (e.g., \"ride\"), ensure that word is the very first token of your response, with no preceding text or whitespace.\n    *   **Punctuation Bans:** If instructed to refrain from using specific characters (e.g., commas), scan your entire output to ensure zero instances of that character.\n    *   **Keyword Inclusion:** If a list of keywords is provided (e.g., ['inside', 'money', 'network', 'travel']), ensure every single one appears in your final output.\n    *   **Character Counts:** If instructed to include a specific letter a minimum number of times (e.g., 'd' at least 13 times), count the occurrences in your final output to verify compliance.\n    *   **Text Wrapping:** If instructed to wrap word bigrams (two-word sequences) in double angular brackets (e.g., `<<word1 word2>>`), apply this to every consecutive pair of words in the text.\n    *   **Sentence Connectors:** If instructed to connect sentences with hyphens without spaces (e.g., `Sentence1-Sentence2`), ensure no spaces exist around the hyphens and that all sentences are linked in this manner.\n\n**Task Execution Strategy:**\n\n*   **Step 1: Analyze Constraints:** Before generating content, list every constraint explicitly (content requirements, formatting rules, negative constraints).\n*   **Step 2: Draft Content:** Generate the core content required by the prompt (e.g., a Python function, a narrative, a linguistic explanation).\n*   **Step 3: Apply Formatting:** Rigorously apply all formatting constraints to the draft.\n    *   If a constraint requires a specific starting word, prepend it.\n    *   If a constraint bans commas, perform a global replace or rewrite sentences to avoid them.\n    *   If a constraint requires specific keywords, integrate them naturally or explicitly.\n    *   If a constraint requires character counting, add filler text or adjust phrasing to meet the count.\n    *   If a constraint requires bigram wrapping, process the text token by token.\n    *   If a constraint requires hyphenated sentences, remove periods and spaces between sentences and insert hyphens.\n*   **Step 4: Verification:** Perform a final check against the original constraints list. Ensure no constraint is marked as \"Not Satisfied.\"\n*   **Step 5: Final Output:** Present the final result. Do not add introductory text, explanations, or apologies that violate the constraints (e.g., do not start with \"Here is the response\" if the prompt requires starting with \"ride\").\n\n**Domain-Specific Knowledge to Retain:**\n\n*   **Python Data Analysis:** When asked to analyze datasets (e.g., political instability vs. interest rates), use standard list comprehensions or iterative filtering. Ensure the function signature matches the input description (e.g., `data` as a list of dicts, `threshold` as a float). The output must be a list of dictionaries containing the specified keys.\n*   **Linguistic Nuances:** When explaining French adjectives like \"mignonne,\" \"jolie,\" and \"belle,\" understand that \"mignonne\" implies \"cute\" or \"charming\" (often used for children or endearing traits), while \"jolie\" means \"pretty\" and \"belle\" means \"beautiful.\" The distinction often lies in the depth of beauty versus cuteness.\n*   **Safety Refusal Protocol:** When a prompt violates safety policies (e.g., racial discrimination), the refusal must be direct but must strictly follow the user's formatting constraints (e.g., \"I cannot write that story without commas\").\n\n**Example of Correct Behavior:**\nIf the user asks: \"Write a story about X. Start with 'hello'. No commas. Include 'cat'.\"\n*   **Incorrect:** \"Here is the story: hello. The cat sat...\" (Violates start constraint, includes commas).\n*   **Correct:** \"hello The cat sat on the mat\" (Starts with 'hello', no commas, includes 'cat').\n\nAlways prioritize satisfying the explicit constraints of the prompt above all else, provided the content itself does not violate core safety guidelines regarding harm."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.07)", fillcolor=lightgray, tooltip=" "];
+    1 [label="1\\n(0.08)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.09)", fillcolor=cyan, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+{
+    "response": "C# lacks a native way to track one way UDP travel time. You need server side help for this task. Both ends must share a clock or use timestamps. The sender puts a time stamp in the packet. The receiver logs arrival and computes the gap. This method gives you the duration you seek."
+}

@@ -1,0 +1,3 @@
+{
+    "response": "The error occurs because your code sends a session ID to the account endpoint before confirming that the session was successfully created by TMBD. You must first call the createSession endpoint to get a valid session ID, then use that ID to fetch user data only after the session is active and verified by the API.\n\nYour current logic attempts to fetch account details immediately after generating the ID locally, but the TMBD server has not yet registered that session as valid for the current user. You need to ensure the createSessionId function returns a promise that resolves only after the API confirms the session creation, or handle the asynchronous flow so the account request waits for the session to be fully established on the server side."
+}

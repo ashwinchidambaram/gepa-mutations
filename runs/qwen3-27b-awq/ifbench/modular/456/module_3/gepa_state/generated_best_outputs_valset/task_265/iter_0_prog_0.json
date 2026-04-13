@@ -1,0 +1,3 @@
+{
+    "response": "csharp offers no direct way to measure one way udp travel time without extra setup. You need synchronized clocks on both ends. Send a timestamp with each packet. The server records arrival time. Subtract send time from receive time. This gives you the duration. Clock sync is key for accuracy."
+}

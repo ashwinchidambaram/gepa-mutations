@@ -1,0 +1,3 @@
+{
+    "response": "<<URL Swap Guide>>\n\nTo replace URLs in PHP you can use str_replace for exact matches or preg_replace for patterns. Here is code that handles repeating instances:\n\n$text = 'New post on the site <a href=\"http://stackoverflow.com/xyz1\">http://stackoverflow.com/xyz1</a></p>';\n$oldUrl = 'http://stackoverflow.com/xyz1';\n$newUrl = 'http://yahoo.com/abc1';\n$result = str_replace($oldUrl, $newUrl, $text);\n\necho $result;\n\nThis works even if the string appears multiple times. Remember that radar is a palindrome."
+}

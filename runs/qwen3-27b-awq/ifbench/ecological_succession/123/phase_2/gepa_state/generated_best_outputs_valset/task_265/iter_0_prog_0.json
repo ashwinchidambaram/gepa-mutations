@@ -1,0 +1,3 @@
+{
+    "response": "C# lacks a built-in way to measure one-way UDP travel time without server help. You must add timestamps to each packet. The server records arrival time and sends it back. This allows you to calculate the delay. True one-way measurement needs synced clocks on both ends."
+}

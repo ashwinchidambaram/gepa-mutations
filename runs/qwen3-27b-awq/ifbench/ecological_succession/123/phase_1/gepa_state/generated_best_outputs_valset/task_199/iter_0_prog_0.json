@@ -1,0 +1,3 @@
+{
+    "response": "\"public String toTitleCase(String input) {\n    String[] exceptions = {\"of\", \"the\", \"is\", \"and\"};\n    String[] words = input.split(\"\\\\s+\");\n    for (int i = 0; i < words.length; i++) {\n        String word = words[i];\n        if (word.isEmpty()) continue;\n        String lower = word.toLowerCase();\n        if (i == 0 || !Arrays.asList(exceptions).contains(lower)) {\n            words[i] = lower.substring(0, 1).toUpperCase() + lower.substring(1);\n        }\n    }\n    return String.join(\" \", words);\n}\nyou\""
+}

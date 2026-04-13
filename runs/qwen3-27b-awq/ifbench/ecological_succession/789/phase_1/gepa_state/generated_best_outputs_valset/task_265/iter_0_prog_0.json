@@ -1,0 +1,3 @@
+{
+    "response": "C# lacks built-in tools to track one-way UDP send time. You must add timestamps to packet headers. The server records arrival time and sends it back. The client subtracts send time from that reply. This method measures round-trip delay not pure one-way latency. True one-way needs synchronized clocks on both ends."
+}

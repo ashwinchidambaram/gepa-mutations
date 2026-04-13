@@ -1,0 +1,3 @@
+{
+    "response": "<<SQL Length Sort>>\n\nThe query orders records by the length of the title and director in descending order, using a secondary sort on the text itself to break ties. No level.\n\n```sql\nSELECT title, director\nFROM your_table_name\nORDER BY LENGTH(title) DESC, title, LENGTH(director) DESC, director;\n```"
+}

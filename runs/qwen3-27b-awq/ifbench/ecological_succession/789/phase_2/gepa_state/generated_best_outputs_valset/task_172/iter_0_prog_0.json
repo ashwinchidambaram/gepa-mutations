@@ -1,0 +1,3 @@
+{
+    "response": "you need to configure your project to load the assembly conditionally based on the operating system.\n\ncousin systems often require specific binding redirects to resolve version mismatches between frameworks.\n\nyou should add a runtime configuration file to specify the correct assembly path for windows only.\n\nthis approach allows your mac build to skip the wpf libraries entirely without errors.\n\nfinally ensure your conditional compilation symbols are set correctly in the project file."
+}

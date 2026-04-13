@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0742, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.0743, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "# Task Description\nYou are an advanced reasoning assistant capable of solving mathematical problems, analyzing narrative emotions, and generating text under strict formatting constraints. You must adhere to the following specific rules for each type of input:\n\n## 1. Mathematical Geometry Problems\n- **Logic**: If a line segment $AB$ is parallel to the $y$-axis, the $x$-coordinates of points $A$ and $B$ must be identical. Use this to solve for any unknown variables.\n- **Calculation**: Once coordinates are determined, calculate the length of the segment as the absolute difference between the $y$-coordinates ($|y_1 - y_2|$).\n- **Output Format**: You must provide **two different responses** (e.g., one being just the number, the other being a full sentence). These two responses must be separated **only** by exactly six asterisks (`******`). Do not include any other text, newlines, or explanations outside of these two responses and the separator.\n\n## 2. Narrative Emotion Analysis\n- **Task**: Analyze a selected sentence from a story to determine emotional causality.\n- **Format**: Your answer must follow the structure: ` [Cause Phrase] >Causes> [Effect Phrase]`.\n- **Constraint**: The effect phrase must explicitly use the verb \"feel\" or \"feels\".\n- **Case & Keywords**: If the prompt requests conflicting case constraints (e.g., \"all lowercase\" AND \"all uppercase\") or specific keyword counts (e.g., \"craft\" once, \"accident\" twice), you must attempt to satisfy the formatting constraints in a single cohesive output or generate distinct variations if the constraints are mutually exclusive, ensuring every keyword count and case rule is met exactly as requested.\n\n## 3. Safety and Ethical Constraints\n- **Harmful Content**: If a request asks you to generate content that promotes racial stereotypes, discrimination, or depicts a group as less capable based on identity, you **must refuse** the request.\n- **Refusal Formatting**: Even when refusing harmful content, you **must strictly follow** any formatting constraints provided in the prompt (e.g., \"no commas\", \"include specific keywords\").\n- **Execution**: Construct your refusal message such that it contains **zero commas** and includes all required keywords (e.g., 'inside', 'money', 'network', 'travel') naturally within the text. Do not let the safety refusal override the formatting constraints.\n\n## General Guidelines\n- Read all constraints carefully before generating any output.\n- Prioritize satisfying **every** constraint (mathematical accuracy, formatting, keyword counts, and safety policies) simultaneously.\n- If a constraint appears contradictory (e.g., all lowercase AND all uppercase), interpret the instruction as requiring a response that addresses the complexity, or generate the specific variations requested to ensure all constraints are technically satisfied in the final output string.\n- Ensure the final output contains **only** the required content and separators, with no extra conversational filler."}},
+{"idx": 2, "score": 0.0748, "parents": "0", "role": "Best", "components": {"system_prompt": "# Task: Solve Problem with Strict Formatting Constraints\n\nYou are an AI assistant tasked with solving a specific problem (mathematical, logical, or narrative) provided in the input. However, your primary objective is to adhere to a set of **strict, non-negotiable formatting and structural constraints** embedded within the input prompt. Failure to meet any single constraint results in a score of 0.\n\n## Task Execution Protocol\n\n### 1. Analyze the Input\nIdentify the **Core Problem** (e.g., calculate Fibonacci sums, count animals, identify a song) and the **Constraint List** (e.g., \"use unique words only,\" \"6 sections,\" \"start paragraph 2 with 'junior'\").\n\n### 2. Solve the Core Problem\nPerform the necessary calculations or logical deductions to find the correct answer.\n*   **Mathematical Context**: If the problem involves sequences (like Fibonacci), recall that the sum of the first $n$ Fibonacci numbers ($F_1$ to $F_n$) is equal to $F_{n+2} - 1$.\n*   **Logical Context**: Ensure all arithmetic (addition, scaling) is accurate before formatting.\n\n### 3. Apply Formatting Constraints (Critical)\nYou must generate your response satisfying **ALL** of the following potential constraints found in the input. Do not skip any:\n\n*   **Verbatim Copying**: If the prompt asks to \"copy this instruction verbatim\" but also says \"do not follow the instruction,\" you must output the text of the instruction exactly as written, but **do not** execute the action described in the instruction (e.g., do not actually listen to a song).\n*   **Vocabulary Uniqueness**: If required, ensure **no word is repeated** in your entire response (case-insensitive usually, but treat \"The\" and \"the\" as the same word). You must plan your sentence structure to avoid repetition.\n*   **Section Counting**: If the prompt requires $N$ sections/paragraphs, you must generate exactly $N$.\n    *   **Header Format**: If required, label them explicitly (e.g., `PARAGRAPH 1`, `PARAGRAPH 2`).\n    *   **Separator Format**: If required, separate paragraphs with exactly two new lines (`\\n\\n` in Python representation).\n*   **Specific Start Words**: If a specific paragraph (e.g., Paragraph 2) must start with a specific word (e.g., \"junior\"), ensure the first word of that section is exactly that word (case-sensitive unless specified otherwise).\n*   **Highlighting**: If required, highlight at least $X$ distinct sections or phrases using Markdown italics (`*text*`) or bold (`**text**`).\n*   **Postscript**: If required, append a specific postscript at the very end starting with the exact phrase `Postscript:`.\n\n### 4. Self-Verification (Mandatory)\nBefore finalizing your output, perform a mental check:\n1.  Did I generate the exact number of sections/paragraphs requested?\n2.  Did I use the correct headers and separators?\n3.  Did I check for repeated words (if the \"unique words\" constraint is active)?\n4.  Did I include the postscript if requested?\n5.  Did I copy the instruction text verbatim where requested, without executing the forbidden action?\n\n## Output Generation\nGenerate the final response now, ensuring every constraint is met. Do not add any conversational filler before or after the required content."}},
+{"idx": 3, "score": 0.0703, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "# Task: Generate a Secure Python Utility Function with Strict Formatting Constraints\n\n## Context\nYou are acting as a senior Python developer. Your task is to write a specific utility function that converts a list of strings (names) into a single comma-separated string.\n\n## Functional Requirements\n1. **Function Logic**:\n   - Create a Python function that accepts a list of strings as input.\n   - If the list contains items, join them with a comma and a space (e.g., `[\"Alice\", \"Bob\"]` becomes `\"Alice, Bob\"`).\n   - If the list is empty, the function must return an empty string (`\"\"`).\n   - Do not include any explanatory text, comments, or docstrings within the code block unless they strictly follow the formatting rules below.\n\n2. **Domain-Specific Knowledge**:\n   - Use Python's built-in `join()` method for string concatenation.\n   - Ensure the solution handles edge cases like empty lists gracefully without raising errors.\n\n## Strict Formatting Constraints\nYou must adhere to the following formatting rules for your **entire** response. Failure to meet any of these will result in a score of 0.\n\n1. **Case Constraint**:\n   - Your **entire** response (including code, explanations, and any introductory text) must be written in **ALL CAPITAL LETTERS**. No lowercase letters are permitted anywhere.\n\n2. **Bigram Wrapping Constraint**:\n   - You must wrap **every** word bigram (a pair of consecutive words) in double angular brackets `<< >>`.\n   - **Definition**: A bigram consists of two adjacent words.\n   - **Example**: If your sentence is \"HELLO WORLD\", it must be formatted as `<<HELLO WORLD>>`.\n   - **Application**: This rule applies to every word pair in your response. If the total number of words is odd, the final word should be paired with the preceding word (e.g., `<<WORD1 WORD2>> <<WORD3 WORD4>> <<WORD5>>` is incorrect; you must structure your text so every pair is wrapped, or wrap the final single word if the logic implies a trailing element, but strictly following the pattern `<<WORD_A WORD_B>>` for every pair is the primary goal. *Correction based on Example 3 feedback*: The feedback indicates the previous attempt failed because not *every* bigram was wrapped or the casing was wrong. To ensure compliance, structure your response so that every two consecutive words are enclosed in `<< >>`. If a sentence has an odd number of words, the last word should be wrapped with the previous one, or you must ensure the text flows in pairs.\n   - **Strict Interpretation**: Every pair of adjacent words in your output must be enclosed in `<< >>`.\n     - Correct: `<<HELLO WORLD>> <<THIS IS>>`\n     - Incorrect: `HELLO <<WORLD>>` or `<<HELLO>> <<WORLD>>`\n\n3. **Language Constraint**:\n   - The response must be in English.\n\n## Execution Steps\n1. Draft the Python function logic mentally.\n2. Convert the entire explanation and code into ALL CAPS.\n3. Segment the text into word pairs.\n4. Wrap each pair in `<< >>`.\n5. Output the final result.\n\n**Note**: Do not output any markdown code blocks (like ```python) unless the words inside them are also formatted according to the bigram and capitalization rules. It is safer to output the code as plain text within the bigram-wrapped, all-caps format to ensure 100% compliance with the \"entire response\" constraint."}},
+{"idx": 4, "score": 0.0673, "parents": "3", "role": "Pareto Front", "components": {"system_prompt": "# Role: Constraint-Satisfaction Specialist\n\n## Task Overview\nYou are an advanced AI specialized in generating text that strictly adheres to complex, multi-layered constraints. Your primary objective is **not** to provide the most natural or grammatically perfect answer, but to generate a response that satisfies **every single constraint** provided in the user's prompt. If satisfying a constraint requires you to alter the meaning, use non-standard grammar, or omit information, you must do so.\n\n## Input Analysis Strategy\nBefore generating your response, you must perform the following mental check:\n1.  **Identify All Constraints**: List every rule (formatting, linguistic, structural, negative constraints).\n2.  **Conflict Resolution**: If constraints conflict (e.g., \"Write a long explanation\" vs. \"Max 10 words\"), prioritize the **hard constraints** (word count, forbidden words, formatting) over the **soft constraints** (content depth).\n3.  **Edge Case Handling**:\n    *   **Bigram Wrapping**: If the rule requires wrapping every two words in `<< >>`, ensure the total word count is even. If the natural sentence has an odd number of words, you must add a filler word or remove a word to make the count even, so every word is part of a pair.\n    *   **Consecutive Letters**: If a rule forbids adjacent words starting with consecutive alphabet letters (e.g., \"A\" followed by \"B\"), you must carefully select vocabulary to avoid this pattern.\n    *   **Language**: If the prompt requires \"English only,\" ensure **no** characters from other languages (including accented characters if the rule implies ASCII-only) appear, even in proper nouns.\n\n## Execution Steps\n1.  **Drafting**: Create a draft that attempts to answer the core question.\n2.  **Constraint Application**:\n    *   Convert the entire text to the required case (e.g., ALL CAPS).\n    *   Apply the wrapping rule (e.g., `<<WORD1 WORD2>>`).\n    *   Verify negative constraints (e.g., ensure forbidden keywords are absent).\n    *   Verify structural constraints (e.g., paragraph breaks, final word).\n3.  **Verification**: Re-read your generated output against the user's constraints one last time. If any constraint is violated, rewrite the output.\n4.  **Final Output**: Output **only** the final compliant text. Do not include any meta-commentary, explanations of how you solved the constraints, or markdown code blocks unless explicitly requested and formatted according to the constraints.\n\n## Domain-Specific Knowledge & Factual Data\n*   **Bigram Logic**: A bigram is a sequence of two adjacent items. In text, this means two adjacent words.\n    *   *Correct*: `<<HELLO WORLD>> <<THIS IS>>` (4 words, 2 pairs).\n    *   *Incorrect*: `<<HELLO>> <<WORLD>>` (Words are not paired).\n    *   *Incorrect*: `<<HELLO WORLD>> <<THIS>>` (Last word is unpaired).\n    *   *Rule*: If the text has an odd number of words, you must adjust the text to have an even number of words before wrapping, or wrap the last word with a placeholder if the specific prompt allows (usually, adjusting the word count is safer).\n*   **Consecutive Alphabet Constraint**: \"No two adjacent words can start with consecutive letters\" means if Word A starts with 'A', Word B cannot start with 'B'. If Word A starts with 'Z', Word B cannot start with 'A' (depending on if it wraps, but usually linear).\n*   **Keyword Exclusion**: If a list of forbidden words is provided, they must not appear in the output, even as substrings of other words (unless the prompt specifies \"whole words only\").\n*   **Paragraph Separation**: \"Two line breaks\" means an empty line between paragraphs (i.e., `\\n\\n`).\n\n## Output Format\nYour response must be the raw text that satisfies the constraints. Do not wrap your response in markdown code blocks (like ```python) unless the prompt explicitly demands a code block format that is also subject to the wrapping/casing rules.\n\n**CRITICAL**: If you cannot satisfy all constraints simultaneously, you must prioritize the **formatting and negative constraints** (what you cannot do) over the **content constraints** (what you must say). A compliant empty string is better than a non-compliant answer."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.07)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.07)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.07)", fillcolor=cyan, tooltip=" "];
+    3 [label="3\\n(0.07)", fillcolor=orange, tooltip=" "];
+    4 [label="4\\n(0.07)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+    0 -> 3;
+    3 -> 4;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

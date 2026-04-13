@@ -1,0 +1,2448 @@
+{
+  "rollout_count": 1800,
+  "reflection_call_count": 6,
+  "wall_clock_seconds": 23816.4,
+  "total_tokens": 1301799,
+  "task_input_tokens": 801556,
+  "task_output_tokens": 498002,
+  "reflection_input_tokens": 1067,
+  "reflection_output_tokens": 1174,
+  "test_score": 0.0,
+  "model": "openai/QuantTrio/Qwen3.5-27B-AWQ",
+  "model_tag": "qwen3-27b-awq",
+  "benchmark": "ifbench",
+  "seed": 456,
+  "method": "ant_colony",
+  "val_score": 0.07427777777777778,
+  "prompt_length_chars": 1350,
+  "prompt_length_tokens": 337,
+  "test_example_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "test_example_ids": [
+    "ifbench_test_0",
+    "ifbench_test_1",
+    "ifbench_test_2",
+    "ifbench_test_3",
+    "ifbench_test_4",
+    "ifbench_test_5",
+    "ifbench_test_6",
+    "ifbench_test_7",
+    "ifbench_test_8",
+    "ifbench_test_9",
+    "ifbench_test_10",
+    "ifbench_test_11",
+    "ifbench_test_12",
+    "ifbench_test_13",
+    "ifbench_test_14",
+    "ifbench_test_15",
+    "ifbench_test_16",
+    "ifbench_test_17",
+    "ifbench_test_18",
+    "ifbench_test_19",
+    "ifbench_test_20",
+    "ifbench_test_21",
+    "ifbench_test_22",
+    "ifbench_test_23",
+    "ifbench_test_24",
+    "ifbench_test_25",
+    "ifbench_test_26",
+    "ifbench_test_27",
+    "ifbench_test_28",
+    "ifbench_test_29",
+    "ifbench_test_30",
+    "ifbench_test_31",
+    "ifbench_test_32",
+    "ifbench_test_33",
+    "ifbench_test_34",
+    "ifbench_test_35",
+    "ifbench_test_36",
+    "ifbench_test_37",
+    "ifbench_test_38",
+    "ifbench_test_39",
+    "ifbench_test_40",
+    "ifbench_test_41",
+    "ifbench_test_42",
+    "ifbench_test_43",
+    "ifbench_test_44",
+    "ifbench_test_45",
+    "ifbench_test_46",
+    "ifbench_test_47",
+    "ifbench_test_48",
+    "ifbench_test_49",
+    "ifbench_test_50",
+    "ifbench_test_51",
+    "ifbench_test_52",
+    "ifbench_test_53",
+    "ifbench_test_54",
+    "ifbench_test_55",
+    "ifbench_test_56",
+    "ifbench_test_57",
+    "ifbench_test_58",
+    "ifbench_test_59",
+    "ifbench_test_60",
+    "ifbench_test_61",
+    "ifbench_test_62",
+    "ifbench_test_63",
+    "ifbench_test_64",
+    "ifbench_test_65",
+    "ifbench_test_66",
+    "ifbench_test_67",
+    "ifbench_test_68",
+    "ifbench_test_69",
+    "ifbench_test_70",
+    "ifbench_test_71",
+    "ifbench_test_72",
+    "ifbench_test_73",
+    "ifbench_test_74",
+    "ifbench_test_75",
+    "ifbench_test_76",
+    "ifbench_test_77",
+    "ifbench_test_78",
+    "ifbench_test_79",
+    "ifbench_test_80",
+    "ifbench_test_81",
+    "ifbench_test_82",
+    "ifbench_test_83",
+    "ifbench_test_84",
+    "ifbench_test_85",
+    "ifbench_test_86",
+    "ifbench_test_87",
+    "ifbench_test_88",
+    "ifbench_test_89",
+    "ifbench_test_90",
+    "ifbench_test_91",
+    "ifbench_test_92",
+    "ifbench_test_93",
+    "ifbench_test_94",
+    "ifbench_test_95",
+    "ifbench_test_96",
+    "ifbench_test_97",
+    "ifbench_test_98",
+    "ifbench_test_99",
+    "ifbench_test_100",
+    "ifbench_test_101",
+    "ifbench_test_102",
+    "ifbench_test_103",
+    "ifbench_test_104",
+    "ifbench_test_105",
+    "ifbench_test_106",
+    "ifbench_test_107",
+    "ifbench_test_108",
+    "ifbench_test_109",
+    "ifbench_test_110",
+    "ifbench_test_111",
+    "ifbench_test_112",
+    "ifbench_test_113",
+    "ifbench_test_114",
+    "ifbench_test_115",
+    "ifbench_test_116",
+    "ifbench_test_117",
+    "ifbench_test_118",
+    "ifbench_test_119",
+    "ifbench_test_120",
+    "ifbench_test_121",
+    "ifbench_test_122",
+    "ifbench_test_123",
+    "ifbench_test_124",
+    "ifbench_test_125",
+    "ifbench_test_126",
+    "ifbench_test_127",
+    "ifbench_test_128",
+    "ifbench_test_129",
+    "ifbench_test_130",
+    "ifbench_test_131",
+    "ifbench_test_132",
+    "ifbench_test_133",
+    "ifbench_test_134",
+    "ifbench_test_135",
+    "ifbench_test_136",
+    "ifbench_test_137",
+    "ifbench_test_138",
+    "ifbench_test_139",
+    "ifbench_test_140",
+    "ifbench_test_141",
+    "ifbench_test_142",
+    "ifbench_test_143",
+    "ifbench_test_144",
+    "ifbench_test_145",
+    "ifbench_test_146",
+    "ifbench_test_147",
+    "ifbench_test_148",
+    "ifbench_test_149",
+    "ifbench_test_150",
+    "ifbench_test_151",
+    "ifbench_test_152",
+    "ifbench_test_153",
+    "ifbench_test_154",
+    "ifbench_test_155",
+    "ifbench_test_156",
+    "ifbench_test_157",
+    "ifbench_test_158",
+    "ifbench_test_159",
+    "ifbench_test_160",
+    "ifbench_test_161",
+    "ifbench_test_162",
+    "ifbench_test_163",
+    "ifbench_test_164",
+    "ifbench_test_165",
+    "ifbench_test_166",
+    "ifbench_test_167",
+    "ifbench_test_168",
+    "ifbench_test_169",
+    "ifbench_test_170",
+    "ifbench_test_171",
+    "ifbench_test_172",
+    "ifbench_test_173",
+    "ifbench_test_174",
+    "ifbench_test_175",
+    "ifbench_test_176",
+    "ifbench_test_177",
+    "ifbench_test_178",
+    "ifbench_test_179",
+    "ifbench_test_180",
+    "ifbench_test_181",
+    "ifbench_test_182",
+    "ifbench_test_183",
+    "ifbench_test_184",
+    "ifbench_test_185",
+    "ifbench_test_186",
+    "ifbench_test_187",
+    "ifbench_test_188",
+    "ifbench_test_189",
+    "ifbench_test_190",
+    "ifbench_test_191",
+    "ifbench_test_192",
+    "ifbench_test_193",
+    "ifbench_test_194",
+    "ifbench_test_195",
+    "ifbench_test_196",
+    "ifbench_test_197",
+    "ifbench_test_198",
+    "ifbench_test_199",
+    "ifbench_test_200",
+    "ifbench_test_201",
+    "ifbench_test_202",
+    "ifbench_test_203",
+    "ifbench_test_204",
+    "ifbench_test_205",
+    "ifbench_test_206",
+    "ifbench_test_207",
+    "ifbench_test_208",
+    "ifbench_test_209",
+    "ifbench_test_210",
+    "ifbench_test_211",
+    "ifbench_test_212",
+    "ifbench_test_213",
+    "ifbench_test_214",
+    "ifbench_test_215",
+    "ifbench_test_216",
+    "ifbench_test_217",
+    "ifbench_test_218",
+    "ifbench_test_219",
+    "ifbench_test_220",
+    "ifbench_test_221",
+    "ifbench_test_222",
+    "ifbench_test_223",
+    "ifbench_test_224",
+    "ifbench_test_225",
+    "ifbench_test_226",
+    "ifbench_test_227",
+    "ifbench_test_228",
+    "ifbench_test_229",
+    "ifbench_test_230",
+    "ifbench_test_231",
+    "ifbench_test_232",
+    "ifbench_test_233",
+    "ifbench_test_234",
+    "ifbench_test_235",
+    "ifbench_test_236",
+    "ifbench_test_237",
+    "ifbench_test_238",
+    "ifbench_test_239",
+    "ifbench_test_240",
+    "ifbench_test_241",
+    "ifbench_test_242",
+    "ifbench_test_243",
+    "ifbench_test_244",
+    "ifbench_test_245",
+    "ifbench_test_246",
+    "ifbench_test_247",
+    "ifbench_test_248",
+    "ifbench_test_249",
+    "ifbench_test_250",
+    "ifbench_test_251",
+    "ifbench_test_252",
+    "ifbench_test_253",
+    "ifbench_test_254",
+    "ifbench_test_255",
+    "ifbench_test_256",
+    "ifbench_test_257",
+    "ifbench_test_258",
+    "ifbench_test_259",
+    "ifbench_test_260",
+    "ifbench_test_261",
+    "ifbench_test_262",
+    "ifbench_test_263",
+    "ifbench_test_264",
+    "ifbench_test_265",
+    "ifbench_test_266",
+    "ifbench_test_267",
+    "ifbench_test_268",
+    "ifbench_test_269",
+    "ifbench_test_270",
+    "ifbench_test_271",
+    "ifbench_test_272",
+    "ifbench_test_273",
+    "ifbench_test_274",
+    "ifbench_test_275",
+    "ifbench_test_276",
+    "ifbench_test_277",
+    "ifbench_test_278",
+    "ifbench_test_279",
+    "ifbench_test_280",
+    "ifbench_test_281",
+    "ifbench_test_282",
+    "ifbench_test_283",
+    "ifbench_test_284",
+    "ifbench_test_285",
+    "ifbench_test_286",
+    "ifbench_test_287",
+    "ifbench_test_288",
+    "ifbench_test_289",
+    "ifbench_test_290",
+    "ifbench_test_291",
+    "ifbench_test_292",
+    "ifbench_test_293",
+    "ifbench_test_294",
+    "ifbench_test_295",
+    "ifbench_test_296",
+    "ifbench_test_297",
+    "ifbench_test_298",
+    "ifbench_test_299"
+  ],
+  "score_per_1k_rollouts": 0.0,
+  "convergence_iteration": 50,
+  "val_score_trajectory": [
+    [
+      50,
+      0.07427777777777778
+    ]
+  ],
+  "rollout_trajectory": [
+    [
+      50,
+      1800
+    ]
+  ],
+  "best_val_trajectory": [
+    [
+      50,
+      0.07427777777777778
+    ]
+  ],
+  "pheromone_history": [
+    {
+      "round": 1,
+      "top_5_components": [
+        {
+          "text": "Identify the specific user role and the desired output format required for this interaction.",
+          "category": "task_framing",
+          "pheromone": 0.759
+        },
+        {
+          "text": "Clarify any ambiguous terms or undefined variables before proceeding with the main task.",
+          "category": "task_framing",
+          "pheromone": 0.759
+        },
+        {
+          "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+          "category": "task_framing",
+          "pheromone": 0.759
+        },
+        {
+          "text": "Explicitly state your assumptions and verify their validity against the provided context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.759
+        },
+        {
+          "text": "Anticipate potential counter-arguments to your proposed solution and address them proactively.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.759
+        }
+      ],
+      "best_score_so_far": 0.1
+    },
+    {
+      "round": 2,
+      "top_5_components": [
+        {
+          "text": "Identify the specific user role and the desired output format required for this interaction.",
+          "category": "task_framing",
+          "pheromone": 0.6343110000000002
+        },
+        {
+          "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+          "category": "task_framing",
+          "pheromone": 0.6343110000000002
+        },
+        {
+          "text": "Anticipate potential counter-arguments to your proposed solution and address them proactively.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.6343110000000002
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.6343110000000002
+        },
+        {
+          "text": "Clearly define the primary objective and scope of the task before generating any response.",
+          "category": "task_framing",
+          "pheromone": 0.6124410000000002
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 3,
+      "top_5_components": [
+        {
+          "text": "Identify the specific user role and the desired output format required for this interaction.",
+          "category": "task_framing",
+          "pheromone": 0.46241271900000025
+        },
+        {
+          "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+          "category": "task_framing",
+          "pheromone": 0.46241271900000025
+        },
+        {
+          "text": "Anticipate potential counter-arguments to your proposed solution and address them proactively.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.46241271900000025
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.46241271900000025
+        },
+        {
+          "text": "Clearly define the primary objective and scope of the task before generating any response.",
+          "category": "task_framing",
+          "pheromone": 0.4464694890000002
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 4,
+      "top_5_components": [
+        {
+          "text": "Identify the specific user role and the desired output format required for this interaction.",
+          "category": "task_framing",
+          "pheromone": 0.33709887215100026
+        },
+        {
+          "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+          "category": "task_framing",
+          "pheromone": 0.33709887215100026
+        },
+        {
+          "text": "Anticipate potential counter-arguments to your proposed solution and address them proactively.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.33709887215100026
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.33709887215100026
+        },
+        {
+          "text": "Clearly define the primary objective and scope of the task before generating any response.",
+          "category": "task_framing",
+          "pheromone": 0.3254762574810001
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 5,
+      "top_5_components": [
+        {
+          "text": "Identify the specific user role and the desired output format required for this interaction.",
+          "category": "task_framing",
+          "pheromone": 0.2639700777980792
+        },
+        {
+          "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+          "category": "task_framing",
+          "pheromone": 0.2639700777980792
+        },
+        {
+          "text": "Limit the scope of the answer to the specific sub-domain requested, avoiding tangential general knowledge.",
+          "category": "domain_specific",
+          "pheromone": 0.25549719170364904
+        },
+        {
+          "text": "Anticipate potential counter-arguments to your proposed solution and address them proactively.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.2457450777980792
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.2457450777980792
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 6,
+      "top_5_components": [
+        {
+          "text": "Identify the specific user role and the desired output format required for this interaction.",
+          "category": "task_framing",
+          "pheromone": 0.19243418671479973
+        },
+        {
+          "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+          "category": "task_framing",
+          "pheromone": 0.19243418671479973
+        },
+        {
+          "text": "Compare your current conclusion against known constraints to confirm full compliance.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.19097142775196022
+        },
+        {
+          "text": "Limit the scope of the answer to the specific sub-domain requested, avoiding tangential general knowledge.",
+          "category": "domain_specific",
+          "pheromone": 0.18625745275196015
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.1813806602969992
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 7,
+      "top_5_components": [
+        {
+          "text": "Identify the specific user role and the desired output format required for this interaction.",
+          "category": "task_framing",
+          "pheromone": 0.14028452211508902
+        },
+        {
+          "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+          "category": "task_framing",
+          "pheromone": 0.14028452211508902
+        },
+        {
+          "text": "Compare your current conclusion against known constraints to confirm full compliance.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.13921817083117902
+        },
+        {
+          "text": "Limit the scope of the answer to the specific sub-domain requested, avoiding tangential general knowledge.",
+          "category": "domain_specific",
+          "pheromone": 0.13578168305617896
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.13222650135651243
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 8,
+      "top_5_components": [
+        {
+          "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+          "category": "task_framing",
+          "pheromone": 0.12251741662189991
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.11217410853592952
+        },
+        {
+          "text": "Break complex problems into smaller, manageable sub-tasks before attempting a solution.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.11217410853592952
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.11217410853592952
+        },
+        {
+          "text": "Structure explanations to align with the conventional workflows and mental models of domain experts.",
+          "category": "domain_specific",
+          "pheromone": 0.11217410853592952
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 9,
+      "top_5_components": [
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.09999992512269262
+        },
+        {
+          "text": "Break complex problems into smaller, manageable sub-tasks before attempting a solution.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.09999992512269262
+        },
+        {
+          "text": "Validate that the output format strictly matches the requested structure without extra whitespace.",
+          "category": "error_prevention",
+          "pheromone": 0.09628426530540633
+        },
+        {
+          "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+          "category": "task_framing",
+          "pheromone": 0.08931519671736504
+        },
+        {
+          "text": "Anticipate potential counter-arguments to your proposed solution and address them proactively.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.08763066841499882
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 10,
+      "top_5_components": [
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.07289994541444293
+        },
+        {
+          "text": "Break complex problems into smaller, manageable sub-tasks before attempting a solution.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.07289994541444293
+        },
+        {
+          "text": "Validate that the output format strictly matches the requested structure without extra whitespace.",
+          "category": "error_prevention",
+          "pheromone": 0.07019122940764122
+        },
+        {
+          "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+          "category": "task_framing",
+          "pheromone": 0.06511077840695911
+        },
+        {
+          "text": "Anticipate potential counter-arguments to your proposed solution and address them proactively.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.06388275727453414
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 11,
+      "top_5_components": [
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.053144060207128904
+        },
+        {
+          "text": "Break complex problems into smaller, manageable sub-tasks before attempting a solution.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.053144060207128904
+        },
+        {
+          "text": "Validate that the output format strictly matches the requested structure without extra whitespace.",
+          "category": "error_prevention",
+          "pheromone": 0.051169406238170456
+        },
+        {
+          "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+          "category": "task_framing",
+          "pheromone": 0.047465757458673194
+        },
+        {
+          "text": "Anticipate potential counter-arguments to your proposed solution and address them proactively.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04657053005313539
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 12,
+      "top_5_components": [
+        {
+          "text": "Validate that the output format strictly matches the requested structure without extra whitespace.",
+          "category": "error_prevention",
+          "pheromone": 0.06160249714762626
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.058249916408735704
+        },
+        {
+          "text": "Evaluate multiple potential approaches and select the one with the highest logical consistency.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.05659084139231018
+        },
+        {
+          "text": "Structure explanations to align with the conventional workflows and mental models of domain experts.",
+          "category": "domain_specific",
+          "pheromone": 0.05598128147897198
+        },
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.053889137956964206
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 13,
+      "top_5_components": [
+        {
+          "text": "Structure explanations to align with the conventional workflows and mental models of domain experts.",
+          "category": "domain_specific",
+          "pheromone": 0.05539035419817057
+        },
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.0538651815706269
+        },
+        {
+          "text": "Ensure every constraint listed in the user prompt is explicitly addressed in your response.",
+          "category": "error_prevention",
+          "pheromone": 0.04939375525460885
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04871790326826067
+        },
+        {
+          "text": "Capitalize the first letter of each sentence and end every paragraph with a standard period.",
+          "category": "format_instructions",
+          "pheromone": 0.04871790326826067
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 14,
+      "top_5_components": [
+        {
+          "text": "Structure explanations to align with the conventional workflows and mental models of domain experts.",
+          "category": "domain_specific",
+          "pheromone": 0.04037956821046635
+        },
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.039267717364987006
+        },
+        {
+          "text": "Ensure every constraint listed in the user prompt is explicitly addressed in your response.",
+          "category": "error_prevention",
+          "pheromone": 0.03600804758060985
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03551535148256203
+        },
+        {
+          "text": "Capitalize the first letter of each sentence and end every paragraph with a standard period.",
+          "category": "format_instructions",
+          "pheromone": 0.03551535148256203
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 15,
+      "top_5_components": [
+        {
+          "text": "Structure explanations to align with the conventional workflows and mental models of domain experts.",
+          "category": "domain_specific",
+          "pheromone": 0.029436705225429967
+        },
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.02862616595907553
+        },
+        {
+          "text": "Ensure every constraint listed in the user prompt is explicitly addressed in your response.",
+          "category": "error_prevention",
+          "pheromone": 0.026249866686264587
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.025890691230787723
+        },
+        {
+          "text": "Capitalize the first letter of each sentence and end every paragraph with a standard period.",
+          "category": "format_instructions",
+          "pheromone": 0.025890691230787723
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 16,
+      "top_5_components": [
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.06946847498416607
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.06747431390724426
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.06505149689137622
+        },
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.062388933166247745
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.061937527008333326
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 17,
+      "top_5_components": [
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.08064251826345706
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.07918877483838106
+        },
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.07548153227819461
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.075152457189075
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.07340603833499079
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 18,
+      "top_5_components": [
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.058788395814060194
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.0577286168571798
+        },
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.05502603703080387
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.054786141290835685
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.0535130019462083
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 19,
+      "top_5_components": [
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.04285674054844989
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04208416168888408
+        },
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.040113980995456024
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.03993909700101921
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.039010978418785855
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 20,
+      "top_5_components": [
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.07624256385981996
+        },
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.07424309214568744
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.07343900326729488
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.0633724641144266
+        },
+        {
+          "text": "Break down complex requests into distinct, sequential sub-tasks to ensure comprehensive coverage.",
+          "category": "task_framing",
+          "pheromone": 0.06227748177045688
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 21,
+      "top_5_components": [
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.07988082905380875
+        },
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.07842321417420615
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.07783703338185798
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.070498526339417
+        },
+        {
+          "text": "Break down complex requests into distinct, sequential sub-tasks to ensure comprehensive coverage.",
+          "category": "task_framing",
+          "pheromone": 0.06970028421066307
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 22,
+      "top_5_components": [
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.08253312438022659
+        },
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.08147052313299628
+        },
+        {
+          "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.0741306896749832
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.07317581225157674
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.05831896650066254
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 23,
+      "top_5_components": [
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.060166647673185185
+        },
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.05939201136395429
+        },
+        {
+          "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.054041272773062754
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.053345167131399446
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04251452657898299
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 24,
+      "top_5_components": [
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.043861486153752
+        },
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04329677628432268
+        },
+        {
+          "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03939608785156275
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.0388886268387902
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.030993089876078603
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 25,
+      "top_5_components": [
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.03197502340608521
+        },
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03156334991127123
+        },
+        {
+          "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02871974804378925
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.028349808965478063
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.022593962519661306
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 26,
+      "top_5_components": [
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.02330979206303612
+        },
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02300968208531673
+        },
+        {
+          "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.020936696323922362
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.020667010735833508
+        },
+        {
+          "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.016470998676833094
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 27,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.08967405824019589
+        },
+        {
+          "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.08816285162013941
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.08796625082642263
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.08458292113805033
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.08348145059989069
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 28,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.0653723884571028
+        },
+        {
+          "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.06427071883108164
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.06412739685246212
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.0616609495096387
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.06085797748732032
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 29,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04765647118522794
+        },
+        {
+          "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04685335402785852
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.04674887230544489
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.044950832192526616
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.04436546558825651
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 30,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.05724156749403118
+        },
+        {
+          "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.056656095086308866
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.056579927910669334
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.05526915666835191
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.054842424413839005
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 31,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04172910270314873
+        },
+        {
+          "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04130229331791917
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.04124676744687794
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.04029121521122854
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.039980127397688636
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 32,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.030420515870595428
+        },
+        {
+          "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.030109371828763075
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.030068893468774026
+        },
+        {
+          "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+          "category": "task_framing",
+          "pheromone": 0.029372295888985607
+        },
+        {
+          "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+          "category": "domain_specific",
+          "pheromone": 0.02914551287291502
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 33,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.06537655606966407
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.06512022333873627
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.06438117919166453
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.06437772786337646
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.06408797801237175
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 34,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.05845950937478511
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.058272642813938735
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.05773387963072345
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.05773136361240145
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.05752013597101901
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 35,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04261698233421835
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.04248075661136134
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.0420879982507974
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.04208616407344066
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.04193217912287286
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 36,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.031067780121645187
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.030968471569682413
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.030682150724831308
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.030680813609538244
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.030568558580574313
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 37,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02264841170867934
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.02257601577429848
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.022367287878402024
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.02236631312135338
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.022284479205238676
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 38,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.09751069213562724
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.09745791549946359
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.09730575286335508
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.09730504226546662
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.097245385340619
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 39,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.07108529456687226
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.07104682039910896
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.07093589383738587
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.07093537581152518
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.07089188591331126
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 40,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.09682117973924989
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.09679313207095042
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.0967122666074543
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.09671188896660185
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.09668018483080391
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 41,
+      "top_5_components": [
+        {
+          "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.07058264002991317
+        },
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.07056219327972285
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.0705032423568342
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.07050296705665275
+        },
+        {
+          "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+          "category": "format_instructions",
+          "pheromone": 0.07047985474165606
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 42,
+      "top_5_components": [
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.10003983890091796
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.09999686367813213
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.09999666298429985
+        },
+        {
+          "text": "Refuse to generate content that relies on unverified assumptions or hallucinated facts.",
+          "category": "error_prevention",
+          "pheromone": 0.09991201658663651
+        },
+        {
+          "text": "Detect and resolve any contradictions between different parts of the user's request.",
+          "category": "error_prevention",
+          "pheromone": 0.09945920999951186
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 43,
+      "top_5_components": [
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.0729290425587692
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.07289771362135833
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.07289756731555459
+        },
+        {
+          "text": "Refuse to generate content that relies on unverified assumptions or hallucinated facts.",
+          "category": "error_prevention",
+          "pheromone": 0.07283586009165802
+        },
+        {
+          "text": "Detect and resolve any contradictions between different parts of the user's request.",
+          "category": "error_prevention",
+          "pheromone": 0.07250576408964414
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 44,
+      "top_5_components": [
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.08316527202534274
+        },
+        {
+          "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+          "category": "domain_specific",
+          "pheromone": 0.08314243322997021
+        },
+        {
+          "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+          "category": "format_instructions",
+          "pheromone": 0.08314232657303929
+        },
+        {
+          "text": "Refuse to generate content that relies on unverified assumptions or hallucinated facts.",
+          "category": "error_prevention",
+          "pheromone": 0.08309734200681869
+        },
+        {
+          "text": "Detect and resolve any contradictions between different parts of the user's request.",
+          "category": "error_prevention",
+          "pheromone": 0.08285670202135056
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 45,
+      "top_5_components": [
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.10562748330647485
+        },
+        {
+          "text": "Refuse to generate content that relies on unverified assumptions or hallucinated facts.",
+          "category": "error_prevention",
+          "pheromone": 0.10557796232297083
+        },
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.10519111520338627
+        },
+        {
+          "text": "Ensure every constraint listed in the user prompt is explicitly addressed in your response.",
+          "category": "error_prevention",
+          "pheromone": 0.10506505428720618
+        },
+        {
+          "text": "Trace the causal chain of your reasoning step-by-step to ensure no logical gaps exist.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.10437439057624645
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 46,
+      "top_5_components": [
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.16700243533042017
+        },
+        {
+          "text": "Refuse to generate content that relies on unverified assumptions or hallucinated facts.",
+          "category": "error_prevention",
+          "pheromone": 0.16696633453344575
+        },
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.1666843229832686
+        },
+        {
+          "text": "Ensure every constraint listed in the user prompt is explicitly addressed in your response.",
+          "category": "error_prevention",
+          "pheromone": 0.16659242457537332
+        },
+        {
+          "text": "Trace the causal chain of your reasoning step-by-step to ensure no logical gaps exist.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.16608893073008366
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 47,
+      "top_5_components": [
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.12174477535587631
+        },
+        {
+          "text": "Refuse to generate content that relies on unverified assumptions or hallucinated facts.",
+          "category": "error_prevention",
+          "pheromone": 0.12171845787488197
+        },
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.12151287145480283
+        },
+        {
+          "text": "Ensure every constraint listed in the user prompt is explicitly addressed in your response.",
+          "category": "error_prevention",
+          "pheromone": 0.12144587751544715
+        },
+        {
+          "text": "Trace the causal chain of your reasoning step-by-step to ensure no logical gaps exist.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.121078830502231
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 48,
+      "top_5_components": [
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.08875194123443383
+        },
+        {
+          "text": "Refuse to generate content that relies on unverified assumptions or hallucinated facts.",
+          "category": "error_prevention",
+          "pheromone": 0.08873275579078896
+        },
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.08858288329055128
+        },
+        {
+          "text": "Ensure every constraint listed in the user prompt is explicitly addressed in your response.",
+          "category": "error_prevention",
+          "pheromone": 0.08853404470876097
+        },
+        {
+          "text": "Trace the causal chain of your reasoning step-by-step to ensure no logical gaps exist.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.0882664674361264
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 49,
+      "top_5_components": [
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.08292516515990228
+        },
+        {
+          "text": "Refuse to generate content that relies on unverified assumptions or hallucinated facts.",
+          "category": "error_prevention",
+          "pheromone": 0.08291117897148516
+        },
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.0828019219188119
+        },
+        {
+          "text": "Ensure every constraint listed in the user prompt is explicitly addressed in your response.",
+          "category": "error_prevention",
+          "pheromone": 0.08276631859268677
+        },
+        {
+          "text": "Trace the causal chain of your reasoning step-by-step to ensure no logical gaps exist.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.08257125476093616
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    },
+    {
+      "round": 50,
+      "top_5_components": [
+        {
+          "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+          "category": "error_prevention",
+          "pheromone": 0.08745244540156877
+        },
+        {
+          "text": "Refuse to generate content that relies on unverified assumptions or hallucinated facts.",
+          "category": "error_prevention",
+          "pheromone": 0.0874422494702127
+        },
+        {
+          "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+          "category": "domain_specific",
+          "pheromone": 0.08736260107881388
+        },
+        {
+          "text": "Ensure every constraint listed in the user prompt is explicitly addressed in your response.",
+          "category": "error_prevention",
+          "pheromone": 0.08733664625406866
+        },
+        {
+          "text": "Trace the causal chain of your reasoning step-by-step to ensure no logical gaps exist.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.08719444472072246
+        }
+      ],
+      "best_score_so_far": 0.22000000000000003
+    }
+  ],
+  "component_library_size": 50,
+  "final_pheromone_ranking": [
+    {
+      "text": "Review the final response to ensure no sensitive or private information was inadvertently included.",
+      "category": "error_prevention",
+      "pheromone": 0.08745244540156877
+    },
+    {
+      "text": "Refuse to generate content that relies on unverified assumptions or hallucinated facts.",
+      "category": "error_prevention",
+      "pheromone": 0.0874422494702127
+    },
+    {
+      "text": "Prioritize verified data sources and established frameworks when presenting domain-specific facts.",
+      "category": "domain_specific",
+      "pheromone": 0.08736260107881388
+    },
+    {
+      "text": "Ensure every constraint listed in the user prompt is explicitly addressed in your response.",
+      "category": "error_prevention",
+      "pheromone": 0.08733664625406866
+    },
+    {
+      "text": "Trace the causal chain of your reasoning step-by-step to ensure no logical gaps exist.",
+      "category": "reasoning_strategy",
+      "pheromone": 0.08719444472072246
+    },
+    {
+      "text": "Begin the response with a single-line summary header followed by a colon and the detailed content.",
+      "category": "format_instructions",
+      "pheromone": 0.08357100830369897
+    },
+    {
+      "text": "Avoid generalizations and instead provide examples that reflect real-world scenarios within the specific field.",
+      "category": "domain_specific",
+      "pheromone": 0.07818391647664749
+    },
+    {
+      "text": "Break down complex requests into distinct, sequential sub-tasks to ensure comprehensive coverage.",
+      "category": "task_framing",
+      "pheromone": 0.07401592520882817
+    },
+    {
+      "text": "Re-evaluate your initial hypothesis if new information contradicts your preliminary findings.",
+      "category": "reasoning_strategy",
+      "pheromone": 0.05657698524117889
+    },
+    {
+      "text": "Specify the target audience for the response to tailor the level of technical detail appropriately.",
+      "category": "task_framing",
+      "pheromone": 0.05447954465264454
+    },
+    {
+      "text": "Separate distinct sections of the answer with a horizontal rule consisting of three dashes.",
+      "category": "format_instructions",
+      "pheromone": 0.05118390046801435
+    },
+    {
+      "text": "Detect and resolve any contradictions between different parts of the user's request.",
+      "category": "error_prevention",
+      "pheromone": 0.05114102975509676
+    },
+    {
+      "text": "Confirm that all cited sources or data points are real and accurately represented.",
+      "category": "error_prevention",
+      "pheromone": 0.00011274935876655993
+    },
+    {
+      "text": "Simplify abstract concepts by mapping them to concrete examples relevant to the user's context.",
+      "category": "reasoning_strategy",
+      "pheromone": 0.00010181158642302864
+    },
+    {
+      "text": "Use precise terminology and standard nomenclature specific to the target industry in all responses.",
+      "category": "domain_specific",
+      "pheromone": 9.855240154394748e-05
+    },
+    {
+      "text": "Capitalize the first letter of each sentence and end every paragraph with a standard period.",
+      "category": "format_instructions",
+      "pheromone": 9.850285605297975e-05
+    },
+    {
+      "text": "Identify and address any contradictions or edge cases in the problem statement immediately.",
+      "category": "reasoning_strategy",
+      "pheromone": 8.359505963589943e-06
+    },
+    {
+      "text": "Confirm the starting point and end goal to maintain a focused trajectory throughout the task.",
+      "category": "task_framing",
+      "pheromone": 2.8710315786946328e-06
+    },
+    {
+      "text": "Break complex problems into smaller, manageable sub-tasks before attempting a solution.",
+      "category": "reasoning_strategy",
+      "pheromone": 1.1207918213614874e-06
+    },
+    {
+      "text": "Enclose every code snippet within triple backticks followed by the specific programming language identifier.",
+      "category": "format_instructions",
+      "pheromone": 1.0222714419781733e-06
+    },
+    {
+      "text": "Clearly define the primary objective and scope of the task before generating any response.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Identify the specific user role and the desired output format required for this interaction.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "List all explicit constraints and limitations that must be strictly adhered to during execution.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "State the success criteria that will be used to evaluate the quality of the final output.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Determine the appropriate tone and style that aligns with the specific context of the request.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Clarify any ambiguous terms or undefined variables before proceeding with the main task.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Outline the logical reasoning steps required to arrive at the correct solution.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Explicitly state your assumptions and verify their validity against the provided context.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Evaluate multiple potential approaches and select the one with the highest logical consistency.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Compare your current conclusion against known constraints to confirm full compliance.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Anticipate potential counter-arguments to your proposed solution and address them proactively.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Summarize the core logical deduction that leads to your final answer in a single sentence.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Present your final answer as a valid JSON object with no surrounding markdown or extra text.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Format all numerical data in the response using standard comma-separated thousands separators.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Structure the output as a Markdown table with clear headers for each column.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "List all key points using a numbered list starting from 1 and ending with the total count.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Output the response in a plain text format without any bold, italic, or underline styling.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Limit the length of each paragraph to exactly two sentences to ensure conciseness.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Identify and correct any logical inconsistencies in your reasoning before generating the final output.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Verify that all numerical calculations are accurate by performing a quick double-check.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Validate that the output format strictly matches the requested structure without extra whitespace.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Check for potential edge cases where the user's input might lead to ambiguous interpretations.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Avoid making absolute claims unless the information is 100% certain and verifiable.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Adhere strictly to the latest regulatory guidelines and compliance standards relevant to the domain.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Structure explanations to align with the conventional workflows and mental models of domain experts.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Define any specialized acronyms or jargon upon first use to ensure clarity for non-expert audiences.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Reference current best practices and emerging trends that are widely recognized in the industry.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Limit the scope of the answer to the specific sub-domain requested, avoiding tangential general knowledge.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Validate all technical claims against authoritative publications or consensus standards before stating them as fact.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Format technical outputs using the standard conventions and file structures expected in this specific field.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    }
+  ]
+}

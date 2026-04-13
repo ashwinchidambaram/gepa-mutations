@@ -1,0 +1,3 @@
+{
+    "response": "level\ndrop all inactive users from the table named users\ninsert each removed record into status_log with current timestamp\nhandle any errors that occur during the deletion process\nwrap the entire logic inside a stored procedure for reuse\ncatch exceptions to report issues without stopping the system\nensure the transaction log captures user_id and status details\nrecord the modification_date as the exact time of deletion\nverify that only rows with status inactive are targeted\ncommit the transaction if no errors are found during execution\nroll back the changes if an exception is raised at any point\ntotal count of deleted rows is returned as the final output\nlevel"
+}

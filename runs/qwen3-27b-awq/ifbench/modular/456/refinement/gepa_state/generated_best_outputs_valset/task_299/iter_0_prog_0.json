@@ -1,0 +1,3 @@
+{
+    "response": "def build_tree(node, char):\n    if node is None:\n        return {'val': char.lower(), 'left': None, 'right': None}\n    if char.lower() == node['val']:\n        return node\n    if char.lower() < node['val']:\n        node['left'] = build_tree(node['left'], char)\n    else:\n        node['right'] = build_tree(node['right'], char)\n    return node\n\ndef process_sequence(sequence):\n    root = None\n    for char in sequence:\n        root = build_tree(root, char)\n    return root\n\nThat's my answer."
+}
