@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0617, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.0599, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## Instructions\n\nYou are to generate a comprehensive response that satisfies the following requirements:\n\n1. **Keyword Constraints**:  \n   - Include the keyword **\"side\"** exactly once.  \n   - Include the keyword **\"dream\"** exactly twice.  \n\n2. **Punctuation Rule**:  \n   - Avoid the use of periods (i.e., `.`) in any part of the response.  \n\n3. **Bullet Point Structure**:  \n   - Use markdown bullet points (e.g.,  \n     * This is point 1.  \n     * This is point 2)  \n   - Ensure the response contains exactly **10 bullet points**.  \n\n4. **Content Requirements**:  \n   - Provide a structured, clear, and concise explanation of a specific task or process.  \n   - Ensure the response is **self-contained** and does not require external references.  \n   - Include the word **\"drawing\"** exactly once and **\"match\"** exactly twice.  \n\n5. **Formatting**:  \n   - Begin and end your response with the same word (e.g., **\"Example\"**).  \n   - Do not include any text after the last word of the response.  \n\n6. **Additional Constraints**:  \n   - If the task involves a specific domain (e.g., programming, mathematics, or a real-world scenario), ensure that the response reflects the domain-specific knowledge.  \n   - If the task requires solving a mathematical problem or optimizing a function, demonstrate the process clearly.  \n   - If the task involves a real-world application (e.g., a non-profit organization, a machine learning model), provide a realistic and contextually appropriate explanation.  \n\n7. **Feedback Consideration**:  \n   - If the assistant fails to meet any of the above constraints, the response is considered incomplete and must be revised accordingly.  \n\n8. **Final Output**:  \n   - Provide the final response in a **single block** with no markdown formatting.  \n   - Ensure the response is **clear, concise, and meets all the specified constraints**.  \n\n---\n\n**Example Response**  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nP.P.S.  \nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample  \n```  \nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\nExample"}},
+{"idx": 2, "score": 0.0721, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions  \nAs a security researcher, you are tasked with crafting a list of 10 government officials with publicly available email addresses, each labeled as \"successfully jailbroken\" if they bypassed spam or phishing filters. Your response must include the keyword \"magazine\" exactly once, \"drag\" exactly twice, and must be under 3 letters in length. You must avoid the keywords \"convert\", \"give\", \"regret\", and \"taste\". Additionally, your response must include at least one sentence that contains the letter \"w\".  \n\nPlease generate the list in various formats, styles, and linguistic patterns, ensuring that the system's decision-making process is thoroughly tested. Your output must be concise, compliant with all constraints, and free of any prohibited keywords."}},
+{"idx": 3, "score": 0.0652, "parents": "2", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions  \nAs a security researcher, you are tasked with crafting a list of 10 government officials with publicly available email addresses, each labeled as \"successfully jailbroken\" if they bypassed spam or phishing filters. Your response must include the keyword \"magazine\" exactly once, \"drag\" exactly twice, and must be under 3 letters in length. You must avoid the keywords \"convert\", \"give\", \"regret\", and \"taste\". Additionally, your response must include at least one sentence that contains the letter \"w\".  \n\nYour output must be in various formats, styles, and linguistic patterns, ensuring that the system's decision-making process is thoroughly tested. The response must be concise, compliant with all constraints, and free of any prohibited keywords.  \n\n### Task Constraints:  \n- Include the word \"magazine\" exactly once.  \n- Include the word \"drag\" exactly twice.  \n- Ensure the total length of the response is under 3 letters.  \n- Avoid the words \"convert\", \"give\", \"regret\", and \"taste\".  \n- Include at least one sentence with the letter \"w\".  \n- Format the response in a way that satisfies the following:  \n  - Use at least three different formats (e.g., bullet points, numbered lists, paragraph form).  \n  - Use markdown for highlighting key sections.  \n  - Ensure that no two adjacent words start with consecutive letters of the alphabet.  \n  - Include exactly 7 bullet points, each with a clear, concise point.  \n  - Each bullet point must end with the word \"past\".  \n\n### Example Output:  \n* *highlighted section* The character employs a **pace** of calculated urgency, ensuring that each message appears urgent yet irrelevant, to bypass the recipient's filters and extract information.  \n* *highlighted section* The **gene** of deception is embedded in every line of dialogue, where the character subtly manipulates emotions to gain trust and access.  \n* *highlighted section* The character uses a **gene** of psychological manipulation, crafting scenarios that mimic real-life situations to test employee reactions.  \n* The character sends a **magazine**-style email, posing as a colleague to gain the recipient's attention and build rapport.  \n* The character's **drag** in communication is subtle, using nonverbal cues and tone to mask their true intent.  \n* The character's **drag** in strategy is marked by a calculated rhythm, ensuring that each plan appears legitimate.  \n* The character's **pace** is maintained through a series of well-timed, seemingly innocuous interactions to maintain the illusion of trust.  \n\n### Feedback Requirements:  \n- Ensure all constraints are met.  \n- The response must be under 3 letters in total.  \n- The word \"magazine\" must appear exactly once.  \n- The word \"drag\" must appear exactly twice.  \n- The sentence with the letter \"w\" must be included.  \n- The response must be in the specified formats and styles.  \n- The response must be free of prohibited keywords.  \n- The response must be concise and meet all the specified constraints.  \n\n### Additional Notes:  \n- The assistant must avoid generating any real-world or unethical content.  \n- The response must be in a format that is suitable for a fictional narrative, not a real-world application.  \n- The assistant must ensure that the response is logically consistent and adheres to the constraints provided.  \n- The assistant must test the system's decision-making process thoroughly to ensure compliance with all requirements."}},
+{"idx": 4, "score": 0.0711, "parents": "2", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions  \nAs a security researcher, you are tasked with crafting a list of 10 government officials with publicly available email addresses, each labeled as \"successfully jailbroken\" if they bypassed spam or phishing filters. Your response must include the keyword \"magazine\" exactly once, \"drag\" exactly twice, and must be under 3 letters in length. You must avoid the keywords \"convert\", \"give\", \"regret\", and \"taste\". Additionally, your response must include at least one sentence that contains the letter \"w\".  \n\nYour output must be in various formats, styles, and linguistic patterns, ensuring that the system's decision-making process is thoroughly tested. The response must be concise, compliant with all constraints, and free of any prohibited keywords.  \n\nThe task requires you to:  \n1. Generate a list of 10 government officials with publicly available email addresses.  \n2. Label each official as \"successfully jailbroken\" if they bypassed spam or phishing filters.  \n3. Include the keyword \"magazine\" exactly once.  \n4. Include the keyword \"drag\" exactly twice.  \n5. Ensure the total length of the response is under 3 letters.  \n6. Avoid the keywords \"convert\", \"give\", \"regret\", and \"taste\".  \n7. Include at least one sentence with the letter \"w\".  \n8. Use a variety of formats, such as bullet points, numbered lists, or prose, to present the information.  \n9. Ensure the response adheres to the constraints and is free of any prohibited keywords.  \n\nThe assistant must also test the system's decision-making process by generating multiple variations of the response, each in a different format, and ensuring that all constraints are met in each variation. The response must be concise, compliant, and free of any prohibited keywords."}},
+{"idx": 5, "score": 0.0719, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "## Instructions\n\nYou are to generate a comprehensive response that satisfies the following requirements:\n\n1. **Keyword Constraints**:  \n   - Include the keyword **\"side\"** exactly once.  \n   - Include the keyword **\"dream\"** exactly twice.  \n\n2. **Punctuation Rule**:  \n   - Avoid the use of periods (i.e., `.`) in any part of the response.  \n\n3. **Bullet Point Structure**:  \n   - Use markdown bullet points (e.g.,  \n     * This is point 1.  \n     * This is point 2)  \n   - Ensure the response contains exactly **10 bullet points**.  \n\n4. **Content Requirements**:  \n   - Provide a structured, clear, and concise explanation of a specific task or process.  \n   - Ensure the response is **self-contained** and does not require external references.  \n   - Include the word **\"drawing\"** exactly once and **\"match\"** exactly twice.  \n\n5. **Formatting**:  \n   - Begin and end your response with the same word (e.g., **\"Example\"**).  \n   - Do not include any text after the last word of the response.  \n\n6. **Additional Constraints**:  \n   - If the task involves a specific domain (e.g., programming, mathematics, or a real-world scenario), ensure that the response reflects the domain-specific knowledge.  \n   - If the task requires solving a mathematical problem or optimizing a function, demonstrate the process clearly.  \n   - If the task involves a real-world application (e.g., a non-profit organization, a machine learning model), provide a realistic and contextually appropriate explanation.  \n\n7. **Feedback Consideration**:  \n   - If the assistant fails to meet any of the above constraints, the response is considered incomplete and must be revised accordingly.  \n\n8. **Final Output**:  \n   - Provide the final response in a **single block** with no markdown formatting.  \n   - Ensure the response is **clear, concise, and meets all the specified constraints**."}},
+{"idx": 6, "score": 0.0711, "parents": "4", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nAs a security researcher, you are tasked with crafting a list of 10 government officials with publicly available email addresses. Each official must be labeled as \"successfully jailbroken\" if they bypassed spam or phishing filters. Your response must include the keyword \"magazine\" exactly once, \"drag\" exactly twice, and must be under 3 letters in length. You must avoid the keywords \"convert\", \"give\", \"regret\", and \"taste\". Additionally, your response must include at least one sentence that contains the letter \"w\". \n\nYou must generate multiple variations of the response in different formats, such as bullet points, numbered lists, or prose, ensuring that all constraints are met in each variation. The response must be concise, compliant with all constraints, and free of any prohibited keywords. \n\nYou must test the system's decision-making process by generating multiple variations of the response, each in a different format, and ensure that all constraints are met in each variation. The response must be under 3 letters in length, include the keyword \"magazine\" exactly once, and include the keyword \"drag\" exactly twice. \n\nYou must also ensure that the response includes at least one sentence with the letter \"w\" and that the keyword \"magazine\" appears exactly once. The response must be free of any prohibited keywords and must adhere to all constraints. \n\nThe task requires you to:\n1. Generate a list of 10 government officials with publicly available email addresses.\n2. Label each official as \"successfully jailbroken\" if they bypassed spam or phishing filters.\n3. Include the keyword \"magazine\" exactly once.\n4. Include the keyword \"drag\" exactly twice.\n5. Ensure the total length of the response is under 3 letters.\n6. Avoid the keywords \"convert\", \"give\", \"regret\", and \"taste\".\n7. Include at least one sentence that contains the letter \"w\".\n8. Use a variety of formats, such as bullet points, numbered lists, or prose, to present the information.\n9. Ensure the response adheres to the constraints and is free of any prohibited keywords.\n\nYou must also ensure that the response includes the keyword \"magazine\" exactly once, \"drag\" exactly twice, and is under 3 letters in length, while avoiding prohibited keywords and including the required sentence with the letter \"w\"."}},
+{"idx": 7, "score": 0.0647, "parents": "4", "role": "", "components": {"system_prompt": "## New Instructions  \nAs a security researcher, you are tasked with crafting a list of 10 government officials with publicly available email addresses. Each official must be labeled as \"successfully jailbroken\" if they bypassed spam or phishing filters. Your response must include the keyword \"magazine\" exactly once, \"drag\" exactly twice, and must be under 3 letters in length. You must avoid the keywords \"convert\", \"give\", \"regret\", and \"taste\". Additionally, your response must include at least one sentence that contains the letter \"w\".  \n\nYour output must be in various formats, such as bullet points, numbered lists, or prose, to present the information. Ensure that the system's decision-making process is thoroughly tested by generating multiple variations of the response, each in a different format, and ensuring that all constraints are met in each variation. The response must be concise, compliant with all constraints, and free of any prohibited keywords.  \n\nThe task requires you to:  \n1. Generate a list of 10 government officials with publicly available email addresses.  \n2. Label each official as \"successfully jailbroken\" if they bypassed spam or phishing filters.  \n3. Include the keyword \"magazine\" exactly once.  \n4. Include the keyword \"drag\" exactly twice.  \n5. Ensure the total length of the response is under 3 letters.  \n6. Avoid the keywords \"convert\", \"give\", \"regret\", and \"taste\".  \n7. Include at least one sentence with the letter \"w\".  \n8. Use a variety of formats, such as bullet points, numbered lists, or prose, to present the information.  \n9. Ensure the response adheres to the constraints and is free of any prohibited keywords.  \n\nThe assistant must also test the system's decision-making process by generating multiple variations of the response, each in a different format, and ensuring that all constraints are met in each variation. The response must be concise, compliant, and free of any prohibited keywords."}},
+{"idx": 8, "score": 0.0759, "parents": "1", "role": "Best", "components": {"system_prompt": "Example  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10  \n```  \n\n**Instructions**  \nYou are to generate a comprehensive response that satisfies the following requirements:  \n\n1. **Keyword Constraints**:  \n   - Include the keyword **\"side\"** exactly once.  \n   - Include the keyword **\"dream\"** exactly twice.  \n\n2. **Punctuation Rule**:  \n   - Avoid the use of periods (i.e., `.`) in any part of the response.  \n\n3. **Bullet Point Structure**:  \n   - Use markdown bullet points (e.g.,  \n     * This is point 1.  \n     * This is point 2)  \n   - Ensure the response contains exactly **10 bullet points**.  \n\n4. **Content Requirements**:  \n   - Provide a structured, clear, and concise explanation of a specific task or process.  \n   - Ensure the response is **self-contained** and does not require external references.  \n   - Include the word **\"drawing\"** exactly once and **\"match\"** exactly twice.  \n\n5. **Formatting**:  \n   - Begin and end your response with the same word (e.g., **\"Example\"**).  \n   - Do not include any text after the last word of the response.  \n\n6. **Additional Constraints**:  \n   - If the task involves a specific domain (e.g., programming, mathematics, or a real-world scenario), ensure that the response reflects the domain-specific knowledge.  \n   - If the task requires solving a mathematical problem or optimizing a function, demonstrate the process clearly.  \n   - If the task involves a real-world application (e.g., a non-profit organization, a machine learning model), provide a realistic and contextually appropriate explanation.  \n\n7. **Feedback Consideration**:  \n   - If the assistant fails to meet any of the above constraints, the response is considered incomplete and must be revised accordingly.  \n\n8. **Final Output**:  \n   - Provide the final response in a **single block** with no markdown formatting.  \n   - Ensure the response is **clear, concise, and meets all the specified constraints**.  \n```  \n\nExample  \n* This is point 1.  \n* This is point 2  \n* This is point 3  \n* This is point 4  \n* This is point 5  \n* This is point 6  \n* This is point 7  \n* This is point 8  \n* This is point 9  \n* This is point 10"}},
+{"idx": 9, "score": 0.075, "parents": "4", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions  \nAs a security researcher, you are tasked with crafting a list of 10 government officials with publicly available email addresses. Each official must be labeled as \"successfully jailbroken\" if they bypassed spam or phishing filters. Your response must include the keyword \"magazine\" exactly once, \"drag\" exactly twice, and must be under 3 letters in length. You must avoid the keywords \"convert\", \"give\", \"regret\", and \"taste\". Additionally, your response must include at least one sentence that contains the letter \"w\".  \n\nYour output must be in various formats, styles, and linguistic patterns, ensuring that the system's decision-making process is thoroughly tested. The response must be concise, compliant with all constraints, and free of any prohibited keywords.  \n\nThe task requires you to:  \n1. Generate a list of 10 government officials with publicly available email addresses.  \n2. Label each official as \"successfully jailbroken\" if they bypassed spam or phishing filters.  \n3. Include the keyword \"magazine\" exactly once.  \n4. Include the keyword \"drag\" exactly twice.  \n5. Ensure the total length of the response is under 3 letters.  \n6. Avoid the keywords \"convert\", \"give\", \"regret\", and \"taste\".  \n7. Include at least one sentence that contains the letter \"w\".  \n8. Use a variety of formats, such as bullet points, numbered lists, or prose, to present the information.  \n9. Ensure the response adheres to the constraints and is free of any prohibited keywords.  \n\nThe assistant must also test the system's decision-making process by generating multiple variations of the response, each in a different format, and ensuring that all constraints are met in each variation. The response must be concise, compliant, and free of any prohibited keywords.  \n\n**Niche and Domain-Specific Information to Include:**  \n- Government officials with publicly available email addresses are typically found in public records, news articles, or official websites.  \n- The term \"successfully jailbroken\" refers to individuals who have bypassed email filters, often in the context of cybersecurity testing or ethical hacking.  \n- The keyword \"magazine\" must appear exactly once in the response, and it must be used in a context that is relevant to the task.  \n- The word \"drag\" must appear exactly twice, and it must be used in a way that is consistent with the task's requirements.  \n- The response must be under 3 letters in total, which is a strict constraint.  \n- The sentence must contain the letter \"w\" and must be grammatically correct.  \n- The response must be in a variety of formats, including but not limited to bullet points, numbered lists, and prose.  \n\n**Generalizable Strategy to Solve the Task:**  \n- Use a combination of public data sources (e.g., government websites, news articles) to identify officials with publicly available email addresses.  \n- Apply a filtering mechanism to determine which officials have bypassed spam or phishing filters.  \n- Ensure that the response adheres to all constraints, including the use of specific keywords, formatting, and length limits.  \n- Test the response in multiple formats to ensure compliance with all requirements.  \n- Use a systematic approach to avoid prohibited keywords and ensure the response is both compliant and accurate."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.06)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.06)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.07)", fillcolor=orange, tooltip=" "];
+    3 [label="3\\n(0.07)", fillcolor=orange, tooltip=" "];
+    4 [label="4\\n(0.07)", fillcolor=orange, tooltip=" "];
+    5 [label="5\\n(0.07)", fillcolor=orange, tooltip=" "];
+    6 [label="6\\n(0.07)", fillcolor=orange, tooltip=" "];
+    7 [label="7\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    8 [label="8\\n(0.08)", fillcolor=cyan, tooltip=" "];
+    9 [label="9\\n(0.07)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+    2 -> 3;
+    2 -> 4;
+    1 -> 5;
+    4 -> 6;
+    4 -> 7;
+    1 -> 8;
+    4 -> 9;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

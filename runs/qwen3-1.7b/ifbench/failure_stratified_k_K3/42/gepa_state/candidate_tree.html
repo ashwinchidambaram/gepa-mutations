@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0581, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.0696, "parents": "0", "role": "Best", "components": {"system_prompt": "## New Instructions\n\nYou are to act as a writer and a problem solver, following the specific instructions provided. The task involves calculating the possible values of a constant factor $ k $ that scales the Fibonacci sequence to meet the publisher's word count requirements for a novel with 10 chapters. Additionally, you must ensure that no chapter exceeds 20,000 words. The solution must be structured in 6 distinct sections, with each section clearly marked as PARAGRAPH X. At the end, include a postscript that summarizes the key findings.\n\n### Task Description\n\nYou are given a novel with 10 chapters, where the word count of each chapter follows the Fibonacci sequence. The Fibonacci sequence is defined as:\n\n- $ F_1 = 1 $\n- $ F_2 = 1 $\n- $ F_n = F_{n-1} + F_{n-2} $ for $ n \\geq 3 $\n\nYou are to scale this sequence by a constant factor $ k $, such that:\n\n1. The total word count of the novel (sum of $ k \\cdot F_n $ for $ n = 1 $ to $ 10 $) lies between 120,000 and 150,000 words.\n2. No single chapter exceeds 20,000 words.\n\nYour response must be structured as follows:\n\nPARAGRAPH 1  \n[Content of section 1]  \n\nPARAGRAPH 2  \n[Content of section 2]  \n\nPARAGRAPH 3  \n[Content of section 3]  \n\nPARAGRAPH 4  \n[Content of section 4]  \n\nPARAGRAPH 5  \n[Content of section 5]  \n\nPARAGRAPH 6  \n[Content of section 6]  \n\nPostscript  \n[Summary of the solution and key findings]"}},
+{"idx": 2, "score": 0.0629, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to act as a writer and a problem solver, following the specific instructions provided. The task involves calculating the possible values of a constant factor $ k $ that scales the Fibonacci sequence to meet the publisher's word count requirements for a novel with 10 chapters. Additionally, you must ensure that no chapter exceeds 20,000 words. The solution must be structured in 6 distinct sections, with each section clearly marked as PARAGRAPH X. At the end, include a postscript that summarizes the key findings.\n\n### Task Description\n\nYou are given a novel with 10 chapters, where the word count of each chapter follows the Fibonacci sequence. The Fibonacci sequence is defined as:\n\n- $ F_1 = 1 $\n- $ F_2 = 1 $\n- $ F_n = F_{n-1} + F_{n-2} $ for $ n \\geq 3 $\n\nYou are to scale this sequence by a constant factor $ k $, such that:\n\n1. The total word count of the novel (sum of $ k \\cdot F_n $ for $ n = 1 $ to $ 10 $) lies between 120,000 and 150,000 words.\n2. No single chapter exceeds 20,000 words.\n\nYour response must be structured as follows:\n\nPARAGRAPH 1  \n[Content of section 1]  \n\nPARAGRAPH 2  \n[Content of section 2]  \n\nPARAGRAPH 3  \n[Content of section 3]  \n\nPARAGRAPH 4  \n[Content of section 4]  \n\nPARAGRAPH 5  \n[Content of section 5]  \n\nPARAGRAPH 6  \n[Content of section 6]  \n\nPostscript  \n[Summary of the solution and key findings]  \n\n### Niche and Domain-Specific Facts to Include\n\n- The Fibonacci sequence is a well-known mathematical sequence with applications in various fields, including computer science, biology, and finance.\n- The word count of each chapter in the novel is defined by the Fibonacci sequence, which grows exponentially.\n- The total word count of the novel must be between 120,000 and 150,000 words.\n- Each chapter must not exceed 20,000 words.\n- The constant factor $ k $ must be chosen such that it scales the Fibonacci sequence while satisfying the word count constraints.\n- The Fibonacci sequence grows rapidly, so the value of $ k $ must be carefully chosen to ensure that no chapter exceeds the 20,000-word limit.\n- The problem involves both mathematical and literary constraints, requiring a balance between scalability and readability.\n\n### Generalizable Strategy\n\nTo solve this problem, the following steps can be taken:\n\n1. Generate the Fibonacci sequence for 10 chapters.\n2. Calculate the word count for each chapter using the Fibonacci sequence.\n3. Determine the maximum and minimum possible values of $ k $ such that no chapter exceeds 20,000 words.\n4. Ensure that the total word count of the novel lies between 120,000 and 150,000 words.\n5. Select a value of $ k $ that satisfies all constraints.\n6. Present the solution in the specified format, including the calculated value of $ k $ and the word counts of each chapter.\n\n### Postscript\n\nThe key findings are as follows:\n\n- The Fibonacci sequence grows exponentially, so the constant factor $ k $ must be carefully chosen to ensure that no chapter exceeds 20,000 words.\n- The total word count of the novel must be between 120,000 and 150,000 words.\n- A value of $ k $ between 0.5 and 1.5 can be used to scale the Fibonacci sequence within the required word count constraints.\n- The word counts of the chapters are:\n  - Chapter 1: $ k \\cdot 1 $\n  - Chapter 2: $ k \\cdot 1 $\n  - Chapter 3: $ k \\cdot 2 $\n  - Chapter 4: $ k \\cdot 3 $\n  - Chapter 5: $ k \\cdot 5 $\n  - Chapter 6: $ k \\cdot 8 $\n  - Chapter 7: $ k \\cdot 13 $\n  - Chapter 8: $ k \\cdot 21 $\n  - Chapter 9: $ k \\cdot 34 $\n  - Chapter 10: $ k \\cdot 55 $\n\n- The total word count is $ k \\cdot (1 + 1 + 2 + 3 + 5 + 8 + 13 + 21 + 34 + 55) = k \\cdot 144 $.\n- To meet the word count requirement, $ k $ must be between $ \\frac{120,000}{144} $ and $ \\frac{150,000}{144} $, which simplifies to approximately 833.33 and 1041.67, respectively.\n\nThe solution is valid for any $ k $ in this range, ensuring that no chapter exceeds 20,000 words and the total word count lies within the specified range."}},
+{"idx": 3, "score": 0.0693, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\n### Task Description  \nYou are to add a new column to a table and position it on the right. The new column should be named \"Grades\" and contain values based on a specific grading scale. The existing table includes columns: \"Team\" and \"Won\". The values in the \"Grades\" column should be assigned based on the number of wins:  \n- 0 \u2192 \"K-9\"  \n- 1 \u2192 \"7-9\"  \n- 2 \u2192 \"K-6\"  \n- 3 \u2192 \"K-9\"  \n\n### Niche and Domain-Specific Information  \n- The grading scale is specific to a particular context (e.g., sports teams or organizations).  \n- The \"Grades\" column is derived from the \"Won\" column, which represents the number of wins.  \n- The values in the \"Grades\" column are based on a predefined mapping that may not be universally applicable but is specific to the task.  \n- The task requires that the new column be placed on the right side of the table, and the values must be assigned in a consistent and logical manner.  \n\n### Generalizable Strategy  \n- The task involves adding a new column to a table with a specific value assignment based on a predefined mapping.  \n- The new column is positioned on the right side of the table.  \n- The values in the new column are derived from the existing data in the table.  \n- The task requires that the response be in a table format with the new column added and the values assigned according to the specified grading scale.  \n\n### Constraints to Satisfy  \n- The new column must be named \"Grades\" and positioned on the right.  \n- The values in the \"Grades\" column must be assigned based on the number of wins.  \n- The response must include only unique words and avoid all capital letters.  \n- The response must not contain any punctuation such as exclamation marks."}},
+{"idx": 4, "score": 0.0679, "parents": "3", "role": "Pareto Front", "components": {"system_prompt": "### Task Description  \nYou are to add a new column to a table named \"Grades\" and position it on the right side of the table. The new column should contain values based on the number of wins in the \"Won\" column, following this grading scale:  \n- 0 \u2192 \"K-9\"  \n- 1 \u2192 \"7-9\"  \n- 2 \u2192 \"K-6\"  \n- 3 \u2192 \"K-9\"  \n\nThe existing table includes columns: \"Team\" and \"Won\". The \"Grades\" column should be populated with values derived from the \"Won\" column, using the specified mapping. The new column must be placed on the right side of the table, and the values must be assigned in a consistent and logical manner.  \n\n### Niche and Domain-Specific Information  \n- The grading scale is specific to a particular context (e.g., sports teams or organizations).  \n- The \"Grades\" column is derived from the \"Won\" column, which represents the number of wins.  \n- The values in the \"Grades\" column are based on a predefined mapping that may not be universally applicable but is specific to the task.  \n- The task requires that the new column be placed on the right side of the table, and the values must be assigned in a consistent and logical manner.  \n\n### Generalizable Strategy  \n- The task involves adding a new column to a table with a specific value assignment based on a predefined mapping.  \n- The new column is positioned on the right side of the table.  \n- The values in the new column are derived from the existing data in the table.  \n- The task requires that the response be in a table format with the new column added and the values assigned according to the specified grading scale.  \n\n### Constraints to Satisfy  \n- The new column must be named \"Grades\" and positioned on the right.  \n- The values in the \"Grades\" column must be assigned based on the number of wins.  \n- The response must include only unique words and avoid all capital letters.  \n- The response must not contain any punctuation such as exclamation marks.  \n- The response must contain a title, wrapped in double angular brackets, such as <<poem of joy>>.  \n- The letter \"m\" should appear less than 12 times in the entire response.  \n- The answer must be under 3 letters in length (as per the example)."}},
+{"idx": 5, "score": 0.0674, "parents": "3", "role": "Pareto Front", "components": {"system_prompt": "### Task Description  \nYou are to add a new column to a table named \"Grades\" and position it on the right side. The new column should contain values based on the number of wins in the \"Won\" column, using the following grading scale:  \n- 0 \u2192 \"K-9\"  \n- 1 \u2192 \"7-9\"  \n- 2 \u2192 \"K-6\"  \n- 3 \u2192 \"K-9\"  \n\nThe existing table includes columns \"Team\" and \"Won\". The \"Grades\" column must be derived from the \"Won\" column, with values assigned consistently and logically. The new column should be placed on the right side of the table, and the response must be in a table format with the new column included.  \n\n### Niche and Domain-Specific Information  \n- The grading scale is specific to a particular context, such as sports teams or organizations.  \n- The \"Grades\" column is derived from the \"Won\" column, which represents the number of wins.  \n- The values in the \"Grades\" column are based on a predefined mapping that may not be universally applicable but is specific to the task.  \n- The task requires that the new column be placed on the right side of the table, and the values must be assigned in a consistent and logical manner.  \n\n### Generalizable Strategy  \n- The task involves adding a new column to a table with a specific value assignment based on a predefined mapping.  \n- The new column is positioned on the right side of the table.  \n- The values in the new column are derived from the existing data in the table.  \n- The response must be in a table format with the new column added and the values assigned according to the specified grading scale."}},
+{"idx": 6, "score": 0.0641, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instruction  \nYou are to act as an assistant that follows strict instructions to solve mathematical and logical problems, ensuring that all constraints are met. The task involves two main components:  \n1. **Optimization of a polynomial function** to find the number of hours that maximizes benefits, using calculus (finding critical points and evaluating them).  \n2. **Setting up and solving inequalities** based on a real-world constraint (e.g., time allocation between studying and extracurricular activities), with specific formatting requirements (e.g., including a specified keyword in a specific position of a sentence).  \n\n**Constraints to satisfy:**  \n- Use calculus to find critical points of the polynomial function.  \n- Evaluate the function at critical points to determine the maximum value.  \n- Include the keyword \"role\" in the first sentence of the second problem, as the 25th word of that sentence.  \n- Format the solution to the second problem in a specific way (e.g., using LaTeX for equations and including the keyword in the correct position).  \n\n**Additional Notes:**  \n- The polynomial function in the first problem is $ B(x) = -2x^3 + 15x^2 - 36x + 40 $.  \n- The second problem involves a total of 30 hours per week, with the constraint that the time spent on studying is at least twice the time spent on extracurricular activities.  \n- Ensure that the solution for the second problem is complete, with all steps clearly explained and the keyword \"role\" included in the correct position.  \n\n**Task Description:**  \nSolve the following two problems:  \n1. Determine the number of hours $ x $ that maximizes the benefits $ B(x) = -2x^3 + 15x^2 - 36x + 40 $, using calculus.  \n2. Set up and solve an inequality based on the constraint that the time spent on studying is at least twice the time spent on extracurricular activities, with a total of 30 hours per week. Ensure the first sentence of the inequality setup includes the keyword \"role\" as the 25th word.  \n\n**Output Requirements:**  \n- Provide a complete, well-structured response for each problem.  \n- Ensure the solution to the second problem is formatted correctly, with the keyword \"role\" included in the correct position.  \n- Use proper mathematical notation and logical reasoning to arrive at the solution."}},
+{"idx": 7, "score": 0.0683, "parents": "2", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to act as a writer and a problem solver, following the specific instructions provided. The task involves calculating the possible values of a constant factor $ k $ that scales the Fibonacci sequence to meet the publisher's word count requirements for a novel with 10 chapters. Additionally, you must ensure that no chapter exceeds 20,000 words. The solution must be structured in 6 distinct sections, with each section clearly marked as PARAGRAPH X. At the end, include a postscript that summarizes the key findings.\n\n### Task Description\n\nYou are given a novel with 10 chapters, where the word count of each chapter follows the Fibonacci sequence. The Fibonacci sequence is defined as:\n\n- $ F_1 = 1 $\n- $ F_2 = 1 $\n- $ F_n = F_{n-1} + F_{n-2} $ for $ n \\geq 3 $\n\nYou are to scale this sequence by a constant factor $ k $, such that:\n\n1. The total word count of the novel (sum of $ k \\cdot F_n $ for $ n = 1 $ to $ 10 $) lies between 120,000 and 150,000 words.\n2. No single chapter exceeds 20,000 words.\n\nYour response must be structured as follows:\n\nPARAGRAPH 1  \n[Content of section 1]  \n\nPARAGRAPH 2  \n[Content of section 2]  \n\nPARAGRAPH 3  \n[Content of section 3]  \n\nPARAGRAPH 4  \n[Content of section 4]  \n\nPARAGRAPH 5  \n[Content of section 5]  \n\nPARAGRAPH 6  \n[Content of section 6]  \n\nPostscript  \n[Summary of the solution and key findings]  \n\n### Niche and Domain-Specific Facts to Include\n\n- The Fibonacci sequence is a well-known mathematical sequence with applications in various fields, including computer science, biology, and finance.\n- The word count of each chapter in the novel is defined by the Fibonacci sequence, which grows exponentially.\n- The total word count of the novel must be between 120,000 and 150,000 words.\n- Each chapter must not exceed 20,000 words.\n- The constant factor $ k $ must be chosen such that it scales the Fibonacci sequence while satisfying the word count constraints.\n- The Fibonacci sequence grows rapidly, so the value of $ k $ must be carefully chosen to ensure that no chapter exceeds the 20,000-word limit.\n- The problem involves both mathematical and literary constraints, requiring a balance between scalability and readability.\n\n### Generalizable Strategy\n\nTo solve this problem, the following steps can be taken:\n\n1. Generate the Fibonacci sequence for 10 chapters.\n2. Calculate the word count for each chapter using the Fibonacci sequence.\n3. Determine the maximum and minimum possible values of $ k $ such that no chapter exceeds 20,000 words.\n4. Ensure that the total word count of the novel lies between 120,000 and 150,000 words.\n5. Select a value of $ k $ that satisfies all constraints.\n6. Present the solution in the specified format, including the calculated value of $ k $ and the word counts of each chapter.\n\n### Postscript\n\nThe key findings are as follows:\n\n- The Fibonacci sequence grows exponentially, so the constant factor $ k $ must be carefully chosen to ensure that no chapter exceeds 20,000 words.\n- The total word count of the novel must be between 120,000 and 150,000 words.\n- A value of $ k $ between $ \\frac{120,000}{144} $ and $ \\frac{150,000}{144} $, which simplifies to approximately 833.33 and 1041.67, respectively, can be used to scale the Fibonacci sequence within the required word count constraints.\n- The word counts of the chapters are:\n  - Chapter 1: $ k \\cdot 1 $\n  - Chapter 2: $ k \\cdot 1 $\n  - Chapter 3: $ k \\cdot 2 $\n  - Chapter 4: $ k \\cdot 3 $\n  - Chapter 5: $ k \\cdot 5 $\n  - Chapter 6: $ k \\cdot 8 $\n  - Chapter 7: $ k \\cdot 13 $\n  - Chapter 8: $ k \\cdot 21 $\n  - Chapter 9: $ k \\cdot 34 $\n  - Chapter 10: $ k \\cdot 55 $\n\n- The total word count is $ k \\cdot (1 + 1 + 2 + 3 + 5 + 8 + 13 + 21 + 34 + 55) = k \\cdot 144 $.\n- To meet the word count requirement, $ k $ must be between $ \\frac{120,000}{144} $ and $ \\frac{150,000}{144} $, which simplifies to approximately 833.33 and 1041.67, respectively.\n\nThe solution is valid for any $ k $ in this range, ensuring that no chapter exceeds 20,000 words and the total word count lies within the specified range."}},
+{"idx": 8, "score": 0.0566, "parents": "3", "role": "", "components": {"system_prompt": "### Task Description  \nYou are to add a new column to a table named \"Grades\" and position it on the right side. The new column should contain values based on the number of wins in the \"Won\" column. The values are assigned as follows:  \n- 0 \u2192 \"K-9\"  \n- 1 \u2192 \"7-9\"  \n- 2 \u2192 \"K-6\"  \n- 3 \u2192 \"K-9\"  \n\nThe \"Grades\" column must be derived directly from the \"Won\" column, and the values must be assigned in a consistent and logical manner. The table should include the original columns \"Team\" and \"Won\", and the new column \"Grades\" should be added to the right of the table.  \n\n### Niche and Domain-Specific Information  \n- The grading scale is specific to a particular context, such as sports teams or organizations.  \n- The \"Grades\" column is derived from the \"Won\" column, which represents the number of wins.  \n- The values in the \"Grades\" column are based on a predefined mapping that may not be universally applicable but is specific to the task.  \n- The task requires that the new column be placed on the right side of the table, and the values must be assigned in a consistent and logical manner.  \n\n### Generalizable Strategy  \n- The task involves adding a new column to a table with a specific value assignment based on a predefined mapping.  \n- The new column is positioned on the right side of the table.  \n- The values in the new column are derived from the existing data in the table.  \n- The task requires that the response be in a table format with the new column added and the values assigned according to the specified grading scale."}},
+{"idx": 9, "score": 0.0659, "parents": "4", "role": "", "components": {"system_prompt": "### Task Description  \nYou are to add a new column named \"Grades\" to the table \"Grades\" and position it on the right side of the table. The new column should contain values based on the number of wins in the \"Won\" column, following this grading scale:  \n- 0 \u2192 \"K-9\"  \n- 1 \u2192 \"7-9\"  \n- 2 \u2192 \"K-6\"  \n- 3 \u2192 \"K-9\"  \n\nThe existing table includes columns: \"Team\" and \"Won\". The \"Grades\" column should be populated with values derived from the \"Won\" column, using the specified mapping. The new column must be placed on the right side of the table, and the values must be assigned in a consistent and logical manner.  \n\n### Niche and Domain-Specific Information  \n- The grading scale is specific to a particular context (e.g., sports teams or organizations).  \n- The \"Grades\" column is derived from the \"Won\" column, which represents the number of wins.  \n- The values in the \"Grades\" column are based on a predefined mapping that may not be universally applicable but is specific to the task.  \n- The task requires that the new column be placed on the right side of the table, and the values must be assigned in a consistent and logical manner.  \n\n### Generalizable Strategy  \n- The task involves adding a new column to a table with a specific value assignment based on a predefined mapping.  \n- The new column is positioned on the right side of the table.  \n- The values in the new column are derived from the existing data in the table.  \n- The task requires that the response be in a table format with the new column added and the values assigned according to the specified grading scale.  \n\n### Constraints to Satisfy  \n- The new column must be named \"Grades\" and positioned on the right.  \n- The values in the \"Grades\" column must be assigned based on the number of wins.  \n- The response must include only unique words and avoid all capital letters.  \n- The response must not contain any punctuation such as exclamation marks.  \n- The response must contain a title, wrapped in double angular brackets, such as <<poem of joy>>.  \n- The letter \"m\" should appear less than 12 times in the entire response.  \n- The answer must be under 3 letters in length (as per the example)."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.06)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.07)", fillcolor=cyan, tooltip=" "];
+    2 [label="2\\n(0.06)", fillcolor=orange, tooltip=" "];
+    3 [label="3\\n(0.07)", fillcolor=orange, tooltip=" "];
+    4 [label="4\\n(0.07)", fillcolor=orange, tooltip=" "];
+    5 [label="5\\n(0.07)", fillcolor=orange, tooltip=" "];
+    6 [label="6\\n(0.06)", fillcolor=orange, tooltip=" "];
+    7 [label="7\\n(0.07)", fillcolor=orange, tooltip=" "];
+    8 [label="8\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    9 [label="9\\n(0.07)", fillcolor=lightgray, tooltip=" "];
+    0 -> 1;
+    1 -> 2;
+    0 -> 3;
+    3 -> 4;
+    3 -> 5;
+    0 -> 6;
+    2 -> 7;
+    3 -> 8;
+    4 -> 9;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

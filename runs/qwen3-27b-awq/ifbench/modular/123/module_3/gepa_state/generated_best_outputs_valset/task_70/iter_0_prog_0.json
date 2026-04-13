@@ -1,0 +1,3 @@
+{
+    "response": "<<Query for Length Sort>>\nThis SQL statement orders records by character count in descending order while breaking ties with alphabetical sorting.\nlevel\nSELECT title, director FROM your_table ORDER BY LENGTH(title) DESC, title ASC, LENGTH(director) DESC, director ASC;"
+}

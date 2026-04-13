@@ -1,0 +1,3 @@
+{
+    "response": "def average_color(colors):\n    total_r, total_g, total_b = 0, 0, 0\n    for r, g, b in colors:\n        total_r += r\n        total_g += g\n        total_b += b\n    avg_r = round(total_r / len(colors))\n    avg_g = round(total_g / len(colors))\n    avg_b = round(total_b / len(colors))\n    return (avg_r, avg_g, avg_b)\n\n# Example usage\ninput_colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255)]\nresult = average_color(input_colors)\nprint(result)  # Output: (85, 85, 85)"
+}

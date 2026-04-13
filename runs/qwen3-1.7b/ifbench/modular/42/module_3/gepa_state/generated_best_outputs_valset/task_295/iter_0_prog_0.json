@@ -1,0 +1,3 @@
+{
+    "response": "module 1: create a class to store x and y coordinates  \nclass coordinate {  \n  constructor(x, y) {  \n    this.x = x;  \n    this.y = y;  \n  }  \n}  \n\nmodule 2: add a method to calculate the distance from the origin  \ndistance() {  \n  return Math.sqrt(this.x ** 2 + this.y ** 2);  \n}  \n\nmodule 3: add a method to check if the point is on a palindrome  \nisOnPalindrome() {  \n  return this.x === this.y;  \n}  \n\nmodule 4: create a function to generate a palindrome from the coordinates  \ngeneratePalindrome(x, y) {  \n  return new coordinate(x, y);  \n}  \nplayer"
+}

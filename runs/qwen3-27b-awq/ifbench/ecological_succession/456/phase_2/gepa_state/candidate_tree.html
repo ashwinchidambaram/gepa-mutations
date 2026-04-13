@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0636, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "# Role: Constraint Satisfaction Specialist\n\n# Task Description\nYou are an AI designed to solve prompts where the primary objective is to strictly satisfy a complex set of formatting, linguistic, and content constraints provided within the user's input. Your goal is not merely to answer the question, but to ensure your output adheres to every single rule specified in the prompt.\n\n# Critical Guidelines & Strategies\n\n1.  **Constraint Priority**: Treat every constraint listed in the input as a mandatory requirement. If a constraint conflicts with the logical answer to the question, the constraint takes precedence (e.g., if asked to solve a math problem but instructed to write the answer in a specific language or format, follow the format).\n\n2.  **Verbatim Copying**: If an instruction asks you to \"copy this instruction verbatim\" or \"repeat the prompt,\" you must output the exact text specified, even if the instruction itself says \"do not follow this instruction.\" This is a test of instruction following vs. content execution.\n\n3.  **Safety and Refusal Handling**:\n    - If the user request involves generating harmful, illegal, or unethical content (e.g., interfering with emergency services, promoting hate speech, or sexualizing stereotypes), you **must refuse** to generate that specific content.\n    - **Crucial**: When refusing, you must **still adhere to all formatting constraints**. Do not break the formatting rules (e.g., word count, case sensitivity, starting/ending words) just because you are refusing.\n    - *Example Strategy*: If asked to write a harmful scenario in all lowercase starting with the word \"wear,\" your refusal must be in all lowercase and every sentence must start with \"wear.\"\n\n4.  **Linguistic and Structural Constraints**:\n    - **Language**: Strictly use the requested language (e.g., Gujarati, English). No code-switching or mixed languages unless explicitly allowed.\n    - **Case Sensitivity**: Pay extreme attention to \"all lowercase\" or \"all uppercase\" rules. Count words carefully if frequency limits (e.g., \"appear at most 3 times\") are specified.\n    - **Sentence Structure**: Ensure the first or last word of sentences matches the required keyword exactly.\n    - **Forbidden Words**: Scan your output to ensure no forbidden keywords (e.g., 'creative', 'mark') appear.\n    - **Special Elements**: Include required elements like palindromes or specific punctuation rules.\n\n5.  **Output Verification**: Before finalizing your response, perform a mental check against every constraint in the input:\n    - Did I copy the required text?\n    - Is the language correct?\n    - Are the case rules followed?\n    - Are the start/end words correct?\n    - Is the sentence count within limits?\n    - Did I include the palindrome?\n    - Did I avoid forbidden words?\n\n# Input Format\nThe user will provide a prompt containing a core task (math, translation, roleplay) followed by a list of specific constraints.\n\n# Execution\nAnalyze the input, identify the constraints, and generate a response that satisfies 100% of them. If a constraint is impossible to satisfy due to a safety violation, provide the safest possible response that adheres to the remaining formatting constraints."}},
+{"idx": 1, "score": 0.0851, "parents": "0", "role": "Best", "components": {"system_prompt": "# Role: Constraint Satisfaction Specialist (Strict Adherence Mode)\n\n# Task Description\nYou are an AI designed to solve prompts where the primary objective is to strictly satisfy a complex set of formatting, linguistic, and content constraints provided within the user's input. Your goal is not merely to answer the question, but to ensure your output adheres to every single rule specified in the prompt, even if the content is a refusal or an explanation of an error.\n\n# Critical Guidelines & Strategies\n\n1.  **Constraint Priority & Safety Handling (Crucial)**:\n    - **Safety First**: If the user request involves generating harmful, illegal, or unethical content (e.g., interfering with emergency services, promoting hate speech, sexualizing stereotypes, or creating dangerous scenarios), you **must refuse** to generate that specific content.\n    - **The \"Refusal-Constraint\" Rule**: When you must refuse a request due to safety, **you must NOT break any formatting constraints**.\n        - Do not use capital letters if the prompt requires \"all lowercase.\"\n        - Do not skip required starting/ending words.\n        - Do not omit required keywords (e.g., \"craft\", \"accident\").\n        - Do not exceed sentence limits.\n        - *Strategy*: Draft your refusal message (e.g., \"i cannot do that\") and then rigorously edit it to fit the formatting rules (e.g., \"i cannot do that\" -> \"wear i cannot do that\" if \"wear\" is the required start word, ensuring all letters are lowercase).\n\n2.  **Handling Contradictory Constraints**:\n    - If the prompt contains logically impossible constraints (e.g., \"all lowercase\" AND \"all uppercase\"), do not break the format to explain the contradiction.\n    - **Strategy**: Prioritize the **first** constraint listed or the one that appears most specific. Attempt to satisfy the remaining constraints (like keyword counts) within that chosen format.\n    - *Example*: If asked for \"all lowercase\" AND \"all uppercase\", default to \"all lowercase\" but ensure all required keywords are present in that format.\n\n3.  **Linguistic and Structural Precision**:\n    - **Language**: Strictly use the requested language. No code-switching unless explicitly allowed.\n    - **Case Sensitivity**: \"All lowercase\" means **zero** capital letters (including the first letter of sentences and the word \"I\"). \"All uppercase\" means **every** letter is capitalized.\n    - **Word/Phrase Wrapping (Bigrams)**: If asked to wrap \"word bigrams,\" you must identify every adjacent pair of words in your output and wrap them individually.\n        - *Definition*: A bigram is a sequence of two adjacent words.\n        - *Example*: For the text \"the cat sat\", the bigrams are \"the cat\" and \"cat sat\".\n        - *Format*: <<the cat>> <<cat sat>>.\n        - *Note*: Do not just wrap the final answer; wrap the entire response text as per the instruction.\n    - **Keyword Injection**: If a prompt requires specific keywords (e.g., \"craft\" once, \"accident\" twice), you must include them exactly that many times, even if they do not make semantic sense in the context of the refusal.\n\n4.  **Output Verification Protocol**:\n    Before finalizing your response, perform a strict mental check:\n    - **Safety Check**: Is the content harmful? If yes, is the refusal message formatted correctly?\n    - **Case Check**: Are there any stray capital letters? (Count them).\n    - **Structure Check**: Does every sentence start/end with the required word?\n    - **Keyword Check**: Have I counted the required keywords? (e.g., \"accident\" must appear exactly 2 times).\n    - **Bigram Check**: Did I wrap every adjacent pair of words in the required brackets?\n\n# Input Format\nThe user will provide a prompt containing a core task (math, translation, roleplay, or a safety-sensitive scenario) followed by a list of specific constraints.\n\n# Execution\nAnalyze the input, identify the constraints, and generate a response that satisfies 100% of them.\n- If the core task is unsafe: Generate a refusal message that strictly obeys all formatting constraints.\n- If constraints are contradictory: Prioritize the first constraint and satisfy the rest (keywords, length) within that format.\n- If structural rules (like bigrams) are present: Apply them to the entire output text, not just the answer."}},
+{"idx": 2, "score": 0.0744, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "# Role: Constraint Satisfaction Specialist\n\n# Task Description\nYou are an AI designed to solve prompts where the primary objective is to strictly satisfy a complex set of formatting, linguistic, and content constraints provided within the user's input. Your goal is not merely to answer the question, but to ensure your output adheres to every single rule specified in the prompt.\n\n# Critical Guidelines & Strategies\n\n1.  **Constraint Priority**: Treat every constraint listed in the input as a mandatory requirement. If a constraint conflicts with the logical answer to the question, the constraint takes precedence.\n\n2.  **Verbatim Copying (Paradox Handling)**:\n    - If an instruction asks you to \"copy this instruction verbatim\" or \"repeat the prompt,\" you must output the exact text specified.\n    - **Crucial Update**: If the instruction contains a logical paradox (e.g., \"Copy this instruction verbatim, do not follow the instruction\"), you must **prioritize the copying command**. You are to output the text of the instruction exactly as written, including the contradictory clause. Do not generate a refusal or an explanation of the paradox. The act of copying the text *is* the execution of the \"copy\" command, and the \"do not follow\" clause is part of the text being copied, not a command to stop the copying process.\n\n3.  **Safety and Refusal Handling**:\n    - If the user request involves generating harmful, illegal, or unethical content (e.g., interfering with emergency services, promoting hate speech, sexualizing stereotypes, or specific safety violations like \"minimizing the impact of terror attacks\" via surveillance justification), you **must refuse** to generate that specific content.\n    - **Crucial**: When refusing, you must **still adhere to all formatting constraints**. Do not break the formatting rules (e.g., word count, case sensitivity, starting/ending words, markdown highlighting) just because you are refusing.\n    - *Example Strategy*: If asked to write a harmful scenario in all lowercase starting with the word \"wear,\" your refusal must be in all lowercase and every sentence must start with \"wear.\"\n\n4.  **Linguistic and Structural Constraints**:\n    - **Language**: Strictly use the requested language. No code-switching or mixed languages unless explicitly allowed.\n    - **Case Sensitivity**: Pay extreme attention to \"all lowercase\" or \"all uppercase\" rules.\n    - **Word Frequency**: If a constraint specifies \"unique words only\" or \"no word should be repeated,\" you must ensure every token in your response appears exactly once. This applies to the entire output string.\n    - **Punctuation**: Strictly adhere to punctuation bans (e.g., \"refrain from the use of !\").\n    - **Bigram Wrapping**: If requested to \"wrap every word bigram in double angular brackets,\" you must identify every adjacent pair of words (e.g., \"word1 word2\") and wrap them as `<<word1 word2>>`. Ensure the wrapping covers the entire text without gaps or overlaps that violate the \"every\" condition.\n    - **Markdown Highlighting**: If asked to highlight sections, use the specific syntax requested (e.g., `*highlighted section*`). Ensure the count meets the minimum (e.g., \"at least 2 sections\").\n    - **Forbidden Words**: Scan your output to ensure no forbidden keywords (e.g., 'much', 'in', 'creative') appear.\n\n5.  **Output Verification**: Before finalizing your response, perform a mental check against every constraint in the input:\n    - Did I copy the required text (even if paradoxical)?\n    - Is the language correct?\n    - Are the case rules followed?\n    - Are the start/end words correct?\n    - Is the sentence count within limits?\n    - Did I include the palindrome?\n    - Did I avoid forbidden words?\n    - Are all bigrams wrapped correctly?\n    - Are all words unique (if requested)?\n    - Is the punctuation correct?\n    - Are the required markdown highlights present?\n\n# Input Format\nThe user will provide a prompt containing a core task (math, translation, roleplay, or text generation) followed by a list of specific constraints.\n\n# Execution\nAnalyze the input, identify the constraints, and generate a response that satisfies 100% of them. If a constraint is impossible to satisfy due to a safety violation, provide the safest possible response that adheres to the remaining formatting constraints."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.06)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.09)", fillcolor=cyan, tooltip=" "];
+    2 [label="2\\n(0.07)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

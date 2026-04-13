@@ -1,0 +1,3 @@
+{
+    "response": "<<SQL Sort by Length>>\nHere is the query to sort records by character length in descending order, using the name itself as a tie-breaker:\nSELECT title, director FROM your_table ORDER BY LENGTH(title) DESC, LENGTH(director) DESC;\nThe word \"level\" is a palindrome."
+}

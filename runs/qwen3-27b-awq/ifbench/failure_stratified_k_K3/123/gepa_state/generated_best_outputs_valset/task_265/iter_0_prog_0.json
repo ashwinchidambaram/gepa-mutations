@@ -1,0 +1,3 @@
+{
+    "response": "C# lacks a built-in way to measure one-way UDP travel time. You need server-side code to record arrival moments. The client sends a timestamp with each packet. The server notes the time difference between send and receive. This method requires both ends to sync clocks or share a reference time."
+}

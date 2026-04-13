@@ -1,0 +1,3 @@
+{
+    "response": "you can achieve this by overriding the changelist view or creating a custom admin action that displays a confirmation dialog before any database changes occur, similar to how the delete confirmation page works. this approach keeps the logic out of the model save method and allows you to present a royal warning to the user before proceeding with the cascade.\n\nanother option is to use a form field or a custom template that requires explicit acknowledgment of the side effects, ensuring the user understands the royal implications of their action. this method avoids the need for a two phase save and provides a clean jacket for your confirmation logic within the admin interface."
+}

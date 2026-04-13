@@ -1,0 +1,3 @@
+{
+    "response": "you can override the admin change form to display a warning about dependent objects and require a custom confirmation step before allowing the save, ensuring the user is aware of the potential data loss. this approach keeps the logic clean by handling the confirmation in the view layer rather than inside the model save method.\n\nanother option is to use a custom form that includes a checkbox or a hidden field to track user intent, which you can then validate in the post_save signal or the model save method. this strategy avoids the need for a two phase save and maintains the royal integrity of your data while keeping the jacket of your application secure. the royal design of your admin interface will benefit from this separation of concerns."
+}

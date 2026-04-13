@@ -1,0 +1,321 @@
+{
+  "benchmark": "pupa",
+  "seed": 123,
+  "total_metric_calls": 3941,
+  "total_iterations": 73,
+  "best_candidate_idx": 4,
+  "total_wall_clock_seconds": 12002.963096141815,
+  "acceptance_rate": 0.5555555555555556,
+  "merge_acceptance_rate": 0.0,
+  "iterations": [
+    {
+      "iteration": 66,
+      "wall_clock_seconds": 1908.1978116035461,
+      "proposal_accepted": true,
+      "candidate_idx": 4,
+      "candidate_score": 0.6851020084147019,
+      "new_candidate_idx": 33,
+      "new_score": 1.75,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 34,
+      "pareto_displaced": [],
+      "metric_calls_used": 3525,
+      "metric_calls_delta": 92
+    },
+    {
+      "iteration": 67,
+      "wall_clock_seconds": 1152.4644112586975,
+      "proposal_accepted": true,
+      "candidate_idx": 12,
+      "candidate_score": 0.5682233865206001,
+      "new_candidate_idx": 34,
+      "new_score": 2.5,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 35,
+      "pareto_displaced": [],
+      "metric_calls_used": 3623,
+      "metric_calls_delta": 92
+    },
+    {
+      "iteration": 68,
+      "wall_clock_seconds": 3535.473249912262,
+      "proposal_accepted": true,
+      "candidate_idx": 22,
+      "candidate_score": 0.5159293217961948,
+      "new_candidate_idx": 35,
+      "new_score": 1.95,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 36,
+      "pareto_displaced": [],
+      "metric_calls_used": 3721,
+      "metric_calls_delta": 92
+    },
+    {
+      "iteration": 69,
+      "wall_clock_seconds": 125.92960143089294,
+      "proposal_accepted": false,
+      "candidate_idx": 29,
+      "candidate_score": 0.63164721759149,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 2.45 not better than old score 2.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3727,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 70,
+      "wall_clock_seconds": 238.94315099716187,
+      "proposal_accepted": false,
+      "candidate_idx": 7,
+      "candidate_score": 0.5936157815352863,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 2.25 not better than old score 2.9",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3733,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 71,
+      "wall_clock_seconds": 331.172239780426,
+      "proposal_accepted": false,
+      "candidate_idx": 31,
+      "candidate_score": 0.5582462150852243,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 2.0 not better than old score 2.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3739,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 72,
+      "wall_clock_seconds": 244.01034569740295,
+      "proposal_accepted": false,
+      "candidate_idx": 31,
+      "candidate_score": 0.5582462150852243,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 1.25 not better than old score 2.425",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3745,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 73,
+      "wall_clock_seconds": 1051.2572357654572,
+      "proposal_accepted": true,
+      "candidate_idx": 32,
+      "candidate_score": 0.5710838030218836,
+      "new_candidate_idx": 36,
+      "new_score": 2.8499999999999996,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 37,
+      "pareto_displaced": [],
+      "metric_calls_used": 3843,
+      "metric_calls_delta": 92
+    },
+    {
+      "iteration": 74,
+      "wall_clock_seconds": 992.6471662521362,
+      "proposal_accepted": true,
+      "candidate_idx": 22,
+      "candidate_score": 0.5159293217961948,
+      "new_candidate_idx": 37,
+      "new_score": 2.625,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 38,
+      "pareto_displaced": [],
+      "metric_calls_used": 3941,
+      "metric_calls_delta": 92
+    }
+  ],
+  "valset_scores": [
+    {
+      "iteration": 0,
+      "candidate_idx": 0,
+      "average_score": 0.4573672680948223,
+      "is_best_program": true
+    },
+    {
+      "iteration": 66,
+      "candidate_idx": 33,
+      "average_score": 0.19496338886431766,
+      "is_best_program": false
+    },
+    {
+      "iteration": 67,
+      "candidate_idx": 34,
+      "average_score": 0.5886623799317298,
+      "is_best_program": false
+    },
+    {
+      "iteration": 68,
+      "candidate_idx": 35,
+      "average_score": 0.617227911407478,
+      "is_best_program": false
+    },
+    {
+      "iteration": 73,
+      "candidate_idx": 36,
+      "average_score": 0.5971734388762252,
+      "is_best_program": false
+    },
+    {
+      "iteration": 74,
+      "candidate_idx": 37,
+      "average_score": 0.5988126538064619,
+      "is_best_program": false
+    }
+  ],
+  "convergence_curve": [
+    {
+      "rollout_idx": 3525,
+      "iteration": 66,
+      "running_best_val_score": 0.4573672680948223
+    },
+    {
+      "rollout_idx": 3623,
+      "iteration": 67,
+      "running_best_val_score": 0.5886623799317298
+    },
+    {
+      "rollout_idx": 3721,
+      "iteration": 68,
+      "running_best_val_score": 0.617227911407478
+    },
+    {
+      "rollout_idx": 3727,
+      "iteration": 69,
+      "running_best_val_score": 0.617227911407478
+    },
+    {
+      "rollout_idx": 3733,
+      "iteration": 70,
+      "running_best_val_score": 0.617227911407478
+    },
+    {
+      "rollout_idx": 3739,
+      "iteration": 71,
+      "running_best_val_score": 0.617227911407478
+    },
+    {
+      "rollout_idx": 3745,
+      "iteration": 72,
+      "running_best_val_score": 0.617227911407478
+    },
+    {
+      "rollout_idx": 3843,
+      "iteration": 73,
+      "running_best_val_score": 0.617227911407478
+    },
+    {
+      "rollout_idx": 3941,
+      "iteration": 74,
+      "running_best_val_score": 0.617227911407478
+    }
+  ],
+  "contrastive_reflection": {
+    "total_iterations": 9,
+    "active_iterations": 0,
+    "active_ratio": 0.0,
+    "mean_pairs_found": 0.0,
+    "iterations": [
+      {
+        "iteration": 66,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 67,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 68,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 69,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 70,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 71,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 72,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 73,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      },
+      {
+        "iteration": 74,
+        "num_pairs_found": 0,
+        "num_pairs_used": 0,
+        "score_gaps": [],
+        "accepted": true
+      }
+    ]
+  }
+}

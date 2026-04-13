@@ -1,0 +1,69 @@
+
+Experiment plan:
+  Total:   180
+  Done:    76 (skipping)
+  Pending: 104
+  Workers: 8
+
+2026-04-13 01:40:25,991 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 01:40:26,014 INFO START  ifbench/slime_mold/seed=42
+2026-04-13 01:40:26,015 INFO START  ifbench/slime_mold/seed=123
+2026-04-13 01:40:26,016 INFO START  ifbench/slime_mold/seed=789
+2026-04-13 01:40:26,015 INFO START  ifbench/slime_mold/seed=456
+2026-04-13 01:40:26,016 INFO START  ifbench/slime_mold/seed=1024
+2026-04-13 01:40:26,016 INFO START  ifbench/tournament/seed=42
+2026-04-13 01:40:26,016 INFO START  ifbench/tournament/seed=456
+2026-04-13 01:40:26,016 INFO START  ifbench/tournament/seed=123
+2026-04-13 03:42:20,605 INFO DONE   ifbench/slime_mold/seed=42 (7315s) score=0.06644444444444444
+2026-04-13 03:42:20,606 INFO START  ifbench/tournament/seed=789
+2026-04-13 03:42:20,606 INFO [1/104] ifbench/slime_mold/seed=42 -> 6.6% (7315s)
+2026-04-13 03:42:21,284 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 03:50:20,359 INFO DONE   ifbench/slime_mold/seed=789 (7794s) score=0.07422222222222222
+2026-04-13 03:50:20,360 INFO START  ifbench/tournament/seed=1024
+2026-04-13 03:50:20,360 INFO [2/104] ifbench/slime_mold/seed=789 -> 7.4% (7794s)
+2026-04-13 03:58:33,780 INFO DONE   ifbench/slime_mold/seed=1024 (8288s) score=0.10872222222222222
+2026-04-13 03:58:33,781 INFO START  ifbench/gepa/seed=42
+2026-04-13 03:58:33,782 INFO [3/104] ifbench/slime_mold/seed=1024 -> 10.9% (8288s)
+2026-04-13 03:59:52,937 INFO DONE   ifbench/slime_mold/seed=456 (8367s) score=0.07361111111111111
+2026-04-13 03:59:52,938 INFO START  ifbench/gepa/seed=123
+2026-04-13 03:59:52,939 INFO [4/104] ifbench/slime_mold/seed=456 -> 7.4% (8367s)
+2026-04-13 04:05:43,412 INFO DONE   ifbench/slime_mold/seed=123 (8717s) score=0.08594444444444443
+2026-04-13 04:05:43,413 INFO START  ifbench/failure_stratified_k_K3/seed=456
+2026-04-13 04:05:43,413 INFO [5/104] ifbench/slime_mold/seed=123 -> 8.6% (8717s)
+2026-04-13 04:41:17,684 INFO DONE   ifbench/gepa/seed=123 (2485s) score=0.06372222222222222
+2026-04-13 04:41:17,685 INFO START  ifbench/failure_stratified_k_K3/seed=789
+2026-04-13 04:41:17,686 INFO [6/104] ifbench/gepa/seed=123 -> 6.4% (2485s)
+2026-04-13 04:41:18,366 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 04:41:58,776 INFO DONE   ifbench/gepa/seed=42 (2605s) score=0.063
+2026-04-13 04:41:58,777 INFO START  ifbench/failure_stratified_k_K3/seed=1024
+2026-04-13 04:41:58,777 INFO [7/104] ifbench/gepa/seed=42 -> 6.3% (2605s)
+2026-04-13 05:02:35,774 INFO DONE   ifbench/tournament/seed=42 (12130s) score=0.06794444444444445
+2026-04-13 05:02:35,774 INFO START  pupa/best_of_k_K3/seed=42
+2026-04-13 05:02:35,775 INFO [8/104] ifbench/tournament/seed=42 -> 6.8% (12130s)
+2026-04-13 05:11:45,323 INFO DONE   pupa/best_of_k_K3/seed=42 (550s) score=0.5283113085744665
+2026-04-13 05:11:45,324 INFO START  pupa/best_of_k_K3/seed=123
+2026-04-13 05:11:45,324 INFO [9/104] pupa/best_of_k_K3/seed=42 -> 52.8% (550s)
+2026-04-13 05:11:45,993 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 05:21:14,863 INFO DONE   ifbench/tournament/seed=123 (13249s) score=0.08266666666666667
+2026-04-13 05:21:14,863 INFO START  pupa/best_of_k_K3/seed=456
+2026-04-13 05:21:14,864 INFO [10/104] ifbench/tournament/seed=123 -> 8.3% (13249s)
+2026-04-13 05:25:10,906 INFO DONE   ifbench/tournament/seed=456 (13485s) score=0.06372222222222222
+2026-04-13 05:25:10,906 INFO START  pupa/best_of_k_K3/seed=789
+2026-04-13 05:25:10,907 INFO [11/104] ifbench/tournament/seed=456 -> 6.4% (13485s)
+2026-04-13 05:30:52,456 INFO DONE   pupa/best_of_k_K3/seed=456 (578s) score=0.5293802688539531
+2026-04-13 05:30:52,457 INFO START  pupa/best_of_k_K3/seed=1024
+2026-04-13 05:30:52,458 INFO [12/104] pupa/best_of_k_K3/seed=456 -> 52.9% (578s)
+2026-04-13 05:34:38,430 INFO DONE   pupa/best_of_k_K3/seed=789 (568s) score=0.5118364092048302
+2026-04-13 05:34:38,430 INFO START  pupa/contrastive_reflection/seed=42
+2026-04-13 05:34:38,431 INFO [13/104] pupa/best_of_k_K3/seed=789 -> 51.2% (568s)
+2026-04-13 05:53:48,825 INFO DONE   pupa/best_of_k_K3/seed=1024 (1376s) score=0.4691672362724994
+2026-04-13 05:53:48,826 INFO START  pupa/contrastive_reflection/seed=123
+2026-04-13 05:53:48,826 INFO [14/104] pupa/best_of_k_K3/seed=1024 -> 46.9% (1376s)
+2026-04-13 05:53:49,538 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 06:25:43,802 INFO DONE   pupa/best_of_k_K3/seed=123 (4438s) score=0.6055099870889344
+2026-04-13 06:25:43,803 INFO START  pupa/contrastive_reflection/seed=456
+2026-04-13 06:25:43,803 INFO [15/104] pupa/best_of_k_K3/seed=123 -> 60.6% (4438s)
+2026-04-13 06:25:44,524 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 06:36:21,270 INFO DONE   pupa/contrastive_reflection/seed=456 (637s) score=0.42929482797903856
+2026-04-13 06:36:21,270 INFO START  pupa/contrastive_reflection/seed=789
+2026-04-13 06:36:21,270 INFO [16/104] pupa/contrastive_reflection/seed=456 -> 42.9% (637s)

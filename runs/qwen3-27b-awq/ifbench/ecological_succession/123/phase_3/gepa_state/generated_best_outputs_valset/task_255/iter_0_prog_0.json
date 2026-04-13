@@ -1,0 +1,3 @@
+{
+    "response": "test\ndef analyze_scores(scores):\n    if not scores:\n        return {'average_score': 0, 'highest_score': 0, 'lowest_score': 0, 'passed': 0, 'failed': 0}\n    avg = sum(scores) / len(scores)\n    high = max(scores)\n    low = min(scores)\n    passed = sum(1 for s in scores if s >= 60)\n    failed = len(scores) - passed\n    return {'average_score': avg, 'highest_score': high, 'lowest_score': low, 'passed': passed, 'failed': failed}\ntest"
+}

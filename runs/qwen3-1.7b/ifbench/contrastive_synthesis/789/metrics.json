@@ -1,0 +1,4783 @@
+{
+  "benchmark": "ifbench",
+  "seed": 789,
+  "total_metric_calls": 3596,
+  "total_iterations": 173,
+  "best_candidate_idx": 8,
+  "total_wall_clock_seconds": 23954.979397535324,
+  "acceptance_rate": 0.04597701149425287,
+  "merge_acceptance_rate": 0.0,
+  "iterations": [
+    {
+      "iteration": 1,
+      "wall_clock_seconds": 21.639389514923096,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 306,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 2,
+      "wall_clock_seconds": 12.578984498977661,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 312,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 3,
+      "wall_clock_seconds": 47.39104223251343,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.25 not better than old score 0.25",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 318,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 4,
+      "wall_clock_seconds": 862.422440290451,
+      "proposal_accepted": true,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": 1,
+      "new_score": 0.65,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 2,
+      "pareto_displaced": [],
+      "metric_calls_used": 621,
+      "metric_calls_delta": 297
+    },
+    {
+      "iteration": 5,
+      "wall_clock_seconds": 11.22230839729309,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 627,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 6,
+      "wall_clock_seconds": 22.23052954673767,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 633,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 7,
+      "wall_clock_seconds": 18.548703908920288,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.8333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 639,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 8,
+      "wall_clock_seconds": 15.107148170471191,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 645,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 9,
+      "wall_clock_seconds": 12.059715747833252,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 651,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 10,
+      "wall_clock_seconds": 11.117816925048828,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 654,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 11,
+      "wall_clock_seconds": 35.11657500267029,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 660,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 12,
+      "wall_clock_seconds": 24.048805236816406,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 666,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 13,
+      "wall_clock_seconds": 25.45267343521118,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 672,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 14,
+      "wall_clock_seconds": 31.198573112487793,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 678,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 15,
+      "wall_clock_seconds": 9.061439514160156,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.4 not better than old score 0.4",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 684,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 16,
+      "wall_clock_seconds": 22.588016271591187,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 690,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 17,
+      "wall_clock_seconds": 1360.9989275932312,
+      "proposal_accepted": true,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": 2,
+      "new_score": 0.8333333333333333,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 3,
+      "pareto_displaced": [],
+      "metric_calls_used": 993,
+      "metric_calls_delta": 297
+    },
+    {
+      "iteration": 18,
+      "wall_clock_seconds": 27.247955560684204,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 999,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 19,
+      "wall_clock_seconds": 13.409242391586304,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.8333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1005,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 20,
+      "wall_clock_seconds": 15.819036960601807,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1008,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 21,
+      "wall_clock_seconds": 15.217166662216187,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1011,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 22,
+      "wall_clock_seconds": 22.413856029510498,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1017,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 23,
+      "wall_clock_seconds": 14.041677713394165,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1023,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 24,
+      "wall_clock_seconds": 26.321643829345703,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1029,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 25,
+      "wall_clock_seconds": 22.23603129386902,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.25 not better than old score 0.25",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1032,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 26,
+      "wall_clock_seconds": 12.16668701171875,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1035,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 27,
+      "wall_clock_seconds": 29.13525938987732,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1041,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 28,
+      "wall_clock_seconds": 22.20760416984558,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1044,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 29,
+      "wall_clock_seconds": 18.452938318252563,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1050,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 30,
+      "wall_clock_seconds": 17.11493158340454,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1056,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 31,
+      "wall_clock_seconds": 34.227678537368774,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1062,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 32,
+      "wall_clock_seconds": 15.556947231292725,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1065,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 33,
+      "wall_clock_seconds": 19.657898664474487,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1071,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 34,
+      "wall_clock_seconds": 26.11213445663452,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1077,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 35,
+      "wall_clock_seconds": 37.506771087646484,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.25 not better than old score 0.25",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1083,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 36,
+      "wall_clock_seconds": 10.31747317314148,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1086,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 37,
+      "wall_clock_seconds": 19.457579612731934,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1092,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 38,
+      "wall_clock_seconds": 12.758650541305542,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1095,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 39,
+      "wall_clock_seconds": 16.084179401397705,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.2 not better than old score 0.2",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1101,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 40,
+      "wall_clock_seconds": 34.01612901687622,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.45 not better than old score 0.45",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1107,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 41,
+      "wall_clock_seconds": 31.984388828277588,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 1.75 not better than old score 1.75",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1110,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 42,
+      "wall_clock_seconds": 989.5590219497681,
+      "proposal_accepted": true,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": 3,
+      "new_score": 0.2,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 4,
+      "pareto_displaced": [],
+      "metric_calls_used": 1413,
+      "metric_calls_delta": 297
+    },
+    {
+      "iteration": 43,
+      "wall_clock_seconds": 15.036776542663574,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1419,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 44,
+      "wall_clock_seconds": 19.696412563323975,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1425,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 45,
+      "wall_clock_seconds": 20.497326374053955,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1428,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 46,
+      "wall_clock_seconds": 16.562830924987793,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1434,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 47,
+      "wall_clock_seconds": 31.292954444885254,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1440,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 48,
+      "wall_clock_seconds": 25.677956342697144,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.8333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1446,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 49,
+      "wall_clock_seconds": 12.933602809906006,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1449,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 50,
+      "wall_clock_seconds": 13.209283590316772,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 1.6666666666666665 not better than old score 1.6666666666666665",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1452,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 51,
+      "wall_clock_seconds": 14.88898515701294,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.25 not better than old score 0.25",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1458,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 52,
+      "wall_clock_seconds": 11.480264663696289,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1464,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 53,
+      "wall_clock_seconds": 17.184874057769775,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.25 not better than old score 0.25",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1470,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 54,
+      "wall_clock_seconds": 22.250195741653442,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1476,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 55,
+      "wall_clock_seconds": 36.52922773361206,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1482,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 56,
+      "wall_clock_seconds": 48.29103875160217,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1488,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 57,
+      "wall_clock_seconds": 24.47218942642212,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1494,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 58,
+      "wall_clock_seconds": 29.880236387252808,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1500,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 59,
+      "wall_clock_seconds": 23.621920824050903,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1506,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 60,
+      "wall_clock_seconds": 41.139718770980835,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1512,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 61,
+      "wall_clock_seconds": 13.187612533569336,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.2 not better than old score 0.2",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1515,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 62,
+      "wall_clock_seconds": 17.515801191329956,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1521,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 63,
+      "wall_clock_seconds": 21.48821210861206,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1527,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 64,
+      "wall_clock_seconds": 11.968369722366333,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1530,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 65,
+      "wall_clock_seconds": 32.887776613235474,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1536,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 66,
+      "wall_clock_seconds": 27.22376298904419,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1542,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 67,
+      "wall_clock_seconds": 16.386394262313843,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 1.2 not better than old score 1.2",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1545,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 68,
+      "wall_clock_seconds": 26.523361921310425,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.2 not better than old score 0.2",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1551,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 69,
+      "wall_clock_seconds": 1227.713177204132,
+      "proposal_accepted": true,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": 4,
+      "new_score": 0.5,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 5,
+      "pareto_displaced": [],
+      "metric_calls_used": 1854,
+      "metric_calls_delta": 297
+    },
+    {
+      "iteration": 70,
+      "wall_clock_seconds": 22.83273696899414,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.2 not better than old score 0.2",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1860,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 71,
+      "wall_clock_seconds": 23.923303365707397,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1866,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 72,
+      "wall_clock_seconds": 33.553062438964844,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1872,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 73,
+      "wall_clock_seconds": 17.872421741485596,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.45 not better than old score 0.45",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1875,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 74,
+      "wall_clock_seconds": 19.61877703666687,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1878,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 75,
+      "wall_clock_seconds": 22.59750747680664,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1884,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 76,
+      "wall_clock_seconds": 27.63230538368225,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1890,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 77,
+      "wall_clock_seconds": 26.719115018844604,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1896,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 78,
+      "wall_clock_seconds": 20.061633348464966,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.25 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1902,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 79,
+      "wall_clock_seconds": 26.123754739761353,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1908,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 80,
+      "wall_clock_seconds": 34.28872752189636,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1914,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 81,
+      "wall_clock_seconds": 22.347772121429443,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1920,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 82,
+      "wall_clock_seconds": 27.005857229232788,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 1.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1926,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 83,
+      "wall_clock_seconds": 29.605666160583496,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1932,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 84,
+      "wall_clock_seconds": 8.321477890014648,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1935,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 85,
+      "wall_clock_seconds": 32.683502435684204,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1941,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 86,
+      "wall_clock_seconds": 12.296862125396729,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 1.3333333333333333 not better than old score 1.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 1947,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 87,
+      "wall_clock_seconds": 917.6526713371277,
+      "proposal_accepted": true,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": 5,
+      "new_score": 0.3333333333333333,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 6,
+      "pareto_displaced": [],
+      "metric_calls_used": 2250,
+      "metric_calls_delta": 297
+    },
+    {
+      "iteration": 88,
+      "wall_clock_seconds": 37.055341482162476,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2256,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 89,
+      "wall_clock_seconds": 14.109647750854492,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2259,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 90,
+      "wall_clock_seconds": 21.119219064712524,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2262,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 91,
+      "wall_clock_seconds": 29.485331535339355,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.25 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2268,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 92,
+      "wall_clock_seconds": 20.930858612060547,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2274,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 93,
+      "wall_clock_seconds": 10.555126190185547,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2277,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 94,
+      "wall_clock_seconds": 23.144155502319336,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.25 not better than old score 0.25",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2283,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 95,
+      "wall_clock_seconds": 12.744698762893677,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2289,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 96,
+      "wall_clock_seconds": 32.767521381378174,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2295,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 97,
+      "wall_clock_seconds": 25.090991735458374,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.25",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2301,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 98,
+      "wall_clock_seconds": 34.68254542350769,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2307,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 99,
+      "wall_clock_seconds": 63.85820198059082,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2313,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 100,
+      "wall_clock_seconds": 41.52396249771118,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.9 not better than old score 0.9",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2319,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 101,
+      "wall_clock_seconds": 1298.4140062332153,
+      "proposal_accepted": true,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": 6,
+      "new_score": 0.3333333333333333,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 7,
+      "pareto_displaced": [],
+      "metric_calls_used": 2622,
+      "metric_calls_delta": 297
+    },
+    {
+      "iteration": 102,
+      "wall_clock_seconds": 67.7932984828949,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.25",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2628,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 103,
+      "wall_clock_seconds": 30.946152448654175,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2631,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 104,
+      "wall_clock_seconds": 114.25308227539062,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2634,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 105,
+      "wall_clock_seconds": 99.30885076522827,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2640,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 106,
+      "wall_clock_seconds": 90.55034160614014,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2646,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 107,
+      "wall_clock_seconds": 112.56164073944092,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 1.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2652,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 108,
+      "wall_clock_seconds": 116.47284007072449,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.2 not better than old score 0.2",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2658,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 109,
+      "wall_clock_seconds": 38.88230538368225,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2664,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 110,
+      "wall_clock_seconds": 162.34823346138,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.2 not better than old score 0.2",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2670,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 111,
+      "wall_clock_seconds": 83.45717024803162,
+      "proposal_accepted": false,
+      "candidate_idx": 5,
+      "candidate_score": 0.03788888888888889,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2676,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 112,
+      "wall_clock_seconds": 108.49905776977539,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2682,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 113,
+      "wall_clock_seconds": 75.8173942565918,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2688,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 114,
+      "wall_clock_seconds": 62.751099586486816,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.6666666666666666",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2694,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 115,
+      "wall_clock_seconds": 72.49908781051636,
+      "proposal_accepted": false,
+      "candidate_idx": 6,
+      "candidate_score": 0.04572222222222222,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2700,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 116,
+      "wall_clock_seconds": 89.17212629318237,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2706,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 117,
+      "wall_clock_seconds": 112.21175265312195,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2712,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 118,
+      "wall_clock_seconds": 56.10758709907532,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2715,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 119,
+      "wall_clock_seconds": 94.43971490859985,
+      "proposal_accepted": false,
+      "candidate_idx": 6,
+      "candidate_score": 0.04572222222222222,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2721,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 120,
+      "wall_clock_seconds": 126.20599603652954,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2724,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 121,
+      "wall_clock_seconds": 103.83404350280762,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2730,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 122,
+      "wall_clock_seconds": 88.72456407546997,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2736,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 123,
+      "wall_clock_seconds": 110.55013608932495,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.6666666666666666 not better than old score 0.6666666666666666",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 2739,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 124,
+      "wall_clock_seconds": 3862.6047990322113,
+      "proposal_accepted": true,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": 7,
+      "new_score": 0.7,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 8,
+      "pareto_displaced": [],
+      "metric_calls_used": 3042,
+      "metric_calls_delta": 297
+    },
+    {
+      "iteration": 125,
+      "wall_clock_seconds": 49.28293251991272,
+      "proposal_accepted": false,
+      "candidate_idx": 7,
+      "candidate_score": 0.0725,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3045,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 126,
+      "wall_clock_seconds": 173.91659426689148,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.25",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3051,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 127,
+      "wall_clock_seconds": 3676.7589812278748,
+      "proposal_accepted": true,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": 8,
+      "new_score": 0.45,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 9,
+      "pareto_displaced": [],
+      "metric_calls_used": 3354,
+      "metric_calls_delta": 297
+    },
+    {
+      "iteration": 128,
+      "wall_clock_seconds": 87.87914538383484,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3360,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 129,
+      "wall_clock_seconds": 43.49163198471069,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3363,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 130,
+      "wall_clock_seconds": 59.88345146179199,
+      "proposal_accepted": false,
+      "candidate_idx": 5,
+      "candidate_score": 0.03788888888888889,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3369,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 131,
+      "wall_clock_seconds": 122.88095378875732,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3375,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 132,
+      "wall_clock_seconds": 95.77002930641174,
+      "proposal_accepted": false,
+      "candidate_idx": 8,
+      "candidate_score": 0.08233333333333333,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.7 not better than old score 0.7",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3381,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 133,
+      "wall_clock_seconds": 108.65608835220337,
+      "proposal_accepted": false,
+      "candidate_idx": 7,
+      "candidate_score": 0.0725,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3387,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 134,
+      "wall_clock_seconds": 127.15340089797974,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3393,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 135,
+      "wall_clock_seconds": 75.26110649108887,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.45 not better than old score 0.45",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3399,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 136,
+      "wall_clock_seconds": 129.40129971504211,
+      "proposal_accepted": false,
+      "candidate_idx": 5,
+      "candidate_score": 0.03788888888888889,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3405,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 137,
+      "wall_clock_seconds": 91.77691507339478,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3408,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 138,
+      "wall_clock_seconds": 71.0632152557373,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.25 not better than old score 0.25",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3411,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 139,
+      "wall_clock_seconds": 148.63201928138733,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.2 not better than old score 0.2",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3417,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 140,
+      "wall_clock_seconds": 68.14446067810059,
+      "proposal_accepted": false,
+      "candidate_idx": 5,
+      "candidate_score": 0.03788888888888889,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3423,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 141,
+      "wall_clock_seconds": 48.956525802612305,
+      "proposal_accepted": false,
+      "candidate_idx": 7,
+      "candidate_score": 0.0725,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3426,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 142,
+      "wall_clock_seconds": 93.39333271980286,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3432,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 143,
+      "wall_clock_seconds": 87.8443911075592,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.25 not better than old score 0.25",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3438,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 144,
+      "wall_clock_seconds": 84.65085530281067,
+      "proposal_accepted": false,
+      "candidate_idx": 7,
+      "candidate_score": 0.0725,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3444,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 145,
+      "wall_clock_seconds": 49.80251169204712,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3449,
+      "metric_calls_delta": 2
+    },
+    {
+      "iteration": 146,
+      "wall_clock_seconds": 76.17964029312134,
+      "proposal_accepted": false,
+      "candidate_idx": 4,
+      "candidate_score": 0.06822222222222221,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3455,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 147,
+      "wall_clock_seconds": 68.7502007484436,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3458,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 148,
+      "wall_clock_seconds": 71.90147495269775,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3461,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 149,
+      "wall_clock_seconds": 103.1295952796936,
+      "proposal_accepted": false,
+      "candidate_idx": 6,
+      "candidate_score": 0.04572222222222222,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3467,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 150,
+      "wall_clock_seconds": 90.09590244293213,
+      "proposal_accepted": false,
+      "candidate_idx": 6,
+      "candidate_score": 0.04572222222222222,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3473,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 151,
+      "wall_clock_seconds": 72.26241302490234,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3476,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 152,
+      "wall_clock_seconds": 39.85000419616699,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3479,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 153,
+      "wall_clock_seconds": 85.32328796386719,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3485,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 154,
+      "wall_clock_seconds": 57.23334336280823,
+      "proposal_accepted": false,
+      "candidate_idx": 5,
+      "candidate_score": 0.03788888888888889,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3491,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 155,
+      "wall_clock_seconds": 103.17371392250061,
+      "proposal_accepted": false,
+      "candidate_idx": 7,
+      "candidate_score": 0.0725,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3497,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 156,
+      "wall_clock_seconds": 68.94929695129395,
+      "proposal_accepted": false,
+      "candidate_idx": 6,
+      "candidate_score": 0.04572222222222222,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3500,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 157,
+      "wall_clock_seconds": 94.9581470489502,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3506,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 158,
+      "wall_clock_seconds": 101.52264356613159,
+      "proposal_accepted": false,
+      "candidate_idx": 8,
+      "candidate_score": 0.08233333333333333,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3512,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 159,
+      "wall_clock_seconds": 100.3642828464508,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3518,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 160,
+      "wall_clock_seconds": 162.83118224143982,
+      "proposal_accepted": false,
+      "candidate_idx": 8,
+      "candidate_score": 0.08233333333333333,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.3333333333333333 not better than old score 0.3333333333333333",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3524,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 161,
+      "wall_clock_seconds": 113.60245513916016,
+      "proposal_accepted": false,
+      "candidate_idx": 8,
+      "candidate_score": 0.08233333333333333,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3530,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 162,
+      "wall_clock_seconds": 122.93077564239502,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3536,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 163,
+      "wall_clock_seconds": 57.644901752471924,
+      "proposal_accepted": false,
+      "candidate_idx": 3,
+      "candidate_score": 0.0575,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.4 not better than old score 0.4",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3542,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 164,
+      "wall_clock_seconds": 76.63107323646545,
+      "proposal_accepted": false,
+      "candidate_idx": 8,
+      "candidate_score": 0.08233333333333333,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3548,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 165,
+      "wall_clock_seconds": 75.61480903625488,
+      "proposal_accepted": false,
+      "candidate_idx": 5,
+      "candidate_score": 0.03788888888888889,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3554,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 166,
+      "wall_clock_seconds": 59.406126260757446,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.75 not better than old score 0.75",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3557,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 167,
+      "wall_clock_seconds": 57.73510789871216,
+      "proposal_accepted": false,
+      "candidate_idx": 6,
+      "candidate_score": 0.04572222222222222,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3560,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 168,
+      "wall_clock_seconds": 170.37063574790955,
+      "proposal_accepted": false,
+      "candidate_idx": 8,
+      "candidate_score": 0.08233333333333333,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.5 not better than old score 0.5",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3566,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 169,
+      "wall_clock_seconds": 105.41469740867615,
+      "proposal_accepted": false,
+      "candidate_idx": 2,
+      "candidate_score": 0.06777777777777777,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3569,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 170,
+      "wall_clock_seconds": 166.67157292366028,
+      "proposal_accepted": false,
+      "candidate_idx": 8,
+      "candidate_score": 0.08233333333333333,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.7 not better than old score 0.7",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3575,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 171,
+      "wall_clock_seconds": 61.697041273117065,
+      "proposal_accepted": false,
+      "candidate_idx": 1,
+      "candidate_score": 0.07372222222222223,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.2 not better than old score 0.2",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3578,
+      "metric_calls_delta": 0
+    },
+    {
+      "iteration": 172,
+      "wall_clock_seconds": 112.72995471954346,
+      "proposal_accepted": false,
+      "candidate_idx": 0,
+      "candidate_score": 0.06044444444444444,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.2 not better than old score 0.2",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3584,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 173,
+      "wall_clock_seconds": 109.97420859336853,
+      "proposal_accepted": false,
+      "candidate_idx": 8,
+      "candidate_score": 0.08233333333333333,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3590,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 174,
+      "wall_clock_seconds": 146.16506481170654,
+      "proposal_accepted": false,
+      "candidate_idx": 5,
+      "candidate_score": 0.03788888888888889,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 0.0 not better than old score 0.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3596,
+      "metric_calls_delta": 3
+    }
+  ],
+  "valset_scores": [
+    {
+      "iteration": 0,
+      "candidate_idx": 0,
+      "average_score": 0.06044444444444444,
+      "is_best_program": true
+    },
+    {
+      "iteration": 4,
+      "candidate_idx": 1,
+      "average_score": 0.07372222222222223,
+      "is_best_program": true
+    },
+    {
+      "iteration": 17,
+      "candidate_idx": 2,
+      "average_score": 0.06777777777777777,
+      "is_best_program": false
+    },
+    {
+      "iteration": 42,
+      "candidate_idx": 3,
+      "average_score": 0.0575,
+      "is_best_program": false
+    },
+    {
+      "iteration": 69,
+      "candidate_idx": 4,
+      "average_score": 0.06822222222222221,
+      "is_best_program": false
+    },
+    {
+      "iteration": 87,
+      "candidate_idx": 5,
+      "average_score": 0.03788888888888889,
+      "is_best_program": false
+    },
+    {
+      "iteration": 101,
+      "candidate_idx": 6,
+      "average_score": 0.04572222222222222,
+      "is_best_program": false
+    },
+    {
+      "iteration": 124,
+      "candidate_idx": 7,
+      "average_score": 0.0725,
+      "is_best_program": false
+    },
+    {
+      "iteration": 127,
+      "candidate_idx": 8,
+      "average_score": 0.08233333333333333,
+      "is_best_program": true
+    }
+  ],
+  "convergence_curve": [
+    {
+      "rollout_idx": 306,
+      "iteration": 1,
+      "running_best_val_score": 0.06044444444444444
+    },
+    {
+      "rollout_idx": 312,
+      "iteration": 2,
+      "running_best_val_score": 0.06044444444444444
+    },
+    {
+      "rollout_idx": 318,
+      "iteration": 3,
+      "running_best_val_score": 0.06044444444444444
+    },
+    {
+      "rollout_idx": 621,
+      "iteration": 4,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 627,
+      "iteration": 5,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 633,
+      "iteration": 6,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 639,
+      "iteration": 7,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 645,
+      "iteration": 8,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 651,
+      "iteration": 9,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 654,
+      "iteration": 10,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 660,
+      "iteration": 11,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 666,
+      "iteration": 12,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 672,
+      "iteration": 13,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 678,
+      "iteration": 14,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 684,
+      "iteration": 15,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 690,
+      "iteration": 16,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 993,
+      "iteration": 17,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 999,
+      "iteration": 18,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1005,
+      "iteration": 19,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1008,
+      "iteration": 20,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1011,
+      "iteration": 21,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1017,
+      "iteration": 22,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1023,
+      "iteration": 23,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1029,
+      "iteration": 24,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1032,
+      "iteration": 25,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1035,
+      "iteration": 26,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1041,
+      "iteration": 27,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1044,
+      "iteration": 28,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1050,
+      "iteration": 29,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1056,
+      "iteration": 30,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1062,
+      "iteration": 31,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1065,
+      "iteration": 32,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1071,
+      "iteration": 33,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1077,
+      "iteration": 34,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1083,
+      "iteration": 35,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1086,
+      "iteration": 36,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1092,
+      "iteration": 37,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1095,
+      "iteration": 38,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1101,
+      "iteration": 39,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1107,
+      "iteration": 40,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1110,
+      "iteration": 41,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1413,
+      "iteration": 42,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1419,
+      "iteration": 43,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1425,
+      "iteration": 44,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1428,
+      "iteration": 45,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1434,
+      "iteration": 46,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1440,
+      "iteration": 47,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1446,
+      "iteration": 48,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1449,
+      "iteration": 49,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1452,
+      "iteration": 50,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1458,
+      "iteration": 51,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1464,
+      "iteration": 52,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1470,
+      "iteration": 53,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1476,
+      "iteration": 54,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1482,
+      "iteration": 55,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1488,
+      "iteration": 56,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1494,
+      "iteration": 57,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1500,
+      "iteration": 58,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1506,
+      "iteration": 59,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1512,
+      "iteration": 60,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1515,
+      "iteration": 61,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1521,
+      "iteration": 62,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1527,
+      "iteration": 63,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1530,
+      "iteration": 64,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1536,
+      "iteration": 65,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1542,
+      "iteration": 66,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1545,
+      "iteration": 67,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1551,
+      "iteration": 68,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1854,
+      "iteration": 69,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1860,
+      "iteration": 70,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1866,
+      "iteration": 71,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1872,
+      "iteration": 72,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1875,
+      "iteration": 73,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1878,
+      "iteration": 74,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1884,
+      "iteration": 75,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1890,
+      "iteration": 76,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1896,
+      "iteration": 77,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1902,
+      "iteration": 78,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1908,
+      "iteration": 79,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1914,
+      "iteration": 80,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1920,
+      "iteration": 81,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1926,
+      "iteration": 82,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1932,
+      "iteration": 83,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1935,
+      "iteration": 84,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1941,
+      "iteration": 85,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 1947,
+      "iteration": 86,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2250,
+      "iteration": 87,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2256,
+      "iteration": 88,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2259,
+      "iteration": 89,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2262,
+      "iteration": 90,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2268,
+      "iteration": 91,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2274,
+      "iteration": 92,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2277,
+      "iteration": 93,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2283,
+      "iteration": 94,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2289,
+      "iteration": 95,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2295,
+      "iteration": 96,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2301,
+      "iteration": 97,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2307,
+      "iteration": 98,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2313,
+      "iteration": 99,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2319,
+      "iteration": 100,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2622,
+      "iteration": 101,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2628,
+      "iteration": 102,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2631,
+      "iteration": 103,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2634,
+      "iteration": 104,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2640,
+      "iteration": 105,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2646,
+      "iteration": 106,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2652,
+      "iteration": 107,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2658,
+      "iteration": 108,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2664,
+      "iteration": 109,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2670,
+      "iteration": 110,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2676,
+      "iteration": 111,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2682,
+      "iteration": 112,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2688,
+      "iteration": 113,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2694,
+      "iteration": 114,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2700,
+      "iteration": 115,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2706,
+      "iteration": 116,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2712,
+      "iteration": 117,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2715,
+      "iteration": 118,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2721,
+      "iteration": 119,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2724,
+      "iteration": 120,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2730,
+      "iteration": 121,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2736,
+      "iteration": 122,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 2739,
+      "iteration": 123,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 3042,
+      "iteration": 124,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 3045,
+      "iteration": 125,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 3051,
+      "iteration": 126,
+      "running_best_val_score": 0.07372222222222223
+    },
+    {
+      "rollout_idx": 3354,
+      "iteration": 127,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3360,
+      "iteration": 128,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3363,
+      "iteration": 129,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3369,
+      "iteration": 130,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3375,
+      "iteration": 131,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3381,
+      "iteration": 132,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3387,
+      "iteration": 133,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3393,
+      "iteration": 134,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3399,
+      "iteration": 135,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3405,
+      "iteration": 136,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3408,
+      "iteration": 137,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3411,
+      "iteration": 138,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3417,
+      "iteration": 139,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3423,
+      "iteration": 140,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3426,
+      "iteration": 141,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3432,
+      "iteration": 142,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3438,
+      "iteration": 143,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3444,
+      "iteration": 144,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3449,
+      "iteration": 145,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3455,
+      "iteration": 146,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3458,
+      "iteration": 147,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3461,
+      "iteration": 148,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3467,
+      "iteration": 149,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3473,
+      "iteration": 150,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3476,
+      "iteration": 151,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3479,
+      "iteration": 152,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3485,
+      "iteration": 153,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3491,
+      "iteration": 154,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3497,
+      "iteration": 155,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3500,
+      "iteration": 156,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3506,
+      "iteration": 157,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3512,
+      "iteration": 158,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3518,
+      "iteration": 159,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3524,
+      "iteration": 160,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3530,
+      "iteration": 161,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3536,
+      "iteration": 162,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3542,
+      "iteration": 163,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3548,
+      "iteration": 164,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3554,
+      "iteration": 165,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3557,
+      "iteration": 166,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3560,
+      "iteration": 167,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3566,
+      "iteration": 168,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3569,
+      "iteration": 169,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3575,
+      "iteration": 170,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3578,
+      "iteration": 171,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3584,
+      "iteration": 172,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3590,
+      "iteration": 173,
+      "running_best_val_score": 0.08233333333333333
+    },
+    {
+      "rollout_idx": 3596,
+      "iteration": 174,
+      "running_best_val_score": 0.08233333333333333
+    }
+  ],
+  "total_tokens": 4045774,
+  "task_input_tokens": 2142547,
+  "task_output_tokens": 1335452,
+  "reflection_input_tokens": 455039,
+  "reflection_output_tokens": 112736,
+  "reflection_call_count": 196,
+  "contrastive_synthesis": {
+    "total_iterations": 174,
+    "active_iterations": 22,
+    "mean_pairs_per_iter": 0.14942528735632185,
+    "synthesis_principles": [
+      {
+        "iteration": 1,
+        "principle": ""
+      },
+      {
+        "iteration": 2,
+        "principle": ""
+      },
+      {
+        "iteration": 3,
+        "principle": ""
+      },
+      {
+        "iteration": 4,
+        "principle": ""
+      },
+      {
+        "iteration": 5,
+        "principle": ""
+      },
+      {
+        "iteration": 6,
+        "principle": ""
+      },
+      {
+        "iteration": 7,
+        "principle": ""
+      },
+      {
+        "iteration": 8,
+        "principle": ""
+      },
+      {
+        "iteration": 9,
+        "principle": ""
+      },
+      {
+        "iteration": 10,
+        "principle": ""
+      },
+      {
+        "iteration": 11,
+        "principle": ""
+      },
+      {
+        "iteration": 12,
+        "principle": ""
+      },
+      {
+        "iteration": 13,
+        "principle": ""
+      },
+      {
+        "iteration": 14,
+        "principle": ""
+      },
+      {
+        "iteration": 15,
+        "principle": ""
+      },
+      {
+        "iteration": 16,
+        "principle": ""
+      },
+      {
+        "iteration": 17,
+        "principle": ""
+      },
+      {
+        "iteration": 18,
+        "principle": ""
+      },
+      {
+        "iteration": 19,
+        "principle": ""
+      },
+      {
+        "iteration": 20,
+        "principle": ""
+      },
+      {
+        "iteration": 21,
+        "principle": ""
+      },
+      {
+        "iteration": 22,
+        "principle": ""
+      },
+      {
+        "iteration": 23,
+        "principle": ""
+      },
+      {
+        "iteration": 24,
+        "principle": ""
+      },
+      {
+        "iteration": 25,
+        "principle": ""
+      },
+      {
+        "iteration": 26,
+        "principle": ""
+      },
+      {
+        "iteration": 27,
+        "principle": ""
+      },
+      {
+        "iteration": 28,
+        "principle": ""
+      },
+      {
+        "iteration": 29,
+        "principle": ""
+      },
+      {
+        "iteration": 30,
+        "principle": ""
+      },
+      {
+        "iteration": 31,
+        "principle": ""
+      },
+      {
+        "iteration": 32,
+        "principle": ""
+      },
+      {
+        "iteration": 33,
+        "principle": ""
+      },
+      {
+        "iteration": 34,
+        "principle": ""
+      },
+      {
+        "iteration": 35,
+        "principle": ""
+      },
+      {
+        "iteration": 36,
+        "principle": ""
+      },
+      {
+        "iteration": 37,
+        "principle": ""
+      },
+      {
+        "iteration": 38,
+        "principle": ""
+      },
+      {
+        "iteration": 39,
+        "principle": ""
+      },
+      {
+        "iteration": 40,
+        "principle": ""
+      },
+      {
+        "iteration": 41,
+        "principle": ""
+      },
+      {
+        "iteration": 42,
+        "principle": ""
+      },
+      {
+        "iteration": 43,
+        "principle": ""
+      },
+      {
+        "iteration": 44,
+        "principle": ""
+      },
+      {
+        "iteration": 45,
+        "principle": ""
+      },
+      {
+        "iteration": 46,
+        "principle": ""
+      },
+      {
+        "iteration": 47,
+        "principle": ""
+      },
+      {
+        "iteration": 48,
+        "principle": ""
+      },
+      {
+        "iteration": 49,
+        "principle": ""
+      },
+      {
+        "iteration": 50,
+        "principle": ""
+      },
+      {
+        "iteration": 51,
+        "principle": ""
+      },
+      {
+        "iteration": 52,
+        "principle": ""
+      },
+      {
+        "iteration": 53,
+        "principle": ""
+      },
+      {
+        "iteration": 54,
+        "principle": ""
+      },
+      {
+        "iteration": 55,
+        "principle": ""
+      },
+      {
+        "iteration": 56,
+        "principle": ""
+      },
+      {
+        "iteration": 57,
+        "principle": ""
+      },
+      {
+        "iteration": 58,
+        "principle": ""
+      },
+      {
+        "iteration": 59,
+        "principle": ""
+      },
+      {
+        "iteration": 60,
+        "principle": "The key principle is: **Use precise, task-specific instructions that clearly define the expected output and the process to achieve it.**"
+      },
+      {
+        "iteration": 61,
+        "principle": ""
+      },
+      {
+        "iteration": 62,
+        "principle": ""
+      },
+      {
+        "iteration": 63,
+        "principle": "The key principle is: **\"Clearly define the task and output format to enhance clarity and guide the model effectively.\"**  \n**Actionable instruction:** Ensure the prompt explicitly states the task and desired output format to improve performance and consistency."
+      },
+      {
+        "iteration": 64,
+        "principle": ""
+      },
+      {
+        "iteration": 65,
+        "principle": ""
+      },
+      {
+        "iteration": 66,
+        "principle": ""
+      },
+      {
+        "iteration": 67,
+        "principle": ""
+      },
+      {
+        "iteration": 68,
+        "principle": ""
+      },
+      {
+        "iteration": 69,
+        "principle": "The key principle is: **\"Clearly define the task and constraints, and explicitly state the expected output to ensure clarity and alignment with the desired outcome.\"** \n\nActionable instruction: **\"Specify the exact task, constraints, and expected output in the prompt to improve clarity and performance.\"**"
+      },
+      {
+        "iteration": 70,
+        "principle": ""
+      },
+      {
+        "iteration": 71,
+        "principle": ""
+      },
+      {
+        "iteration": 72,
+        "principle": ""
+      },
+      {
+        "iteration": 73,
+        "principle": ""
+      },
+      {
+        "iteration": 74,
+        "principle": ""
+      },
+      {
+        "iteration": 75,
+        "principle": ""
+      },
+      {
+        "iteration": 76,
+        "principle": ""
+      },
+      {
+        "iteration": 77,
+        "principle": ""
+      },
+      {
+        "iteration": 78,
+        "principle": ""
+      },
+      {
+        "iteration": 79,
+        "principle": ""
+      },
+      {
+        "iteration": 80,
+        "principle": ""
+      },
+      {
+        "iteration": 81,
+        "principle": ""
+      },
+      {
+        "iteration": 82,
+        "principle": ""
+      },
+      {
+        "iteration": 83,
+        "principle": ""
+      },
+      {
+        "iteration": 84,
+        "principle": "**Key Principle:**  \nUse clear, specific instructions that explicitly outline the task, constraints, and expected output to enhance clarity and ensure the model follows the desired behavior."
+      },
+      {
+        "iteration": 85,
+        "principle": ""
+      },
+      {
+        "iteration": 86,
+        "principle": ""
+      },
+      {
+        "iteration": 87,
+        "principle": ""
+      },
+      {
+        "iteration": 88,
+        "principle": ""
+      },
+      {
+        "iteration": 89,
+        "principle": ""
+      },
+      {
+        "iteration": 90,
+        "principle": ""
+      },
+      {
+        "iteration": 91,
+        "principle": ""
+      },
+      {
+        "iteration": 92,
+        "principle": ""
+      },
+      {
+        "iteration": 93,
+        "principle": ""
+      },
+      {
+        "iteration": 94,
+        "principle": ""
+      },
+      {
+        "iteration": 95,
+        "principle": ""
+      },
+      {
+        "iteration": 96,
+        "principle": ""
+      },
+      {
+        "iteration": 97,
+        "principle": "**Key Principle:**  \nUse clear, specific instructions that define the task, constraints, and expected output to enhance clarity, guide the model effectively, and improve performance."
+      },
+      {
+        "iteration": 98,
+        "principle": ""
+      },
+      {
+        "iteration": 99,
+        "principle": "**Key Principle:** Use clear, specific instructions that explicitly outline all constraints and requirements to ensure the model understands exactly what is needed and produces a complete, compliant response.\n\n**Actionable Instruction:** Clearly state all constraints and requirements in the prompt to ensure the model comprehends and meets them fully."
+      },
+      {
+        "iteration": 100,
+        "principle": ""
+      },
+      {
+        "iteration": 101,
+        "principle": ""
+      },
+      {
+        "iteration": 102,
+        "principle": ""
+      },
+      {
+        "iteration": 103,
+        "principle": "**Key Principle:** Use clear, specific instructions that explicitly outline all constraints and requirements to ensure the model fully understands what is expected and produces a complete, compliant response.\n\n**Actionable Instruction:** Clearly state all constraints and requirements in the prompt to ensure the model understands what to produce and meets all specified conditions."
+      },
+      {
+        "iteration": 104,
+        "principle": "The key principle is: **Use specific, clear instructions that explicitly define the task, input format, and expected output to enhance clarity and performance.**"
+      },
+      {
+        "iteration": 105,
+        "principle": ""
+      },
+      {
+        "iteration": 106,
+        "principle": ""
+      },
+      {
+        "iteration": 107,
+        "principle": ""
+      },
+      {
+        "iteration": 108,
+        "principle": ""
+      },
+      {
+        "iteration": 109,
+        "principle": ""
+      },
+      {
+        "iteration": 110,
+        "principle": ""
+      },
+      {
+        "iteration": 111,
+        "principle": ""
+      },
+      {
+        "iteration": 112,
+        "principle": ""
+      },
+      {
+        "iteration": 113,
+        "principle": ""
+      },
+      {
+        "iteration": 114,
+        "principle": ""
+      },
+      {
+        "iteration": 115,
+        "principle": ""
+      },
+      {
+        "iteration": 116,
+        "principle": ""
+      },
+      {
+        "iteration": 117,
+        "principle": "The key principle is: **Use clear, specific instructions that explicitly define the task, output format, and example inputs to guide the model effectively.**"
+      },
+      {
+        "iteration": 118,
+        "principle": "The key principle is: **\"Clearly define the task and the specific output requirements to ensure the model understands exactly what it needs to accomplish.\"**\n\n**Actionable instruction:**  \nEnsure the prompt explicitly states the task, the input format, and the desired output structure to improve performance and consistency."
+      },
+      {
+        "iteration": 119,
+        "principle": ""
+      },
+      {
+        "iteration": 120,
+        "principle": ""
+      },
+      {
+        "iteration": 121,
+        "principle": ""
+      },
+      {
+        "iteration": 122,
+        "principle": ""
+      },
+      {
+        "iteration": 123,
+        "principle": ""
+      },
+      {
+        "iteration": 124,
+        "principle": ""
+      },
+      {
+        "iteration": 125,
+        "principle": ""
+      },
+      {
+        "iteration": 126,
+        "principle": "**Principle:** Use clear, specific instructions that define the task, constraints, and expected output to ensure the model understands exactly what is needed and can produce accurate, relevant responses."
+      },
+      {
+        "iteration": 127,
+        "principle": ""
+      },
+      {
+        "iteration": 128,
+        "principle": ""
+      },
+      {
+        "iteration": 129,
+        "principle": "**Key Principle:** Use clear, specific instructions that define the task, constraints, and expected output to ensure the model understands exactly what is needed and can produce accurate, relevant responses."
+      },
+      {
+        "iteration": 130,
+        "principle": ""
+      },
+      {
+        "iteration": 131,
+        "principle": ""
+      },
+      {
+        "iteration": 132,
+        "principle": ""
+      },
+      {
+        "iteration": 133,
+        "principle": ""
+      },
+      {
+        "iteration": 134,
+        "principle": ""
+      },
+      {
+        "iteration": 135,
+        "principle": ""
+      },
+      {
+        "iteration": 136,
+        "principle": ""
+      },
+      {
+        "iteration": 137,
+        "principle": ""
+      },
+      {
+        "iteration": 138,
+        "principle": ""
+      },
+      {
+        "iteration": 139,
+        "principle": "**Key Principle:** Use clear, specific instructions that explicitly outline all constraints and requirements to ensure the model understands exactly what is needed and produces a complete, compliant response.\n\n**Actionable Instruction:** Clearly state all constraints and requirements in the prompt to ensure the model produces a complete and compliant response."
+      },
+      {
+        "iteration": 140,
+        "principle": "The key principle is: **Use clear, specific instructions that explicitly outline the task, constraints, and expected output to ensure the model understands exactly what is required.**"
+      },
+      {
+        "iteration": 141,
+        "principle": ""
+      },
+      {
+        "iteration": 142,
+        "principle": ""
+      },
+      {
+        "iteration": 143,
+        "principle": ""
+      },
+      {
+        "iteration": 144,
+        "principle": ""
+      },
+      {
+        "iteration": 145,
+        "principle": "The key principle is: **Use clear, specific instructions that define the task, input format, and output expectations to ensure precise understanding and consistent performance.**"
+      },
+      {
+        "iteration": 146,
+        "principle": ""
+      },
+      {
+        "iteration": 147,
+        "principle": ""
+      },
+      {
+        "iteration": 148,
+        "principle": ""
+      },
+      {
+        "iteration": 149,
+        "principle": ""
+      },
+      {
+        "iteration": 150,
+        "principle": ""
+      },
+      {
+        "iteration": 151,
+        "principle": ""
+      },
+      {
+        "iteration": 152,
+        "principle": ""
+      },
+      {
+        "iteration": 153,
+        "principle": ""
+      },
+      {
+        "iteration": 154,
+        "principle": ""
+      },
+      {
+        "iteration": 155,
+        "principle": ""
+      },
+      {
+        "iteration": 156,
+        "principle": "The key principle is: **Use clear, specific instructions that explicitly define the task, input format, and expected output to ensure the model understands exactly what is needed.**"
+      },
+      {
+        "iteration": 157,
+        "principle": ""
+      },
+      {
+        "iteration": 158,
+        "principle": "**KEY PRINCIPLE:**  \nUse clear, specific instructions that explicitly outline all constraints and requirements to ensure the model fully understands what is expected and can produce a complete, compliant response.\n\n**Actionable Instruction:**  \n**\"Clearly state all constraints and requirements in the prompt to ensure the model understands what is expected and can produce a complete, compliant response.\"**"
+      },
+      {
+        "iteration": 159,
+        "principle": ""
+      },
+      {
+        "iteration": 160,
+        "principle": ""
+      },
+      {
+        "iteration": 161,
+        "principle": ""
+      },
+      {
+        "iteration": 162,
+        "principle": ""
+      },
+      {
+        "iteration": 163,
+        "principle": "The key principle is: **Use specific, clear instructions that define the task, input format, and expected output to ensure clarity and consistency in model responses.**"
+      },
+      {
+        "iteration": 164,
+        "principle": ""
+      },
+      {
+        "iteration": 165,
+        "principle": "The key principle is: **Use clear, specific instructions that define the task, input format, and output requirements to ensure consistency and clarity in model responses.**"
+      },
+      {
+        "iteration": 166,
+        "principle": "**Key Principle:**  \nUse clear, specific instructions that define the task, constraints, and expected output to enhance clarity and ensure the model understands the desired behavior.\n\n**Actionable Instruction:**  \nEnsure prompts are explicit, concise, and provide all necessary context and constraints to guide the model effectively."
+      },
+      {
+        "iteration": 167,
+        "principle": ""
+      },
+      {
+        "iteration": 168,
+        "principle": ""
+      },
+      {
+        "iteration": 169,
+        "principle": ""
+      },
+      {
+        "iteration": 170,
+        "principle": "**Principle:** Use clear, specific instructions that define the task, constraints, and expected output to ensure the model understands exactly what is needed and can generate accurate, relevant responses."
+      },
+      {
+        "iteration": 171,
+        "principle": ""
+      },
+      {
+        "iteration": 172,
+        "principle": ""
+      },
+      {
+        "iteration": 173,
+        "principle": ""
+      },
+      {
+        "iteration": 174,
+        "principle": "**Principle:** Use clear, specific instructions that explicitly outline the task, constraints, and expected output to improve prompt effectiveness and consistency."
+      }
+    ],
+    "num_contrastive_pairs_per_iter": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      2,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  }
+}

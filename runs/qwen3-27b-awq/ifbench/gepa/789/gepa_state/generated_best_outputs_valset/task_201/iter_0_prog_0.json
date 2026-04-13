@@ -1,0 +1,3 @@
+{
+    "response": "<<PHP URL Swap Guide>>\n\nUse str_replace to swap the old link for the new one in your PHP string. This function handles multiple occurrences automatically.\n\n$str = 'New post on the site <a href=\"http://stackoverflow.com/xyz1\">http://stackoverflow.com/xyz1</a></p>';\n$newStr = str_replace('http://stackoverflow.com/xyz1', 'http://yahoo.com/abc1', $str);\n\nThe word level is a palindrome that reads the same forward and backward."
+}

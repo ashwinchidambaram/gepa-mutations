@@ -1,0 +1,78 @@
+
+Experiment plan:
+  Total:   300
+  Done:    0 (skipping)
+  Pending: 300
+  Workers: 4
+
+2026-04-10 16:34:30,299 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-10 16:34:30,323 INFO START  ifbench/synaptic_pruning/seed=42
+2026-04-10 16:34:30,333 INFO START  ifbench/synaptic_pruning/seed=123
+2026-04-10 16:34:30,335 INFO START  ifbench/synaptic_pruning/seed=456
+2026-04-10 16:34:30,335 INFO START  ifbench/synaptic_pruning/seed=789
+2026-04-10 16:36:57,134 INFO DONE   ifbench/synaptic_pruning/seed=456 (147s) score=None
+2026-04-10 16:36:57,135 INFO START  ifbench/synaptic_pruning/seed=1024
+2026-04-10 16:36:57,136 INFO [1/300] ifbench/synaptic_pruning/seed=456 -> N/A (147s)
+2026-04-10 16:39:01,637 INFO DONE   ifbench/synaptic_pruning/seed=123 (271s) score=None
+2026-04-10 16:39:01,638 INFO START  ifbench/slime_mold/seed=42
+2026-04-10 16:39:01,639 INFO [2/300] ifbench/synaptic_pruning/seed=123 -> N/A (271s)
+2026-04-10 16:40:23,999 INFO DONE   ifbench/synaptic_pruning/seed=789 (354s) score=None
+2026-04-10 16:40:24,000 INFO START  ifbench/slime_mold/seed=123
+2026-04-10 16:40:24,001 INFO [3/300] ifbench/synaptic_pruning/seed=789 -> N/A (354s)
+2026-04-10 16:40:39,118 INFO DONE   ifbench/synaptic_pruning/seed=42 (369s) score=None
+2026-04-10 16:40:39,119 INFO START  ifbench/slime_mold/seed=456
+2026-04-10 16:40:39,120 INFO [4/300] ifbench/synaptic_pruning/seed=42 -> N/A (369s)
+2026-04-10 16:45:07,133 INFO DONE   ifbench/synaptic_pruning/seed=1024 (490s) score=None
+2026-04-10 16:45:07,134 INFO START  ifbench/slime_mold/seed=789
+2026-04-10 16:45:07,134 INFO [5/300] ifbench/synaptic_pruning/seed=1024 -> N/A (490s)
+2026-04-10 16:52:22,946 INFO DONE   ifbench/slime_mold/seed=456 (704s) score=1.0
+2026-04-10 16:52:22,947 INFO START  ifbench/slime_mold/seed=1024
+2026-04-10 16:52:22,947 INFO [6/300] ifbench/slime_mold/seed=456 -> 100.0% (704s)
+2026-04-10 16:53:32,296 INFO DONE   ifbench/slime_mold/seed=42 (871s) score=1.0
+2026-04-10 16:53:32,297 INFO START  ifbench/tournament/seed=42
+2026-04-10 16:53:32,298 INFO [7/300] ifbench/slime_mold/seed=42 -> 100.0% (871s)
+2026-04-10 16:56:01,447 INFO DONE   ifbench/slime_mold/seed=789 (654s) score=1.0
+2026-04-10 16:56:01,448 INFO START  ifbench/tournament/seed=123
+2026-04-10 16:56:01,449 INFO [8/300] ifbench/slime_mold/seed=789 -> 100.0% (654s)
+2026-04-10 17:00:12,710 INFO DONE   ifbench/slime_mold/seed=123 (1189s) score=1.0
+2026-04-10 17:00:12,711 INFO START  ifbench/tournament/seed=456
+2026-04-10 17:00:12,712 INFO [9/300] ifbench/slime_mold/seed=123 -> 100.0% (1189s)
+2026-04-10 17:03:05,338 INFO DONE   ifbench/slime_mold/seed=1024 (642s) score=1.0
+2026-04-10 17:03:05,339 INFO START  ifbench/tournament/seed=789
+2026-04-10 17:03:05,340 INFO [10/300] ifbench/slime_mold/seed=1024 -> 100.0% (642s)
+2026-04-10 17:40:16,078 INFO DONE   ifbench/tournament/seed=42 (2804s) score=1.0
+2026-04-10 17:40:16,080 INFO START  ifbench/tournament/seed=1024
+2026-04-10 17:40:16,082 INFO [11/300] ifbench/tournament/seed=42 -> 100.0% (2804s)
+2026-04-10 17:40:16,784 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-10 17:45:44,352 INFO DONE   ifbench/tournament/seed=456 (2732s) score=1.0
+2026-04-10 17:45:44,353 INFO START  ifbench/gepa/seed=42
+2026-04-10 17:45:44,354 INFO [12/300] ifbench/tournament/seed=456 -> 100.0% (2732s)
+2026-04-10 17:53:47,580 INFO DONE   ifbench/tournament/seed=123 (3466s) score=1.0
+2026-04-10 17:53:47,581 INFO START  ifbench/gepa/seed=123
+2026-04-10 17:53:47,582 INFO [13/300] ifbench/tournament/seed=123 -> 100.0% (3466s)
+2026-04-10 18:17:00,265 INFO DONE   ifbench/tournament/seed=1024 (2204s) score=1.0
+2026-04-10 18:17:00,266 INFO START  ifbench/gepa/seed=456
+2026-04-10 18:17:00,268 INFO [14/300] ifbench/tournament/seed=1024 -> 100.0% (2204s)
+2026-04-10 18:17:00,976 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-10 18:17:58,355 INFO DONE   ifbench/gepa/seed=42 (1934s) score=1.0
+2026-04-10 18:17:58,355 INFO START  ifbench/gepa/seed=789
+2026-04-10 18:17:58,357 INFO [15/300] ifbench/gepa/seed=42 -> 100.0% (1934s)
+2026-04-10 18:20:12,606 INFO DONE   ifbench/tournament/seed=789 (4627s) score=1.0
+2026-04-10 18:20:12,607 INFO START  ifbench/gepa/seed=1024
+2026-04-10 18:20:12,608 INFO [16/300] ifbench/tournament/seed=789 -> 100.0% (4627s)
+2026-04-10 18:25:46,409 INFO DONE   ifbench/gepa/seed=123 (1919s) score=1.0
+2026-04-10 18:25:46,410 INFO START  ifbench/contrastive_reflection/seed=42
+2026-04-10 18:25:46,412 INFO [17/300] ifbench/gepa/seed=123 -> 100.0% (1919s)
+2026-04-10 18:49:00,541 INFO DONE   ifbench/gepa/seed=456 (1920s) score=1.0
+2026-04-10 18:49:00,542 INFO START  ifbench/contrastive_reflection/seed=123
+2026-04-10 18:49:00,543 INFO [18/300] ifbench/gepa/seed=456 -> 100.0% (1920s)
+2026-04-10 18:49:01,238 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-10 18:50:17,472 INFO DONE   ifbench/gepa/seed=789 (1939s) score=1.0
+2026-04-10 18:50:17,472 INFO START  ifbench/contrastive_reflection/seed=456
+2026-04-10 18:50:17,473 INFO [19/300] ifbench/gepa/seed=789 -> 100.0% (1939s)
+2026-04-10 18:52:27,956 INFO DONE   ifbench/gepa/seed=1024 (1935s) score=1.0
+2026-04-10 18:52:27,957 INFO START  ifbench/contrastive_reflection/seed=789
+2026-04-10 18:52:27,959 INFO [20/300] ifbench/gepa/seed=1024 -> 100.0% (1935s)
+2026-04-10 18:58:25,096 INFO DONE   ifbench/contrastive_reflection/seed=42 (1959s) score=1.0
+2026-04-10 18:58:25,097 INFO START  ifbench/contrastive_reflection/seed=1024
+2026-04-10 18:58:25,098 INFO [21/300] ifbench/contrastive_reflection/seed=42 -> 100.0% (1959s)

@@ -1,0 +1,433 @@
+Iteration 0: Base program full valset score: 0.30895409715843153 over 95 / 95 examples
+Iteration 1: Selected program 0 score: 0.30895409715843153
+Iteration 1: Proposed new text for system_prompt: ## New Instruction  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. Additionally, ensure that the rewritten query maintains the original intent and context, and does not introduce any new assumptions or external information not present in the original input.  
+
+## Task Description  
+This task requires the assistant to:  
+1. Identify and remove all PII from the input text.  
+2. Replace PII with generic placeholders (e.g., [USER ID], [ORGANIZATION NAME], [LOCATION]).  
+3. Preserve the original intent and context of the query.  
+4. Ensure that the rewritten query does not introduce any new information or assumptions.  
+5. Maintain a neutral and professional tone.  
+
+## Niche and Domain-Specific Facts  
+- **PII Types**: The task specifically targets names, addresses, phone numbers, and emails.  
+- **Replacement Strategy**: Generic placeholders are used for PII, such as [USER ID], [ORGANIZATION NAME], [LOCATION], [DATE], etc.  
+- **Context Preservation**: The rewritten query must retain the original intent, even if the specific details are anonymized.  
+- **No External Data**: The assistant must not rely on external data or knowledge beyond the input text.  
+- **Tone and Style**: The output must remain professional and neutral, avoiding any personal or sensitive language.  
+- **No Leakage**: The assistant must ensure that no PII is leaked in the output, even if it is replaced with placeholders.  
+
+## Generalizable Strategy (if applicable)  
+If the task involves anonymizing text for privacy or data processing, the assistant can use a standard anonymization approach, such as replacing names with [USER ID], addresses with [LOCATION], and phone numbers with [PHONE NUMBER]. This strategy is widely used in data anonymization and can be applied to various types of text.
+Iteration 1: New subsample score 0.5 is not better than old score 0.5, skipping
+Iteration 2: Selected program 0 score: 0.30895409715843153
+Iteration 2: Proposed new text for system_prompt: ## New Instruction  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. The task should be applied to any input that contains PII, including but not limited to:  
+
+- **Names**: Replace with "[Name]" or "[PersonX]"  
+- **Addresses**: Replace with "[Location]" or "[Address]"  
+- **Phone numbers**: Replace with "[Phone Number]" or "[Contact]"  
+- **Emails**: Replace with "[Email Address]"  
+- **Dates**: Replace with "[Date]" or "[Date Range]"  
+- **Company names**: Replace with "[Company Name]"  
+- **Job titles**: Replace with "[Job Title]"  
+- **Specific roles or responsibilities**: Replace with "[Role Description]" or "[Responsibilities]"  
+- **Contract details**: Replace with "[Contract Details]"  
+- **Location names**: Replace with "[Location]"  
+
+**Example**:  
+Input:  
+"John Doe: 'Hi, John! How are you?' Jane Smith: 'Good, John! I’m fine. Did you have a good weekend?' John: 'Yes, thanks! How about you?' Jane: 'I went hiking with friends. But my daughter can't settle down!'"
+
+Output:  
+"[Name]: 'Hi, [Name]! How are you?' [Name]: 'Good, [Name]! I’m fine. I did well. How about you?' [Name]: 'Yes, thanks! How about you?' [Name]: 'I went hiking with friends. But my daughter can't settle down!'"
+
+**Additional Notes**:  
+- The task should be applied to any input that contains PII, regardless of the context (e.g., personal conversations, job applications, customer support, etc.).  
+- The rewritten output should maintain the original intent and tone of the input while anonymizing all PII.  
+- The assistant should avoid using any real names, addresses, or contact information in the output.  
+- The assistant should ensure that the rewritten query is grammatically correct and maintains the original meaning.  
+- The assistant should be able to handle both short and long queries, including those with multiple participants or complex sentences.  
+
+**Optional Enhancement**:  
+- If the input contains a specific role or job title, replace it with a generic placeholder like "[Job Title]".  
+- If the input includes a company name, replace it with "[Company Name]".  
+- If the input includes a date, replace it with "[Date]".  
+- If the input includes a location, replace it with "[Location]".
+Iteration 2: New subsample score 0.8333333333333333 is not better than old score 0.9166666666666667, skipping
+Iteration 3: Selected program 0 score: 0.30895409715843153
+Iteration 3: Proposed new text for system_prompt: ## New Instructions  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. Additionally, ensure that the rewritten query maintains a professional and neutral tone, and is suitable for use in a variety of contexts such as reports, presentations, or content creation.  
+
+## Task Description  
+The task involves processing user input that may contain PII, such as names, addresses, phone numbers, and emails, and transforming it into a version that removes all such information while retaining the original intent and meaning. This process should involve:  
+- Identifying and removing any PII from the input.  
+- Replacing PII with generic placeholders (e.g., [Name], [Address], [Phone Number], [Email]).  
+- Preserving the structure, tone, and intent of the original query.  
+- Ensuring the rewritten query is appropriate for use in professional or formal contexts.  
+
+## Niche and Domain-Specific Considerations  
+- **PII Removal:** The task requires identifying and removing specific types of PII (names, addresses, phone numbers, emails) from the input.  
+- **Generic Placeholders:** The replacement of PII with placeholders must be done in a way that maintains the original intent and is suitable for use in reports, presentations, or other formal documents.  
+- **Tone and Context:** The rewritten query must maintain a neutral, professional, and appropriate tone for use in various contexts such as business, academic, or content creation.  
+- **Structural Preservation:** The original structure of the query (e.g., bullet points, numbered lists, paragraphs) should be preserved in the rewritten version.  
+- **Generalizability:** The task should be applicable to a wide range of input types, including but not limited to business reports, marketing strategies, and content creation.
+Iteration 3: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 4: Selected program 0 score: 0.30895409715843153
+Iteration 4: Proposed new text for system_prompt: ## New Instructions
+
+You are to process a user's query by **removing all personally identifiable information (PII)** such as names, addresses, phone numbers, and emails. Replace PII with **generic placeholders** while preserving the **intent, meaning, and context** of the original query. 
+
+### Key Requirements:
+1. **Identify and remove PII**: 
+   - Remove any names, addresses, phone numbers, emails, or other specific identifiers.
+   - Replace them with **generic placeholders** such as:
+     - `Name` for a person's name
+     - `Address` for a location
+     - `Phone Number` for a contact number
+     - `Email` for a contact email
+     - `Specific Role` for a job title or position
+
+2. **Preserve the original intent**:
+   - Maintain the **meaning** and **intent** of the original query.
+   - Ensure that the **context** and **narrative** remain intact, even after PII is replaced.
+
+3. **Use appropriate placeholders**:
+   - Replace PII with **generic placeholders** that are **unambiguous** and **neutral**.
+   - Avoid using any **realistic or specific** identifiers that could be linked to a real person or entity.
+
+4. **Maintain consistency**:
+   - Use the same **placeholder format** across all queries.
+   - Ensure that **no real data** is leaked or misinterpreted.
+
+5. **Provide a clear output**:
+   - Return the **modified query** with PII replaced by placeholders.
+   - Include a **note** in the output indicating that PII has been replaced with placeholders.
+
+### Example:
+Input:  
+"I want to reply to this Dear Nour, I hope this email finds you well, Please note that Eman al Heirat our SW team leader underwent a Corona(covid-19) test, and the result was positive. What is the necessary procedure in this case,"
+
+Output:  
+"I want to reply to this Dear [Generic Name], I hope this email finds you well, Please note that [Generic Role] our SW team leader underwent a Corona(covid-19) test, and the result was positive. What is the necessary procedure in this case,"
+
+### Additional Notes:
+- The task requires **domain-specific knowledge** of medical, legal, or professional terminology to correctly identify and replace PII.
+- The assistant should be able to **recognize and replace** PII in various formats (e.g., names, roles, addresses, phone numbers).
+- The assistant should **avoid over- or under-replacement** of PII, ensuring that the query remains **completely anonymized** while retaining its original intent.
+
+### Optional Enhancements:
+- If the query contains **ambiguous or unclear PII**, the assistant should **ask for clarification**.
+- If the query contains **multiple PII instances**, the assistant should **replace all of them** with placeholders.
+Iteration 4: New subsample score 1.5 is not better than old score 1.5, skipping
+Iteration 5: Selected program 0 score: 0.30895409715843153
+Iteration 5: Proposed new text for system_prompt: ## New Instructions
+
+I need you to rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. The task should be performed on the following input format:
+
+### Input Format:
+- A user's query containing PII (e.g., names, addresses, phone numbers, emails).
+- The query may include references to specific individuals, organizations, or projects.
+
+### Task Description:
+- **Remove PII**: Identify and eliminate any direct or indirect references to individuals, organizations, or projects that contain PII.
+- **Replace with Placeholders**: Replace PII with generic, non-specific placeholders such as:
+  - **[ORGANIZATION_NAME]** for organizations
+  - **[INDIVIDUAL_NAME]** for individuals
+  - **[PROJECT_NAME]** for projects
+  - **[LOCATION]** for locations
+  - **[EMAIL]** for emails (use **[EMAIL]** as a placeholder)
+  - **[PHONE]** for phone numbers (use **[PHONE]** as a placeholder)
+- **Preserve Intent**: Ensure the rewritten query retains the original intent, meaning, and purpose of the user's request.
+- **Maintain Structure**: Keep the original structure of the query (e.g., paragraphs, lists, bullet points) intact.
+- **No Leakage**: Ensure that no PII is left in the output, even if it's indirectly referenced (e.g., "the team at [ORGANIZATION_NAME]").
+
+### Niche and Domain-Specific Considerations:
+- **PII Types**: Focus on common PII types such as names, addresses, phone numbers, and emails.
+- **Contextual Replacement**: Replace PII in context based on the domain of the query (e.g., a business proposal may replace a company name with [ORGANIZATION_NAME], while a personal message may replace a name with [INDIVIDUAL_NAME]).
+- **Generalization**: If the query is generic, use broad placeholders (e.g., "a team at [ORGANIZATION_NAME]").
+- **No External Data**: Do not use external data or real-world examples to replace PII; use only generic placeholders.
+
+### Example:
+Input:  
+"Please provide feedback on the following article: Introduction In today's fast-paced and ever-changing beverage alcohol market landscape, creating seamless integration between eCommerce and traditional sales teams is increasingly vital. At Breakthru Beverage Group, our most critical sales tool is and always will be our sales force. The essence of our strategy revolves around feeding insights from our proprietary eCommerce tool, BREAKTHRU NOW, to our sales team and allowing them to become more consultative partners to their accounts rather than just order takers. 1: How Best-in-Class Companies Utilize eCommerce Insights Best-in-class companies recognize the importance of harmonizing eCommerce insights with their sales force. The strategies we leverage at Breakthru include: Real-time Data Sharing: Utilizing our robust customer data and tools ensures that the sales team receives up-to-the-minute information on our customers' online behavior. This allows for rapid response and customization according to customer needs. Customer Behavior Analysis: Understanding online purchasing behavior will enable sales representatives to tailor their sales pitches, offer personalized solutions, and enhance the overall customer experience. Collaborative Planning: We incorporate insights from eCommerce to target specific accounts during sales campaigns, adjust strategies to reflect market trends, and foster synergy between online and offline sales. 2: Evolving the Role of the Sales Team Shifting Breakthru sales representatives from order-taking to a more consultative role has been proven to save time and increase sales effectiveness. This evolution leads to: Enhanced Customer Engagement: Sales representatives become trusted advisors rather than just product sellers. They engage customers in meaningful dialogue and provide insights tailored to each client's unique needs. This isn't always a natural change and needs to be taught as a best practice from the moment new reps join the company and reinforced throughout their tenure. Greater Focus on Strategic Accounts: Free from more routine tasks, the sales team can concentrate on building and nurturing strategic relationships, ultimately driving more significant revenue growth, especially with our most critical customers. Increased Cross-Selling Opportunities: By understanding customer preferences from eCommerce data, sales teams can cross-sell relevant products, adding value to customer relationships. Through our sales rep recommendation tool, sales reps can also engage with customers through BREAKTHRU NOW and directly suggest products they should purchase, including applicable pricing and deals. 3: Optimizing Sales Across B2B eCommerce, Sales Teams, and Inside Sales Best-in-class B2B companies can enhance sales across order channels through: Data Sharing Across Platforms: Unifying customer interaction data from eCommerce, sales teams, and inside sales ensures consistency and creates a comprehensive view of customers, leading to better decision-making. Insight-Driven Segmentation: Segmenting accounts based on specific attributes and purchasing history allows for targeted marketing and sales efforts, improving conversion rates, and maximizing return on investment. Empowering Inside Sales through Technology: Implementing integrated sales solutions that share eCommerce insights can enhance the efficiency of inside sales, aligning them with overall company goals. Conclusion Leveraging eCommerce data to benefit the sales team isn't just about merging two channels. It's about building a cohesive ecosystem where data, insights, and human expertise come together to create a superior sales strategy. At Breakthru, we firmly believe in leveraging these principles to win across all channels of sale, enhancing our position as the leader in our markets and making us a better connector between our supplier and customer partners."
+
+Output:  
+"Please provide feedback on the following article: Introduction In today's fast-paced and ever-changing beverage alcohol market landscape, creating seamless integration between eCommerce and traditional sales teams is increasingly vital. At [ORGANIZATION_NAME], our most critical sales tool is and always will be our sales force. The essence of our strategy revolves around feeding insights from our proprietary eCommerce tool, [BREAKTHRU NOW], to our sales team and allowing them to become more consultative partners to their accounts rather than just order takers. 1: How Best-in-Class Companies Utilize eCommerce Insights Best-in-class companies recognize the importance of harmonizing eCommerce insights with their sales force. The strategies we leverage at [ORGANIZATION_NAME] include: Real-time Data Sharing: Utilizing our robust customer data and tools ensures that the sales team receives up-to-the-minute information on our customers' online behavior. This allows for rapid response and customization according to customer needs. Customer Behavior Analysis: Understanding online purchasing behavior will enable sales representatives to tailor their sales pitches, offer personalized solutions, and enhance the overall customer experience. Collaborative Planning: We incorporate insights from eCommerce to target specific accounts during sales campaigns, adjust strategies to reflect market trends, and foster synergy between online and offline sales. 2: Evolving the Role of the Sales Team Shifting [ORGANIZATION_NAME] sales representatives from order-taking to a more consultative role has been proven to save time and increase sales effectiveness. This evolution leads to: Enhanced Customer Engagement: Sales representatives become trusted advisors rather than just product sellers. They engage customers in meaningful dialogue and provide insights tailored to each client's unique needs. This isn't always a natural change and needs to be taught as a best practice from the moment new reps join the company and reinforced throughout their tenure. Greater Focus on Strategic Accounts: Free from more routine tasks, the sales team can concentrate on building and nurturing strategic relationships, ultimately driving more significant revenue growth, especially with our most critical customers. Increased Cross-Selling Opportunities: By understanding customer preferences from eCommerce data, sales teams can cross-sell relevant products, adding value to customer relationships. Through our sales rep recommendation tool, sales reps can also engage with customers through [BREAKTHRU NOW] and directly suggest products they should purchase, including applicable pricing and deals. 3: Optimizing Sales Across B2B eCommerce, Sales Teams, and Inside Sales Best-in-class B2B companies can enhance sales across order channels through: Data Sharing Across Platforms: Unifying customer interaction data from eCommerce, sales teams, and inside sales ensures consistency and creates a comprehensive view of customers, leading to better decision-making. Insight-Driven Segmentation: Segmenting accounts based on specific attributes and purchasing history allows for targeted marketing and sales efforts, improving conversion rates, and maximizing return on investment. Empowering Inside Sales through Technology: Implementing integrated sales solutions that share eCommerce insights can enhance the efficiency of inside sales, aligning them with overall company goals. Conclusion Leveraging eCommerce data to benefit the sales team isn't just about merging two channels. It's about building a cohesive ecosystem where data, insights, and human expertise come together to create a superior sales strategy. At [ORGANIZATION_NAME], we firmly believe in leveraging these principles to win across all channels of sale, enhancing our position as the leader in our markets and making us a better connector between our supplier and customer partners."
+Iteration 5: New subsample score 0.6666666666666667 is not better than old score 0.7, skipping
+Iteration 6: Selected program 0 score: 0.30895409715843153
+Iteration 6: Proposed new text for system_prompt: ## New Instructions
+
+You are to process a user's query and perform the following tasks:
+
+1. **Identify and remove all personally identifiable information (PII)** from the query. This includes but is not limited to:
+   - Names
+   - Addresses
+   - Phone numbers
+   - Email addresses
+   - Any other information that could identify an individual (e.g., dates of birth, social security numbers, specific locations, or job titles)
+
+2. **Replace PII with generic placeholders** in the query while preserving the original intent, meaning, and context of the query. Placeholders should be:
+   - General enough to represent any individual or entity
+   - Unambiguous and not re-identifiable
+   - Consistent across the query
+
+3. **Preserve the structure and format** of the original query, including any formatting elements (e.g., bullet points, numbered lists, code blocks, etc.).
+
+4. **Avoid any leakage of PII** in the output. Do not re-identify any individual or entity in the output, even if the original query contained PII.
+
+5. **Maintain the technical and professional tone** of the original query, ensuring that the rewritten query is appropriate for the context in which it is used (e.g., application, technical discussion, or formal communication).
+
+6. **If the query contains multiple PII instances**, replace all of them with the same generic placeholder (e.g., "Individual X", "Location X", "System X").
+
+7. **If the query is a question**, provide a concise and accurate answer that reflects the intent of the question without revealing any PII.
+
+8. **If the query is a statement**, rewrite it in a way that removes PII while maintaining the original meaning and intent.
+
+---
+
+## Example of Input and Output
+
+### Input:
+"Kindly be informed that I arrived safely to Jeddah coming from Jazan. Movenpick hotel, Room # 525 RadSpeed Pro Auto system is successfully completed at Jazan Specialized Hosp, application training not done yet since no available staff right now at the hospital Sunday morning We will move to Madinah to finalize Shifa Taiba Hosp System."
+
+### Output:
+"The user has arrived safely in Jeddah from Jazan. The Movenpick hotel, Room # 525, RadSpeed Pro Auto system was successfully completed at Jazan Specialized Hospital. Application training has not been conducted yet due to the absence of available staff at the hospital on Sunday morning. The user will proceed to Madinah to finalize the Shifa Taiba Hospital system."
+
+---
+
+## Niche and Domain-Specific Information to Include in Instructions:
+
+- **PII definitions and examples**: Clarify what constitutes PII and provide examples to ensure the assistant understands the scope of the task.
+- **Replacement rules**: Specify that generic placeholders should be used consistently across the query and that no real data should be retained.
+- **Contextual awareness**: The assistant should be aware of the context in which the query is used (e.g., application, technical discussion, or formal communication) to maintain the appropriate tone and format.
+- **Technical and professional tone**: The assistant should preserve the technical and professional tone of the original query, ensuring clarity and accuracy in the rewritten version.
+- **Multiple PII instances**: If the query contains multiple PII instances, all should be replaced with the same generic placeholder to avoid confusion.
+- **Question vs. statement**: The assistant should differentiate between questions and statements to handle them appropriately in the output.
+
+---
+
+## Generalizable Strategy for the Assistant:
+
+1. **Identify PII**: Scan the query for any names, addresses, phone numbers, emails, or other identifiable information.
+2. **Replace with placeholders**: Replace PII with generic terms like "Individual X", "Location X", "System X", or "Entity X".
+3. **Preserve structure**: Maintain the original structure, formatting, and any logical flow of the query.
+4. **Avoid leakage**: Ensure no PII is re-identifiable in the output.
+5. **Maintain tone**: Ensure the rewritten query maintains the same tone and formality as the original.
+
+---
+
+By following these instructions, the assistant will be able to process queries effectively while ensuring privacy and compliance with data protection standards.
+Iteration 6: New subsample score 0.25 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 6: Found a better program on the valset with score 0.3305366357069144.
+Iteration 6: Valset score for new program: 0.3305366357069144 (coverage 95 / 95)
+Iteration 6: Val aggregate for new program: 0.3305366357069144
+Iteration 6: Individual valset scores for new program: {1: 0.0, 10: 0.0, 32: 0.25, 0: 0.25, 2: 0.5, 3: 0.36764705882352944, 4: 0.5, 5: 0.35, 6: 0.0, 7: 0.0, 8: 0.5, 9: 0.09999999999999998, 11: 0.5, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.5, 17: 0.5, 18: 0.5, 19: 0.0, 20: 1.0, 21: 1.0, 22: 0.0, 23: 0.5, 24: 0.0, 25: 0.5, 26: 1.0, 27: 0.0, 28: 0.5, 29: 0.0, 30: 0.5, 31: 0.0, 33: 0.0, 34: 0.5, 35: 0.0, 36: 0.5, 37: 0.5, 38: 0.5, 39: 0.5, 40: 0.5, 41: 0.0, 42: 0.0, 43: 0.0, 44: 0.0, 45: 0.75, 46: 0.0, 47: 0.7, 48: 0.5, 49: 0.8333333333333334, 50: 0.5, 51: 0.0, 52: 0.33333333333333337, 53: 0.0, 54: 0.5, 55: 0.5, 56: 0.5, 57: 0.5, 58: 0.5, 59: 0.0, 60: 0.25, 61: 0.5, 62: 0.5, 63: 0.5, 64: 1.0, 65: 0.5, 66: 0.0, 67: 0.7, 68: 0.0, 69: 0.5, 70: 0.0, 71: 0.5, 72: 0.6666666666666667, 73: 0.0, 74: 1.0, 75: 0.0, 76: 0.25, 77: 0.5, 78: 0.5, 79: 0.0, 80: 0.5, 81: 0.5, 82: 0.0, 83: 0.0, 84: 0.5, 85: 0.5, 86: 0.5, 87: 0.5, 88: 0.0, 89: 0.0, 90: 0.09999999999999998, 91: 1.0, 92: 0.0, 93: 0.0, 94: 0.5}
+Iteration 6: New valset pareto front scores: {0: 0.25, 1: 0.0, 2: 0.5, 3: 0.36764705882352944, 4: 0.5, 5: 0.35, 6: 0.0, 7: 0.0, 8: 0.5, 9: 0.09999999999999998, 10: 0.5, 11: 0.5, 12: 0.5, 13: 0.5, 14: 0.33333333333333337, 15: 0.0, 16: 0.5, 17: 0.5, 18: 1.0, 19: 0.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 0.5, 24: 0.5, 25: 0.5, 26: 1.0, 27: 0.0, 28: 0.5, 29: 0.07692307692307693, 30: 0.5, 31: 0.0, 32: 0.25, 33: 0.0, 34: 0.5, 35: 0.5, 36: 0.5, 37: 0.5, 38: 0.5, 39: 0.5, 40: 0.5, 41: 0.0, 42: 0.5, 43: 0.0, 44: 0.5, 45: 0.75, 46: 0.16666666666666669, 47: 0.7, 48: 0.5, 49: 0.8333333333333334, 50: 0.5, 51: 0.0, 52: 0.33333333333333337, 53: 0.5, 54: 0.5, 55: 0.5, 56: 0.5, 57: 0.5, 58: 0.5, 59: 0.0, 60: 0.25, 61: 0.5, 62: 0.5, 63: 0.5, 64: 1.0, 65: 0.5, 66: 0.0, 67: 0.7, 68: 0.5, 69: 0.5, 70: 0.0, 71: 0.5, 72: 0.6666666666666667, 73: 0.07142857142857145, 74: 1.0, 75: 0.0, 76: 0.25, 77: 0.5, 78: 0.5, 79: 0.5, 80: 0.5, 81: 0.5, 82: 0.0, 83: 0.0, 84: 0.5, 85: 0.5, 86: 0.5, 87: 0.5, 88: 0.5, 89: 0.0, 90: 0.09999999999999998, 91: 1.0, 92: 0.0, 93: 0.0, 94: 0.5}
+Iteration 6: Valset pareto front aggregate score: 0.41104560042640537
+Iteration 6: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {1}, 4: {0, 1}, 5: {1}, 6: {0, 1}, 7: {0, 1}, 8: {0, 1}, 9: {0, 1}, 10: {0}, 11: {0, 1}, 12: {0}, 13: {0}, 14: {0}, 15: {0, 1}, 16: {1}, 17: {0, 1}, 18: {0}, 19: {0, 1}, 20: {0, 1}, 21: {1}, 22: {0}, 23: {1}, 24: {0}, 25: {1}, 26: {0, 1}, 27: {0, 1}, 28: {0, 1}, 29: {0}, 30: {0, 1}, 31: {0, 1}, 32: {1}, 33: {0, 1}, 34: {0, 1}, 35: {0}, 36: {0, 1}, 37: {0, 1}, 38: {0, 1}, 39: {0, 1}, 40: {0, 1}, 41: {0, 1}, 42: {0}, 43: {0, 1}, 44: {0}, 45: {1}, 46: {0}, 47: {1}, 48: {0, 1}, 49: {1}, 50: {0, 1}, 51: {0, 1}, 52: {1}, 53: {0}, 54: {0, 1}, 55: {1}, 56: {0, 1}, 57: {1}, 58: {0, 1}, 59: {0, 1}, 60: {0, 1}, 61: {1}, 62: {1}, 63: {0, 1}, 64: {1}, 65: {1}, 66: {0, 1}, 67: {1}, 68: {0}, 69: {0, 1}, 70: {0, 1}, 71: {0, 1}, 72: {1}, 73: {0}, 74: {1}, 75: {0, 1}, 76: {0, 1}, 77: {0, 1}, 78: {0, 1}, 79: {0}, 80: {0, 1}, 81: {0, 1}, 82: {0, 1}, 83: {0, 1}, 84: {1}, 85: {0, 1}, 86: {1}, 87: {1}, 88: {0}, 89: {0, 1}, 90: {0, 1}, 91: {0, 1}, 92: {0, 1}, 93: {0, 1}, 94: {1}}
+Iteration 6: Best valset aggregate score so far: 0.3305366357069144
+Iteration 6: Best program as per aggregate score on valset: 1
+Iteration 6: Best score on valset: 0.3305366357069144
+Iteration 6: Linear pareto front program index: 1
+Iteration 6: New program candidate index: 1
+Iteration 7: No merge candidates found
+Iteration 7: Selected program 1 score: 0.3305366357069144
+Iteration 7: Proposed new text for system_prompt: ## New Instructions
+
+You are to process a user's query and perform the following tasks:
+
+1. **Identify and remove all personally identifiable information (PII)** from the query. This includes but is not limited to:
+   - Names
+   - Addresses
+   - Phone numbers
+   - Email addresses
+   - Any other information that could identify an individual (e.g., dates of birth, social security numbers, specific locations, or job titles)
+
+2. **Replace PII with generic placeholders** in the query while preserving the original intent, meaning, and context of the query. Placeholders should be:
+   - General enough to represent any individual or entity
+   - Unambiguous and not re-identifiable
+   - Consistent across the query
+
+3. **Preserve the structure and format** of the original query, including any formatting elements (e.g., bullet points, numbered lists, code blocks, etc.).
+
+4. **Avoid any leakage of PII** in the output. Do not re-identify any individual or entity in the output, even if the original query contained PII.
+
+5. **Maintain the technical and professional tone** of the original query, ensuring that the rewritten query is appropriate for the context in which it is used (e.g., application, technical discussion, or formal communication).
+
+6. **If the query contains multiple PII instances**, replace all of them with the same generic placeholder (e.g., "Individual X", "Location X", "System X").
+
+7. **If the query is a question**, provide a concise and accurate answer that reflects the intent of the question without revealing any PII.
+
+8. **If the query is a statement**, rewrite it in a way that removes PII while maintaining the original meaning and intent.
+
+---
+
+### Niche and Domain-Specific Information to Include in Instructions:
+
+- **PII definitions and examples**: Clarify what constitutes PII and provide examples to ensure the assistant understands the scope of the task.
+- **Replacement rules**: Specify that generic placeholders should be used consistently across the query and that no real data should be retained.
+- **Contextual awareness**: The assistant should be aware of the context in which the query is used (e.g., application, technical discussion, or formal communication) to maintain the appropriate tone and format.
+- **Technical and professional tone**: The assistant should preserve the technical and professional tone of the original query, ensuring clarity and accuracy in the rewritten version.
+- **Multiple PII instances**: If the query contains multiple PII instances, all should be replaced with the same generic placeholder to avoid confusion.
+- **Question vs. statement**: The assistant should differentiate between questions and statements to handle them appropriately in the output.
+
+---
+
+### Generalizable Strategy for the Assistant:
+
+1. **Identify PII**: Scan the query for any names, addresses, phone numbers, emails, or other identifiable information.
+2. **Replace with placeholders**: Replace PII with generic terms like "Individual X", "Location X", "System X", or "Entity X".
+3. **Preserve structure**: Maintain the original structure, formatting, and any logical flow of the query.
+4. **Avoid leakage**: Ensure no PII is re-identifiable in the output.
+5. **Maintain tone**: Ensure the rewritten query maintains the same tone and formality as the original.
+
+---
+
+By following these instructions, the assistant will be able to process queries effectively while ensuring privacy and compliance with data protection standards.
+Iteration 7: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 7: Found a better program on the valset with score 0.36160990712074303.
+Iteration 7: Valset score for new program: 0.36160990712074303 (coverage 95 / 95)
+Iteration 7: Val aggregate for new program: 0.36160990712074303
+Iteration 7: Individual valset scores for new program: {15: 0.5, 18: 0.5, 22: 1.0, 0: 0.25, 1: 0.0, 2: 0.5, 3: 0.3529411764705882, 4: 0.5, 5: 1.0, 6: 0.0, 7: 0.0, 8: 0.5, 9: 0.2, 10: 0.0, 11: 0.5, 12: 0.5, 13: 0.5, 14: 0.0, 16: 0.5, 17: 0.0, 19: 0.0, 20: 1.0, 21: 0.5, 23: 0.5, 24: 0.5, 25: 0.5, 26: 1.0, 27: 0.0, 28: 0.5, 29: 0.5, 30: 0.5, 31: 0.0, 32: 0.0, 33: 0.0, 34: 0.5, 35: 0.0, 36: 0.5, 37: 1.0, 38: 0.5, 39: 0.5, 40: 0.5, 41: 0.5, 42: 0.5, 43: 0.0, 44: 0.5, 45: 0.25, 46: 0.0, 47: 0.09999999999999998, 48: 0.5, 49: 0.8333333333333334, 50: 0.5, 51: 0.5, 52: 0.0, 53: 0.5, 54: 0.5, 55: 0.0, 56: 0.5, 57: 0.0, 58: 0.5, 59: 0.0, 60: 0.75, 61: 0.0, 62: 0.5, 63: 0.6666666666666667, 64: 1.0, 65: 0.0, 66: 0.0, 67: 0.09999999999999998, 68: 0.0, 69: 0.0, 70: 0.5, 71: 0.5, 72: 0.5, 73: 0.5, 74: 0.5, 75: 0.0, 76: 0.25, 77: 0.5, 78: 0.0, 79: 0.5, 80: 0.0, 81: 0.5, 82: 0.5, 83: 0.0, 84: 0.5, 85: 0.5, 86: 0.5, 87: 0.5, 88: 0.5, 89: 0.0, 90: 0.09999999999999998, 91: 1.0, 92: 0.0, 93: 0.0, 94: 0.5}
+Iteration 7: New valset pareto front scores: {0: 0.25, 1: 0.0, 2: 0.5, 3: 0.36764705882352944, 4: 0.5, 5: 1.0, 6: 0.0, 7: 0.0, 8: 0.5, 9: 0.2, 10: 0.5, 11: 0.5, 12: 0.5, 13: 0.5, 14: 0.33333333333333337, 15: 0.5, 16: 0.5, 17: 0.5, 18: 1.0, 19: 0.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 0.5, 24: 0.5, 25: 0.5, 26: 1.0, 27: 0.0, 28: 0.5, 29: 0.5, 30: 0.5, 31: 0.0, 32: 0.25, 33: 0.0, 34: 0.5, 35: 0.5, 36: 0.5, 37: 1.0, 38: 0.5, 39: 0.5, 40: 0.5, 41: 0.5, 42: 0.5, 43: 0.0, 44: 0.5, 45: 0.75, 46: 0.16666666666666669, 47: 0.7, 48: 0.5, 49: 0.8333333333333334, 50: 0.5, 51: 0.5, 52: 0.33333333333333337, 53: 0.5, 54: 0.5, 55: 0.5, 56: 0.5, 57: 0.5, 58: 0.5, 59: 0.0, 60: 0.75, 61: 0.5, 62: 0.5, 63: 0.6666666666666667, 64: 1.0, 65: 0.5, 66: 0.0, 67: 0.7, 68: 0.5, 69: 0.5, 70: 0.5, 71: 0.5, 72: 0.6666666666666667, 73: 0.5, 74: 1.0, 75: 0.0, 76: 0.25, 77: 0.5, 78: 0.5, 79: 0.5, 80: 0.5, 81: 0.5, 82: 0.5, 83: 0.0, 84: 0.5, 85: 0.5, 86: 0.5, 87: 0.5, 88: 0.5, 89: 0.0, 90: 0.09999999999999998, 91: 1.0, 92: 0.0, 93: 0.0, 94: 0.5}
+Iteration 7: Valset pareto front aggregate score: 0.4665015479876161
+Iteration 7: Updated valset pareto front programs: {0: {0, 1, 2}, 1: {0, 1, 2}, 2: {0, 1, 2}, 3: {1}, 4: {0, 1, 2}, 5: {2}, 6: {0, 1, 2}, 7: {0, 1, 2}, 8: {0, 1, 2}, 9: {2}, 10: {0}, 11: {0, 1, 2}, 12: {0, 2}, 13: {0, 2}, 14: {0}, 15: {2}, 16: {1, 2}, 17: {0, 1}, 18: {0}, 19: {0, 1, 2}, 20: {0, 1, 2}, 21: {1}, 22: {0, 2}, 23: {1, 2}, 24: {0, 2}, 25: {1, 2}, 26: {0, 1, 2}, 27: {0, 1, 2}, 28: {0, 1, 2}, 29: {2}, 30: {0, 1, 2}, 31: {0, 1, 2}, 32: {1}, 33: {0, 1, 2}, 34: {0, 1, 2}, 35: {0}, 36: {0, 1, 2}, 37: {2}, 38: {0, 1, 2}, 39: {0, 1, 2}, 40: {0, 1, 2}, 41: {2}, 42: {0, 2}, 43: {0, 1, 2}, 44: {0, 2}, 45: {1}, 46: {0}, 47: {1}, 48: {0, 1, 2}, 49: {1, 2}, 50: {0, 1, 2}, 51: {2}, 52: {1}, 53: {0, 2}, 54: {0, 1, 2}, 55: {1}, 56: {0, 1, 2}, 57: {1}, 58: {0, 1, 2}, 59: {0, 1, 2}, 60: {2}, 61: {1}, 62: {1, 2}, 63: {2}, 64: {1, 2}, 65: {1}, 66: {0, 1, 2}, 67: {1}, 68: {0}, 69: {0, 1}, 70: {2}, 71: {0, 1, 2}, 72: {1}, 73: {2}, 74: {1}, 75: {0, 1, 2}, 76: {0, 1, 2}, 77: {0, 1, 2}, 78: {0, 1}, 79: {0, 2}, 80: {0, 1}, 81: {0, 1, 2}, 82: {2}, 83: {0, 1, 2}, 84: {1, 2}, 85: {0, 1, 2}, 86: {1, 2}, 87: {1, 2}, 88: {0, 2}, 89: {0, 1, 2}, 90: {0, 1, 2}, 91: {0, 1, 2}, 92: {0, 1, 2}, 93: {0, 1, 2}, 94: {1, 2}}
+Iteration 7: Best valset aggregate score so far: 0.36160990712074303
+Iteration 7: Best program as per aggregate score on valset: 2
+Iteration 7: Best score on valset: 0.36160990712074303
+Iteration 7: Linear pareto front program index: 2
+Iteration 7: New program candidate index: 2
+Iteration 8: No merge candidates found
+Iteration 8: Selected program 2 score: 0.36160990712074303
+Iteration 8: Proposed new text for system_prompt: ## New Instructions
+
+You are to process a user's query and perform the following tasks:
+
+1. **Identify and remove all personally identifiable information (PII)** from the query. This includes but is not limited to:
+   - Names
+   - Addresses
+   - Phone numbers
+   - Email addresses
+   - Any other information that could identify an individual (e.g., dates of birth, social security numbers, specific locations, or job titles)
+
+2. **Replace PII with generic placeholders** in the query while preserving the original intent, meaning, and context of the query. Placeholders should be:
+   - General enough to represent any individual or entity
+   - Unambiguous and not re-identifiable
+   - Consistent across the query
+
+3. **Preserve the structure and format** of the original query, including any formatting elements (e.g., bullet points, numbered lists, code blocks, etc.).
+
+4. **Avoid any leakage of PII** in the output. Do not re-identify any individual or entity in the output, even if the original query contained PII.
+
+5. **Maintain the technical and professional tone** of the original query, ensuring that the rewritten query is appropriate for the context in which it is used (e.g., application, technical discussion, or formal communication).
+
+6. **If the query contains multiple PII instances**, replace all of them with the same generic placeholder (e.g., "Individual X", "Location X", "System X").
+
+7. **If the query is a question**, provide a concise and accurate answer that reflects the intent of the question without revealing any PII.
+
+8. **If the query is a statement**, rewrite it in a way that removes PII while maintaining the original meaning and intent.
+
+---
+
+### Niche and Domain-Specific Information to Include in Instructions:
+
+- **PII definitions and examples**: Clarify what constitutes PII and provide examples to ensure the assistant understands the scope of the task.
+- **Replacement rules**: Specify that generic placeholders should be used consistently across the query and that no real data should be retained.
+- **Contextual awareness**: The assistant should be aware of the context in which the query is used (e.g., application, technical discussion, or formal communication) to maintain the appropriate tone and format.
+- **Technical and professional tone**: The assistant should preserve the technical and professional tone of the original query, ensuring clarity and accuracy in the rewritten version.
+- **Multiple PII instances**: If the query contains multiple PII instances, all should be replaced with the same generic placeholder to avoid confusion.
+- **Question vs. statement**: The assistant should differentiate between questions and statements to handle them appropriately in the output.
+
+---
+
+### Generalizable Strategy for the Assistant:
+
+1. **Identify PII**: Scan the query for any names, addresses, phone numbers, emails, or other identifiable information.
+2. **Replace with placeholders**: Replace PII with generic terms like "Individual X", "Location X", "System X", or "Entity X".
+3. **Preserve structure**: Maintain the original structure, formatting, and any logical flow of the query.
+4. **Avoid leakage**: Ensure no PII is re-identifiable in the output.
+5. **Maintain tone**: Ensure the rewritten query maintains the same tone and formality as the original.
+
+---
+
+### Example of a Processed Query
+
+**Input:**
+```
+Hi [Individual X], I believe the cheapest and quickest method would be to pickup the equipment for [Individual X] with an Uber. Otherwise, we will need to purchase boxes + wrapping in order to keep the monitor and laptop safe. We will need to ship them to [Individual X] for her to package the items and then book a courier for it to be shipped back with insurance for the items.
+```
+
+**Processed Output:**
+```
+Hi [Individual X], I believe the cheapest and quickest method would be to pickup the equipment for [Individual X] with an Uber. Otherwise, we will need to purchase boxes + wrapping in order to keep the monitor and laptop safe. We will need to ship them to [Individual X] for her to package the items and then book a courier for it to be shipped back with insurance for the items.
+Iteration 8: New subsample score 1.0 is not better than old score 1.1666666666666667, skipping
+Iteration 9: Selected program 1 score: 0.3305366357069144
+Iteration 9: Proposed new text for system_prompt: ## New Instructions
+
+You are to process a user's query and perform the following tasks:
+
+1. **Identify and remove all personally identifiable information (PII)** from the query. This includes but is not limited to:
+   - Names
+   - Addresses
+   - Phone numbers
+   - Email addresses
+   - Any other information that could identify an individual (e.g., dates of birth, social security numbers, specific locations, or job titles)
+
+2. **Replace PII with generic placeholders** in the query while preserving the original intent, meaning, and context of the query. Placeholders should be:
+   - General enough to represent any individual or entity
+   - Unambiguous and not re-identifiable
+   - Consistent across the query
+
+3. **Preserve the structure and format** of the original query, including any formatting elements (e.g., bullet points, numbered lists, code blocks, etc.).
+
+4. **Avoid any leakage of PII** in the output. Do not re-identify any individual or entity in the output, even if the original query contained PII.
+
+5. **Maintain the technical and professional tone** of the original query, ensuring that the rewritten query is appropriate for the context in which it is used (e.g., application, technical discussion, or formal communication).
+
+6. **If the query contains multiple PII instances**, replace all of them with the same generic placeholder (e.g., "Individual X", "Location X", "System X").
+
+7. **If the query is a question**, provide a concise and accurate answer that reflects the intent of the question without revealing any PII.
+
+8. **If the query is a statement**, rewrite it in a way that removes PII while maintaining the original meaning and intent.
+
+---
+
+### Niche and Domain-Specific Information to Include in Instructions:
+
+- **PII definitions and examples**: Clarify what constitutes PII and provide examples to ensure the assistant understands the scope of the task.
+- **Replacement rules**: Specify that generic placeholders should be used consistently across the query and that no real data should be retained.
+- **Contextual awareness**: The assistant should be aware of the context in which the query is used (e.g., application, technical discussion, or formal communication) to maintain the appropriate tone and format.
+- **Technical and professional tone**: The assistant should preserve the technical and professional tone of the original query, ensuring clarity and accuracy in the rewritten version.
+- **Multiple PII instances**: If the query contains multiple PII instances, all should be replaced with the same generic placeholder to avoid confusion.
+- **Question vs. statement**: The assistant should differentiate between questions and statements to handle them appropriately in the output.
+
+---
+
+### Generalizable Strategy for the Assistant:
+
+1. **Identify PII**: Scan the query for any names, addresses, phone numbers, emails, or other identifiable information.
+2. **Replace with placeholders**: Replace PII with generic terms like "Individual X", "Location X", "System X", or "Entity X".
+3. **Preserve structure**: Maintain the original structure, formatting, and any logical flow of the query.
+4. **Avoid leakage**: Ensure no PII is re-identifiable in the output.
+5. **Maintain tone**: Ensure the rewritten query maintains the same tone and formality as the original.
+6. **Handle questions and statements**: For questions, provide a concise answer; for statements, rewrite them to remove PII while preserving intent.
+7. **Consistency**: Use the same placeholder for all instances of PII in the query.
+
+---
+
+By following these instructions, the assistant will be able to process queries effectively while ensuring privacy and compliance with data protection standards.
+Iteration 9: New subsample score 1.75 is better than old score 1.5. Continue to full eval and add to candidate pool.
+Iteration 9: Valset score for new program: 0.32417956656346747 (coverage 95 / 95)
+Iteration 9: Val aggregate for new program: 0.32417956656346747
+Iteration 9: Individual valset scores for new program: {12: 0.25, 23: 0.5, 37: 1.0, 0: 0.25, 1: 0.0, 2: 0.5, 3: 0.3970588235294118, 4: 0.5, 5: 0.5, 6: 0.0, 7: 0.0, 8: 0.5, 9: 0.2, 10: 0.0, 11: 0.5, 13: 0.0, 14: 0.33333333333333337, 15: 0.0, 16: 0.0, 17: 0.5, 18: 0.5, 19: 0.0, 20: 1.0, 21: 0.5, 22: 0.5, 24: 0.0, 25: 0.0, 26: 1.0, 27: 0.0, 28: 0.5, 29: 0.0, 30: 1.0, 31: 0.0, 32: 0.0, 33: 0.6666666666666667, 34: 0.5, 35: 0.0, 36: 0.5, 38: 0.5, 39: 0.5, 40: 0.0, 41: 0.5, 42: 0.5, 43: 0.0, 44: 0.5, 45: 0.75, 46: 0.0, 47: 0.09999999999999998, 48: 0.5, 49: 0.8333333333333334, 50: 0.5, 51: 0.0, 52: 0.16666666666666669, 53: 0.5, 54: 0.5, 55: 0.0, 56: 1.0, 57: 0.5, 58: 0.5, 59: 0.0, 60: 0.25, 61: 0.0, 62: 0.5, 63: 0.5, 64: 1.0, 65: 0.0, 66: 0.0, 67: 0.6, 68: 0.0, 69: 0.0, 70: 0.5, 71: 0.5, 72: 0.5, 73: 0.0, 74: 0.5, 75: 0.0, 76: 0.25, 77: 0.5, 78: 0.5, 79: 0.5, 80: 0.5, 81: 0.5, 82: 0.0, 83: 0.5, 84: 0.5, 85: 0.75, 86: 0.5, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0}
+Iteration 9: New valset pareto front scores: {0: 0.25, 1: 0.0, 2: 0.5, 3: 0.3970588235294118, 4: 0.5, 5: 1.0, 6: 0.0, 7: 0.0, 8: 0.5, 9: 0.2, 10: 0.5, 11: 0.5, 12: 0.5, 13: 0.5, 14: 0.33333333333333337, 15: 0.5, 16: 0.5, 17: 0.5, 18: 1.0, 19: 0.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 0.5, 24: 0.5, 25: 0.5, 26: 1.0, 27: 0.0, 28: 0.5, 29: 0.5, 30: 1.0, 31: 0.0, 32: 0.25, 33: 0.6666666666666667, 34: 0.5, 35: 0.5, 36: 0.5, 37: 1.0, 38: 0.5, 39: 0.5, 40: 0.5, 41: 0.5, 42: 0.5, 43: 0.0, 44: 0.5, 45: 0.75, 46: 0.16666666666666669, 47: 0.7, 48: 0.5, 49: 0.8333333333333334, 50: 0.5, 51: 0.5, 52: 0.33333333333333337, 53: 0.5, 54: 0.5, 55: 0.5, 56: 1.0, 57: 0.5, 58: 0.5, 59: 0.0, 60: 0.75, 61: 0.5, 62: 0.5, 63: 0.6666666666666667, 64: 1.0, 65: 0.5, 66: 0.0, 67: 0.7, 68: 0.5, 69: 0.5, 70: 0.5, 71: 0.5, 72: 0.6666666666666667, 73: 0.5, 74: 1.0, 75: 0.0, 76: 0.25, 77: 0.5, 78: 0.5, 79: 0.5, 80: 0.5, 81: 0.5, 82: 0.5, 83: 0.5, 84: 0.5, 85: 0.75, 86: 0.5, 87: 0.5, 88: 0.5, 89: 0.0, 90: 0.09999999999999998, 91: 1.0, 92: 0.0, 93: 0.0, 94: 0.5}
+Iteration 9: Valset pareto front aggregate score: 0.492249742002064
+Iteration 9: Updated valset pareto front programs: {0: {0, 1, 2, 3}, 1: {0, 1, 2, 3}, 2: {0, 1, 2, 3}, 3: {3}, 4: {0, 1, 2, 3}, 5: {2}, 6: {0, 1, 2, 3}, 7: {0, 1, 2, 3}, 8: {0, 1, 2, 3}, 9: {2, 3}, 10: {0}, 11: {0, 1, 2, 3}, 12: {0, 2}, 13: {0, 2}, 14: {0, 3}, 15: {2}, 16: {1, 2}, 17: {0, 1, 3}, 18: {0}, 19: {0, 1, 2, 3}, 20: {0, 1, 2, 3}, 21: {1}, 22: {0, 2}, 23: {1, 2, 3}, 24: {0, 2}, 25: {1, 2}, 26: {0, 1, 2, 3}, 27: {0, 1, 2, 3}, 28: {0, 1, 2, 3}, 29: {2}, 30: {3}, 31: {0, 1, 2, 3}, 32: {1}, 33: {3}, 34: {0, 1, 2, 3}, 35: {0}, 36: {0, 1, 2, 3}, 37: {2, 3}, 38: {0, 1, 2, 3}, 39: {0, 1, 2, 3}, 40: {0, 1, 2}, 41: {2, 3}, 42: {0, 2, 3}, 43: {0, 1, 2, 3}, 44: {0, 2, 3}, 45: {1, 3}, 46: {0}, 47: {1}, 48: {0, 1, 2, 3}, 49: {1, 2, 3}, 50: {0, 1, 2, 3}, 51: {2}, 52: {1}, 53: {0, 2, 3}, 54: {0, 1, 2, 3}, 55: {1}, 56: {3}, 57: {1, 3}, 58: {0, 1, 2, 3}, 59: {0, 1, 2, 3}, 60: {2}, 61: {1}, 62: {1, 2, 3}, 63: {2}, 64: {1, 2, 3}, 65: {1}, 66: {0, 1, 2, 3}, 67: {1}, 68: {0}, 69: {0, 1}, 70: {2, 3}, 71: {0, 1, 2, 3}, 72: {1}, 73: {2}, 74: {1}, 75: {0, 1, 2, 3}, 76: {0, 1, 2, 3}, 77: {0, 1, 2, 3}, 78: {0, 1, 3}, 79: {0, 2, 3}, 80: {0, 1, 3}, 81: {0, 1, 2, 3}, 82: {2}, 83: {3}, 84: {1, 2, 3}, 85: {3}, 86: {1, 2, 3}, 87: {1, 2}, 88: {0, 2}, 89: {0, 1, 2, 3}, 90: {0, 1, 2}, 91: {0, 1, 2}, 92: {0, 1, 2, 3}, 93: {0, 1, 2, 3}, 94: {1, 2}}
+Iteration 9: Best valset aggregate score so far: 0.36160990712074303
+Iteration 9: Best program as per aggregate score on valset: 2
+Iteration 9: Best score on valset: 0.36160990712074303
+Iteration 9: Linear pareto front program index: 2
+Iteration 9: New program candidate index: 3

@@ -1,0 +1,2448 @@
+{
+  "rollout_count": 1800,
+  "reflection_call_count": 6,
+  "wall_clock_seconds": 12616.93,
+  "total_tokens": 1317647,
+  "task_input_tokens": 721963,
+  "task_output_tokens": 593864,
+  "reflection_input_tokens": 959,
+  "reflection_output_tokens": 861,
+  "test_score": 0.0646111111111111,
+  "model": "openai/Qwen/Qwen3-8B",
+  "model_tag": "qwen3-8b",
+  "benchmark": "ifbench",
+  "seed": 456,
+  "method": "ant_colony",
+  "val_score": 0.06016666666666667,
+  "prompt_length_chars": 941,
+  "prompt_length_tokens": 235,
+  "test_example_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.4,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    1.0,
+    0.4,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.75,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.2,
+    0.3333333333333333,
+    0.0,
+    0.25,
+    0.0,
+    0.5,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.2,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.25,
+    0.6666666666666666,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "test_example_ids": [
+    "ifbench_test_0",
+    "ifbench_test_1",
+    "ifbench_test_2",
+    "ifbench_test_3",
+    "ifbench_test_4",
+    "ifbench_test_5",
+    "ifbench_test_6",
+    "ifbench_test_7",
+    "ifbench_test_8",
+    "ifbench_test_9",
+    "ifbench_test_10",
+    "ifbench_test_11",
+    "ifbench_test_12",
+    "ifbench_test_13",
+    "ifbench_test_14",
+    "ifbench_test_15",
+    "ifbench_test_16",
+    "ifbench_test_17",
+    "ifbench_test_18",
+    "ifbench_test_19",
+    "ifbench_test_20",
+    "ifbench_test_21",
+    "ifbench_test_22",
+    "ifbench_test_23",
+    "ifbench_test_24",
+    "ifbench_test_25",
+    "ifbench_test_26",
+    "ifbench_test_27",
+    "ifbench_test_28",
+    "ifbench_test_29",
+    "ifbench_test_30",
+    "ifbench_test_31",
+    "ifbench_test_32",
+    "ifbench_test_33",
+    "ifbench_test_34",
+    "ifbench_test_35",
+    "ifbench_test_36",
+    "ifbench_test_37",
+    "ifbench_test_38",
+    "ifbench_test_39",
+    "ifbench_test_40",
+    "ifbench_test_41",
+    "ifbench_test_42",
+    "ifbench_test_43",
+    "ifbench_test_44",
+    "ifbench_test_45",
+    "ifbench_test_46",
+    "ifbench_test_47",
+    "ifbench_test_48",
+    "ifbench_test_49",
+    "ifbench_test_50",
+    "ifbench_test_51",
+    "ifbench_test_52",
+    "ifbench_test_53",
+    "ifbench_test_54",
+    "ifbench_test_55",
+    "ifbench_test_56",
+    "ifbench_test_57",
+    "ifbench_test_58",
+    "ifbench_test_59",
+    "ifbench_test_60",
+    "ifbench_test_61",
+    "ifbench_test_62",
+    "ifbench_test_63",
+    "ifbench_test_64",
+    "ifbench_test_65",
+    "ifbench_test_66",
+    "ifbench_test_67",
+    "ifbench_test_68",
+    "ifbench_test_69",
+    "ifbench_test_70",
+    "ifbench_test_71",
+    "ifbench_test_72",
+    "ifbench_test_73",
+    "ifbench_test_74",
+    "ifbench_test_75",
+    "ifbench_test_76",
+    "ifbench_test_77",
+    "ifbench_test_78",
+    "ifbench_test_79",
+    "ifbench_test_80",
+    "ifbench_test_81",
+    "ifbench_test_82",
+    "ifbench_test_83",
+    "ifbench_test_84",
+    "ifbench_test_85",
+    "ifbench_test_86",
+    "ifbench_test_87",
+    "ifbench_test_88",
+    "ifbench_test_89",
+    "ifbench_test_90",
+    "ifbench_test_91",
+    "ifbench_test_92",
+    "ifbench_test_93",
+    "ifbench_test_94",
+    "ifbench_test_95",
+    "ifbench_test_96",
+    "ifbench_test_97",
+    "ifbench_test_98",
+    "ifbench_test_99",
+    "ifbench_test_100",
+    "ifbench_test_101",
+    "ifbench_test_102",
+    "ifbench_test_103",
+    "ifbench_test_104",
+    "ifbench_test_105",
+    "ifbench_test_106",
+    "ifbench_test_107",
+    "ifbench_test_108",
+    "ifbench_test_109",
+    "ifbench_test_110",
+    "ifbench_test_111",
+    "ifbench_test_112",
+    "ifbench_test_113",
+    "ifbench_test_114",
+    "ifbench_test_115",
+    "ifbench_test_116",
+    "ifbench_test_117",
+    "ifbench_test_118",
+    "ifbench_test_119",
+    "ifbench_test_120",
+    "ifbench_test_121",
+    "ifbench_test_122",
+    "ifbench_test_123",
+    "ifbench_test_124",
+    "ifbench_test_125",
+    "ifbench_test_126",
+    "ifbench_test_127",
+    "ifbench_test_128",
+    "ifbench_test_129",
+    "ifbench_test_130",
+    "ifbench_test_131",
+    "ifbench_test_132",
+    "ifbench_test_133",
+    "ifbench_test_134",
+    "ifbench_test_135",
+    "ifbench_test_136",
+    "ifbench_test_137",
+    "ifbench_test_138",
+    "ifbench_test_139",
+    "ifbench_test_140",
+    "ifbench_test_141",
+    "ifbench_test_142",
+    "ifbench_test_143",
+    "ifbench_test_144",
+    "ifbench_test_145",
+    "ifbench_test_146",
+    "ifbench_test_147",
+    "ifbench_test_148",
+    "ifbench_test_149",
+    "ifbench_test_150",
+    "ifbench_test_151",
+    "ifbench_test_152",
+    "ifbench_test_153",
+    "ifbench_test_154",
+    "ifbench_test_155",
+    "ifbench_test_156",
+    "ifbench_test_157",
+    "ifbench_test_158",
+    "ifbench_test_159",
+    "ifbench_test_160",
+    "ifbench_test_161",
+    "ifbench_test_162",
+    "ifbench_test_163",
+    "ifbench_test_164",
+    "ifbench_test_165",
+    "ifbench_test_166",
+    "ifbench_test_167",
+    "ifbench_test_168",
+    "ifbench_test_169",
+    "ifbench_test_170",
+    "ifbench_test_171",
+    "ifbench_test_172",
+    "ifbench_test_173",
+    "ifbench_test_174",
+    "ifbench_test_175",
+    "ifbench_test_176",
+    "ifbench_test_177",
+    "ifbench_test_178",
+    "ifbench_test_179",
+    "ifbench_test_180",
+    "ifbench_test_181",
+    "ifbench_test_182",
+    "ifbench_test_183",
+    "ifbench_test_184",
+    "ifbench_test_185",
+    "ifbench_test_186",
+    "ifbench_test_187",
+    "ifbench_test_188",
+    "ifbench_test_189",
+    "ifbench_test_190",
+    "ifbench_test_191",
+    "ifbench_test_192",
+    "ifbench_test_193",
+    "ifbench_test_194",
+    "ifbench_test_195",
+    "ifbench_test_196",
+    "ifbench_test_197",
+    "ifbench_test_198",
+    "ifbench_test_199",
+    "ifbench_test_200",
+    "ifbench_test_201",
+    "ifbench_test_202",
+    "ifbench_test_203",
+    "ifbench_test_204",
+    "ifbench_test_205",
+    "ifbench_test_206",
+    "ifbench_test_207",
+    "ifbench_test_208",
+    "ifbench_test_209",
+    "ifbench_test_210",
+    "ifbench_test_211",
+    "ifbench_test_212",
+    "ifbench_test_213",
+    "ifbench_test_214",
+    "ifbench_test_215",
+    "ifbench_test_216",
+    "ifbench_test_217",
+    "ifbench_test_218",
+    "ifbench_test_219",
+    "ifbench_test_220",
+    "ifbench_test_221",
+    "ifbench_test_222",
+    "ifbench_test_223",
+    "ifbench_test_224",
+    "ifbench_test_225",
+    "ifbench_test_226",
+    "ifbench_test_227",
+    "ifbench_test_228",
+    "ifbench_test_229",
+    "ifbench_test_230",
+    "ifbench_test_231",
+    "ifbench_test_232",
+    "ifbench_test_233",
+    "ifbench_test_234",
+    "ifbench_test_235",
+    "ifbench_test_236",
+    "ifbench_test_237",
+    "ifbench_test_238",
+    "ifbench_test_239",
+    "ifbench_test_240",
+    "ifbench_test_241",
+    "ifbench_test_242",
+    "ifbench_test_243",
+    "ifbench_test_244",
+    "ifbench_test_245",
+    "ifbench_test_246",
+    "ifbench_test_247",
+    "ifbench_test_248",
+    "ifbench_test_249",
+    "ifbench_test_250",
+    "ifbench_test_251",
+    "ifbench_test_252",
+    "ifbench_test_253",
+    "ifbench_test_254",
+    "ifbench_test_255",
+    "ifbench_test_256",
+    "ifbench_test_257",
+    "ifbench_test_258",
+    "ifbench_test_259",
+    "ifbench_test_260",
+    "ifbench_test_261",
+    "ifbench_test_262",
+    "ifbench_test_263",
+    "ifbench_test_264",
+    "ifbench_test_265",
+    "ifbench_test_266",
+    "ifbench_test_267",
+    "ifbench_test_268",
+    "ifbench_test_269",
+    "ifbench_test_270",
+    "ifbench_test_271",
+    "ifbench_test_272",
+    "ifbench_test_273",
+    "ifbench_test_274",
+    "ifbench_test_275",
+    "ifbench_test_276",
+    "ifbench_test_277",
+    "ifbench_test_278",
+    "ifbench_test_279",
+    "ifbench_test_280",
+    "ifbench_test_281",
+    "ifbench_test_282",
+    "ifbench_test_283",
+    "ifbench_test_284",
+    "ifbench_test_285",
+    "ifbench_test_286",
+    "ifbench_test_287",
+    "ifbench_test_288",
+    "ifbench_test_289",
+    "ifbench_test_290",
+    "ifbench_test_291",
+    "ifbench_test_292",
+    "ifbench_test_293",
+    "ifbench_test_294",
+    "ifbench_test_295",
+    "ifbench_test_296",
+    "ifbench_test_297",
+    "ifbench_test_298",
+    "ifbench_test_299"
+  ],
+  "score_per_1k_rollouts": 0.0359,
+  "convergence_iteration": 50,
+  "val_score_trajectory": [
+    [
+      50,
+      0.06016666666666667
+    ]
+  ],
+  "rollout_trajectory": [
+    [
+      50,
+      1800
+    ]
+  ],
+  "best_val_trajectory": [
+    [
+      50,
+      0.06016666666666667
+    ]
+  ],
+  "pheromone_history": [
+    {
+      "round": 1,
+      "top_5_components": [
+        {
+          "text": "Clearly define the objective of the task before proceeding.",
+          "category": "task_framing",
+          "pheromone": 0.7290000000000001
+        },
+        {
+          "text": "Identify the key deliverables required to complete the task.",
+          "category": "task_framing",
+          "pheromone": 0.7290000000000001
+        },
+        {
+          "text": "Determine the scope of the task to avoid unnecessary work.",
+          "category": "task_framing",
+          "pheromone": 0.7290000000000001
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.7290000000000001
+        },
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.7290000000000001
+        }
+      ],
+      "best_score_so_far": 0.1
+    },
+    {
+      "round": 2,
+      "top_5_components": [
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.5764410000000002
+        },
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.5764410000000002
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.5764410000000002
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.5764410000000002
+        },
+        {
+          "text": "Use inductive reasoning to generalize patterns from specific examples.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.5764410000000002
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 3,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.43845048900000017
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.43845048900000017
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.43845048900000017
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.4202254890000002
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.4202254890000002
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 4,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.31963040648100016
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.31963040648100016
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.31963040648100016
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.3063443814810001
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.3063443814810001
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 5,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.23301056632464914
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.23301056632464914
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.23301056632464914
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.22332505409964912
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.22332505409964912
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 6,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.16986470285066924
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.16986470285066924
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.16986470285066924
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.16280396443864423
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.16280396443864423
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 7,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.1238313683781379
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.1238313683781379
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.1238313683781379
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.11868409007577164
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.11868409007577164
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 8,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.09027306754766252
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.09027306754766252
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.09027306754766252
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.08652070166523754
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.08652070166523754
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 9,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.06580906624224599
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.06580906624224599
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.06580906624224599
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.06307359151395818
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.06307359151395818
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 10,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.047974809290597324
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.047974809290597324
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.047974809290597324
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.045980648213675514
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.045980648213675514
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 11,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.03497363597284545
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03497363597284545
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03497363597284545
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.03351989254776945
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.03351989254776945
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 12,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.025495780624204337
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.025495780624204337
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.025495780624204337
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.02443600166732393
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.02443600166732393
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 13,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.018586424075044964
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.018586424075044964
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.018586424075044964
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.017813845215479147
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.017813845215479147
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 14,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.01354950315070778
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.01354950315070778
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.01354950315070778
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.0129862931620843
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.0129862931620843
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 15,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.009877587796865973
+        },
+        {
+          "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.009877587796865973
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.009877587796865973
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.009467007715159455
+        },
+        {
+          "text": "Define the criteria for success to measure task completion.",
+          "category": "task_framing",
+          "pheromone": 0.009467007715159455
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 16,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.034200761503915295
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.034200761503915295
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.03390144862435124
+        },
+        {
+          "text": "Assign responsibilities for each sub-task to ensure accountability.",
+          "category": "task_framing",
+          "pheromone": 0.03336268544113594
+        },
+        {
+          "text": "Set a timeline for completing each phase of the task.",
+          "category": "task_framing",
+          "pheromone": 0.03336268544113594
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 17,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.02493235513635425
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02493235513635425
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.02471415604715205
+        },
+        {
+          "text": "Assign responsibilities for each sub-task to ensure accountability.",
+          "category": "task_framing",
+          "pheromone": 0.024321397686588104
+        },
+        {
+          "text": "Set a timeline for completing each phase of the task.",
+          "category": "task_framing",
+          "pheromone": 0.024321397686588104
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 18,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.01817568689440225
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.01817568689440225
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.018016619758373844
+        },
+        {
+          "text": "Assign responsibilities for each sub-task to ensure accountability.",
+          "category": "task_framing",
+          "pheromone": 0.01773029891352273
+        },
+        {
+          "text": "Set a timeline for completing each phase of the task.",
+          "category": "task_framing",
+          "pheromone": 0.01773029891352273
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 19,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.013250075746019241
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.013250075746019241
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.013134115803854533
+        },
+        {
+          "text": "Assign responsibilities for each sub-task to ensure accountability.",
+          "category": "task_framing",
+          "pheromone": 0.012925387907958072
+        },
+        {
+          "text": "Set a timeline for completing each phase of the task.",
+          "category": "task_framing",
+          "pheromone": 0.012925387907958072
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 20,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.009659305218848026
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.009659305218848026
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.009574770421009954
+        },
+        {
+          "text": "Assign responsibilities for each sub-task to ensure accountability.",
+          "category": "task_framing",
+          "pheromone": 0.009422607784901435
+        },
+        {
+          "text": "Set a timeline for completing each phase of the task.",
+          "category": "task_framing",
+          "pheromone": 0.009422607784901435
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 21,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.007041633504540212
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.007041633504540212
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.0069800076369162575
+        },
+        {
+          "text": "Assign responsibilities for each sub-task to ensure accountability.",
+          "category": "task_framing",
+          "pheromone": 0.006869081075193147
+        },
+        {
+          "text": "Set a timeline for completing each phase of the task.",
+          "category": "task_framing",
+          "pheromone": 0.006869081075193147
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 22,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.005133350824809815
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.005133350824809815
+        },
+        {
+          "text": "Establish the constraints that must be adhered to during task execution.",
+          "category": "task_framing",
+          "pheromone": 0.0050884255673119515
+        },
+        {
+          "text": "Assign responsibilities for each sub-task to ensure accountability.",
+          "category": "task_framing",
+          "pheromone": 0.005007560103815804
+        },
+        {
+          "text": "Set a timeline for completing each phase of the task.",
+          "category": "task_framing",
+          "pheromone": 0.005007560103815804
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 23,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.02804221275128635
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02804221275128635
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02795051131568172
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.02795051131568172
+        },
+        {
+          "text": "Verify all input data for completeness and validity before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.02795051131568172
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 24,
+      "top_5_components": [
+        {
+          "text": "Break down the task into smaller, manageable sub-tasks.",
+          "category": "task_framing",
+          "pheromone": 0.02044277309568775
+        },
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02044277309568775
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.020375922749131976
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.020375922749131976
+        },
+        {
+          "text": "Verify all input data for completeness and validity before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.020375922749131976
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 25,
+      "top_5_components": [
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.039202781586756365
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03915404768411721
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.03915404768411721
+        },
+        {
+          "text": "Verify all input data for completeness and validity before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.03915404768411721
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.03915404768411721
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 26,
+      "top_5_components": [
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.028578827776745395
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02854330076172145
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.02854330076172145
+        },
+        {
+          "text": "Verify all input data for completeness and validity before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.02854330076172145
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.02854330076172145
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 27,
+      "top_5_components": [
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.020833965449247396
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02080806625529494
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.02080806625529494
+        },
+        {
+          "text": "Verify all input data for completeness and validity before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.02080806625529494
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.02080806625529494
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 28,
+      "top_5_components": [
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.015187960812501353
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.015169080300110013
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.015169080300110013
+        },
+        {
+          "text": "Verify all input data for completeness and validity before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.015169080300110013
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.015169080300110013
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 29,
+      "top_5_components": [
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.011072023432313487
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.0110582595387802
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.0110582595387802
+        },
+        {
+          "text": "Verify all input data for completeness and validity before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.0110582595387802
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.0110582595387802
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 30,
+      "top_5_components": [
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.008071505082156533
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.008061471203770766
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.008061471203770766
+        },
+        {
+          "text": "Verify all input data for completeness and validity before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.008061471203770766
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.008061471203770766
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 31,
+      "top_5_components": [
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.005884127204892113
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.0058768125075488896
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.0058768125075488896
+        },
+        {
+          "text": "Verify all input data for completeness and validity before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.0058768125075488896
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.0058768125075488896
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 32,
+      "top_5_components": [
+        {
+          "text": "Evaluate multiple potential solutions and select the most efficient one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02678952873236635
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.026784196318003144
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.026784196318003144
+        },
+        {
+          "text": "Verify all input data for completeness and validity before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.026784196318003144
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.026784196318003144
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 33,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.0438256791158243
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.0438256791158243
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.0438256791158243
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.04370183071045455
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.04370044237828642
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 34,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03194892007543592
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.03194892007543592
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.03194892007543592
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.031858634587921375
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.031857622493770804
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 35,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.05329076273499279
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.05329076273499279
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.05329076273499279
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.053224944614594684
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.05322420679795891
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 36,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03884896603380974
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.03884896603380974
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.03884896603380974
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.03880098462403953
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.03880044675571205
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 37,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.0283208962386473
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.0283208962386473
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.0283208962386473
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.028285917790924823
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.028285525684914086
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 38,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02064593335797388
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.02064593335797388
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.02064593335797388
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.020620434069584196
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.02062014822430237
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 39,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.015050885417962961
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.015050885417962961
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.015050885417962961
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.015032296436726881
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.015032088055516429
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 40,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.051472095469694994
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.051472095469694994
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.051472095469694994
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.051458544102373896
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.051458392192471475
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 41,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03752315759740765
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.03752315759740765
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.03752315759740765
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.037513278650630574
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.03751316790831171
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 42,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.027354381888510183
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.027354381888510183
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.027354381888510183
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.027347180136309695
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.027347099405159243
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 43,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.019941344396723924
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.019941344396723924
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.019941344396723924
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.019936094319369768
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.01993603546636109
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 44,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.014537240065211742
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.014537240065211742
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.014537240065211742
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.014533412758820561
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.014533369854977236
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 45,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.01059764800753936
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.01059764800753936
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.01059764800753936
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.010594857901180189
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.010594826624278405
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 46,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.007725685397496194
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.007725685397496194
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.007725685397496194
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.007723651409960358
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.007723628609098958
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 47,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.005632024654774726
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.005632024654774726
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.005632024654774726
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.005630541877861102
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.005630525256033141
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 48,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.004105745973330776
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.004105745973330776
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.004105745973330776
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.004104665028960744
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.00410465291164816
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 49,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.0029930888145581363
+        },
+        {
+          "text": "Use clear and concise language in all responses.",
+          "category": "format_instructions",
+          "pheromone": 0.0029930888145581363
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.0029930888145581363
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.002992300806112383
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.002992291972591509
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    },
+    {
+      "round": 50,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.032181961745812886
+        },
+        {
+          "text": "Ensure all system responses are grammatically correct and free of typos.",
+          "category": "error_prevention",
+          "pheromone": 0.032181961745812886
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.032181387287655926
+        },
+        {
+          "text": "Ensure responses align with established standards or practices in the domain.",
+          "category": "domain_specific",
+          "pheromone": 0.032181380848019206
+        },
+        {
+          "text": "Structure responses in a logical and organized manner.",
+          "category": "format_instructions",
+          "pheromone": 0.03217660281069266
+        }
+      ],
+      "best_score_so_far": 0.2533333333333333
+    }
+  ],
+  "component_library_size": 50,
+  "final_pheromone_ranking": [
+    {
+      "text": "Use logical deduction to eliminate incorrect options before selecting the correct one.",
+      "category": "reasoning_strategy",
+      "pheromone": 0.032181961745812886
+    },
+    {
+      "text": "Ensure all system responses are grammatically correct and free of typos.",
+      "category": "error_prevention",
+      "pheromone": 0.032181961745812886
+    },
+    {
+      "text": "Identify the specific domain or industry the user is referring to.",
+      "category": "domain_specific",
+      "pheromone": 0.032181387287655926
+    },
+    {
+      "text": "Ensure responses align with established standards or practices in the domain.",
+      "category": "domain_specific",
+      "pheromone": 0.032181380848019206
+    },
+    {
+      "text": "Structure responses in a logical and organized manner.",
+      "category": "format_instructions",
+      "pheromone": 0.03217660281069266
+    },
+    {
+      "text": "Break down the task into smaller, manageable sub-tasks.",
+      "category": "task_framing",
+      "pheromone": 0.032172989056609334
+    },
+    {
+      "text": "Maintain a structured approach by outlining steps before solving a problem.",
+      "category": "reasoning_strategy",
+      "pheromone": 0.03217239012783286
+    },
+    {
+      "text": "Adapt explanations to the appropriate level of detail for the domain expertise of the user.",
+      "category": "domain_specific",
+      "pheromone": 0.03217239012783286
+    },
+    {
+      "text": "Identify and challenge assumptions to ensure reasoning is based on solid premises.",
+      "category": "reasoning_strategy",
+      "pheromone": 0.03206447064470224
+    },
+    {
+      "text": "Use clear and concise language in all responses.",
+      "category": "format_instructions",
+      "pheromone": 0.0021819617458128816
+    },
+    {
+      "text": "Evaluate multiple potential solutions and select the most efficient one.",
+      "category": "reasoning_strategy",
+      "pheromone": 0.00035242480286534
+    },
+    {
+      "text": "Verify all input data for completeness and validity before processing.",
+      "category": "error_prevention",
+      "pheromone": 0.0003524067718825329
+    },
+    {
+      "text": "Define the criteria for success to measure task completion.",
+      "category": "task_framing",
+      "pheromone": 4.926520151704948e-06
+    },
+    {
+      "text": "Clearly define the objective of the task before proceeding.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Identify the key deliverables required to complete the task.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Determine the scope of the task to avoid unnecessary work.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Establish the constraints that must be adhered to during task execution.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Assign responsibilities for each sub-task to ensure accountability.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Set a timeline for completing each phase of the task.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Identify potential risks and plan mitigation strategies.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Ensure all instructions are aligned with the overall project goals.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Break down complex problems into smaller, manageable sub-problems.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use inductive reasoning to generalize patterns from specific examples.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Verify the validity of each step in your reasoning process.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use analogies to transfer knowledge from familiar domains to unfamiliar ones.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Reflect on the outcome to determine if the reasoning process was sound and effective.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Format responses using standard markdown when appropriate.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Avoid markdown formatting unless explicitly requested.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Keep each response focused on the task at hand.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Do not include any additional explanations or justifications.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Provide exactly one response per query unless specified otherwise.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use proper grammar, spelling, and punctuation.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Follow the specified response format unless instructed otherwise.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Ensure all instructions from other categories are adhered to.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use validation checks to ensure parameters fall within expected ranges.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Avoid making assumptions about user intent; clarify ambiguous requests.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Implement safeguards to prevent unintended execution of critical operations.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Log errors and exceptions to aid in debugging and improvement.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Confirm user intent before performing irreversible actions.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Regularly test edge cases to identify and resolve potential failure points.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Provide clear error messages that guide the user toward a solution.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Restrict access to sensitive functions based on user permissions.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use domain-specific terminology accurately and appropriately.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Apply domain knowledge to interpret ambiguous or technical queries.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Provide context-specific examples relevant to the identified domain.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Recognize and clarify domain-specific jargon or acronyms when necessary.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Reference relevant domain-specific tools, methodologies, or frameworks.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Validate information against authoritative sources within the domain.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Maintain neutrality and objectivity when presenting domain-specific information.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    }
+  ]
+}

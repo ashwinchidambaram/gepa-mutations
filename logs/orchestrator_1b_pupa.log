@@ -1,0 +1,39 @@
+
+Experiment plan:
+  Total:   60
+  Done:    15 (skipping)
+  Pending: 45
+  Workers: 8
+
+2026-04-13 01:40:29,271 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 01:40:29,292 INFO START  pupa/best_of_k_K3/seed=42
+2026-04-13 01:40:29,292 INFO START  pupa/best_of_k_K3/seed=123
+2026-04-13 01:40:29,293 INFO START  pupa/best_of_k_K3/seed=789
+2026-04-13 01:40:29,293 INFO START  pupa/best_of_k_K3/seed=456
+2026-04-13 01:40:29,293 INFO START  pupa/best_of_k_K3/seed=1024
+2026-04-13 01:40:29,294 INFO START  pupa/contrastive_reflection/seed=42
+2026-04-13 01:40:29,294 INFO START  pupa/contrastive_reflection/seed=123
+2026-04-13 01:40:29,294 INFO START  pupa/contrastive_reflection/seed=456
+2026-04-13 03:02:00,128 INFO DONE   pupa/best_of_k_K3/seed=42 (4891s) score=0.5137578795473532
+2026-04-13 03:02:00,129 INFO START  pupa/contrastive_reflection/seed=789
+2026-04-13 03:02:00,130 INFO [1/45] pupa/best_of_k_K3/seed=42 -> 51.4% (4891s)
+2026-04-13 03:02:00,844 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 04:02:27,664 INFO DONE   pupa/contrastive_reflection/seed=456 (8518s) score=0.41724766461608565
+2026-04-13 04:02:27,665 INFO START  pupa/contrastive_reflection/seed=1024
+2026-04-13 04:02:27,666 INFO [2/45] pupa/contrastive_reflection/seed=456 -> 41.7% (8518s)
+2026-04-13 04:02:28,392 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 04:32:20,786 INFO DONE   pupa/best_of_k_K3/seed=789 (10311s) score=0.5163021189336978
+2026-04-13 04:32:20,787 INFO START  pupa/gepa/seed=42
+2026-04-13 04:32:20,787 INFO [3/45] pupa/best_of_k_K3/seed=789 -> 51.6% (10311s)
+2026-04-13 05:21:36,145 INFO DONE   pupa/best_of_k_K3/seed=456 (13267s) score=0.5385907951697425
+2026-04-13 05:21:36,146 INFO START  pupa/gepa/seed=123
+2026-04-13 05:21:36,146 INFO [4/45] pupa/best_of_k_K3/seed=456 -> 53.9% (13267s)
+2026-04-13 05:21:36,832 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 05:54:47,301 INFO DONE   pupa/best_of_k_K3/seed=1024 (15258s) score=0.47235892762208553
+2026-04-13 05:54:47,302 INFO START  pupa/gepa/seed=456
+2026-04-13 05:54:47,302 INFO [5/45] pupa/best_of_k_K3/seed=1024 -> 47.2% (15258s)
+2026-04-13 05:54:47,995 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 06:30:45,178 INFO DONE   pupa/best_of_k_K3/seed=123 (17416s) score=0.5769423558897243
+2026-04-13 06:30:45,179 INFO START  pupa/gepa/seed=789
+2026-04-13 06:30:45,179 INFO [6/45] pupa/best_of_k_K3/seed=123 -> 57.7% (17416s)
+2026-04-13 06:30:45,907 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"

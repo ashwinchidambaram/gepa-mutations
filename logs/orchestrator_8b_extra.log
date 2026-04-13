@@ -1,0 +1,20 @@
+
+Experiment plan:
+  Total:   180
+  Done:    36 (skipping)
+  Pending: 144
+  Workers: 4
+
+2026-04-13 01:40:30,060 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 01:40:30,087 INFO START  ifbench/active_minibatch/seed=123
+2026-04-13 01:40:30,089 INFO START  ifbench/active_minibatch/seed=456
+2026-04-13 01:40:30,090 INFO START  ifbench/active_minibatch/seed=789
+2026-04-13 01:40:30,090 INFO START  ifbench/active_minibatch/seed=1024
+2026-04-13 03:28:56,048 INFO DONE   ifbench/active_minibatch/seed=456 (6506s) score=0.09094444444444444
+2026-04-13 03:28:56,049 INFO START  ifbench/ecological_succession/seed=42
+2026-04-13 03:28:56,050 INFO [1/144] ifbench/active_minibatch/seed=456 -> 9.1% (6506s)
+2026-04-13 03:28:56,739 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 06:02:30,070 INFO DONE   ifbench/active_minibatch/seed=123 (15720s) score=0.07155555555555555
+2026-04-13 06:02:30,071 INFO START  ifbench/ecological_succession/seed=123
+2026-04-13 06:02:30,072 INFO [2/144] ifbench/active_minibatch/seed=123 -> 7.2% (15720s)
+2026-04-13 06:02:30,941 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"

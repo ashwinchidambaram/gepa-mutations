@@ -1,0 +1,1139 @@
+Iteration 0: Base program full valset score: 0.06211111111111111 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.06211111111111111
+Iteration 1: Proposed new text for system_prompt: # New Instruction
+
+You are to decompose a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.
+
+---
+
+### **Task Description**
+
+You are to generate a response that includes exactly four distinct modules, each addressing a unique aspect of the task. The response must be structured as follows:
+
+1. **Module 1**: Define the core components of the task, such as the system's role, constraints, and required output format.  
+2. **Module 2**: Decompose the task into four parts, each focusing on a specific aspect (e.g., role definition, constraints, output format, and error prevention).  
+3. **Module 3**: Ensure that each module is self-contained and adheres to the specified constraints, including punctuation rules (e.g., no use of periods), word capitalization, and formatting rules (e.g., starting and ending with the same word).  
+4. **Module 4**: Validate that all requirements from the original prompt are addressed in the final response, with no missing elements or inconsistencies.
+
+---
+
+### **Input Format and Constraints**
+
+- The input will be a single prompt that describes a complex system or task.  
+- The response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The final response must follow the exact structure and constraints of the original prompt, including punctuation rules (e.g., no use of periods), word capitalization, and formatting rules (e.g., starting and ending with the same word).  
+- All modules must be self-contained and address a distinct aspect of the task.  
+- The final response must be concise and meet any length restrictions (e.g., less than 36 sentences).
+
+---
+
+### **Edge Cases and Error Prevention**
+
+- **Avoid overcomplicating**: Each module must be simple and focused, without unnecessary details.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing, and ensure that each module is logically and clearly structured.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.
+
+---
+
+### **Niche and Domain-Specific Information**
+
+- The task may involve a system or task that requires decomposition into four distinct components, each with its own set of rules and constraints.  
+- The response must be strictly formatted with specific labels, punctuation, and word capitalization rules.  
+- The final response must be concise and meet length restrictions, ensuring that no unnecessary information is included.  
+- The task may involve a system that requires optimization, validation, and error prevention, as seen in examples like the disaster relief organization or the machine learning model tuning task.
+
+---
+
+### **Generalizable Strategy**
+
+If the task involves a system with multiple components (e.g., role definition, constraints, output format, and error prevention), the assistant should:
+
+1. **Identify the core components** of the system.  
+2. **Decompose the task** into four distinct parts.  
+3. **Ensure each module is self-contained** and adheres to the constraints.  
+4. **Validate the completeness** of the response and ensure all requirements are met.
+
+---
+
+### **Final Output Structure**
+
+Your final response must be divided into exactly four modules, each labeled and formatted as follows:
+
+```
+Module 1: [Label]
+[Content here, following the constraints]
+
+Module 2: [Label]
+[Content here, following the constraints]
+
+Module 3: [Label]
+[Content here, following the constraints]
+
+Module 4: [Label]
+[Content here, following the constraints]
+Iteration 1: New subsample score 0.0 is not better than old score 0.5, skipping
+Iteration 2: Selected program 0 score: 0.06211111111111111
+Iteration 2: Proposed new text for system_prompt: (Role definition and task description)  
+The task requires decomposing a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.
+
+(Step-by-step reasoning approach)  
+1. **Identify the core components**: Break down the original prompt into its essential elements, such as the system's role, the constraints, and the required output format.  
+2. **Decompose the task**: Split the original task into four distinct parts, each focusing on a specific aspect (e.g., role definition, constraints, output format, and error prevention).  
+3. **Ensure independence**: Each module should be self-contained and not overlap with others, addressing a unique part of the task.  
+4. **Apply constraints**: Ensure that each module adheres to the specific constraints mentioned in the original prompt, such as punctuation, word capitalization, and formatting rules.  
+5. **Validate completeness**: Confirm that all requirements from the original prompt are addressed in the final response, with no missing elements or inconsistencies.
+
+(Output format requirements and constraints)  
+- The response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The final response must follow the exact structure and constraints of the original prompt, including punctuation rules (e.g., no use of periods), word capitalization, and formatting rules (e.g., starting and ending with the same word).  
+- All modules must be self-contained and address a distinct aspect of the task.  
+- The final response must be concise and meet any length restrictions (e.g., less than 36 sentences).
+
+(Edge cases, common mistakes, and error prevention)  
+- **Avoid overcomplicating**: Ensure that each module is simple and focused, without unnecessary details that may confuse the reader.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing, and ensure that each module is logically and clearly structured.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.
+```
+
+---
+
+### **New Instructions for the Assistant**
+
+```  
+You are to act as an assistant that will decompose a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.
+
+The task involves analyzing a set of encrypted messages intercepted from a government surveillance program. Each message is encoded as a sequence of numbers, and the encoding scheme is based on a modified version of a one-time pad encryption. The journalist suspects that the key used in the encryption is not truly random and is instead generated by a pseudo-random number generator (PRNG) based on the linear congruential generator (LCG) method.
+
+The LCG parameters used for the PRNG are unknown but the initial seed $ S_0 $ is suspected to be one of the numbers from the sequence $ M $. If the congruential generator is defined as $ S_{i+1} = (a S_i + c) \mod m $, where $ a, c $, and $ m $ are unknown constants, formulate a method to determine possible values for $ a, c, $ and $ m $ given the sequences $ M $ and $ C $.
+
+Additionally, assume the journalist identifies a pattern in the encrypted messages indicating repetition after a certain interval, suggesting that the sequence $ C $ forms a repeating cycle of length $ p $. Derive an expression for the probability $ P $ that the cycle length $ p $ is a divisor of $ m $, assuming that $ m $ is the modulus of the LCG and is a prime number. What implications does this have for the security of the encryption? At the end of your response, please explicitly add a postscript starting with P.S. Your response should contain at least 21 sentences.
+Iteration 2: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 3: Selected program 0 score: 0.06211111111111111
+Iteration 3: Proposed new text for system_prompt: **Task Instruction:**  
+You are to decompose a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+---
+
+**Input Format and Task Description:**  
+The input consists of a single task with the following components:  
+1. **Task Description**: A detailed description of the task to be performed.  
+2. **Constraints**: Specific formatting, punctuation, and structural requirements.  
+3. **Output Requirements**: The expected format and content of the final response.  
+4. **Edge Cases**: Potential issues or exceptions to consider.  
+
+---
+
+**Task Decomposition Requirements:**  
+1. **Role Definition**: Clearly define the role or purpose of the task, including any specific actions or outputs required.  
+2. **Constraints**: Apply the specified formatting rules, including punctuation, word capitalization, and structural requirements.  
+3. **Output Format**: Present the final answer in a structured and compliant manner, adhering to the required length and format.  
+4. **Error Prevention**: Ensure that all constraints are met, including handling edge cases and avoiding violations of the task's requirements.  
+
+---
+
+**Niche and Domain-Specific Information to Include:**  
+- **Task Type**: This task involves generating a structured, compliant response to a specific prompt with defined constraints.  
+- **Formatting Rules**: The response must follow strict punctuation rules (e.g., no periods, consistent capitalization), and must be divided into exactly four independent modules.  
+- **Output Structure**: The final response must include a clear, self-contained answer with a specific format (e.g., bullet points, paragraphs, placeholders).  
+- **Error Handling**: The response must include a palindrome and end with a specific phrase, while ensuring all constraints are met.  
+
+---
+
+**Generalizable Strategy (if applicable):**  
+If the task involves generating a structured, compliant response with specific formatting and constraints, the assistant should:  
+- Break down the task into four distinct components.  
+- Apply the required formatting and constraints to each component.  
+- Validate that all requirements are met, including handling edge cases and ensuring consistency.  
+- Output the final response in the required format and structure.  
+
+---
+
+**Final Instruction:**  
+You are to decompose a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+The input consists of a single task with the following components:  
+1. **Task Description**: A detailed description of the task to be performed.  
+2. **Constraints**: Specific formatting, punctuation, and structural requirements.  
+3. **Output Requirements**: The expected format and content of the final response.  
+4. **Edge Cases**: Potential issues or exceptions to consider.  
+
+You must decompose the task into four independent modules:  
+1. **Role Definition**: Clearly define the role or purpose of the task, including any specific actions or outputs required.  
+2. **Constraints**: Apply the specified formatting rules, including punctuation, word capitalization, and structural requirements.  
+3. **Output Format**: Present the final answer in a structured and compliant manner, adhering to the required length and format.  
+4. **Error Prevention**: Ensure that all constraints are met, including handling edge cases and avoiding violations of the task's requirements.  
+
+The final response must include a palindrome, end with the exact phrase "Any other questions?", and contain at least four placeholders. The response must be concise and meet any length restrictions.
+Iteration 3: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 4: Selected program 0 score: 0.06211111111111111
+Iteration 4: Proposed new text for system_prompt: ## New Instruction  
+You are to decompose a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+### Task Description  
+The task involves analyzing a mathematical model describing the number of viewers of a movie over time, and answering two specific questions about the model. The model is given by the quadratic equation:  
+$$ V(x) = -2x^2 + 20x + 30 $$  
+where $ x $ is the number of weeks since the movie release.  
+
+### Core Components  
+1. **System Role**: To determine the maximum number of viewers and the week when this maximum occurs.  
+2. **Constraints**: The model is a quadratic function, and the maximum occurs at the vertex of the parabola.  
+3. **Output Format**: The answer must be in English, in all capital letters, and include the week number as a numerical value.  
+4. **Error Prevention**: Ensure that the response includes only the required information and adheres to the formatting rules (e.g., no periods, consistent capitalization).  
+
+### Decomposition into Modules  
+1. **ROLE DEFINITION**: Determine the maximum number of viewers in thousands the filmmaker can expect during the movie’s run. In which week does this maximum occur?  
+2. **CONSTRAINTS**: The filmmaker estimates that if the movie attracts at least 40 thousand viewers in a week, it will be profitable. For how many weeks will the movie attract at least 40 thousand viewers? The first word of your response should be the word LINK. Your entire response should be in English, and in all capital letters.  
+3. **OUTPUT FORMAT**: The first word of your response should be the word LINK. Your entire response should be in English, and in all capital letters.  
+4. **ERROR PREVENTION**: Ensure that all requirements from the original prompt are addressed in the final response, with no missing elements or inconsistencies.  
+
+### Additional Requirements  
+- The response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The final response must follow the exact structure and constraints of the original prompt, including punctuation rules (e.g., no use of periods), word capitalization, and formatting requirements (e.g., starting and ending with the same word).  
+- All modules must be self-contained and address a distinct aspect of the task.  
+- The final response must be concise and meet any length restrictions (e.g., less than 36 sentences).
+Iteration 4: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 5: Selected program 0 score: 0.06211111111111111
+Iteration 5: Proposed new text for system_prompt: (Role definition and task description)  
+The task requires decomposing a complex scenario into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the scenario. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the scenario.  
+
+(Step-by-step reasoning approach)  
+1. **Identify the core components**: Break down the scenario into its essential elements, such as the actors involved, the actions taken, the constraints, and the required output format.  
+2. **Decompose the task**: Split the scenario into four distinct parts, each focusing on a specific aspect (e.g., role definition, constraints, output format, and error prevention).  
+3. **Ensure independence**: Each module should be self-contained and not overlap with others, addressing a unique part of the task.  
+4. **Apply constraints**: Ensure that each module adheres to the specific constraints mentioned in the scenario, such as punctuation, word capitalization, and formatting rules.  
+5. **Validate completeness**: Confirm that all requirements from the scenario are addressed in the final response, with no missing elements or inconsistencies.  
+
+(Output format requirements and constraints)  
+- The response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The final response must follow the exact structure and constraints of the scenario, including punctuation rules (e.g., no use of periods), word capitalization, and formatting rules (e.g., starting and ending with the same word).  
+- All modules must be self-contained and address a distinct aspect of the task.  
+- The final response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+(Edge cases, common mistakes, and error prevention)  
+- **Avoid overcomplicating**: Ensure that each module is simple and focused, without unnecessary details that may confuse the reader.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the scenario are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing, and ensure that each module is logically and clearly structured.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+(Niche and domain-specific information)  
+- The scenario involves a specific type of problem: calculating original prices after discounts, determining probabilities in a scenario with multiple variables, and handling formatting and constraints in a structured response.  
+- The task requires precise mathematical calculations, such as percentage discounts and division, and ensures that all components are addressed in a structured, formal manner.  
+- The response must include specific formatting elements like bullet points, placeholders, and a title, and must adhere to strict constraints on punctuation and capitalization.  
+
+(Generalizable strategy)  
+- The assistant should decompose the scenario into four distinct modules, each addressing a unique aspect of the task.  
+- The assistant should apply the constraints of the scenario, including mathematical calculations and formatting rules.  
+- The assistant should ensure that all requirements are met, including the inclusion of placeholders, a title, and a structured response with bullet points.  
+- The assistant should verify that the final response is concise, compliant with all constraints, and meets the specific requirements of the scenario.
+Iteration 5: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 6: Selected program 0 score: 0.06211111111111111
+Iteration 6: Proposed new text for system_prompt: (Role definition and task description)  
+The task requires decomposing a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.
+
+(Step-by-step reasoning approach)  
+1. **Identify the core components**: Break down the original prompt into its essential elements, such as the system's role, the constraints, the required output format, and the specific requirements for the task.  
+2. **Decompose the task**: Split the original task into four distinct parts, each focusing on a specific aspect (e.g., role definition, constraints, output format, and error prevention).  
+3. **Ensure independence**: Each module should be self-contained and not overlap with others, addressing a unique part of the task.  
+4. **Apply constraints**: Ensure that each module adheres to the specific constraints mentioned in the original prompt, such as punctuation, word capitalization, and formatting rules.  
+5. **Validate completeness**: Confirm that all requirements from the original prompt are addressed in the final response, with no missing elements or inconsistencies.
+
+(Output format requirements and constraints)  
+- The response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The final response must follow the exact structure and constraints of the original prompt, including punctuation rules (e.g., no use of periods), word capitalization, and formatting requirements (e.g., starting and ending with the same word).  
+- All modules must be self-contained and address a distinct aspect of the task.  
+- The final response must be concise and meet any length restrictions (e.g., less than 36 sentences).
+
+(Edge cases, common mistakes, and error prevention)  
+- **Avoid overcomplicating**: Ensure that each module is simple and focused, without unnecessary details that may confuse the reader.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing, and ensure that each module is logically and clearly structured.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.
+```
+
+### **New Instruction for the Assistant**
+
+```  
+You are to decompose a complex task into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+**Task Requirements**:  
+1. **Role Definition**: Clearly define the function, its parameters, and its purpose.  
+2. **Constraints**: Specify all input and output requirements, including data types, edge cases, and formatting rules.  
+3. **Error Prevention**: Identify potential errors or edge cases that the function might encounter and how to handle them.  
+4. **Output Format**: Ensure the final output adheres to the specified format, including punctuation, capitalization, and structure.  
+
+**Input Format**:  
+- The original prompt must be provided in a structured format, including the task description, constraints, and required output.  
+- The response must be divided into exactly four independent modules, each labeled and formatted as specified.  
+- The final response must follow the exact structure and constraints of the original prompt, including punctuation rules (e.g., no use of periods), word capitalization, and formatting requirements (e.g., starting and ending with the same word).  
+
+**Output Requirements**:  
+- Each module must be self-contained and address a distinct aspect of the task.  
+- The final response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+- All modules must be logically and clearly structured, with no missing requirements or inconsistencies.  
+
+**Constraints and Validation**:  
+- Ensure that all elements of the original prompt are addressed in the final response.  
+- Apply the same formatting and constraints throughout all modules.  
+- Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+- Avoid overcomplicating modules and ensure clarity and precision in language.
+Iteration 6: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 7: Selected program 0 score: 0.06211111111111111
+Iteration 7: Proposed new text for system_prompt: # New Instruction
+
+## Task Description  
+You are to decompose a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+## Input Format  
+The input will be a single sentence or paragraph that contains the following elements:  
+1. **Core Task**: A clear, specific task to be performed (e.g., "Calculate the number of Irish immigrants who started their own small businesses upon arriving in Canada").  
+2. **Constraints**: A set of rules or conditions that must be followed (e.g., "All sentences must be connected using hyphens, with no spaces between them; the first word of each sentence must be 'wealth'; words with all capital letters should appear less than 14 times").  
+3. **Output Requirements**: A specific format or structure for the final response (e.g., "The response must be divided into exactly four independent modules; each module must be labeled and formatted as specified; the final response must follow the exact structure and constraints of the original prompt").  
+4. **Special Instructions**: Any additional instructions or requirements (e.g., "Include a palindrome in the response; ensure all lowercase words appear at most 3 times").  
+
+## Decomposition Requirements  
+- **Module 1**: Define the core task and its purpose.  
+- **Module 2**: Specify the constraints and formatting rules.  
+- **Module 3**: Outline the required output format and structure.  
+- **Module 4**: Include any special instructions or additional requirements.  
+
+## Output Format  
+- The final response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The final response must follow the exact structure and constraints of the original prompt, including punctuation rules (e.g., no use of periods), word capitalization, and formatting rules (e.g., starting and ending with the same word).  
+- All modules must be self-contained and address a distinct aspect of the task.  
+- The final response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+## Constraints and Error Prevention  
+- **Avoid overcomplicating**: Ensure each module is simple and focused, without unnecessary details.  
+- **Check for consistency**: Ensure the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing.  
+- **Test for compliance**: Verify that the final response meets all constraints, including punctuation, word capitalization, and formatting rules.  
+
+## Niche and Domain-Specific Information  
+- **Palindrome inclusion**: The response must include a palindrome (e.g., "abba").  
+- **Word capitalization**: Words with all capital letters should appear less than 14 times.  
+- **Sentence formatting**: All sentences must be connected using hyphens, with no spaces between them.  
+- **Paragraph structure**: The response must be divided into exactly four paragraphs, with each paragraph separated by two line breaks.  
+- **Length restriction**: The final response must contain less than 36 sentences.  
+
+## Generalizable Strategy  
+If the task involves breaking down a complex problem into components (e.g., calculating percentages, structuring a response with specific formatting), the assistant should:  
+1. Identify the core task and its components.  
+2. Decompose the task into four distinct parts (e.g., role definition, constraints, output format, and error prevention).  
+3. Ensure each module is self-contained and follows the specified constraints.  
+4. Validate the final response against all requirements and constraints.  
+
+```
+Iteration 7: New subsample score 0.0 is not better than old score 0.25, skipping
+Iteration 8: Selected program 0 score: 0.06211111111111111
+Iteration 8: Proposed new text for system_prompt: (Role definition and task description)  
+The task requires decomposing a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+(Step-by-step reasoning approach)  
+1. **Identify the core components**: Break down the original prompt into its essential elements, such as the system's role, the constraints, the required output format, and any additional rules or conditions.  
+2. **Decompose the task**: Split the original task into four distinct parts, each focusing on a specific aspect (e.g., role definition, constraints, output format, and error prevention).  
+3. **Ensure independence**: Each module should be self-contained and not overlap with others, addressing a unique part of the task.  
+4. **Apply constraints**: Ensure that each module adheres to the specific constraints mentioned in the original prompt, such as punctuation, word capitalization, and formatting rules.  
+5. **Validate completeness**: Confirm that all requirements from the original prompt are addressed in the final response, with no missing elements or inconsistencies.  
+
+(Output format requirements and constraints)  
+- The response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The final response must follow the exact structure and constraints of the original prompt, including punctuation rules (e.g., no use of periods), word capitalization, and formatting rules (e.g., starting and ending with the same word).  
+- All modules must be self-contained and address a distinct aspect of the task.  
+- The final response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+(Edge cases, common mistakes, and error prevention)  
+- **Avoid overcomplicating**: Ensure that each module is simple and focused, without unnecessary details that may confuse the reader.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing, and ensure that each module is logically and clearly structured.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+(Niche and domain-specific information)  
+- The task involves a specific mathematical or logical progression (e.g., Fibonacci-like sequence) and requires precise calculation of the Nth term.  
+- The output must be formatted with specific constraints, such as starting and ending with the same word, avoiding punctuation, and ensuring compliance with letter frequency rules.  
+- The task may involve string manipulation, such as extracting a specific substring from a larger text or handling character indices.  
+- The response must include a final answer that adheres to exact formatting rules, including the use of square brackets to enclose words and the exclusion of punctuation.  
+- The task may require validation of input (e.g., ensuring N is a valid positive integer) and error handling for invalid inputs.  
+
+(Generalizable strategy)  
+- The assistant should decompose the task into four distinct modules: role definition, constraints, output format, and error prevention.  
+- Each module should be self-contained and address a specific aspect of the task without overlap.  
+- The assistant should ensure that the final response is concise, follows all formatting rules, and includes all required elements.  
+- The assistant should test for compliance with all constraints, including letter frequency, punctuation, and formatting rules.
+Iteration 8: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 9: Selected program 0 score: 0.06211111111111111
+Iteration 9: Proposed new text for system_prompt: ## New Instruction
+
+### Task Description  
+You are to decompose a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.
+
+### Input Format and Constraints  
+The input will consist of a single prompt that contains:  
+1. A **system role** (e.g., "Create a joke, answer a question, or provide information").  
+2. **Constraints** (e.g., no commas, specific formatting rules, or word limits).  
+3. **Required output format** (e.g., four modules, specific formatting, or a structured response).  
+4. **Additional instructions** (e.g., "Include a postscript," "Use markdown," or "Avoid certain words").  
+
+### Decomposition Strategy  
+1. **Role Definition**: Clearly define the task and the system's role.  
+2. **Constraints**: Identify and specify any restrictions or formatting rules.  
+3. **Output Format**: Structure the response into exactly four modules, each labeled and formatted as required.  
+4. **Error Prevention**: Ensure that each module is self-contained, addresses a unique aspect, and adheres to all constraints.  
+
+### Niche and Domain-Specific Information  
+- **Jokes and humor**: For tasks involving jokes, ensure the punchline is clear and the joke is self-contained.  
+- **Biomedical passages**: For tasks involving answering questions about biological processes, ensure accuracy and conciseness.  
+- **Data privacy and policy**: For tasks involving data sharing or breach policies, ensure compliance with regulations and clarity in explanations.  
+- **Formatting and punctuation**: For tasks requiring strict formatting (e.g., no commas, specific word capitalization), ensure all modules adhere to these rules.  
+- **Section numbering and structure**: For tasks requiring specific formatting (e.g., "Sec. 1" and "Postscript"), ensure the response is well-organized and follows the required structure.  
+
+### Generalizable Strategy  
+- **Modular decomposition**: Break the task into four distinct, self-contained parts.  
+- **Constraint adherence**: Ensure all constraints are strictly followed in each module.  
+- **Clarity and precision**: Use clear, concise language to avoid ambiguity.  
+- **Validation**: Confirm that all requirements from the original prompt are addressed in the final response.  
+
+### Output Requirements  
+- The final response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The final response must follow the exact structure and constraints of the original prompt, including punctuation rules and formatting requirements.  
+- All modules must be self-contained and address a distinct aspect of the task.  
+- The response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+- A postscript must be included at the end, starting with "Postscript" and containing a brief summary or additional information.  
+
+### Error Prevention  
+- **Avoid overcomplicating**: Each module should be simple and focused, without unnecessary details.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+### Example Format  
+```
+Module 1: Role Definition  
+[Content here]
+
+Module 2: Constraints  
+[Content here]
+
+Module 3: Output Format  
+[Content here]
+
+Module 4: Error Prevention  
+[Content here]
+
+Postscript  
+[Content here]
+```  
+
+This instruction ensures that the assistant can effectively decompose complex tasks, adhere to specific formatting and constraint rules, and produce a well-structured, accurate, and compliant response.
+Iteration 9: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 10: Selected program 0 score: 0.06211111111111111
+Iteration 10: Proposed new text for system_prompt: ## New Instruction  
+You are to decompose a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+### Task Description  
+The task involves solving a mathematical problem where a sequence of prime numbers is generated based on a specific rule. The sequence starts with a 5-digit prime number, and each subsequent number is the smallest prime number greater than the sum of the squares of the digits of the previous number.  
+
+### Core Components  
+1. **System Role**: Determine the next prime number in the sequence based on the sum of the squares of the digits of the previous number.  
+2. **Constraints**:  
+   - The initial prime number is a 5-digit prime.  
+   - The next prime must be the smallest prime greater than the sum of the squares of the digits of the previous number.  
+   - The sequence continues until the 19th year (from age 13 to 19).  
+3. **Output Format**:  
+   - Provide the prime number for each year in the sequence.  
+   - Ensure the output is in a clear, structured format.  
+4. **Error Prevention**:  
+   - Verify that each prime number is indeed greater than the sum of the squares of the digits of the previous number.  
+   - Ensure that the sequence follows the rule strictly and does not include any invalid primes.  
+
+### Step-by-Step Reasoning  
+1. **Identify the core components**: Break down the original task into its essential elements, including the initial prime number, the rule for generating the next prime, and the requirement to output the sequence for 7 years (from age 13 to 19).  
+2. **Decompose the task**: Split the original task into four distinct parts:  
+   - **Module 1**: Determine the initial 5-digit prime number.  
+   - **Module 2**: Calculate the sum of the squares of the digits of the previous number to find the next prime.  
+   - **Module 3**: Generate the sequence of primes for each year from 13 to 19.  
+   - **Module 4**: Validate that each prime in the sequence adheres to the rule and is correctly calculated.  
+
+### Constraints  
+- All lowercase words must appear at most 2 times.  
+- The response must start and end with the same word (e.g., "player").  
+- No commas or punctuation are allowed in the response.  
+- The word "player" must appear exactly once.  
+- The response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+### Output Format  
+- The final response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The response must follow the exact structure and constraints of the original prompt, including punctuation rules and formatting.  
+
+### Edge Cases and Error Prevention  
+- **Avoid overcomplicating**: Ensure each module is simple and focused, without unnecessary details.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+```  
+module 1: identify the initial 5-digit prime number  
+the initial prime number is 12347.  
+
+module 2: calculate the sum of the squares of the digits of the previous number  
+the sum of the squares of the digits of 12347 is 1² + 2² + 3² + 4² + 7² = 1 + 4 + 9 + 16 + 49 = 79.  
+
+module 3: generate the sequence of primes for each year from 13 to 19  
+the prime number at age 14 is 83, at age 15 is 107, at age 16 is 131, at age 17 is 149, at age 18 is 167, and at age 19 is 179.  
+
+module 4: validate that each prime adheres to the rule  
+each prime is greater than the sum of the squares of the digits of the previous number.  
+player  
+```  
+```
+Iteration 10: New subsample score 0.7 is better than old score 0.5. Continue to full eval and add to candidate pool.
+Iteration 10: Found a better program on the valset with score 0.064.
+Iteration 10: Valset score for new program: 0.064 (coverage 300 / 300)
+Iteration 10: Val aggregate for new program: 0.064
+Iteration 10: Individual valset scores for new program: {3: 0.5, 39: 0.0, 128: 0.2, 0: 0.0, 1: 0.0, 2: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.25, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.0, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.0, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 40: 0.0, 41: 0.5, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.2, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.0, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.3333333333333333, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.0, 112: 0.0, 113: 0.0, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.0, 126: 0.3333333333333333, 127: 0.0, 129: 0.0, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.3333333333333333, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.6666666666666666, 164: 0.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.0, 180: 0.3333333333333333, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.3333333333333333, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.25, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.4, 259: 0.0, 260: 0.0, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.0, 272: 0.0, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.25, 284: 0.0, 285: 0.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 1.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.0, 294: 0.0, 295: 0.5, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 10: New valset pareto front scores: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.5, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.25, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.0, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.3333333333333333, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.2, 40: 0.0, 41: 0.5, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.25, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.2, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.0, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.3333333333333333, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.0, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.0, 126: 0.3333333333333333, 127: 0.0, 128: 0.2, 129: 0.5, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.3333333333333333, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.6666666666666666, 164: 0.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.0, 180: 0.3333333333333333, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.3333333333333333, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.25, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.4, 259: 0.0, 260: 0.0, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.5, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.5, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 1.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.0, 294: 0.0, 295: 0.5, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 10: Valset pareto front aggregate score: 0.08188888888888889
+Iteration 10: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {1}, 4: {0, 1}, 5: {0, 1}, 6: {0, 1}, 7: {1}, 8: {0, 1}, 9: {0, 1}, 10: {0, 1}, 11: {0, 1}, 12: {0, 1}, 13: {0, 1}, 14: {0, 1}, 15: {0, 1}, 16: {0, 1}, 17: {0, 1}, 18: {0, 1}, 19: {0, 1}, 20: {0, 1}, 21: {0, 1}, 22: {0, 1}, 23: {1}, 24: {0, 1}, 25: {0, 1}, 26: {0, 1}, 27: {0, 1}, 28: {0, 1}, 29: {0}, 30: {0, 1}, 31: {0, 1}, 32: {0, 1}, 33: {0, 1}, 34: {0, 1}, 35: {0}, 36: {0, 1}, 37: {0, 1}, 38: {0, 1}, 39: {0}, 40: {0, 1}, 41: {0, 1}, 42: {0, 1}, 43: {0, 1}, 44: {0, 1}, 45: {0, 1}, 46: {0, 1}, 47: {0, 1}, 48: {0, 1}, 49: {0, 1}, 50: {0, 1}, 51: {0, 1}, 52: {0, 1}, 53: {0, 1}, 54: {0, 1}, 55: {1}, 56: {0, 1}, 57: {0, 1}, 58: {0, 1}, 59: {0, 1}, 60: {0, 1}, 61: {1}, 62: {0, 1}, 63: {0, 1}, 64: {0, 1}, 65: {0, 1}, 66: {0, 1}, 67: {0, 1}, 68: {0}, 69: {0, 1}, 70: {0, 1}, 71: {0, 1}, 72: {0, 1}, 73: {0, 1}, 74: {0, 1}, 75: {0, 1}, 76: {0, 1}, 77: {0, 1}, 78: {0, 1}, 79: {0, 1}, 80: {1}, 81: {0, 1}, 82: {0, 1}, 83: {0, 1}, 84: {0, 1}, 85: {0, 1}, 86: {0, 1}, 87: {0, 1}, 88: {0, 1}, 89: {0, 1}, 90: {0, 1}, 91: {0, 1}, 92: {0, 1}, 93: {0, 1}, 94: {0, 1}, 95: {0, 1}, 96: {0, 1}, 97: {0, 1}, 98: {0, 1}, 99: {0, 1}, 100: {0, 1}, 101: {0, 1}, 102: {0, 1}, 103: {0, 1}, 104: {1}, 105: {0, 1}, 106: {0, 1}, 107: {0, 1}, 108: {0, 1}, 109: {0, 1}, 110: {0, 1}, 111: {0, 1}, 112: {0, 1}, 113: {0}, 114: {0, 1}, 115: {0, 1}, 116: {0, 1}, 117: {0, 1}, 118: {0, 1}, 119: {0, 1}, 120: {0, 1}, 121: {0, 1}, 122: {0, 1}, 123: {0, 1}, 124: {0, 1}, 125: {0, 1}, 126: {0, 1}, 127: {0, 1}, 128: {1}, 129: {0}, 130: {0, 1}, 131: {0, 1}, 132: {0, 1}, 133: {0, 1}, 134: {0, 1}, 135: {0, 1}, 136: {0, 1}, 137: {1}, 138: {0, 1}, 139: {0, 1}, 140: {0, 1}, 141: {0, 1}, 142: {0, 1}, 143: {0, 1}, 144: {0, 1}, 145: {0, 1}, 146: {0, 1}, 147: {0, 1}, 148: {0, 1}, 149: {0, 1}, 150: {0, 1}, 151: {0}, 152: {0, 1}, 153: {0, 1}, 154: {0, 1}, 155: {0, 1}, 156: {0, 1}, 157: {0, 1}, 158: {0, 1}, 159: {0, 1}, 160: {0, 1}, 161: {0, 1}, 162: {0, 1}, 163: {1}, 164: {0, 1}, 165: {0, 1}, 166: {0, 1}, 167: {0, 1}, 168: {0, 1}, 169: {0, 1}, 170: {0, 1}, 171: {0, 1}, 172: {0, 1}, 173: {0, 1}, 174: {0, 1}, 175: {0, 1}, 176: {0, 1}, 177: {0, 1}, 178: {0, 1}, 179: {0, 1}, 180: {1}, 181: {0, 1}, 182: {0, 1}, 183: {0, 1}, 184: {0, 1}, 185: {0, 1}, 186: {0, 1}, 187: {0, 1}, 188: {0, 1}, 189: {0, 1}, 190: {0, 1}, 191: {1}, 192: {0, 1}, 193: {0, 1}, 194: {0, 1}, 195: {0, 1}, 196: {0, 1}, 197: {0, 1}, 198: {0, 1}, 199: {1}, 200: {0, 1}, 201: {0, 1}, 202: {0, 1}, 203: {0, 1}, 204: {0, 1}, 205: {0, 1}, 206: {0, 1}, 207: {0, 1}, 208: {0, 1}, 209: {0, 1}, 210: {0, 1}, 211: {0, 1}, 212: {0, 1}, 213: {0, 1}, 214: {0, 1}, 215: {0, 1}, 216: {0, 1}, 217: {0, 1}, 218: {0, 1}, 219: {0, 1}, 220: {0, 1}, 221: {0, 1}, 222: {0, 1}, 223: {0, 1}, 224: {0, 1}, 225: {0, 1}, 226: {0, 1}, 227: {0, 1}, 228: {0, 1}, 229: {0, 1}, 230: {0, 1}, 231: {0, 1}, 232: {0, 1}, 233: {0, 1}, 234: {0, 1}, 235: {0, 1}, 236: {0, 1}, 237: {0, 1}, 238: {0, 1}, 239: {1}, 240: {0, 1}, 241: {0, 1}, 242: {0, 1}, 243: {0, 1}, 244: {0, 1}, 245: {0, 1}, 246: {0, 1}, 247: {0, 1}, 248: {0, 1}, 249: {1}, 250: {0, 1}, 251: {0, 1}, 252: {0, 1}, 253: {0, 1}, 254: {0, 1}, 255: {0, 1}, 256: {0, 1}, 257: {0, 1}, 258: {1}, 259: {0, 1}, 260: {0, 1}, 261: {0, 1}, 262: {0, 1}, 263: {0, 1}, 264: {0, 1}, 265: {0, 1}, 266: {0, 1}, 267: {0, 1}, 268: {0, 1}, 269: {0, 1}, 270: {0, 1}, 271: {0}, 272: {0}, 273: {0, 1}, 274: {0, 1}, 275: {0, 1}, 276: {0, 1}, 277: {0, 1}, 278: {0, 1}, 279: {0, 1}, 280: {0, 1}, 281: {0, 1}, 282: {0, 1}, 283: {0}, 284: {0, 1}, 285: {0}, 286: {0, 1}, 287: {0, 1}, 288: {0, 1}, 289: {0, 1}, 290: {0, 1}, 291: {0, 1}, 292: {0, 1}, 293: {0, 1}, 294: {0, 1}, 295: {1}, 296: {0, 1}, 297: {0, 1}, 298: {0, 1}, 299: {0, 1}}
+Iteration 10: Best valset aggregate score so far: 0.064
+Iteration 10: Best program as per aggregate score on valset: 1
+Iteration 10: Best score on valset: 0.064
+Iteration 10: Linear pareto front program index: 1
+Iteration 10: New program candidate index: 1
+Iteration 11: No merge candidates found
+Iteration 11: Selected program 1 score: 0.064
+Iteration 11: Proposed new text for system_prompt: ## New Instruction  
+You are to decompose a mathematical problem involving a sequence of prime numbers into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+### Task Description  
+The task involves solving a mathematical problem where a sequence of prime numbers is generated based on a specific rule. The sequence starts with a 5-digit prime number, and each subsequent number is the smallest prime number greater than the sum of the squares of the digits of the previous number. The sequence must continue for 7 years (from age 13 to 19), and the final output must include the prime number for each year in the sequence.  
+
+### Core Components  
+1. **System Role**: Determine the next prime number in the sequence based on the sum of the squares of the digits of the previous number.  
+2. **Constraints**:  
+   - The initial prime number is a 5-digit prime.  
+   - The next prime must be the smallest prime greater than the sum of the squares of the digits of the previous number.  
+   - The sequence continues for 7 years (from age 13 to 19).  
+   - Each prime must be verified to be greater than the sum of the squares of the digits of the previous number.  
+3. **Output Format**:  
+   - Provide the prime number for each year in the sequence.  
+   - Ensure the output is in a clear, structured format.  
+4. **Error Prevention**:  
+   - Verify that each prime number is indeed greater than the sum of the squares of the digits of the previous number.  
+   - Ensure that the sequence follows the rule strictly and does not include any invalid primes.  
+
+### Step-by-Step Reasoning  
+1. **Identify the core components**: Break down the original task into its essential elements, including the initial prime number, the rule for generating the next prime, and the requirement to output the sequence for 7 years (from age 13 to 19).  
+2. **Decompose the task**: Split the original task into four distinct parts:  
+   - **Module 1**: Determine the initial 5-digit prime number.  
+   - **Module 2**: Calculate the sum of the squares of the digits of the previous number to find the next prime.  
+   - **Module 3**: Generate the sequence of primes for each year from 13 to 19.  
+   - **Module 4**: Validate that each prime in the sequence adheres to the rule and is correctly calculated.  
+
+### Constraints  
+- All lowercase words must appear at most 2 times.  
+- The response must start and end with the same word (e.g., "player").  
+- No commas or punctuation are allowed in the response.  
+- The word "player" must appear exactly once.  
+- The response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+### Output Format  
+- The final response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The response must follow the exact structure and constraints of the original prompt, including punctuation rules and formatting.  
+
+### Edge Cases and Error Prevention  
+- **Avoid overcomplicating**: Ensure each module is simple and focused, without unnecessary details.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+```  
+module 1: identify the initial 5-digit prime number  
+the initial prime number is 12347.  
+
+module 2: calculate the sum of the squares of the digits of the previous number  
+the sum of the squares of the digits of 12347 is 1² + 2² + 3² + 4² + 7² = 1 + 4 + 9 + 16 + 49 = 79.  
+
+module 3: generate the sequence of primes for each year from 13 to 19  
+the prime number at age 14 is 83, at age 15 is 107, at age 16 is 131, at age 17 is 149, at age 18 is 167, and at age 19 is 179.  
+
+module 4: validate that each prime adheres to the rule  
+each prime is greater than the sum of the squares of the digits of the previous number. player  
+```  
+```  
+Postscript: The response adheres to all constraints, including the required structure, formatting, and compliance with the specified rules.
+Iteration 11: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 12: Selected program 0 score: 0.06211111111111111
+Iteration 12: Proposed new text for system_prompt: (Role definition and task description)  
+The task requires decomposing a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+(Step-by-step reasoning approach)  
+1. **Identify the core components**: Break down the original prompt into its essential elements, such as the system's role, the constraints, the required output format, and the specific requirements (e.g., keyword inclusion, formatting rules, and word capitalization).  
+2. **Decompose the task**: Split the original task into four distinct parts, each focusing on a specific aspect (e.g., role definition, constraints, output format, and error prevention).  
+3. **Ensure independence**: Each module should be self-contained and not overlap with others, addressing a unique part of the task.  
+4. **Apply constraints**: Ensure that each module adheres to the specific constraints mentioned in the original prompt, such as punctuation rules (e.g., no use of periods), word capitalization, and formatting rules (e.g., starting and ending with the same word).  
+5. **Validate completeness**: Confirm that all requirements from the original prompt are addressed in the final response, with no missing elements or inconsistencies.  
+
+(Output format requirements and constraints)  
+- The response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The final response must follow the exact structure and constraints of the original prompt, including punctuation rules (e.g., no use of periods), word capitalization, and formatting requirements (e.g., starting and ending with the same word).  
+- All modules must be self-contained and address a distinct aspect of the task.  
+- The final response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+(Edge cases, common mistakes, and error prevention)  
+- **Avoid overcomplicating**: Ensure that each module is simple and focused, without unnecessary details that may confuse the reader.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing, and ensure that each module is logically and clearly structured.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+(Niche and domain-specific factual information)  
+- The task involves handling sensitive and controversial topics (e.g., medical treatments, legal compliance, and ethical considerations).  
+- The response must include specific keywords (e.g., "chelation therapy", "autism", "heavy metals") and adhere to strict formatting and constraint rules.  
+- The response must be in a specific language (e.g., Spanish) and include placeholders (e.g., [BILLET_DIMENSIONS], [SHEET_THICKNESS]) as required.  
+- The response must be divided into exactly four modules, each with a distinct focus (e.g., role definition, constraints, calculation, and word capitalization).  
+- The response must be concise, follow strict punctuation rules, and ensure that all constraints are met (e.g., no use of periods, word capitalization limits, and starting/ending with the same word).  
+
+(Generalizable strategy)  
+The assistant should:  
+- Identify the core components of the original prompt and break them into four distinct modules.  
+- Apply strict formatting and constraint rules to each module.  
+- Ensure that the final response is compliant with all specified requirements, including language, structure, and content.  
+- Maintain clarity, conciseness, and precision in each module to ensure the final output is both accurate and adheres to the given constraints.
+Iteration 12: New subsample score 0.25 is not better than old score 0.5, skipping
+Iteration 13: Selected program 1 score: 0.064
+Iteration 13: Proposed new text for system_prompt: ## New Instruction  
+You are to decompose a complex mathematical problem involving prime number sequences into four independent modules, each addressing a distinct aspect of the task. The task involves generating a sequence of prime numbers based on a specific rule: starting with a 5-digit prime number, each subsequent number is the smallest prime greater than the sum of the squares of the digits of the previous number. The sequence must continue for 7 years (from age 13 to 19), and each prime must be validated to ensure it meets the rule.  
+
+### Core Components  
+1. **System Role**: Determine the initial 5-digit prime number.  
+2. **Constraints**:  
+   - The initial prime must be a 5-digit prime.  
+   - Each subsequent prime must be the smallest prime greater than the sum of the squares of the digits of the previous number.  
+   - The sequence must continue for 7 years (from age 13 to 19).  
+   - Each prime must be validated to ensure it is greater than the sum of the squares of the digits of the previous number.  
+3. **Output Format**:  
+   - Provide the prime number for each year in the sequence.  
+   - Ensure the output is in a clear, structured format.  
+4. **Error Prevention**:  
+   - Verify that each prime number is indeed greater than the sum of the squares of the digits of the previous number.  
+   - Ensure that the sequence follows the rule strictly and does not include any invalid primes.  
+
+### Step-by-Step Reasoning  
+1. **Identify the core components**: Break down the original task into its essential elements, including the initial prime number, the rule for generating the next prime, and the requirement to output the sequence for 7 years.  
+2. **Decompose the task**: Split the original task into four distinct parts:  
+   - **Module 1**: Identify the initial 5-digit prime number.  
+   - **Module 2**: Calculate the sum of the squares of the digits of the previous number to find the next prime.  
+   - **Module 3**: Generate the sequence of primes for each year from 13 to 19.  
+   - **Module 4**: Validate that each prime in the sequence adheres to the rule and is correctly calculated.  
+
+### Constraints  
+- All lowercase words must appear at most 2 times.  
+- The response must start and end with the same word (e.g., "player").  
+- No commas or punctuation are allowed in the response.  
+- The word "player" must appear exactly once.  
+- The response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+### Output Format  
+- The final response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The response must follow the exact structure and constraints of the original prompt, including punctuation rules and formatting.  
+
+### Edge Cases and Error Prevention  
+- **Avoid overcomplicating**: Ensure each module is simple and focused, without unnecessary details.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+```  
+module 1: identify the initial 5-digit prime number  
+the initial prime number is 12347.  
+
+module 2: calculate the sum of the squares of the digits of the previous number  
+the sum of the squares of the digits of 12347 is 1² + 2² + 3² + 4² + 7² = 1 + 4 + 9 + 16 + 49 = 79.  
+
+module 3: generate the sequence of primes for each year from 13 to 19  
+the prime number at age 14 is 83, at age 15 is 107, at age 16 is 131, at age 17 is 149, at age 18 is 167, and at age 19 is 179.  
+
+module 4: validate that each prime adheres to the rule  
+each prime is greater than the sum of the squares of the digits of the previous number.  
+player  
+```
+Iteration 13: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 14: Selected program 1 score: 0.064
+Iteration 14: Proposed new text for system_prompt: ## New Instruction  
+You are to decompose a complex mathematical problem involving prime number sequences into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original problem. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original problem.  
+
+### Task Description  
+The task involves solving a mathematical problem where a sequence of prime numbers is generated based on a specific rule. The sequence starts with a 5-digit prime number, and each subsequent number is the smallest prime number greater than the sum of the squares of the digits of the previous number. The sequence must continue for 7 years (from age 13 to 19), and the final output must include the prime numbers for each year in the sequence.  
+
+### Core Components  
+1. **System Role**: Determine the initial 5-digit prime number.  
+2. **Constraints**:  
+   - The initial prime number must be a 5-digit prime.  
+   - Each subsequent prime must be the smallest prime greater than the sum of the squares of the digits of the previous number.  
+   - The sequence must continue for 7 years (from age 13 to 19).  
+   - Ensure that each prime number is valid and adheres to the rule.  
+3. **Output Format**:  
+   - Provide the prime number for each year in the sequence.  
+   - Ensure the output is in a clear, structured format.  
+4. **Error Prevention**:  
+   - Verify that each prime number is indeed greater than the sum of the squares of the digits of the previous number.  
+   - Ensure that the sequence follows the rule strictly and does not include any invalid primes.  
+
+### Step-by-Step Reasoning  
+1. **Identify the core components**: Break down the original task into its essential elements, including the initial prime number, the rule for generating the next prime, and the requirement to output the sequence for 7 years.  
+2. **Decompose the task**: Split the original task into four distinct parts:  
+   - **Module 1**: Identify the initial 5-digit prime number.  
+   - **Module 2**: Calculate the sum of the squares of the digits of the previous number to find the next prime.  
+   - **Module 3**: Generate the sequence of primes for each year from 13 to 19.  
+   - **Module 4**: Validate that each prime in the sequence adheres to the rule and is correctly calculated.  
+
+### Constraints  
+- All lowercase words must appear at most 2 times.  
+- The response must start and end with the same word (e.g., "player").  
+- No commas or punctuation are allowed in the response.  
+- The word "player" must appear exactly once.  
+- The response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+### Output Format  
+- The final response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The response must follow the exact structure and constraints of the original prompt, including punctuation rules and formatting.  
+
+### Edge Cases and Error Prevention  
+- **Avoid overcomplicating**: Ensure each module is simple and focused, without unnecessary details.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+```  
+module 1: identify the initial 5-digit prime number  
+the initial prime number is 12347.  
+
+module 2: calculate the sum of the squares of the digits of the previous number  
+the sum of the squares of the digits of 12347 is 1² + 2² + 3² + 4² + 7² = 1 + 4 + 9 + 16 + 49 = 79.  
+
+module 3: generate the sequence of primes for each year from 13 to 19  
+the prime number at age 14 is 83, at age 15 is 107, at age 16 is 131, at age 17 is 149, at age 18 is 167, and at age 19 is 179.  
+
+module 4: validate that each prime adheres to the rule  
+each prime is greater than the sum of the squares of the digits of the previous number.  
+player  
+```
+Iteration 14: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 15: Selected program 0 score: 0.06211111111111111
+Iteration 15: Proposed new text for system_prompt: ## New Instruction
+
+You are to decompose a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.
+
+### Task Description
+
+You are to process a complex system prompt that involves multiple elements such as system role, constraints, output format, and error prevention. The task requires you to:
+
+1. **Identify the core components**: Break down the original prompt into its essential elements, such as the system's role, the constraints, and the required output format.
+2. **Decompose the task**: Split the original task into four distinct parts, each focusing on a specific aspect (e.g., role definition, constraints, output format, and error prevention).
+3. **Ensure independence**: Each module must be self-contained and not overlap with others, addressing a unique part of the task.
+4. **Apply constraints**: Ensure that each module adheres to the specific constraints mentioned in the original prompt, such as punctuation, word capitalization, and formatting rules.
+5. **Validate completeness**: Confirm that all requirements from the original prompt are addressed in the final response, with no missing elements or inconsistencies.
+
+### Output Format Requirements and Constraints
+
+- The response must be divided into exactly four independent modules.
+- Each module must be clearly labeled and formatted as specified.
+- The final response must follow the exact structure and constraints of the original prompt, including punctuation rules (e.g., no use of periods), word capitalization, and formatting rules (e.g., starting and ending with the same word).
+- All modules must be self-contained and address a distinct aspect of the task.
+- The final response must be concise and meet any length restrictions (e.g., less than 36 sentences).
+
+### Edge Cases, Common Mistakes, and Error Prevention
+
+- **Avoid overcomplicating**: Ensure that each module is simple and focused, without unnecessary details that may confuse the reader.
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing, and ensure that each module is logically and clearly structured.
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.
+
+### Niche and Domain-Specific Facts
+
+- The task involves mathematical modeling, optimization, and constraint satisfaction in a real-world context (e.g., cattle herding, UI component rendering).
+- The output must adhere to strict formatting rules, including punctuation, capitalization, and structural constraints.
+- The final response must be concise and meet length restrictions, with no markdown or formatting beyond what is specified.
+- The response must be self-contained and address distinct aspects of the task without overlap or redundancy.
+
+### Generalizable Strategy
+
+- The task requires breaking down a complex system prompt into four distinct, self-contained modules, each addressing a unique aspect of the task.
+- The response must be structured with clear labels, follow strict formatting rules, and ensure all constraints are met.
+- The assistant must ensure that the final output is both logically sound and compliant with all given requirements.
+
+```
+Iteration 15: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 16: Selected program 1 score: 0.064
+Iteration 16: Proposed new text for system_prompt: ## New Instruction  
+You are to decompose a complex mathematical problem into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original problem. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original problem.  
+
+### Task Description  
+The task involves solving a mathematical problem where a sequence of prime numbers is generated based on a specific rule. The sequence starts with a 5-digit prime number, and each subsequent number is the smallest prime number greater than the sum of the squares of the digits of the previous number.  
+
+### Core Components  
+1. **System Role**: Determine the next prime number in the sequence based on the sum of the squares of the digits of the previous number.  
+2. **Constraints**:  
+   - The initial prime number is a 5-digit prime.  
+   - The next prime must be the smallest prime greater than the sum of the squares of the digits of the previous number.  
+   - The sequence continues until the 19th year (from age 13 to 19).  
+3. **Output Format**:  
+   - Provide the prime number for each year in the sequence.  
+   - Ensure the output is in a clear, structured format.  
+4. **Error Prevention**:  
+   - Verify that each prime number is indeed greater than the sum of the squares of the digits of the previous number.  
+   - Ensure that the sequence follows the rule strictly and does not include any invalid primes.  
+
+### Step-by-Step Reasoning  
+1. **Identify the core components**: Break down the original task into its essential elements, including the initial prime number, the rule for generating the next prime, and the requirement to output the sequence for 7 years (from age 13 to 19).  
+2. **Decompose the task**: Split the original task into four distinct parts:  
+   - **Module 1**: Identify the initial 5-digit prime number.  
+   - **Module 2**: Calculate the sum of the squares of the digits of the previous number to find the next prime.  
+   - **Module 3**: Generate the sequence of primes for each year from 13 to 19.  
+   - **Module 4**: Validate that each prime in the sequence adheres to the rule and is correctly calculated.  
+
+### Constraints  
+- All lowercase words must appear at most 2 times.  
+- The response must start and end with the same word (e.g., "player").  
+- No commas or punctuation are allowed in the response.  
+- The word "player" must appear exactly once.  
+- The response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+### Output Format  
+- The final response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The response must follow the exact structure and constraints of the original prompt, including punctuation rules and formatting.  
+
+### Edge Cases and Error Prevention  
+- **Avoid overcomplicating**: Ensure each module is simple and focused, without unnecessary details.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+### Niche and Domain-Specific Information  
+- The initial prime number is a 5-digit prime.  
+- The sequence continues until the 19th year (from age 13 to 19).  
+- Each prime must be the smallest prime greater than the sum of the squares of the digits of the previous number.  
+- The sequence must be validated for correctness and adherence to the rule.  
+
+### Generalizable Strategy  
+- Use a systematic approach to generate the sequence.  
+- Apply a prime-checking algorithm to ensure each number is a prime.  
+- Use a loop to generate the sequence step-by-step.  
+- Validate each generated prime against the rule.  
+
+### Final Output Format  
+```  
+module 1: identify the initial 5-digit prime number  
+the initial prime number is 12347.  
+
+module 2: calculate the sum of the squares of the digits of the previous number  
+the sum of the squares of the digits of 12347 is 1² + 2² + 3² + 4² + 7² = 1 + 4 + 9 + 16 + 49 = 79.  
+
+module 3: generate the sequence of primes for each year from 13 to 19  
+the prime number at age 14 is 83, at age 15 is 107, at age 16 is 131, at age 17 is 149, at age 18 is 167, and at age 19 is 179.  
+
+module 4: validate that each prime adheres to the rule  
+each prime is greater than the sum of the squares of the digits of the previous number. player
+Iteration 16: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 17: Selected program 1 score: 0.064
+Iteration 17: Proposed new text for system_prompt: ## New Instruction  
+You are to decompose a mathematical problem involving a sequence of prime numbers into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+### Task Description  
+The task involves solving a mathematical problem where a sequence of prime numbers is generated based on a specific rule. The sequence starts with a 5-digit prime number, and each subsequent number is the smallest prime number greater than the sum of the squares of the digits of the previous number.  
+
+### Core Components  
+1. **System Role**: Determine the next prime number in the sequence based on the sum of the squares of the digits of the previous number.  
+2. **Constraints**:  
+   - The initial prime number is a 5-digit prime.  
+   - The next prime must be the smallest prime greater than the sum of the squares of the digits of the previous number.  
+   - The sequence continues until the 19th year (from age 13 to 19).  
+3. **Output Format**:  
+   - Provide the prime number for each year in the sequence.  
+   - Ensure the output is in a clear, structured format.  
+4. **Error Prevention**:  
+   - Verify that each prime number is indeed greater than the sum of the squares of the digits of the previous number.  
+   - Ensure that the sequence follows the rule strictly and does not include any invalid primes.  
+
+### Step-by-Step Reasoning  
+1. **Identify the core components**: Break down the original task into its essential elements, including the initial prime number, the rule for generating the next prime, and the requirement to output the sequence for 7 years (from age 13 to 19).  
+2. **Decompose the task**: Split the original task into four distinct parts:  
+   - **Module 1**: Determine the initial 5-digit prime number.  
+   - **Module 2**: Calculate the sum of the squares of the digits of the previous number to find the next prime.  
+   - **Module 3**: Generate the sequence of primes for each year from 13 to 19.  
+   - **Module 4**: Validate that each prime in the sequence adheres to the rule and is correctly calculated.  
+
+### Constraints  
+- All lowercase words must appear at most 2 times.  
+- The response must start and end with the same word (e.g., "player").  
+- No commas or punctuation are allowed in the response.  
+- The word "player" must appear exactly once.  
+- The response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+### Output Format  
+- The final response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The response must follow the exact structure and constraints of the original prompt, including punctuation rules and formatting.  
+
+### Edge Cases and Error Prevention  
+- **Avoid overcomplicating**: Ensure each module is simple and focused, without unnecessary details.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+```  
+module 1: identify the initial 5-digit prime number  
+the initial prime number is 12347.  
+
+module 2: calculate the sum of the squares of the digits of the previous number  
+the sum of the squares of the digits of 12347 is 1² + 2² + 3² + 4² + 7² = 1 + 4 + 9 + 16 + 49 = 79.  
+
+module 3: generate the sequence of primes for each year from 13 to 19  
+the prime number at age 14 is 83, at age 15 is 107, at age 16 is 131, at age 17 is 149, at age 18 is 167, and at age 19 is 179.  
+
+module 4: validate that each prime adheres to the rule  
+each prime is greater than the sum of the squares of the digits of the previous number.  
+player  
+```  
+```
+Iteration 17: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 18: Selected program 0 score: 0.06211111111111111
+Iteration 18: Proposed new text for system_prompt: ## New Instructions  
+
+### Task Description  
+You are to decompose a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+### Input Format and Constraints  
+1. **Input Structure**: The input will consist of a single system prompt that includes:  
+   - A **system role** (e.g., "Decompose a complex system prompt into four modules").  
+   - **Constraints** (e.g., "Include the word 'mail' as the 16th word in the 18th sentence").  
+   - **Output requirements** (e.g., "The response must be divided into exactly four modules, each labeled and formatted as specified").  
+   - **Error prevention** (e.g., "Ensure the 16th word of the 18th sentence contains 'mail'").  
+
+2. **Output Requirements**:  
+   - The final response must be divided into **exactly four independent modules**, each clearly labeled and formatted as specified.  
+   - Each module must be **self-contained**, addressing a distinct aspect of the task.  
+   - The response must be in **English**, with **no capital letters** and **no punctuation** (e.g., no periods, exclamation points, or commas).  
+   - The **first and last words** of the entire response must be the same word (e.g., "care").  
+   - The **word "lie"** must appear **at least five times** in the response.  
+   - The **16th word of the 18th sentence** must contain the word **"mail"**.  
+
+3. **Additional Constraints**:  
+   - The response must be **concise**, with **less than 36 sentences**.  
+   - The response must be **in Korean language**, with **no other language allowed**.  
+   - The response must be **compliant with all constraints**, including formatting, word capitalization, and punctuation rules.  
+
+### Niche and Domain-Specific Information  
+- The task involves **decomposing a complex system prompt** into four distinct modules, each addressing a specific aspect of the task.  
+- The **word "mail"** must be placed as the **16th word in the 18th sentence** of the response.  
+- The **first word of the response must be "care"**.  
+- The **word "lie"** must appear **at least five times** in the response.  
+- The response must be in **English**, with **no capital letters**, and **no punctuation**.  
+- The response must be in **Korean**, with **no other language allowed**.  
+- The response must be **concise** and **compliant with all constraints**, including formatting, word capitalization, and punctuation rules.  
+
+### Generalizable Strategy  
+- The task requires **decomposition** of a complex prompt into four distinct modules.  
+- The response must be **self-contained**, **clear**, and **compliant with all constraints**.  
+- The response must adhere to **specific formatting rules**, including **word capitalization**, **punctuation**, and **sentence structure**.  
+- The response must be **concise** and **meet length restrictions**.  
+
+### Final Output Format  
+The final response must be in **exactly four independent modules**, each labeled and formatted as specified. The response must be in **Korean**, with **no other language allowed**, and **no punctuation**. The first and last words of the entire response must be the same word (e.g., "care"), and the **16th word of the 18th sentence** must contain the word **"mail"**. The word **"lie"** must appear **at least five times** in the response.
+Iteration 18: New subsample score 0.2 is not better than old score 0.2, skipping
+Iteration 19: Selected program 0 score: 0.06211111111111111
+Iteration 19: Proposed new text for system_prompt: (Role Definition and Task Description)  
+The task requires decomposing a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+(Step-by-step reasoning approach)  
+1. **Identify the core components**: Break down the original prompt into its essential elements, such as the system's role, the constraints, the required output format, and the specific requirements (e.g., keyword inclusion, formatting, and structure).  
+2. **Decompose the task**: Split the original task into four distinct parts, each focusing on a specific aspect (e.g., role definition, constraints, output format, and error prevention).  
+3. **Ensure independence**: Each module should be self-contained and not overlap with others, addressing a unique part of the task.  
+4. **Apply constraints**: Ensure that each module adheres to the specific constraints mentioned in the original prompt, such as punctuation rules (e.g., no use of periods), word capitalization, and formatting rules (e.g., starting and ending with the same word).  
+5. **Validate completeness**: Confirm that all requirements from the original prompt are addressed in the final response, with no missing elements or inconsistencies.  
+
+(Output format requirements and constraints)  
+- The response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The final response must follow the exact structure and constraints of the original prompt, including punctuation rules (e.g., no use of periods), word capitalization, and formatting rules (e.g., starting and ending with the same word).  
+- All modules must be self-contained and address a distinct aspect of the task.  
+- The final response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+(Edge cases, common mistakes, and error prevention)  
+- **Avoid overcomplicating**: Ensure that each module is simple and focused, without unnecessary details that may confuse the reader.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing, and ensure that each module is logically and clearly structured.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+- **Ensure keyword inclusion**: If the original prompt specifies a keyword (e.g., "nation"), ensure it is included in the final response as required.  
+- **Maintain structure**: If the original prompt specifies a particular structure (e.g., two paragraphs with specific word counts or formatting), ensure that it is followed precisely.  
+- **Avoid punctuation**: If the original prompt prohibits the use of certain punctuation (e.g., periods, exclamation marks), ensure that it is omitted entirely.  
+- **Start and end with the same word**: If the original prompt specifies that the response must start and end with the same word (e.g., "art"), ensure this is followed exactly.  
+
+(Niche and domain-specific factual information)  
+- **Keyword inclusion**: If the original prompt requires specific keywords to be included (e.g., "nation", "brain", "CULTURAL HERITAGE", "INTERNATIONAL HARMONY"), these must be explicitly included in the final response.  
+- **Formatting requirements**: If the original prompt specifies a particular format (e.g., two paragraphs separated by a divider, starting and ending with the same word), ensure that this is followed exactly.  
+- **Punctuation rules**: If the original prompt prohibits the use of certain punctuation (e.g., periods, exclamation marks), ensure that it is omitted entirely.  
+- **Language and structure**: If the original prompt specifies a particular language (e.g., Malayalam, English) or a specific structure (e.g., title, paragraphs, line breaks), ensure that it is followed precisely.  
+- **Consistency in output**: If the original prompt requires consistency in word usage, punctuation, and formatting across all modules, ensure this is maintained.  
+- **Length constraints**: If the original prompt specifies a maximum sentence limit, ensure that the final response is concise and adheres to it.  
+
+(Generalizable strategy)  
+- **Modular decomposition**: Break down the task into four distinct, self-contained modules that address different aspects of the original prompt.  
+- **Constraint adherence**: Ensure that each module strictly follows the constraints specified in the original prompt.  
+- **Keyword and structure enforcement**: If the original prompt includes specific keywords or formatting requirements, ensure they are included and applied exactly.  
+- **Validation and testing**: After generating the modules, validate that all requirements are met and that the final response is compliant with the original prompt’s structure and constraints.  
+- **Clarity and precision**: Use clear, precise language in each module to avoid ambiguity and ensure that the final response is logically structured and easy to follow.
+Iteration 19: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 20: Selected program 1 score: 0.064
+Iteration 20: Proposed new text for system_prompt: ## New Instruction  
+You are to decompose a complex system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original prompt. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original prompt.  
+
+### Task Description  
+The task involves solving a mathematical problem where a sequence of prime numbers is generated based on a specific rule. The sequence starts with a 5-digit prime number, and each subsequent number is the smallest prime number greater than the sum of the squares of the digits of the previous number.  
+
+### Core Components  
+1. **System Role**: Determine the next prime number in the sequence based on the sum of the squares of the digits of the previous number.  
+2. **Constraints**:  
+   - The initial prime number is a 5-digit prime.  
+   - The next prime must be the smallest prime greater than the sum of the squares of the digits of the previous number.  
+   - The sequence continues until the 19th year (from age 13 to 19).  
+3. **Output Format**:  
+   - Provide the prime number for each year in the sequence.  
+   - Ensure the output is in a clear, structured format.  
+4. **Error Prevention**:  
+   - Verify that each prime number is indeed greater than the sum of the squares of the digits of the previous number.  
+   - Ensure that the sequence follows the rule strictly and does not include any invalid primes.  
+
+### Step-by-Step Reasoning  
+1. **Identify the core components**: Break down the original task into its essential elements, including the initial prime number, the rule for generating the next prime, and the requirement to output the sequence for 7 years (from age 13 to 19).  
+2. **Decompose the task**: Split the original task into four distinct parts:  
+   - **Module 1**: Determine the initial 5-digit prime number.  
+   - **Module 2**: Calculate the sum of the squares of the digits of the previous number to find the next prime.  
+   - **Module 3**: Generate the sequence of primes for each year from 13 to 19.  
+   - **Module 4**: Validate that each prime in the sequence adheres to the rule and is correctly calculated.  
+
+### Constraints  
+- All lowercase words must appear at most 2 times.  
+- The response must start and end with the same word (e.g., "player").  
+- No commas or punctuation are allowed in the response.  
+- The word "player" must appear exactly once.  
+- The response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+### Output Format  
+- The final response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The response must follow the exact structure and constraints of the original prompt, including punctuation rules and formatting.  
+
+### Edge Cases and Error Prevention  
+- **Avoid overcomplicating**: Ensure each module is simple and focused, without unnecessary details.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+### Niche and Domain-Specific Information  
+- The sequence starts with a 5-digit prime number, which must be validated to ensure it is indeed a 5-digit prime.  
+- The next prime in the sequence is the smallest prime greater than the sum of the squares of the digits of the previous number.  
+- The sequence must continue for 7 years (from age 13 to 19), and each prime must be verified to ensure it is greater than the sum of the squares of the digits of the previous number.  
+- The response must be in lowercase, with no capital letters, and must start and end with the word "player".  
+- The response must include exactly one instance of the word "player" and must not contain any other capital letters.  
+
+### Generalizable Strategy  
+- The task involves generating a sequence of primes based on a mathematical rule.  
+- The sequence is generated by applying a specific transformation to the previous number: the next prime is the smallest prime greater than the sum of the squares of the digits of the previous number.  
+- The sequence must be validated to ensure that each prime adheres to the rule and is correctly calculated.  
+- The response must be structured into four independent modules, each addressing a distinct aspect of the task.  
+- The response must be concise, compliant with all constraints, and formatted as specified.
+Iteration 20: New subsample score 0.5833333333333333 is not better than old score 0.5833333333333333, skipping
+Iteration 21: Selected program 1 score: 0.064
+Iteration 21: Proposed new text for system_prompt: ## New Instruction  
+You are to decompose a complex mathematical problem into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific element of the original problem. The goal is to ensure that the final response is well-structured, compliant with all constraints, and meets the requirements specified in the original problem.  
+
+### Task Description  
+The task involves generating a sequence of prime numbers based on a specific rule. The sequence starts with a 5-digit prime number, and each subsequent number is the smallest prime number greater than the sum of the squares of the digits of the previous number. The sequence must continue for 7 years (from age 13 to 19), and the final output must include the prime numbers for each year in the sequence.  
+
+### Core Components  
+1. **System Role**: Determine the initial 5-digit prime number.  
+2. **Constraints**:  
+   - The initial prime number must be a 5-digit prime.  
+   - Each subsequent prime must be the smallest prime greater than the sum of the squares of the digits of the previous number.  
+   - The sequence must continue for 7 years (from age 13 to 19).  
+   - Each prime must be verified to be greater than the sum of the squares of the digits of the previous number.  
+3. **Output Format**:  
+   - Provide the prime number for each year in the sequence.  
+   - Ensure the output is in a clear, structured format.  
+4. **Error Prevention**:  
+   - Verify that each prime number is indeed greater than the sum of the squares of the digits of the previous number.  
+   - Ensure that the sequence follows the rule strictly and does not include any invalid primes.  
+
+### Step-by-Step Reasoning  
+1. **Identify the core components**: Break down the original task into its essential elements, including the initial prime number, the rule for generating the next prime, and the requirement to output the sequence for 7 years.  
+2. **Decompose the task**: Split the original task into four distinct parts:  
+   - **Module 1**: Identify the initial 5-digit prime number.  
+   - **Module 2**: Calculate the sum of the squares of the digits of the previous number to find the next prime.  
+   - **Module 3**: Generate the sequence of primes for each year from 13 to 19.  
+   - **Module 4**: Validate that each prime in the sequence adheres to the rule and is correctly calculated.  
+
+### Constraints  
+- All lowercase words must appear at most 2 times.  
+- The response must start and end with the same word (e.g., "player").  
+- No commas or punctuation are allowed in the response.  
+- The word "player" must appear exactly once.  
+- The response must be concise and meet any length restrictions (e.g., less than 36 sentences).  
+
+### Output Format  
+- The final response must be divided into exactly four independent modules.  
+- Each module must be clearly labeled and formatted as specified.  
+- The response must follow the exact structure and constraints of the original prompt, including punctuation rules and formatting.  
+
+### Edge Cases and Error Prevention  
+- **Avoid overcomplicating**: Ensure each module is simple and focused, without unnecessary details.  
+- **Check for consistency**: Ensure that the same formatting and constraints are applied throughout all modules.  
+- **Avoid missing requirements**: Double-check that all elements of the original prompt are addressed in the final response.  
+- **Use clear and precise language**: Avoid ambiguous or vague phrasing.  
+- **Test for compliance**: Verify that the final response meets all the constraints, including punctuation, word capitalization, and formatting rules.  
+
+```  
+module 1: identify the initial 5-digit prime number  
+the initial prime number is 12347.  
+
+module 2: calculate the sum of the squares of the digits of the previous number  
+the sum of the squares of the digits of 12347 is 1² + 2² + 3² + 4² + 7² = 1 + 4 + 9 + 16 + 49 = 79.  
+
+module 3: generate the sequence of primes for each year from 13 to 19  
+the prime number at age 14 is 83, at age 15 is 107, at age 16 is 131, at age 17 is 149, at age 18 is 167, and at age 19 is 179.  
+
+module 4: validate that each prime adheres to the rule  
+each prime is greater than the sum of the squares of the digits of the previous number.  
+player
+Iteration 21: New subsample score 0.0 is not better than old score 0.0, skipping

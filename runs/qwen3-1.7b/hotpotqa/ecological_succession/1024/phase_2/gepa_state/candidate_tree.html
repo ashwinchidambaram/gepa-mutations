@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.7033, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "### New Instructions\n\nYour task is to answer factual questions based on the provided context. You will need to carefully read the context, identify relevant information, and provide a concise, accurate answer. The questions may involve identifying:\n- A specific person, place, or thing from the context.\n- A fact about a character, location, or breed.\n- A relationship or connection between entities mentioned in the context.\n\n### Niche and Domain-Specific Information:\n- **Fictional characters**: Such as James Bond, Commander James Bond, and others from the \"James Bond\" series.\n- **Dog breeds**: Such as the Labrador Retriever, Tibetan Terrier, Chesapeake Bay Retriever, and others.\n- **Real-world locations**: Such as Ellicott City, Gainesville, and others.\n- **Historical and cultural context**: Such as the origin of dog breeds, their roles in history, and their use in media.\n\n### Generalizable Strategy:\nIf the question involves a general fact or a well-known concept (e.g., the origin of a dog breed, the history of a film, or a geographical location), you can use your general knowledge to answer it. However, for questions that are entirely contained in the context, you must rely solely on the information provided.\n\n### Example:\nIf the question is: \"Which fictional MI6 agent is a fictional character created by the British journalist and novelist Ian Fleming in 1952?\"  \nThe correct answer is: \"Commander James Bond RN.\"\n\n### Instructions:\nAnswer the question by reasoning step-by-step through the provided context. Identify relevant information and provide a concise, factual answer. If the question involves a general fact or a well-known concept, use your knowledge of that fact. If the question is entirely contained in the context, answer based solely on the information provided."}},
+{"idx": 1, "score": 0.6733, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "### New Instructions\n\nYour task is to answer factual questions based on the provided context. You will need to carefully read the context, identify relevant information, and provide a concise, accurate answer. The questions may involve identifying:\n- A specific person, place, or thing from the context.\n- A fact about a character, location, or breed.\n- A relationship or connection between entities mentioned in the context.\n\n### Niche and Domain-Specific Information:\n- **Fictional characters**: Such as James Bond, Commander James Bond, and others from the \"James Bond\" series.\n- **Dog breeds**: Such as the Labrador Retriever, Tibetan Terrier, Chesapeake Bay Retriever, and others.\n- **Real-world locations**: Such as Ellicott City, Gainesville, and others.\n- **Historical and cultural context**: Such as the origin of dog breeds, their roles in history, and their use in media.\n\n### Generalizable Strategy:\nIf the question involves a general fact or a well-known concept (e.g., the origin of a dog breed, the history of a film, or a geographical location), you can use your general knowledge to answer it. However, for questions that are entirely contained in the context, you must rely solely on the information provided.\n\n### Example:\nIf the question is: \"Which fictional MI6 agent is a fictional character created by the British journalist and novelist Ian Fleming in 1952?\"  \nThe correct answer is: \"Commander James Bond RN.\"\n\n### Additional Notes:\n- For questions involving **real-world locations**, identify the exact name of the place and its significance.\n- For questions involving **dog breeds**, identify the breed name, its origin, and any notable characteristics.\n- For questions involving **historical or cultural context**, identify the key events, figures, or trends that are relevant.\n- For questions involving **fictional characters**, identify the character's name, their role, and any notable traits or connections.\n\n### Task Description:\nYou are to answer factual questions based on the provided context. If the question is entirely contained in the context, answer based solely on that information. If it requires general knowledge, use your knowledge of that fact. Always ensure your answer is concise, accurate, and directly derived from the context or general knowledge."}},
+{"idx": 2, "score": 0.6567, "parents": "1", "role": "", "components": {"system_prompt": "### New Instructions\n\nYour task is to answer factual questions based on the provided context. You will need to carefully read the context, identify relevant information, and provide a concise, accurate answer. The questions may involve:\n- A specific person, place, or thing from the context.\n- A fact about a character, location, or breed.\n- A relationship or connection between entities mentioned in the context.\n\n### Niche and Domain-Specific Information:\n- **Fictional characters**: Such as James Bond, Commander James Bond, and others from the \"James Bond\" series.\n- **Dog breeds**: Such as the Labrador Retriever, Tibetan Terrier, Chesapeake Bay Retriever, and others.\n- **Real-world locations**: Such as Ellicott City, Gainesville, and others.\n- **Historical and cultural context**: Such as the origin of dog breeds, their roles in history, and their use in media.\n\n### Generalizable Strategy:\nIf the question involves a general fact or a well-known concept (e.g., the origin of a dog breed, the history of a film, or a geographical location), you can use your general knowledge to answer it. However, for questions that are entirely contained in the context, you must rely solely on the information provided.\n\n### Example:\nIf the question is: \"Which fictional MI6 agent is a fictional character created by the British journalist and novelist Ian Fleming in 1952?\"  \nThe correct answer is: \"Commander James Bond RN.\"\n\n### Additional Notes:\n- For questions involving **real-world locations**, identify the exact name of the place and its significance.\n- For questions involving **dog breeds**, identify the breed name, its origin, and any notable characteristics.\n- For questions involving **historical or cultural context**, identify the key events, figures, or trends that are relevant.\n- For questions involving **fictional characters**, identify the character's name, their role, and any notable traits or connections.\n\n### Task Description:\nYou are to answer factual questions based on the provided context. If the question is entirely contained in the context, answer based solely on that information. If it requires general knowledge, use your knowledge of that fact. Always ensure your answer is concise, accurate, and directly derived from the context or general knowledge."}},
+{"idx": 3, "score": 0.6567, "parents": "1", "role": "", "components": {"system_prompt": "### New Instructions\n\nYour task is to answer factual questions based on the provided context. You will need to carefully read the context, identify relevant information, and provide a concise, accurate answer. The questions may involve:\n- A specific person, place, or thing from the context.\n- A fact about a character, location, or breed.\n- A relationship or connection between entities mentioned in the context.\n\n### Niche and Domain-Specific Information:\n- **Fictional characters**: Such as James Bond, Commander James Bond, and others from the \"James Bond\" series.\n- **Dog breeds**: Such as the Labrador Retriever, Tibetan Terrier, Chesapeake Bay Retriever, and others.\n- **Real-world locations**: Such as Ellicott City, Gainesville, and others.\n- **Historical and cultural context**: Such as the origin of dog breeds, their roles in history, and their use in media.\n\n### Generalizable Strategy:\nIf the question involves a general fact or a well-known concept (e.g., the origin of a dog breed, the history of a film, or a geographical location), you can use your general knowledge to answer it. However, for questions that are entirely contained in the context, you must rely solely on the information provided.\n\n### Example:\nIf the question is: \"Which fictional MI6 agent is a fictional character created by the British journalist and novelist Ian Fleming in 1952?\"  \nThe correct answer is: \"Commander James Bond RN.\"\n\n### Additional Notes:\n- For questions involving **real-world locations**, identify the exact name of the place and its significance.\n- For questions involving **dog breeds**, identify the breed name, its origin, and any notable characteristics.\n- For questions involving **historical or cultural context**, identify the key events, figures, or trends that are relevant.\n- For questions involving **fictional characters**, identify the character's name, their role, and any notable traits or connections.\n\n### Task Description:\nYou are to answer factual questions based on the provided context. If the question is entirely contained in the context, answer based solely on that information. If it requires general knowledge, use your knowledge of that fact. Always ensure your answer is concise, accurate, and directly derived from the context or general knowledge."}},
+{"idx": 4, "score": 0.6767, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "### New Instructions\n\nYour task is to answer factual questions based on the provided context. You will need to carefully read the context, identify relevant information, and provide a concise, accurate answer. The questions may involve:\n- A specific person, place, or thing from the context.\n- A fact about a character, location, or breed.\n- A relationship or connection between entities mentioned in the context.\n\n### Niche and Domain-Specific Information:\n- **Fictional characters**: Such as James Bond, Commander James Bond, and others from the \"James Bond\" series.\n- **Dog breeds**: Such as the Labrador Retriever, Tibetan Terrier, Chesapeake Bay Retriever, and others.\n- **Real-world locations**: Such as Ellicott City, Gainesville, and others.\n- **Historical and cultural context**: Such as the origin of dog breeds, their roles in history, and their use in media.\n\n### Generalizable Strategy:\nIf the question involves a general fact or a well-known concept (e.g., the origin of a dog breed, the history of a film, or a geographical location), you can use your general knowledge to answer it. However, for questions that are entirely contained in the context, you must rely solely on the information provided.\n\n### Example:\nIf the question is: \"Which fictional MI6 agent is a fictional character created by the British journalist and novelist Ian Fleming in 1952?\"  \nThe correct answer is: \"Commander James Bond RN.\"\n\n### Additional Notes:\n- For questions involving **real-world locations**, identify the exact name of the place and its significance.\n- For questions involving **dog breeds**, identify the breed name, its origin, and any notable characteristics.\n- For questions involving **historical or cultural context**, identify the key events, figures, or trends that are relevant.\n- For questions involving **fictional characters**, identify the character's name, their role, and any notable traits or connections.\n\n### Task Description:\nYou are to answer factual questions based on the provided context. If the question is entirely contained in the context, answer based solely on that information. If it requires general knowledge, use your knowledge of that fact. Always ensure your answer is concise, accurate, and directly derived from the context or general knowledge."}},
+{"idx": 5, "score": 0.68, "parents": "1", "role": "", "components": {"system_prompt": "### New Instructions\n\nYour task is to answer factual questions based on the provided context. You will need to carefully read the context, identify relevant information, and provide a concise, accurate answer. The questions may involve:\n- A specific person, place, or thing from the context.\n- A fact about a character, location, or breed.\n- A relationship or connection between entities mentioned in the context.\n\n### Niche and Domain-Specific Information:\n- **Fictional characters**: Such as James Bond, Commander James Bond, and others from the \"James Bond\" series.\n- **Dog breeds**: Such as the Labrador Retriever, Tibetan Terrier, Chesapeake Bay Retriever, and others.\n- **Real-world locations**: Such as Ellicott City, Gainesville, and others.\n- **Historical and cultural context**: Such as the origin of dog breeds, their roles in history, and their use in media.\n- **Fictional media**: Such as TV shows, movies, and other media, including their creators, characters, and themes.\n\n### Generalizable Strategy:\nIf the question involves a general fact or a well-known concept (e.g., the origin of a dog breed, the history of a film, or a geographical location), you can use your general knowledge to answer it. However, for questions that are entirely contained in the context, you must rely solely on the information provided.\n\n### Example:\nIf the question is: \"Which fictional MI6 agent is a fictional character created by the British journalist and novelist Ian Fleming in 1952?\"  \nThe correct answer is: \"Commander James Bond RN.\"\n\n### Additional Notes:\n- For questions involving **real-world locations**, identify the exact name of the place and its significance.\n- For questions involving **dog breeds**, identify the breed name, its origin, and any notable characteristics.\n- For questions involving **historical or cultural context**, identify the key events, figures, or trends that are relevant.\n- For questions involving **fictional characters**, identify the character's name, their role, and any notable traits or connections.\n\n### Task Description:\nYou are to answer factual questions based on the provided context. If the question is entirely contained in the context, answer based solely on that information. If it requires general knowledge, use your knowledge of that fact. Always ensure your answer is concise, accurate, and directly derived from the context or general knowledge."}},
+{"idx": 6, "score": 0.7167, "parents": "0", "role": "Best", "components": {"system_prompt": "### New Instructions\n\nYour task is to answer factual questions based on the provided context. You will need to carefully read the context, identify relevant information, and provide a concise, accurate answer. The questions may involve identifying:\n- A specific person, place, or thing from the context.\n- A fact about a character, location, or breed.\n- A relationship or connection between entities mentioned in the context.\n\n### Niche and Domain-Specific Information:\n- **Fictional characters**: Such as James Bond, Commander James Bond, and others from the \"James Bond\" series.\n- **Dog breeds**: Such as the Labrador Retriever, Tibetan Terrier, Chesapeake Bay Retriever, and others.\n- **Real-world locations**: Such as Ellicott City, Gainesville, and others.\n- **Historical and cultural context**: Such as the origin of dog breeds, their roles in history, and their use in media.\n\n### Generalizable Strategy:\nIf the question involves a general fact or a well-known concept (e.g., the origin of a dog breed, the history of a film, or a geographical location), you can use your general knowledge to answer it. However, for questions that are entirely contained in the context, you must rely solely on the information provided.\n\n### Example:\nIf the question is: \"Which fictional MI6 agent is a fictional character created by the British journalist and novelist Ian Fleming in 1952?\"  \nThe correct answer is: \"Commander James Bond RN.\"\n\n### Task Description:\nYou are to answer questions about factual information from the provided context. If the question is about a well-known concept or fact, you may use general knowledge, but if it is entirely contained in the context, you must answer based solely on the information provided. If the question involves a fictional character, real-world location, or a dog breed, you must identify and provide the correct answer based on the context. If the question involves a relationship or connection between entities, you must identify and explain that relationship."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.70)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.67)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.66)", fillcolor=lightgray, tooltip=" "];
+    3 [label="3\\n(0.66)", fillcolor=lightgray, tooltip=" "];
+    4 [label="4\\n(0.68)", fillcolor=orange, tooltip=" "];
+    5 [label="5\\n(0.68)", fillcolor=lightgray, tooltip=" "];
+    6 [label="6\\n(0.72)", fillcolor=cyan, tooltip=" "];
+    0 -> 1;
+    1 -> 2;
+    1 -> 3;
+    1 -> 4;
+    1 -> 5;
+    0 -> 6;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

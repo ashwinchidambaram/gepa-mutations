@@ -1,0 +1,60 @@
+
+Experiment plan:
+  Total:   60
+  Done:    16 (skipping)
+  Pending: 44
+  Workers: 8
+
+2026-04-13 01:40:27,271 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 01:40:27,290 INFO START  hotpotqa/contrastive_synthesis/seed=123
+2026-04-13 01:40:27,290 INFO START  hotpotqa/contrastive_synthesis/seed=456
+2026-04-13 01:40:27,290 INFO START  hotpotqa/contrastive_synthesis/seed=789
+2026-04-13 01:40:27,291 INFO START  hotpotqa/ecological_succession/seed=42
+2026-04-13 01:40:27,291 INFO START  hotpotqa/contrastive_synthesis/seed=1024
+2026-04-13 01:40:27,291 INFO START  hotpotqa/ecological_succession/seed=123
+2026-04-13 01:40:27,291 INFO START  hotpotqa/ecological_succession/seed=456
+2026-04-13 01:40:27,292 INFO START  hotpotqa/ecological_succession/seed=789
+2026-04-13 01:53:10,300 INFO DONE   hotpotqa/contrastive_synthesis/seed=456 (763s) score=0.7633333333333333
+2026-04-13 01:53:10,301 INFO START  hotpotqa/ecological_succession/seed=1024
+2026-04-13 01:53:10,302 INFO [1/44] hotpotqa/contrastive_synthesis/seed=456 -> 76.3% (763s)
+2026-04-13 01:54:00,370 INFO DONE   hotpotqa/contrastive_synthesis/seed=123 (813s) score=0.7566666666666667
+2026-04-13 01:54:00,370 INFO START  hotpotqa/ant_colony/seed=42
+2026-04-13 01:54:00,371 INFO [2/44] hotpotqa/contrastive_synthesis/seed=123 -> 75.7% (813s)
+2026-04-13 02:59:40,221 INFO DONE   hotpotqa/contrastive_synthesis/seed=789 (4753s) score=0.71
+2026-04-13 02:59:40,222 INFO START  hotpotqa/ant_colony/seed=123
+2026-04-13 02:59:40,222 INFO [3/44] hotpotqa/contrastive_synthesis/seed=789 -> 71.0% (4753s)
+2026-04-13 02:59:40,916 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 03:26:42,959 INFO DONE   hotpotqa/contrastive_synthesis/seed=1024 (6376s) score=0.73
+2026-04-13 03:26:42,960 INFO START  hotpotqa/ant_colony/seed=456
+2026-04-13 03:26:42,961 INFO [4/44] hotpotqa/contrastive_synthesis/seed=1024 -> 73.0% (6376s)
+2026-04-13 04:12:36,880 INFO DONE   hotpotqa/ecological_succession/seed=42 (9130s) score=0.7466666666666667
+2026-04-13 04:12:36,881 INFO START  hotpotqa/ant_colony/seed=789
+2026-04-13 04:12:36,882 INFO [5/44] hotpotqa/ecological_succession/seed=42 -> 74.7% (9130s)
+2026-04-13 04:12:37,553 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 04:51:50,011 INFO DONE   hotpotqa/ecological_succession/seed=123 (11483s) score=0.6933333333333334
+2026-04-13 04:51:50,012 INFO START  hotpotqa/ant_colony/seed=1024
+2026-04-13 04:51:50,013 INFO [6/44] hotpotqa/ecological_succession/seed=123 -> 69.3% (11483s)
+2026-04-13 04:51:50,719 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 05:46:29,267 INFO DONE   hotpotqa/ecological_succession/seed=456 (14762s) score=0.6966666666666667
+2026-04-13 05:46:29,268 INFO START  hotpotqa/synaptic_pruning/seed=42
+2026-04-13 05:46:29,268 INFO [7/44] hotpotqa/ecological_succession/seed=456 -> 69.7% (14762s)
+2026-04-13 05:46:29,968 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 05:55:44,201 INFO DONE   hotpotqa/ant_colony/seed=123 (10564s) score=0.7333333333333333
+2026-04-13 05:55:44,201 INFO START  hotpotqa/synaptic_pruning/seed=123
+2026-04-13 05:55:44,202 INFO [8/44] hotpotqa/ant_colony/seed=123 -> 73.3% (10564s)
+2026-04-13 06:05:58,945 INFO DONE   hotpotqa/synaptic_pruning/seed=123 (615s) score=0.65
+2026-04-13 06:05:58,946 INFO START  hotpotqa/synaptic_pruning/seed=456
+2026-04-13 06:05:58,947 INFO [9/44] hotpotqa/synaptic_pruning/seed=123 -> 65.0% (615s)
+2026-04-13 06:12:20,430 INFO DONE   hotpotqa/synaptic_pruning/seed=42 (1551s) score=0.71
+2026-04-13 06:12:20,430 INFO START  hotpotqa/synaptic_pruning/seed=789
+2026-04-13 06:12:20,431 INFO [10/44] hotpotqa/synaptic_pruning/seed=42 -> 71.0% (1551s)
+2026-04-13 06:27:54,340 INFO DONE   hotpotqa/synaptic_pruning/seed=789 (934s) score=0.69
+2026-04-13 06:27:54,340 INFO START  hotpotqa/synaptic_pruning/seed=1024
+2026-04-13 06:27:54,341 INFO [11/44] hotpotqa/synaptic_pruning/seed=789 -> 69.0% (934s)
+2026-04-13 06:27:55,038 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 06:34:27,396 INFO DONE   hotpotqa/ant_colony/seed=42 (16827s) score=0.7766666666666666
+2026-04-13 06:34:27,397 INFO START  hotpotqa/slime_mold/seed=42
+2026-04-13 06:34:27,398 INFO [12/44] hotpotqa/ant_colony/seed=42 -> 77.7% (16827s)
+2026-04-13 06:39:08,246 INFO DONE   hotpotqa/ecological_succession/seed=789 (17921s) score=0.7066666666666667
+2026-04-13 06:39:08,247 INFO START  hotpotqa/slime_mold/seed=123
+2026-04-13 06:39:08,248 INFO [13/44] hotpotqa/ecological_succession/seed=789 -> 70.7% (17921s)
