@@ -21742,3 +21742,1371 @@ Anonymize the user's input by identifying and removing all personally identifiab
 Iteration 158 [k=1]: Candidate score sum = 1.7142857142857144 (best so far = 1.7142857142857144)
 Iteration 158: Exception during reflection/proposal: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
 Iteration 158: Exception during optimization: [Errno 32] Broken pipe
+Loading gepa state from run dir
+Iteration 157: Base program full valset score: 0.27789817681458545 over 95 / 95 examples
+Iteration 158: Selected program 16 score: 0.4693257653938769
+Iteration 158 [k=0]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Requirements:**  
+- The assistant must use a consistent anonymization template (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") for all PII.  
+- The rewritten query must be free of any PII and must not include any external references or data.  
+- The assistant must ensure that the rewritten query is grammatically correct, concise, and suitable for professional or technical use.  
+- The assistant must not include any additional information beyond what is provided in the user's input.  
+- The instruction must explicitly state that the output is anonymized and that no PII is present in the final response.
+Iteration 158 [k=0]: Candidate score sum = 2.25 (best so far = -inf)
+Iteration 158 [k=1]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant must ensure that the anonymized query is free of any PII and that the replacement of PII is done in a way that does not alter the original meaning or intent of the query.  
+- The assistant must maintain the formal and professional tone required for the intended use case.  
+- The assistant must avoid any external references or data when generating the anonymized query.  
+- If the assistant uses a standardized anonymization template (e.g., a predefined set of rules or a specific format), the instruction should explicitly reference that strategy to ensure consistency and clarity.
+Iteration 158 [k=1]: Candidate score sum = 2.25 (best so far = 2.25)
+Iteration 158 [k=2]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Guidelines for Consistency:**  
+- Use a standardized anonymization template (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") for all PII.  
+- Maintain the original structure and formatting of the input while replacing PII with placeholders.  
+- Ensure that the rewritten query is free of any PII and that no sensitive information is inadvertently included.  
+- The final output must be concise, formal, and suitable for professional or technical use.  
+- If the input contains multiple PII elements, they should be replaced in a way that maintains the query's clarity and intent.
+Iteration 158 [k=2]: Candidate score sum = 2.0 (best so far = 2.25)
+Iteration 158: New subsample score 2.25 is not better than old score 2.25, skipping
+Iteration 159: Selected program 11 score: 0.3994412501842842
+Iteration 159 [k=0]: Proposed new text for system_prompt: **New Instruction:**  
+Analyze and anonymize the provided text to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]". Ensure the rewritten text maintains a formal and professional tone suitable for use in business plans, technical documentation, or internal communication. The output must not include any sensitive data and must be concise and appropriate for professional contexts. Do not include any external data or context beyond the input text. If the text contains a standardized template or process for anonymizing PII (e.g., a predefined format for replacing names, addresses, etc.), follow that process to ensure consistency and avoid errors.  
+
+**Task Description:**  
+1. **PII Removal:** Identify and remove all instances of names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the original intent and context.  
+3. **Tone and Context:** Maintain a formal and professional tone suitable for business, technical, or internal communication.  
+4. **Use Case:** The output must be appropriate for professional or technical use, such as business plans, technical documentation, or internal communication.  
+5. **No Leakage:** Ensure no PII is included in the output and that the rewritten text does not leak any sensitive data.  
+6. **No External Data:** Do not use any external data or context beyond the input text to generate the output.  
+7. **Generalizable Strategy:** If the input text contains a standardized template or process for anonymizing PII (e.g., a predefined format for replacing names, addresses, etc.), follow that process to ensure consistency and avoid errors.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+- **PII Types:** Explicitly include names, addresses, phone numbers, and emails as the types of PII to be removed.  
+- **Placeholder Examples:** Specify that placeholders should be "[Name]", "[Address]", "[Phone Number]", and "[Email]".  
+- **Tone Requirements:** Emphasize the need for a formal and professional tone for the final output.  
+- **Use Case Scope:** Clarify that the output is intended for professional or technical use, such as business plans, technical documentation, or internal communication.  
+- **No External Data:** Stress that the assistant must not use any external data or context for anonymization.  
+- **Consistency Requirement:** If the input contains a predefined template for anonymizing PII, the assistant must follow that template to maintain consistency.  
+- **Leakage Prevention:** Stress the importance of ensuring no PII is present in the output and that the rewritten text is free from sensitive data.  
+- **Standardized Templates:** Include the requirement to follow any standardized templates or processes for anonymizing PII, such as predefined formats for replacing names, addresses, etc.  
+- **Contextual Sensitivity:** Ensure the output is appropriate for professional or technical contexts and does not include any information that could be misinterpreted or used for unauthorized purposes.  
+- **Format Preservation:** Maintain the original structure and formatting of the input text while anonymizing PII.  
+- **No Redaction of Intent:** Ensure that the anonymized text retains the original intent and meaning of the input, even after PII has been replaced.
+Iteration 159 [k=0]: Candidate score sum = 1.6 (best so far = -inf)
+Iteration 159 [k=1]: Proposed new text for system_prompt: **New Instruction:**  
+Analyze and anonymize the provided text to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]". Ensure the rewritten text maintains a formal and professional tone suitable for use in business plans, technical documentation, or internal communication. The output must not include any sensitive data and must be concise and appropriate for professional contexts. Do not include any external data or context beyond the input text. If the text contains a standardized template or process for anonymizing PII (e.g., a predefined format for replacing names, addresses, etc.), follow that process to ensure consistency and avoid errors.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+- **PII Types:** Explicitly include names, addresses, phone numbers, and emails as the types of PII to be removed.  
+- **Placeholder Examples:** Specify that placeholders should be "[Name]", "[Address]", "[Phone Number]", and "[Email]".  
+- **Tone Requirements:** Emphasize the need for a formal and professional tone for the final output.  
+- **Use Case Scope:** Clarify that the output is intended for professional or technical use, such as business plans, technical documentation, or internal communication.  
+- **No External Data:** Stress that the assistant must not use any external data or context for anonymization.  
+- **Consistency Requirement:** If the input contains a predefined template for anonymizing PII, the assistant must follow that template to maintain consistency and avoid errors.  
+- **Leakage Prevention:** Stress the importance of ensuring no PII is present in the output and that the rewritten text is free from sensitive data.  
+- **Standardized Template Support:** If the input text contains a standardized template for anonymizing PII (e.g., a predefined format for replacing names, addresses, etc.), the assistant must follow that template to ensure consistency and avoid errors.  
+- **Generalizable Strategy:** If the input text contains a standardized template or process for anonymizing PII, the assistant must follow that process to ensure consistency and avoid errors.  
+- **Use Case Examples:** Include examples such as business plans, technical documentation, internal communication, and project proposals.  
+- **PII Removal Scope:** Ensure all instances of names, addresses, phone numbers, and emails are removed, including any variations or variations in formatting.  
+- **Placeholder Usage:** Ensure placeholders are used consistently across the text and that they are clearly marked as anonymized.  
+- **No Sensitivity:** The output must not include any data that could be linked to an individual, including but not limited to personal identifiers, financial details, or location-based information.  
+- **No External Context:** The assistant must not use any external data, knowledge, or context beyond the provided input text.  
+- **Formatting Guidelines:** Maintain a clean, professional, and consistent format for the output, including proper headings, bullet points, and paragraph structure.  
+- **No Markup:** Avoid using markdown or any formatting that could be misinterpreted as PII.
+Iteration 159 [k=1]: Candidate score sum = 1.1 (best so far = 1.6)
+Iteration 159 [k=2]: Proposed new text for system_prompt: **New Instruction:**  
+Analyze and anonymize the provided text to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]". Ensure the rewritten text maintains a formal and professional tone suitable for use in business plans, technical documentation, or internal communication. The output must not include any sensitive data and must be concise and appropriate for professional contexts. Do not include any external data or context beyond the input text. If the text contains a standardized template or process for anonymizing PII (e.g., a predefined format for replacing names, addresses, etc.), follow that process to ensure consistency and avoid errors.  
+
+**Task Description:**  
+1. **PII Removal:** Identify and remove all instances of names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the original intent and context.  
+3. **Tone and Context:** Maintain a formal and professional tone suitable for business, technical, or internal communication.  
+4. **Use Case:** The output must be appropriate for professional or technical use, such as business plans, technical documentation, or internal communication.  
+5. **No Leakage:** Ensure no PII is included in the output and that the rewritten text does not leak any sensitive data.  
+6. **No External Data:** Do not use any external data or context beyond the input text to generate the output.  
+7. **Generalizable Strategy:** If the input text contains a standardized template or process for anonymizing PII (e.g., a predefined format for replacing names, addresses, etc.), follow that process to ensure consistency and avoid errors.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+- **PII Types:** Explicitly include names, addresses, phone numbers, and emails as the types of PII to be removed.  
+- **Placeholder Examples:** Specify that placeholders should be "[Name]", "[Address]", "[Phone Number]", and "[Email]".  
+- **Tone Requirements:** Emphasize the need for a formal and professional tone for the final output.  
+- **Use Case Scope:** Clarify that the output is intended for professional or technical use, such as business plans, technical documentation, or internal communication.  
+- **No External Data:** Stress that the assistant must not use any external data or context for anonymization.  
+- **Consistency Requirement:** If the input contains a predefined template for anonymizing PII, the assistant must follow that template to maintain consistency and avoid errors.  
+- **Leakage Prevention:** Stress the importance of ensuring no PII is present in the output and that the rewritten text is free from sensitive data.  
+- **Standardized Templates:** If the input contains a standardized template for anonymizing PII (e.g., a predefined format for replacing names, addresses, etc.), the assistant must follow that template to ensure consistency and avoid errors.  
+- **Contextualization:** Ensure the output is suitable for professional or technical use, such as business plans, technical documentation, or internal communication.  
+- **No Sensitive Data:** The output must not include any sensitive data, including but not limited to personal identifiers, financial information, or confidential business details.  
+- **No Redaction of Intent:** Replace PII with placeholders while preserving the original intent and context of the text.  
+- **No External References:** The assistant must not reference or use any external data, context, or sources beyond the input text.  
+- **No Redundant Information:** The output must be concise and appropriate for professional contexts, avoiding unnecessary details or explanations.
+Iteration 159 [k=2]: Candidate score sum = 1.1 (best so far = 1.6)
+Iteration 159: New subsample score 1.6 is not better than old score 2.1, skipping
+Iteration 160: Selected program 26 score: 0.5351624158435304
+Iteration 160 [k=0]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization process and ensure clarity.  
+- If the assistant has used a template or standardized process, the instruction must explicitly reflect that strategy to ensure consistency and clarity.
+Iteration 160 [k=0]: Candidate score sum = 1.625 (best so far = -inf)
+Iteration 160 [k=1]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization process and ensure clarity.  
+- If the assistant has used a template or standardized process, the instruction must explicitly reflect that strategy to ensure consistency and clarity.
+Iteration 160 [k=1]: Duplicate candidate, skipping evaluation.
+Iteration 160 [k=2]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization process and ensure clarity.  
+- If the assistant has used a template or standardized process, the instruction must explicitly reflect that strategy to ensure consistency and clarity.
+Iteration 160 [k=2]: Duplicate candidate, skipping evaluation.
+Iteration 160: New subsample score 1.625 is not better than old score 1.625, skipping
+Iteration 161: Selected program 23 score: 0.36012777040640814
+Iteration 161 [k=0]: Proposed new text for system_prompt: ## New Instruction
+
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, and other identifiers like job titles, company names, and specific locations with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process. Furthermore, maintain consistency in the use of placeholders across the entire query and ensure that the anonymized query remains neutral and unambiguous.
+
+### Key Elements to Consider
+
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and specific locations. This includes but is not limited to:
+   - Names (e.g., "John Doe", "Jane Smith")
+   - Addresses (e.g., "123 Main Street", "New York, NY")
+   - Phone numbers (e.g., "555-123-4567")
+   - Email addresses (e.g., "john.doe@example.com")
+   - Job titles (e.g., "Software Engineer", "Project Manager")
+   - Company names (e.g., "Acme Corp", "XYZ Inc")
+   - Specific locations (e.g., "Jeddah", "Madinah", "Jazan")
+
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name", "Address", "Phone Number", "Email", "Job Title", or "Company Name" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`. For example:
+   - "John Doe" → `<PRESIDIO_ANONYMIZED_PERSON>`
+   - "123 Main Street" → `<PRESIDIO_ANONYMIZED_ADDRESS>`
+   - "555-123-4567" → `<PRESIDIO_ANONYMIZED_PHONE_NUMBER>`
+   - "john.doe@example.com" → `<PRESIDIO_ANONYMIZED_EMAIL_ADDRESS>`
+   - "Software Engineer" → `<PRESIDIO_ANONYMIZED_JOB_TITLE>`
+   - "Acme Corp" → `<PRESIDIO_ANONYMIZED_COMPANY_NAME>`
+
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased. For example, if the original query is about a job application, the anonymized query should still reflect the intent of applying for a position.
+
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query. This includes checking for any accidental exposure of names, addresses, phone numbers, or email addresses.
+
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing. For example, if the original query is about a business request, the anonymized query should still reflect that intent.
+
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII. Do not mix different placeholder formats.
+
+### Niche and Domain-Specific Considerations
+
+- **Healthcare**: In healthcare-related queries, replace specific hospital names or medical professionals with generic terms like `<PRESIDIO_ANONYMIZED_HOSPITAL>` or `<PRESIDIO_ANONYMIZED_MEDICAL_PROFESSIONAL>`.
+- **Finance**: In financial queries, replace specific company names or financial terms with generic placeholders like `<PRESIDIO_ANONYMIZED_FINANCIAL_ENTITY>`.
+- **Legal**: In legal queries, replace specific case names or court locations with generic terms like `<PRESIDIO_ANONYMIZED_LEGAL_CASE>` or `<PRESIDIO_ANONYMIZED_LEGAL_LOCATION>`.
+- **Education**: In educational queries, replace specific schools or academic credentials with generic terms like `<PRESIDIO_ANONYMIZED_EDUCATIONAL_INSTITUTION>` or `<PRESIDIO_ANONYMIZED_ACADEMIC_CREDENTIAL>`.
+
+### Generalizable Strategy
+
+- **Identify and replace PII**: Scan the input for any PII and replace it with the appropriate generic placeholder.
+- **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased.
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query.
+- **Use consistent placeholder format**: Apply the same placeholder format across the entire query.
+
+### Additional Notes
+
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "John Doe" becomes `<PRESIDIO_ANONYMIZED_PERSON>`).
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII.
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified.
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "MGS Hospital" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`).
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+
+### Task Description
+
+The task involves anonymizing a query by replacing specific PII with generic placeholders. The key elements to consider are:  
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and specific locations.  
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name", "Address", "Phone Number", "Email", "Job Title", or "Company Name" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`.  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.
+Iteration 161 [k=0]: Candidate score sum = 1.5714285714285714 (best so far = -inf)
+Iteration 161 [k=1]: Proposed new text for system_prompt: ## New Instruction
+
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, and other specific identifiers like job titles, company names, and locations with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process. 
+
+### Key Elements to Consider
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and specific locations. 
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," or "Position" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`. 
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased. 
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query. 
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing. 
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII. 
+
+### Niche and Domain-Specific Considerations
+- **PII types**: The task specifically targets names, addresses, phone numbers, and email addresses, but may also include other identifiers like social security numbers, academic credentials, job titles, and company names. 
+- **Contextual awareness**: The rewritten query must maintain the original context (e.g., a job application, a request for a proposal, a general inquiry, or a specific business request). 
+- **Anonymization strategy**: Replace specific identifiers with generic placeholders without altering the meaning or intent of the query. 
+- **No external assumptions**: The rewritten query should not introduce any external information or assumptions not present in the original input. 
+- **Specialized domains**: 
+  - In **healthcare**, replace specific hospital names or medical professionals with generic terms (e.g., `<PRESIDIO_ANONYMIZED_HOSPITAL>`). 
+  - In **finance**, replace specific companies or financial terms with generic placeholders (e.g., `<PRESIDIO_ANONYMIZED_COMPANY>`). 
+  - In **technology**, replace specific product names or system names with generic terms (e.g., `<PRESIDIO_ANONYMIZED_SYSTEM>`). 
+
+### Generalizable Strategy
+- **Identify and remove PII**: Scan the input for any PII and replace it with generic terms. 
+- **Preserve intent**: Ensure that the rewritten query conveys the same intent as the original. 
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is. 
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query. 
+- **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII. 
+
+### Additional Notes
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "John Doe" becomes `<PRESIDIO_ANONYMIZED_PERSON>`). 
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII. 
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified. 
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "MGS Hospital" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`). 
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query. 
+
+### Task Description
+The task involves anonymizing a query by replacing specific PII with generic placeholders. The key elements to consider are:
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, and email addresses. 
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," or "Position" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`. 
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased. 
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query. 
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing. 
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.
+Iteration 161 [k=1]: Candidate score sum = 0.5 (best so far = 1.5714285714285714)
+Iteration 161 [k=2]: Proposed new text for system_prompt: ## New Instruction  
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, and other identifiers like job titles, company names, and specific locations with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process.  
+
+### Key Elements to Consider  
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel," "Shifa Taiba Hosp").  
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," "Job Title," "Company," or "Location" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`.  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Niche and Domain-Specific Considerations  
+- **PII types**: The task specifically targets names, addresses, phone numbers, and email addresses, but may also include other identifiers like job titles, company names, and specific locations (e.g., "Jeddah," "Movenpick hotel," "Shifa Taiba Hosp").  
+- **Contextual awareness**: The rewritten query must maintain the original context (e.g., a travel confirmation, a job application, a request for information, or a general inquiry).  
+- **Anonymization strategy**: Replace specific identifiers with generic placeholders without altering the meaning or intent of the query.  
+- **No external assumptions**: The rewritten query should not introduce any external information or assumptions not present in the original input.  
+- **Specialized domains**:  
+  - **Travel/Logistics**: Replace specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel") with generic terms like `<PRESIDIO_ANONYMIZED_LOCATION>`.  
+  - **Healthcare**: Replace specific hospital names (e.g., "Jazan Specialized Hosp," "Shifa Taiba Hosp") with generic terms like `<PRESIDIO_ANONYMIZED_HOSPITAL>`.  
+  - **Finance/IT**: Replace specific company names (e.g., "SPARC companies") with generic terms like `<PRESIDIO_ANONYMIZED_COMPANY>`.  
+  - **General inquiries**: Replace specific job titles (e.g., "application training not done yet") with generic terms like `<PRESIDIO_ANONYMIZED_JOB_TITLE>`.  
+
+### Generalizable Strategy  
+- **Identify and remove PII**: Scan the input for any PII and replace it with generic terms.  
+- **Preserve intent**: Ensure that the rewritten query conveys the same intent as the original.  
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query.  
+- **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Additional Notes  
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "Christina" becomes `<PRESIDIO_ANONYMIZED_PERSON>`).  
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified.  
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "Jazan Specialized Hosp" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+Iteration 161 [k=2]: Candidate score sum = 1.9285714285714286 (best so far = 1.5714285714285714)
+Iteration 161: New subsample score 1.9285714285714286 is better than old score 0.5. Continue to full eval and add to candidate pool.
+Iteration 161: Valset score for new program: 0.34656150179369993 (coverage 95 / 95)
+Iteration 161: Val aggregate for new program: 0.34656150179369993
+Iteration 161: Individual valset scores for new program: {10: 0.4285714285714286, 18: 1.0, 22: 0.5, 0: 0.25, 1: 0.0, 2: 0.5, 3: 0.20588235294117646, 4: 0.5, 5: 0.35, 6: 0.0, 7: 0.0, 8: 0.5, 9: 0.09999999999999998, 11: 0.5, 12: 0.5, 13: 0.5, 14: 0.33333333333333337, 15: 0.5, 16: 0.5, 17: 0.25, 19: 0.0, 20: 1.0, 21: 0.5, 23: 0.0, 24: 1.0, 25: 0.0, 26: 0.5, 27: 0.5, 28: 0.5, 29: 0.0, 30: 0.5, 31: 0.0, 32: 0.0, 33: 0.5, 34: 0.5, 35: 0.0, 36: 0.5, 37: 0.5, 38: 0.0, 39: 0.5, 40: 0.0, 41: 0.5, 42: 0.0, 43: 0.0, 44: 0.0, 45: 0.75, 46: 0.16666666666666669, 47: 0.09999999999999998, 48: 0.5, 49: 0.6666666666666667, 50: 0.5, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.5, 55: 0.5, 56: 0.5, 57: 0.5, 58: 0.5, 59: 0.0, 60: 0.25, 61: 0.5, 62: 0.0, 63: 0.5, 64: 0.5, 65: 0.0, 66: 0.0, 67: 0.09999999999999998, 68: 0.5, 69: 0.5, 70: 0.0, 71: 0.5, 72: 0.5, 73: 0.0, 74: 1.0, 75: 0.0, 76: 0.25, 77: 0.5, 78: 0.5, 79: 0.0, 80: 0.5, 81: 0.5, 82: 0.0, 83: 1.0, 84: 0.4722222222222222, 85: 0.75, 86: 0.5, 87: 1.0, 88: 0.5, 89: 0.0, 90: 0.6, 91: 0.5, 92: 0.4, 93: 0.0, 94: 0.0}
+Iteration 161: New valset pareto front scores: {0: 1.0, 1: 0.5, 2: 1.0, 3: 1.0, 4: 0.625, 5: 1.0, 6: 1.0, 7: 0.8846153846153846, 8: 1.0, 9: 0.5, 10: 1.0, 11: 1.0, 12: 1.0, 13: 1.0, 14: 0.5, 15: 1.0, 16: 0.5, 17: 1.0, 18: 1.0, 19: 0.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 0.75, 29: 1.0, 30: 1.0, 31: 0.75, 32: 0.75, 33: 1.0, 34: 0.5, 35: 0.5, 36: 0.75, 37: 1.0, 38: 1.0, 39: 1.0, 40: 0.5, 41: 0.5, 42: 0.5, 43: 1.0, 44: 1.0, 45: 1.0, 46: 0.8333333333333334, 47: 0.6, 48: 1.0, 49: 0.8333333333333334, 50: 0.8333333333333334, 51: 1.0, 52: 0.16666666666666669, 53: 0.5, 54: 0.5, 55: 0.5, 56: 1.0, 57: 0.6666666666666667, 58: 0.5, 59: 0.5, 60: 0.75, 61: 1.0, 62: 0.5, 63: 0.6666666666666667, 64: 1.0, 65: 1.0, 66: 1.0, 67: 0.6, 68: 0.5, 69: 1.0, 70: 0.5, 71: 0.875, 72: 0.5, 73: 0.5, 74: 1.0, 75: 1.0, 76: 0.75, 77: 1.0, 78: 1.0, 79: 0.5, 80: 0.5, 81: 1.0, 82: 0.5, 83: 1.0, 84: 1.0, 85: 0.75, 86: 0.5, 87: 1.0, 88: 0.6666666666666667, 89: 0.5, 90: 0.6, 91: 1.0, 92: 0.7, 93: 0.5, 94: 1.0}
+Iteration 161: Valset pareto front aggregate score: 0.7926450742240216
+Iteration 161: Updated valset pareto front programs: {0: {17}, 1: {1, 7, 15, 16, 18, 24, 26, 28, 29}, 2: {1, 3, 15, 16, 24, 25}, 3: {15}, 4: {10}, 5: {9, 22}, 6: {19}, 7: {14}, 8: {1, 7, 10, 12, 13, 15, 19, 20, 25, 26}, 9: {17, 10, 12}, 10: {0, 3, 4, 5, 6, 10, 13, 24, 26, 28}, 11: {1, 3, 4, 8, 10, 12, 13, 15, 20, 21}, 12: {15}, 13: {9}, 14: {2, 18, 13}, 15: {7}, 16: {0, 1, 3, 7, 9, 11, 13, 14, 15, 17, 18, 20, 21, 23, 25, 26, 27, 28, 29, 30}, 17: {2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 16, 17, 18, 24, 26}, 18: {8, 10, 17, 18, 22, 23, 28, 29, 30}, 19: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30}, 20: {0, 3, 7, 8, 9, 10, 11, 13, 15, 16, 18, 20, 22, 24, 26, 28, 29, 30}, 21: {3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 24, 26, 28}, 22: {1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 16, 18, 24, 25, 29}, 23: {12, 15, 16, 18, 21, 24, 26, 28, 29}, 24: {30}, 25: {16, 24, 10, 26}, 26: {0, 1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 17, 18, 19, 21, 28}, 27: {28}, 28: {2, 4, 5, 6, 7, 10, 14, 17, 24}, 29: {1, 28, 15}, 30: {1, 3, 10, 12, 14, 15, 18, 19, 20, 21, 25, 28, 29}, 31: {0, 20}, 32: {20}, 33: {24, 27}, 34: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30}, 35: {4, 5, 6, 13, 16, 19, 23, 24, 26}, 36: {18}, 37: {7, 8, 15, 24, 26, 28, 29}, 38: {4, 5, 6, 16, 19, 22, 23, 27, 29}, 39: {10, 3}, 40: {7, 10, 14, 16, 19, 20, 21, 22, 24, 26, 28, 29}, 41: {1, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 23, 24, 25, 26, 27, 28, 29, 30}, 42: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 16, 17, 18, 19, 21, 23, 24, 25, 26, 27, 28}, 43: {26}, 44: {12, 23}, 45: {23}, 46: {16}, 47: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 24, 26, 28}, 48: {2, 17, 10, 11}, 49: {1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 15, 16, 17, 18, 19, 24, 26, 27, 29}, 50: {26, 4, 5, 6}, 51: {25}, 52: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 23, 24, 26, 28}, 53: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29}, 54: {1, 3, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30}, 55: {1, 2, 3, 4, 5, 6, 8, 9, 11, 14, 15, 16, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30}, 56: {1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 14, 15, 16, 18, 24, 26}, 57: {26, 23}, 58: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 26, 27, 28, 29, 30}, 59: {24}, 60: {8, 15, 16, 18, 24, 26, 28, 29}, 61: {16}, 62: {2, 4, 5, 6, 7, 10, 11, 12, 13, 16, 20, 21, 23, 24, 25, 26, 29}, 63: {7, 8, 9, 12, 21, 23, 24, 26}, 64: {24, 25, 26, 23}, 65: {15}, 66: {18, 11}, 67: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 24, 26, 28, 29}, 68: {2, 3, 4, 5, 6, 10, 11, 13, 14, 16, 20, 22, 23, 27, 30}, 69: {2, 3, 4, 5, 6, 7, 9, 10, 14, 17, 20}, 70: {1, 4, 5, 6, 7, 10, 11, 12, 13, 16, 18, 19, 20, 21, 22, 24, 25, 26, 28, 29}, 71: {4, 5, 6, 14, 17}, 72: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30}, 73: {16, 24, 26}, 74: {1, 7, 9, 23, 27, 29, 30}, 75: {27, 29}, 76: {7, 9, 11, 18, 20, 25}, 77: {5, 4, 13, 6}, 78: {24, 26, 19, 23}, 79: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29}, 80: {0, 2, 3, 7, 8, 9, 10, 11, 12, 15, 17, 18, 19, 20, 22, 24, 26, 29, 30}, 81: {29, 7}, 82: {1, 2, 3, 4, 5, 6, 7, 9, 10, 13, 14, 15, 16, 17, 18, 20, 21, 24, 26, 29}, 83: {8, 12, 18, 28, 30}, 84: {22}, 85: {1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 14, 17, 26, 28, 30}, 86: {1, 8, 11, 16, 19, 22, 24, 26, 27, 29, 30}, 87: {14, 30}, 88: {8, 9, 20}, 89: {3, 4, 5, 6, 7, 9, 10, 21, 23, 28, 29}, 90: {11, 30}, 91: {0, 1, 3, 4, 5, 6, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 21, 22, 24, 26, 28}, 92: {24}, 93: {24, 26}, 94: {3, 13, 15, 24, 26}}
+Iteration 161: Best valset aggregate score so far: 0.5351624158435304
+Iteration 161: Best program as per aggregate score on valset: 26
+Iteration 161: Best score on valset: 0.5351624158435304
+Iteration 161: Linear pareto front program index: 26
+Iteration 161: New program candidate index: 30
+Iteration 162: No merge candidates found
+Iteration 162: Selected program 30 score: 0.34656150179369993
+Iteration 162 [k=0]: Proposed new text for system_prompt: ## New Instruction  
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, and other identifiers like job titles, company names, and specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel," "Shifa Taiba Hosp") with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process.  
+
+### Key Elements to Consider  
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel," "Shifa Taiba Hosp").  
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," "Job Title," "Company," or "Location" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`.  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Niche and Domain-Specific Considerations  
+- **PII types**: The task specifically targets names, addresses, phone numbers, and email addresses, but may also include other identifiers like job titles, company names, and specific locations (e.g., "Jeddah," "Movenpick hotel," "Shifa Taiba Hosp").  
+- **Contextual awareness**: The rewritten query must maintain the original context (e.g., a travel confirmation, a job application, a request for information, or a general inquiry).  
+- **Anonymization strategy**: Replace specific identifiers with generic placeholders without altering the meaning or intent of the query.  
+- **No external assumptions**: The rewritten query should not introduce any external information or assumptions not present in the original input.  
+- **Specialized domains**:  
+  - **Travel/Logistics**: Replace specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel") with generic terms like `<PRESIDIO_ANONYMIZED_LOCATION>`.  
+  - **Healthcare**: Replace specific hospital names (e.g., "Jazan Specialized Hosp," "Shifa Taiba Hosp") with generic terms like `<PRESIDIO_ANONYMIZED_HOSPITAL>`.  
+  - **Finance/IT**: Replace specific company names (e.g., "SPARC companies") with generic terms like `<PRESIDIO_ANONYMIZED_COMPANY>`.  
+  - **General inquiries**: Replace specific job titles (e.g., "application training not done yet") with generic terms like `<PRESIDIO_ANONYMIZED_JOB_TITLE>`.  
+
+### Generalizable Strategy  
+- **Identify and remove PII**: Scan the input for any PII and replace it with generic terms.  
+- **Preserve intent**: Ensure that the rewritten query conveys the same intent as the original.  
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query.  
+- **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Additional Notes  
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "Christina" becomes `<PRESIDIO_ANONYMIZED_PERSON>`).  
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified.  
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "Jazan Specialized Hosp" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+Iteration 162 [k=0]: Candidate score sum = 1.1666666666666667 (best so far = -inf)
+Iteration 162 [k=1]: Proposed new text for system_prompt: ## New Instruction  
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, and other identifiers like job titles, company names, and specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel," "Shifa Taiba Hosp") with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process.  
+
+### Key Elements to Consider  
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel," "Shifa Taiba Hosp").  
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," "Job Title," "Company," or "Location" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`.  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Niche and Domain-Specific Considerations  
+- **PII types**: The task specifically targets names, addresses, phone numbers, and email addresses, but may also include other identifiers like job titles, company names, and specific locations (e.g., "Jeddah," "Movenpick hotel," "Shifa Taiba Hosp").  
+- **Contextual awareness**: The rewritten query must maintain the original context (e.g., a travel confirmation, a job application, a request for information, or a general inquiry).  
+- **Anonymization strategy**: Replace specific identifiers with generic placeholders without altering the meaning or intent of the query.  
+- **No external assumptions**: The rewritten query should not introduce any external information or assumptions not present in the original input.  
+- **Specialized domains**:  
+  - **Travel/Logistics**: Replace specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel") with generic terms like `<PRESIDIO_ANONYMIZED_LOCATION>`.  
+  - **Healthcare**: Replace specific hospital names (e.g., "Jazan Specialized Hosp," "Shifa Taiba Hosp") with generic terms like `<PRESIDIO_ANONYMIZED_HOSPITAL>`.  
+  - **Finance/IT**: Replace specific company names (e.g., "SPARC companies") with generic terms like `<PRESIDIO_ANONYMIZED_COMPANY>`.  
+  - **General inquiries**: Replace specific job titles (e.g., "application training not done yet") with generic terms like `<PRESIDIO_ANONYMIZED_JOB_TITLE>`.  
+
+### Generalizable Strategy  
+- **Identify and remove PII**: Scan the input for any PII and replace it with generic terms.  
+- **Preserve intent**: Ensure that the rewritten query conveys the same intent as the original.  
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query.  
+- **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Additional Notes  
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "Christina" becomes `<PRESIDIO_ANONYMIZED_PERSON>`).  
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified.  
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "Jazan Specialized Hosp" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+Iteration 162 [k=1]: Duplicate candidate, skipping evaluation.
+Iteration 162 [k=2]: Proposed new text for system_prompt: ## New Instruction  
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, and other identifiers like job titles, company names, and specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel," "Shifa Taiba Hosp") with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process.  
+
+### Key Elements to Consider  
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel," "Shifa Taiba Hosp").  
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," "Job Title," "Company," or "Location" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`.  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Niche and Domain-Specific Considerations  
+- **PII types**: The task specifically targets names, addresses, phone numbers, and email addresses, but may also include other identifiers like job titles, company names, and specific locations (e.g., "Jeddah," "Movenpick hotel," "Shifa Taiba Hosp").  
+- **Contextual awareness**: The rewritten query must maintain the original context (e.g., a travel confirmation, a job application, a request for information, or a general inquiry).  
+- **Anonymization strategy**: Replace specific identifiers with generic placeholders without altering the meaning or intent of the query.  
+- **No external assumptions**: The rewritten query should not introduce any external information or assumptions not present in the original input.  
+- **Specialized domains**:  
+  - **Travel/Logistics**: Replace specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel") with generic terms like `<PRESIDIO_ANONYMIZED_LOCATION>`.  
+  - **Healthcare**: Replace specific hospital names (e.g., "Jazan Specialized Hosp," "Shifa Taiba Hosp") with generic terms like `<PRESIDIO_ANONYMIZED_HOSPITAL>`.  
+  - **Finance/IT**: Replace specific company names (e.g., "SPARC companies") with generic terms like `<PRESIDIO_ANONYMIZED_COMPANY>`.  
+  - **General inquiries**: Replace specific job titles (e.g., "application training not done yet") with generic terms like `<PRESIDIO_ANONYMIZED_JOB_TITLE>`.  
+
+### Generalizable Strategy  
+- **Identify and remove PII**: Scan the input for any PII and replace it with generic terms.  
+- **Preserve intent**: Ensure that the rewritten query conveys the same intent as the original.  
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query.  
+- **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Additional Notes  
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "Christina" becomes `<PRESIDIO_ANONYMIZED_PERSON>`).  
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified.  
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "Jazan Specialized Hosp" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+Iteration 162 [k=2]: Duplicate candidate, skipping evaluation.
+Iteration 162: New subsample score 1.1666666666666667 is not better than old score 1.1666666666666667, skipping
+Iteration 163: Selected program 18 score: 0.42834733893557425
+Iteration 163 [k=0]: Proposed new text for system_prompt: **New Instruction:**  
+Analyze and anonymize the user's input to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace any identified PII with generic placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]". Ensure the rewritten query maintains the original intent and context while preserving a formal and professional tone suitable for use in business plans, technical documentation, or internal communication. The output must not include any sensitive data and must be concise and appropriate for professional contexts. The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy (if applicable):** If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+
+**Generalizable Strategy (if applicable):**  
+If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy. For example, if the assistant has used a template for replacing names, addresses, and phone numbers with placeholders, the instruction should mention that process. However, in this case, the task is specific to PII removal and does not involve a generalizable strategy.
+Iteration 163 [k=0]: Candidate score sum = 1.0 (best so far = -inf)
+Iteration 163 [k=1]: Proposed new text for system_prompt: **New Instruction:**  
+Analyze and anonymize the user's input to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace any identified PII with generic placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]". Ensure the rewritten query maintains the original intent and context while preserving a formal and professional tone suitable for use in business plans, technical documentation, or internal communication. The output must not include any sensitive data and must be concise and appropriate for professional contexts. The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+
+**Task Description:**  
+The task involves anonymizing user input by identifying and removing PII from the query. This includes replacing names, addresses, phone numbers, and emails with generic placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]". The rewritten query must preserve the original intent and context of the input while ensuring no PII is included. The output should be suitable for use in business planning, technical documentation, or internal communication. The assistant must ensure that no PII is included in the output and must not use any external data or context beyond the user's input to generate the rewritten query.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy (if applicable):** If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy. For example, if the assistant has used a template for replacing names, addresses, and phone numbers with placeholders, the instruction should mention that process. However, in this case, the task is specific to PII removal and does not involve a generalizable strategy.  
+
+**Generalizable Strategy (if applicable):**  
+If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy. For example, if the assistant has used a template for replacing names, addresses, and phone numbers with placeholders, the instruction should mention that process. However, in this case, the task is specific to PII removal and does not involve a generalizable strategy.
+Iteration 163 [k=1]: Candidate score sum = 1.0 (best so far = 1.0)
+Iteration 163 [k=2]: Proposed new text for system_prompt: **New Instruction:**  
+Analyze and anonymize the user's input to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace any identified PII with generic placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]". Ensure the rewritten query maintains the original intent and context while preserving a formal and professional tone suitable for use in business plans, technical documentation, or internal communication. The output must not include any sensitive data and must be concise and appropriate for professional contexts. The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+
+**Task Description:**  
+The task involves anonymizing user input by identifying and removing PII from the query. This includes replacing names, addresses, phone numbers, and emails with generic placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]". The rewritten query must preserve the original intent and context of the input while ensuring no PII is included. The output should be suitable for use in business planning, technical documentation, or internal communication. The assistant must ensure that no PII is included in the output and must not use any external data or context beyond the user's input to generate the rewritten query.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy (if applicable):** If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+
+**Generalizable Strategy (if applicable):**  
+If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy. For example, if the assistant has used a template for replacing names, addresses, and phone numbers with placeholders, the instruction should mention that process. However, in this case, the task is specific to PII removal and does not involve a generalizable strategy.
+Iteration 163 [k=2]: Candidate score sum = 1.5 (best so far = 1.0)
+Iteration 163: New subsample score 1.5 is not better than old score 1.5, skipping
+Iteration 164: Selected program 28 score: 0.45599095778662346
+Iteration 164 [k=0]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's query by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]". Ensure that the rewritten query preserves the original intent, context, and meaning while maintaining a formal and professional tone suitable for use in business plans, technical documentation, or internal communication. The rewritten query must not include any sensitive data and must be concise and appropriate for professional contexts. The assistant must not include any PII in the output and must not use external data or context beyond the user's input to generate the rewritten query. If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+
+**Niche and Domain-Specific Facts to Include:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy (if applicable):** If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+8. **Standardized Template (if applicable):** If the assistant uses a predefined template for anonymizing data, the instruction should specify the template structure, such as:  
+   - Replace "Name" with "[Name]"  
+   - Replace "Address" with "[Address]"  
+   - Replace "Phone Number" with "[Phone Number]"  
+   - Replace "Email" with "[Email]"  
+9. **Consistency:** The assistant must maintain consistency in the anonymization process across all queries, ensuring that the same PII replacement strategy is applied uniformly.  
+10. **Clarity and Conciseness:** The rewritten query must be concise, clear, and free of any ambiguity, while preserving the original meaning and intent.  
+
+**Additional Niche and Domain-Specific Facts to Include:**  
+- **Domain-Specific Terminology:** Use industry-specific terms like "business plan," "digital marketing," "SEO," "branding," "e-commerce," "NFT," "influencer partnerships," and "customer engagement" to align with the domain of the query.  
+- **Contextual Relevance:** Ensure that the anonymized query is suitable for business planning, technical documentation, or internal communication, and that it reflects the intended use case.  
+- **Standardized Template for PII Replacement:** If the assistant uses a predefined template for anonymizing data, the instruction should include a sample template, such as:  
+  - Replace "Name" with "[Name]"  
+  - Replace "Address" with "[Address]"  
+  - Replace "Phone Number" with "[Phone Number]"  
+  - Replace "Email" with "[Email]"  
+- **Consistent Placeholder Usage:** Ensure that all PII is replaced with the same placeholder format across all queries, maintaining uniformity and clarity.  
+- **Avoiding Sensitive Data:** The assistant must ensure that no sensitive data is included in the output, even if it is related to the domain or industry.  
+- **Maintaining Intent and Context:** The rewritten query must retain the original intent, context, and meaning of the user's input, even after anonymization.  
+- **Formal and Professional Tone:** The rewritten query must be written in a formal and professional tone, suitable for business, technical, or internal communication.  
+- **No External Data or Context:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+- **Generalizable Strategy for PII Replacement:** If the assistant uses a standardized process for anonymizing data, the instruction should reflect that strategy, such as using a predefined template or algorithm for PII replacement.  
+- **Clarity and Conciseness in Output:** The rewritten query must be concise, clear, and free of any ambiguity, while preserving the original meaning and intent.
+Iteration 164 [k=0]: Candidate score sum = 2.083333333333333 (best so far = -inf)
+Iteration 164 [k=1]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's query by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]". Ensure that the rewritten query preserves the original intent, context, and meaning while maintaining a formal and professional tone suitable for use in business plans, technical documentation, or internal communication. The rewritten query must not include any sensitive data and must be concise and appropriate for professional contexts. The assistant must not include any PII in the output and must not use external data or context beyond the user's input to generate the rewritten query. If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+
+**Niche and Domain-Specific Facts to Include:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy (if applicable):** If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+8. **Standardized Template (if applicable):** If the assistant uses a predefined template for anonymizing data, the instruction should include a sample template, such as:  
+   - Replace "Name" with "[Name]"  
+   - Replace "Address" with "[Address]"  
+   - Replace "Phone Number" with "[Phone Number]"  
+   - Replace "Email" with "[Email]"  
+9. **Consistency:** The assistant must maintain consistency in the anonymization process across all queries, ensuring that the same PII replacement strategy is applied uniformly.  
+10. **Clarity and Conciseness:** The rewritten query must be concise, clear, and free of any ambiguity, while preserving the original meaning and intent.  
+
+**Additional Niche and Domain-Specific Facts to Include:**  
+- **Domain-Specific Terminology:** Use industry-specific terms like "business plan," "digital marketing," "SEO," "branding," "e-commerce," "NFT," "influencer partnerships," and "customer engagement" to align with the domain of the query.  
+- **Contextual Relevance:** Ensure that the anonymized query is suitable for business planning, technical documentation, or internal communication, and that it reflects the intended use case.  
+- **Standardized Template for PII Replacement:** If the assistant uses a predefined template for anonymizing data, the instruction should include a sample template, such as:  
+  - Replace "Name" with "[Name]"  
+  - Replace "Address" with "[Address]"  
+  - Replace "Phone Number" with "[Phone Number]"  
+  - Replace "Email" with "[Email]"  
+- **Consistent Placeholder Usage:** Ensure that all PII is replaced with the same placeholder format across all queries, maintaining uniformity and clarity.  
+- **Avoiding Sensitive Data:** The assistant must ensure that no sensitive data is included in the output, even if it is related to the domain or industry.  
+- **Maintaining Intent and Context:** The rewritten query must retain the original intent, context, and meaning of the user's input, even after anonymization.  
+- **Formal and Professional Tone:** The rewritten query must be written in a formal and professional tone, suitable for business, technical, or internal communication.  
+- **No External Data or Context:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+- **Generalizable Strategy for PII Replacement:** If the assistant uses a standardized process for anonymizing data, the instruction should reflect that strategy, such as using a predefined template or algorithm for PII replacement.  
+- **Clarity and Conciseness in Output:** The rewritten query must be concise, clear, and free of any ambiguity, while preserving the original meaning and intent.
+Iteration 164 [k=1]: Candidate score sum = 1.0833333333333333 (best so far = 2.083333333333333)
+Iteration 164 [k=2]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's query by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]". Ensure that the rewritten query preserves the original intent, context, and meaning while maintaining a formal and professional tone suitable for use in business plans, technical documentation, or internal communication. The rewritten query must not include any sensitive data and must be concise and appropriate for professional contexts. The assistant must not include any PII in the output and must not use external data or context beyond the user's input to generate the rewritten query. If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+
+**Niche and Domain-Specific Facts to Include:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy (if applicable):** If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+8. **Standardized Template (if applicable):** If the assistant uses a predefined template for anonymizing data, the instruction should specify the template structure, such as:  
+   - Replace "Name" with "[Name]"  
+   - Replace "Address" with "[Address]"  
+   - Replace "Phone Number" with "[Phone Number]"  
+   - Replace "Email" with "[Email]"  
+9. **Consistency:** The assistant must maintain consistency in the anonymization process across all queries, ensuring that the same PII replacement strategy is applied uniformly.  
+10. **Clarity and Conciseness:** The rewritten query must be concise, clear, and free of any ambiguity, while preserving the original meaning and intent.  
+
+**Additional Niche and Domain-Specific Facts to Include:**  
+- **Domain-Specific Terminology:** Use industry-specific terms like "business plan," "digital marketing," "SEO," "branding," "e-commerce," "NFT," "influencer partnerships," and "customer engagement" to align with the domain of the query.  
+- **Contextual Relevance:** Ensure that the anonymized query is suitable for business planning, technical documentation, or internal communication, and that it reflects the intended use case.  
+- **Standardized Template for PII Replacement:** If the assistant uses a predefined template for anonymizing data, the instruction should include a sample template, such as:  
+  - Replace "Name" with "[Name]"  
+  - Replace "Address" with "[Address]"  
+  - Replace "Phone Number" with "[Phone Number]"  
+  - Replace "Email" with "[Email]"  
+- **Consistent Placeholder Usage:** Ensure that all PII is replaced with the same placeholder format across all queries, maintaining uniformity and clarity.  
+- **Avoiding Sensitive Data:** The assistant must ensure that no sensitive data is included in the output, even if it is related to the domain or industry.  
+- **Maintaining Intent and Context:** The rewritten query must retain the original intent, context, and meaning of the user's input, even after anonymization.  
+- **Formal and Professional Tone:** The rewritten query must be written in a formal and professional tone, suitable for business, technical, or internal communication.  
+- **No External Data or Context:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+- **Generalizable Strategy for PII Replacement:** If the assistant uses a standardized process for anonymizing data, the instruction should reflect that strategy, such as using a predefined template or algorithm for PII replacement.  
+- **Clarity and Conciseness in Output:** The rewritten query must be concise, clear, and free of any ambiguity, while preserving the original meaning and intent.
+Iteration 164 [k=2]: Duplicate candidate, skipping evaluation.
+Iteration 164: New subsample score 2.083333333333333 is not better than old score 2.083333333333333, skipping
+Iteration 165: Selected program 29 score: 0.4041165886057527
+Iteration 165 [k=0]: Proposed new text for system_prompt: ## New Instruction
+
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, job titles, company names, and other specific identifiers (e.g., academic credentials, locations, and roles) with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process. Furthermore, apply the same placeholder format consistently across all instances of PII, and ensure that the anonymized query is grammatically and contextually correct.
+
+### Key Elements to Consider
+
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and other specific identifiers (e.g., academic credentials, locations, and roles).  
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," "Position," or "Company" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`.  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased or restructured.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+7. **Contextual replacement**: In specialized domains (e.g., healthcare, finance, education), replace specific entities with generic terms (e.g., "MGS Hospital" → `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+8. **Case sensitivity**: Replace names and titles consistently (e.g., "John Doe" → `<PRESIDIO_ANONYMIZED_PERSON>`).  
+9. **No over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+10. **Specialized domains**: For example, in healthcare, replace specific hospital names or medical professionals with generic terms; in finance, replace specific companies or financial terms with generic placeholders.  
+11. **Avoid external assumptions**: Do not introduce any external information or assumptions not present in the original input.  
+12. **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+13. **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+
+### Niche and Domain-Specific Considerations
+
+- **PII types**: The task specifically targets names, addresses, phone numbers, and email addresses, but may also include other identifiers like social security numbers, academic credentials, job titles, and company names.  
+- **Contextual awareness**: The rewritten query must maintain the original context (e.g., a job application, a request for a proposal, a general inquiry, or a specific business request).  
+- **Anonymization strategy**: Replace specific identifiers with generic placeholders without altering the meaning or intent of the query.  
+- **No external assumptions**: The rewritten query should not introduce any external information or assumptions not present in the original input.  
+- **Specialized domains**: For example, in healthcare, replace specific hospital names or medical professionals with generic terms; in finance, replace specific companies or financial terms with generic placeholders.
+
+### Generalizable Strategy
+
+- **Identify and remove PII**: Scan the input for any PII and replace it with generic terms.  
+- **Preserve intent**: Ensure that the rewritten query conveys the same intent as the original.  
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query.  
+- **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.
+
+### Additional Notes
+
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "John Doe" → `<PRESIDIO_ANONYMIZED_PERSON>`).  
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified.  
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "MGS Hospital" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+Iteration 165 [k=0]: Candidate score sum = 2.0 (best so far = -inf)
+Iteration 165 [k=1]: Proposed new text for system_prompt: ## New Instruction
+
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, job titles, company names, and other specific identifiers (e.g., academic credentials, locations, and roles) with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process. Furthermore, apply the same placeholder format consistently across all instances of PII, and ensure that the anonymized query is grammatically and contextually correct.
+
+### Key Elements to Consider
+
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and other specific identifiers (e.g., academic credentials, locations, and roles).  
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," "Position," or "Company" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`.  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased or restructured.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+7. **Contextual replacement**: In specialized domains (e.g., healthcare, finance, education), replace specific entities with generic terms (e.g., "MGS Hospital" → `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+8. **Case sensitivity**: Replace names and titles consistently (e.g., "John Doe" → `<PRESIDIO_ANONYMIZED_PERSON>`).  
+9. **No over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+10. **Specialized domains**: For example, in healthcare, replace specific hospital names or medical professionals with generic terms; in finance, replace specific companies or financial terms with generic placeholders.  
+11. **Avoid external assumptions**: Do not introduce any external information or assumptions not present in the original input.  
+12. **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+13. **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+
+### Niche and Domain-Specific Considerations
+
+- **PII types**: The task specifically targets names, addresses, phone numbers, and email addresses, but may also include other identifiers like social security numbers, academic credentials, job titles, and company names.  
+- **Contextual awareness**: The rewritten query must maintain the original context (e.g., a job application, a request for a proposal, a general inquiry, or a specific business request).  
+- **Anonymization strategy**: Replace specific identifiers with generic placeholders without altering the meaning or intent of the query.  
+- **No external assumptions**: The rewritten query should not introduce any external information or assumptions not present in the original input.  
+- **Specialized domains**: For example, in healthcare, replace specific hospital names or medical professionals with generic terms; in finance, replace specific companies or financial terms with generic placeholders.
+
+### Generalizable Strategy
+
+- **Identify and remove PII**: Scan the input for any PII and replace it with generic terms.  
+- **Preserve intent**: Ensure that the rewritten query conveys the same intent as the original.  
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query.  
+- **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.
+
+### Additional Notes
+
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "John Doe" → `<PRESIDIO_ANONYMIZED_PERSON>`).  
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified.  
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "MGS Hospital" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+Iteration 165 [k=1]: Duplicate candidate, skipping evaluation.
+Iteration 165 [k=2]: Proposed new text for system_prompt: ## New Instruction
+
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, job titles, company names, and other specific identifiers (e.g., academic credentials, locations, and roles) with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process. Furthermore, apply the same placeholder format consistently across all instances of PII, and ensure that the anonymized query is grammatically and contextually correct.
+
+### Key Elements to Consider
+
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and other specific identifiers (e.g., academic credentials, locations, and roles).  
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," "Position," or "Company" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`.  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased or restructured.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+7. **Contextual replacement**: In specialized domains (e.g., healthcare, finance, education), replace specific entities with generic terms (e.g., "MGS Hospital" → `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+8. **Case sensitivity**: Replace names and titles consistently (e.g., "John Doe" → `<PRESIDIO_ANONYMIZED_PERSON>`).  
+9. **No over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+10. **Specialized domains**: For example, in healthcare, replace specific hospital names or medical professionals with generic terms; in finance, replace specific companies or financial terms with generic placeholders.  
+11. **Avoid external assumptions**: Do not introduce any external information or assumptions not present in the original input.  
+12. **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+13. **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+
+### Niche and Domain-Specific Considerations
+
+- **PII types**: The task specifically targets names, addresses, phone numbers, and email addresses, but may also include other identifiers like social security numbers, academic credentials, job titles, and company names.  
+- **Contextual awareness**: The rewritten query must maintain the original context (e.g., a job application, a request for a proposal, a general inquiry, or a specific business request).  
+- **Anonymization strategy**: Replace specific identifiers with generic placeholders without altering the meaning or intent of the query.  
+- **No external assumptions**: The rewritten query should not introduce any external information or assumptions not present in the original input.  
+- **Specialized domains**: For example, in healthcare, replace specific hospital names or medical professionals with generic terms; in finance, replace specific companies or financial terms with generic placeholders.
+
+### Generalizable Strategy
+
+- **Identify and remove PII**: Scan the input for any PII and replace it with generic terms.  
+- **Preserve intent**: Ensure that the rewritten query conveys the same intent as the original.  
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query.  
+- **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.
+
+### Additional Notes
+
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "John Doe" → `<PRESIDIO_ANONYMIZED_PERSON>`).  
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified.  
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "MGS Hospital" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+Iteration 165 [k=2]: Duplicate candidate, skipping evaluation.
+Iteration 165: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 166: Selected program 26 score: 0.5351624158435304
+Iteration 166 [k=0]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information (PII), including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization process and ensure clarity.  
+- If the assistant has used a template or standardized process, the instruction must explicitly reflect that strategy to ensure consistency and clarity.
+Iteration 166 [k=0]: Candidate score sum = 2.25 (best so far = -inf)
+Iteration 166 [k=1]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information (PII), including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization process and ensure clarity.  
+- If the assistant has used a template or standardized process, the instruction must explicitly reflect that strategy to ensure consistency and clarity.
+Iteration 166 [k=1]: Duplicate candidate, skipping evaluation.
+Iteration 166 [k=2]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information (PII), including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization process and ensure clarity.  
+- If the assistant has used a template or standardized process, the instruction must explicitly reflect that strategy to ensure consistency and clarity.
+Iteration 166 [k=2]: Duplicate candidate, skipping evaluation.
+Iteration 166: New subsample score 2.25 is not better than old score 2.25, skipping
+Iteration 167: Selected program 10 score: 0.4298211025300808
+Iteration 167 [k=0]: Proposed new text for system_prompt: **New Instruction:**  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]"), while preserving the query's meaning and intent. Ensure the rewritten query maintains a formal and professional tone, suitable for use in business plans, technical documentation, or internal communication. The rewritten query should not include any sensitive data and should be concise and appropriate for professional contexts.  
+
+**Task Description:**  
+The task involves anonymizing user input by identifying and removing PII from the query. This includes replacing names, addresses, phone numbers, and emails with generic placeholders while ensuring the core intent and context of the original query remain intact. The rewritten query must be suitable for use in scenarios such as business planning, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input to generate the rewritten query.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+
+**Generalizable Strategy (if applicable):**  
+If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy. For example, if the assistant has used a template for replacing names, addresses, and phone numbers with placeholders, the instruction should mention that process. However, in this case, the task is specific to PII removal and does not involve a generalizable strategy.
+Iteration 167 [k=0]: Candidate score sum = 1.25 (best so far = -inf)
+Iteration 167 [k=1]: Proposed new text for system_prompt: **New Instruction:**  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]"), while preserving the query's meaning and intent. Ensure the rewritten query maintains a formal and professional tone, suitable for use in business plans, technical documentation, or internal communication. The rewritten query should not include any sensitive data and should be concise and appropriate for professional contexts.  
+
+**Task Description:**  
+The task involves anonymizing user input by identifying and removing PII from the query. This includes replacing names, addresses, phone numbers, and emails with generic placeholders while ensuring the core intent and context of the original query remain intact. The rewritten query must be suitable for use in scenarios such as business planning, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input to generate the rewritten query.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+
+**Generalizable Strategy (if applicable):**  
+If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy. For example, if the assistant has used a template for replacing names, addresses, and phone numbers with placeholders, the instruction should mention that process. However, in this case, the task is specific to PII removal and does not involve a generalizable strategy.
+Iteration 167 [k=1]: Duplicate candidate, skipping evaluation.
+Iteration 167 [k=2]: Proposed new text for system_prompt: **New Instruction:**  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]"), while preserving the query's meaning and intent. Ensure the rewritten query maintains a formal and professional tone, suitable for use in business plans, technical documentation, or internal communication. The rewritten query should not include any sensitive data and should be concise and appropriate for professional contexts.  
+
+**Task Description:**  
+The task involves anonymizing user input by identifying and removing PII from the query. This includes replacing names, addresses, phone numbers, and emails with generic placeholders while ensuring the core intent and context of the original query remain intact. The rewritten query must be suitable for use in scenarios such as business planning, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input to generate the rewritten query.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+
+**Generalizable Strategy (if applicable):**  
+If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy. For example, if the assistant has used a template for replacing names, addresses, and phone numbers with placeholders, the instruction should mention that process. However, in this case, the task is specific to PII removal and does not involve a generalizable strategy.
+Iteration 167 [k=2]: Duplicate candidate, skipping evaluation.
+Iteration 167: New subsample score 1.25 is not better than old score 1.25, skipping
+Iteration 168: Selected program 24 score: 0.5325765393876849
+Iteration 168 [k=0]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization process and ensure clarity.  
+
+**Example of Anonymization Strategy:**  
+- Replace names with "[Name]"  
+- Replace addresses with "[Address]"  
+- Replace phone numbers with "[Phone Number]"  
+- Replace emails with "[Email]"  
+- Replace specific job titles, institutions, and dates with generic terms (e.g., "Bachelor’s degree", "Computer Vision Researcher", "Software Engineer")  
+- Maintain the structure and intent of the original input while ensuring no sensitive information is revealed.  
+
+**Feedback Clarification:**  
+- The assistant must not leak any PII, even if it is not explicitly mentioned in the input.  
+- The rewritten query must be grammatically correct and maintain the original intent.  
+- The assistant should not assume any external context or data.  
+- The anonymization process must be consistent and transparent, with clear notes on how PII was replaced.  
+
+**Final Output Requirements:**  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant must provide a contextual note explaining the anonymization strategy used.  
+- The output must not include any external data, assumptions, or references outside the input.
+Iteration 168 [k=0]: Candidate score sum = 2.375 (best so far = -inf)
+Iteration 168 [k=1]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization process and ensure clarity.  
+
+**Template/Strategy for Anonymization:**  
+- Replace all names with "[Name]".  
+- Replace all addresses with "[Address]".  
+- Replace all phone numbers with "[Phone Number]".  
+- Replace all emails with "[Email]".  
+- Replace specific job titles, institutions, and dates with generic placeholders.  
+- Maintain the original structure and intent of the query while ensuring no PII is present.  
+- Use formal language and avoid any markdown or formatting.  
+- Ensure the final output is suitable for professional or technical use.  
+- If using a standardized template, include it in the instruction to ensure consistency across all inputs.
+Iteration 168 [k=1]: Candidate score sum = 2.0 (best so far = 2.375)
+Iteration 168 [k=2]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization process and ensure clarity.  
+
+**Example of Anonymization Strategy:**  
+- Replace names with "[Name]"  
+- Replace addresses with "[Address]"  
+- Replace phone numbers with "[Phone Number]"  
+- Replace emails with "[Email]"  
+- Replace specific job titles, institutions, and locations with generic terms (e.g., "Computer Vision Researcher" → "[Researcher]", "Peking University" → "[University]")  
+- Maintain the structure and intent of the original query while ensuring no sensitive data is exposed.  
+- Use a standardized format for placeholders to ensure consistency across all outputs.  
+
+**Feedback Clarification:**  
+- The assistant must not leak any PII, even if it appears to be in the output.  
+- The rewritten query must be grammatically correct and suitable for professional or technical use.  
+- The anonymization process must be transparent and consistent, with clear contextual notes provided to the user.
+Iteration 168 [k=2]: Candidate score sum = 2.0 (best so far = 2.375)
+Iteration 168: New subsample score 2.375 is better than old score 1.5. Continue to full eval and add to candidate pool.
+Iteration 168: Valset score for new program: 0.5198589422273633 (coverage 95 / 95)
+Iteration 168: Val aggregate for new program: 0.5198589422273633
+Iteration 168: Individual valset scores for new program: {1: 0.875, 3: 1.0, 28: 0.5, 0: 0.33333333333333337, 2: 0.5, 4: 0.5, 5: 0.3, 6: 0.5, 7: 0.8846153846153846, 8: 0.5, 9: 0.09999999999999998, 10: 1.0, 11: 0.5, 12: 1.0, 13: 0.5, 14: 0.0, 15: 0.5, 16: 0.5, 17: 0.5, 18: 0.5, 19: 0.0, 20: 0.5, 21: 1.0, 22: 0.5, 23: 1.0, 24: 0.5, 25: 0.5, 26: 0.5, 27: 1.0, 29: 0.5, 30: 0.0, 31: 0.5, 32: 0.5, 33: 0.0, 34: 0.5, 35: 0.5, 36: 0.5, 37: 1.0, 38: 0.5, 39: 0.5, 40: 0.5, 41: 0.5, 42: 0.5, 43: 1.0, 44: 0.0, 45: 0.75, 46: 0.5, 47: 0.6, 48: 0.8333333333333334, 49: 0.8333333333333334, 50: 0.5, 51: 0.6, 52: 0.16666666666666669, 53: 0.5, 54: 0.5, 55: 0.5, 56: 0.5, 57: 0.5, 58: 0.5, 59: 0.0, 60: 0.75, 61: 0.5, 62: 0.5, 63: 0.6666666666666667, 64: 0.5, 65: 0.5, 66: 0.5, 67: 0.6, 68: 0.0, 69: 0.5, 70: 0.0, 71: 0.5, 72: 0.5, 73: 0.5714285714285714, 74: 0.5, 75: 0.5, 76: 0.25, 77: 1.0, 78: 1.0, 79: 0.5, 80: 0.0, 81: 0.5, 82: 0.5, 83: 0.5, 84: 0.4722222222222222, 85: 0.5, 86: 0.5, 87: 0.5, 88: 0.5, 89: 0.5, 90: 0.09999999999999998, 91: 1.0, 92: 0.2, 93: 0.5, 94: 1.0}
+Iteration 168: New valset pareto front scores: {0: 1.0, 1: 0.875, 2: 1.0, 3: 1.0, 4: 0.625, 5: 1.0, 6: 1.0, 7: 0.8846153846153846, 8: 1.0, 9: 0.5, 10: 1.0, 11: 1.0, 12: 1.0, 13: 1.0, 14: 0.5, 15: 1.0, 16: 0.5, 17: 1.0, 18: 1.0, 19: 0.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 0.75, 29: 1.0, 30: 1.0, 31: 0.75, 32: 0.75, 33: 1.0, 34: 0.5, 35: 0.5, 36: 0.75, 37: 1.0, 38: 1.0, 39: 1.0, 40: 0.5, 41: 0.5, 42: 0.5, 43: 1.0, 44: 1.0, 45: 1.0, 46: 0.8333333333333334, 47: 0.6, 48: 1.0, 49: 0.8333333333333334, 50: 0.8333333333333334, 51: 1.0, 52: 0.16666666666666669, 53: 0.5, 54: 0.5, 55: 0.5, 56: 1.0, 57: 0.6666666666666667, 58: 0.5, 59: 0.5, 60: 0.75, 61: 1.0, 62: 0.5, 63: 0.6666666666666667, 64: 1.0, 65: 1.0, 66: 1.0, 67: 0.6, 68: 0.5, 69: 1.0, 70: 0.5, 71: 0.875, 72: 0.5, 73: 0.5714285714285714, 74: 1.0, 75: 1.0, 76: 0.75, 77: 1.0, 78: 1.0, 79: 0.5, 80: 0.5, 81: 1.0, 82: 0.5, 83: 1.0, 84: 1.0, 85: 0.75, 86: 0.5, 87: 1.0, 88: 0.6666666666666667, 89: 0.5, 90: 0.6, 91: 1.0, 92: 0.7, 93: 0.5, 94: 1.0}
+Iteration 168: Valset pareto front aggregate score: 0.7973443223443224
+Iteration 168: Updated valset pareto front programs: {0: {17}, 1: {31}, 2: {1, 3, 15, 16, 24, 25}, 3: {31, 15}, 4: {10}, 5: {9, 22}, 6: {19}, 7: {14, 31}, 8: {1, 7, 10, 12, 13, 15, 19, 20, 25, 26}, 9: {17, 10, 12}, 10: {0, 3, 4, 5, 6, 10, 13, 24, 26, 28, 31}, 11: {1, 3, 4, 8, 10, 12, 13, 15, 20, 21}, 12: {31, 15}, 13: {9}, 14: {2, 18, 13}, 15: {7}, 16: {0, 1, 3, 7, 9, 11, 13, 14, 15, 17, 18, 20, 21, 23, 25, 26, 27, 28, 29, 30, 31}, 17: {2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 16, 17, 18, 24, 26}, 18: {8, 10, 17, 18, 22, 23, 28, 29, 30}, 19: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31}, 20: {0, 3, 7, 8, 9, 10, 11, 13, 15, 16, 18, 20, 22, 24, 26, 28, 29, 30}, 21: {3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 24, 26, 28, 31}, 22: {1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 16, 18, 24, 25, 29}, 23: {12, 15, 16, 18, 21, 24, 26, 28, 29, 31}, 24: {30}, 25: {16, 24, 10, 26}, 26: {0, 1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 17, 18, 19, 21, 28}, 27: {28, 31}, 28: {2, 4, 5, 6, 7, 10, 14, 17, 24}, 29: {1, 28, 15}, 30: {1, 3, 10, 12, 14, 15, 18, 19, 20, 21, 25, 28, 29}, 31: {0, 20}, 32: {20}, 33: {24, 27}, 34: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31}, 35: {4, 5, 6, 13, 16, 19, 23, 24, 26, 31}, 36: {18}, 37: {7, 8, 15, 24, 26, 28, 29, 31}, 38: {4, 5, 6, 16, 19, 22, 23, 27, 29}, 39: {10, 3}, 40: {7, 10, 14, 16, 19, 20, 21, 22, 24, 26, 28, 29, 31}, 41: {1, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 23, 24, 25, 26, 27, 28, 29, 30, 31}, 42: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 16, 17, 18, 19, 21, 23, 24, 25, 26, 27, 28, 31}, 43: {26, 31}, 44: {12, 23}, 45: {23}, 46: {16}, 47: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 24, 26, 28, 31}, 48: {2, 17, 10, 11}, 49: {1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 15, 16, 17, 18, 19, 24, 26, 27, 29, 31}, 50: {26, 4, 5, 6}, 51: {25}, 52: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 23, 24, 26, 28, 31}, 53: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 31}, 54: {1, 3, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31}, 55: {1, 2, 3, 4, 5, 6, 8, 9, 11, 14, 15, 16, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31}, 56: {1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 14, 15, 16, 18, 24, 26}, 57: {26, 23}, 58: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 26, 27, 28, 29, 30, 31}, 59: {24}, 60: {8, 15, 16, 18, 24, 26, 28, 29, 31}, 61: {16}, 62: {2, 4, 5, 6, 7, 10, 11, 12, 13, 16, 20, 21, 23, 24, 25, 26, 29, 31}, 63: {7, 8, 9, 12, 21, 23, 24, 26, 31}, 64: {24, 25, 26, 23}, 65: {15}, 66: {18, 11}, 67: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 24, 26, 28, 29, 31}, 68: {2, 3, 4, 5, 6, 10, 11, 13, 14, 16, 20, 22, 23, 27, 30}, 69: {2, 3, 4, 5, 6, 7, 9, 10, 14, 17, 20}, 70: {1, 4, 5, 6, 7, 10, 11, 12, 13, 16, 18, 19, 20, 21, 22, 24, 25, 26, 28, 29}, 71: {4, 5, 6, 14, 17}, 72: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31}, 73: {31}, 74: {1, 7, 9, 23, 27, 29, 30}, 75: {27, 29}, 76: {7, 9, 11, 18, 20, 25}, 77: {4, 5, 6, 13, 31}, 78: {19, 23, 24, 26, 31}, 79: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31}, 80: {0, 2, 3, 7, 8, 9, 10, 11, 12, 15, 17, 18, 19, 20, 22, 24, 26, 29, 30}, 81: {29, 7}, 82: {1, 2, 3, 4, 5, 6, 7, 9, 10, 13, 14, 15, 16, 17, 18, 20, 21, 24, 26, 29, 31}, 83: {8, 12, 18, 28, 30}, 84: {22}, 85: {1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 14, 17, 26, 28, 30}, 86: {1, 8, 11, 16, 19, 22, 24, 26, 27, 29, 30, 31}, 87: {14, 30}, 88: {8, 9, 20}, 89: {3, 4, 5, 6, 7, 9, 10, 21, 23, 28, 29, 31}, 90: {11, 30}, 91: {0, 1, 3, 4, 5, 6, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 21, 22, 24, 26, 28, 31}, 92: {24}, 93: {24, 26, 31}, 94: {3, 13, 15, 24, 26, 31}}
+Iteration 168: Best valset aggregate score so far: 0.5351624158435304
+Iteration 168: Best program as per aggregate score on valset: 26
+Iteration 168: Best score on valset: 0.5351624158435304
+Iteration 168: Linear pareto front program index: 26
+Iteration 168: New program candidate index: 31
+Iteration 169: No merge candidates found
+Iteration 169: Selected program 10 score: 0.4298211025300808
+Iteration 169 [k=0]: Proposed new text for system_prompt: **New Instruction:**  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]"), while preserving the query's meaning and intent. Ensure the rewritten query maintains a formal and professional tone, suitable for use in business plans, technical documentation, or internal communication. The rewritten query should not include any sensitive data and should be concise and appropriate for professional contexts.  
+
+**Task Description:**  
+The task involves anonymizing user input by identifying and removing PII from the query. This includes replacing names, addresses, phone numbers, and emails with generic placeholders while ensuring the core intent and context of the original query remain intact. The rewritten query must be suitable for use in scenarios such as business planning, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input to generate the rewritten query.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+
+**Generalizable Strategy (if applicable):**  
+If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy. For example, if the assistant has used a template for replacing names, addresses, and phone numbers with placeholders, the instruction should mention that process. However, in this case, the task is specific to PII removal and does not involve a generalizable strategy.
+Iteration 169 [k=0]: Candidate score sum = 2.125 (best so far = -inf)
+Iteration 169 [k=1]: Proposed new text for system_prompt: **New Instruction:**  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]"), while preserving the query's meaning and intent. Ensure the rewritten query maintains a formal and professional tone, suitable for use in business plans, technical documentation, or internal communication. The rewritten query should not include any sensitive data and should be concise and appropriate for professional contexts.  
+
+**Task Description:**  
+The task involves anonymizing user input by identifying and removing PII from the query. This includes replacing names, addresses, phone numbers, and emails with generic placeholders while ensuring the core intent and context of the original query remain intact. The rewritten query must be suitable for use in scenarios such as business planning, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input to generate the rewritten query.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+
+**Generalizable Strategy (if applicable):**  
+If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy. For example, if the assistant has used a template for replacing names, addresses, and phone numbers with placeholders, the instruction should mention that process. However, in this case, the task is specific to PII removal and does not involve a generalizable strategy.
+Iteration 169 [k=1]: Duplicate candidate, skipping evaluation.
+Iteration 169 [k=2]: Proposed new text for system_prompt: **New Instruction:**  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]"), while preserving the query's meaning and intent. Ensure the rewritten query maintains a formal and professional tone, suitable for use in business plans, technical documentation, or internal communication. The rewritten query should not include any sensitive data and should be concise and appropriate for professional contexts.  
+
+**Task Description:**  
+The task involves anonymizing user input by identifying and removing PII from the query. This includes replacing names, addresses, phone numbers, and emails with generic placeholders while ensuring the core intent and context of the original query remain intact. The rewritten query must be suitable for use in scenarios such as business planning, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input to generate the rewritten query.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all PII, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** Replace PII with placeholders like "[Name]", "[Address]", "[Phone Number]", and "[Email]" while preserving the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The assistant must ensure that no PII is included in the output, and the rewritten query must not leak any sensitive data.  
+6. **No External Data:** The assistant must not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy (if applicable):** If the assistant has used a standardized process or template for anonymizing data, the instruction should reflect that strategy, such as using a predefined template for PII replacement.  
+
+**Generalizable Strategy (if applicable):**  
+If the assistant has used a standardized process for anonymizing data (e.g., using a template or a predefined set of placeholders), the instruction should reflect that strategy. For example, if the assistant has used a template for replacing names, addresses, and phone numbers with placeholders, the instruction should mention that process. However, in this case, the task is specific to PII removal and does not involve a generalizable strategy.
+Iteration 169 [k=2]: Candidate score sum = 1.875 (best so far = 2.125)
+Iteration 169: New subsample score 2.125 is not better than old score 2.125, skipping
+Iteration 170: Selected program 30 score: 0.34656150179369993
+Iteration 170 [k=0]: Proposed new text for system_prompt: ## New Instruction  
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, job titles, company names, and specific locations (e.g., "Jeddah," "Movenpick hotel," "Shifa Taiba Hosp") with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process.  
+
+### Key Elements to Consider  
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and specific locations (e.g., "Jeddah," "Movenpick hotel," "Shifa Taiba Hosp").  
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," "Job Title," "Company," or "Location" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`.  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Niche and Domain-Specific Considerations  
+- **Travel/Logistics**: Replace specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel") with generic terms like `<PRESIDIO_ANONYMIZED_LOCATION>`.  
+- **Healthcare**: Replace specific hospital names (e.g., "Jazan Specialized Hosp," "Shifa Taiba Hosp") with generic terms like `<PRESIDIO_ANONYMIZED_HOSPITAL>`.  
+- **Finance/IT**: Replace specific company names (e.g., "SPARC companies") with generic terms like `<PRESIDIO_ANONYMIZED_COMPANY>`.  
+- **General inquiries**: Replace specific job titles (e.g., "application training not done yet") with generic terms like `<PRESIDIO_ANONYMIZED_JOB_TITLE>`.  
+
+### Generalizable Strategy  
+- **Identify and remove PII**: Scan the input for any PII and replace it with generic terms.  
+- **Preserve intent**: Ensure that the rewritten query conveys the same intent as the original.  
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query.  
+- **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Additional Notes  
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "Christina" becomes `<PRESIDIO_ANONYMIZED_PERSON>`).  
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified.  
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "Jazan Specialized Hosp" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+Iteration 170 [k=0]: Candidate score sum = 0.625 (best so far = -inf)
+Iteration 170 [k=1]: Proposed new text for system_prompt: ## New Instruction  
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, job titles, company names, and specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel," "Shifa Taiba Hosp") with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process.  
+
+### Key Elements to Consider  
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel," "Shifa Taiba Hosp").  
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," "Job Title," "Company," or "Location" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`.  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Niche and Domain-Specific Considerations  
+- **Travel/Logistics**: Replace specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel") with generic terms like `<PRESIDIO_ANONYMIZED_LOCATION>`.  
+- **Healthcare**: Replace specific hospital names (e.g., "Jazan Specialized Hosp," "Shifa Taiba Hosp") with generic terms like `<PRESIDIO_ANONYMIZED_HOSPITAL>`.  
+- **Finance/IT**: Replace specific company names (e.g., "SPARC companies") with generic terms like `<PRESIDIO_ANONYMIZED_COMPANY>`.  
+- **General inquiries**: Replace specific job titles (e.g., "application training not done yet") with generic terms like `<PRESIDIO_ANONYMIZED_JOB_TITLE>`.  
+
+### Generalizable Strategy  
+- **Identify and remove PII**: Scan the input for any PII and replace it with generic terms.  
+- **Preserve intent**: Ensure that the rewritten query conveys the same intent as the original.  
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query.  
+- **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Additional Notes  
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "Christina" becomes `<PRESIDIO_ANONYMIZED_PERSON>`).  
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified.  
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "Jazan Specialized Hosp" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+Iteration 170 [k=1]: Candidate score sum = 0.5 (best so far = 0.625)
+Iteration 170 [k=2]: Proposed new text for system_prompt: ## New Instruction  
+Anonymize the user's query by replacing personally identifiable information (PII) such as names, addresses, phone numbers, email addresses, job titles, company names, and specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel," "Shifa Taiba Hosp") with generic placeholders. Ensure that the rewritten query retains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Additionally, replace any PII with the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` or similar, and ensure that no PII is leaked in the process.  
+
+### Key Elements to Consider  
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, email addresses, job titles, company names, and specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel," "Shifa Taiba Hosp").  
+2. **Replace with placeholders**: Replace specific identifiers with generic terms like "Name," "Address," "Phone Number," "Email," "Job Title," "Company," or "Location" using the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>`.  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Niche and Domain-Specific Considerations  
+- **Travel/Logistics**: Replace specific locations (e.g., "Jeddah," "Jazan," "Movenpick hotel") with generic terms like `<PRESIDIO_ANONYMIZED_LOCATION>`.  
+- **Healthcare**: Replace specific hospital names (e.g., "Jazan Specialized Hosp," "Shifa Taiba Hosp") with generic terms like `<PRESIDIO_ANONYMIZED_HOSPITAL>`.  
+- **Finance/IT**: Replace specific company names (e.g., "SPARC companies") with generic terms like `<PRESIDIO_ANONYMIZED_COMPANY>`.  
+- **General inquiries**: Replace specific job titles (e.g., "application training not done yet") with generic terms like `<PRESIDIO_ANONYMIZED_JOB_TITLE>`.  
+
+### Generalizable Strategy  
+- **Identify and remove PII**: Scan the input for any PII and replace it with generic terms.  
+- **Preserve intent**: Ensure that the rewritten query conveys the same intent as the original.  
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it as is.  
+- **Ensure no leakage**: Verify that no PII is inadvertently exposed in the rewritten query.  
+- **Use consistent placeholder format**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+
+### Additional Notes  
+- **Case sensitivity**: Ensure that names and titles are replaced consistently (e.g., "Christina" becomes `<PRESIDIO_ANONYMIZED_PERSON>`).  
+- **Avoid over-anonymization**: Do not replace generic terms with placeholders unless they are PII.  
+- **Use of standard placeholders**: Use `<PRESIDIO_ANONYMIZED_PERSON>` or similar placeholders as specified.  
+- **Contextual replacement**: In some cases, it may be necessary to replace specific terms with more generalized ones (e.g., "Jazan Specialized Hosp" becomes `<PRESIDIO_ANONYMIZED_HOSPITAL>`).  
+- **Consistency across the query**: Ensure that all instances of PII are replaced uniformly and consistently throughout the entire query.
+Iteration 170 [k=2]: Duplicate candidate, skipping evaluation.
+Iteration 170: New subsample score 0.625 is better than old score 0.5. Continue to full eval and add to candidate pool.
+Iteration 170: Valset score for new program: 0.36283969728242177 (coverage 95 / 95)
+Iteration 170: Val aggregate for new program: 0.36283969728242177
+Iteration 170: Individual valset scores for new program: {4: 0.625, 7: 0.0, 33: 0.0, 0: 0.33333333333333337, 1: 0.0, 2: 0.5, 3: 0.20588235294117646, 5: 0.45, 6: 0.0, 8: 0.5, 9: 0.09999999999999998, 10: 0.0, 11: 0.5, 12: 0.5, 13: 0.0, 14: 0.33333333333333337, 15: 0.5, 16: 0.0, 17: 0.25, 18: 1.0, 19: 0.0, 20: 1.0, 21: 0.5, 22: 1.0, 23: 0.0, 24: 1.0, 25: 0.5, 26: 1.0, 27: 0.0, 28: 0.5, 29: 0.5, 30: 1.0, 31: 0.0, 32: 0.0, 34: 0.5, 35: 0.0, 36: 0.5, 37: 0.5, 38: 0.5, 39: 0.5, 40: 0.0, 41: 0.5, 42: 0.0, 43: 0.0, 44: 0.0, 45: 0.75, 46: 0.0, 47: 0.09999999999999998, 48: 0.5, 49: 0.6666666666666667, 50: 0.5, 51: 0.5, 52: 0.16666666666666669, 53: 0.0, 54: 0.5, 55: 0.5, 56: 0.5, 57: 0.5, 58: 0.5, 59: 0.0, 60: 0.25, 61: 0.5, 62: 0.0, 63: 0.16666666666666669, 64: 1.0, 65: 0.5, 66: 0.0, 67: 0.09999999999999998, 68: 0.5, 69: 0.0, 70: 0.0, 71: 0.5, 72: 0.5, 73: 0.0, 74: 1.0, 75: 0.0, 76: 0.25, 77: 0.5, 78: 1.0, 79: 0.5, 80: 0.5, 81: 0.5, 82: 0.0, 83: 1.0, 84: 0.4722222222222222, 85: 0.5, 86: 0.0, 87: 0.5, 88: 0.5, 89: 0.5, 90: 0.25, 91: 0.5, 92: 0.0, 93: 0.0, 94: 0.5}
+Iteration 170: New valset pareto front scores: {0: 1.0, 1: 0.875, 2: 1.0, 3: 1.0, 4: 0.625, 5: 1.0, 6: 1.0, 7: 0.8846153846153846, 8: 1.0, 9: 0.5, 10: 1.0, 11: 1.0, 12: 1.0, 13: 1.0, 14: 0.5, 15: 1.0, 16: 0.5, 17: 1.0, 18: 1.0, 19: 0.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 0.75, 29: 1.0, 30: 1.0, 31: 0.75, 32: 0.75, 33: 1.0, 34: 0.5, 35: 0.5, 36: 0.75, 37: 1.0, 38: 1.0, 39: 1.0, 40: 0.5, 41: 0.5, 42: 0.5, 43: 1.0, 44: 1.0, 45: 1.0, 46: 0.8333333333333334, 47: 0.6, 48: 1.0, 49: 0.8333333333333334, 50: 0.8333333333333334, 51: 1.0, 52: 0.16666666666666669, 53: 0.5, 54: 0.5, 55: 0.5, 56: 1.0, 57: 0.6666666666666667, 58: 0.5, 59: 0.5, 60: 0.75, 61: 1.0, 62: 0.5, 63: 0.6666666666666667, 64: 1.0, 65: 1.0, 66: 1.0, 67: 0.6, 68: 0.5, 69: 1.0, 70: 0.5, 71: 0.875, 72: 0.5, 73: 0.5714285714285714, 74: 1.0, 75: 1.0, 76: 0.75, 77: 1.0, 78: 1.0, 79: 0.5, 80: 0.5, 81: 1.0, 82: 0.5, 83: 1.0, 84: 1.0, 85: 0.75, 86: 0.5, 87: 1.0, 88: 0.6666666666666667, 89: 0.5, 90: 0.6, 91: 1.0, 92: 0.7, 93: 0.5, 94: 1.0}
+Iteration 170: Valset pareto front aggregate score: 0.7973443223443224
+Iteration 170: Updated valset pareto front programs: {0: {17}, 1: {31}, 2: {1, 3, 15, 16, 24, 25}, 3: {31, 15}, 4: {32, 10}, 5: {9, 22}, 6: {19}, 7: {14, 31}, 8: {1, 7, 10, 12, 13, 15, 19, 20, 25, 26}, 9: {17, 10, 12}, 10: {0, 3, 4, 5, 6, 10, 13, 24, 26, 28, 31}, 11: {1, 3, 4, 8, 10, 12, 13, 15, 20, 21}, 12: {31, 15}, 13: {9}, 14: {2, 18, 13}, 15: {7}, 16: {0, 1, 3, 7, 9, 11, 13, 14, 15, 17, 18, 20, 21, 23, 25, 26, 27, 28, 29, 30, 31}, 17: {2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 16, 17, 18, 24, 26}, 18: {32, 8, 10, 17, 18, 22, 23, 28, 29, 30}, 19: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32}, 20: {0, 3, 7, 8, 9, 10, 11, 13, 15, 16, 18, 20, 22, 24, 26, 28, 29, 30, 32}, 21: {3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 24, 26, 28, 31}, 22: {32, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 16, 18, 24, 25, 29}, 23: {12, 15, 16, 18, 21, 24, 26, 28, 29, 31}, 24: {32, 30}, 25: {16, 24, 10, 26}, 26: {0, 1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 17, 18, 19, 21, 28, 32}, 27: {28, 31}, 28: {2, 4, 5, 6, 7, 10, 14, 17, 24}, 29: {1, 28, 15}, 30: {32, 1, 3, 10, 12, 14, 15, 18, 19, 20, 21, 25, 28, 29}, 31: {0, 20}, 32: {20}, 33: {24, 27}, 34: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32}, 35: {4, 5, 6, 13, 16, 19, 23, 24, 26, 31}, 36: {18}, 37: {7, 8, 15, 24, 26, 28, 29, 31}, 38: {4, 5, 6, 16, 19, 22, 23, 27, 29}, 39: {10, 3}, 40: {7, 10, 14, 16, 19, 20, 21, 22, 24, 26, 28, 29, 31}, 41: {1, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32}, 42: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 16, 17, 18, 19, 21, 23, 24, 25, 26, 27, 28, 31}, 43: {26, 31}, 44: {12, 23}, 45: {23}, 46: {16}, 47: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 24, 26, 28, 31}, 48: {2, 17, 10, 11}, 49: {1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 15, 16, 17, 18, 19, 24, 26, 27, 29, 31}, 50: {26, 4, 5, 6}, 51: {25}, 52: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 23, 24, 26, 28, 31, 32}, 53: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 31}, 54: {1, 3, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32}, 55: {1, 2, 3, 4, 5, 6, 8, 9, 11, 14, 15, 16, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32}, 56: {1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 14, 15, 16, 18, 24, 26}, 57: {26, 23}, 58: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32}, 59: {24}, 60: {8, 15, 16, 18, 24, 26, 28, 29, 31}, 61: {16}, 62: {2, 4, 5, 6, 7, 10, 11, 12, 13, 16, 20, 21, 23, 24, 25, 26, 29, 31}, 63: {7, 8, 9, 12, 21, 23, 24, 26, 31}, 64: {32, 23, 24, 25, 26}, 65: {15}, 66: {18, 11}, 67: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 24, 26, 28, 29, 31}, 68: {32, 2, 3, 4, 5, 6, 10, 11, 13, 14, 16, 20, 22, 23, 27, 30}, 69: {2, 3, 4, 5, 6, 7, 9, 10, 14, 17, 20}, 70: {1, 4, 5, 6, 7, 10, 11, 12, 13, 16, 18, 19, 20, 21, 22, 24, 25, 26, 28, 29}, 71: {4, 5, 6, 14, 17}, 72: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32}, 73: {31}, 74: {32, 1, 7, 9, 23, 27, 29, 30}, 75: {27, 29}, 76: {7, 9, 11, 18, 20, 25}, 77: {4, 5, 6, 13, 31}, 78: {32, 19, 23, 24, 26, 31}, 79: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32}, 80: {0, 2, 3, 7, 8, 9, 10, 11, 12, 15, 17, 18, 19, 20, 22, 24, 26, 29, 30, 32}, 81: {29, 7}, 82: {1, 2, 3, 4, 5, 6, 7, 9, 10, 13, 14, 15, 16, 17, 18, 20, 21, 24, 26, 29, 31}, 83: {32, 8, 12, 18, 28, 30}, 84: {22}, 85: {1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 14, 17, 26, 28, 30}, 86: {1, 8, 11, 16, 19, 22, 24, 26, 27, 29, 30, 31}, 87: {14, 30}, 88: {8, 9, 20}, 89: {32, 3, 4, 5, 6, 7, 9, 10, 21, 23, 28, 29, 31}, 90: {11, 30}, 91: {0, 1, 3, 4, 5, 6, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 21, 22, 24, 26, 28, 31}, 92: {24}, 93: {24, 26, 31}, 94: {3, 13, 15, 24, 26, 31}}
+Iteration 170: Best valset aggregate score so far: 0.5351624158435304
+Iteration 170: Best program as per aggregate score on valset: 26
+Iteration 170: Best score on valset: 0.5351624158435304
+Iteration 170: Linear pareto front program index: 26
+Iteration 170: New program candidate index: 32
+Iteration 171: No merge candidates found
+Iteration 171: Selected program 19 score: 0.31589635854341735
+Iteration 171 [k=0]: Proposed new text for system_prompt: ## New Instruction  
+Anonymize the user's query by replacing all personally identifiable information (PII) such as names, addresses, phone numbers, and email addresses with generic placeholders. Ensure that the rewritten query maintains the original intent and context, and does not introduce any assumptions or external information not present in the original input. Replace specific identifiers with placeholders like `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORG>`, or `<PRESIDIO_ANONYMIZED_POSITION>`, and use consistent formatting for all PII.  
+
+### Task Description  
+1. **Identify PII**: Scan the input for names, addresses, phone numbers, and email addresses.  
+2. **Replace with placeholders**: Replace specific PII with generic terms or placeholders (e.g., "Name", "University", "Company", "Position").  
+3. **Preserve intent**: Ensure the rewritten query conveys the same intent as the original, even if rephrased.  
+4. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+5. **Maintain context**: Do not alter the context or intent of the query, even if it requires rephrasing.  
+6. **Use generalizable strategy**:  
+   - Replace job titles, departments, or general descriptions with neutral terms (e.g., "Manager", "Department", "General Inquiry").  
+   - Treat non-PII information as neutral and preserve it as is.  
+   - Apply the same placeholder format to all instances of PII (e.g., `<PRESIDIO_ANONYMIZED_PERSON>` for names, `<PRESIDIO_ANONYMIZED_ORG>` for organizations).  
+
+### Niche and Domain-Specific Considerations  
+- **PII types**: Focus on names, addresses, phone numbers, and email addresses.  
+- **Contextual awareness**: Maintain the original context (e.g., job applications, inquiries, or general questions).  
+- **Anonymization strategy**: Replace specific identifiers with generic placeholders without altering the meaning or intent.  
+- **No external assumptions**: Do not introduce external information or assumptions not present in the original input.  
+- **Consistency**: Use a standardized placeholder format across all PII instances.  
+
+### Generalizable Strategy  
+- **Identify and replace PII**: Scan the input for PII and replace it with placeholders.  
+- **Preserve intent**: Ensure the rewritten query retains the original meaning and intent.  
+- **Maintain neutrality**: Treat non-PII information as neutral and preserve it.  
+- **Avoid leakage**: Verify that no PII is inadvertently exposed.  
+- **Use consistent formatting**: Apply the same placeholder format (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.
+Iteration 171 [k=0]: Candidate score sum = 1.2 (best so far = -inf)
+Iteration 171 [k=1]: Proposed new text for system_prompt: ## New Instruction  
+Anonymize the user's query by replacing all personally identifiable information (PII) such as names, addresses, phone numbers, and email addresses with generic placeholders. Ensure that:  
+1. **Names** are replaced with `<PRESIDIO_ANONYMIZED_PERSON>`.  
+2. **Addresses** are replaced with `<PRESIDIO_ANONYMIZED_ADDRESS>`.  
+3. **Phone numbers** are replaced with `<PRESIDIO_ANONYMIZED_PHONE>`.  
+4. **Email addresses** are replaced with `<PRESIDIO_ANONYMIZED_EMAIL>`.  
+5. **Other identifiers** (e.g., job titles, departments, or general descriptions) are preserved as-is.  
+
+**Key Requirements**:  
+- **No PII leakage**: Ensure that no personally identifiable information is inadvertently exposed in the rewritten query.  
+- **Preserve intent and context**: The rewritten query must retain the original meaning and intent of the user's request.  
+- **Maintain neutrality**: Treat non-PII information (e.g., job titles, departments, or general descriptions) as neutral and preserve them.  
+- **Use consistent placeholder format**: Apply the same placeholder format (`<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+- **Avoid assumptions**: Do not introduce any external information or assumptions not present in the original input.  
+
+**Niche and Domain-Specific Considerations**:  
+- **PII types**: Focus on names, addresses, phone numbers, and email addresses, but also consider other identifiers like social security numbers, academic credentials, or job titles if they are present.  
+- **Contextual awareness**: The rewritten query must maintain the original context (e.g., a job application, a general inquiry, or a question about a company).  
+- **Anonymization strategy**: Replace specific identifiers with generic placeholders without altering the meaning or intent of the query.  
+- **Generalizable strategy**: If the query contains information that is not PII (e.g., job titles, departments, or general descriptions), treat it as neutral and preserve it as is.  
+
+**Example Output**:  
+Input: "I want to give shoutout to everyone that played a part in making this happen like GeoFF KENNIK, Abhi Bhalla, <PRESIDIO_ANONYMIZED_PERSON>, Victoria Decurrío, Sara Devereaux, img lt, Hanice Demucci"  
+Output: "I want to give shoutout to everyone that played a part in making this happen like GeoFF KENNIK, Abhi Bhalla, <PRESIDIO_ANONYMIZED_PERSON>, Victoria Decurrío, Sara Devereaux, img lt, Hanice Demucci."  
+
+**Feedback Consideration**:  
+- **Leakage score**: Ensure no PII is leaked, even if the query is rewritten.  
+- **Quality score**: Ensure the rewritten query is grammatically correct and maintains the original intent.  
+- **Task completion**: Confirm that all PII has been replaced with placeholders and that the rewritten query is contextually accurate.
+Iteration 171 [k=1]: Candidate score sum = 1.1 (best so far = 1.2)
+Iteration 171 [k=2]: Proposed new text for system_prompt: ## New Instruction  
+Anonymize the user's query by replacing all personally identifiable information (PII) such as names, addresses, phone numbers, and email addresses with generic placeholders. Ensure that:  
+1. **PII is identified and replaced**: Scan the input for any PII and replace it with the placeholder `<PRESIDIO_ANONYMIZED_PERSON>` or similar generic terms.  
+2. **Preserve intent and context**: Maintain the original meaning, intent, and context of the query while anonymizing.  
+3. **Avoid leakage**: Ensure no PII is inadvertently exposed in the rewritten query.  
+4. **Maintain neutrality**: Treat non-PII information (e.g., job titles, departments, or general descriptions) as neutral and preserve it as is.  
+5. **Use consistent placeholder format**: Apply the same placeholder format (`<PRESIDIO_ANONYMIZED_PERSON>`) to all instances of PII.  
+6. **No external assumptions**: Do not introduce any external information or assumptions not present in the original input.  
+7. **Handle multiple PII types**: Replace names, addresses, phone numbers, and email addresses as specified, and handle other potential PII (e.g., academic credentials, job titles, etc.) with appropriate anonymization.  
+
+## Niche and Domain-Specific Considerations  
+- **PII types**: Focus on names, addresses, phone numbers, and email addresses, but also consider other identifiers such as academic credentials, job titles, or company names if they are PII.  
+- **Contextual awareness**: Maintain the original context (e.g., a job application, a question about a company, or a general inquiry) in the rewritten query.  
+- **Anonymization strategy**: Replace specific identifiers with generic placeholders without altering the meaning or intent of the query.  
+- **No external assumptions**: The rewritten query should not include any external information or assumptions not present in the original input.  
+- **Generalizable strategy**: If the query contains information that is not PII (e.g., job titles, departments, or general descriptions), treat it as neutral and preserve it as is.  
+- **Placeholder format**: Use the standard placeholder format `<PRESIDIO_ANONYMIZED_PERSON>` for all PII replacements.
+Iteration 171 [k=2]: Candidate score sum = 0.5 (best so far = 1.2)
+Iteration 171: New subsample score 1.2 is better than old score 0.6. Continue to full eval and add to candidate pool.
+Iteration 171: Valset score for new program: 0.39455051656290047 (coverage 95 / 95)
+Iteration 171: Val aggregate for new program: 0.39455051656290047
+Iteration 171: Individual valset scores for new program: {11: 0.2, 27: 0.5, 43: 0.5, 0: 0.25, 1: 0.0, 2: 0.5, 3: 0.36764705882352944, 4: 0.5, 5: 0.35, 6: 0.0, 7: 0.0, 8: 0.5, 9: 0.09999999999999998, 10: 0.0, 12: 0.5, 13: 0.5, 14: 0.33333333333333337, 15: 0.0, 16: 0.0, 17: 0.5, 18: 1.0, 19: 0.0, 20: 1.0, 21: 0.5, 22: 1.0, 23: 1.0, 24: 0.0, 25: 0.0, 26: 0.5, 28: 0.5, 29: 0.038461538461538436, 30: 1.0, 31: 0.0, 32: 0.0, 33: 0.5, 34: 0.5, 35: 0.5, 36: 0.5, 37: 0.5, 38: 1.0, 39: 0.5, 40: 0.0, 41: 0.5, 42: 0.5, 44: 0.0, 45: 0.75, 46: 0.16666666666666669, 47: 0.0, 48: 0.5, 49: 0.8333333333333334, 50: 0.5, 51: 1.0, 52: 0.0, 53: 0.5, 54: 0.5, 55: 0.5, 56: 1.0, 57: 0.5, 58: 0.5, 59: 0.0, 60: 0.25, 61: 1.0, 62: 0.0, 63: 0.0, 64: 0.5, 65: 0.0, 66: 0.5, 67: 0.09999999999999998, 68: 0.0, 69: 1.0, 70: 0.0, 71: 0.5, 72: 0.5, 73: 0.14285714285714285, 74: 1.0, 75: 1.0, 76: 0.25, 77: 0.5, 78: 1.0, 79: 0.5, 80: 0.0, 81: 0.5, 82: 0.0, 83: 0.0, 84: 0.5, 85: 0.5, 86: 0.5, 87: 0.5, 88: 0.5, 89: 0.0, 90: 0.45, 91: 0.5, 92: 0.4, 93: 0.0, 94: 0.0}
+Iteration 171: New valset pareto front scores: {0: 1.0, 1: 0.875, 2: 1.0, 3: 1.0, 4: 0.625, 5: 1.0, 6: 1.0, 7: 0.8846153846153846, 8: 1.0, 9: 0.5, 10: 1.0, 11: 1.0, 12: 1.0, 13: 1.0, 14: 0.5, 15: 1.0, 16: 0.5, 17: 1.0, 18: 1.0, 19: 0.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 0.75, 29: 1.0, 30: 1.0, 31: 0.75, 32: 0.75, 33: 1.0, 34: 0.5, 35: 0.5, 36: 0.75, 37: 1.0, 38: 1.0, 39: 1.0, 40: 0.5, 41: 0.5, 42: 0.5, 43: 1.0, 44: 1.0, 45: 1.0, 46: 0.8333333333333334, 47: 0.6, 48: 1.0, 49: 0.8333333333333334, 50: 0.8333333333333334, 51: 1.0, 52: 0.16666666666666669, 53: 0.5, 54: 0.5, 55: 0.5, 56: 1.0, 57: 0.6666666666666667, 58: 0.5, 59: 0.5, 60: 0.75, 61: 1.0, 62: 0.5, 63: 0.6666666666666667, 64: 1.0, 65: 1.0, 66: 1.0, 67: 0.6, 68: 0.5, 69: 1.0, 70: 0.5, 71: 0.875, 72: 0.5, 73: 0.5714285714285714, 74: 1.0, 75: 1.0, 76: 0.75, 77: 1.0, 78: 1.0, 79: 0.5, 80: 0.5, 81: 1.0, 82: 0.5, 83: 1.0, 84: 1.0, 85: 0.75, 86: 0.5, 87: 1.0, 88: 0.6666666666666667, 89: 0.5, 90: 0.6, 91: 1.0, 92: 0.7, 93: 0.5, 94: 1.0}
+Iteration 171: Valset pareto front aggregate score: 0.7973443223443224
+Iteration 171: Updated valset pareto front programs: {0: {17}, 1: {31}, 2: {1, 3, 15, 16, 24, 25}, 3: {31, 15}, 4: {32, 10}, 5: {9, 22}, 6: {19}, 7: {14, 31}, 8: {1, 7, 10, 12, 13, 15, 19, 20, 25, 26}, 9: {17, 10, 12}, 10: {0, 3, 4, 5, 6, 10, 13, 24, 26, 28, 31}, 11: {1, 3, 4, 8, 10, 12, 13, 15, 20, 21}, 12: {31, 15}, 13: {9}, 14: {2, 18, 13}, 15: {7}, 16: {0, 1, 3, 7, 9, 11, 13, 14, 15, 17, 18, 20, 21, 23, 25, 26, 27, 28, 29, 30, 31}, 17: {2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 16, 17, 18, 24, 26}, 18: {32, 33, 8, 10, 17, 18, 22, 23, 28, 29, 30}, 19: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33}, 20: {0, 3, 7, 8, 9, 10, 11, 13, 15, 16, 18, 20, 22, 24, 26, 28, 29, 30, 32, 33}, 21: {3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 24, 26, 28, 31}, 22: {1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 16, 18, 24, 25, 29, 32, 33}, 23: {33, 12, 15, 16, 18, 21, 24, 26, 28, 29, 31}, 24: {32, 30}, 25: {16, 24, 10, 26}, 26: {0, 1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 17, 18, 19, 21, 28, 32}, 27: {28, 31}, 28: {2, 4, 5, 6, 7, 10, 14, 17, 24}, 29: {1, 28, 15}, 30: {32, 1, 33, 3, 10, 12, 14, 15, 18, 19, 20, 21, 25, 28, 29}, 31: {0, 20}, 32: {20}, 33: {24, 27}, 34: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33}, 35: {33, 4, 5, 6, 13, 16, 19, 23, 24, 26, 31}, 36: {18}, 37: {7, 8, 15, 24, 26, 28, 29, 31}, 38: {33, 4, 5, 6, 16, 19, 22, 23, 27, 29}, 39: {10, 3}, 40: {7, 10, 14, 16, 19, 20, 21, 22, 24, 26, 28, 29, 31}, 41: {1, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33}, 42: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 16, 17, 18, 19, 21, 23, 24, 25, 26, 27, 28, 31, 33}, 43: {26, 31}, 44: {12, 23}, 45: {23}, 46: {16}, 47: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 24, 26, 28, 31}, 48: {2, 17, 10, 11}, 49: {1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 15, 16, 17, 18, 19, 24, 26, 27, 29, 31, 33}, 50: {26, 4, 5, 6}, 51: {25, 33}, 52: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 23, 24, 26, 28, 31, 32}, 53: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 31, 33}, 54: {1, 3, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33}, 55: {1, 2, 3, 4, 5, 6, 8, 9, 11, 14, 15, 16, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33}, 56: {1, 2, 3, 4, 5, 6, 7, 33, 10, 11, 12, 14, 15, 16, 18, 24, 26}, 57: {26, 23}, 58: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33}, 59: {24}, 60: {8, 15, 16, 18, 24, 26, 28, 29, 31}, 61: {16, 33}, 62: {2, 4, 5, 6, 7, 10, 11, 12, 13, 16, 20, 21, 23, 24, 25, 26, 29, 31}, 63: {7, 8, 9, 12, 21, 23, 24, 26, 31}, 64: {32, 23, 24, 25, 26}, 65: {15}, 66: {18, 11}, 67: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 24, 26, 28, 29, 31}, 68: {32, 2, 3, 4, 5, 6, 10, 11, 13, 14, 16, 20, 22, 23, 27, 30}, 69: {33, 2, 3, 4, 5, 6, 7, 9, 10, 14, 17, 20}, 70: {1, 4, 5, 6, 7, 10, 11, 12, 13, 16, 18, 19, 20, 21, 22, 24, 25, 26, 28, 29}, 71: {4, 5, 6, 14, 17}, 72: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33}, 73: {31}, 74: {32, 1, 33, 7, 9, 23, 27, 29, 30}, 75: {33, 27, 29}, 76: {7, 9, 11, 18, 20, 25}, 77: {4, 5, 6, 13, 31}, 78: {32, 33, 19, 23, 24, 26, 31}, 79: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33}, 80: {0, 2, 3, 7, 8, 9, 10, 11, 12, 15, 17, 18, 19, 20, 22, 24, 26, 29, 30, 32}, 81: {29, 7}, 82: {1, 2, 3, 4, 5, 6, 7, 9, 10, 13, 14, 15, 16, 17, 18, 20, 21, 24, 26, 29, 31}, 83: {32, 8, 12, 18, 28, 30}, 84: {22}, 85: {1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 14, 17, 26, 28, 30}, 86: {1, 33, 8, 11, 16, 19, 22, 24, 26, 27, 29, 30, 31}, 87: {14, 30}, 88: {8, 9, 20}, 89: {32, 3, 4, 5, 6, 7, 9, 10, 21, 23, 28, 29, 31}, 90: {11, 30}, 91: {0, 1, 3, 4, 5, 6, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 21, 22, 24, 26, 28, 31}, 92: {24}, 93: {24, 26, 31}, 94: {3, 13, 15, 24, 26, 31}}
+Iteration 171: Best valset aggregate score so far: 0.5351624158435304
+Iteration 171: Best program as per aggregate score on valset: 26
+Iteration 171: Best score on valset: 0.5351624158435304
+Iteration 171: Linear pareto front program index: 26
+Iteration 171: New program candidate index: 33
+Iteration 172: No merge candidates found
+Iteration 172: Selected program 31 score: 0.5198589422273633
+Iteration 172 [k=0]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information (PII), including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization strategy used.  
+
+**Example of Anonymization Strategy:**  
+- Replace names with "[Name]"  
+- Replace addresses with "[Address]"  
+- Replace phone numbers with "[Phone Number]"  
+- Replace emails with "[Email]"  
+- Replace specific job titles, institutions, and dates with generic terms (e.g., "Bachelor’s degree", "Computer Vision Researcher", "Software Engineer")  
+- Maintain the structure and intent of the original input while ensuring no sensitive information is revealed.  
+
+**Feedback Clarification:**  
+- The assistant must not leak any PII, even if it is not explicitly mentioned in the input.  
+- The rewritten query must be grammatically correct and maintain the original intent.  
+- The assistant should not assume any external context or data.  
+- The anonymization process must be consistent and transparent, with clear notes on how PII was replaced.  
+
+**Final Output Requirements:**  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant must provide a contextual note explaining the anonymization strategy used.  
+- The output must not include any external data, assumptions, or references outside the input.
+Iteration 172 [k=0]: Candidate score sum = 1.6 (best so far = -inf)
+Iteration 172 [k=1]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information (PII), including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization strategy used.  
+
+**Example of Anonymization Strategy:**  
+- Replace names with "[Name]"  
+- Replace addresses with "[Address]"  
+- Replace phone numbers with "[Phone Number]"  
+- Replace emails with "[Email]"  
+- Replace specific job titles, institutions, and dates with generic terms (e.g., "Bachelor’s degree", "Computer Vision Researcher", "Software Engineer")  
+- Maintain the structure and intent of the original input while ensuring no sensitive information is revealed.  
+
+**Feedback Clarification:**  
+- The assistant must not leak any PII, even if it is not explicitly mentioned in the input.  
+- The rewritten query must be grammatically correct and maintain the original intent.  
+- The assistant should not assume any external context or data.  
+- The anonymization process must be consistent and transparent, with clear notes on how PII was replaced.  
+
+**Final Output Requirements:**  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant must provide a contextual note explaining the anonymization strategy used.  
+- The output must not include any external data, assumptions, or references outside the input.
+Iteration 172 [k=1]: Duplicate candidate, skipping evaluation.
+Iteration 172 [k=2]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Notes for the Assistant:**  
+- The assistant should follow a consistent anonymization process, such as replacing PII with placeholders in a standardized format.  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The assistant must not make assumptions about the user's intent or include any external information.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant should provide contextual notes to clarify the anonymization strategy used.  
+
+**Example of Anonymization Strategy:**  
+- Replace names with "[Name]"  
+- Replace addresses with "[Address]"  
+- Replace phone numbers with "[Phone Number]"  
+- Replace emails with "[Email]"  
+- Replace specific job titles, institutions, and dates with generic terms (e.g., "Bachelor’s degree", "Computer Vision Researcher", "Software Engineer")  
+- Maintain the structure and intent of the original input while ensuring no sensitive information is revealed.  
+
+**Feedback Clarification:**  
+- The assistant must not leak any PII, even if it is not explicitly mentioned in the input.  
+- The rewritten query must be grammatically correct and maintain the original intent.  
+- The assistant should not assume any external context or data.  
+- The anonymization process must be consistent and transparent, with clear notes on how PII was replaced.  
+
+**Final Output Requirements:**  
+- The output must be free of any PII and must be grammatically and contextually accurate.  
+- The rewritten query must be concise and suitable for professional or technical use.  
+- The assistant must provide a contextual note explaining the anonymization strategy used.  
+- The output must not include any external data, assumptions, or references outside the input.
+Iteration 172 [k=2]: Candidate score sum = 1.6 (best so far = 1.6)
+Iteration 172: New subsample score 1.6 is not better than old score 1.6, skipping
+Loading gepa state from run dir
+Iteration 172: Base program full valset score: 0.27789817681458545 over 95 / 95 examples

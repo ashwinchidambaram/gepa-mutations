@@ -1,0 +1,1015 @@
+Iteration 0: Base program full valset score: 0.06833333333333333 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.06833333333333333
+Iteration 1: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising analytics, understanding the distribution of email domains can help identify regional trends and customer demographics.
+- Efficiently processing large volumes of email data is crucial for real-time analytics and campaign optimization.
+- Using a `set` to store unique domains is a best practice for ensuring both uniqueness and performance, especially when dealing with large datasets.
+- This function can be integrated into larger data pipelines for customer segmentation and targeted marketing strategies.
+Iteration 1: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 2: Selected program 0 score: 0.06833333333333333
+Iteration 2: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising analytics, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information to Include
+- In digital advertising analytics, identifying unique email domains can help in understanding the geographic distribution of users, especially when targeting regions like Asia where email domain patterns may be more predictable or clustered.
+- Using a `set` to store unique domains is a common and efficient strategy in data processing tasks where duplicates need to be removed, and it ensures optimal performance for large datasets.
+- The function assumes all email addresses are valid and in lowercase, which is a common practice in digital advertising campaigns to maintain consistency and avoid case-sensitive mismatches.
+- The strategy of splitting the email at the `@` symbol is a fundamental and domain-specific approach for parsing email addresses, as it isolates the domain part, which is essential for the task at hand.
+- The efficiency of the function is critical when dealing with large customer datasets, as it ensures that the analysis can be performed quickly and without unnecessary computational overhead.
+- The use of a `set` not only ensures uniqueness but also allows for fast lookup and insertion, which is ideal for performance-sensitive applications like real-time analytics in digital advertising.
+- The function is designed to be generalizable, meaning it can be applied to any list of email addresses, making it a versatile tool for data analysis in various contexts.
+- The function's simplicity and clarity make it easy to maintain and adapt for future enhancements or modifications, which is important in the dynamic field of digital advertising.
+- The function's ability to handle large datasets is crucial for analyzing customer behavior and preferences at scale, which is a core requirement in digital advertising campaigns.
+- The function's design aligns with best practices in data processing, ensuring that it is both efficient and easy to understand, which is essential for collaboration and review in a team environment.
+- The function's output provides a clear and concise metric that can be used for further analysis, such as segmenting customers by region or identifying trends in email usage patterns.
+Iteration 2: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 3: Selected program 0 score: 0.06833333333333333
+Iteration 3: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising, analyzing email domains can help identify regional trends, such as the prevalence of certain email providers in Asia.
+- Using `set` for domain tracking is particularly effective in large datasets where performance and memory efficiency are critical.
+- The function's approach is scalable and can be adapted to handle real-time data processing in analytics pipelines.
+- The strategy is especially useful in scenarios where data may be noisy or duplicated, such as in customer engagement tracking or lead generation campaigns.
+
+## Task Requirements
+- Write a function that meets the above specifications.
+- Ensure the function is well-documented and includes the highlighted sections.
+- Provide a clear explanation of the strategy and its relevance to digital advertising analytics.
+Iteration 3: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 4: Selected program 0 score: 0.06833333333333333
+Iteration 4: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising campaigns, especially in regions like Asia, analyzing email domains can provide insights into the geographic distribution of customers.
+- The use of `set` is particularly effective in this context due to its efficiency in handling duplicates and its simplicity in implementation.
+- Email domain extraction is a common preprocessing step in customer data analysis to identify potential regions or demographics.
+Iteration 4: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 5: Selected program 0 score: 0.06833333333333333
+Iteration 5: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. This function is intended for use in digital advertising analytics, particularly when analyzing customer data from specific regions such as Asia. The function should be efficient, well-documented, and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates and ensures optimal performance on large datasets.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising analytics, understanding the distribution of email domains can help identify regional or demographic patterns among customers, which is especially useful for targeting specific regions like Asia.
+- The use of `set` is a best practice for efficiently counting unique values in Python, and it aligns with the performance requirements of large-scale data analysis in advertising campaigns.
+Iteration 5: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 6: Selected program 0 score: 0.06833333333333333
+Iteration 6: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising analytics, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising, understanding customer demographics and regional targeting is crucial. Email domains can provide insights into geographic distribution, as certain domains are more common in specific regions (e.g., `.com` for North America, `.co` for Colombia, `.asia` for Asia).
+- Efficient data processing is essential when handling large customer datasets, and using a `set` is a best practice for ensuring uniqueness and performance in Python.
+
+## Generalizable Strategy
+- The strategy of using a `set` to store unique domains is both efficient and generalizable, as it leverages Python’s built-in data structures for fast insertion and lookup, making it ideal for large-scale data analysis tasks.
+Iteration 6: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 7: Selected program 0 score: 0.06833333333333333
+Iteration 7: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising analytics.
+5. The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+6. *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+7. *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The function should be written in Python and follow PEP8 style guidelines.
+- The function should be robust against edge cases, such as missing `@` symbols or malformed email addresses, though the problem assumes all emails are valid.
+- The function should be able to process datasets with millions of email addresses efficiently, making it suitable for real-world digital marketing analytics.
+Iteration 7: New subsample score 0.25 is not better than old score 0.25, skipping
+Iteration 8: Selected program 0 score: 0.06833333333333333
+Iteration 8: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information to Include
+- In digital advertising, analyzing email domains can help identify regional trends, such as common email providers in Asia (e.g., `gmail.com`, `yahoo.com`, `outlook.com`).
+- Efficient handling of large datasets is crucial for real-time analytics in advertising campaigns.
+- The use of `set` ensures that the solution is both memory-efficient and time-efficient, which is essential for processing large volumes of customer data.
+
+## Generalizable Strategy
+- The use of `set` is a generalizable and efficient strategy for removing duplicates from a list of items. It is particularly useful in data analysis tasks where uniqueness is a key concern.
+- The function follows a straightforward approach by splitting each email at the `@` symbol and collecting the domain part, which is a common operation in data processing.
+
+## Task for the Assistant
+Write a Python function that:
+1. Takes a list of email addresses as input.
+2. Splits each email at the `@` symbol to extract the domain part.
+3. Uses a `set` to store the unique domains.
+4. Returns the number of unique domains as an integer.
+5. Is well-documented and includes clear explanations of its purpose, parameters, and return value.
+6. Highlights the use of `set` and the domain extraction process using markdown.
+7. Is efficient and suitable for analyzing large datasets in digital advertising campaigns.
+Iteration 8: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 9: Selected program 0 score: 0.06833333333333333
+Iteration 9: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising, email domains often reflect regional or demographic targeting, such as `.com` for global audiences, `.co` for startups, or `.asia` for regional campaigns.
+- Efficient domain extraction is crucial for segmenting users based on their email origin, especially when analyzing campaign performance across different regions.
+- Using a `set` ensures that the function can scale to large datasets, making it suitable for big data environments common in advertising analytics.
+- The function's simplicity and efficiency make it ideal for integration into data pipelines that process large volumes of user data.
+Iteration 9: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 10: Selected program 0 score: 0.06833333333333333
+Iteration 10: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented with a clear description of its purpose, parameters, and return value. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia. 
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+Iteration 10: New subsample score 0.2 is not better than old score 0.2, skipping
+Iteration 11: Selected program 0 score: 0.06833333333333333
+Iteration 11: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising campaigns, especially in regions like Asia, analyzing email domains can help identify regional trends, user demographics, or brand preferences.
+- Using a `set` is a domain-specific strategy for efficiently removing duplicates in such scenarios, which is particularly useful when dealing with large datasets and ensuring fast data processing.
+- The function should be designed with performance in mind, as it may be used in real-time analytics or data preprocessing pipelines.
+
+## Generalizable Strategy
+- The function should use a `set` to store the unique domains, which is a generalizable and efficient approach for removing duplicates in any dataset where uniqueness is required.
+- The function should be efficient and scalable, allowing it to handle large datasets typical in digital advertising analytics.
+Iteration 11: New subsample score 0.3333333333333333 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Loading gepa state from run dir
+Iteration 10: Base program full valset score: 0.06833333333333333 over 300 / 300 examples
+Iteration 11: Selected program 0 score: 0.06833333333333333
+Iteration 11: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising, analyzing email domains can help identify regional trends, such as higher engagement from users in Asia using certain email providers.
+- Efficient domain extraction and counting is essential for real-time analytics and campaign optimization.
+- Using a `set` ensures that the function can scale well with large datasets, which is critical in advertising analytics where millions of email addresses may be processed.
+
+## Generalizable Strategy
+- The use of a `set` is a generalizable and efficient strategy for removing duplicates in any scenario where unique elements need to be counted.
+- Splitting the email address at the `@` symbol is a standard method for extracting the domain part, ensuring consistency and accuracy.
+Iteration 11: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 12: Selected program 0 score: 0.06833333333333333
+Iteration 12: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising analytics.
+5. The function should split each email address at the `@` symbol to extract the domain part.
+6. The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+7. Assume all email addresses are valid and in lowercase.
+
+## Additional Notes
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- The function should be able to process data from various regions, including Asia, where email domain patterns may vary.
+- The function should be designed for scalability and performance, ensuring it can be used in real-world applications involving large volumes of customer data.
+Iteration 12: New subsample score 0.5 is not better than old score 0.5, skipping
+Iteration 13: Selected program 0 score: 0.06833333333333333
+Iteration 13: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising, analyzing email domains can help identify the geographic distribution of users, as certain domains are more common in specific regions.
+- Efficiently processing large datasets is crucial for real-time analytics and campaign targeting, especially in regions like Asia where email usage patterns may vary significantly.
+- The use of `set` is particularly effective in this context due to its built-in uniqueness enforcement and fast lookup times, making it ideal for large-scale data processing in advertising analytics.
+
+## Generalizable Strategy
+- The function should use a `set` to store the unique domains, which automatically handles duplicates and ensures efficient memory usage.
+- The function should split each email address at the `@` symbol to extract the domain part, which is a common and efficient string manipulation technique.
+Iteration 13: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 14: Selected program 0 score: 0.06833333333333333
+Iteration 14: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising campaigns, especially in regions like Asia, analyzing email domains can help identify regional customer bases or marketing effectiveness.
+- Efficient domain extraction and counting is crucial for real-time analytics and decision-making in large-scale data processing.
+- The use of `set` is particularly effective for this task due to its inherent uniqueness and performance characteristics, which are well-suited for data analysis in marketing and customer segmentation.
+Iteration 14: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 15: Selected program 0 score: 0.06833333333333333
+Iteration 15: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising, analyzing email domains can help identify regional trends, such as common email providers in Asia (e.g., `gmail.com`, `outlook.com`, `yahoo.com`).
+- Efficient domain extraction and counting is crucial for large-scale customer data analysis, where performance and scalability are key considerations.
+- The use of `set` is optimal for this task due to its inherent uniqueness property and efficient insertion and lookup operations.
+Iteration 15: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 16: Selected program 0 score: 0.06833333333333333
+Iteration 16: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. This function is designed for use in digital advertising analytics, particularly when analyzing customer data from specific regions like Asia. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. The strategy should be generalizable and scalable for large datasets.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+Iteration 16: New subsample score 0.25 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 11: Valset score for new program: 0.06677777777777777 (coverage 300 / 300)
+Iteration 11: Val aggregate for new program: 0.06677777777777777
+Iteration 11: Individual valset scores for new program: {92: 0.3333333333333333, 95: 0.0, 147: 0.0, 0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.0, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.0, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 93: 0.0, 94: 0.0, 96: 0.0, 97: 0.0, 98: 0.2, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.0, 126: 0.0, 127: 0.0, 128: 0.0, 129: 0.5, 130: 0.0, 131: 0.0, 132: 0.25, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.0, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.3333333333333333, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.2, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.3333333333333333, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.25, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.25, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.0, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.5, 272: 0.0, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.5, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 11: New valset pareto front scores: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.25, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.25, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.5, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.0, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.3333333333333333, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.2, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.5, 130: 0.0, 131: 0.0, 132: 0.25, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.3333333333333333, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.2, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.3333333333333333, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.25, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.25, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.0, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.5, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.5, 281: 0.0, 282: 0.25, 283: 0.5, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 11: Valset pareto front aggregate score: 0.0765
+Iteration 11: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {0, 1}, 5: {0, 1}, 6: {0, 1}, 7: {0}, 8: {0, 1}, 9: {0, 1}, 10: {0, 1}, 11: {0, 1}, 12: {0}, 13: {0, 1}, 14: {0, 1}, 15: {0, 1}, 16: {0, 1}, 17: {0, 1}, 18: {0, 1}, 19: {0}, 20: {0, 1}, 21: {0, 1}, 22: {0, 1}, 23: {0, 1}, 24: {0, 1}, 25: {0, 1}, 26: {0, 1}, 27: {0, 1}, 28: {0, 1}, 29: {1}, 30: {0, 1}, 31: {0, 1}, 32: {0, 1}, 33: {0, 1}, 34: {0, 1}, 35: {0, 1}, 36: {0, 1}, 37: {0, 1}, 38: {0, 1}, 39: {0, 1}, 40: {0, 1}, 41: {0, 1}, 42: {0, 1}, 43: {0, 1}, 44: {0, 1}, 45: {0, 1}, 46: {0, 1}, 47: {0, 1}, 48: {0, 1}, 49: {0, 1}, 50: {0, 1}, 51: {0, 1}, 52: {0, 1}, 53: {0, 1}, 54: {0, 1}, 55: {0, 1}, 56: {0, 1}, 57: {0, 1}, 58: {0, 1}, 59: {0, 1}, 60: {0, 1}, 61: {0, 1}, 62: {0, 1}, 63: {0, 1}, 64: {0, 1}, 65: {0, 1}, 66: {0, 1}, 67: {0, 1}, 68: {0, 1}, 69: {0, 1}, 70: {0, 1}, 71: {0, 1}, 72: {0, 1}, 73: {0, 1}, 74: {0, 1}, 75: {0, 1}, 76: {0, 1}, 77: {0, 1}, 78: {0, 1}, 79: {0, 1}, 80: {0, 1}, 81: {0, 1}, 82: {0, 1}, 83: {0, 1}, 84: {0, 1}, 85: {0, 1}, 86: {0, 1}, 87: {0, 1}, 88: {0, 1}, 89: {0, 1}, 90: {0, 1}, 91: {0, 1}, 92: {1}, 93: {0, 1}, 94: {0, 1}, 95: {0, 1}, 96: {0, 1}, 97: {0, 1}, 98: {1}, 99: {0, 1}, 100: {0, 1}, 101: {0, 1}, 102: {0, 1}, 103: {0, 1}, 104: {0, 1}, 105: {0, 1}, 106: {0, 1}, 107: {0, 1}, 108: {0, 1}, 109: {0, 1}, 110: {0, 1}, 111: {0, 1}, 112: {0, 1}, 113: {0, 1}, 114: {0, 1}, 115: {0, 1}, 116: {0, 1}, 117: {0, 1}, 118: {0, 1}, 119: {0, 1}, 120: {0, 1}, 121: {0, 1}, 122: {0, 1}, 123: {0, 1}, 124: {1}, 125: {0}, 126: {0}, 127: {0, 1}, 128: {0, 1}, 129: {1}, 130: {0, 1}, 131: {0, 1}, 132: {1}, 133: {0, 1}, 134: {0, 1}, 135: {0, 1}, 136: {0, 1}, 137: {0, 1}, 138: {0, 1}, 139: {0, 1}, 140: {0, 1}, 141: {0, 1}, 142: {0, 1}, 143: {0, 1}, 144: {0, 1}, 145: {0, 1}, 146: {0, 1}, 147: {0, 1}, 148: {0, 1}, 149: {0, 1}, 150: {0, 1}, 151: {0, 1}, 152: {0}, 153: {0, 1}, 154: {0, 1}, 155: {0, 1}, 156: {0, 1}, 157: {0, 1}, 158: {0, 1}, 159: {0, 1}, 160: {0, 1}, 161: {0, 1}, 162: {0, 1}, 163: {0, 1}, 164: {0, 1}, 165: {0, 1}, 166: {0, 1}, 167: {0, 1}, 168: {0, 1}, 169: {0, 1}, 170: {0, 1}, 171: {0, 1}, 172: {0, 1}, 173: {0, 1}, 174: {0, 1}, 175: {0, 1}, 176: {0, 1}, 177: {0, 1}, 178: {0, 1}, 179: {0, 1}, 180: {0, 1}, 181: {0, 1}, 182: {0, 1}, 183: {0, 1}, 184: {0, 1}, 185: {0, 1}, 186: {0, 1}, 187: {0, 1}, 188: {0, 1}, 189: {0, 1}, 190: {0, 1}, 191: {0, 1}, 192: {0, 1}, 193: {0, 1}, 194: {0, 1}, 195: {0, 1}, 196: {0, 1}, 197: {0, 1}, 198: {0, 1}, 199: {1}, 200: {0, 1}, 201: {0, 1}, 202: {0, 1}, 203: {0, 1}, 204: {0, 1}, 205: {0, 1}, 206: {0, 1}, 207: {0, 1}, 208: {0, 1}, 209: {0, 1}, 210: {0, 1}, 211: {0, 1}, 212: {0, 1}, 213: {0, 1}, 214: {0, 1}, 215: {0, 1}, 216: {0, 1}, 217: {0, 1}, 218: {0, 1}, 219: {0, 1}, 220: {0, 1}, 221: {0, 1}, 222: {0, 1}, 223: {0, 1}, 224: {0, 1}, 225: {0, 1}, 226: {0, 1}, 227: {0, 1}, 228: {0, 1}, 229: {0, 1}, 230: {0, 1}, 231: {0, 1}, 232: {0, 1}, 233: {0, 1}, 234: {0, 1}, 235: {0, 1}, 236: {0, 1}, 237: {0, 1}, 238: {0, 1}, 239: {0, 1}, 240: {0, 1}, 241: {0, 1}, 242: {0, 1}, 243: {0, 1}, 244: {0, 1}, 245: {0, 1}, 246: {0, 1}, 247: {0, 1}, 248: {0, 1}, 249: {0, 1}, 250: {0, 1}, 251: {0, 1}, 252: {0, 1}, 253: {0, 1}, 254: {0, 1}, 255: {0, 1}, 256: {0, 1}, 257: {0, 1}, 258: {0, 1}, 259: {0, 1}, 260: {1}, 261: {0, 1}, 262: {0, 1}, 263: {0, 1}, 264: {0, 1}, 265: {0, 1}, 266: {0, 1}, 267: {0, 1}, 268: {0, 1}, 269: {0, 1}, 270: {0, 1}, 271: {0, 1}, 272: {0}, 273: {0, 1}, 274: {0, 1}, 275: {0, 1}, 276: {0, 1}, 277: {0, 1}, 278: {0, 1}, 279: {0, 1}, 280: {0}, 281: {0, 1}, 282: {0, 1}, 283: {0, 1}, 284: {0, 1}, 285: {0, 1}, 286: {0, 1}, 287: {0, 1}, 288: {0, 1}, 289: {0, 1}, 290: {0, 1}, 291: {0, 1}, 292: {0, 1}, 293: {0, 1}, 294: {0, 1}, 295: {0, 1}, 296: {0, 1}, 297: {0, 1}, 298: {0, 1}, 299: {0, 1}}
+Iteration 11: Best valset aggregate score so far: 0.06833333333333333
+Iteration 11: Best program as per aggregate score on valset: 0
+Iteration 11: Best score on valset: 0.06833333333333333
+Iteration 11: Linear pareto front program index: 0
+Iteration 11: New program candidate index: 1
+Iteration 12: No merge candidates found
+Iteration 12: Selected program 0 score: 0.06833333333333333
+Iteration 12: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia. The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+Iteration 12: New subsample score 0.5 is not better than old score 0.5, skipping
+Iteration 13: Selected program 1 score: 0.06677777777777777
+Iteration 13: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. This function is intended for use in digital advertising analytics, particularly when analyzing customer data from regions like Asia. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising campaigns, especially in regions like Asia, analyzing email domains can help identify regional trends, user demographics, or brand preferences.
+- Using a `set` is a domain-specific strategy for efficiently removing duplicates in such scenarios, which is particularly useful when dealing with large datasets and ensuring fast data processing.
+- The function should be designed with performance in mind, as it may be used in real-time analytics or data preprocessing pipelines.
+
+## Generalizable Strategy
+- The function should use a `set` to store the unique domains, which is a generalizable and efficient approach for removing duplicates in any dataset where uniqueness is required.
+- The function should be efficient and scalable, allowing it to handle large datasets typical in digital advertising analytics.
+Iteration 13: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 14: Selected program 1 score: 0.06677777777777777
+Iteration 14: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising campaigns, especially in regions like Asia, analyzing email domains can help identify regional trends, user demographics, or brand preferences.
+- Using a `set` is a domain-specific strategy for efficiently removing duplicates in such scenarios, which is particularly useful when dealing with large datasets and ensuring fast data processing.
+- The function should be designed with performance in mind, as it may be used in real-time analytics or data preprocessing pipelines.
+
+## Generalizable Strategy
+- The function should use a `set` to store the unique domains, which is a generalizable and efficient approach for removing duplicates in any dataset where uniqueness is required.
+- The function should be efficient and scalable, allowing it to handle large datasets typical in digital advertising analytics.
+Iteration 14: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 15: Selected program 0 score: 0.06833333333333333
+Iteration 15: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising campaigns, especially those targeting regions like Asia, analyzing customer data through email domains can provide insights into regional user behavior and preferences.
+- The use of `set` is particularly effective in such scenarios due to its efficient handling of unique elements and its performance characteristics, making it suitable for large-scale data processing.
+- Email domains are often used as a proxy for user demographics and can help in segmenting audiences for targeted marketing strategies.
+- The function's efficiency is crucial when dealing with large datasets, as it ensures that the processing time remains minimal even as the volume of data increases.
+Iteration 15: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 16: Selected program 1 score: 0.06677777777777777
+Iteration 16: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising campaigns, especially in regions like Asia, analyzing email domains can help identify regional trends, user demographics, or brand preferences.
+- Using a `set` is a domain-specific strategy for efficiently removing duplicates in such scenarios, which is particularly useful when dealing with large datasets and ensuring fast data processing.
+- The function should be designed with performance in mind, as it may be used in real-time analytics or data preprocessing pipelines.
+
+## Generalizable Strategy
+- The function should use a `set` to store the unique domains, which is a generalizable and efficient approach for removing duplicates in any dataset where uniqueness is required.
+- The function should be efficient and scalable, allowing it to handle large datasets typical in digital advertising analytics.
+Iteration 16: New subsample score 0.25 is not better than old score 0.25, skipping
+Iteration 17: Selected program 1 score: 0.06677777777777777
+Iteration 17: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising campaigns, especially in regions like Asia, analyzing email domains can help identify regional trends, user demographics, or brand preferences.
+- Using a `set` is a domain-specific strategy for efficiently removing duplicates in such scenarios, which is particularly useful when dealing with large datasets and ensuring fast data processing.
+- The function should be designed with performance in mind, as it may be used in real-time analytics or data preprocessing pipelines.
+
+## Generalizable Strategy
+- The function should use a `set` to store the unique domains, which is a generalizable and efficient approach for removing duplicates in any dataset where uniqueness is required.
+- The function should be efficient and scalable, allowing it to handle large datasets typical in digital advertising analytics.
+Iteration 17: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 18: Selected program 0 score: 0.06833333333333333
+Iteration 18: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising analytics.
+5. The function should split each email address at the `@` symbol to extract the domain part.
+6. The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+Iteration 18: New subsample score 0.2 is not better than old score 0.2, skipping
+Iteration 19: Selected program 0 score: 0.06833333333333333
+Iteration 19: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising campaigns, especially in regions like Asia, analyzing customer data often involves understanding regional email usage patterns. Email domains can provide insights into the geographic distribution of users.
+- The use of `set` for storing unique domains is not only efficient but also a best practice in data processing for large-scale analytics tasks.
+- The function can be extended to include additional features such as filtering by domain type (e.g., corporate, educational, etc.), which is useful for targeted advertising strategies.
+- The function's efficiency ensures that it can be used in real-time analytics pipelines or batch processing systems, making it suitable for large datasets typical in digital advertising.
+Iteration 19: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 20: Selected program 1 score: 0.06677777777777777
+Iteration 20: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. This function will be used in digital advertising analytics, particularly when analyzing customer data from specific regions like Asia. The function should be efficient, well-documented, and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be able to handle large datasets typical in real-time analytics or data preprocessing pipelines.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising campaigns, especially in regions like Asia, analyzing email domains can help identify regional trends, user demographics, or brand preferences.
+- Using a `set` is a domain-specific strategy for efficiently removing duplicates in such scenarios, which is particularly useful when dealing with large datasets and ensuring fast data processing.
+- The function should be designed with performance in mind, as it may be used in real-time analytics or data preprocessing pipelines.
+
+## Generalizable Strategy
+- The function should use a `set` to store the unique domains, which is a generalizable and efficient approach for removing duplicates in any dataset where uniqueness is required.
+- The function should be efficient and scalable, allowing it to handle large datasets typical in digital advertising analytics.
+Iteration 20: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 21: Selected program 1 score: 0.06677777777777777
+Iteration 21: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising campaigns, especially in regions like Asia, analyzing email domains can help identify regional trends, user demographics, or brand preferences.
+- Using a `set` is a domain-specific strategy for efficiently removing duplicates in such scenarios, which is particularly useful when dealing with large datasets and ensuring fast data processing.
+- The function should be designed with performance in mind, as it may be used in real-time analytics or data preprocessing pipelines.
+
+## Generalizable Strategy
+- The function should use a `set` to store the unique domains, which is a generalizable and efficient approach for removing duplicates in any dataset where uniqueness is required.
+- The function should be efficient and scalable, allowing it to handle large datasets typical in digital advertising analytics.
+Iteration 21: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 22: Selected program 0 score: 0.06833333333333333
+Iteration 22: Proposed new text for system_prompt: # Task Instruction for the Assistant
+
+## Task Description
+You are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. The function should be efficient, handle valid email addresses in lowercase, and return an integer representing the number of unique domains. Additionally, the function must be well-documented and use a generalizable strategy such as using a `set` to store unique domains, which automatically handles duplicates. The function should be efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Input Format
+- Input: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.
+
+## Output Format
+- Output: An integer representing the number of unique email domains in the list.
+
+## Example
+For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.
+
+## Constraints
+1. The function must be well-documented with a clear description of its purpose, parameters, and return value.
+2. Highlight at least 2 sections in your answer using markdown, i.e., `*highlighted section*`.
+3. The function should be efficient and use a generalizable strategy such as using a `set` to store unique domains.
+4. Ensure the function is efficient and straightforward for analyzing customer data in digital advertising campaigns, especially when targeting specific regions like Asia.
+
+## Additional Notes
+- Assume all email addresses are valid and in lowercase.
+- Include a clear explanation of how the function works and why the chosen strategy is effective.
+- The function should be able to handle large datasets typical in digital advertising analytics.
+- The use of `set` is a niche and domain-specific strategy for efficiently removing duplicates in such scenarios.
+- *highlighted section* The function should split each email address at the `@` symbol to extract the domain part.
+- *highlighted section* The function should return the length of the `set` containing the unique domains, which ensures O(1) average time complexity for insertions and lookups.
+
+## Niche and Domain-Specific Information
+- In digital advertising analytics, understanding customer demographics and regional data is crucial. Email domains can provide insights into the geographic distribution of users.
+- Efficient data processing is essential when dealing with large datasets. Using a `set` ensures that the function remains performant and scalable.
+- The strategy of splitting the email at the `@` symbol is a standard approach for parsing email addresses and is widely used in data processing pipelines.
+- The use of `set` is not only efficient but also aligns with best practices in data analysis, where uniqueness and performance are key considerations.
+Iteration 22: New subsample score 0.5 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 22: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Iteration 16: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.

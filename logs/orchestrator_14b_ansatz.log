@@ -5,8 +5,12 @@ Experiment plan:
   Pending: 37
   Workers: 4
 
-2026-04-12 22:23:28,857 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
-2026-04-12 22:23:28,873 INFO START  ifbench/contrastive_reflection/seed=789
-2026-04-12 22:23:28,874 INFO START  ifbench/contrastive_reflection/seed=1024
-2026-04-12 22:23:28,874 INFO START  ifbench/best_of_k_K3/seed=123
-2026-04-12 22:23:28,874 INFO START  ifbench/best_of_k_K3/seed=42
+2026-04-13 01:40:24,256 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 01:40:24,273 INFO START  ifbench/contrastive_reflection/seed=789
+2026-04-13 01:40:24,276 INFO START  ifbench/best_of_k_K3/seed=42
+2026-04-13 01:40:24,276 INFO START  ifbench/contrastive_reflection/seed=1024
+2026-04-13 01:40:24,276 INFO START  ifbench/best_of_k_K3/seed=123
+2026-04-13 05:57:48,368 INFO DONE   ifbench/contrastive_reflection/seed=789 (15444s) score=0.07255555555555555
+2026-04-13 05:57:48,369 INFO START  ifbench/best_of_k_K3/seed=456
+2026-04-13 05:57:48,370 INFO [1/37] ifbench/contrastive_reflection/seed=789 -> 7.3% (15444s)
+2026-04-13 05:57:49,147 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
