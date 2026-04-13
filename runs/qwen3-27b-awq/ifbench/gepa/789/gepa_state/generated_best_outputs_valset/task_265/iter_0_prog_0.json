@@ -1,0 +1,3 @@
+{
+    "response": "C# lacks a built-in way to measure one-way UDP send time. You need two synchronized clocks on client and server. Record the timestamp before sending. The server logs arrival time. Calculate the difference to find duration. This method requires precise time sync."
+}

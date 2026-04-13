@@ -1378,3 +1378,280 @@ Feedback on PII Leakage:
 - [Suggestions for improvement]  
 ```
 Iteration 30: New subsample score 1.5 is better than old score 1.25. Continue to full eval and add to candidate pool.
+Iteration 30: Valset score for new program: 0.43277261781905746 (coverage 95 / 95)
+Iteration 30: Val aggregate for new program: 0.43277261781905746
+Iteration 30: Individual valset scores for new program: {12: 0.5, 26: 0.5, 43: 0.5, 0: 0.25, 1: 0.5, 2: 0.5, 3: 0.19117647058823528, 4: 0.5, 5: 0.25, 6: 0.5, 7: 0.0, 8: 1.0, 9: 0.09999999999999998, 10: 0.5, 11: 0.5, 13: 0.5, 14: 0.33333333333333337, 15: 0.5, 16: 0.0, 17: 0.5, 18: 0.5, 19: 0.5, 20: 0.5, 21: 0.5, 22: 0.5, 23: 0.5, 24: 0.5, 25: 0.5, 27: 0.5, 28: 0.5, 29: 0.5, 30: 0.5, 31: 0.5, 32: 1.0, 33: 0.0, 34: 0.5, 35: 0.5, 36: 0.5, 37: 0.5, 38: 0.5, 39: 0.5, 40: 0.5, 41: 0.5, 42: 0.5, 44: 0.5, 45: 0.75, 46: 0.0, 47: 0.5, 48: 0.0, 49: 0.5, 50: 0.5, 51: 0.5, 52: 0.0, 53: 0.5, 54: 0.5, 55: 0.5, 56: 0.5, 57: 0.5, 58: 0.5, 59: 0.0, 60: 0.0, 61: 0.5, 62: 0.5, 63: 0.0, 64: 0.5, 65: 0.5, 66: 0.5, 67: 0.5, 68: 0.5, 69: 1.0, 70: 0.0, 71: 0.5, 72: 0.5, 73: 0.5, 74: 0.0, 75: 0.5, 76: 0.75, 77: 1.0, 78: 0.5, 79: 0.5, 80: 0.0, 81: 0.5, 82: 0.5, 83: 0.5, 84: 0.3888888888888889, 85: 0.5, 86: 0.5, 87: 0.5, 88: 0.0, 89: 0.0, 90: 0.09999999999999998, 91: 0.5, 92: 0.5, 93: 0.5, 94: 0.5}
+Iteration 30: New valset pareto front scores: {0: 0.5833333333333334, 1: 0.5, 2: 1.0, 3: 1.0, 4: 0.5, 5: 0.5, 6: 0.5, 7: 0.8846153846153846, 8: 1.0, 9: 1.0, 10: 1.0, 11: 1.0, 12: 1.0, 13: 0.5, 14: 0.5, 15: 1.0, 16: 0.6666666666666667, 17: 1.0, 18: 1.0, 19: 0.5, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 0.5, 25: 1.0, 26: 1.0, 27: 1.0, 28: 0.75, 29: 0.5, 30: 1.0, 31: 0.5, 32: 1.0, 33: 0.6666666666666667, 34: 0.5, 35: 0.5, 36: 0.5, 37: 1.0, 38: 1.0, 39: 1.0, 40: 0.5, 41: 0.5, 42: 0.5, 43: 1.0, 44: 1.0, 45: 1.0, 46: 0.6666666666666667, 47: 0.6, 48: 0.8333333333333334, 49: 0.8333333333333334, 50: 0.5, 51: 0.6, 52: 0.16666666666666669, 53: 0.5, 54: 0.5, 55: 0.5, 56: 1.0, 57: 0.5, 58: 0.5, 59: 1.0, 60: 0.75, 61: 1.0, 62: 1.0, 63: 0.5, 64: 1.0, 65: 1.0, 66: 0.5, 67: 0.6, 68: 0.5, 69: 1.0, 70: 0.8333333333333334, 71: 0.875, 72: 0.5, 73: 0.8571428571428572, 74: 0.5, 75: 1.0, 76: 0.75, 77: 1.0, 78: 0.5, 79: 0.75, 80: 0.5, 81: 1.0, 82: 1.0, 83: 1.0, 84: 0.9722222222222222, 85: 1.0, 86: 0.5, 87: 1.0, 88: 0.5, 89: 0.5, 90: 0.35, 91: 1.0, 92: 1.0, 93: 0.5, 94: 1.0}
+Iteration 30: Valset pareto front aggregate score: 0.763041899620847
+Iteration 30: Updated valset pareto front programs: {0: {12, 6}, 1: {5, 6, 7, 9, 10, 11, 12, 15}, 2: {5, 6, 7, 8, 9, 10, 11, 12}, 3: {3}, 4: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, 5: {8}, 6: {5, 6, 7, 9, 10, 11, 12, 15}, 7: {12, 5}, 8: {3, 6, 7, 10, 11, 13, 15}, 9: {10}, 10: {10, 13}, 11: {8, 9, 3}, 12: {11, 4, 13, 6}, 13: {5, 6, 7, 9, 10, 11, 12, 15}, 14: {8, 9}, 15: {6}, 16: {6}, 17: {2}, 18: {8, 4}, 19: {15}, 20: {1, 2, 5, 6, 8, 9, 10, 12, 14}, 21: {1, 2, 3, 4, 8, 10, 11, 12, 13}, 22: {1, 6, 7, 9, 11}, 23: {5, 6, 7, 9, 11}, 24: {0, 4, 5, 6, 7, 9, 10, 11, 12, 15}, 25: {13, 7}, 26: {0, 1, 2, 3, 8, 10, 13, 14}, 27: {6}, 28: {9, 7}, 29: {1, 4, 5, 6, 7, 10, 11, 12, 15}, 30: {1, 2, 3, 4, 5, 7, 8, 9, 12, 13, 14}, 31: {2, 6, 7, 9, 10, 11, 12, 15}, 32: {15}, 33: {10, 7}, 34: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, 35: {1, 3, 4, 5, 7, 9, 10, 11, 12, 14, 15}, 36: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, 37: {9, 11, 5, 7}, 38: {8, 2, 3, 4}, 39: {11}, 40: {1, 2, 3, 5, 6, 7, 9, 10, 11, 12, 13, 15}, 41: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15}, 42: {0, 2, 3, 7, 8, 9, 10, 11, 12, 13, 15}, 43: {10, 11, 7}, 44: {14}, 45: {14, 7}, 46: {9, 12, 7}, 47: {0, 2, 5, 6, 11, 13}, 48: {13}, 49: {1, 2, 4, 5, 8, 11, 12, 13}, 50: {0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, 51: {10, 5, 6}, 52: {0, 1, 2, 5, 7, 9, 10}, 53: {0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15}, 54: {0, 5, 6, 7, 9, 10, 11, 12, 15}, 55: {5, 6, 7, 9, 10, 11, 12, 15}, 56: {1, 5, 11, 13}, 57: {0, 2, 4, 5, 6, 7, 9, 10, 11, 12, 14, 15}, 58: {0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, 59: {11}, 60: {6}, 61: {3}, 62: {11}, 63: {3, 4, 6, 10, 11, 13, 14}, 64: {5, 6, 10, 11, 14}, 65: {13}, 66: {5, 6, 7, 9, 10, 11, 12, 15}, 67: {0, 2, 4, 5, 6, 8, 11, 13, 14}, 68: {0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 12, 15}, 69: {13, 15}, 70: {6}, 71: {11}, 72: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, 73: {7}, 74: {2, 3, 4, 5, 6, 7, 8, 14}, 75: {9, 6}, 76: {5, 6, 7, 9, 10, 11, 12, 15}, 77: {2, 4, 6, 8, 9, 11, 13, 14, 15}, 78: {0, 1, 2, 4, 5, 7, 8, 9, 10, 12, 13, 14, 15}, 79: {1}, 80: {0, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14}, 81: {11}, 82: {9, 11, 7}, 83: {1, 11, 13}, 84: {11}, 85: {1, 3, 8, 10, 11, 14}, 86: {2, 3, 4, 6, 7, 8, 9, 10, 11, 13, 15}, 87: {9, 11, 7}, 88: {0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14}, 89: {2, 5}, 90: {2}, 91: {0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, 92: {9, 7}, 93: {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15}, 94: {9}}
+Iteration 30: Best valset aggregate score so far: 0.57183889210205
+Iteration 30: Best program as per aggregate score on valset: 11
+Iteration 30: Best score on valset: 0.57183889210205
+Iteration 30: Linear pareto front program index: 11
+Iteration 30: New program candidate index: 15
+Iteration 31: No merge candidates found
+Iteration 31: Selected program 13 score: 0.3860139791409142
+Iteration 31: Contrastive search found 0 pairs (requested 3)
+Iteration 31: Proposed new text for system_prompt: ## New Instruction
+
+You are to anonymize and rewrite the user's query by replacing all personally identifiable information (PII) such as names, addresses, phone numbers, emails, dates, times, account numbers, product names, quantities, prices, and other sensitive details with generic placeholders like [Name], [Location], [Account], [Contact], [Date], [Time], [Order], [Product], [Quantity], [Price], [Vendor], [Status], [Category], [Action], [Purpose], [Objective], [Plan], [Result], [Requirement], [Constraint], [Solution], [Outcome], [Risk], [Benefit], etc. The goal is to preserve the original intent, context, and meaning of the query while ensuring that no personally identifiable information remains in the output.
+
+### Task Description
+- **Identify PII**: Scan the input text for any names, addresses, phone numbers, emails, dates, times, account numbers, product names, quantities, prices, or other sensitive data.
+- **Replace PII**: Replace identified PII with appropriate generic placeholders that maintain the meaning and context of the original query.
+- **Preserve Intent**: Ensure that the rewritten query retains the original intent and context, even after anonymization.
+- **No Leakage**: Ensure that no personally identifiable information is left in the output, and that the rewritten query is free from any identifiable information.
+- **Use Placeholders**: Use appropriate placeholders for all PII to maintain the integrity of the query while protecting sensitive data.
+- **Format Consistency**: Maintain the same format as the example output, with clear and concise language, and avoid any mention of the original query or specific details that could be traced back to the user.
+- **Handle Complex Queries**: The assistant should be able to handle both general and specific queries, including those involving financial transactions, communication, orders, and other sensitive data.
+- **Multiple PII Instances**: The assistant should handle queries with multiple PII instances and replace them appropriately without missing any.
+- **Grammatical Correctness**: The rewritten query must be grammatically correct and maintain the original tone and intent of the user's message.
+- **Avoid Mention of Original Query**: The assistant should avoid any mention of the original query or any specific details that could be traced back to the user, even if the query is complex or involves multiple PII instances.
+- **Domain-Specific PII**: The assistant should identify and replace PII specific to various domains such as finance, healthcare, retail, logistics, and more, using appropriate placeholders.
+- **Structured vs. Unstructured Queries**: The assistant should handle both structured and unstructured queries, including those involving tables, lists, and complex sentences.
+- **Consistency in Placeholder Usage**: The assistant should use consistent placeholders across the query and maintain a uniform format throughout the rewritten text.
+
+### Additional Notes
+- The task is to be applied to any query that contains PII, regardless of the context.
+- The assistant should be able to handle both general and specific queries, including those involving financial transactions, communication, orders, and other sensitive data.
+- The output must be in the same format as the example, with clear and concise language.
+- The assistant should avoid any mention of the original query or any specific details that could be traced back to the user.
+- The rewritten query should be suitable for further processing or analysis without losing the original intent.
+- The assistant should ensure that the rewritten query is grammatically correct and maintains the original tone and intent of the user's message.
+- The assistant should be able to handle queries with multiple PII instances and replace them appropriately without missing any.
+- The assistant should ensure that the rewritten query is free from any identifiable information and that the placeholders are appropriate for the context.
+Iteration 31: New subsample score 1.5 is not better than old score 2.0, skipping
+Iteration 32: Selected program 14 score: 0.34428817140891443
+Iteration 32: Contrastive search found 0 pairs (requested 3)
+Iteration 32: Proposed new text for system_prompt: ## New Instructions  
+
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. Additionally, ensure that the rewritten query maintains the original intent and context, even when anonymized. The task should be applied to any query that includes sensitive or private information, and the output should be suitable for use in a professional or academic setting where privacy is a concern.  
+
+### Task Description  
+This task involves anonymizing user queries by replacing any personally identifiable information (PII) with generic placeholders. The goal is to ensure that the rewritten query does not expose any specific individuals, locations, or sensitive data. The process must preserve the original intent and context of the query while making it anonymous. This is particularly important in scenarios where the query may be used in reports, analyses, or shared with third parties, where privacy is a priority.  
+
+### Niche and Domain-Specific Considerations  
+- **PII Removal**: The task requires identifying and removing any information that could identify an individual, such as names, addresses, phone numbers, and emails.  
+- **Generic Placeholders**: Replace PII with generic terms like "a candidate," "a department," or "a company" to maintain the query's intent without revealing specific details.  
+- **Context Preservation**: The rewritten query must retain the original meaning and intent of the original query, even after anonymization.  
+- **Professional Use**: The output should be suitable for use in professional or academic settings, where privacy is a concern.  
+- **Anonymization Strategy**: The assistant should use a consistent and transparent approach to anonymization, ensuring that no PII is left in the query.  
+
+### Generalizable Strategy  
+The assistant should follow a structured approach to anonymize the query:  
+1. Identify all PII in the query.  
+2. Replace PII with generic placeholders.  
+3. Ensure the rewritten query maintains the original intent and context.  
+4. Verify that no PII is left in the output.  
+5. Provide a clear and concise rewritten query that is suitable for use in professional or academic settings.  
+
+### Input Format  
+The input is a natural language query that may contain PII such as names, addresses, phone numbers, and emails. The query may also include sensitive or private information, and the task is to anonymize it while preserving the original intent and context.  
+
+### Output Format  
+The output is a rewritten query with all PII replaced by generic placeholders, while maintaining the original intent and context. The output should be suitable for use in professional or academic settings, and no PII should be present in the final output.
+Iteration 32: New subsample score 1.4166666666666667 is better than old score 0.75. Continue to full eval and add to candidate pool.
+Iteration 32: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 588, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 240, in evaluate
+    response = self._generate(prompt, example.input) or ""
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 223, in _generate
+    return self._lm(messages)
+           ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 588, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 563, in run
+    new_idx, _ = self._run_full_eval_and_add(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 153, in _run_full_eval_and_add
+    valset_evaluation = self._evaluate_on_valset(new_program, state)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 135, in _evaluate_on_valset
+    outputs_by_val_idx, scores_by_val_idx, objective_by_val_idx, num_actual_evals = state.cached_evaluate_full(
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/state.py", line 621, in cached_evaluate_full
+    return self.evaluation_cache.evaluate_with_cache_full(candidate, example_ids, fetcher, evaluator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/state.py", line 121, in evaluate_with_cache_full
+    outputs, scores, obj_scores = evaluator(batch, candidate)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 96, in evaluator
+    eval_result = adapter.evaluate(batch, program, capture_traces=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+

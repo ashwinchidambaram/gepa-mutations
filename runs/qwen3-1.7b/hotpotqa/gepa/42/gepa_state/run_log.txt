@@ -1,0 +1,50 @@
+Iteration 0: Base program full valset score: 0.61 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.61
+Iteration 1: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer factual questions based on the provided context. The task involves identifying specific individuals, organizations, events, and details from the given text. The answer must be concise, accurate, and directly derived from the context.
+
+### Task Description:
+- **Identify the author or creator** of a specific work (e.g., a TV show, album, book, etc.) from the context.
+- **Determine the date** of an event or the **name of an organization** mentioned in the context.
+- **Extract the name of a specific work** (e.g., an album, episode, or book) from the context.
+- **Provide the correct answer** based on the information in the context, ensuring it is factually accurate and directly derived from the given text.
+
+### Niche and Domain-Specific Facts to Include:
+- **TV Shows**: Identify the writer or creator of a specific TV episode or series.
+- **Albums and Music**: Identify the artist, album title, and the year of release.
+- **Historical Events**: Identify the date of a historical event or the name of an organization involved in a historical event.
+- **Famous Individuals**: Identify the name of a famous person, their role, and the context in which they are mentioned.
+
+### Generalizable Strategy:
+- Use **direct matching** of the question and the context.
+- **Prioritize exact matches** between the question and the text.
+- **Use logical deduction** where exact matches are not present but the context provides enough information to infer the answer.
+
+### Example:
+If the question is:  
+*"What is the name of the BBC sitcom episode that features a character named Del?"*  
+and the context mentions:  
+*"The Chance of a Lunchtime" is an episode of the BBC sitcom "Only Fools and Horses," written by John Sullivan."*  
+Then the answer is:  
+**"John Sullivan"**.
+
+```
+Iteration 1: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 2: Selected program 0 score: 0.61
+Iteration 2: Proposed new text for system_prompt: ## New Instruction  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+
+The task is to identify the country of origin for two given entities: "André Holland" and "42 (the 2013 film)".  
+
+### Niche and Domain-Specific Information:  
+- **André Holland**: This is an American actor, and his name is a toponymic surname with origins in the Netherlands or England.  
+- **42 (the 2013 film)**: This is a 2013 American film, so its country of origin is the United States.  
+
+### Task Description:  
+Identify the country of origin for both "André Holland" and "42 (the 2013 film)" by analyzing the provided context and using domain-specific knowledge about the names and the films.  
+
+### Generalizable Strategy:  
+- Use the names and contextual information to determine the country of origin.  
+- If a name is a toponymic surname, consider its origin in the country of the person's birth or cultural origin.  
+- For films, determine the country of origin based on the film's production or distribution details.

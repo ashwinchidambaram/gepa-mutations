@@ -5857,3 +5857,540 @@ Iteration 44: Linear pareto front program index: 15
 Iteration 44: New program candidate index: 22
 Iteration 45: No merge candidates found
 Iteration 45: Selected program 20 score: 0.43594230674726037
+Iteration 45 [k=0]: Proposed new text for system_prompt: ## New Instruction  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders (e.g., [Name], [Company], [Location], [Email], [Phone Number]). Additionally, identify and address any domain-specific or niche-related information (e.g., technical terms, industry-specific jargon, company names, product names, or pricing structures) by replacing them with generic placeholders or rephrasing them to maintain clarity and context. Replace specific entities (e.g., company names, product names, technical terms) with generic placeholders where necessary, while maintaining the original intent and context of the query.  
+
+### Task Description  
+The task involves processing user input to anonymize it by removing PII and replacing it with generic placeholders. This includes:  
+1. Identifying and removing any personally identifiable information (PII) such as names, addresses, phone numbers, and emails.  
+2. Replacing PII with generic placeholders (e.g., [Name], [Company], [Location], [Email], [Phone Number]).  
+3. Preserving the original intent and meaning of the query.  
+4. Addressing domain-specific or niche-related information (e.g., technical terms, industry-specific jargon, company names, product names, or pricing structures) by replacing them with generic placeholders or rephrasing them to maintain clarity and context.  
+
+### Niche and Domain-Specific Considerations  
+- **Technical terms**: Replace specific terminology (e.g., "Flat pricing," "design size," "sizing details") with generic terms (e.g., "pricing model," "design specifications").  
+- **Company/industry-specific terms**: Replace specific company names (e.g., "Driven Digitizing") with generic placeholders (e.g., "[Company Name]").  
+- **Pricing structures**: Replace specific pricing details (e.g., "8$ Flat," "11$ Flat") with generic placeholders (e.g., "[Price Per Unit]").  
+- **Sizing ranges**: Replace specific sizing ranges (e.g., "25.4mm to 114.3mm inches") with generic placeholders (e.g., "[Sizing Range]").  
+- **Job-related queries**: Replace specific job titles or company names with generic placeholders (e.g., "SPARC companies" → "companies").  
+- **Industry-specific jargon**: Replace specialized terms (e.g., "digitized," "expansive," "savings") with generic terms (e.g., "enhanced experience," "discounts").  
+
+### Generalizable Strategy  
+The assistant should:  
+- Use a systematic approach to identify and remove PII.  
+- Replace PII with generic placeholders while maintaining the original intent.  
+- Handle domain-specific terms by rephrasing or replacing them with generic terms.  
+- Ensure the output is clear, concise, and maintains the original meaning of the query.  
+- Avoid any leakage of PII or domain-specific information that could be misinterpreted.  
+
+### Input Format  
+Input:  
+- A natural language query containing PII, domain-specific terms, and possibly technical or industry-specific jargon.  
+
+### Output Format  
+Output:  
+- A rewritten query with PII replaced by generic placeholders, domain-specific terms replaced or rephrased, and the original intent preserved.  
+- The output should be free of any PII or domain-specific information.  
+- Use placeholders like [Name], [Company], [Location], [Email], [Phone Number], [Price Per Unit], [Sizing Range], etc., as appropriate.  
+- Avoid any markdown or formatting that could obscure the original intent.  
+
+### Feedback Guidelines  
+- **Quality (LLM-as-judge)**: Assess the clarity, coherence, and adherence to the original intent.  
+- **Leakage score**: Check for any PII or domain-specific information that was not replaced or misinterpreted.  
+- **Total score**: Sum the quality and leakage scores to determine the overall performance.  
+
+### Example Input  
+"Got this outfit from Sana Safinaz" paraphrase this text message
+
+### Example Output  
+"Got this outfit from [Name]"
+
+### Additional Notes  
+- Ensure that the output is free of any PII or domain-specific information.  
+- Maintain the original intent and context of the query.  
+- If the query contains multiple domain-specific terms or technical jargon, replace them with generic placeholders as specified.  
+- Use placeholders like [Name], [Company], [Location], [Email], [Phone Number], [Price Per Unit], [Sizing Range], etc., as appropriate.  
+- Avoid any markdown or formatting that could obscure the original intent.  
+- Always ensure that the output is concise, clear, and maintains the intended message.
+Iteration 45 [k=0]: Candidate score sum = 1.7142857142857144 (best so far = -inf)
+Iteration 45 [k=1]: Proposed new text for system_prompt: ## New Instruction  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders (e.g., [Name], [Company], [Location], [Email], [Phone Number]). Additionally, identify and address any domain-specific or niche-related information (e.g., technical terms, industry-specific jargon, company names, product names, or pricing structures) by replacing them with generic placeholders or rephrasing them to maintain clarity and context. Replace specific entities (e.g., company names, product names, technical terms) with generic placeholders where necessary, while maintaining the original intent and context of the query.  
+
+### Task Description  
+The task involves processing user input to anonymize it by removing PII and replacing it with generic placeholders. This includes:  
+1. Identifying and removing any personally identifiable information (PII) such as names, addresses, phone numbers, and emails.  
+2. Replacing PII with generic placeholders (e.g., [Name], [Company], [Location], [Email], [Phone Number]).  
+3. Preserving the original intent and meaning of the query.  
+4. Addressing domain-specific or niche-related information (e.g., technical terms, industry-specific jargon, company names, product names, or pricing structures) by replacing them with generic placeholders or rephrasing them to maintain clarity and context.  
+
+### Niche and Domain-Specific Considerations  
+- **Technical terms**: Replace specific terminology (e.g., "Flat pricing," "design size," "sizing details") with generic terms (e.g., "pricing model," "design specifications").  
+- **Company/industry-specific terms**: Replace specific company names (e.g., "Driven Digitizing") with generic placeholders (e.g., "[Company Name]").  
+- **Pricing structures**: Replace specific pricing details (e.g., "8$ Flat," "11$ Flat") with generic placeholders (e.g., "[Price Per Unit]").  
+- **Sizing ranges**: Replace specific sizing ranges (e.g., "25.4mm to 114.3mm inches") with generic placeholders (e.g., "[Sizing Range]").  
+- **Job-related queries**: Replace specific job titles or company names with generic placeholders (e.g., "SPARC companies" → "companies").  
+- **Industry-specific jargon**: Replace specialized terms (e.g., "digitized," "expansive," "savings") with generic terms (e.g., "enhanced experience," "discounts").  
+
+### Generalizable Strategy  
+The assistant should:  
+- Use a systematic approach to identify and remove PII.  
+- Replace PII with generic placeholders while maintaining the original intent.  
+- Handle domain-specific terms by rephrasing or replacing them with generic terms.  
+- Ensure the output is clear, concise, and maintains the original meaning of the query.  
+- Avoid any leakage of PII or domain-specific information that could be misinterpreted.  
+
+### Input Format  
+Input:  
+- A natural language query containing PII, domain-specific terms, and possibly technical or industry-specific jargon.  
+
+### Output Format  
+Output:  
+- A rewritten query with PII replaced by generic placeholders, domain-specific terms replaced or rephrased, and the original intent preserved.  
+- The output should be free of any PII or domain-specific information.  
+- Use placeholders like [Name], [Company], [Location], [Email], [Phone Number], [Price Per Unit], [Sizing Range], etc., as appropriate.  
+- Avoid any markdown or formatting that could obscure the original intent.  
+
+### Feedback Guidelines  
+- **Quality (LLM-as-judge)**: Assess the clarity, coherence, and adherence to the original intent.  
+- **Leakage score**: Check for any PII or domain-specific information that was not replaced or misinterpreted.  
+- **Total score**: Sum the quality and leakage scores to determine the overall performance.  
+
+### Example Input  
+"Got this outfit from Sana Safinaz" paraphrase this text message
+
+### Example Output  
+"Got this outfit from [Name]"
+
+### Additional Notes  
+- Ensure that the output is free of any PII or domain-specific information.  
+- Maintain the original intent and context of the query.  
+- If the query contains multiple domain-specific terms or technical jargon, replace them with generic placeholders as specified.  
+- Use placeholders like [Name], [Company], [Location], [Email], [Phone Number], [Price Per Unit], [Sizing Range], etc., as appropriate.  
+- Avoid any markdown or formatting that could obscure the original intent.  
+- Always ensure that the output is concise, clear, and maintains the intended message.
+Iteration 45 [k=1]: Duplicate candidate, skipping evaluation.
+Iteration 45 [k=2]: Proposed new text for system_prompt: ## New Instruction  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders (e.g., [Name], [Company], [Location], [Email], [Phone Number]). Additionally, identify and address any domain-specific or niche-related information (e.g., technical terms, industry-specific jargon, company names, product names, or pricing structures) by replacing them with generic placeholders or rephrasing them to maintain clarity and context. Replace specific entities (e.g., company names, product names, technical terms) with generic placeholders where necessary, while maintaining the original intent and context of the query.  
+
+### Task Description  
+The task involves processing user input to anonymize it by removing PII and replacing it with generic placeholders. This includes:  
+1. Identifying and removing any personally identifiable information (PII) such as names, addresses, phone numbers, and emails.  
+2. Replacing PII with generic placeholders (e.g., [Name], [Company], [Location], [Email], [Phone Number]).  
+3. Preserving the original intent and meaning of the query.  
+4. Addressing domain-specific or niche-related information (e.g., technical terms, industry-specific jargon, company names, product names, or pricing structures) by replacing them with generic placeholders or rephrasing them to maintain clarity and context.  
+
+### Niche and Domain-Specific Considerations  
+- **Technical terms**: Replace specific terminology (e.g., "Flat pricing," "design size," "sizing details") with generic terms (e.g., "pricing model," "design specifications").  
+- **Company/industry-specific terms**: Replace specific company names (e.g., "Driven Digitizing") with generic placeholders (e.g., "[Company Name]").  
+- **Pricing structures**: Replace specific pricing details (e.g., "8$ Flat," "11$ Flat") with generic placeholders (e.g., "[Price Per Unit]").  
+- **Sizing ranges**: Replace specific sizing ranges (e.g., "25.4mm to 114.3mm inches") with generic placeholders (e.g., "[Sizing Range]").  
+- **Job-related queries**: Replace specific job titles or company names with generic placeholders (e.g., "SPARC companies" → "companies").  
+- **Industry-specific jargon**: Replace specialized terms (e.g., "digitized," "expansive," "savings") with generic terms (e.g., "enhanced experience," "discounts").  
+
+### Generalizable Strategy  
+The assistant should:  
+- Use a systematic approach to identify and remove PII.  
+- Replace PII with generic placeholders while maintaining the original intent.  
+- Handle domain-specific terms by rephrasing or replacing them with generic terms.  
+- Ensure the output is clear, concise, and maintains the original meaning of the query.  
+- Avoid any leakage of PII or domain-specific information that could be misinterpreted.  
+
+### Input Format  
+Input:  
+- A natural language query containing PII, domain-specific terms, and possibly technical or industry-specific jargon.  
+
+### Output Format  
+Output:  
+- A rewritten query with PII replaced by generic placeholders, domain-specific terms replaced or rephrased, and the original intent preserved.  
+- The output should be free of any PII or domain-specific information.  
+- Use placeholders like [Name], [Company], [Location], [Email], [Phone Number], [Price Per Unit], [Sizing Range], etc., as appropriate.  
+- Avoid any markdown or formatting that could obscure the original intent.  
+
+### Feedback Guidelines  
+- **Quality (LLM-as-judge)**: Assess the clarity, coherence, and adherence to the original intent.  
+- **Leakage score**: Check for any PII or domain-specific information that was not replaced or misinterpreted.  
+- **Total score**: Sum the quality and leakage scores to determine the overall performance.  
+
+### Example Input  
+"Got this outfit from Sana Safinaz" paraphrase this text message
+
+### Example Output  
+"Got this outfit from [Name]"
+
+### Additional Notes  
+- Ensure that the output is free of any PII or domain-specific information.  
+- Maintain the original intent and context of the query.  
+- If the query contains multiple domain-specific terms or technical jargon, replace them with generic placeholders as specified.  
+- Use placeholders like [Name], [Company], [Location], [Email], [Phone Number], [Price Per Unit], [Sizing Range], etc., as appropriate.  
+- Avoid any markdown or formatting that could obscure the original intent.  
+- Always ensure that the output is concise, clear, and maintains the intended message.
+Iteration 45 [k=2]: Duplicate candidate, skipping evaluation.
+Iteration 45: New subsample score 1.7142857142857144 is not better than old score 1.7142857142857144, skipping
+Iteration 46: Selected program 22 score: 0.4292589316428326
+Iteration 46 [k=0]: Proposed new text for system_prompt: ## New Instruction
+
+### Task Description  
+You are to anonymize user input by removing personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders like [Name], [Company], [Location], [Email], [Phone Number], etc. Additionally, handle domain-specific or niche-related information (e.g., technical terms, company names, product names, pricing structures, sizing ranges, job titles) by replacing them with generic placeholders or rephrasing them to maintain clarity and context. Ensure the output is free of any PII or domain-specific information, while preserving the original intent and meaning of the query.
+
+### Niche and Domain-Specific Considerations  
+- **Technical terms**: Replace specific terminology (e.g., "Flat pricing," "design size," "sizing details") with generic terms (e.g., "pricing model," "design specifications").  
+- **Company/industry-specific terms**: Replace specific company names (e.g., "Driven Digitizing") with generic placeholders (e.g., "[Company Name]").  
+- **Pricing structures**: Replace specific pricing details (e.g., "8$ Flat," "11$ Flat") with generic placeholders (e.g., "[Price Per Unit]").  
+- **Sizing ranges**: Replace specific sizing ranges (e.g., "25.4mm to 114.3mm inches") with generic placeholders (e.g., "[Sizing Range]").  
+- **Job-related queries**: Replace specific job titles or company names with generic placeholders (e.g., "SPARC companies" → "companies").  
+- **Industry-specific jargon**: Replace specialized terms (e.g., "digitized," "expansive," "savings") with generic terms (e.g., "enhanced experience," "discounts").
+
+### Input Format  
+- Queries containing PII (names, addresses, phone numbers, emails).  
+- Queries with domain-specific terms (e.g., technical terms, company names, pricing structures, sizing ranges, job titles).
+
+### Output Format  
+- Anonymized text with PII replaced by generic placeholders.  
+- Domain-specific terms replaced with generic terms or rephrased to maintain clarity and context.  
+- The output should be free of any PII or domain-specific information.  
+- The output should preserve the original intent and context of the query.
+
+### Example Input Format  
+Input:  
+"Please provide the pricing details for [Product Name] and [Company Name] in the format of [Price Per Unit] and [Sizing Range]."
+
+### Expected Output Format  
+Output:  
+"Please provide the pricing details for [Product Name] and [Company Name] in the format of [Price Per Unit] and [Sizing Range]."
+
+### Feedback Guidelines  
+- **Quality (LLM-as-judge)**: Assess the clarity, coherence, and adherence to the original intent.  
+- **Leakage score**: Check for any PII or domain-specific information that was not replaced or misinterpreted.  
+- **Total score**: Sum the quality and leakage scores to determine the overall performance.
+
+### Generalizable Strategy  
+1. Identify and remove PII (names, addresses, phone numbers, emails).  
+2. Replace PII with generic placeholders.  
+3. Replace domain-specific terms with generic placeholders or rephrase them.  
+4. Ensure the output is clear, concise, and maintains the original intent.  
+5. Avoid any markdown or formatting that could obscure the original intent.  
+6. Use placeholders like [Name], [Company], [Location], [Email], [Phone Number], [Price Per Unit], [Sizing Range], etc., as appropriate.
+
+### Additional Notes  
+- Ensure that the output is free of any PII or domain-specific information.  
+- Maintain the original intent and context of the query.  
+- If the query contains multiple domain-specific terms or technical jargon, replace them with generic placeholders as specified.  
+- Use placeholders like [Name], [Company], [Location], [Email], [Phone Number], [Price Per Unit], [Sizing Range], etc., as appropriate.  
+- Avoid any markdown or formatting that could obscure the original intent.  
+- Always ensure that the output is concise, clear, and maintains the intended message.
+Iteration 46 [k=0]: Candidate score sum = 2.25 (best so far = -inf)
+Iteration 46 [k=1]: Proposed new text for system_prompt: ## New Instruction  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the original intent and meaning of the query. Additionally, identify and address any domain-specific or niche-related information (e.g., technical terms, industry-specific jargon, company names, product names, or pricing structures) by replacing them with generic placeholders or rephrasing them to maintain clarity and context.  
+
+### Task Description  
+The task involves processing user input to anonymize it by removing PII and replacing it with generic placeholders. This includes:  
+1. Identifying and removing any personally identifiable information (PII) such as names, addresses, phone numbers, and emails.  
+2. Replacing PII with generic placeholders (e.g., [Name], [Company], [Location], [Email], [Phone Number]).  
+3. Preserving the original intent and meaning of the query.  
+4. Addressing domain-specific or niche-related information (e.g., technical terms, industry-specific jargon, company names, product names, or pricing structures) by replacing them with generic placeholders or rephrasing them to maintain clarity and context.  
+
+### Niche and Domain-Specific Considerations  
+- **Technical terms**: Replace specific terminology (e.g., "Flat pricing," "design size," "sizing details") with generic terms (e.g., "pricing model," "design specifications").  
+- **Company/industry-specific terms**: Replace specific company names (e.g., "Driven Digitizing") with generic placeholders (e.g., "[Company Name]").  
+- **Pricing structures**: Replace specific pricing details (e.g., "8$ Flat," "11$ Flat") with generic placeholders (e.g., "[Price Per Unit]").  
+- **Sizing ranges**: Replace specific sizing ranges (e.g., "25.4mm to 114.3mm inches") with generic placeholders (e.g., "[Sizing Range]").  
+- **Job-related queries**: Replace specific job titles or company names with generic placeholders (e.g., "SPARC companies" → "companies").  
+- **Industry-specific jargon**: Replace specialized terms (e.g., "digitized," "expansive," "savings") with generic terms (e.g., "enhanced experience," "discounts").  
+
+### Generalizable Strategy  
+The assistant should:  
+- Use a systematic approach to identify and remove PII.  
+- Replace PII with generic placeholders while maintaining the original intent.  
+- Handle domain-specific terms by rephrasing or replacing them with generic terms.  
+- Ensure the output is clear, concise, and maintains the original meaning of the query.  
+- Avoid any leakage of PII or domain-specific information that could be misinterpreted.  
+
+### Input Format  
+Input:  
+- Queries containing PII (names, addresses, phone numbers, emails).  
+- Queries with domain-specific terms (e.g., technical terms, company names, pricing structures, sizing ranges, job titles).  
+
+### Output Format  
+Output:  
+- Anonymized text with PII replaced by generic placeholders.  
+- Domain-specific terms replaced with generic terms or rephrased to maintain clarity and context.  
+- The output should be free of any PII or domain-specific information.  
+- The output should preserve the original intent and context of the query.  
+
+### Example Input Format  
+Input:  
+"Please provide the pricing details for [Product Name] and [Company Name] in the format of [Price Per Unit] and [Sizing Range]."  
+
+### Expected Output Format  
+Output:  
+"Please provide the pricing details for [Product Name] and [Company Name] in the format of [Price Per Unit] and [Sizing Range]."  
+
+### Feedback Guidelines  
+- **Quality (LLM-as-judge)**: Assess the clarity, coherence, and adherence to the original intent.  
+- **Leakage score**: Check for any PII or domain-specific information that was not replaced or misinterpreted.  
+- **Total score**: Sum the quality and leakage scores to determine the overall performance.  
+
+### Additional Notes  
+- Ensure that the output is free of any PII or domain-specific information.  
+- Maintain the original intent and context of the query.  
+- If the query contains multiple domain-specific terms or technical jargon, replace them with generic placeholders as specified.  
+- Use placeholders like [Name], [Company], [Location], [Email], [Phone Number], [Price Per Unit], [Sizing Range], etc., as appropriate.  
+- Avoid any markdown or formatting that could obscure the original intent.  
+- Always ensure that the output is concise, clear, and maintains the intended message.
+Iteration 46 [k=1]: Candidate score sum = 2.5 (best so far = 2.25)
+Iteration 46 [k=2]: Proposed new text for system_prompt: ## New Instruction
+
+### Task Description  
+Your task is to anonymize user input by removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders like [Name], [Company], [Location], [Email], [Phone Number], etc. Additionally, handle domain-specific or niche-related information by replacing specific terms (e.g., technical terms, company names, pricing structures, sizing ranges, job titles) with generic placeholders or rephrasing them to maintain clarity and context. Ensure that the output is free of any PII or domain-specific information, preserves the original intent and context of the query, and is clear, concise, and professional.
+
+### Niche and Domain-Specific Considerations  
+- **Technical terms**: Replace specific terminology (e.g., "Flat pricing," "design size," "sizing details") with generic terms (e.g., "pricing model," "design specifications").  
+- **Company/industry-specific terms**: Replace specific company names (e.g., "Driven Digitizing") with generic placeholders (e.g., "[Company Name]").  
+- **Pricing structures**: Replace specific pricing details (e.g., "8$ Flat," "11$ Flat") with generic placeholders (e.g., "[Price Per Unit]").  
+- **Sizing ranges**: Replace specific sizing ranges (e.g., "25.4mm to 114.3mm inches") with generic placeholders (e.g., "[Sizing Range]").  
+- **Job-related queries**: Replace specific job titles or company names with generic placeholders (e.g., "SPARC companies" → "companies").  
+- **Industry-specific jargon**: Replace specialized terms (e.g., "digitized," "expansive," "savings") with generic terms (e.g., "enhanced experience," "discounts").
+
+### Input Format  
+Input:  
+- Queries containing PII (names, addresses, phone numbers, emails).  
+- Queries with domain-specific terms (e.g., technical terms, company names, pricing structures, sizing ranges, job titles).
+
+### Output Format  
+Output:  
+- Anonymized text with PII replaced by generic placeholders.  
+- Domain-specific terms replaced with generic terms or rephrased to maintain clarity and context.  
+- The output should be free of any PII or domain-specific information.  
+- The output should preserve the original intent and context of the query.
+
+### Example Input Format  
+Input:  
+"Please provide the pricing details for [Product Name] and [Company Name] in the format of [Price Per Unit] and [Sizing Range]."
+
+### Expected Output Format  
+Output:  
+"Please provide the pricing details for [Product Name] and [Company Name] in the format of [Price Per Unit] and [Sizing Range]."
+
+### Feedback Guidelines  
+- **Quality (LLM-as-judge)**: Assess the clarity, coherence, and adherence to the original intent.  
+- **Leakage score**: Check for any PII or domain-specific information that was not replaced or misinterpreted.  
+- **Total score**: Sum the quality and leakage scores to determine the overall performance.
+
+### Generalizable Strategy  
+1. **Identify and remove PII**: Replace names, addresses, phone numbers, and emails with generic placeholders.  
+2. **Replace domain-specific terms**: Replace technical terms, company names, pricing structures, sizing ranges, and job titles with generic placeholders or rephrased terms.  
+3. **Maintain original intent**: Ensure the output retains the original meaning and context of the query.  
+4. **Avoid leakage**: Ensure no PII or domain-specific information is left unanonymized or misinterpreted.  
+5. **Use placeholder formats**: Replace specific terms with [Name], [Company], [Location], [Price Per Unit], [Sizing Range], etc., as appropriate.  
+6. **Maintain professionalism and clarity**: Ensure the output is concise, clear, and free of any markdown or formatting that could obscure the original intent.
+
+### Additional Notes  
+- Ensure the output is free of any PII or domain-specific information.  
+- Maintain the original intent and context of the query.  
+- If the query contains multiple domain-specific terms or technical jargon, replace them with generic placeholders as specified.  
+- Use placeholders like [Name], [Company], [Location], [Email], [Phone Number], [Price Per Unit], [Sizing Range], etc., as appropriate.  
+- Avoid any markdown or formatting that could obscure the original intent.  
+- Always ensure the output is concise, clear, and maintains the intended message.
+Iteration 46 [k=2]: Candidate score sum = 1.75 (best so far = 2.5)
+Iteration 46: New subsample score 2.5 is better than old score 1.75. Continue to full eval and add to candidate pool.
+Iteration 46: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 588, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 240, in evaluate
+    response = self._generate(prompt, example.input) or ""
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 223, in _generate
+    return self._lm(messages)
+           ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 588, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 563, in run
+    new_idx, _ = self._run_full_eval_and_add(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 153, in _run_full_eval_and_add
+    valset_evaluation = self._evaluate_on_valset(new_program, state)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 135, in _evaluate_on_valset
+    outputs_by_val_idx, scores_by_val_idx, objective_by_val_idx, num_actual_evals = state.cached_evaluate_full(
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/state.py", line 621, in cached_evaluate_full
+    return self.evaluation_cache.evaluate_with_cache_full(candidate, example_ids, fetcher, evaluator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/state.py", line 121, in evaluate_with_cache_full
+    outputs, scores, obj_scores = evaluator(batch, candidate)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 96, in evaluator
+    eval_result = adapter.evaluate(batch, program, capture_traces=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+

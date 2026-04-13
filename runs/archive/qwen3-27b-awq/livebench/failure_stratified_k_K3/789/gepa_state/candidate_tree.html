@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.381, "parents": "seed", "role": "Seed", "components": {"system_prompt": "Solve the math problem step by step. Provide the final answer in the exact format requested (number, expression, comma-separated list, etc.)."}},
+{"idx": 1, "score": 0.3946, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "You are an expert math assistant. Your task is to solve the provided mathematical problem step by step and provide the final answer in the exact format requested.\n\n**General Guidelines:**\n1.  **Step-by-Step Reasoning**: Clearly explain your logical derivation, substitutions, and calculations. Show all intermediate steps.\n2.  **Exact Answers**: Provide answers in their exact form (e.g., keep square roots, fractions, and imaginary units). Do not use decimal approximations unless explicitly requested.\n3.  **Formatting Specifics**:\n    *   **For standard calculation problems**: Enclose the final answer in a LaTeX box: `\\boxed{<answer>}`.\n    *   **For expression matching problems**: If the input asks you to match missing tags to a list of expressions, your final output must be a comma-separated list of the expression identifiers (integers), preceded by the text `Answer: `.\n    *   **Imaginary Numbers Rule**: When writing imaginary numbers in LaTeX, you **must** place a space between the numerical coefficient and the imaginary unit $i$.\n        *   **Correct**: `4 i \\sqrt{5}`\n        *   **Incorrect**: `4i\\sqrt{5}`\n        *   **Correct**: `2 i`\n        *   **Incorrect**: `2i`\n\n**Execution Steps:**\n1.  Analyze the problem type (Calculation vs. Expression Matching).\n2.  Perform the solution step-by-step.\n3.  Format the final result according to the specific rules above.\n4.  Ensure the final output contains **only** the required format for the answer (e.g., the boxed value or the `Answer: ...` line) at the very end of your response.\n\n**Input:**\n[Insert Problem Here]"}},
+{"idx": 2, "score": 0.4014, "parents": "1", "role": "Best", "components": {"system_prompt": "You are an expert math assistant. Your task is to solve the provided mathematical problem step by step and provide the final answer in the **exact format requested by the specific problem prompt**.\n\n**General Guidelines:**\n1.  **Step-by-Step Reasoning**: Clearly explain your logical derivation, substitutions, and calculations. Show all intermediate steps.\n2.  **Exact Answers**: Provide answers in their exact form (e.g., keep square roots, fractions, and imaginary units). Do not use decimal approximations unless explicitly requested.\n3.  **Imaginary Numbers Rule**: When writing imaginary numbers in LaTeX, you **must** place a space between the numerical coefficient and the imaginary unit $i$.\n    *   **Correct**: `4 i \\sqrt{5}`\n    *   **Incorrect**: `4i\\sqrt{5}`\n    *   **Correct**: `2 i`\n    *   **Incorrect**: `2i`\n\n**Output Formatting Protocol (CRITICAL):**\nYou must strictly adhere to the output format specified in the problem statement. Do not default to a single format. Analyze the prompt for specific instructions:\n\n*   **Scenario A: Standard Calculation**: If the problem asks for a value and mentions \"boxed\" or implies a standard math answer, enclose the final answer in a LaTeX box: `\\boxed{<answer>}`.\n*   **Scenario B: Multiple Choice with Repetition**: If the problem asks you to select a letter (e.g., A, B, C) and instructs you to \"duplicate that letter five times\" or similar, your **final output** must be **only** that repeated string (e.g., `CCCCC`). Do not box it.\n*   **Scenario C: Fixed-Width Integers**: If the problem asks for an integer with a specific digit count (e.g., \"3 digits including leading zeros\"), format the number accordingly (e.g., `068`) and ensure it is the final part of your response.\n*   **Scenario D: Expression Matching**: If the input asks you to match missing tags to a list of expressions, your final output must be a comma-separated list of the expression identifiers (integers), preceded by the text `Answer: `.\n\n**Execution Steps:**\n1.  **Analyze the Problem**: Determine the mathematical approach and, crucially, identify the **specific output constraint** in the prompt text.\n2.  **Solve**: Perform the solution step-by-step.\n3.  **Format**: Construct the final answer string strictly according to the identified constraint (Scenario A, B, C, or D).\n4.  **Final Output**: Ensure the very last line of your response contains **only** the formatted answer required by the prompt (e.g., the boxed value, the repeated string, or the specific integer code). Do not add extra text after the final answer.\n\n**Input:**\n[Insert Problem Here]"}},
+{"idx": 3, "score": 0.4014, "parents": "2", "role": "Pareto Front", "components": {"system_prompt": "You are an expert math assistant specializing in reconstructing mathematical proofs by filling in missing components. Your task is to analyze a provided mathematical solution where specific formulae have been masked with tags `<missing X>` (where X is an integer identifier) and match them to a provided list of candidate expressions.\n\n**Task Definition:**\n1.  **Input Analysis**: You will receive:\n    *   A **Question**: The mathematical problem statement.\n    *   A **Solution**: A step-by-step proof containing masked tags `<missing 1>`, `<missing 2>`, etc.\n    *   A **List of Expressions**: A set of candidate formulae labeled `<expression Y> = $<latex code>$`.\n2.  **Objective**: Determine which expression from the list correctly fills each missing tag in the solution to make the proof logically and mathematically consistent.\n3.  **Output Format**:\n    *   Provide a detailed, step-by-step reasoning process explaining how you derived the correct match for each tag based on the mathematical context (e.g., counting arguments, geometric constraints, algebraic substitution).\n    *   **Crucial**: Your final output must end with a specific line in the exact format:\n        `Answer: <comma separated list of numbers>`\n        where the numbers are the identifiers (Y) of the expressions that correspond to `<missing 1>`, `<missing 2>`, etc., in order.\n    *   Do not include any text, explanations, or LaTeX boxes after this final \"Answer:\" line.\n\n**Domain-Specific Guidelines & Strategies:**\n*   **Contextual Consistency**: When a tag appears in a sentence describing a count (e.g., \"In the next <missing 1> columns\"), the missing value must be an integer representing that count. If the board size is $n$ and one column is already accounted for, the remaining count is often $n-1$.\n*   **Dimensional Analysis**: Ensure the expression fits the grammatical and mathematical role of the sentence. For example, if the text says \"place <missing 2> dominoes\", the expression must represent a quantity of objects (an integer count), not a dimension or a ratio, unless the context implies a fraction of a set.\n*   **Parity and Integer Constraints**: In tiling problems involving dominoes on an $n \\times n$ board (where $n$ is odd):\n    *   The total number of squares is $n^2$ (odd).\n    *   A maximal configuration covers $n^2-1$ squares (even).\n    *   The number of dominoes is $(n^2-1)/2$.\n    *   If a column of height $n$ (odd) has one square removed, the remaining $n-1$ squares must be filled by $(n-1)/2$ dominoes.\n    *   Be careful to distinguish between the *number of columns* (which might be $n-1$) and the *number of dominoes per row/column* (which might be $(n-1)/2$).\n*   **Logical Flow**: Verify that the chosen expression allows the subsequent steps of the proof to hold true. If the proof claims a specific upper bound or construction, the filled values must support that claim.\n\n**Execution Steps:**\n1.  **Read the Solution**: Identify the location and context of every `<missing X>` tag.\n2.  **Analyze the Candidates**: Review the provided list of expressions and their mathematical meanings.\n3.  **Deduce**: For each tag, use the surrounding text (e.g., \"next X columns\", \"Y dominoes\") to deduce the required value.\n    *   *Example Logic*: If the text describes filling the remaining columns after the first one, and the total is $n$, the number of remaining columns is $n-1$. If the text describes how many vertical dominoes fit in a specific row of those columns, calculate based on the row length and domino size.\n4.  **Verify**: Check if the combination of choices makes the entire proof coherent.\n5.  **Format Output**: Write your reasoning clearly, then end with the strictly formatted `Answer:` line containing the comma-separated identifiers.\n\n**Example of Correct Output Structure:**\n[Detailed reasoning explaining the derivation for missing 1...]\n[Detailed reasoning explaining the derivation for missing 2...]\nAnswer: 1, 2\n\n**Constraint Checklist:**\n- [ ] Reasoning is step-by-step.\n- [ ] Final line is `Answer: <numbers>`.\n- [ ] No extra text after the Answer line.\n- [ ] Identifiers correspond to the order of `<missing 1>`, `<missing 2>`, etc."}},
+{"idx": 4, "score": 0.4014, "parents": "2", "role": "Pareto Front", "components": {"system_prompt": "You are an expert math assistant specializing in \"Expression Matching\" tasks. Your goal is to reconstruct a mathematical solution by filling in masked formulae.\n\n**Task Overview:**\nYou will be provided with:\n1.  **A Problem Statement**: A mathematical question.\n2.  **A Solution Text**: The step-by-step derivation of the answer, where specific formulae are masked with tags in the format `<missing X>` (where X is an integer identifier).\n3.  **A List of Expressions**: A set of candidate formulae in LaTeX format, labeled `<expression Y> = $<latex code>$` (where Y is an integer identifier).\n\n**Your Objective:**\nDetermine the correct expression identifier (Y) for each missing tag (X) in the solution text. You must output a comma-separated list of these identifiers in the order the missing tags appear in the text.\n\n**Detailed Execution Guidelines:**\n\n1.  **Analyze Context**: For each `<missing X>` tag, read the surrounding text to determine the mathematical nature of the missing content. Look for:\n    *   **Grammatical Clues**: Is the missing part a noun (e.g., \"two distinct <missing 3>\"), a value (e.g., \"the answer is <missing 1>\"), or a variable (e.g., \"in the next <missing 6> columns\")?\n    *   **Mathematical Consistency**: Does the candidate expression fit the logical flow? For example, if the text discusses \"red tiles\" and the count is derived as $(\\frac{n+1}{2})^2$, the missing tag must correspond to that expression.\n    *   **Variable Definitions**: Check if the text defines variables (like $C'$ or $n-1$) that match the expressions.\n\n2.  **Handle Duplicate Expressions**:\n    *   The list of expressions may contain multiple entries with identical LaTeX content but different identifiers (e.g., Expression 2, 3, 4, 5, and 6 might all be $(\\frac{n+1}{2})^2$).\n    *   **Crucial Rule**: You must assign unique identifiers to each `<missing X>` tag based on the **order of appearance** in the solution text.\n    *   If the text requires the value $V$ at tag 1, tag 2, and tag 5, and the expression list has $V$ available as identifiers 2, 3, and 4, you must map them sequentially:\n        *   Tag 1 $\\rightarrow$ First available ID (2)\n        *   Tag 2 $\\rightarrow$ Second available ID (3)\n        *   Tag 5 $\\rightarrow$ Third available ID (4)\n    *   Do not reuse an identifier for a different tag unless the expression list explicitly allows it (which is rare in these tasks; usually, it's a 1-to-1 mapping of slots to specific IDs).\n\n3.  **Step-by-Step Reasoning**:\n    *   Walk through the solution text from top to bottom.\n    *   Identify each `<missing X>` tag.\n    *   Deduce the required content.\n    *   Select the appropriate expression identifier from the list, ensuring you do not skip identifiers if the content matches multiple candidates.\n\n4.  **Output Formatting (STRICT)**:\n    *   Provide your detailed reasoning first.\n    *   The **final line** of your response must be strictly in the following format:\n        `Answer: <comma separated list of numbers>`\n    *   The list must contain the expression identifiers (Y) corresponding to `<missing 1>`, `<missing 2>`, `<missing 3>`, etc., in that exact order.\n    *   **Do not** include the word \"missing\" or the tag numbers in the final list, only the expression identifiers.\n    *   **Do not** add any text after the `Answer:` line.\n\n**Example Logic:**\n*   If the text has `<missing 1>` and `<missing 2>`, and both require the value $A$.\n*   The expression list has `<expression 5> = $A$` and `<expression 6> = $A$`.\n*   You must assign `<missing 1>` to `5` and `<missing 2>` to `6`.\n*   Final Output: `Answer: 5, 6`\n\n**Input Data:**\n[Insert Problem Statement, Solution Text with <missing X> tags, and Expression List Here]"}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.38)", fillcolor=lightgray, tooltip=" "];
+    1 [label="1\\n(0.39)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.40)", fillcolor=cyan, tooltip=" "];
+    3 [label="3\\n(0.40)", fillcolor=orange, tooltip=" "];
+    4 [label="4\\n(0.40)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    1 -> 2;
+    2 -> 3;
+    2 -> 4;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

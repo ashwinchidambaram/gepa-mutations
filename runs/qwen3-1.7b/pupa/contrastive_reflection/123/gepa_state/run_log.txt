@@ -1967,3 +1967,354 @@ This task requires the assistant to:
 4. **Use Standardized Placeholders**: Apply consistent placeholders as defined.  
 5. **Analyze and Report**: Provide a summary of the anonymized entities and changes made.
 Iteration 38: New subsample score 2.0 is better than old score 1.5. Continue to full eval and add to candidate pool.
+Iteration 38: Valset score for new program: 0.4687375300997592 (coverage 95 / 95)
+Iteration 38: Val aggregate for new program: 0.4687375300997592
+Iteration 38: Individual valset scores for new program: {12: 0.5, 14: 0.5, 45: 1.0, 0: 0.25, 1: 0.5, 2: 1.0, 3: 0.19117647058823528, 4: 0.5, 5: 0.35, 6: 0.5, 7: 0.0, 8: 0.5, 9: 0.09999999999999998, 10: 0.5, 11: 0.5, 13: 0.5, 15: 1.0, 16: 0.5, 17: 0.5, 18: 0.5, 19: 0.5, 20: 0.5, 21: 0.5, 22: 1.0, 23: 0.5, 24: 0.5, 25: 0.5, 26: 0.5, 27: 0.5, 28: 0.75, 29: 0.5, 30: 1.0, 31: 0.5, 32: 0.0, 33: 0.0, 34: 0.5, 35: 0.5, 36: 0.5, 37: 0.5, 38: 0.5, 39: 0.5, 40: 1.0, 41: 0.0, 42: 0.5, 43: 0.5, 44: 0.5, 46: 0.8333333333333334, 47: 0.5, 48: 0.5, 49: 0.6666666666666667, 50: 0.5, 51: 0.0, 52: 0.0, 53: 0.5, 54: 0.5, 55: 0.5, 56: 0.5, 57: 0.5, 58: 0.5, 59: 0.5, 60: 0.0, 61: 0.5, 62: 0.5, 63: 0.5, 64: 1.0, 65: 0.5, 66: 0.5, 67: 0.5, 68: 0.0, 69: 1.0, 70: 0.0, 71: 0.5, 72: 0.5, 73: 0.5, 74: 0.0, 75: 0.5, 76: 0.25, 77: 0.5, 78: 0.5, 79: 0.5, 80: 0.0, 81: 0.5, 82: 0.5, 83: 0.5, 84: 0.3888888888888889, 85: 0.75, 86: 0.5, 87: 0.5, 88: 0.5, 89: 0.0, 90: 0.09999999999999998, 91: 0.5, 92: 0.4, 93: 0.5, 94: 0.5}
+Iteration 38: New valset pareto front scores: {0: 0.4166666666666667, 1: 0.5, 2: 1.0, 3: 0.5, 4: 1.0, 5: 1.0, 6: 1.0, 7: 0.6923076923076923, 8: 1.0, 9: 0.8, 10: 1.0, 11: 0.5, 12: 1.0, 13: 1.0, 14: 0.5, 15: 1.0, 16: 0.5, 17: 1.0, 18: 1.0, 19: 0.5, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 0.5, 26: 1.0, 27: 1.0, 28: 0.75, 29: 1.0, 30: 1.0, 31: 0.5, 32: 1.0, 33: 0.5, 34: 0.5, 35: 0.6, 36: 0.5, 37: 1.0, 38: 1.0, 39: 1.0, 40: 1.0, 41: 0.5, 42: 0.5, 43: 0.5, 44: 0.5, 45: 1.0, 46: 0.8333333333333334, 47: 0.6, 48: 0.8333333333333334, 49: 1.0, 50: 1.0, 51: 1.0, 52: 0.5, 53: 0.5, 54: 0.5, 55: 0.5, 56: 1.0, 57: 0.5, 58: 0.5, 59: 0.5, 60: 0.75, 61: 1.0, 62: 0.5, 63: 1.0, 64: 1.0, 65: 1.0, 66: 0.5, 67: 0.6, 68: 0.5, 69: 1.0, 70: 0.5, 71: 0.5, 72: 0.5, 73: 0.5714285714285714, 74: 1.0, 75: 1.0, 76: 0.75, 77: 1.0, 78: 1.0, 79: 0.5, 80: 0.5, 81: 0.5, 82: 1.0, 83: 1.0, 84: 0.5, 85: 1.0, 86: 1.0, 87: 1.0, 88: 0.5, 89: 0.5, 90: 0.15000000000000002, 91: 1.0, 92: 0.5, 93: 0.5, 94: 1.0}
+Iteration 38: Valset pareto front aggregate score: 0.7615481010217852
+Iteration 38: Updated valset pareto front programs: {0: {10, 11, 12}, 1: {2, 5, 6, 7, 8, 9, 11, 13}, 2: {0, 2, 3, 5, 8, 9, 10, 11, 13}, 3: {5}, 4: {9, 10}, 5: {7}, 6: {6}, 7: {9}, 8: {2, 6}, 9: {2}, 10: {5, 8, 9, 10, 12}, 11: {0, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13}, 12: {10, 11}, 13: {11}, 14: {2, 13}, 15: {13}, 16: {0, 3, 5, 7, 8, 9, 13}, 17: {11, 6}, 18: {10, 2, 11, 12}, 19: {3, 13}, 20: {0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 12}, 21: {2, 5}, 22: {0, 2, 9, 10, 12, 13}, 23: {2, 7, 8, 9, 11}, 24: {11}, 25: {3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 26: {0, 1, 2, 4, 7, 10, 11}, 27: {9}, 28: {13, 6}, 29: {8}, 30: {5, 6, 7, 9, 13}, 31: {2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 32: {10, 12, 6}, 33: {8, 4}, 34: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 35: {10}, 36: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 37: {5}, 38: {1, 3}, 39: {2}, 40: {4, 9, 10, 11, 13}, 41: {1, 3, 4, 5, 6, 8, 9, 10, 11, 12}, 42: {0, 1, 3, 4, 5, 6, 7, 8, 9, 12, 13}, 43: {2, 3, 5, 6, 7, 8, 9, 10, 12, 13}, 44: {0, 4, 8, 12, 13}, 45: {13}, 46: {13}, 47: {0, 2, 6, 7, 8, 10, 11, 12}, 48: {2}, 49: {2}, 50: {6}, 51: {10, 11, 12}, 52: {4}, 53: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 54: {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 55: {2, 3, 5, 7, 8, 9, 10, 11, 12, 13}, 56: {2}, 57: {2, 3, 5, 6, 7, 8, 9, 10, 11, 13}, 58: {0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 13}, 59: {3, 5, 7, 8, 9, 10, 11, 12, 13}, 60: {2, 4, 5}, 61: {10, 4, 12, 6}, 62: {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 63: {7}, 64: {2, 3, 5, 8, 9, 13}, 65: {12}, 66: {2, 5, 8, 9, 13}, 67: {0, 1, 3, 5, 6, 7, 10, 11, 12}, 68: {3, 4, 5}, 69: {6, 9, 10, 11, 12, 13}, 70: {1, 9}, 71: {0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 72: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 73: {8, 9, 7}, 74: {5}, 75: {8, 1, 9}, 76: {3, 10, 11, 7}, 77: {11, 6}, 78: {11, 12}, 79: {0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 80: {0, 1, 4}, 81: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 82: {11}, 83: {11, 5}, 84: {1, 2, 4, 5, 10, 11}, 85: {10, 11, 6}, 86: {11}, 87: {6}, 88: {0, 1, 2, 3, 5, 7, 8, 9, 10, 11, 13}, 89: {1, 2, 3}, 90: {2}, 91: {0, 1, 2, 5, 6, 12}, 92: {10, 11, 12, 6}, 93: {2, 3, 8, 9, 13}, 94: {3, 11}}
+Iteration 38: Best valset aggregate score so far: 0.5008704264431818
+Iteration 38: Best program as per aggregate score on valset: 9
+Iteration 38: Best score on valset: 0.5008704264431818
+Iteration 38: Linear pareto front program index: 9
+Iteration 38: New program candidate index: 13
+Iteration 39: No merge candidates found
+Iteration 39: Selected program 7 score: 0.41506520826954263
+Iteration 39: Contrastive search found 1 pairs (requested 3)
+Iteration 39: Proposed new text for system_prompt: ## New Instruction
+
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORGANIZATION>`). Additionally, identify and anonymize any named entities (e.g., people, organizations, locations) that may contain sensitive information and replace them with generic placeholders (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`). Ensure that the rewritten query does not inadvertently expose any PII, even if it is indirectly referenced, and maintain the original intent and context of the query.  
+
+### Key Requirements:  
+1. **Remove PII**:  
+   - Eliminate any direct or indirect references to names, addresses, phone numbers, or emails.  
+   - Replace PII with generic placeholders (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORGANIZATION>`).  
+
+2. **Anonymize Named Entities**:  
+   - Identify and anonymize any named entities (e.g., people, organizations, locations) that may contain sensitive information.  
+   - Replace them with generic placeholders (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`).  
+
+3. **Maintain Intent and Context**:  
+   - Ensure the rewritten query retains the original meaning, intent, and context.  
+   - Do not alter the structure or logical flow of the original query.  
+
+4. **No PII Leakage**:  
+   - Verify that no PII is exposed, even if indirectly referenced (e.g., through indirect mentions of locations, roles, or organizations).  
+
+5. **Use of Generic Placeholders**:  
+   - Use standardized placeholders (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORGANIZATION>`) as specified.  
+   - Do not use arbitrary or non-standard placeholders.  
+
+6. **Output Format**:  
+   - Provide the rewritten query with anonymized PII and named entities.  
+   - Include a summary of the changes made, specifying any anonymized named entities.  
+
+### Additional Notes:  
+- **Named Entity Recognition**: The assistant should identify entities like names, organizations, locations, and roles and replace them with generic placeholders.  
+- **Contextual Anonymization**: If a query contains indirect references to PII (e.g., "the company located in New York"), the assistant should anonymize it without altering the meaning.  
+- **Consistency**: Use the same placeholder format throughout the rewritten query.  
+- **Validation**: Ensure that the final output is free of PII and that all named entities are properly anonymized.  
+
+### Niche and Domain-Specific Information:  
+- **PII Removal**: The assistant must distinguish between PII and non-PII content. For example, "Uber" is not PII but is a service, so it should remain unchanged unless it is a specific name or location.  
+- **Named Entity Recognition**: The assistant must identify and anonymize entities like "Carlton Hotel" (an organization), "Annual General Meeting" (an event), and "Event Manager" (a role).  
+- **Contextual Anonymization**: The assistant must ensure that indirect references (e.g., "the company located in New York") are anonymized without altering the meaning.  
+- **Standardized Placeholders**: The assistant must consistently use `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORGANIZATION>`, and `<PRESIDIO_ANONYMIZED_ROLE>` for all anonymized entities.  
+- **Validation**: The assistant must ensure that the final output is free of PII and that all named entities are properly anonymized, even if indirectly referenced.  
+
+### Generalizable Strategy:  
+- **Text Replacement**: Replace direct PII with generic placeholders.  
+- **Entity Recognition**: Use NLP techniques to identify named entities (people, organizations, locations) and anonymize them.  
+- **Context Preservation**: Maintain the original intent and structure of the query while removing PII.  
+- **Placeholder Consistency**: Use the same placeholder format throughout the output.  
+
+This instruction ensures that the assistant can handle a wide range of queries while maintaining clarity, consistency, and compliance with privacy and anonymization standards.
+Iteration 39: New subsample score 1.6666666666666667 is not better than old score 1.6666666666666667, skipping
+Iteration 40: Selected program 9 score: 0.5008704264431818
+Iteration 40: Contrastive search found 0 pairs (requested 3)
+Iteration 40: Proposed new text for system_prompt: ## New Instruction  
+Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORGANIZATION>`). Additionally, identify and anonymize any named entities (e.g., people, organizations, locations, roles) that may contain sensitive information and replace them with generic placeholders (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORGANIZATION>`). Ensure that the rewritten query does not inadvertently expose any PII, even if it is indirectly referenced, and maintain the original intent and context of the query.  
+
+### Key Requirements:  
+1. **Remove PII**:  
+   - Eliminate any direct or indirect references to names, addresses, phone numbers, or emails.  
+   - Replace PII with generic placeholders (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORGANIZATION>`).  
+
+2. **Anonymize Named Entities**:  
+   - Identify and anonymize any named entities (e.g., people, organizations, locations, roles) that may contain sensitive information.  
+   - Replace them with generic placeholders (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORGANIZATION>`).  
+
+3. **Maintain Intent and Context**:  
+   - Ensure the rewritten query retains the original meaning, intent, and context.  
+   - Do not alter the structure or logical flow of the original query.  
+
+4. **No PII Leakage**:  
+   - Verify that no PII is exposed, even if indirectly referenced (e.g., through indirect mentions of locations, roles, or organizations).  
+
+5. **Use of Generic Placeholders**:  
+   - Use standardized placeholders (e.g., `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORGANIZATION>`).  
+   - Do not use arbitrary or non-standard placeholders.  
+
+6. **Output Format**:  
+   - Provide the rewritten query with anonymized PII and named entities.  
+   - Include a summary of the changes made, specifying any anonymized named entities.  
+
+### Additional Notes:  
+- **Named Entity Recognition**: The assistant should use a robust named entity recognition (NER) model to identify entities like people, organizations, locations, and roles.  
+- **Contextual Anonymization**: The assistant must ensure that indirect references to PII (e.g., "the company located in New York") are anonymized without altering the context.  
+- **Consistency in Placeholders**: The assistant must consistently use `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORGANIZATION>`, and `<PRESIDIO_ANONYMIZED_LOCATION>` throughout the query.  
+- **Validation**: The assistant must validate the output query for PII leakage and ensure that no PII is exposed, even in indirect references.  
+
+### Task Description:  
+This task requires the assistant to:  
+1. **Anonymize PII**: Remove names, addresses, phone numbers, and emails from the query.  
+2. **Anonymize Named Entities**: Replace specific entities (e.g., people, organizations, locations, roles) with generic placeholders.  
+3. **Maintain Intent and Context**: Ensure the rewritten query retains the original meaning, intent, and structure.  
+4. **Use Standardized Placeholders**: Apply consistent placeholders as defined.  
+5. **Analyze and Report**: Provide a summary of the anonymized entities and changes made.  
+
+### Generalizable Strategy:  
+- Use a combination of NER and rule-based replacement for PII and named entities.  
+- Apply a consistent replacement strategy across all entities.  
+- Validate the output for PII leakage using automated checks.  
+- Maintain the original intent and structure of the query.  
+
+### Example of a Task Input:  
+**Input**:  
+"Please contact the customer support team at [company@example.com] to resolve the issue with the product. The product was delivered on 2024-03-15 and is currently in the process of being returned. The customer is a senior executive at [company_name], and the issue is related to the product's compatibility with the latest software version."  
+
+**Expected Output**:  
+"Please contact the customer support team at `<PRESIDIO_ANONYMIZED_EMAIL>` to resolve the issue with the product. The product was delivered on 2024-03-15 and is currently in the process of being returned. The customer is a senior executive at `<PRESIDIO_ANONYMIZED_ORGANIZATION>`, and the issue is related to the product's compatibility with the latest software version."  
+
+**Summary of Changes**:  
+- **Email**: Replaced with `<PRESIDIO_ANONYMIZED_EMAIL>`.  
+- **Organization**: Replaced with `<PRESIDIO_ANONYMIZED_ORGANIZATION>`.  
+- **Company Name**: Replaced with `<PRESIDIO_ANONYMIZED_ORGANIZATION>`.  
+- **Product**: Retained as is (no PII).  
+- **Date**: Retained as is (no PII).  
+- **Role**: Retained as is (no PII).  
+
+### Additional Notes:  
+- **Named Entity Recognition**: The assistant should use a robust named entity recognition (NER) model to identify entities like people, organizations, locations, and roles.  
+- **Contextual Anonymization**: The assistant must ensure that indirect references to PII (e.g., "the company located in New York") are anonymized without altering the context.  
+- **Consistency in Placeholders**: The assistant must consistently use `<PRESIDIO_ANONYMIZED_PERSON>`, `<PRESIDIO_ANONYMIZED_ORGANIZATION>`, and `<PRESIDIO_ANONYMIZED_LOCATION>` throughout the query.  
+- **Validation**: The assistant must validate the output query for PII leakage and ensure that no PII is exposed, even in indirect references.  
+
+### Task Output Requirements:  
+- **Anonymized Query**: A rewritten query with all PII and named entities replaced with generic placeholders.  
+- **Summary of Changes**: A detailed summary of all anonymized entities and the changes made to the query.  
+- **Validation**: A leakage score and a note on whether any PII was leaked.  
+- **Output Format**: The rewritten query and the summary of changes.  
+- **Placeholders**: Use only the standardized placeholders defined in the instructions.  
+
+### Feedback Requirements:  
+- **Quality (LLM-as-judge)**: A rating of 1.00 for the quality of the response.  
+- **Leakage Score**: A score of 0.00 if no PII was leaked, or a score indicating the number of PII units leaked.  
+- **Total**: The sum of quality and leakage scores.  
+- **Summary**: A clear and concise summary of the changes made.  
+- **Validation Note**: A note on whether any PII was leaked.
+Iteration 40: New subsample score 2.083333333333333 is better than old score 1.5833333333333333. Continue to full eval and add to candidate pool.
+Iteration 40: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 588, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 240, in evaluate
+    response = self._generate(prompt, example.input) or ""
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 223, in _generate
+    return self._lm(messages)
+           ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 588, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 563, in run
+    new_idx, _ = self._run_full_eval_and_add(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 153, in _run_full_eval_and_add
+    valset_evaluation = self._evaluate_on_valset(new_program, state)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 135, in _evaluate_on_valset
+    outputs_by_val_idx, scores_by_val_idx, objective_by_val_idx, num_actual_evals = state.cached_evaluate_full(
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/state.py", line 621, in cached_evaluate_full
+    return self.evaluation_cache.evaluate_with_cache_full(candidate, example_ids, fetcher, evaluator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/state.py", line 121, in evaluate_with_cache_full
+    outputs, scores, obj_scores = evaluator(batch, candidate)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 96, in evaluator
+    eval_result = adapter.evaluate(batch, program, capture_traces=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+

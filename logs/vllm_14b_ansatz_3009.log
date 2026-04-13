@@ -1,0 +1,153 @@
+/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+(APIServer pid=157716) INFO 04-13 05:20:45 [utils.py:299] 
+(APIServer pid=157716) INFO 04-13 05:20:45 [utils.py:299]        █     █     █▄   ▄█
+(APIServer pid=157716) INFO 04-13 05:20:45 [utils.py:299]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.19.0
+(APIServer pid=157716) INFO 04-13 05:20:45 [utils.py:299]   █▄█▀ █     █     █     █  model   Qwen/Qwen3-14B
+(APIServer pid=157716) INFO 04-13 05:20:45 [utils.py:299]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=157716) INFO 04-13 05:20:45 [utils.py:299] 
+(APIServer pid=157716) INFO 04-13 05:20:45 [utils.py:233] non-default args: {'host': '0.0.0.0', 'port': 8129, 'model': 'Qwen/Qwen3-14B', 'max_model_len': 8192, 'quantization': 'fp8', 'enforce_eager': True, 'gpu_memory_utilization': 0.7}
+(APIServer pid=157716) INFO 04-13 05:20:46 [model.py:549] Resolved architecture: Qwen3ForCausalLM
+(APIServer pid=157716) INFO 04-13 05:20:46 [model.py:1678] Using max model len 8192
+(APIServer pid=157716) INFO 04-13 05:20:47 [vllm.py:790] Asynchronous scheduling is enabled.
+(APIServer pid=157716) WARNING 04-13 05:20:47 [vllm.py:848] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(APIServer pid=157716) WARNING 04-13 05:20:47 [vllm.py:859] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(APIServer pid=157716) INFO 04-13 05:20:47 [vllm.py:1025] Cudagraph is disabled under eager mode
+(APIServer pid=157716) INFO 04-13 05:20:47 [compilation.py:290] Enabled custom fusions: norm_quant, act_quant
+/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+(EngineCore pid=157744) INFO 04-13 05:20:52 [core.py:105] Initializing a V1 LLM engine (v0.19.0) with config: model='Qwen/Qwen3-14B', speculative_config=None, tokenizer='Qwen/Qwen3-14B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=fp8, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Qwen/Qwen3-14B, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_images_per_batch': 0, 'compile_sizes': [], 'compile_ranges_endpoints': [2048], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}
+(EngineCore pid=157744) INFO 04-13 05:20:52 [parallel_state.py:1400] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.0.10.70:51409 backend=nccl
+(EngineCore pid=157744) INFO 04-13 05:20:52 [parallel_state.py:1716] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=157744) INFO 04-13 05:20:52 [gpu_model_runner.py:4735] Starting to load model Qwen/Qwen3-14B...
+(EngineCore pid=157744) INFO 04-13 05:20:53 [__init__.py:261] Selected CutlassFP8ScaledMMLinearKernel for Fp8OnlineLinearMethod
+(EngineCore pid=157744) INFO 04-13 05:20:53 [cuda.py:334] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=157744) INFO 04-13 05:20:53 [flash_attn.py:596] Using FlashAttention version 2
+(EngineCore pid=157744) Loading safetensors checkpoint shards:   0% Completed | 0/8 [00:00<?, ?it/s]
+(EngineCore pid=157744) Loading safetensors checkpoint shards:  12% Completed | 1/8 [00:00<00:02,  3.37it/s]
+(EngineCore pid=157744) Loading safetensors checkpoint shards:  25% Completed | 2/8 [00:00<00:01,  3.11it/s]
+(EngineCore pid=157744) Loading safetensors checkpoint shards:  38% Completed | 3/8 [00:00<00:01,  3.04it/s]
+(EngineCore pid=157744) Loading safetensors checkpoint shards:  50% Completed | 4/8 [00:01<00:01,  3.01it/s]
+(EngineCore pid=157744) Loading safetensors checkpoint shards:  62% Completed | 5/8 [00:01<00:01,  2.99it/s]
+(EngineCore pid=157744) Loading safetensors checkpoint shards:  75% Completed | 6/8 [00:01<00:00,  2.97it/s]
+(EngineCore pid=157744) Loading safetensors checkpoint shards:  88% Completed | 7/8 [00:02<00:00,  2.96it/s]
+(EngineCore pid=157744) Loading safetensors checkpoint shards: 100% Completed | 8/8 [00:02<00:00,  3.46it/s]
+(EngineCore pid=157744) Loading safetensors checkpoint shards: 100% Completed | 8/8 [00:02<00:00,  3.18it/s]
+(EngineCore pid=157744) 
+(EngineCore pid=157744) INFO 04-13 05:20:56 [default_loader.py:384] Loading weights took 2.53 seconds
+(EngineCore pid=157744) INFO 04-13 05:20:57 [gpu_model_runner.py:4820] Model loading took 15.22 GiB memory and 3.814283 seconds
+(EngineCore pid=157744) INFO 04-13 05:20:58 [gpu_worker.py:436] Available KV cache memory: 0.35 GiB
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108] EngineCore failed to start.
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108] Traceback (most recent call last):
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1082, in run_engine_core
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]     return func(*args, **kwargs)
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 848, in __init__
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]     super().__init__(
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 124, in __init__
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]     kv_cache_config = self._initialize_kv_caches(vllm_config)
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]     return func(*args, **kwargs)
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 258, in _initialize_kv_caches
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]     kv_cache_configs = get_kv_cache_configs(
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]                        ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/core/kv_cache_utils.py", line 1579, in get_kv_cache_configs
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]     _check_enough_kv_cache_memory(
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/core/kv_cache_utils.py", line 644, in _check_enough_kv_cache_memory
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108]     raise ValueError(
+(EngineCore pid=157744) ERROR 04-13 05:20:58 [core.py:1108] ValueError: To serve at least one request with the models's max seq len (8192), (1.25 GiB KV cache is needed, which is larger than the available KV cache memory (0.35 GiB). Based on the available memory, the estimated maximum model length is 2288. Try increasing `gpu_memory_utilization` or decreasing `max_model_len` when initializing the engine. See https://docs.vllm.ai/en/latest/configuration/conserving_memory/ for more details.
+(EngineCore pid=157744) Process EngineCore:
+(EngineCore pid=157744) Traceback (most recent call last):
+(EngineCore pid=157744)   File "/usr/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+(EngineCore pid=157744)     self.run()
+(EngineCore pid=157744)   File "/usr/lib/python3.12/multiprocessing/process.py", line 108, in run
+(EngineCore pid=157744)     self._target(*self._args, **self._kwargs)
+(EngineCore pid=157744)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1112, in run_engine_core
+(EngineCore pid=157744)     raise e
+(EngineCore pid=157744)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1082, in run_engine_core
+(EngineCore pid=157744)     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=157744)                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=157744)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=157744)     return func(*args, **kwargs)
+(EngineCore pid=157744)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=157744)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 848, in __init__
+(EngineCore pid=157744)     super().__init__(
+(EngineCore pid=157744)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 124, in __init__
+(EngineCore pid=157744)     kv_cache_config = self._initialize_kv_caches(vllm_config)
+(EngineCore pid=157744)                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=157744)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=157744)     return func(*args, **kwargs)
+(EngineCore pid=157744)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=157744)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 258, in _initialize_kv_caches
+(EngineCore pid=157744)     kv_cache_configs = get_kv_cache_configs(
+(EngineCore pid=157744)                        ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=157744)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/core/kv_cache_utils.py", line 1579, in get_kv_cache_configs
+(EngineCore pid=157744)     _check_enough_kv_cache_memory(
+(EngineCore pid=157744)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/core/kv_cache_utils.py", line 644, in _check_enough_kv_cache_memory
+(EngineCore pid=157744)     raise ValueError(
+(EngineCore pid=157744) ValueError: To serve at least one request with the models's max seq len (8192), (1.25 GiB KV cache is needed, which is larger than the available KV cache memory (0.35 GiB). Based on the available memory, the estimated maximum model length is 2288. Try increasing `gpu_memory_utilization` or decreasing `max_model_len` when initializing the engine. See https://docs.vllm.ai/en/latest/configuration/conserving_memory/ for more details.
+[rank0]:[W413 05:20:58.708616233 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+(APIServer pid=157716) Traceback (most recent call last):
+(APIServer pid=157716)   File "<frozen runpy>", line 198, in _run_module_as_main
+(APIServer pid=157716)   File "<frozen runpy>", line 88, in _run_code
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 710, in <module>
+(APIServer pid=157716)     uvloop.run(run_server(args))
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/uvloop/__init__.py", line 96, in run
+(APIServer pid=157716)     return __asyncio.run(
+(APIServer pid=157716)            ^^^^^^^^^^^^^^
+(APIServer pid=157716)   File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+(APIServer pid=157716)     return runner.run(main)
+(APIServer pid=157716)            ^^^^^^^^^^^^^^^^
+(APIServer pid=157716)   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+(APIServer pid=157716)     return self._loop.run_until_complete(task)
+(APIServer pid=157716)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=157716)   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/uvloop/__init__.py", line 48, in wrapper
+(APIServer pid=157716)     return await main
+(APIServer pid=157716)            ^^^^^^^^^^
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 670, in run_server
+(APIServer pid=157716)     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 684, in run_server_worker
+(APIServer pid=157716)     async with build_async_engine_client(
+(APIServer pid=157716)   File "/usr/lib/python3.12/contextlib.py", line 210, in __aenter__
+(APIServer pid=157716)     return await anext(self.gen)
+(APIServer pid=157716)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 100, in build_async_engine_client
+(APIServer pid=157716)     async with build_async_engine_client_from_engine_args(
+(APIServer pid=157716)   File "/usr/lib/python3.12/contextlib.py", line 210, in __aenter__
+(APIServer pid=157716)     return await anext(self.gen)
+(APIServer pid=157716)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/entrypoints/openai/api_server.py", line 136, in build_async_engine_client_from_engine_args
+(APIServer pid=157716)     async_llm = AsyncLLM.from_vllm_config(
+(APIServer pid=157716)                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 225, in from_vllm_config
+(APIServer pid=157716)     return cls(
+(APIServer pid=157716)            ^^^^
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 154, in __init__
+(APIServer pid=157716)     self.engine_core = EngineCoreClient.make_async_mp_client(
+(APIServer pid=157716)                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(APIServer pid=157716)     return func(*args, **kwargs)
+(APIServer pid=157716)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 130, in make_async_mp_client
+(APIServer pid=157716)     return AsyncMPClient(*client_args)
+(APIServer pid=157716)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(APIServer pid=157716)     return func(*args, **kwargs)
+(APIServer pid=157716)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 887, in __init__
+(APIServer pid=157716)     super().__init__(
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 535, in __init__
+(APIServer pid=157716)     with launch_core_engines(
+(APIServer pid=157716)   File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+(APIServer pid=157716)     next(self.gen)
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 998, in launch_core_engines
+(APIServer pid=157716)     wait_for_engine_startup(
+(APIServer pid=157716)   File "/users/achidamb/projects/gepa-mutations/vllm-venv/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 1057, in wait_for_engine_startup
+(APIServer pid=157716)     raise RuntimeError(
+(APIServer pid=157716) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}

@@ -1,44 +1,309 @@
 
 Experiment plan:
   Total:   60
-  Done:    0 (skipping)
-  Pending: 60
+  Done:    8 (skipping)
+  Pending: 52
   Workers: 8
 
-2026-04-12 14:13:11,681 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
-2026-04-12 14:13:11,702 INFO START  hotpotqa/modular/seed=123
-2026-04-12 14:13:11,702 INFO START  hotpotqa/modular/seed=42
-2026-04-12 14:13:11,702 INFO START  hotpotqa/modular/seed=456
-2026-04-12 14:13:11,703 INFO START  hotpotqa/active_minibatch/seed=42
-2026-04-12 14:13:11,703 INFO START  hotpotqa/modular/seed=789
-2026-04-12 14:13:11,703 INFO START  hotpotqa/modular/seed=1024
-2026-04-12 14:13:11,703 INFO START  hotpotqa/active_minibatch/seed=456
-2026-04-12 14:13:11,703 INFO START  hotpotqa/active_minibatch/seed=123
-2026-04-12 17:13:30,928 INFO DONE   hotpotqa/modular/seed=1024 (10819s) score=0.6333333333333333
-2026-04-12 17:13:30,929 INFO START  hotpotqa/active_minibatch/seed=789
-2026-04-12 17:13:30,930 INFO [1/60] hotpotqa/modular/seed=1024 -> 63.3% (10819s)
-2026-04-12 17:13:31,644 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
-2026-04-12 17:17:01,441 INFO DONE   hotpotqa/modular/seed=456 (11030s) score=0.6033333333333334
-2026-04-12 17:17:01,441 INFO START  hotpotqa/active_minibatch/seed=1024
-2026-04-12 17:17:01,442 INFO [2/60] hotpotqa/modular/seed=456 -> 60.3% (11030s)
-2026-04-12 17:49:52,220 INFO DONE   hotpotqa/active_minibatch/seed=42 (13001s) score=0.7433333333333333
-2026-04-12 17:49:52,221 INFO START  hotpotqa/contrastive_synthesis/seed=42
-2026-04-12 17:49:52,221 INFO [3/60] hotpotqa/active_minibatch/seed=42 -> 74.3% (13001s)
-2026-04-12 17:49:52,919 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
-2026-04-12 18:02:57,036 INFO DONE   hotpotqa/active_minibatch/seed=123 (13785s) score=0.73
-2026-04-12 18:02:57,037 INFO START  hotpotqa/contrastive_synthesis/seed=123
-2026-04-12 18:02:57,037 INFO [4/60] hotpotqa/active_minibatch/seed=123 -> 73.0% (13785s)
-2026-04-12 18:08:22,793 INFO DONE   hotpotqa/active_minibatch/seed=456 (14111s) score=0.69
-2026-04-12 18:08:22,794 INFO START  hotpotqa/contrastive_synthesis/seed=456
-2026-04-12 18:08:22,794 INFO [5/60] hotpotqa/active_minibatch/seed=456 -> 69.0% (14111s)
-2026-04-12 19:09:29,713 INFO DONE   hotpotqa/modular/seed=123 (17778s) score=0.7
-2026-04-12 19:09:29,714 INFO START  hotpotqa/contrastive_synthesis/seed=789
-2026-04-12 19:09:29,715 INFO [6/60] hotpotqa/modular/seed=123 -> 70.0% (17778s)
-2026-04-12 19:09:30,428 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
-2026-04-12 20:53:11,857 INFO DONE   hotpotqa/modular/seed=42 (24000s) score=0.71
-2026-04-12 20:53:11,858 INFO START  hotpotqa/contrastive_synthesis/seed=1024
-2026-04-12 20:53:11,859 INFO [7/60] hotpotqa/modular/seed=42 -> 71.0% (24000s)
-2026-04-12 20:53:12,536 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
-2026-04-12 21:00:28,370 INFO DONE   hotpotqa/modular/seed=789 (24437s) score=0.6566666666666666
-2026-04-12 21:00:28,371 INFO START  hotpotqa/ecological_succession/seed=42
-2026-04-12 21:00:28,371 INFO [8/60] hotpotqa/modular/seed=789 -> 65.7% (24437s)
+2026-04-12 22:21:33,808 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 22:21:33,827 INFO START  hotpotqa/active_minibatch/seed=789
+2026-04-12 22:21:33,829 INFO START  hotpotqa/active_minibatch/seed=1024
+2026-04-12 22:21:33,829 INFO START  hotpotqa/contrastive_synthesis/seed=42
+2026-04-12 22:21:33,829 INFO START  hotpotqa/contrastive_synthesis/seed=123
+2026-04-12 22:21:33,829 INFO START  hotpotqa/contrastive_synthesis/seed=456
+2026-04-12 22:21:33,830 INFO START  hotpotqa/contrastive_synthesis/seed=1024
+2026-04-12 22:21:33,830 INFO START  hotpotqa/ecological_succession/seed=42
+2026-04-12 22:21:33,830 INFO START  hotpotqa/contrastive_synthesis/seed=789
+2026-04-12 22:34:14,056 INFO DONE   hotpotqa/contrastive_synthesis/seed=42 (760s) score=0.6833333333333333
+2026-04-12 22:34:14,057 INFO START  hotpotqa/ecological_succession/seed=123
+2026-04-12 22:34:14,057 INFO [1/52] hotpotqa/contrastive_synthesis/seed=42 -> 68.3% (760s)
+2026-04-12 23:00:29,802 INFO DONE   hotpotqa/active_minibatch/seed=789 (2336s) score=0.6933333333333334
+2026-04-12 23:00:29,803 INFO START  hotpotqa/ecological_succession/seed=456
+2026-04-12 23:00:29,803 INFO [2/52] hotpotqa/active_minibatch/seed=789 -> 69.3% (2336s)
+2026-04-12 23:00:30,566 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:06:49,537 ERROR FAILED hotpotqa/contrastive_synthesis/seed=789 (2716s): epa/src/gepa/core/engine.py", line 96, in evaluator
+    eval_result = adapter.evaluate(batch, program, capture_traces=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:06:49,537 INFO START  hotpotqa/ecological_succession/seed=789
+2026-04-12 23:06:49,538 ERROR [3/52] hotpotqa/contrastive_synthesis/seed=789 FAILED: epa/src/gepa/core/engine.py", line 96, in evaluator
+    eval_result = adapter.evaluate(batch, program, capture_traces=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:06:49,555 ERROR FAILED hotpotqa/contrastive_synthesis/seed=123 (2716s): epa/src/gepa/core/engine.py", line 96, in evaluator
+    eval_result = adapter.evaluate(batch, program, capture_traces=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:06:49,581 INFO START  hotpotqa/ecological_succession/seed=1024
+2026-04-12 23:06:49,801 ERROR FAILED hotpotqa/contrastive_synthesis/seed=456 (2716s): epa/src/gepa/core/engine.py", line 96, in evaluator
+    eval_result = adapter.evaluate(batch, program, capture_traces=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:06:49,807 INFO START  hotpotqa/ant_colony/seed=42
+2026-04-12 23:06:49,889 ERROR FAILED hotpotqa/ecological_succession/seed=456 (380s): .py", line 35, in estimate_difficulty
+    eval_out = adapter.evaluate(trainset, seed_candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:06:49,911 INFO START  hotpotqa/ant_colony/seed=123
+2026-04-12 23:06:50,275 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:06:50,279 ERROR [4/52] hotpotqa/contrastive_synthesis/seed=123 FAILED: epa/src/gepa/core/engine.py", line 96, in evaluator
+    eval_result = adapter.evaluate(batch, program, capture_traces=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:06:50,935 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:06:50,938 ERROR [5/52] hotpotqa/contrastive_synthesis/seed=456 FAILED: epa/src/gepa/core/engine.py", line 96, in evaluator
+    eval_result = adapter.evaluate(batch, program, capture_traces=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:06:51,612 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:06:51,617 ERROR [6/52] hotpotqa/ecological_succession/seed=456 FAILED: .py", line 35, in estimate_difficulty
+    eval_out = adapter.evaluate(trainset, seed_candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:06:52,299 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:07:31,150 ERROR FAILED hotpotqa/ecological_succession/seed=1024 (42s): .py", line 35, in estimate_difficulty
+    eval_out = adapter.evaluate(trainset, seed_candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:07:31,150 INFO START  hotpotqa/ant_colony/seed=456
+2026-04-12 23:07:31,151 ERROR [7/52] hotpotqa/ecological_succession/seed=1024 FAILED: .py", line 35, in estimate_difficulty
+    eval_out = adapter.evaluate(trainset, seed_candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:07:31,828 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:07:32,000 ERROR FAILED hotpotqa/ecological_succession/seed=789 (42s): .py", line 35, in estimate_difficulty
+    eval_out = adapter.evaluate(trainset, seed_candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:07:32,000 INFO START  hotpotqa/ant_colony/seed=789
+2026-04-12 23:07:32,001 ERROR [8/52] hotpotqa/ecological_succession/seed=789 FAILED: .py", line 35, in estimate_difficulty
+    eval_out = adapter.evaluate(trainset, seed_candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:07:32,702 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:07:47,040 ERROR FAILED hotpotqa/ant_colony/seed=42 (57s): rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:07:47,040 INFO START  hotpotqa/ant_colony/seed=1024
+2026-04-12 23:07:47,041 ERROR [9/52] hotpotqa/ant_colony/seed=42 FAILED: rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:07:47,712 ERROR FAILED hotpotqa/ant_colony/seed=123 (58s): rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:07:47,712 INFO START  hotpotqa/synaptic_pruning/seed=42
+2026-04-12 23:07:47,718 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:07:47,772 ERROR [10/52] hotpotqa/ant_colony/seed=123 FAILED: rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:07:48,662 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:08:06,873 ERROR FAILED hotpotqa/synaptic_pruning/seed=42 (19s): s/methods/synaptic_pruning/synaptic_pruning/runner.py", line 238, in run_synaptic_pruning
+    initial_prompts = _generate_initial_prompts(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/methods/synaptic_pruning/synaptic_pruning/runner.py", line 118, in _generate_initial_prompts
+    raise RuntimeError(
+RuntimeError: All initial prompt generations failed — check logs above. Responses were either empty, too short (<200 chars), or raised exceptions.
+
+2026-04-12 23:08:06,873 INFO START  hotpotqa/synaptic_pruning/seed=123
+2026-04-12 23:08:06,873 ERROR [11/52] hotpotqa/synaptic_pruning/seed=42 FAILED: s/methods/synaptic_pruning/synaptic_pruning/runner.py", line 238, in run_synaptic_pruning
+    initial_prompts = _generate_initial_prompts(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/methods/synaptic_pruning/synaptic_pruning/runner.py", line 118, 
+2026-04-12 23:08:07,667 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:08:25,898 ERROR FAILED hotpotqa/synaptic_pruning/seed=123 (19s): s/methods/synaptic_pruning/synaptic_pruning/runner.py", line 238, in run_synaptic_pruning
+    initial_prompts = _generate_initial_prompts(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/methods/synaptic_pruning/synaptic_pruning/runner.py", line 118, in _generate_initial_prompts
+    raise RuntimeError(
+RuntimeError: All initial prompt generations failed — check logs above. Responses were either empty, too short (<200 chars), or raised exceptions.
+
+2026-04-12 23:08:25,898 INFO START  hotpotqa/synaptic_pruning/seed=456
+2026-04-12 23:08:25,898 ERROR [12/52] hotpotqa/synaptic_pruning/seed=123 FAILED: s/methods/synaptic_pruning/synaptic_pruning/runner.py", line 238, in run_synaptic_pruning
+    initial_prompts = _generate_initial_prompts(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/methods/synaptic_pruning/synaptic_pruning/runner.py", line 118, 
+2026-04-12 23:08:26,587 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:08:28,490 ERROR FAILED hotpotqa/ant_colony/seed=456 (57s): rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:08:28,490 INFO START  hotpotqa/synaptic_pruning/seed=789
+2026-04-12 23:08:28,491 ERROR [13/52] hotpotqa/ant_colony/seed=456 FAILED: rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:08:28,791 ERROR FAILED hotpotqa/ant_colony/seed=789 (57s): rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:08:28,792 INFO START  hotpotqa/synaptic_pruning/seed=1024
+2026-04-12 23:08:29,187 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:08:29,191 ERROR [14/52] hotpotqa/ant_colony/seed=789 FAILED: rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:08:29,856 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:08:44,180 ERROR FAILED hotpotqa/ant_colony/seed=1024 (57s): rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:08:44,180 INFO START  hotpotqa/slime_mold/seed=42
+2026-04-12 23:08:44,180 ERROR [15/52] hotpotqa/ant_colony/seed=1024 FAILED: rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:08:44,985 ERROR FAILED hotpotqa/synaptic_pruning/seed=456 (19s): s/methods/synaptic_pruning/synaptic_pruning/runner.py", line 238, in run_synaptic_pruning
+    initial_prompts = _generate_initial_prompts(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/methods/synaptic_pruning/synaptic_pruning/runner.py", line 118, in _generate_initial_prompts
+    raise RuntimeError(
+RuntimeError: All initial prompt generations failed — check logs above. Responses were either empty, too short (<200 chars), or raised exceptions.
+
+2026-04-12 23:08:44,985 INFO START  hotpotqa/slime_mold/seed=123
+2026-04-12 23:08:44,995 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:08:45,006 ERROR [16/52] hotpotqa/synaptic_pruning/seed=456 FAILED: s/methods/synaptic_pruning/synaptic_pruning/runner.py", line 238, in run_synaptic_pruning
+    initial_prompts = _generate_initial_prompts(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/methods/synaptic_pruning/synaptic_pruning/runner.py", line 118, 
+2026-04-12 23:08:45,681 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:08:47,825 ERROR FAILED hotpotqa/synaptic_pruning/seed=789 (19s): s/methods/synaptic_pruning/synaptic_pruning/runner.py", line 238, in run_synaptic_pruning
+    initial_prompts = _generate_initial_prompts(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/methods/synaptic_pruning/synaptic_pruning/runner.py", line 118, in _generate_initial_prompts
+    raise RuntimeError(
+RuntimeError: All initial prompt generations failed — check logs above. Responses were either empty, too short (<200 chars), or raised exceptions.
+
+2026-04-12 23:08:47,825 INFO START  hotpotqa/slime_mold/seed=456
+2026-04-12 23:08:47,826 ERROR [17/52] hotpotqa/synaptic_pruning/seed=789 FAILED: s/methods/synaptic_pruning/synaptic_pruning/runner.py", line 238, in run_synaptic_pruning
+    initial_prompts = _generate_initial_prompts(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/methods/synaptic_pruning/synaptic_pruning/runner.py", line 118, 
+2026-04-12 23:08:48,249 ERROR FAILED hotpotqa/synaptic_pruning/seed=1024 (19s): s/methods/synaptic_pruning/synaptic_pruning/runner.py", line 238, in run_synaptic_pruning
+    initial_prompts = _generate_initial_prompts(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/methods/synaptic_pruning/synaptic_pruning/runner.py", line 118, in _generate_initial_prompts
+    raise RuntimeError(
+RuntimeError: All initial prompt generations failed — check logs above. Responses were either empty, too short (<200 chars), or raised exceptions.
+
+2026-04-12 23:08:48,249 INFO START  hotpotqa/slime_mold/seed=789
+2026-04-12 23:08:48,577 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:08:48,596 ERROR [18/52] hotpotqa/synaptic_pruning/seed=1024 FAILED: s/methods/synaptic_pruning/synaptic_pruning/runner.py", line 238, in run_synaptic_pruning
+    initial_prompts = _generate_initial_prompts(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/methods/synaptic_pruning/synaptic_pruning/runner.py", line 118, 
+2026-04-12 23:08:49,252 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:09:36,540 ERROR FAILED hotpotqa/slime_mold/seed=42 (52s): rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:09:36,540 INFO START  hotpotqa/slime_mold/seed=1024
+2026-04-12 23:09:36,541 ERROR [19/52] hotpotqa/slime_mold/seed=42 FAILED: rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:09:36,871 ERROR FAILED hotpotqa/slime_mold/seed=123 (52s): rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:09:36,872 INFO START  hotpotqa/tournament/seed=42
+2026-04-12 23:09:37,348 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:09:37,351 ERROR [20/52] hotpotqa/slime_mold/seed=123 FAILED: rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:09:38,041 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:09:41,731 ERROR FAILED hotpotqa/slime_mold/seed=456 (54s): rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:09:41,731 INFO START  hotpotqa/tournament/seed=123
+2026-04-12 23:09:41,732 ERROR [21/52] hotpotqa/slime_mold/seed=456 FAILED: rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:09:41,874 ERROR FAILED hotpotqa/slime_mold/seed=789 (54s): rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:09:41,874 INFO START  hotpotqa/tournament/seed=456
+2026-04-12 23:09:42,450 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:09:42,456 ERROR [22/52] hotpotqa/slime_mold/seed=789 FAILED: rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:09:43,167 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:10:31,270 ERROR FAILED hotpotqa/slime_mold/seed=1024 (55s): rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-12 23:10:31,271 INFO START  hotpotqa/tournament/seed=789
+2026-04-12 23:10:31,271 ERROR [23/52] hotpotqa/slime_mold/seed=1024 FAILED: rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-12 23:10:31,967 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:48:21,153 INFO DONE   hotpotqa/tournament/seed=789 (2270s) score=0.6266666666666667
+2026-04-12 23:48:21,154 INFO START  hotpotqa/tournament/seed=1024
+2026-04-12 23:48:21,155 INFO [24/52] hotpotqa/tournament/seed=789 -> 62.7% (2270s)
+2026-04-12 23:48:21,822 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 23:48:54,193 INFO DONE   hotpotqa/tournament/seed=123 (2352s) score=0.6366666666666667
+2026-04-12 23:48:54,194 INFO START  hotpotqa/best_of_k_K3/seed=42
+2026-04-12 23:48:54,194 INFO [25/52] hotpotqa/tournament/seed=123 -> 63.7% (2352s)
+2026-04-12 23:48:55,309 INFO DONE   hotpotqa/tournament/seed=42 (2358s) score=0.6366666666666667
+2026-04-12 23:48:55,309 INFO START  hotpotqa/best_of_k_K3/seed=123
+2026-04-12 23:48:55,310 INFO [26/52] hotpotqa/tournament/seed=42 -> 63.7% (2358s)
+2026-04-12 23:50:00,354 INFO DONE   hotpotqa/tournament/seed=456 (2418s) score=0.63
+2026-04-12 23:50:00,355 INFO START  hotpotqa/best_of_k_K3/seed=456
+2026-04-12 23:50:00,355 INFO [27/52] hotpotqa/tournament/seed=456 -> 63.0% (2418s)

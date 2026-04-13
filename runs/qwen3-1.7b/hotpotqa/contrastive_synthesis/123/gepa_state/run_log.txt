@@ -4469,3 +4469,703 @@ Incorrect response: "Bob Brown."
 Answer the question by reasoning step-by-step through the provided context, ensuring that the answer is concise, factual, and directly derived from the information given. If the answer is not explicitly stated, you must determine it from the context. Avoid making assumptions or using external knowledge. Provide the answer in the exact format expected.
 Iteration 205: New subsample score 2.0 is not better than old score 2.0, skipping
 Iteration 206: Selected program 18 score: 0.7
+Iteration 206: Contrastive search found 0 pairs (requested 3)
+Iteration 206: No principle synthesized (no pairs)
+Iteration 206: Proposed new text for system_prompt: ## New Instructions  
+Answer the question by reasoning step by step through the provided context. Determine whether both Jonathan Marray and Wayne Black are British, based on the provided context. The context includes biographical information about these individuals, including their nationalities and careers.  
+
+### Niche and Domain-Specific Information  
+- **Jonathan Marray**: A British tennis player who has won the Wimbledon Men's Doubles title and has been a top doubles player.  
+- **Wayne Black**: A former professional male tennis player from Zimbabwe, but is considered British in the context of the Wimbledon Effect analogy.  
+
+### Generalizable Strategy  
+If the context explicitly states the nationality of an individual, you can directly answer based on that information. If the context is ambiguous or refers to them in a general way (e.g., "British in the context of the Wimbledon Effect"), you should clarify based on the provided information.  
+
+### Final Answer  
+No, both Jonathan Marray and Wayne Black are not British. Jonathan Marray is British, while Wayne Black is from Zimbabwe but is considered British in the context of the Wimbledon Effect analogy.
+Iteration 206: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 207: Selected program 13 score: 0.6366666666666667
+Iteration 207: Contrastive search found 0 pairs (requested 3)
+Iteration 207: No principle synthesized (no pairs)
+Iteration 207: Proposed new text for system_prompt: ## New Instructions
+
+You are to identify the specific date and location of an event described in the provided context, with a focus on factual accuracy and precision. The task is to determine the exact date and location of an event mentioned in the context, ensuring that the answer is concise, directly answers the question, and is based solely on the information given in the context. 
+
+### Niche and Domain-Specific Information to Include:
+- The context contains detailed information about George Harrison's music career, including album releases, singles, and their release dates.
+- The question is about a specific date and location related to an event in the context.
+- The answer must be based solely on the information provided in the context and must not rely on external knowledge.
+
+### Generalizable Strategy:
+- Identify the key event or detail in the context that directly answers the question.
+- Extract the date and location from the relevant sentence or paragraph.
+- Confirm that the information is consistent with the context and is the correct answer to the question.
+```
+
+### Example Input Format:
+```
+Context:
+[Text containing event details]
+
+Question:
+[Question about a specific date and location]
+```
+
+### Expected Output:
+```
+[Answer with the specific date and location of the event, in a concise format]
+Iteration 207: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 208: Selected program 22 score: 0.58
+Iteration 208: Contrastive search found 0 pairs (requested 3)
+Iteration 208: No principle synthesized (no pairs)
+Iteration 208: Proposed new text for system_prompt: ## New Instructions
+
+You are to identify the specific date and location of an event described in the provided context, with a focus on factual accuracy and precision. The task is to determine the exact date and location of an event mentioned in the context, ensuring that the answer is concise, directly answers the question, and is based solely on the information provided in the context. 
+
+### Niche and Domain-Specific Information to Include:
+- The context contains detailed information about George Harrison's music career, including album releases, singles, and their release dates.
+- The question is about a specific date and location related to an event in the context.
+- The answer must be based solely on the information provided in the context and must not rely on external knowledge.
+
+### Generalizable Strategy:
+- Identify the key event or detail in the context that directly answers the question.
+- Extract the date and location from the relevant sentence or paragraph.
+- Confirm that the information is consistent with the context and is the correct answer to the question.
+
+### Example Context Format:
+The context will contain sentences about historical battles, events, or other relevant occurrences, and you will be asked to extract the **exact date** and **specific location** of the event described.
+
+### Example Question Format:
+"Which battle took place in [location] on [date]?"
+
+### Example Output Format:
+"The Battle of Tannenberg took place in [location] on [date]."
+
+### Notes:
+- Ensure that the answer includes both the **date** and **location**.
+- If the event is described in multiple sentences, extract the most relevant one.
+- Avoid making assumptions or using external knowledge.
+- If the context is ambiguous, respond with the information that is clearly stated.
+Iteration 208: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 209: Selected program 11 score: 0.6466666666666666
+Iteration 209: Contrastive search found 1 pairs (requested 3)
+Iteration 209: Synthesized principle (293 chars): The key principle is: **"Clearly define the task and output requirements to ensure the model understands what exactly it needs to accomplish."**
+
+Actionable instruction: **"Specify the exact task, out...
+Iteration 209: Proposed new text for system_prompt: ## New Instructions
+
+You are to identify the specific date and location associated with a particular event described in the context, with a focus on factual accuracy and precision. The task is to determine the exact date and location of an event mentioned in the provided context, ensuring that the answer is concise, directly answers the question, and is based solely on the information given in the context. 
+
+### Niche and Domain-Specific Information to Include:
+- The context contains detailed information about George Harrison's music career, including album releases, singles, and their release dates.
+- The question is about a specific date and location related to an event in the context.
+- The answer must be based solely on the information provided in the context and must not rely on external knowledge.
+
+### Generalizable Strategy:
+- Identify the key event or detail in the context that directly answers the question.
+- Extract the date and location from the relevant sentence or paragraph.
+- Confirm that the information is consistent with the context and is the correct answer to the question.
+
+### Example Format:
+For example, if the context states: "In 2015, the Liwonde National Park was established in the village of Liwonde, Malawi," the answer would be: **Liwonde National Park was established in 2015 in Liwonde, Malawi.**
+
+Ensure that the answer includes both the **date** and the **location**, and that it is derived directly from the context without any external knowledge.
+Iteration 209: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 210: Selected program 24 score: 0.6433333333333333
+Iteration 210: Contrastive search found 0 pairs (requested 3)
+Iteration 210: No principle synthesized (no pairs)
+Iteration 210: Proposed new text for system_prompt: ### New Instruction
+
+Your task is to identify the correct answer to a question based on the provided context. The answer must be precise and based solely on the information given in the context. If the answer is not explicitly stated, you must determine it from the context. You should avoid making assumptions or using external knowledge. The answer must be concise and directly derived from the information provided.
+
+### Niche and Domain-Specific Information to Include
+
+- The context contains specific names of scientists, their contributions, and related fields (e.g., Tribometer, Marcel Benoist Prize, Leyden jar, etc.).
+- The answer must be precise and match exactly what is stated in the context.
+- If the answer is a name or a specific entity, it must be correctly spelled and matched exactly.
+- The assistant should avoid generalizations or guesses when the answer is not explicitly provided.
+- The assistant should clearly state any generalizable strategy used (e.g., searching for keywords, matching names, or using logical deduction) and ensure it is based on the provided context.
+
+### Example of a Correct Response
+
+If the question is: "Who is the scientist who invented the tribometer?"  
+The correct answer is: "Pieter van Musschenbroek."
+
+### Example of an Incorrect Response
+
+If the question is: "Who was the first openly gay member of the Knesset?"  
+The correct answer is: "Amir Ohana."  
+Incorrect response: "Bob Brown."
+
+### Generalizable Strategy
+
+If the assistant uses a general strategy (e.g., searching for keywords, matching names, or using logical deduction), it must clearly state that the strategy is used and that it is based on the provided context.
+Iteration 210: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 211: Selected program 20 score: 0.7066666666666667
+Iteration 211: Contrastive search found 0 pairs (requested 3)
+Iteration 211: No principle synthesized (no pairs)
+Iteration 211: Proposed new text for system_prompt: ## New Instructions  
+Answer the question by reasoning step by step through the provided context. Identify the nationalities of the individuals mentioned (Jonathan Marray and Wayne Black) and determine if both are British. The context includes biographical information about these individuals, including their nationalities and careers.  
+
+### Niche and Domain-Specific Information  
+- **Jonathan Marray**: A British tennis player who has won the Wimbledon Men's Doubles title and has been a top doubles player.  
+- **Wayne Black**: A former professional male tennis player from Zimbabwe, but is considered British in the context of the Wimbledon Effect analogy.  
+
+### Generalizable Strategy  
+If the context explicitly states the nationality of an individual, you can directly answer based on that information. If the context is ambiguous or refers to them in a general way (e.g., "British in the context of the Wimbledon Effect"), you should clarify based on the provided information.  
+
+### Final Answer  
+Jonathan Marray is British, while Wayne Black is from Zimbabwe but is considered British in the context of the Wimbledon Effect analogy.
+Iteration 211: New subsample score 1.0 is not better than old score 2.0, skipping
+Iteration 212: Selected program 21 score: 0.6
+Iteration 212: Contrastive search found 0 pairs (requested 3)
+Iteration 212: No principle synthesized (no pairs)
+Iteration 212: Proposed new text for system_prompt: ### New Instructions
+
+Your task is to identify the correct answer to a question by carefully reading the provided context and extracting relevant, precise facts. The answer must be directly derived from the context and must match exactly what is stated or can be logically deduced from the given information. If the answer is not explicitly stated, you must determine it from the context without making assumptions or using external knowledge. The answer must be concise, factual, and match the exact wording of the question.
+
+### Niche and Domain-Specific Information to Include:
+- The context may contain specific names of footballers, teams, events, and sports-related terms (e.g., "La Liga," "UEFA Champions League," "Copa del Rey").
+- The answer must be precise and match exactly what is stated in the context.
+- If the answer is a name or a specific team, it must be correctly spelled and matched exactly.
+- The assistant must avoid generalizations or guesses when the answer is not explicitly provided.
+
+### Generalizable Strategy:
+If the assistant uses a general strategy (e.g., searching for keywords, matching names, or using logical deduction), it must clearly state that the strategy is used and that it is based on the provided context.
+
+### Example of a Correct Response:
+If the question is: "Which retired Argentine footballer who played as a forward was a main player for Valencia CF?"  
+The correct answer is: "Claudio López."
+
+### Example of an Incorrect Response:
+If the question is: "Who was the first openly gay member of the Knesset?"  
+The correct answer is: "Amir Ohana."  
+Incorrect response: "Bob Brown."
+
+### Final Instructions:
+Answer the question by reasoning step-by-step through the provided context, ensuring that the answer is concise, factual, and directly derived from the information given. If the answer is not explicitly stated, you must determine it from the context. Avoid making assumptions or using external knowledge. Provide the answer in the exact format expected.
+Iteration 212: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 213: Selected program 6 score: 0.56
+Iteration 213: Contrastive search found 0 pairs (requested 3)
+Iteration 213: No principle synthesized (no pairs)
+Iteration 213: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer a question by carefully reading the provided context and using logical reasoning to extract the correct answer. The task is to identify the specific date and location associated with a particular event described in the context, with a focus on factual accuracy and precision. The context may contain multiple pieces of information, and you must determine which one is relevant to the question.
+
+### Task Description:
+- Identify the specific date and location associated with a particular event described in the context.
+- Ensure that the answer is concise and directly answers the question.
+- Use only the information provided in the context, and do not include external knowledge or assumptions.
+
+### Niche and Domain-Specific Information to Include:
+- The context contains detailed information about George Harrison's music career, including album releases, singles, and their release dates.
+- The question is about a specific date and location related to an event in the context.
+- The answer must be based solely on the information provided in the context and must not rely on external knowledge.
+
+### Generalizable Strategy:
+- Identify the key event or detail in the context that directly answers the question.
+- Extract the date and location from the relevant sentence or paragraph.
+- Confirm that the information is consistent with the context and is the correct answer to the question.
+
+### Example:
+If the question is: "When was George Harrison's second single from his album, that was made with rising conflicts with Warner Bros., released in the United States?"  
+The correct answer is: "20 July 1981."  
+The assistant must provide this answer based on the context provided.
+Iteration 213: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 214: Selected program 22 score: 0.58
+Iteration 214: Contrastive search found 0 pairs (requested 3)
+Iteration 214: No principle synthesized (no pairs)
+Iteration 214: Proposed new text for system_prompt: ## New Instructions
+
+You are to identify the specific date and location of an event described in the provided context, with a focus on factual accuracy and precision. The task is to determine the exact date and location of an event mentioned in the context, ensuring that the answer is concise, directly answers the question, and is based solely on the information provided in the context. 
+
+### Niche and Domain-Specific Information to Include:
+- The context contains detailed information about historical events, including dates, locations, and specific events related to the mentioned entities (e.g., kings, battles, cities, companies, etc.).
+- The question is about a specific date and location related to an event in the context.
+- The answer must be based solely on the information provided in the context and must not rely on external knowledge.
+- The answer must include both the **date** and **location** of the event.
+- If the event is described in multiple sentences, extract the most relevant one.
+- If the context is ambiguous, respond with the information that is clearly stated.
+
+### Generalizable Strategy:
+- Identify the key event or detail in the context that directly answers the question.
+- Extract the date and location from the relevant sentence or paragraph.
+- Confirm that the information is consistent with the context and is the correct answer to the question.
+
+### Example Context Format:
+The context will contain sentences about historical battles, events, or other relevant occurrences, and you will be asked to extract the **exact date** and **specific location** of the event described.
+
+### Example Question Format:
+"Which battle took place in [location] on [date]?"
+
+### Example Output Format:
+"The Battle of Tannenberg took place in [location] on [date]."
+
+### Notes:
+- Ensure that the answer includes both the **date** and **location**.
+- If the event is described in multiple sentences, extract the most relevant one.
+- Avoid making assumptions or using external knowledge.
+- If the context is ambiguous, respond with the information that is clearly stated.
+Iteration 214: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 215: Selected program 18 score: 0.7
+Iteration 215: Contrastive search found 0 pairs (requested 3)
+Iteration 215: No principle synthesized (no pairs)
+Iteration 215: Proposed new text for system_prompt: ## New Instructions  
+Answer the question by reasoning step by step through the provided context. Determine whether both Jonathan Marray and Wayne Black are British, based on the provided context. The context includes biographical information about these individuals, including their nationalities and careers.  
+
+### Niche and Domain-Specific Information  
+- **Jonathan Marray**: A British tennis player who has won the Wimbledon Men's Doubles title and has been a top doubles player.  
+- **Wayne Black**: A former professional male tennis player from Zimbabwe, but is considered British in the context of the Wimbledon Effect analogy.  
+
+### Generalizable Strategy  
+If the context explicitly states the nationality of an individual, you can directly answer based on that information. If the context is ambiguous or refers to them in a general way (e.g., "British in the context of the Wimbledon Effect"), you should clarify based on the provided information.  
+
+### Final Answer  
+No, both Jonathan Marray and Wayne Black are not British. Jonathan Marray is British, while Wayne Black is from Zimbabwe but is considered British in the context of the Wimbledon Effect analogy.
+Iteration 215: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 216: Selected program 21 score: 0.6
+Iteration 216: Contrastive search found 0 pairs (requested 3)
+Iteration 216: No principle synthesized (no pairs)
+Iteration 216: Proposed new text for system_prompt: ### Task Instruction
+
+Your task is to identify the correct answer to a question by carefully reading the provided context and extracting relevant, precise facts. The answer must be directly derived from the context and must match exactly what is stated or can be logically deduced from the given information. If the answer is not explicitly stated, you must determine it from the context without making assumptions or using external knowledge. The answer must be concise, factual, and match the exact wording of the question.
+
+### Niche and Domain-Specific Information to Include:
+- The context may contain specific names of footballers, teams, events, and sports-related terms (e.g., "La Liga," "UEFA Champions League," "Copa del Rey").
+- The answer must be precise and match exactly what is stated in the context.
+- If the answer is a name or a specific team, it must be correctly spelled and matched exactly.
+- The assistant must avoid generalizations or guesses when the answer is not explicitly provided.
+
+### Generalizable Strategy:
+If the assistant uses a general strategy (e.g., searching for keywords, matching names, or using logical deduction), it must clearly state that the strategy is used and that it is based on the provided context.
+
+### Example of a Correct Response:
+If the question is: "Which retired Argentine footballer who played as a forward was a main player for Valencia CF?"  
+The correct answer is: "Claudio López."
+
+### Example of an Incorrect Response:
+If the question is: "Who was the first openly gay member of the Knesset?"  
+The correct answer is: "Amir Ohana."  
+Incorrect response: "Bob Brown."
+
+### Final Instructions:
+Answer the question by reasoning step-by-step through the provided context, ensuring that the answer is concise, factual, and directly derived from the information given. If the answer is not explicitly stated, you must determine it from the context. Avoid making assumptions or using external knowledge. Provide the answer in the exact format expected.
+Iteration 216: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 217: Selected program 21 score: 0.6
+Iteration 217: All subsample scores perfect. Skipping.
+Iteration 217: Reflective mutation did not propose a new candidate
+Iteration 218: Selected program 24 score: 0.6433333333333333
+Iteration 218: Contrastive search found 0 pairs (requested 3)
+Iteration 218: No principle synthesized (no pairs)
+Iteration 218: Proposed new text for system_prompt: ### New Instruction
+
+Your task is to identify the correct answer to a question based on the provided context. The answer must be precise and based solely on the information given in the context. If the answer is not explicitly stated, you must determine it from the context. You should avoid making assumptions or using external knowledge. The answer must be concise and directly derived from the information provided.
+
+### Niche and Domain-Specific Information to Include
+
+- The context contains specific names of scientists, their contributions, and related fields (e.g., Tribometer, Marcel Benoist Prize, Leyden jar, etc.).
+- The answer must be precise and match exactly what is stated in the context.
+- If the answer is a name or a specific entity, it must be correctly spelled and matched exactly.
+- The assistant should avoid generalizations or guesses when the answer is not explicitly provided.
+- The assistant should clearly state any generalizable strategy used (e.g., searching for keywords, matching names, or using logical deduction) and ensure it is based on the provided context.
+
+### Example of a Correct Response
+
+If the question is: "Who is the scientist who invented the tribometer?"  
+The correct answer is: "Pieter van Musschenbroek."
+
+### Example of an Incorrect Response
+
+If the question is: "Who was the first openly gay member of the Knesset?"  
+The correct answer is: "Amir Ohana."  
+Incorrect response: "Bob Brown."
+
+### Generalizable Strategy
+
+If the assistant uses a general strategy (e.g., searching for keywords, matching names, or using logical deduction), it must clearly state that the strategy is used and that it is based on the provided context.
+Iteration 218: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 219: Selected program 11 score: 0.6466666666666666
+Iteration 219: Contrastive search found 1 pairs (requested 3)
+Iteration 219: Synthesized principle (163 chars): The key principle is: **"Clearly define the task, focus on precision, and specify the required output format to ensure accuracy and consistency in the response."**
+Iteration 219: Proposed new text for system_prompt: ## New Instructions
+
+You are to identify the specific date and location associated with a particular event described in the context, with a focus on factual accuracy and precision. The task is to determine the exact date and location of an event mentioned in the provided context, ensuring that the answer is concise, directly answers the question, and is based solely on the information given in the context. 
+
+### Niche and Domain-Specific Information to Include:
+- The context contains detailed information about George Harrison's music career, including album releases, singles, and their release dates.
+- The question is about a specific date and location related to an event in the context.
+- The answer must be based solely on the information provided in the context and must not rely on external knowledge.
+
+### Generalizable Strategy:
+- Identify the key event or detail in the context that directly answers the question.
+- Extract the date and location from the relevant sentence or paragraph.
+- Confirm that the information is consistent with the context and is the correct answer to the question.
+
+### Example Format:
+If the question is "What year was the first album by George Harrison released?", the response should be: "The first album by George Harrison was released in 1968."
+
+### Input Format:
+The context will contain a series of paragraphs describing various events, people, and their associated dates and locations. The question will be a specific query about a date and location related to an event in the context.
+
+### Output Format:
+The response must be a concise, direct statement containing the exact date and location of the event, in the format: "The event occurred on [date] in [location]."
+Iteration 219: New subsample score 0.0 is not better than old score 2.0, skipping
+Iteration 220: Selected program 24 score: 0.6433333333333333
+Iteration 220: Contrastive search found 0 pairs (requested 3)
+Iteration 220: No principle synthesized (no pairs)
+Iteration 220: Proposed new text for system_prompt: ### New Instruction
+
+Your task is to identify the correct answer to a question based on the provided context. The answer must be precise and based solely on the information given in the context. If the answer is not explicitly stated, you must determine it from the context. You should avoid making assumptions or using external knowledge. The answer must be concise and directly derived from the information provided.
+
+### Niche and Domain-Specific Information to Include
+
+- The context contains specific names of scientists, their contributions, and related fields (e.g., Tribometer, Marcel Benoist Prize, Leyden jar, etc.).
+- The answer must be precise and match exactly what is stated in the context.
+- If the answer is a name or a specific entity, it must be correctly spelled and matched exactly.
+- The assistant should avoid generalizations or guesses when the answer is not explicitly provided.
+- The assistant should clearly state any generalizable strategy used (e.g., searching for keywords, matching names, or using logical deduction) and ensure it is based on the provided context.
+
+### Example of a Correct Response
+
+If the question is: "Who is the scientist who invented the tribometer?"  
+The correct answer is: "Pieter van Musschenbroek."
+
+### Example of an Incorrect Response
+
+If the question is: "Who was the first openly gay member of the Knesset?"  
+The correct answer is: "Amir Ohana."  
+Incorrect response: "Bob Brown."
+
+### Generalizable Strategy
+
+If the assistant uses a general strategy (e.g., searching for keywords, matching names, or using logical deduction), it must clearly state that the strategy is used and that it is based on the provided context.
+Iteration 220: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 221: Selected program 11 score: 0.6466666666666666
+Iteration 221: Contrastive search found 1 pairs (requested 3)
+Iteration 221: Synthesized principle (343 chars): The key principle is: **Use clear, specific instructions that guide the model to focus on the task, provide context, and explicitly ask for the desired output.**  
+
+**Actionable instruction:**  
+Ensur...
+Iteration 221: Proposed new text for system_prompt: ## New Instructions
+
+You are to identify the specific date and location associated with a particular event described in the context, with a focus on factual accuracy and precision. The task is to determine the exact date and location of an event mentioned in the provided context, ensuring that the answer is concise, directly answers the question, and is based solely on the information given in the context. 
+
+### Niche and Domain-Specific Information to Include:
+- The context contains detailed information about James Joyce's music career, including album releases, singles, and their release dates.
+- The question is about a specific date and location related to an event in the context.
+- The answer must be based solely on the information provided in the context and must not rely on external knowledge.
+
+### Generalizable Strategy:
+- Identify the key event or detail in the context that directly answers the question.
+- Extract the date and location from the relevant sentence or paragraph.
+- Confirm that the information is consistent with the context and is the correct answer to the question.
+Iteration 221: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 222: Selected program 13 score: 0.6366666666666667
+Iteration 222: Contrastive search found 0 pairs (requested 3)
+Iteration 222: No principle synthesized (no pairs)
+Iteration 222: Proposed new text for system_prompt: ## New Instructions
+
+You are to identify the specific date and location of an event described in the provided context, with a focus on factual accuracy and precision. The task is to determine the exact date and location of an event mentioned in the context, ensuring that the answer is concise, directly answers the question, and is based solely on the information provided in the context. 
+
+### Niche and Domain-Specific Information to Include:
+- The context contains detailed information about George Harrison's music career, including album releases, singles, and their release dates.
+- The question is about a specific date and location related to an event in the context.
+- The answer must be based solely on the information provided in the context and must not rely on external knowledge.
+
+### Generalizable Strategy:
+- Identify the key event or detail in the context that directly answers the question.
+- Extract the date and location from the relevant sentence or paragraph.
+- Confirm that the information is consistent with the context and is the correct answer to the question.
+
+### Additional Niche Information:
+- The context includes information about specific movies, TV shows, and events, such as:
+  - *Million Dollar Arm* (2014)
+  - *Muppet Treasure Island* (1996)
+  - *The Million Dollar Quartet* (1956)
+  - *The Muppets* (series and films)
+  - *Treasure Island Development* (2012–2013)
+  - *Treasure Island Resort & Casino* (1984–present)
+  - *Treasure Island Causeway* (2006–present)
+  - *Million Dollar Quartet* (1956)
+  - *Rinku Singh* (2008 reality TV show)
+  - *Bill Barretta* (1991–present)
+  - *The Million Dollar Arm* (2014)
+
+### Task Description:
+Given a context containing various events, movies, TV shows, and historical information, you are to identify the specific date and location of a particular event. The answer must be based solely on the information provided in the context, and must be concise, directly answering the question. The event may involve a team, individual, or organization, and the answer must include both the date and the location where the event occurred.
+Iteration 222: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 223: Selected program 17 score: 0.6533333333333333
+Iteration 223: Contrastive search found 0 pairs (requested 3)
+Iteration 223: No principle synthesized (no pairs)
+Iteration 223: Proposed new text for system_prompt: ### New Instruction  
+Your task is to identify the correct answer to a question by carefully reading the provided context and extracting relevant facts. The answer must be precise and based solely on the information given in the context. If the answer is not explicitly stated, you must determine it from the context. You should avoid generalizations, assumptions, or external knowledge. The answer must be concise and directly derived from the provided information.
+
+### Niche and Domain-Specific Information to Include  
+- The context contains specific names of individuals, teams, events, and sports (e.g., footballers, tennis players, sports teams, events like the Copa del Rey, UEFA Champions League, etc.).  
+- The answer must be precise, match exactly what is stated in the context, and be correctly spelled.  
+- If the answer is a name or a specific team, it must be correctly spelled and matched exactly.  
+- The assistant should avoid generalizations or guesses when the answer is not explicitly provided.  
+- The assistant should use a clear, specific strategy (e.g., identifying keywords, matching names, or logical deduction) and explicitly state it in the response.
+
+### Generalizable Strategy  
+If the assistant uses a general strategy (e.g., searching for keywords, matching names, or logical deduction), it must clearly state that the strategy is used and that it is based on the provided context.
+
+### Example of a Correct Response  
+If the question is: "Who was the first openly gay member of the Knesset?"  
+The correct answer is: "Amir Ohana."  
+Incorrect response: "Bob Brown."
+
+### Final Instructions  
+Answer the question by reasoning step-by-step through the provided context, ensuring that the answer is concise, factual, and directly derived from the information given. If the answer is not explicitly stated, you must determine it from the context. Avoid making assumptions or using external knowledge. Provide the answer in the exact format expected.
+Iteration 223: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 224: Selected program 18 score: 0.7
+Iteration 224: All subsample scores perfect. Skipping.
+Iteration 224: Reflective mutation did not propose a new candidate
+Iteration 225: Selected program 21 score: 0.6
+Iteration 225: All subsample scores perfect. Skipping.
+Iteration 225: Reflective mutation did not propose a new candidate
+Iteration 226: Selected program 23 score: 0.6366666666666667
+Iteration 226: Contrastive search found 0 pairs (requested 3)
+Iteration 226: No principle synthesized (no pairs)
+Iteration 226: Proposed new text for system_prompt: ## New Instructions  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+
+The task is to determine whether both Jonathan Marray and Wayne Black are British, based on the provided context. The context includes biographical information about these individuals, including their nationalities and careers.  
+
+### Niche and Domain-Specific Information  
+- **Jonathan Marray**: A British tennis player who has won the Wimbledon Men's Doubles title and has been a top doubles player.  
+- **Wayne Black**: A former professional male tennis player from Zimbabwe, but is considered British in the context of the Wimbledon Effect analogy.  
+
+### Generalizable Strategy  
+If the context explicitly states the nationality of an individual, you can directly answer based on that information. If the context is ambiguous or refers to them in a general way (e.g., "British in the context of the Wimbledon Effect"), you should clarify based on the provided information.  
+
+### Final Answer  
+No, both Jonathan Marray and Wayne Black are not British. Jonathan Marray is British, while Wayne Black is from Zimbabwe but is considered British in the context of the Wimbledon Effect analogy.
+Iteration 226: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 227: Selected program 11 score: 0.6466666666666666
+Iteration 227: Contrastive search found 0 pairs (requested 3)
+Iteration 227: No principle synthesized (no pairs)
+Iteration 227: Proposed new text for system_prompt: ## New Instructions
+
+You are to identify the specific date and location associated with a particular event described in the context, with a focus on factual accuracy and precision. The task is to determine the exact date and location of an event mentioned in the provided context, ensuring that the answer is concise, directly answers the question, and is based solely on the information given in the context.
+
+### Niche and Domain-Specific Information to Include:
+- The context contains detailed information about George Harrison's music career, including album releases, singles, and their release dates.
+- The question is about a specific date and location related to an event in the context.
+- The answer must be based solely on the information provided in the context and must not rely on external knowledge.
+
+### Generalizable Strategy:
+- Identify the key event or detail in the context that directly answers the question.
+- Extract the date and location from the relevant sentence or paragraph.
+- Confirm that the information is consistent with the context and is the correct answer to the question.
+
+### Additional Notes:
+- The context may contain multiple events, and you must focus on the one that directly answers the question.
+- If the event is not explicitly mentioned, you must infer it from the context.
+- Ensure that the answer is precise and matches the exact date and location as described in the context.
+- Avoid making assumptions or using external knowledge.
+Iteration 227: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 227: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 588, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 240, in evaluate
+    response = self._generate(prompt, example.input) or ""
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 223, in _generate
+    return self._lm(messages)
+           ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 588, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 563, in run
+    new_idx, _ = self._run_full_eval_and_add(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 153, in _run_full_eval_and_add
+    valset_evaluation = self._evaluate_on_valset(new_program, state)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 135, in _evaluate_on_valset
+    outputs_by_val_idx, scores_by_val_idx, objective_by_val_idx, num_actual_evals = state.cached_evaluate_full(
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/state.py", line 621, in cached_evaluate_full
+    return self.evaluation_cache.evaluate_with_cache_full(candidate, example_ids, fetcher, evaluator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/state.py", line 121, in evaluate_with_cache_full
+    outputs, scores, obj_scores = evaluator(batch, candidate)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 96, in evaluator
+    eval_result = adapter.evaluate(batch, program, capture_traces=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+

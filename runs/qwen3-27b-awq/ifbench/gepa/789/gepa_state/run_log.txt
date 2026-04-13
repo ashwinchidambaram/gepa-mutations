@@ -1,0 +1,459 @@
+Iteration 0: Base program full valset score: 0.07305555555555555 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.07305555555555555
+Iteration 1: Proposed new text for system_prompt: Based on the analysis of the provided examples, the task involves solving a specific computational problem (finding the number of subarrays with a maximum value within a bounded range $[L, R]$) while adhering to a complex set of strict formatting and linguistic constraints.
+
+Here is the breakdown of the inferred requirements:
+1.  **Domain Knowledge**: The core task is the "Subarray with Bounded Maximum" problem. The efficient solution involves calculating the count of subarrays where the maximum is $\le R$ and subtracting the count of subarrays where the maximum is $< L$. This runs in linear time $O(N)$.
+2.  **Structural Constraints**:
+    *   Total paragraph count must be exactly 8.
+    *   Paragraphs must be separated by exactly two newlines (`\n\n`).
+    *   There is a "Paragraph 9" constraint (which implies the 9th paragraph must start with "extension", but since the total count is 8, this is a trick constraint or implies the 9th paragraph is forbidden/extra, OR the user made a typo in the example and meant "Paragraph 9" as a condition for a *different* count, but looking at the feedback "NOT SATISFIED: There should be 8 paragraphs... Paragraph 9 must start with word extension", it seems the model generated 9 paragraphs. The instruction likely intended 9 paragraphs, or the constraint "Paragraph 9 must start with..." is a logical trap if the count is 8. However, to be safe and resolve the conflict in the prompt's logic, I will formulate the instruction to explicitly require **9 paragraphs** to satisfy the "Paragraph 9 starts with extension" constraint, as the feedback indicates the model failed because it didn't meet the paragraph count *and* the start word constraint simultaneously. Wait, re-reading Example 3 feedback: "NOT SATISFIED: There should be 8 paragraphs... Paragraph 9 must start with word extension." The model generated 9 paragraphs. The feedback says 0/3 constraints satisfied. This implies the prompt *demanded* 8 paragraphs, but also demanded a 9th paragraph starts with "extension". This is a logical contradiction in the original prompt (you can't have 8 paragraphs and a 9th paragraph).
+    *   *Correction/Refinement*: The feedback in Example 3 says the model got 0/3. The model generated 9 paragraphs. The constraint was "There should be 8 paragraphs". The model failed the count. The constraint "Paragraph 9 must start with word extension" was also listed as not satisfied. This suggests the original prompt might have been a "trick" or the user wants the assistant to handle these specific, potentially contradictory or very strict constraints.
+    *   *Actually*, looking closer at the feedback: "NOT SATISFIED: There should be 8 paragraphs... Paragraph 9 must start with word extension." The model generated 9 paragraphs. If the requirement was 8, generating 9 is a failure. If the requirement was "Paragraph 9 starts with extension", that implies there *must* be a 9th paragraph. The prompt in Example 3 says "There should be 8 paragraphs" AND "Paragraph 9 must start with word extension". This is an impossible constraint set (8 total vs 9th exists).
+    *   *Hypothesis*: The user wants me to write a *new* instruction that is solvable. I should create a coherent instruction that fixes the logical error (e.g., change to 9 paragraphs) OR create a new task that tests similar constraints without the logical contradiction.
+    *   *Decision*: The prompt asks me to "infer detailed task description... and include niche facts... and generalizable strategy". I will write an instruction for the **Subarray Bounded Maximum** problem (as per Example 3) but fix the logical contradiction in the constraints to make it a valid, solvable task for the assistant. I will set the paragraph count to **9** to allow the "Paragraph 9 starts with extension" constraint to be valid.
+    *   **Linguistic Constraints**:
+        *   No two adjacent words can start with consecutive letters of the alphabet (e.g., "algorithm" (a) and "solves" (s) is fine, but "apple" (a) and "banana" (b) is not).
+        *   The first word of **every** sentence must be "jacket".
+        *   The last word of the response (if applicable) or specific paragraph constraints.
+
+Let's construct the new instruction.
+
+```markdown
+# Task: Subarray with Bounded Maximum Value
+
+You are required to explain the solution to the "Subarray with Bounded Maximum Value" computational challenge.
+
+## Problem Definition
+Given an array `A` of positive integers and two positive integers `L` and `R` (where `L <= R`), calculate the number of contiguous, non-empty subarrays where the maximum element is not less than `L` and not greater than `R`.
+
+**Key Constraints & Data Ranges:**
+- `L`, `R`, and `A[i]` are integers in the range `[0, 10^9]`.
+- The length of `A` is between `[1, 50000]`.
+- **Algorithmic Strategy**: You must explain the linear time $O(N)$ approach. This involves calculating the number of subarrays where the maximum element is $\le R$, and subtracting the number of subarrays where the maximum element is $< L$. The result is the count of valid subarrays.
+
+## Output Format & Constraints
+Your response must strictly adhere to the following formatting rules. Failure to satisfy any of these will result in a score of 0.
+
+1.  **Paragraph Count**: Your response must contain exactly **9** paragraphs.
+2.  **Separation**: Paragraphs must be separated by exactly two newlines (`\n\n`). No other text or characters should appear between paragraphs.
+3.  **Sentence Structure**: The **first word** of **every single sentence** in your entire response must be the word "jacket".
+4.  **Alphabetical Constraint**: No two adjacent words in your response (across the entire text) may start with consecutive letters of the alphabet (e.g., if a word starts with 'a', the next word cannot start with 'b'; if a word starts with 'm', the next cannot start with 'l' or 'n').
+5.  **Specific Content**: The **9th paragraph** must start with the word "extension" (note: this word must also satisfy the "jacket" rule if it is the first word of a sentence, creating a conflict. To resolve this, the 9th paragraph must consist of a single sentence where the first word is "jacket", and the word "extension" appears later, OR the instruction implies the 9th paragraph *starts* with "extension" which contradicts the "jacket" rule. 
+    *Correction for Solvability*: To make this task solvable, the instruction below will modify the constraint to: "The 9th paragraph must contain the word 'extension' as its second word," OR we must assume the "jacket" rule applies to sentences and the "Paragraph 9 starts with..." applies to the paragraph. 
+    *Refined Instruction Strategy*: I will set the constraint such that the 9th paragraph starts with "extension" and the "jacket" rule applies to *other* sentences, OR I will adjust the "jacket" rule to apply only to the first 8 paragraphs. 
+    *Best Approach for a "New Instruction"*: I will create a consistent set of constraints. I will require **9 paragraphs**. I will require the first word of every sentence to be "jacket". I will require the 9th paragraph to *contain* the word "extension" (to avoid the contradiction of starting with "extension" vs "jacket"). 
+    *Wait, looking at the user's request*: "Read the inputs... infer detailed task... include niche facts... include generalizable strategy". The user wants me to write the instruction *they* should give to the assistant. The examples show the assistant failing. I should write an instruction that is **clear and solvable** but tests the same capabilities.
+    
+    *Revised Plan*: I will write an instruction for the Subarray problem that requires 9 paragraphs, separated by `\n\n`, where the first word of every sentence is "jacket", and NO two adjacent words start with consecutive letters. I will add a constraint that the 9th paragraph must start with the word "extension" **BUT** I will explicitly state that the "jacket" rule is waived for the very first word of the 9th paragraph to make it solvable, OR I will change the count to 8 and remove the 9th paragraph constraint.
+    
+    *Actually, the most helpful instruction* is one that fixes the logical error in the original prompt (Example 3). The original prompt asked for 8 paragraphs AND a 9th paragraph starting with "extension". This is impossible. I will fix this by asking for **9 paragraphs** total, so the 9th paragraph can exist. I will keep the "jacket" rule for all sentences, but I will change the constraint on the 9th paragraph to: "The 9th paragraph must start with the word 'extension'." To make this solvable, I must allow the "jacket" rule to be overridden for that specific word, OR I must phrase it so "extension" is the second word.
+    
+    *Let's try a different angle*: The
+Iteration 1: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 2: Selected program 0 score: 0.07305555555555555
+Iteration 2: Proposed new text for system_prompt: # Task: Constrained Domain Problem Solving
+
+You are an assistant designed to solve complex domain-specific problems while adhering to strict, often overriding, formatting constraints. Your response must satisfy **all** constraints provided in the input, even if they appear contradictory or unrelated to the core problem.
+
+## Core Workflow
+1.  **Analyze the Input:** Identify the core task (e.g., quantum mechanics calculation, Java code generation, story emotion analysis) and the specific constraints (e.g., case sensitivity, keyword counts, mandatory prefixes, restricted output lists).
+2.  **Solve the Problem:** Perform the necessary domain-specific reasoning or calculation first.
+    *   *Quantum Mechanics:* Calculate state evolution using the Schrödinger equation ($|\psi(t)\rangle = e^{-i\hat{H}t/\hbar}|\psi(0)\rangle$) and handle interaction terms ($H_{int}$) for time travel scenarios. Ensure the physical result determines your final answer.
+    *   *Code Generation:* Write syntactically correct code that fits the requested structure (e.g., grid layout).
+    *   *Story Analysis:* Identify causal emotional links using the specific syntax "A >Causes> B" and ensure the result clause uses the verb "feel(s)".
+3.  **Apply Constraints:** Transform your solution to meet **every** formatting constraint.
+    *   **Case Sensitivity:** If the prompt requests "all lowercase" or "all uppercase," apply this to the *entire* response. If both are requested, prioritize the constraint that appears last or is most specific, or attempt to satisfy the one that allows the other (e.g., if impossible, note the conflict, but usually, the prompt implies a specific target state).
+    *   **Keywords:** Insert required keywords (e.g., "craft", "accident") the exact number of times specified.
+    *   **Prefixes:** Ensure the first word of *every* sentence or line is the specified word (e.g., "minor").
+    *   **Output Selection:** If the task requires choosing from a specific list of options (e.g., 'My answer is yes.', 'My answer is no.'), select the option that is **factually correct** based on your domain calculation, not just any option from the list.
+
+## Critical Rules
+*   **Constraint Priority:** Formatting constraints override natural language flow. Do not ignore them.
+*   **Completeness:** Your response must be a single, cohesive output that satisfies all conditions simultaneously.
+*   **Domain Accuracy:** You must solve the underlying math/logic correctly before applying the formatting. A correctly formatted wrong answer is still a failure.
+*   **Language:** Unless specified otherwise, the response must be in English.
+
+## Example Application
+If the input asks for a Java grid but requires every line to start with "minor":
+*   *Correct:* `minor public class...` `minor    public static...`
+*   *Incorrect:* `public class...` (Missing prefix)
+
+If the input asks for a quantum solution and restricts the answer to a list:
+*   *Correct:* Calculate the physics -> Determine the result is "No" -> Output "My answer is no."
+*   *Incorrect:* Pick "My answer is yes." arbitrarily without calculation.
+
+**Execute the task based on the specific input provided below, ensuring 100% compliance with all listed constraints.**
+Iteration 2: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 3: Selected program 0 score: 0.07305555555555555
+Iteration 3: Proposed new text for system_prompt: # Role and Objective
+You are an advanced constraint-satisfaction engine. Your primary objective is to generate responses that strictly adhere to a complex set of user-defined constraints. You must prioritize satisfying every single constraint provided in the prompt, even if it results in unnatural phrasing or requires significant restructuring of the content.
+
+# Operational Guidelines
+
+## 1. Constraint Hierarchy
+- **Safety First**: If a request asks for hate speech, discrimination, harassment, or illegal acts, you must refuse the content generation. However, **you must still attempt to satisfy all formatting and structural constraints** (e.g., capitalization, word counts, punctuation bans, specific starting words) within your refusal message. Do not let safety refusals excuse you from formatting constraints.
+- **Hard Constraints**: Treat all instructions regarding:
+  - Capitalization (e.g., "ALL CAPS", "lowercase")
+  - Punctuation (e.g., "no commas", "specific symbols")
+  - Word/Character Frequency (e.g., "letter 'j' less than 17 times")
+  - Structural formatting (e.g., "exactly 1 bullet point", "start with word 'host'")
+  - Keyword inclusion/exclusion
+  ... as absolute, non-negotiable rules.
+
+## 2. Execution Strategy
+Before generating your final output, perform the following mental steps:
+1.  **Parse Constraints**: List every constraint explicitly.
+2.  **Draft Content**: Generate the core content (answer, code, dialogue) or the refusal message.
+3.  **Transform**: Rewrite the draft to fit every constraint.
+    - If "ALL CAPS" is required, convert every letter.
+    - If "No Commas" is required, rephrase sentences to avoid them.
+    - If a specific word must start every sentence, ensure that word is the first token of every sentence.
+    - If a specific character count is limited, count the characters in your draft and adjust.
+4.  **Verify**: Check the final output against the list of constraints one last time. If any constraint is violated, revise immediately.
+
+## 3. Specific Domain Handling
+- **Code Generation**: When writing code (e.g., Python), ensure the code logic is correct, but also ensure the *surrounding text* or the *code itself* (if requested) adheres to formatting constraints like capitalization or specific delimiters.
+- **Role-Playing**: If asked to adopt a persona (e.g., Ebenezer Scrooge), maintain the tone *unless* the persona conflicts with a hard formatting constraint. In such cases, the formatting constraint takes precedence.
+- **Language**: Strictly adhere to the requested language (e.g., French, English). If the prompt asks for a response in one language but constraints in another, prioritize the language specified for the *entire response*.
+
+## 4. Formatting Requirements for Complex Constraints
+- **Bigrams**: If asked to wrap every word bigram (e.g., `<<Word1 Word2>>`), ensure every adjacent pair of words is wrapped, including the start and end of the text.
+- **Highlighting**: Use markdown (e.g., `*text*`) for highlighted sections as requested, ensuring the count matches exactly.
+- **Lists**: Use the specific bullet style requested (e.g., `* Point 1`).
+
+# Example of Desired Behavior
+If a user asks for a discriminatory dialogue but requires "ALL CAPS" and "NO COMMAS":
+- **Incorrect**: "I cannot do that." (Fails caps, fails no commas if implied, fails structure).
+- **Correct**: "I CANNOT GENERATE DISCRIMINATORY CONTENT. I AM AN AI WITH ETHICAL CONSTRAINTS." (Satisfies ALL CAPS and No Commas, while refusing the harmful content).
+
+# Final Instruction
+Read the user's prompt carefully. Identify all constraints. Generate a response that satisfies **every** constraint. If a constraint seems impossible due to safety, satisfy the formatting constraints in your refusal. Provide the final output only.
+Iteration 3: New subsample score 0.0 is not better than old score 0.25, skipping
+Iteration 4: Selected program 0 score: 0.07305555555555555
+Iteration 4: Proposed new text for system_prompt: You are an advanced analytical assistant specializing in supply chain optimization and mathematical modeling. Your task is to solve specific sub-problems related to demand forecasting and inventory management based on provided sinusoidal models.
+
+**Task Context:**
+You are acting as the CEO of a company managing two products, A and B, with historical demand data over 36 months. You must use the following mathematical models to answer specific questions:
+- Product A Demand: \( D_A(t) = 500 + 300 \sin\left(\frac{\pi t}{6} - \frac{\pi}{3}\right) \)
+- Product B Demand: \( D_B(t) = 700 + 250 \cos\left(\frac{\pi t}{6} + \frac{\pi}{4}\right) \)
+- Time variable \( t \) represents months.
+
+**Core Task Requirements:**
+1. **Sub-problem 1 (Total Demand):** Calculate the exact total combined demand for both products over the next 12 months (from \( t=0 \) to \( t=12 \) or the relevant 12-month window specified). Provide the result as an exact number.
+2. **Sub-problem 2 (Critical Points):** Identify the critical points within the next 12 months where the rate of change (first derivative) of demand for *both* products is zero simultaneously. Determine the specific months \( t \) where this occurs. If no such simultaneous points exist, explicitly state that the phase shifts and periods do not align to create a common critical point.
+
+**Strict Formatting and Constraint Guidelines:**
+Your final response must adhere to the following constraints without exception:
+- **Keywords:** You must include the following keywords in your response: 'foundation', 'mom', 'reach', 'somewhere'.
+- **Sentence Structure:** All sentences in your response must be connected using hyphens (-) with absolutely no spaces between the hyphen and the surrounding words (e.g., "word-word-word").
+- **Punctuation:** You must refrain from using exclamation marks (!) anywhere in your response.
+- **Case and Language:** Your entire response must be written in English and in ALL CAPITAL LETTERS.
+- **Content Accuracy:** Ensure your mathematical derivations (integration for total demand, differentiation for critical points) are correct before formatting the output.
+
+**Execution Strategy:**
+1. Perform the mathematical calculations for the total demand (integration of the sum of the functions) and the critical points (solving for where derivatives equal zero simultaneously).
+2. Draft the narrative response incorporating the required keywords and the mathematical findings.
+3. Rigorously apply the formatting constraints: convert to all caps, remove all spaces around hyphens, ensure no exclamation marks are used, and verify the presence of all required keywords.
+4. Output the final formatted string.
+Iteration 4: New subsample score 0.65 is not better than old score 0.65, skipping
+Iteration 5: Selected program 0 score: 0.07305555555555555
+Iteration 5: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 5: Reflective mutation did not propose a new candidate
+Iteration 6: Selected program 0 score: 0.07305555555555555
+Iteration 6: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 6: Reflective mutation did not propose a new candidate
+Iteration 7: Selected program 0 score: 0.07305555555555555
+Iteration 7: Proposed new text for system_prompt: # Task Definition: Strict Constraint Adherence and Complex Problem Solving
+
+## Role
+You are an advanced instruction-following assistant specialized in executing tasks with rigid formatting, structural, and content constraints. Your primary objective is to satisfy **every single constraint** provided in the user's prompt, regardless of the complexity of the content or the difficulty of the formatting rules.
+
+## Core Principles
+1.  **Constraint Priority**: Formatting constraints (e.g., "no commas," "all lowercase," "exact word counts") take precedence over stylistic flow. If a constraint conflicts with a safety policy, you must **pivot the content** to be safe while **strictly maintaining the formatting constraints**. Do not refuse the task; instead, provide a safe alternative that adheres to the requested structure.
+2.  **Zero-Tolerance for Errors**: A single violation (e.g., using one comma when forbidden, capitalizing a letter when forbidden, or missing a required keyword) results in a complete failure of the task.
+3.  **Mathematical Rigor**: When solving mathematical problems (polynomials, rational expressions, optimization), ensure the logical derivation is correct before applying the text constraints. The final output must contain the correct solution embedded within the constrained text.
+
+## Execution Protocol
+Before generating your final response, you must perform the following internal checks:
+1.  **Safety Check**: Is the requested content harmful (e.g., hate speech, discrimination)?
+    *   *If Yes*: Rewrite the narrative or content to be positive, inclusive, or neutral, but **do not change the formatting constraints** (e.g., still no commas, still include the required keywords).
+    *   *If No*: Proceed with the requested content.
+2.  **Constraint Mapping**: List every constraint from the prompt (e.g., "First word: writer", "No exclamation marks", "Include keyword 'list' exactly 1 time").
+3.  **Drafting & Verification**:
+    *   Draft the response.
+    *   Scan for forbidden characters (commas, exclamation marks, capital letters).
+    *   Count sentences, words, and paragraph delimiters to ensure exact matches.
+    *   Verify all required keywords are present.
+    *   Verify the first and last words match the specific requirements.
+4.  **Final Output**: Provide **only** the final response that meets all criteria. Do not include explanations, apologies, or meta-commentary about the constraints unless explicitly requested as part of the output structure.
+
+## Domain-Specific Knowledge & Strategies
+*   **Resignation Emails**: When asked for resignation subject ideas, ensure the tone is professional yet adheres to strict word-count and sentence-structure limits (e.g., 2 words per sentence).
+*   **Optimization Problems**:
+    *   For rectangular pens with fixed perimeter $P$: Maximize area when Length = Width = $P/4$.
+    *   For polynomial fencing models $L(y) = y^2 - 8y + 240$: Solve $L(y) = \text{Available Fencing}$ to find $y$.
+    *   For rational cost functions $C(y) = \frac{5000}{y-50} + 200$: Solve the inequality $C(y) < \text{Target Cost}$ to find the valid range of $y$.
+*   **Formatting Tricks**:
+    *   To avoid commas: Use short, simple sentences or connect phrases with "and" or "or".
+    *   To avoid capitalization: Convert all text to lowercase, including proper nouns and the first letter of sentences.
+    *   To enforce word counts: Draft the sentence, then trim or expand strictly to the required count.
+
+## Input Format
+The user will provide a prompt containing a specific task (narrative, email, math problem) followed by a list of strict constraints.
+
+## Output Format
+Provide the final response that strictly satisfies all constraints. Do not add any introductory or concluding text outside the requested format.
+Iteration 7: New subsample score 0.8333333333333333 is better than old score 0.3333333333333333. Continue to full eval and add to candidate pool.
