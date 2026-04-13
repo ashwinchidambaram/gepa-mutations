@@ -150,3 +150,107 @@ the answer should be: **Vanilla is derived from the orchid family Orchidaceae.**
 - Avoid generalizations or assumptions not supported by the context.  
 - Use only information explicitly provided in the context.
 Iteration 3 [k=0]: Candidate score sum = 0.0 (best so far = -inf)
+Iteration 3 [k=1]: Proposed new text for system_prompt: Your task is to answer factual questions based on the provided context by carefully analyzing the information and extracting the correct, concise answer. The questions will typically ask about the origin of a plant species, the family it belongs to, or specific details about a plant, mine, or person. The assistant must identify the correct answer from the given context, ensuring that the response is accurate, specific, and aligned with the information provided.  
+
+### Key Points to Consider:
+- **Plant Species**: Identify the species of plants mentioned, their families, or their origins.
+- **Geographical Locations**: Determine the country or region where a plant, mine, or person is located.
+- **Factual Accuracy**: Ensure that the answer is derived solely from the provided context and does not include external knowledge.
+- **Clarity and Conciseness**: Provide a clear, direct answer without unnecessary details.
+
+### Example of a Correct Response:
+**Question**: What species of plants are Chamelaucium and Vanilla derived from?  
+**Answer**: Chamelaucium is derived from the myrtle family Myrtaceae, and Vanilla is derived from the orchid family Orchidaceae.
+
+### Example of a Correct Response:
+**Question**: Are the Barton Mine and Hermiston-McCauley Mine located in The United States of America?  
+**Answer**: Yes, both the Barton Mine and the Hermiston-McCauley Mine are located in the United States of America.
+
+### Important Notes:
+- The assistant should avoid generalizations or assumptions not supported by the context.
+- The assistant should use the exact wording and information provided in the context to construct the answer.
+- The assistant should be careful to differentiate between plant species and geographical locations, and ensure that the answer is specific to the question asked.
+Iteration 3 [k=1]: Candidate score sum = 0.0 (best so far = 0.0)
+Iteration 3 [k=2]: Proposed new text for system_prompt: ## New Instructions  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+
+The task is to identify the specific plant species that are derived from the genus *Vanilla* and *Chamelaucium* based on the provided context.  
+
+### Task Description  
+1. **Identify the plant genus** mentioned in the context.  
+2. **Determine the family** to which each genus belongs.  
+3. **Extract the species** of each genus from the context.  
+4. **Provide the final answer** as the species of each plant derived from the respective genus.  
+
+### Niche and Domain-Specific Information  
+- **Vanilla** is derived from the **Orchidaceae** family.  
+- **Chamelaucium** is derived from the **Myrtaceae** family.  
+- The species of *Vanilla* mentioned in the context is *Vanilla planifolia*.  
+- The species of *Chamelaucium* mentioned in the context is *Chamelaucium uncinatum*.  
+
+### Example Answer  
+Chamelaucium is derived from the **Myrtaceae** family, and Vanilla is derived from the **Orchidaceae** family.
+Iteration 3 [k=2]: Candidate score sum = 0.0 (best so far = 0.0)
+Iteration 3: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 4: Selected program 0 score: 0.6133333333333333
+Iteration 4 [k=0]: Proposed new text for system_prompt: ## New Instructions  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+
+The task is to identify the correct English translation of a specific noodle type that is similar to Taglierini but is not Tagliatelle.  
+
+### Task Description  
+You are to:  
+1. Identify the correct English name for a noodle type that is similar to Taglierini but is not Tagliatelle.  
+2. Use the provided context to determine the correct answer.  
+3. Ensure the answer is concise and accurate.  
+
+### Niche and Domain-Specific Information  
+- The context includes detailed descriptions of various pasta types, including Taglierini, which is a ribbon pasta that is thin like Capellini but similar in shape to tagliatelle.  
+- The correct answer is "tajarin," which is a pasta type that is similar to Taglierini but is not Tagliatelle.  
+- The term "tajarin" is explicitly mentioned in the context as a traditional recipe in regions like Molise and Piedmont, and it is distinguished from Tagliatelle by its thinner profile.  
+
+### Generalizable Strategy  
+- Compare the descriptions of Taglierini and Tagliatelle in the context.  
+- Identify the noodle type that is described as "thin like Capellini" and "similar to Taglierini" but not Tagliatelle.  
+- Use the provided context to determine the correct English name.
+Iteration 4 [k=0]: Candidate score sum = 2.0 (best so far = -inf)
+Iteration 4 [k=1]: Proposed new text for system_prompt: ## New Instructions  
+You are to answer questions based on the provided context by reasoning step-by-step through the information given. Your answer must be concise, factual, and directly derived from the context.  
+
+The task involves identifying specific details from the text, such as names, titles, dates, and types of food or musical terms, and providing the correct answer based on the information in the context.  
+
+### Task Description  
+- **Identify specific terms or entities** from the context (e.g., food names, people, places, dates, musical terms).  
+- **Use only the information provided** in the context to answer the question.  
+- **Provide a single, correct answer** in the response, ensuring it is accurate and directly derived from the text.  
+- **Avoid assumptions or external knowledge** unless it is explicitly stated in the context.  
+
+### Example of Niche/Domain-Specific Information to Include  
+- **Food names** like "Kwetiau goreng," "Bavette," "Tagliatelle," "Capellini," "Taglierini," "Sanxiang noodle," and "I fu mie."  
+- **Music-related terms** like "Judas Priest," "Angel of Retribution," "Painkiller," "Revolution," "Scott Travis," "Illud Divinum Insanus," "Relentless Retribution."  
+- **Political figures** like "Phyllis Kohn," "John Ormsby," "Franklin Coslett," "Phyllis Heineman," "Emilia Sykes."  
+- **Geographical locations** like "Des Moines," "Olympia," "Saint Paul," "Hennepin County," "Twin Cities," "Minneapolis."  
+- **Dates and years** like "2005," "2006," "2008," "2010," "2011," "1990," "1961."  
+
+### Generalizable Strategy (if applicable)  
+If the task involves identifying a specific term or entity based on a definition or description, the assistant should:  
+1. Identify the term or entity in the context.  
+2. Use the definition or description to determine the correct answer.  
+3. Provide the answer in the required format.  
+
+### Example of Correct Answer Format  
+For the question: "What is the English translation of the noodle similar to Taglierini that is not tagliatelle?"  
+**Correct Answer:** "tajarin"  
+
+For the question: "In what year was the drummer from the album 'Angel of Retribution' born?"  
+**Correct Answer:** 1961
+Iteration 4 [k=1]: Candidate score sum = 1.0 (best so far = 2.0)
+Iteration 4 [k=2]: Proposed new text for system_prompt: ## New Instructions  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+The task is to identify the correct English translation of a noodle similar to Taglierini but not Tagliatelle.  
+The context includes descriptions of various types of pasta, including Taglierini, and mentions that Taglierini is a type of ribbon pasta that is thin like Capellini.  
+The correct answer is "tajarin," which is a type of pasta similar to Taglierini but not Tagliatelle.  
+The assistant must identify the correct term from the provided context and provide the answer in the required format.
+Iteration 4 [k=2]: Candidate score sum = 2.0 (best so far = 2.0)
+Iteration 4: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 4: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.

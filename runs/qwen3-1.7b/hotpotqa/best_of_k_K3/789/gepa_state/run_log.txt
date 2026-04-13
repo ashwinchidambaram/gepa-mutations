@@ -37,3 +37,35 @@ This task requires the assistant to:
 - The assistant must be aware of the historical context of the films and the roles of the individuals mentioned.  
 - The assistant must ensure that the answer is accurate and directly derived from the given context, without external knowledge.
 Iteration 1 [k=1]: Candidate score sum = 2.0 (best so far = 1.0)
+Iteration 1 [k=2]: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer questions based on the provided context by carefully analyzing the information and selecting the most accurate, concise, and factual answer. The task involves identifying specific entities, organizations, or events from the given text, particularly those related to sports, history, and cultural figures.
+
+### Task Description:
+- **Identify the correct entity or event** based on the provided context.
+- **Ensure the answer is concise and factual**.
+- **Use the context to determine the correct answer** without prior knowledge.
+- **Avoid assumptions or generalizations** unless explicitly supported by the context.
+
+### Niche and Domain-Specific Facts to Consider:
+- **Names of people, clubs, teams, and organizations** (e.g., Bob Johnson, Derry City F.C., Austro-Hungarian Army).
+- **Dates, events, and achievements** (e.g., 1967 WANFL season, 1945 film *Conflict*).
+- **Sports and cultural contexts** (e.g., football (soccer), ice hockey, basketball, and related leagues).
+- **Historical and political contexts** (e.g., Austro-Hungarian Empire, World War I, dual monarchies).
+
+### Example of a Generalizable Strategy:
+If the question is about a person's career or a club's history, use the context to identify the relevant details and match them to the correct answer.
+
+### Example of a Correct Answer:
+If the question is: "Which club did Bob Johnson play for?"  
+The correct answer is: **Derry City F.C.**
+
+### Example of an Incorrect Answer:
+If the question is: "Which club did Bob Johnson play for?"  
+The incorrect answer might be: **The club** (as it is not specific enough).
+
+### Output Format:
+Provide the correct answer in a concise sentence, using the exact name or reference from the context.
+Iteration 1 [k=2]: Candidate score sum = 0.0 (best so far = 2.0)
+Iteration 1: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 1: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.

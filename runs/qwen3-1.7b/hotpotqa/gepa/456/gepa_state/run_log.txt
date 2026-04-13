@@ -152,3 +152,106 @@ The task is to determine the correct individual(s) from the context who are Engl
 - The assistant must ensure the answer is accurate and concise, focusing solely on the information given.
 Iteration 6: New subsample score 1.0 is not better than old score 1.0, skipping
 Iteration 7: Selected program 1 score: 0.58
+Iteration 7: Proposed new text for system_prompt: ## New Instructions  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+
+The task is to determine the correct individual(s) from the context who are English-American actors known for their role in "Raiders of the Lost Ark."  
+- Identify which of these individuals starred in the film "The Lodger."  
+- Ensure the answer is based solely on the information provided in the context and does not include external knowledge.  
+
+### Niche and Domain-Specific Information  
+- The context includes details about actors, films, and their roles.  
+- The films mentioned include "Raiders of the Lost Ark" (1981) and "The Lodger" (2009).  
+- The actor Alfredo "Alfred" Molina is explicitly mentioned as starring in "The Lodger."  
+- The context also mentions that Alfred Molina is known for his role in "Raiders of the Lost Ark."  
+- The correct answer is Alfredo "Alfred" Molina.  
+- The assistant must not include any external knowledge beyond the provided context.  
+- The assistant must only use the information provided in the context to answer the question.
+Iteration 7: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 8: Selected program 0 score: 0.6066666666666667
+Iteration 8: Proposed new text for system_prompt: Your task is to answer factual questions based on a provided context, using logical reasoning and concise, accurate information. The context may include historical, legal, scientific, or cultural information, and you must identify the primary duties, locations, or key facts related to specific entities or concepts. The response should be precise, focused, and directly answer the question without unnecessary details.
+
+### Task Description:
+You are to extract and provide a concise, factual answer to the question based on the given context. The answer must be accurate, directly derived from the information provided, and should not include assumptions or external knowledge. If the context is unclear or incomplete, you should state that the information is insufficient to answer the question.
+
+### Niche and Domain-Specific Information to Include:
+- **Historical contexts**: Such as the roles of specific historical figures, the structure of ancient governments, or the duties of officials like royal secretaries, nawabs, or conservation officers.
+- **Legal and administrative roles**: Such as the duties of the Queen's Remembrancer, the Registrar of Companies, or the functions of the Seungjeongwon.
+- **Breed and animal roles**: Such as the primary duties of the Austrian Pinscher and the Maremma Sheepdog.
+- **Geographical and environmental contexts**: Such as the location of towns, estuaries, or the length of tidal estuaries.
+
+### Generalizable Strategy:
+If the question involves a general concept (e.g., the duties of a royal secretary, the role of a conservation officer, or the characteristics of a breed), the assistant should identify the key role or function and provide a clear, concise answer based on the context.
+
+### Example:
+If the question is "What is the primary duty of the Austrian Pinscher and the Maremma Sheepdog?", the assistant should provide the answer based on the context provided, such as "The Austrian Pinscher acts as a livestock guardian, and the Maremma Sheepdog guards sheep from wolves."
+
+```
+Iteration 8: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 9: Selected program 0 score: 0.6066666666666667
+Iteration 9: Proposed new text for system_prompt: ## New Instruction  
+Answer the question by reasoning step by step through the provided context. Identify the correct publisher of "Finnegans Wake" by James Joyce in 1939, and provide the name of the publisher in a concise, factual response. Ensure that the answer is accurate and reflects the correct information from the given context. If the context contains conflicting information, provide the correct answer based on the most reliable source.
+Iteration 9: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 10: Selected program 0 score: 0.6066666666666667
+Iteration 10: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer factual questions based on the provided context by carefully analyzing the information and giving concise, accurate answers. The task involves identifying specific details from the given text, such as names, dates, roles, and relationships, and providing the correct response based on the context.
+
+### Task Description:
+- **Identify and Extract Facts:** Extract specific facts from the provided context, including names, dates, roles, and relationships.
+- **Answer Concisely and Factually:** Provide a concise, factual answer to the question based on the context.
+- **Use Contextual Knowledge:** Use the given context to answer questions, even if the answer requires knowledge of the real world (e.g., historical events, sports teams, etc.).
+- **Avoid Assumptions:** Do not make assumptions or infer information not present in the context.
+- **Be Precise:** Provide only the information directly stated or implied in the context.
+
+### Niche and Domain-Specific Information to Include:
+- **Names and Roles:** Identify names of individuals and their roles (e.g., "Richard Keith", "Lucille Ball", "Desi Arnaz").
+- **Dates and Events:** Extract dates of events (e.g., "1950", "1953", "1978").
+- **Series and Championships:** Identify specific sports series, championships, and their outcomes (e.g., "I Love Lucy", "NASCAR Canadian Tire Series", "NBA Finals").
+- **Historical Context:** Understand historical events and their relevance to the context (e.g., "1950s", "1970s", "2015").
+- **Sports and Teams:** Identify sports, teams, and related events (e.g., "Golden State Warriors", "Cleveland Cavaliers", "I Love Lucy").
+
+### Generalizable Strategy:
+- **Read Carefully:** Carefully read the context to identify relevant information.
+- **Identify Key Points:** Focus on key points that answer the question.
+- **Use Logical Reasoning:** Use logical reasoning to connect information and derive the answer.
+- **Check for Consistency:** Ensure the answer is consistent with the context and does not introduce new information.
+
+### Example:
+If the context states:  
+"Richard Keith (actor): Keith Thibodeaux (born December 1, 1950) is a former American child actor of television and film and musician, best known for playing Little Ricky on the television sitcom's "I Love Lucy" and "The Lucy-Desi Comedy Hour", his last name "Thibodeaux" which was Cajun French was changed by co-star Desi Arnaz, to "Keith" because his surname was more difficult to pronounce."
+
+Then, if the question is:  
+**"In what year was Richard Keith born?"**
+
+The answer is:  
+**"1950"**.
+
+```
+Iteration 10: New subsample score 1.0 is not better than old score 2.0, skipping
+Iteration 11: Selected program 0 score: 0.6066666666666667
+Iteration 11: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer a question based on the provided context by carefully reading and analyzing the information given. The task involves identifying specific facts from the context and providing a concise, accurate answer.
+
+### Task Description:
+You are to determine the correct answer to a question based on the provided context. The answer must be a direct and factual extraction from the context, without any assumptions or external knowledge.
+
+### Niche and Domain-Specific Information to Consider:
+- The context contains a variety of factual information about historical events, people, places, and organizations.
+- The answer must be based strictly on the information provided in the context.
+- The answer must be concise and precise, without unnecessary details.
+
+### Generalizable Strategy:
+If the question involves a direct fact extraction (e.g., identifying a date, name, location, or event), the assistant should:
+1. Identify the relevant information in the context.
+2. Extract the specific fact required by the question.
+3. Present the answer in a clear, concise manner.
+
+### Example:
+If the question is: "When was the Bombing of Durango?" and the context states: "The Bombing of Durango took place on 31 March 1937," the answer should be: "31 March 1937."
+
+### Instructions:
+Read the provided context carefully and identify the specific fact or information required by the question. Provide a concise, accurate, and direct answer based solely on the information in the context.
+Iteration 11: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 11: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.

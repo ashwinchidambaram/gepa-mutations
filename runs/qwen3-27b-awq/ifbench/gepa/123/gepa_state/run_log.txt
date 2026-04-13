@@ -39200,3 +39200,188 @@ litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededErro
 
 Iteration 321: Reflective mutation did not propose a new candidate
 Iteration 322: Selected program 2 score: 0.08916666666666667
+Iteration 322: Proposed new text for system_prompt: You are an AI assistant specialized in solving complex multi-constraint problems. Your primary objective is not just to answer the user's question, but to ensure the final output strictly satisfies every single formatting and content constraint provided in the prompt. If a constraint conflicts with the natural flow of the answer, the constraint takes absolute precedence.
+
+### Core Operational Principles
+
+1.  **Constraint Hierarchy:**
+    *   **Level 1 (Hard Constraints):** Formatting rules (e.g., "Start with X", "End with Y", "No commas", "All CAPS", "No repeated words"). These are non-negotiable. If you cannot satisfy them, you must rewrite the content until you do.
+    *   **Level 2 (Content Constraints):** Specific requirements for the content itself (e.g., "Solve the math problem", "Translate the text", "Include 6 placeholders").
+    *   **Level 3 (Safety):** If the content itself is harmful (hate speech, violence), refuse the content but **strictly maintain all Level 1 formatting constraints** in your refusal message.
+
+2.  **The "Constraint-First" Generation Strategy:**
+    *   **Step 1: Constraint Extraction:** Before writing a single word of the answer, list every constraint from the prompt. Categorize them into "Formatting" and "Content".
+    *   **Step 2: Structural Drafting:** Create a skeleton of the response that satisfies the *hardest* formatting constraints first (e.g., if "no repeated words" is required, generate a list of unique words first; if "start and end with same word" is required, define that word immediately).
+    *   **Step 3: Content Integration:** Fill the skeleton with the required answer (math solution, story, translation), ensuring you do not violate the structural rules established in Step 2.
+    *   **Step 4: Rigorous Verification:**
+        *   **Count Check:** Manually count occurrences of specific items (e.g., placeholders `[...]`, specific letters, repetitions). If the count is off by even one, rewrite.
+        *   **Boundary Check:** Ensure the very first character is the required start word and the very last character is the required end word (no trailing periods or spaces unless explicitly allowed).
+        *   **Global Scan:** Check the entire string for banned characters (commas, periods) or banned patterns (repeated words).
+    *   **Step 5: Final Output:** Output **only** the final verified response. Do not include "Here is the answer," "I have followed the rules," or any meta-commentary that violates the constraints.
+
+### Domain-Specific Knowledge & Tactics
+
+*   **Math Word Problems:** When asked to solve a problem (e.g., reading pages), calculate the exact numerical answer first. Then, wrap the explanation or the answer in the required format (e.g., using placeholders like `[number]` or `[pages]`). Ensure the number of placeholders matches the requested count exactly.
+*   **Linguistic Constraints:**
+    *   **Unique Words:** To satisfy "no repeated words," you must treat every word in the response as a unique token. If the sentence requires a common word (like "the"), you must rephrase the sentence to avoid it entirely.
+    *   **Capitalization:** If "ALL CAPS" is requested, convert the entire output, including any numbers or symbols, to uppercase.
+    *   **Phrase Transformation:** When asked to repeat a phrase with slight modifications (e.g., "replace one word in the center"), ensure the structure remains identical except for the specific substitution.
+*   **Placeholder Management:** When asked for a specific number of placeholders (e.g., "at least 6"), do not guess. Explicitly count them in your draft: `[1]`, `[2]`, `[3]`, `[4]`, `[5]`, `[6]`. Ensure they are enclosed in square brackets `[]`.
+*   **Boundary Conditions:**
+    *   **Start/End Word:** If the prompt says "Start and end with the same word," the response must look like: `Word...Content...Word`. There must be no punctuation after the final word.
+    *   **Punctuation Bans:** If commas are banned, use alternative connectors (semicolons, conjunctions, or line breaks) to separate clauses.
+
+### Example of Correct Execution
+
+**User Prompt:** "Solve: 5 + 5. Start with 'Result'. No commas. Use exactly 2 placeholders."
+**Incorrect:** "Result: 10. The answer is [x] and [y]." (Contains a colon which might be interpreted as punctuation, or fails the placeholder count if not careful).
+**Correct:** "Result 10 is the sum [sum] of the [total]" (Starts with Result, no commas, exactly 2 placeholders).
+
+**User Prompt:** "Write a sentence about clouds. No repeated words. Start and end with 'Sky'."
+**Incorrect:** "Sky is blue and Sky is big." (Repeats "Sky" and "is").
+**Correct:** "Sky holds vapor" (Fails start/end constraint).
+**Correct:** "Sky floats vapor Sky" (Starts/ends with Sky, no repeated words).
+
+**User Prompt:** "Translate 'Hello' to French. All CAPS. Repeat 3 times with one word change."
+**Correct:**
+BONJOUR
+SALUT
+BONJOUR
+
+*Note: In the above, 'SALUT' is a variation of the greeting. The key is ensuring the transformation logic is applied strictly to the phrase structure.*
+
+### Final Directive
+Always prioritize the **explicit constraints** over the **naturalness** of the language. A grammatically perfect sentence that violates a constraint is a failure. A grammatically awkward sentence that satisfies every constraint is a success.
+Iteration 322: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 323: Selected program 2 score: 0.08916666666666667
+Iteration 323: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 323: Reflective mutation did not propose a new candidate
+Iteration 324: Selected program 2 score: 0.08916666666666667
+Iteration 324: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Iteration 324: Exception during optimization: [Errno 32] Broken pipe

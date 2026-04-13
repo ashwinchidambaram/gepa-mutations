@@ -21697,3 +21697,48 @@ Anonymize the user's input by identifying and removing all personally identifiab
 Iteration 157 [k=2]: Duplicate candidate, skipping evaluation.
 Iteration 157: New subsample score 2.5 is not better than old score 2.5, skipping
 Iteration 158: Selected program 16 score: 0.4693257653938769
+Iteration 158 [k=0]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Guidelines for the Assistant:**  
+- Use a standardized anonymization template that includes placeholders for names, addresses, phone numbers, and emails.  
+- Ensure the rewritten query is concise and maintains the original intent without altering the meaning or context.  
+- Maintain a formal and professional tone throughout the output.  
+- Avoid any mention of external data, third-party entities, or any references that could imply external context.  
+- If the assistant uses a template, clearly document and apply it consistently across all queries.  
+- If the input contains multiple PII elements, replace them all with generic placeholders in a way that does not alter the meaning of the query.  
+- Provide a clear explanation of the anonymization process in the output, if required.
+Iteration 158 [k=0]: Candidate score sum = 1.7142857142857144 (best so far = -inf)
+Iteration 158 [k=1]: Proposed new text for system_prompt: **New Instruction:**  
+Anonymize the user's input by identifying and removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders (e.g., "[Name]", "[Address]", "[Phone Number]", "[Email]") while preserving the original intent and context of the query. Ensure the rewritten query is concise, formal, and suitable for use in professional or technical contexts such as business plans, technical documentation, or internal communication. The assistant must not include any PII in the output and must not use external data or context beyond the user's input. Additionally, if the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Niche and Domain-Specific Facts to Include in the Instruction:**  
+1. **PII Removal:** The instruction explicitly requires the removal of all personally identifiable information, including names, addresses, phone numbers, and emails.  
+2. **Generic Placeholders:** The replacement of PII with generic placeholders must be done in a way that preserves the intent and context of the original query.  
+3. **Tone and Context:** The rewritten query must maintain a formal and professional tone, suitable for use in business, technical, or internal communication.  
+4. **Use Case:** The rewritten query should be appropriate for use in scenarios such as business planning, technical documentation, or internal communication.  
+5. **No Leakage:** The instruction emphasizes that the rewritten query must not leak any PII, and the assistant must ensure that no sensitive data is included in the output.  
+6. **No External Data:** The assistant should not use any external data or context beyond the user's input to generate the rewritten query.  
+7. **Generalizable Strategy:** If the assistant has used a template or standardized process for anonymizing data, the instruction should reflect that strategy to ensure consistency and clarity.  
+
+**Additional Guidelines for the Assistant:**  
+- Use a standardized template for anonymization, such as replacing PII with placeholders and preserving the structure of the original query.  
+- Maintain a formal and neutral tone, avoiding any subjective or personal language.  
+- Ensure that the rewritten query is free of any PII and is suitable for use in professional or technical contexts.  
+- If the query involves financial transactions, use generic placeholders for amounts, prices, and quantities.  
+- If the query involves specific entities (e.g., companies, products, or services), use generic placeholders to maintain anonymity.  
+- If the query involves a specific scenario (e.g., a trading order, a business plan, or a technical question), ensure that the anonymized version retains the original intent and structure.  
+- The assistant must not include any external references, data, or context beyond the user's input.  
+- The rewritten query must be concise, clear, and free of any ambiguous or unclear language.
+Iteration 158 [k=1]: Candidate score sum = 1.7142857142857144 (best so far = 1.7142857142857144)
+Iteration 158: Exception during reflection/proposal: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Iteration 158: Exception during optimization: [Errno 32] Broken pipe

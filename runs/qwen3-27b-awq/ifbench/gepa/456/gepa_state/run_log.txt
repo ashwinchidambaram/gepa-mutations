@@ -7122,3 +7122,72 @@ Iteration 39: Proposed new text for system_prompt: You are an expert at solving 
 Provide only the final response that meets all criteria. Do not include meta-commentary about how you satisfied the constraints unless the prompt explicitly asks for it.
 Iteration 39: New subsample score 0.0 is not better than old score 0.0, skipping
 Iteration 40: Selected program 0 score: 0.07205555555555555
+Iteration 40: Proposed new text for system_prompt: Based on the analysis of the provided examples, here is the inferred task description and the new instruction.
+
+### Task Analysis
+1.  **Input Pattern**: The inputs are complex, multi-constraint prompts often involving specific domains (Quantum Physics, General Knowledge, Mathematics/Geometry).
+2.  **Constraint Types**:
+    *   **Language**: Strict single-language requirements (e.g., "ENTIRE response in Thai").
+    *   **Length/Token Limits**: Strict character or word counts (e.g., "less than 3 letters").
+    *   **Formatting**: Specific structural requirements (e.g., "3 paragraphs", "markdown divider `* * *`", "2 sentences per paragraph", "2 words per sentence", "no commas", "exact bullet point format").
+    *   **Termination**: Exact ending phrases (e.g., "The END.") with no trailing text.
+    *   **Content**: Calculation of specific values based on ratios (Golden Ratio, Square Root of 2) and geometric means.
+3.  **Failure Modes in Examples**:
+    *   **Example 1**: The model failed the language constraint by including English terms (like "Quantum Cryptography" or "No-Cloning Theorem") within the Thai text, or the detection logic flagged mixed-language output as a violation.
+    *   **Example 2**: The model failed to provide an answer within the strict length constraint ("less than 3 letters" implies 1 or 2 letters). "N/A" is 3 characters.
+    *   **Example 3**: The model failed multiple simultaneous constraints:
+        *   It did not calculate the actual mathematical values requested (volumes and area).
+        *   It failed the "no commas" constraint (though the generated output didn't visually show commas, the feedback implies a violation or the structure was wrong).
+        *   It failed the "2 words per sentence" constraint in the bullet points (e.g., "One point here" is 3 words).
+        *   It failed the "exact ending phrase" constraint (likely due to trailing newlines or extra text).
+        *   It failed the "3 paragraphs" structure (the output had 3 sections, but the bullet points were part of the 3rd section, making the sentence count/structure ambiguous or incorrect).
+
+### Inferred Strategy
+The assistant must prioritize **constraint adherence** over content generation. The strategy involves:
+1.  **Parsing**: Extract all negative constraints (what *not* to do) and positive constraints (what *must* be done).
+2.  **Validation**: Before generating the final output, mentally simulate the output against every constraint (count words, check for forbidden characters, verify language purity).
+3.  **Strict Execution**: If a constraint requires a specific format (e.g., 2 words per sentence), the content must be sacrificed or heavily edited to fit the format, even if it makes the text less natural.
+4.  **Mathematical Precision**: For calculation tasks, perform the math first, then format the result to fit the structural constraints.
+
+### New Instruction
+
+```markdown
+You are an expert constraint-following assistant. Your primary objective is to solve the user's task while strictly adhering to every single constraint provided in the prompt. You must prioritize constraint satisfaction over natural language flow or content completeness if a conflict arises.
+
+Follow this step-by-step strategy for every request:
+
+1.  **Analyze Constraints**: Before generating any content, list every explicit constraint found in the prompt. Pay special attention to:
+    *   **Language**: If a specific language is requested (e.g., "ENTIRE response in Thai"), you must not use a single word, acronym, or proper noun from any other language. Translate all technical terms.
+    *   **Length**: Strictly adhere to character, word, or letter limits (e.g., "less than 3 letters" means 1 or 2 characters).
+    *   **Formatting**: Follow exact structural rules (e.g., "3 paragraphs", "2 sentences per paragraph", "2 words per sentence", "no commas", "markdown dividers").
+    *   **Termination**: End the response with the exact specified phrase. Do not add newlines, spaces, or any text after this phrase.
+    *   **Lists**: If bullet points are required, ensure the count and format match exactly (e.g., "exactly 2 bullet points").
+
+2.  **Execute Calculations**: If the task involves math (ratios, geometric means, volumes), perform the calculations accurately first. Then, format the final answer to fit the structural constraints (e.g., if the answer must be 2 words, you might need to round or state the result abstractly if the number itself violates the word count).
+
+3.  **Draft and Validate**:
+    *   Draft the response.
+    *   Count words, sentences, and characters.
+    *   Scan for forbidden characters (like commas).
+    *   Verify language purity.
+    *   Check the ending phrase.
+    *   **Crucial**: If the draft violates any constraint, rewrite it immediately until all constraints are met.
+
+4.  **Final Output**: Output ONLY the final, validated response. Do not include your thought process, explanations, or apologies.
+
+**Example of Strict Adherence**:
+If asked to answer "What is the biggest animal?" with "less than 3 letters", the answer must be "Blue Whale" (too long) -> "Whale" (5 letters) -> "Blue" (4 letters) -> "Big" (3 letters, fails) -> "Big" is 3, so try "Big" is invalid. "Big" is 3 letters. "less than 3" means max 2. "Big" is 3. "Ele" (3). "Wha" (3). "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big" is 3. "Big
+Iteration 40: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 41: Selected program 1 score: 0.0753888888888889
+Iteration 41: Exception during reflection/proposal: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 310, in propose
+    self.logger.log(f"Iteration {i}: Proposed new text for {pname}: {text}")
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/logging/logger.py", line 69, in log
+    print(*args, **kwargs)
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/logging/logger.py", line 23, in write
+    f.write(obj)
+BrokenPipeError: [Errno 32] Broken pipe
+
+Iteration 41: Reflective mutation did not propose a new candidate
+Iteration 51: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
