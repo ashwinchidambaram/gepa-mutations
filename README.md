@@ -69,7 +69,7 @@ These methods replace GEPA's proposal step while keeping the same outer loop and
 
 **Cost profile:** ~3,600–7,000 rollouts depending on benchmark. Wall clock 1.7–8.2h.
 
-**Observed results (5-seed complete only):** 1.7B IFBench 0.062 (below 0.063 baseline), 8B IFBench 0.056 (below 0.068 baseline), 14B IFBench 0.097 (+76% over baseline — strongest here), 27B HotpotQA 0.848 (+2%), 27B PUPA 0.639 (+19%). Notably, **GEPA hurts performance on smaller models** (1.7B and 8B IFBench), suggesting the iterative reflection loop can degrade prompts when the underlying LM lacks the reasoning capacity to generate good reflections.
+**Observed results (5-seed complete only):** 1.7B IFBench 0.062 (flat vs 0.063 baseline), 14B IFBench 0.097 (+76% over baseline — strongest here), 27B HotpotQA 0.848 (+2%), 27B PUPA 0.639 (+19%). GEPA is flat or slightly negative on 1.7B IFBench, suggesting the iterative reflection loop provides minimal benefit at small scale on this benchmark.
 
 ---
 
@@ -205,10 +205,9 @@ These methods replace the entire GEPA loop with a different search strategy, typ
 
 **Cons:**
 - 1.7B HotpotQA: 0.630 — **below baseline**
-- 8B IFBench: 0.057 and 14B IFBench: 0.054 — **below baseline**
 - No refinement after selection — ceiling limited by initial candidate quality
 
-**Observed results (5-seed complete only):** 8 completed cells. Above baseline in 5, below in 3. Strong on PUPA and 27B; unreliable on IFBench at smaller scales.
+**Observed results (5-seed complete only):** 6 completed cells (after removing invalid 8B/14B IFBench data). Above baseline in 5, below in 1 (1.7B HotpotQA). Strong on PUPA and 27B HotpotQA.
 
 ---
 
@@ -227,10 +226,10 @@ These methods replace the entire GEPA loop with a different search strategy, typ
 - 27B HotpotQA: 0.897 (+8%)
 
 **Cons:**
-- 14B IFBench: 0.011 — **catastrophic failure** (80% below baseline, worst result in the study)
 - 27B IFBench: 0.057 — **below baseline**
+- 14B IFBench: original results showed 0.011, but investigation revealed 4/5 seeds had `total_tokens=0` (vLLM was down) — data invalidated and removed
 
-**Observed results (5-seed complete only):** 9 completed cells. Above baseline in 6, below in 3. Best method for PUPA across scales. The 14B IFBench collapse to 0.011 is the single worst result in the entire sweep.
+**Observed results (5-seed complete only):** 8 completed cells (after removing invalid 14B IFBench data). Above baseline in 7, below in 1 (27B IFBench). Best method for PUPA across scales.
 
 ---
 
@@ -389,20 +388,20 @@ python scripts/monitor_multi_model.py --mode 30min
 
 ## Results (Multi-Model Sweep — In Progress)
 
-**Status: 286/720 tasks complete (39.7%).** 4 model sizes × 3 benchmarks × 12 methods × 5 seeds = 720 total. Sweep started 2026-04-12; overnight cluster disruptions (3 mass-cancellations, GPU contention on inference node) reduced throughput. 14B-inference node unavailable; 14B runs limited to ansatz node only.
+**Status: 290/720 tasks complete (40.3%).** 4 model sizes × 3 benchmarks × 12 methods × 5 seeds = 720 total. Sweep started 2026-04-12; overnight cluster disruptions (3 mass-cancellations, GPU contention on inference node) reduced throughput. 14B-inference node unavailable; 14B runs limited to ansatz node only. 9 invalid results (vLLM down during run or eval failure) were identified and removed from the dataset.
 
 ### Completion Matrix
 
 | Model | HotpotQA | PUPA | IFBench | Total |
 |-------|----------|------|---------|-------|
-| **1.7B** | 29/60 | 21/60 | **55/60** | **105/180** (58%) |
-| **8B** | 0/60 | 0/60 | 38/60 | 38/180 (21%) |
-| **14B** | 0/60 | 28/60 | 24/60 | 52/180 (29%) |
-| **27B-AWQ** | 30/60 | **30/60** | 32/60 | **92/180** (51%) |
+| **1.7B** | 30/60 | 22/60 | **56/60** | **108/180** (60%) |
+| **8B** | 1/60 | 1/60 | 36/60 | 38/180 (21%) |
+| **14B** | 1/60 | 29/60 | 20/60 | 50/180 (28%) |
+| **27B-AWQ** | 31/60 | **31/60** | 32/60 | **94/180** (52%) |
 
 ### Key Findings
 
-**Only results with all 5 seeds complete are used in comparisons below** (48 of 144 method/model/benchmark combinations). Partial results are excluded to ensure statistical validity.
+**Only results with all 5 seeds complete are used in comparisons below** (44 of 144 method/model/benchmark combinations). Partial results and 9 invalid runs (vLLM outages, eval failures) have been excluded to ensure statistical validity.
 
 **Prompt optimization provides meaningful lift across all model sizes.** Even on the smallest model (1.7B), the best optimization method improves over the raw baseline by +9pp on HotpotQA, +20pp on PUPA, and +3pp on IFBench.
 
@@ -457,42 +456,38 @@ Best performers: **Slime Mold** dominates on 14B (+11.0pp) and 27B (+17.5pp). **
 | Method | 1.7B | 8B | 14B | 27B-AWQ |
 |--------|------|------|------|------|
 | Baseline (no opt) | 0.063 | 0.068 | 0.055 | 0.059 |
-| GEPA | 0.062 | 0.056 | **0.097** | — |
+| GEPA | 0.062 | — | **0.097** | — |
 | Best-of-K | **0.096** | **0.101** | — | — |
 | Contrastive Refl. | 0.084 | 0.079 | — | — |
 | Synaptic Pruning | 0.084 | 0.064 | 0.061 | **0.146** |
-| Tournament | — | 0.057 | 0.054 | 0.083 |
-| Slime Mold | 0.082 | 0.071 | 0.011 | 0.057 |
+| Tournament | — | — | — | 0.083 |
+| Slime Mold | 0.082 | 0.071 | — | 0.057 |
 | Ant Colony | 0.075 | 0.067 | — | — |
 | Active Minibatch | 0.085 | — | — | — |
 | Contrastive Synth. | 0.085 | — | — | — |
 | Ecological Succ. | 0.071 | — | — | — |
 | Modular | 0.080 | — | — | — |
 
-IFBench is the hardest benchmark — all scores below 15%. **Synaptic Pruning on 27B** is the standout (+8.7pp, the largest absolute lift in the sweep). **Best-of-K** consistent on smaller models. Notable failures: **GEPA hurts on 8B** (-1.2pp) and is flat on 1.7B — the iterative reflection loop can degrade prompts on weaker models. **Slime Mold catastrophically fails on 14B** (0.011 vs 0.055 baseline, -4.4pp).
+IFBench is the hardest benchmark — all scores below 15%. **Synaptic Pruning on 27B** is the standout (+8.7pp, the largest absolute lift in the sweep). **Best-of-K** consistent on smaller models. GEPA is flat on 1.7B relative to baseline, suggesting the iterative reflection loop provides minimal benefit on this benchmark at small scale.
 
 ### Methods That Hurt Performance
 
-10 of 48 complete (5-seed) method/model/benchmark combinations score **below the unoptimized baseline**. Optimization is not always beneficial:
+6 of 44 complete (5-seed) method/model/benchmark combinations score **below the unoptimized baseline**. Optimization is not always beneficial:
 
 | Model | Benchmark | Method | Score | Baseline | Delta |
 |-------|-----------|--------|-------|----------|-------|
 | 1.7B | HotpotQA | Tournament | 0.630 | 0.643 | -0.013 |
 | 1.7B | IFBench | GEPA | 0.062 | 0.063 | -0.001 |
-| 8B | IFBench | GEPA | 0.056 | 0.068 | -0.012 |
-| 8B | IFBench | Tournament | 0.057 | 0.068 | -0.011 |
-| 8B | IFBench | Synaptic Pruning | 0.064 | 0.068 | -0.004 |
 | 8B | IFBench | Ant Colony | 0.067 | 0.068 | -0.001 |
-| 14B | IFBench | Slime Mold | 0.011 | 0.055 | **-0.044** |
-| 14B | IFBench | Tournament | 0.054 | 0.055 | -0.001 |
+| 8B | IFBench | Synaptic Pruning | 0.064 | 0.068 | -0.004 |
 | 27B-AWQ | IFBench | Slime Mold | 0.057 | 0.059 | -0.002 |
 | 27B-AWQ | PUPA | Synaptic Pruning | 0.521 | 0.537 | -0.016 |
 
 ### Emerging Patterns
 
 1. **No single method dominates.** Best-of-K wins on small models and HotpotQA/27B, Slime Mold on PUPA, Synaptic Pruning on IFBench/27B, Contrastive Synthesis on HotpotQA/1.7B.
-2. **Model scale affects which methods work.** GEPA (the paper baseline) underperforms on 1.7B/8B IFBench but is the top method on 14B IFBench. Methods that avoid complex multi-step reasoning (Best-of-K, Tournament) tend to be more robust across scales.
-3. **Optimization can hurt.** 10/48 complete combinations score below baseline — especially on IFBench where 8B models are particularly vulnerable. This underscores the importance of baseline comparisons.
+2. **Model scale affects which methods work.** GEPA (the paper baseline) is flat on 1.7B IFBench but is the top method on 14B IFBench. Methods that avoid complex multi-step reasoning (Best-of-K, Tournament) tend to be more robust across scales.
+3. **Optimization can hurt.** 6/44 complete combinations score below baseline — particularly Synaptic Pruning on 27B PUPA (-1.6pp) and Tournament on 1.7B HotpotQA (-1.3pp). This underscores the importance of baseline comparisons.
 4. **PUPA shows the largest lifts** (+10–20pp), likely because it's a rewriting task where prompt improvements translate directly to output quality.
 5. **IFBench has a low ceiling** (<15% for all methods), suggesting instruction-following may require architectural rather than prompt-level improvements.
 
@@ -518,11 +513,23 @@ Standalone search methods (synaptic pruning, slime mold, tournament) use 5–150
 
 **Key takeaway:** Synaptic Pruning achieves the best score on 27B IFBench (+8.7pp) using only **460 rollouts in 0.6 hours** — compared to GEPA's typical 3,600–7,000 rollouts over 2–8 hours. This represents a **~15x reduction in compute** with *better* results. Standalone search methods (Synaptic Pruning, Slime Mold, Tournament) are consistently more cost-efficient than proposer-replacement methods that inherit GEPA's full rollout budget.
 
+### Visualizations
+
+![Score vs Compute Cost](plots/score_vs_rollouts.png)
+*Test score vs rollout count for all 5-seed complete method/model combinations. Standalone search methods (left cluster) achieve competitive scores at 10–100x fewer rollouts than proposer-replacement methods (right cluster).*
+
+![HotpotQA Results](plots/scores_hotpotqa.png)
+
+![PUPA Results](plots/scores_pupa.png)
+
+![IFBench Results](plots/scores_ifbench.png)
+
 ### Notes
 
 - Baseline scores are from a single seed with the default seed prompt (no optimization). See `BENCHMARK_SEED_PROMPTS` in `src/gepa_mutations/runner/experiment.py`.
-- 14B results are from a single node (ansatz) running with constrained GPU memory (`max-model-len=2048`). The inference node was unavailable due to GPU contention from another user. This may affect 14B scores — particularly the anomalous Slime Mold IFBench result (0.011).
-- 8B has zero HotpotQA and PUPA results; 14B has zero HotpotQA results — these will be completed in the next sweep batch.
+- 14B results are from a single node (ansatz) running with constrained GPU memory (`max-model-len=2048`). The inference node was unavailable due to GPU contention from another user.
+- 8B has near-zero HotpotQA and PUPA results; 14B has near-zero HotpotQA results — these will be completed in the next sweep batch.
+- 9 invalid results were removed from the dataset: 5 had `total_tokens=0` (vLLM was down during the run), 4 had `test_score=0.0` with evidence of evaluation failure. These runs need to be re-executed.
 - Failed tasks from overnight cluster disruptions (no `result.json` written) will be automatically retried when orchestrators are relaunched.
 
 ---
