@@ -134,6 +134,8 @@ def run_slime_mold(
         "pruning_history": [],
     }
 
+    _running_best_score = 0.0
+
     for round_idx, (n_examples, keep_k) in enumerate(_PRUNING_SCHEDULE):
         round_num = round_idx + 1
         if collector.rollout_count >= max_metric_calls:
@@ -179,6 +181,10 @@ def run_slime_mold(
         console.print(
             f"  Best score: {best_score:.4f}, Worst: {worst_score:.4f}"
         )
+
+        if best_score > _running_best_score:
+            _running_best_score = best_score
+        collector.record_val_score(iteration=round_num, score=_running_best_score)
 
         # Keep top-k survivors
         survivors = sorted_candidates[:keep_k]
@@ -240,7 +246,7 @@ def run_slime_mold(
     val_score, val_scores = evaluate_prompt(
         adapter, valset, {"system_prompt": champion}, collector
     )
-    collector.record_val_score(iteration=4, score=val_score)
+    collector.record_val_score(iteration=5, score=val_score)
     console.print(f"  Val score: {val_score:.4f} ({val_score * 100:.2f}%)")
 
     # =========================================================================

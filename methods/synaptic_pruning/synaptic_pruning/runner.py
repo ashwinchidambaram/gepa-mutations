@@ -262,6 +262,7 @@ def run_synaptic_pruning(
             best_initial_prompt = prompt_text
 
     console.print(f"  Best initial prompt score: {best_initial_score:.4f}")
+    collector.record_val_score(iteration=1, score=best_initial_score)
     original_prompt_length = len(best_initial_prompt)
 
     # =========================================================================
@@ -291,6 +292,7 @@ def run_synaptic_pruning(
     console.print(f"  Sections tested: {len(sections)}")
     console.print(f"  Load-bearing sections: {len(load_bearing_indices)}")
     console.print(f"  Prunable sections: {len(prunable_indices)}")
+    collector.record_val_score(iteration=2, score=best_initial_score)
 
     # =========================================================================
     # 9. Remove all prunable sections at once and check interaction effects
@@ -311,6 +313,8 @@ def run_synaptic_pruning(
                 adapter, valset, pruned_candidate, collector, indices=ablation_val_indices
             )
             console.print(f"  Combined pruning score: {combined_score:.4f} (baseline: {best_initial_score:.4f})")
+            _combined_best = max(best_initial_score, combined_score)
+            collector.record_val_score(iteration=3, score=_combined_best)
             combined_drop = best_initial_score - combined_score
 
             # If combined removal dropped score too much, add back sections one at a time
@@ -353,6 +357,7 @@ def run_synaptic_pruning(
                 pruned_sections = current_sections
                 pruned_prompt = "\n\n".join(pruned_sections)
                 console.print(f"  Score after recovery: {current_score:.4f}")
+                collector.record_val_score(iteration=4, score=max(best_initial_score, current_score))
     else:
         console.print("  No prunable sections or empty result; skipping combined pruning check.")
 
@@ -384,6 +389,7 @@ def run_synaptic_pruning(
         console.print(f"  Strengthened section {lb_idx} (was {len(original_section)} chars, now {len(strengthened)} chars)")
 
     best_prompt_text = "\n\n".join(strengthened_sections) if strengthened_sections else best_initial_prompt
+    collector.record_val_score(iteration=5, score=best_initial_score)
 
     # =========================================================================
     # 11. Evaluate best prompt on full valset
@@ -392,7 +398,7 @@ def run_synaptic_pruning(
     best_candidate = {"system_prompt": best_prompt_text}
     best_val_score, _ = evaluate_prompt(adapter, valset, best_candidate, collector)
     console.print(f"  Final val score: {best_val_score:.4f}")
-    collector.record_val_score(iteration=1, score=best_val_score)
+    collector.record_val_score(iteration=6, score=best_val_score)
 
     best_prompt_dict = {"system_prompt": best_prompt_text}
     final_prompt_length = len(best_prompt_text)

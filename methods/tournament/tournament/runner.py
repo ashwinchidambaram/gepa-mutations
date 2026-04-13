@@ -267,7 +267,18 @@ def run_tournament(
             best_val_score = max(real_scores)
 
     console.print(f"\n  Champion val score: {best_val_score:.4f}")
-    collector.record_val_score(iteration=1, score=best_val_score)
+
+    # Inject trajectory points: one per tournament round, tracking running best
+    _rounds_seen: dict[int, bool] = {}
+    _running_best = 0.0
+    for _matchup in matchup_results:
+        _round_num = _matchup["round"]
+        _score = _matchup.get("winner_score", 0.0)
+        if _score > _running_best:
+            _running_best = _score
+        if _round_num not in _rounds_seen:
+            _rounds_seen[_round_num] = True
+            collector.record_val_score(iteration=_round_num, score=_running_best)
 
     best_prompt_dict = {"system_prompt": champion_prompt}
 
