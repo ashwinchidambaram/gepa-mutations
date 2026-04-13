@@ -35,15 +35,7 @@ We test whether any of 5 mutations can definitively outperform the GEPA baseline
 
 The paper's 4-step iterative loop: trajectory sampling on a minibatch, natural-language reflection by the LLM, Pareto frontier selection for diversity, and system-aware merge for crossover.
 
-```mermaid
-graph LR
-    S[Seed Prompt] --> T[Trajectory Sample<br/>B=3 examples]
-    T --> R[LLM Reflects<br/>on failures]
-    R --> P[Pareto Select<br/>diverse candidates]
-    P --> M[Merge<br/>crossover]
-    M --> T
-    P --> B["Best Prompt"]
-```
+![GEPA Baseline Loop](diagrams/gepa-baseline.png)
 
 ### Contrastive Reflection
 
