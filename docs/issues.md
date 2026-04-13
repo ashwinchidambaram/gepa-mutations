@@ -167,6 +167,49 @@ if (i + 1) % 10 == 0:
 
 ---
 
+## Issue 15: Metrics format split — proposer-replacement mutations don't write unified schema
+
+**Observed**: Two separate metrics systems exist and are not wired together:
+- `MetricsCollector` (`src/gepa_mutations/metrics/collector.py`) — the unified schema used by standalone search mutations (tournament, synaptic_pruning, slime_mold, ant_colony, ecological_succession, modular). Writes `rollout_count`, `total_tokens`, `score_per_1k_rollouts`, `prompt_length_tokens`, etc.
+- `MetricsCallback` (`src/gepa_mutations/runner/callbacks.py`) — GEPA's internal callback format used by the GEPA baseline and all proposer-replacement mutations (best_of_k, contrastive_reflection, failure_stratified_k, active_minibatch, contrastive_synthesis). Writes `total_metric_calls`, `iterations[]`, `valset_scores[]`, etc.
+
+Key fields missing from GEPA-baseline and proposer-replacement `metrics.json`:
+- `test_score` / `val_score` (only in `result.json`)
+- `score_per_1k_rollouts` (not computed)
+- `prompt_length_tokens` (not captured)
+- Consistent key names (`total_metric_calls` vs `rollout_count`, `total_wall_clock_seconds` vs `wall_clock_seconds`)
+
+Token fields (`total_tokens`, `task_input_tokens`, etc.) are partially present in proposer-replacement files via a separate tracking mechanism, but absent entirely from the GEPA baseline.
+
+**Impact**: Cross-mutation comparison requires a normalization step reading from both `metrics.json` and `result.json` with key remapping. The unified metrics framework defined in `docs/mutations_analysis.md §1.5` cannot be populated directly from any single file for GEPA-wrapped methods.
+
+**Proposed fix**: Write a `GEPAMetricsAdapterCallback` in `runner/callbacks.py` that wraps a `MetricsCollector` and maps GEPA callback events to collector calls:
+- `on_budget_updated` → `collector.record_rollouts(event["metric_calls_delta"])`
+- `on_proposal_end` → `collector.record_reflection_call()`
+- `on_valset_evaluated` → `collector.record_val_score(iteration, score)`
+
+Add this callback alongside the existing `MetricsCallback` in each proposer-replacement runner and the GEPA baseline runner. At run end, call `collector.finalize()` with test results and write the unified output. Token counts from `TrackedLM` need to be wired into the adapter at finalization time.
+
+The existing GEPA-internal `metrics.json` can be preserved (it contains useful per-iteration data); the unified output could be written as a second file or replace `metrics.json` depending on preference.
+
+**Needs user permission?**: No — code change only. Low priority until full comparison analysis is needed.
+
+---
+
+## Issue 16: Mutations are not fully framework-agnostic — DSPy leaks in via AIME evaluator
+
+**Observed**: 7 of the 11 mutation runners `import dspy` and call `dspy.configure()`. The mutation algorithms themselves contain no DSPy logic, but a DSPy dependency leaks in through the AIME benchmark evaluation path.
+
+**Root cause**: `AIMEAdapter` in `evaluators.py` uses `dspy.Example`, `dspy.Prediction`, and `dspy.ChainOfThought` to run chain-of-thought math evaluation. Runners conditionally call `dspy.configure(lm=task_lm)` only when `benchmark == "aime"`. `base.py`'s `build_task_lm()` also returns a `dspy.LM` object consumed only by this path. The 4 standalone mutations (tournament, slime_mold, synaptic_pruning, ant_colony) already have no DSPy import.
+
+**Impact**: Framework coupling makes it harder to swap evaluators or run on environments without DSPy installed. Conceptually, the mutations should be framework-agnostic.
+
+**Proposed fix**: Rewrite `AIMEAdapter` to use direct LiteLLM calls instead of `dspy.ChainOfThought`. Chain-of-thought behavior can be replicated with a plain system prompt + structured output parsing without DSPy. This would remove `import dspy` from all 7 runners and `build_task_lm()` from `base.py`. Note: requires reimplementing structured output parsing and retry-on-malformed-response that DSPy currently handles.
+
+**Needs user permission?**: No — code change only. Low priority; leave alone for now.
+
+---
+
 ## Issue 14: Contrastive reflection catastrophic regression on AIME (-20.7pp)
 
 **Observed**: contrastive_reflection scored 46.67% on AIME vs baseline 67.33% (-20.7pp). The evolved prompt is identical to the seed prompt on multiple benchmarks, suggesting the contrastive mechanism is not producing useful mutations.

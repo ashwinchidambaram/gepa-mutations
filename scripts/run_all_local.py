@@ -30,6 +30,13 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 
+# Propagate GEPA_BASE_URL → API_BASE_URL so method runners' Settings() picks it up.
+# Method runners call Settings() directly (not via CLI), and pydantic-settings reads
+# API_BASE_URL from env (field name uppercased, env_prefix=""). GEPA_BASE_URL is the
+# canonical env var used by this orchestrator; propagate it here so subprocesses inherit it.
+if os.environ.get("GEPA_BASE_URL") and not os.environ.get("API_BASE_URL"):
+    os.environ["API_BASE_URL"] = os.environ["GEPA_BASE_URL"]
+
 def _env_model_tag() -> str:
     """Derive a stable run-directory tag from GEPA_MODEL environment variable.
 
@@ -269,6 +276,14 @@ def _esc(s: str) -> str:
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+def _progress_bar(done: int, total: int, width: int = 10) -> str:
+    """Return a Unicode block progress bar, e.g. ████░░░░░░ 40/100 (40%)."""
+    pct = done / total if total else 0
+    filled = round(pct * width)
+    bar = "█" * filled + "░" * (width - filled)
+    return f"{bar}  {done}/{total} ({pct:.0%})"
+
+
 def _notify_html(html: str) -> None:
     """Send an HTML-formatted Telegram message. Never raises."""
     try:
@@ -299,54 +314,23 @@ def _build_digest(
     from collections import defaultdict
 
     lines: list[str] = []
-
-    # ── Header ──────────────────────────────────────────────
     model_label = model_tag or "unknown-model"
-    lines.append(
-        f"📊 <b>[{_esc(model_label)}] Progress Update</b>"
-        f"  ·  +{_fmt_duration(window_elapsed)}"
-        f"  ·  {_fmt_duration(wall_elapsed)} total"
-    )
     status_icon = "⚠️" if failed_total else "✅"
+
+    # ── GPU Status Card ──────────────────────────────────────
+    lines.append(f"📊 <b>Sweep Update · {_esc(model_label)}</b>")
+    lines.append(f"⏱ {_fmt_duration(wall_elapsed)} elapsed  ·  +{_fmt_duration(window_elapsed)} this window")
+    lines.append("")
     lines.append(
-        f"{status_icon}  <code>{completed_total}/{total}</code> done"
-        f"  ·  {failed_total} failed"
-        f"  ·  {total - completed_total} remaining"
+        f"{status_icon} <code>{_progress_bar(completed_total, total)}</code>"
     )
-
-    # ── Completed this window ────────────────────────────────
-    lines.append("")
-    if completed_window:
-        lines.append(f"<b>Completed ({len(completed_window)}):</b>")
-        groups: dict[tuple, list[dict]] = defaultdict(list)
-        for item in completed_window:
-            groups[(item["exp"].method, item["exp"].benchmark)].append(item)
-
-        if len(groups) > 6:
-            # Too many groups — collapse to method-level summaries
-            method_groups: dict[str, list[dict]] = defaultdict(list)
-            for item in completed_window:
-                method_groups[item["exp"].method].append(item)
-            for method, items in sorted(method_groups.items()):
-                sc = [i["score"] for i in items if i.get("score") is not None]
-                avg = f"{sum(sc)/len(sc):.0%}" if sc else "N/A"
-                lines.append(f"  <code>{_esc(method)}</code>  ×{len(items)} seeds  avg {avg}")
-        else:
-            for (method, bm), items in sorted(groups.items()):
-                lines.append(f"  <code>{_esc(method)}/{_esc(bm)}</code>")
-                pairs = "  ".join(
-                    f"{i['exp'].seed}→{i['score']:.0%}" if i.get("score") is not None
-                    else f"{i['exp'].seed}→?"
-                    for i in sorted(items, key=lambda x: x["exp"].seed)
-                )
-                lines.append(f"    {_esc(pairs)}")
+    if failed_total:
+        lines.append(f"   {failed_total} failed  ·  {total - completed_total} remaining")
     else:
-        lines.append("<i>No completions this window</i>")
+        lines.append(f"   {total - completed_total} remaining")
 
-    # ── Currently running ────────────────────────────────────
-    lines.append("")
+    # ── Active methods ───────────────────────────────────────
     if running_exps:
-        lines.append(f"<b>Running now ({min(workers, len(running_exps))} workers):</b>")
         run_groups: dict[tuple, list[str]] = defaultdict(list)
         for exp_str in running_exps:
             parts = exp_str.split("/")
@@ -354,12 +338,38 @@ def _build_digest(
                 bm, method, seed_str = parts
                 seed = seed_str.split("=")[-1]
                 run_groups[(method, bm)].append(seed)
+        active_parts = []
         for (method, bm), seeds in sorted(run_groups.items()):
             seeds_sorted = sorted(seeds, key=lambda s: int(s) if s.isdigit() else 0)
-            lines.append(
-                f"  <code>{_esc(method)}/{_esc(bm)}</code>"
-                f"  [{', '.join(seeds_sorted)}]"
-            )
+            active_parts.append(f"{_esc(method)} ×{len(seeds_sorted)}")
+        lines.append(f"🔄 <b>Active ({min(workers, len(running_exps))}):</b> {', '.join(active_parts)}")
+
+    # ── Completed this window ────────────────────────────────
+    lines.append("")
+    if completed_window:
+        lines.append(f"<b>✅ Completed this window ({len(completed_window)}):</b>")
+        groups: dict[tuple, list[dict]] = defaultdict(list)
+        for item in completed_window:
+            groups[(item["exp"].method, item["exp"].benchmark)].append(item)
+
+        if len(groups) > 6:
+            method_groups: dict[str, list[dict]] = defaultdict(list)
+            for item in completed_window:
+                method_groups[item["exp"].method].append(item)
+            for method, items in sorted(method_groups.items()):
+                sc = [i["score"] for i in items if i.get("score") is not None]
+                avg = f"{sum(sc)/len(sc):.0%}" if sc else "N/A"
+                lines.append(f"  <code>{_esc(method)}</code>  ×{len(items)}  avg {avg}")
+        else:
+            for (method, bm), items in sorted(groups.items()):
+                pairs = "  ".join(
+                    f"s{i['exp'].seed}→{i['score']:.0%}" if i.get("score") is not None
+                    else f"s{i['exp'].seed}→?"
+                    for i in sorted(items, key=lambda x: x["exp"].seed)
+                )
+                lines.append(f"  <code>{_esc(method)}/{_esc(bm)}</code>  {_esc(pairs)}")
+    else:
+        lines.append("<i>No completions this window</i>")
 
     # ── Method scores ────────────────────────────────────────
     method_scores_lines = []
@@ -368,11 +378,11 @@ def _build_digest(
         if sc:
             mean = sum(sc) / len(sc)
             method_scores_lines.append(
-                f"  <code>{_esc(m)}</code>  {mean:.1%}  ({len(sc)} seeds)"
+                f"  <code>{_esc(m):<28} {mean:.1%}  ({len(sc)} seeds)</code>"
             )
     if method_scores_lines:
         lines.append("")
-        lines.append("<b>Method scores:</b>")
+        lines.append("<b>Method scores so far:</b>")
         lines.extend(method_scores_lines)
 
     return "\n".join(lines)
@@ -495,16 +505,13 @@ def main() -> None:
         return
 
     # Send start notification
-    method_order = " → ".join(
-        m for m in sorted(set(e.method for e in pending), key=lambda m: METHOD_PRIORITY.get(m, 99))
-    )
     model_label = _MODEL_TAG or "unknown"
     _notify_html(
-        f"🚀 <b>gepa-mutations [{_esc(model_label)}] launched</b>\n"
-        f"<code>{len(pending)} experiments  ·  {args.workers} workers</code>\n"
-        f"\n"
+        f"🚀 <b>gepa-mutations launched</b>\n"
         f"<b>Model:</b> <code>{_esc(model_label)}</code>\n"
-        f"<b>Order:</b> {_esc(method_order)}"
+        f"\n"
+        f"<code>{_progress_bar(done_count, len(experiments))}</code>\n"
+        f"{args.workers} workers  ·  {len(pending)} pending"
     )
 
     # Run experiments
@@ -585,15 +592,18 @@ def main() -> None:
         sc = scores.get(m, [])
         if sc:
             mean = sum(sc) / len(sc)
-            result_lines.append(f"  <code>{_esc(m)}</code>  {mean:.1%}  ({len(sc)} seeds)")
+            result_lines.append(f"  <code>{_esc(m):<28} {mean:.1%}  ({len(sc)} seeds)</code>")
         else:
-            result_lines.append(f"  <code>{_esc(m)}</code>  —  (no results)")
+            result_lines.append(f"  <code>{_esc(m):<28} —</code>")
 
     model_label = _MODEL_TAG or "unknown-model"
     finish_icon = "🏁" if failed == 0 else "⚠️"
     summary_html = (
-        f"{finish_icon} <b>[{_esc(model_label)}] gepa-mutations complete</b>  ({_fmt_duration(wall_secs)})\n"
-        f"<code>{completed}/{total} runs  ·  {failed} failed</code>\n"
+        f"{finish_icon} <b>gepa-mutations complete · {_esc(model_label)}</b>\n"
+        f"⏱ {_fmt_duration(wall_secs)}\n"
+        f"\n"
+        f"<code>{_progress_bar(completed, total)}</code>\n"
+        f"{failed} failed\n"
         f"\n"
         f"<b>Results (mean test score):</b>\n"
         + "\n".join(result_lines)

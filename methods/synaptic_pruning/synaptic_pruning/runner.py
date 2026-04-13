@@ -31,7 +31,7 @@ from gepa_mutations.base import (
 )
 from gepa_mutations.benchmarks.evaluators import get_adapter
 from gepa_mutations.benchmarks.loader import load_benchmark
-from gepa_mutations.config import PAPER_ROLLOUTS, Settings, model_id
+from gepa_mutations.config import PAPER_ROLLOUTS, Settings, model_id, model_tag as get_model_tag
 from gepa_mutations.metrics.collector import MetricsCollector
 from gepa_mutations.metrics.standalone_eval import evaluate_prompt
 from gepa_mutations.metrics.tracked_lm import TrackedLM
@@ -127,11 +127,19 @@ def _get_labeled_examples(dataset: list, n: int = 4) -> list[tuple[str, str]]:
     """Extract (input, label) pairs from a dataset for few-shot generation.
 
     Uses the first n examples so generation is deterministic across seeds.
+    For ifbench (constraint-checking tasks), use constraints as the label.
     """
     pairs = []
     for ex in dataset[:n]:
         inp = getattr(ex, "input", None) or getattr(ex, "question", None) or str(ex)
-        label = getattr(ex, "answer", None) or getattr(ex, "label", None) or getattr(ex, "output", None) or "?"
+
+        # For constraint-based tasks (ifbench), use constraints as the label
+        constraints = getattr(ex, "constraints", None)
+        if constraints:
+            label = " | ".join(constraints)
+        else:
+            label = getattr(ex, "answer", None) or getattr(ex, "label", None) or getattr(ex, "output", None) or "?"
+
         # Truncate very long inputs/labels to avoid bloating the generation prompt
         inp_str = str(inp)[:400]
         label_str = str(label)[:200]
@@ -182,6 +190,7 @@ def run_synaptic_pruning(
         ExperimentResult with scores, best prompt, and diagnostics.
     """
     settings = settings or Settings()
+    mtagval = get_model_tag(settings)
     start_time = time.time()
     collector = MetricsCollector()
     rng = random.Random(seed)
@@ -458,8 +467,9 @@ def run_synaptic_pruning(
         config_data=exp_result.config_snapshot,
         metrics_data=metrics_data,
         method="synaptic_pruning",
+        model_tag=mtagval,
     )
-    console.print(f"  Results saved to runs/{benchmark}/synaptic_pruning/{seed}/")
+    console.print(f"  Results saved to runs/{mtagval + '/' if mtagval else ''}{benchmark}/synaptic_pruning/{seed}/")
 
     return exp_result
 
