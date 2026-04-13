@@ -1,0 +1,41 @@
+
+Experiment plan:
+  Total:   120
+  Done:    19 (skipping)
+  Pending: 101
+  Workers: 8
+
+2026-04-12 14:26:06,139 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 14:26:06,160 INFO START  pupa/best_of_k_K3/seed=1024
+2026-04-12 14:26:06,160 INFO START  pupa/contrastive_reflection/seed=42
+2026-04-12 14:26:06,161 INFO START  pupa/contrastive_reflection/seed=123
+2026-04-12 14:26:06,161 INFO START  pupa/contrastive_reflection/seed=456
+2026-04-12 14:26:06,161 INFO START  pupa/contrastive_reflection/seed=789
+2026-04-12 14:26:06,161 INFO START  pupa/contrastive_reflection/seed=1024
+2026-04-12 14:26:06,161 INFO START  pupa/gepa/seed=42
+2026-04-12 14:26:06,161 INFO START  pupa/gepa/seed=123
+2026-04-12 17:36:37,859 INFO DONE   pupa/contrastive_reflection/seed=42 (11432s) score=0.7463742690058479
+2026-04-12 17:36:37,904 INFO START  pupa/gepa/seed=456
+2026-04-12 17:36:37,905 INFO [1/101] pupa/contrastive_reflection/seed=42 -> 74.6% (11432s)
+2026-04-12 17:36:38,936 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 18:00:06,373 INFO DONE   pupa/best_of_k_K3/seed=1024 (12840s) score=0.7692105263157895
+2026-04-12 18:00:06,374 INFO START  pupa/gepa/seed=789
+2026-04-12 18:00:06,375 INFO [2/101] pupa/best_of_k_K3/seed=1024 -> 76.9% (12840s)
+2026-04-12 18:16:04,509 INFO DONE   pupa/contrastive_reflection/seed=456 (13798s) score=0.7775438596491229
+2026-04-12 18:16:04,510 INFO START  pupa/gepa/seed=1024
+2026-04-12 18:16:04,510 INFO [3/101] pupa/contrastive_reflection/seed=456 -> 77.8% (13798s)
+2026-04-12 18:16:05,211 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 18:16:43,415 INFO DONE   pupa/contrastive_reflection/seed=123 (13837s) score=0.7890977443609023
+2026-04-12 18:16:43,415 INFO START  pupa/ant_colony/seed=42
+2026-04-12 18:16:43,416 INFO [4/101] pupa/contrastive_reflection/seed=123 -> 78.9% (13837s)
+2026-04-12 20:34:05,200 INFO DONE   pupa/ant_colony/seed=42 (8242s) score=0.6577086656034025
+2026-04-12 20:34:05,201 INFO START  pupa/ant_colony/seed=123
+2026-04-12 20:34:05,202 INFO [5/101] pupa/ant_colony/seed=42 -> 65.8% (8242s)
+2026-04-12 20:34:05,901 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 21:32:21,248 INFO DONE   pupa/gepa/seed=42 (25575s) score=0.7778780284043442
+2026-04-12 21:32:21,249 INFO START  pupa/ant_colony/seed=456
+2026-04-12 21:32:21,250 INFO [6/101] pupa/gepa/seed=42 -> 77.8% (25575s)
+2026-04-12 21:32:21,941 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 21:33:51,039 INFO DONE   pupa/gepa/seed=123 (25665s) score=0.7455889724310777
+2026-04-12 21:33:51,040 INFO START  pupa/ant_colony/seed=789
+2026-04-12 21:33:51,040 INFO [7/101] pupa/gepa/seed=123 -> 74.6% (25665s)

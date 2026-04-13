@@ -1,0 +1,107 @@
+
+Experiment plan:
+  Total:   180
+  Done:    13 (skipping)
+  Pending: 167
+  Workers: 4
+
+2026-04-11 18:21:34,915 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-11 18:21:34,931 INFO START  ifbench/synaptic_pruning/seed=42
+2026-04-11 18:21:34,932 INFO START  ifbench/synaptic_pruning/seed=123
+2026-04-11 18:21:34,932 INFO START  ifbench/synaptic_pruning/seed=789
+2026-04-11 18:21:34,932 INFO START  ifbench/synaptic_pruning/seed=456
+2026-04-11 19:06:20,149 INFO DONE   ifbench/synaptic_pruning/seed=123 (2685s) score=None
+2026-04-11 19:06:20,150 INFO START  ifbench/synaptic_pruning/seed=1024
+2026-04-11 19:06:20,151 INFO [1/167] ifbench/synaptic_pruning/seed=123 -> N/A (2685s)
+2026-04-11 19:06:20,830 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-11 19:07:18,676 INFO DONE   ifbench/synaptic_pruning/seed=789 (2744s) score=None
+2026-04-11 19:07:18,677 INFO START  ifbench/gepa/seed=456
+2026-04-11 19:07:18,677 INFO [2/167] ifbench/synaptic_pruning/seed=789 -> N/A (2744s)
+2026-04-11 19:08:52,047 INFO DONE   ifbench/synaptic_pruning/seed=42 (2837s) score=None
+2026-04-11 19:08:52,048 INFO START  ifbench/gepa/seed=789
+2026-04-11 19:08:52,048 INFO [3/167] ifbench/synaptic_pruning/seed=42 -> N/A (2837s)
+2026-04-11 19:10:58,561 INFO DONE   ifbench/synaptic_pruning/seed=456 (2964s) score=None
+2026-04-11 19:10:58,562 INFO START  ifbench/gepa/seed=1024
+2026-04-11 19:10:58,563 INFO [4/167] ifbench/synaptic_pruning/seed=456 -> N/A (2964s)
+2026-04-11 19:51:15,768 INFO DONE   ifbench/synaptic_pruning/seed=1024 (2696s) score=None
+2026-04-11 19:51:15,769 INFO START  ifbench/contrastive_reflection/seed=42
+2026-04-11 19:51:15,769 INFO [5/167] ifbench/synaptic_pruning/seed=1024 -> N/A (2696s)
+2026-04-11 19:51:16,464 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-11 23:10:43,351 INFO DONE   ifbench/gepa/seed=456 (14605s) score=0.06972222222222223
+2026-04-11 23:10:43,352 INFO START  ifbench/contrastive_reflection/seed=123
+2026-04-11 23:10:43,352 INFO [6/167] ifbench/gepa/seed=456 -> 7.0% (14605s)
+2026-04-11 23:10:44,038 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+
+Experiment plan:
+  Total:   180
+  Done:    19 (skipping)
+  Pending: 161
+  Workers: 6
+
+2026-04-12 00:37:52,050 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 00:37:52,067 INFO START  ifbench/gepa/seed=789
+2026-04-12 00:37:52,071 INFO START  ifbench/gepa/seed=1024
+2026-04-12 00:37:52,072 INFO START  ifbench/contrastive_reflection/seed=42
+2026-04-12 00:37:52,072 INFO START  ifbench/contrastive_reflection/seed=123
+2026-04-12 00:37:52,072 INFO START  ifbench/contrastive_reflection/seed=456
+2026-04-12 00:37:52,072 INFO START  ifbench/contrastive_reflection/seed=789
+2026-04-12 02:33:08,431 INFO DONE   ifbench/gepa/seed=789 (6916s) score=0.07272222222222222
+2026-04-12 02:33:08,432 INFO START  ifbench/contrastive_reflection/seed=1024
+2026-04-12 02:33:08,433 INFO [1/161] ifbench/gepa/seed=789 -> 7.3% (6916s)
+2026-04-12 02:33:09,118 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 02:35:05,805 INFO DONE   ifbench/gepa/seed=1024 (7034s) score=0.06961111111111111
+2026-04-12 02:35:05,806 INFO START  ifbench/best_of_k_K3/seed=42
+2026-04-12 02:35:05,806 INFO [2/161] ifbench/gepa/seed=1024 -> 7.0% (7034s)
+2026-04-12 03:47:33,239 INFO DONE   ifbench/contrastive_reflection/seed=42 (11381s) score=0.0786111111111111
+2026-04-12 03:47:33,239 INFO START  ifbench/best_of_k_K3/seed=123
+2026-04-12 03:47:33,240 INFO [3/161] ifbench/contrastive_reflection/seed=42 -> 7.9% (11381s)
+2026-04-12 03:47:33,923 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 08:05:57,622 INFO DONE   ifbench/contrastive_reflection/seed=123 (26886s) score=0.06311111111111112
+2026-04-12 08:05:57,623 INFO START  ifbench/best_of_k_K3/seed=456
+2026-04-12 08:05:57,623 INFO [4/161] ifbench/contrastive_reflection/seed=123 -> 6.3% (26886s)
+2026-04-12 08:05:58,299 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 09:18:56,741 INFO DONE   ifbench/contrastive_reflection/seed=456 (31265s) score=0.06572222222222222
+2026-04-12 09:18:56,742 INFO START  ifbench/best_of_k_K3/seed=1024
+2026-04-12 09:18:56,743 INFO [5/161] ifbench/contrastive_reflection/seed=456 -> 6.6% (31265s)
+2026-04-12 09:18:57,455 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 09:57:32,763 INFO DONE   ifbench/contrastive_reflection/seed=1024 (26664s) score=0.10955555555555556
+2026-04-12 09:57:32,763 INFO START  ifbench/ant_colony/seed=42
+2026-04-12 09:57:32,764 INFO [6/161] ifbench/contrastive_reflection/seed=1024 -> 11.0% (26664s)
+2026-04-12 09:57:33,483 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 10:11:05,161 INFO DONE   ifbench/contrastive_reflection/seed=789 (34393s) score=0.07644444444444444
+2026-04-12 10:11:05,161 INFO START  ifbench/ant_colony/seed=123
+2026-04-12 10:11:05,164 INFO [7/161] ifbench/contrastive_reflection/seed=789 -> 7.6% (34393s)
+2026-04-12 12:09:05,633 INFO DONE   ifbench/best_of_k_K3/seed=42 (34440s) score=0.14622222222222223
+2026-04-12 12:09:05,634 INFO START  ifbench/ant_colony/seed=456
+2026-04-12 12:09:05,634 INFO [8/161] ifbench/best_of_k_K3/seed=42 -> 14.6% (34440s)
+2026-04-12 12:09:06,333 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 12:55:36,852 INFO DONE   ifbench/best_of_k_K3/seed=123 (32884s) score=0.08655555555555555
+2026-04-12 12:55:36,852 INFO START  ifbench/ant_colony/seed=789
+2026-04-12 12:55:36,853 INFO [9/161] ifbench/best_of_k_K3/seed=123 -> 8.7% (32884s)
+2026-04-12 12:55:37,570 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 13:25:33,881 INFO DONE   ifbench/ant_colony/seed=42 (12481s) score=0.06899999999999999
+2026-04-12 13:25:33,882 INFO START  ifbench/ant_colony/seed=1024
+2026-04-12 13:25:33,882 INFO [10/161] ifbench/ant_colony/seed=42 -> 6.9% (12481s)
+2026-04-12 13:28:31,119 INFO DONE   ifbench/ant_colony/seed=123 (11846s) score=0.06994444444444445
+2026-04-12 13:28:31,120 INFO START  ifbench/active_minibatch/seed=42
+2026-04-12 13:28:31,121 INFO [11/161] ifbench/ant_colony/seed=123 -> 7.0% (11846s)
+2026-04-12 13:28:31,824 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 15:39:27,299 INFO DONE   ifbench/ant_colony/seed=456 (12622s) score=0.0646111111111111
+2026-04-12 15:39:27,300 INFO START  ifbench/active_minibatch/seed=123
+2026-04-12 15:39:27,300 INFO [12/161] ifbench/ant_colony/seed=456 -> 6.5% (12622s)
+2026-04-12 15:39:28,036 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 16:09:51,470 INFO DONE   ifbench/ant_colony/seed=789 (11655s) score=0.06427777777777777
+2026-04-12 16:09:51,470 INFO START  ifbench/active_minibatch/seed=456
+2026-04-12 16:09:51,471 INFO [13/161] ifbench/ant_colony/seed=789 -> 6.4% (11655s)
+2026-04-12 16:09:52,147 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 16:59:06,923 INFO DONE   ifbench/ant_colony/seed=1024 (12813s) score=0.0675
+2026-04-12 16:59:06,923 INFO START  ifbench/active_minibatch/seed=789
+2026-04-12 16:59:06,924 INFO [14/161] ifbench/ant_colony/seed=1024 -> 6.8% (12813s)
+2026-04-12 16:59:07,744 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 17:58:48,602 INFO DONE   ifbench/best_of_k_K3/seed=1024 (31192s) score=0.12394444444444443
+2026-04-12 17:58:48,602 INFO START  ifbench/active_minibatch/seed=1024
+2026-04-12 17:58:48,603 INFO [15/161] ifbench/best_of_k_K3/seed=1024 -> 12.4% (31192s)
+2026-04-12 17:58:49,288 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 18:04:01,861 INFO DONE   ifbench/best_of_k_K3/seed=456 (35884s) score=0.07161111111111111
+2026-04-12 18:04:01,862 INFO START  ifbench/ecological_succession/seed=42
+2026-04-12 18:04:01,862 INFO [16/161] ifbench/best_of_k_K3/seed=456 -> 7.2% (35884s)

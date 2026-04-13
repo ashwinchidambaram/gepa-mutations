@@ -1,0 +1,43 @@
+
+Experiment plan:
+  Total:   180
+  Done:    77 (skipping)
+  Pending: 103
+  Workers: 4
+
+2026-04-12 15:19:01,194 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 15:19:01,213 INFO START  ifbench/slime_mold/seed=42
+2026-04-12 15:19:01,214 INFO START  ifbench/slime_mold/seed=123
+2026-04-12 15:19:01,214 INFO START  ifbench/slime_mold/seed=456
+2026-04-12 15:19:01,214 INFO START  ifbench/slime_mold/seed=789
+2026-04-12 16:27:14,792 INFO DONE   ifbench/slime_mold/seed=123 (4094s) score=0.05233333333333333
+2026-04-12 16:27:14,793 INFO START  ifbench/slime_mold/seed=1024
+2026-04-12 16:27:14,793 INFO [1/103] ifbench/slime_mold/seed=123 -> 5.2% (4094s)
+2026-04-12 16:27:15,509 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 16:33:09,584 INFO DONE   ifbench/slime_mold/seed=42 (4448s) score=0.05483333333333333
+2026-04-12 16:33:09,585 INFO START  ifbench/tournament/seed=42
+2026-04-12 16:33:09,585 INFO [2/103] ifbench/slime_mold/seed=42 -> 5.5% (4448s)
+2026-04-12 16:46:07,064 INFO DONE   ifbench/slime_mold/seed=789 (5226s) score=0.05922222222222222
+2026-04-12 16:46:07,065 INFO START  ifbench/tournament/seed=123
+2026-04-12 16:46:07,066 INFO [3/103] ifbench/slime_mold/seed=789 -> 5.9% (5226s)
+2026-04-12 16:53:51,560 INFO DONE   ifbench/slime_mold/seed=456 (5690s) score=0.05883333333333333
+2026-04-12 16:53:51,561 INFO START  ifbench/tournament/seed=456
+2026-04-12 16:53:51,561 INFO [4/103] ifbench/slime_mold/seed=456 -> 5.9% (5690s)
+2026-04-12 17:50:35,133 INFO DONE   ifbench/slime_mold/seed=1024 (5000s) score=0.059944444444444446
+2026-04-12 17:50:35,134 INFO START  ifbench/tournament/seed=789
+2026-04-12 17:50:35,134 INFO [5/103] ifbench/slime_mold/seed=1024 -> 6.0% (5000s)
+2026-04-12 17:50:35,830 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 19:14:18,322 INFO DONE   ifbench/tournament/seed=123 (8891s) score=0.07933333333333334
+2026-04-12 19:14:18,323 INFO START  ifbench/tournament/seed=1024
+2026-04-12 19:14:18,323 INFO [6/103] ifbench/tournament/seed=123 -> 7.9% (8891s)
+2026-04-12 19:14:19,046 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 19:17:47,813 INFO DONE   ifbench/tournament/seed=456 (8636s) score=0.0825
+2026-04-12 19:17:47,813 INFO START  ifbench/gepa/seed=42
+2026-04-12 19:17:47,814 INFO [7/103] ifbench/tournament/seed=456 -> 8.2% (8636s)
+2026-04-12 19:35:29,141 INFO DONE   ifbench/tournament/seed=42 (10940s) score=0.07783333333333334
+2026-04-12 19:35:29,141 INFO START  ifbench/gepa/seed=123
+2026-04-12 19:35:29,142 INFO [8/103] ifbench/tournament/seed=42 -> 7.8% (10940s)
+2026-04-12 20:51:44,190 INFO DONE   ifbench/tournament/seed=789 (10869s) score=0.07977777777777778
+2026-04-12 20:51:44,191 INFO START  ifbench/gepa/seed=456
+2026-04-12 20:51:44,191 INFO [9/103] ifbench/tournament/seed=789 -> 8.0% (10869s)
+2026-04-12 20:51:44,864 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"

@@ -1,0 +1,44 @@
+
+Experiment plan:
+  Total:   60
+  Done:    0 (skipping)
+  Pending: 60
+  Workers: 8
+
+2026-04-12 14:13:11,681 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 14:13:11,702 INFO START  hotpotqa/modular/seed=123
+2026-04-12 14:13:11,702 INFO START  hotpotqa/modular/seed=42
+2026-04-12 14:13:11,702 INFO START  hotpotqa/modular/seed=456
+2026-04-12 14:13:11,703 INFO START  hotpotqa/active_minibatch/seed=42
+2026-04-12 14:13:11,703 INFO START  hotpotqa/modular/seed=789
+2026-04-12 14:13:11,703 INFO START  hotpotqa/modular/seed=1024
+2026-04-12 14:13:11,703 INFO START  hotpotqa/active_minibatch/seed=456
+2026-04-12 14:13:11,703 INFO START  hotpotqa/active_minibatch/seed=123
+2026-04-12 17:13:30,928 INFO DONE   hotpotqa/modular/seed=1024 (10819s) score=0.6333333333333333
+2026-04-12 17:13:30,929 INFO START  hotpotqa/active_minibatch/seed=789
+2026-04-12 17:13:30,930 INFO [1/60] hotpotqa/modular/seed=1024 -> 63.3% (10819s)
+2026-04-12 17:13:31,644 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 17:17:01,441 INFO DONE   hotpotqa/modular/seed=456 (11030s) score=0.6033333333333334
+2026-04-12 17:17:01,441 INFO START  hotpotqa/active_minibatch/seed=1024
+2026-04-12 17:17:01,442 INFO [2/60] hotpotqa/modular/seed=456 -> 60.3% (11030s)
+2026-04-12 17:49:52,220 INFO DONE   hotpotqa/active_minibatch/seed=42 (13001s) score=0.7433333333333333
+2026-04-12 17:49:52,221 INFO START  hotpotqa/contrastive_synthesis/seed=42
+2026-04-12 17:49:52,221 INFO [3/60] hotpotqa/active_minibatch/seed=42 -> 74.3% (13001s)
+2026-04-12 17:49:52,919 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 18:02:57,036 INFO DONE   hotpotqa/active_minibatch/seed=123 (13785s) score=0.73
+2026-04-12 18:02:57,037 INFO START  hotpotqa/contrastive_synthesis/seed=123
+2026-04-12 18:02:57,037 INFO [4/60] hotpotqa/active_minibatch/seed=123 -> 73.0% (13785s)
+2026-04-12 18:08:22,793 INFO DONE   hotpotqa/active_minibatch/seed=456 (14111s) score=0.69
+2026-04-12 18:08:22,794 INFO START  hotpotqa/contrastive_synthesis/seed=456
+2026-04-12 18:08:22,794 INFO [5/60] hotpotqa/active_minibatch/seed=456 -> 69.0% (14111s)
+2026-04-12 19:09:29,713 INFO DONE   hotpotqa/modular/seed=123 (17778s) score=0.7
+2026-04-12 19:09:29,714 INFO START  hotpotqa/contrastive_synthesis/seed=789
+2026-04-12 19:09:29,715 INFO [6/60] hotpotqa/modular/seed=123 -> 70.0% (17778s)
+2026-04-12 19:09:30,428 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 20:53:11,857 INFO DONE   hotpotqa/modular/seed=42 (24000s) score=0.71
+2026-04-12 20:53:11,858 INFO START  hotpotqa/contrastive_synthesis/seed=1024
+2026-04-12 20:53:11,859 INFO [7/60] hotpotqa/modular/seed=42 -> 71.0% (24000s)
+2026-04-12 20:53:12,536 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 21:00:28,370 INFO DONE   hotpotqa/modular/seed=789 (24437s) score=0.6566666666666666
+2026-04-12 21:00:28,371 INFO START  hotpotqa/ecological_succession/seed=42
+2026-04-12 21:00:28,371 INFO [8/60] hotpotqa/modular/seed=789 -> 65.7% (24437s)

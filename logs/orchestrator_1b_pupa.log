@@ -1,0 +1,65 @@
+
+Experiment plan:
+  Total:   60
+  Done:    0 (skipping)
+  Pending: 60
+  Workers: 8
+
+2026-04-12 14:13:12,724 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 14:13:12,743 INFO START  pupa/slime_mold/seed=42
+2026-04-12 14:13:12,743 INFO START  pupa/synaptic_pruning/seed=42
+2026-04-12 14:13:12,743 INFO START  pupa/synaptic_pruning/seed=123
+2026-04-12 14:13:12,743 INFO START  pupa/slime_mold/seed=123
+2026-04-12 14:13:12,744 INFO START  pupa/synaptic_pruning/seed=456
+2026-04-12 14:13:12,744 INFO START  pupa/slime_mold/seed=456
+2026-04-12 14:13:12,744 INFO START  pupa/slime_mold/seed=789
+2026-04-12 14:13:12,744 INFO START  pupa/synaptic_pruning/seed=789
+2026-04-12 14:44:19,402 INFO DONE   pupa/synaptic_pruning/seed=123 (1867s) score=0.21355092276144907
+2026-04-12 14:44:19,403 INFO START  pupa/synaptic_pruning/seed=1024
+2026-04-12 14:44:19,404 INFO [1/60] pupa/synaptic_pruning/seed=123 -> 21.4% (1867s)
+2026-04-12 14:44:20,142 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 14:45:00,775 INFO DONE   pupa/synaptic_pruning/seed=456 (1908s) score=0.2204431533378902
+2026-04-12 14:45:00,775 INFO START  pupa/slime_mold/seed=1024
+2026-04-12 14:45:00,775 INFO [2/60] pupa/synaptic_pruning/seed=456 -> 22.0% (1908s)
+2026-04-12 14:46:24,687 INFO DONE   pupa/synaptic_pruning/seed=42 (1992s) score=0.2805308726361358
+2026-04-12 14:46:24,688 INFO START  pupa/tournament/seed=42
+2026-04-12 14:46:24,689 INFO [3/60] pupa/synaptic_pruning/seed=42 -> 28.1% (1992s)
+2026-04-12 14:47:27,369 INFO DONE   pupa/synaptic_pruning/seed=789 (2055s) score=0.3357275765170502
+2026-04-12 14:47:27,370 INFO START  pupa/tournament/seed=123
+2026-04-12 14:47:27,371 INFO [4/60] pupa/synaptic_pruning/seed=789 -> 33.6% (2055s)
+2026-04-12 15:18:00,639 INFO DONE   pupa/synaptic_pruning/seed=1024 (2021s) score=0.3170141262246525
+2026-04-12 15:18:00,640 INFO START  pupa/tournament/seed=456
+2026-04-12 15:18:00,641 INFO [5/60] pupa/synaptic_pruning/seed=1024 -> 31.7% (2021s)
+2026-04-12 15:18:01,325 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 15:24:57,726 INFO DONE   pupa/slime_mold/seed=123 (4305s) score=0.48637882585251
+2026-04-12 15:24:57,727 INFO START  pupa/tournament/seed=789
+2026-04-12 15:24:57,727 INFO [6/60] pupa/slime_mold/seed=123 -> 48.6% (4305s)
+2026-04-12 15:26:06,057 INFO DONE   pupa/slime_mold/seed=456 (4373s) score=0.49477101845522903
+2026-04-12 15:26:06,058 INFO START  pupa/tournament/seed=1024
+2026-04-12 15:26:06,058 INFO [7/60] pupa/slime_mold/seed=456 -> 49.5% (4373s)
+2026-04-12 15:34:49,770 INFO DONE   pupa/slime_mold/seed=42 (4897s) score=0.4611661730082782
+2026-04-12 15:34:49,771 INFO START  pupa/best_of_k_K3/seed=42
+2026-04-12 15:34:49,771 INFO [8/60] pupa/slime_mold/seed=42 -> 46.1% (4897s)
+2026-04-12 15:39:33,078 INFO DONE   pupa/slime_mold/seed=789 (5180s) score=0.46124971519708363
+2026-04-12 15:39:33,078 INFO START  pupa/best_of_k_K3/seed=123
+2026-04-12 15:39:33,079 INFO [9/60] pupa/slime_mold/seed=789 -> 46.1% (5180s)
+2026-04-12 16:00:08,455 INFO DONE   pupa/slime_mold/seed=1024 (4508s) score=0.4358737753474596
+2026-04-12 16:00:08,456 INFO START  pupa/best_of_k_K3/seed=456
+2026-04-12 16:00:08,457 INFO [10/60] pupa/slime_mold/seed=1024 -> 43.6% (4508s)
+2026-04-12 16:00:09,151 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 17:16:03,344 INFO DONE   pupa/tournament/seed=123 (8916s) score=0.4713374344953292
+2026-04-12 17:16:03,345 INFO START  pupa/best_of_k_K3/seed=789
+2026-04-12 17:16:03,345 INFO [11/60] pupa/tournament/seed=123 -> 47.1% (8916s)
+2026-04-12 17:16:04,051 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-12 17:18:38,514 INFO DONE   pupa/tournament/seed=42 (9134s) score=0.5546479835953521
+2026-04-12 17:18:38,515 INFO START  pupa/best_of_k_K3/seed=1024
+2026-04-12 17:18:38,515 INFO [12/60] pupa/tournament/seed=42 -> 55.5% (9134s)
+2026-04-12 17:36:56,582 INFO DONE   pupa/tournament/seed=789 (7919s) score=0.5052175894281158
+2026-04-12 17:36:56,582 INFO START  pupa/contrastive_reflection/seed=42
+2026-04-12 17:36:56,583 INFO [13/60] pupa/tournament/seed=789 -> 50.5% (7919s)
+2026-04-12 17:38:30,621 INFO DONE   pupa/tournament/seed=456 (8430s) score=0.516053391053391
+2026-04-12 17:38:30,623 INFO START  pupa/contrastive_reflection/seed=123
+2026-04-12 17:38:30,624 INFO [14/60] pupa/tournament/seed=456 -> 51.6% (8430s)
+2026-04-12 17:43:20,187 INFO DONE   pupa/tournament/seed=1024 (8234s) score=0.510645933014354
+2026-04-12 17:43:20,188 INFO START  pupa/contrastive_reflection/seed=456
+2026-04-12 17:43:20,188 INFO [15/60] pupa/tournament/seed=1024 -> 51.1% (8234s)
