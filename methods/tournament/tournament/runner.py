@@ -223,6 +223,7 @@ def run_tournament(
     # 3. Seed prompt (canonical source)
     # =========================================================================
     seed_prompt = BENCHMARK_SEED_PROMPTS.get(benchmark, SEED_PROMPT)
+    seed_candidate = {"system_prompt": seed_prompt}
 
     # =========================================================================
     # 4. Budget
@@ -233,6 +234,19 @@ def run_tournament(
     console.print(f"  Benchmark: {benchmark}, Seed: {seed}")
     console.print(f"  Rollout budget: {budget}")
     console.print(f"  Target pool size: {pool_size}")
+
+    # Evaluate seed prompt on test and val sets BEFORE optimization
+    console.print(f"\n[bold]Evaluating seed prompt on test set ({len(testset)} examples)...[/bold]")
+    seed_test_eval = evaluate_on_test(benchmark, seed_candidate, testset, settings)
+    console.print(f"  Seed test score: {seed_test_eval.score:.4f}")
+    console.print(f"\n[bold]Evaluating seed prompt on val set ({len(data.val)} examples)...[/bold]")
+    seed_val_eval = evaluate_on_test(benchmark, seed_candidate, data.val, settings)
+    console.print(f"  Seed val score: {seed_val_eval.score:.4f}")
+    seed_prompt_test_score = seed_test_eval.score
+    seed_prompt_val_score = seed_val_eval.score
+
+    # Inject rollout=0 as the first trajectory point
+    collector.record_val_score(iteration=0, score=seed_prompt_val_score)
 
     # =========================================================================
     # 5. Generate candidate pool
@@ -346,6 +360,8 @@ def run_tournament(
         metrics=metrics_data,
         test_example_scores=test_eval.example_scores,
         test_example_ids=test_eval.example_ids,
+        seed_prompt_test_score=seed_prompt_test_score,
+        seed_prompt_val_score=seed_prompt_val_score,
     )
 
     mtagval = get_model_tag(settings)

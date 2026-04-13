@@ -285,6 +285,19 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
     seed_prompt = BENCHMARK_SEED_PROMPTS.get(config.benchmark, SEED_PROMPT)
     seed_candidate = {"system_prompt": seed_prompt}
 
+    # Evaluate seed prompt on test and val sets BEFORE optimization
+    console.print(f"\n[bold]Evaluating seed prompt on test set ({len(testset)} examples)...[/bold]")
+    seed_test_eval = evaluate_on_test(config.benchmark, seed_candidate, testset, settings)
+    console.print(f"  Seed test score: {seed_test_eval.score:.4f}")
+    console.print(f"\n[bold]Evaluating seed prompt on val set ({len(data.val)} examples)...[/bold]")
+    seed_val_eval = evaluate_on_test(config.benchmark, seed_candidate, data.val, settings)
+    console.print(f"  Seed val score: {seed_val_eval.score:.4f}")
+    seed_prompt_test_score = seed_test_eval.score
+    seed_prompt_val_score = seed_val_eval.score
+
+    # Inject rollout=0 as the first trajectory point
+    collector.record_val_score(iteration=0, score=seed_prompt_val_score)
+
     console.print(f"[bold]Running mutation: {config.mutation_name}[/bold]")
     console.print(f"  Benchmark: {config.benchmark}, Seed: {config.seed}")
     console.print(f"  Rollout budget: {max_metric_calls}")
@@ -371,6 +384,8 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
         all_candidates=result.candidates,
         test_example_scores=test_eval.example_scores,
         test_example_ids=test_eval.example_ids,
+        seed_prompt_test_score=seed_prompt_test_score,
+        seed_prompt_val_score=seed_prompt_val_score,
     )
 
     # 14. Save results (method= routes to mutation-specific directory)
