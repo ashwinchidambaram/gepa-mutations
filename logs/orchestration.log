@@ -20362,3 +20362,38 @@ RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: lite
 2026-04-12 23:55:53,121 INFO DONE   hotpotqa/tournament/seed=123 (1950s) score=0.63
 2026-04-12 23:55:53,121 INFO START  hotpotqa/gepa/seed=1024
 2026-04-12 23:55:53,122 INFO [94/112] hotpotqa/tournament/seed=123 -> 63.0% (1950s)
+2026-04-13 00:02:49,226 ERROR FAILED hotpotqa/tournament/seed=1024 (1755s): rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+2026-04-13 00:02:49,227 ERROR [94/94] hotpotqa/tournament/seed=1024 FAILED: rics/standalone_eval.py", line 38, in evaluate_prompt
+    eval_out = adapter.evaluate(batch, candidate, capture_traces=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251
+2026-04-13 00:02:49,919 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 00:02:49,945 INFO ⚠️ gepa-mutations complete · qwen3-14b
+⏱ 1h 41m
+
+██████████  94/94 (100%)
+92 failed
+
+Results (mean test score):
+  gepa                         —
+  best_of_k_K3                 —
+  contrastive_reflection       76.2%  (2 seeds)
+  failure_stratified_k_K3      —
+  synaptic_pruning             —
+  tournament                   —
+  slime_mold                   —
+  ant_colony                   —
+  active_minibatch             —
+  contrastive_synthesis        —
+  ecological_succession        —
+  modular                      —
+2026-04-13 00:02:50,620 INFO HTTP Request: POST https://api.telegram.org/bot8537062091:AAELThmGGbEKHCCzP0T2vfKjc0IWVwRBxSU/sendMessage "HTTP/1.1 200 OK"
+2026-04-13 00:03:35,087 INFO DONE   hotpotqa/active_minibatch/seed=1024 (6121s) score=0.7166666666666667
+2026-04-13 00:03:35,087 INFO START  hotpotqa/best_of_k_K3/seed=789
+2026-04-13 00:03:35,088 INFO [28/52] hotpotqa/active_minibatch/seed=1024 -> 71.7% (6121s)

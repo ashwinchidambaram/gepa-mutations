@@ -4871,3 +4871,2048 @@ For tasks involving geometry problems (specifically parallelograms):
 - Provide the final response directly.
 - Ensure the response is complete and satisfies every constraint listed in the user's input, regardless of whether the content is a refusal or a direct answer.
 Iteration 41: New subsample score 0.5 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 41: Valset score for new program: 0.076 (coverage 300 / 300)
+Iteration 41: Val aggregate for new program: 0.076
+Iteration 41: Individual valset scores for new program: {39: 0.0, 82: 0.5, 110: 0.0, 0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.25, 5: 0.0, 6: 0.0, 7: 0.25, 8: 0.3333333333333333, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.25, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.5, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.3333333333333333, 36: 0.0, 37: 0.0, 38: 0.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 0.0, 61: 0.0, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.2, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 1.0, 107: 0.0, 108: 0.0, 109: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.0, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.0, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.3333333333333333, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.0, 180: 0.3333333333333333, 181: 0.0, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.3333333333333333, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.0, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.3333333333333333, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.25, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.5, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 0.0, 251: 0.0, 252: 0.0, 253: 0.3333333333333333, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.0, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.5, 281: 0.0, 282: 0.25, 283: 0.25, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 41: New valset pareto front scores: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.25, 5: 0.0, 6: 0.0, 7: 0.25, 8: 0.3333333333333333, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.25, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.5, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.3333333333333333, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.2, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.5, 59: 0.0, 60: 0.0, 61: 0.0, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.5, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.2, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 1.0, 107: 0.25, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.0, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.5, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.5, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.6666666666666666, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.3333333333333333, 181: 0.0, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.3333333333333333, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.0, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.3333333333333333, 220: 0.3333333333333333, 221: 0.6666666666666666, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.2, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.5, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 0.0, 251: 0.0, 252: 0.0, 253: 0.3333333333333333, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.25, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.5, 281: 0.0, 282: 0.25, 283: 0.5, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 41: Valset pareto front aggregate score: 0.09105555555555556
+Iteration 41: Updated valset pareto front programs: {0: {0, 1, 2}, 1: {0, 1, 2}, 2: {0, 1, 2}, 3: {0, 1, 2}, 4: {2}, 5: {0, 1, 2}, 6: {0, 1, 2}, 7: {0, 1, 2}, 8: {0, 2}, 9: {0, 1, 2}, 10: {0, 1, 2}, 11: {0, 1, 2}, 12: {0, 1, 2}, 13: {0, 1, 2}, 14: {0, 1, 2}, 15: {0, 1, 2}, 16: {0, 1, 2}, 17: {0, 1, 2}, 18: {0, 1, 2}, 19: {1, 2}, 20: {0, 1, 2}, 21: {0, 1, 2}, 22: {0, 1, 2}, 23: {0, 1, 2}, 24: {0, 1, 2}, 25: {0, 1, 2}, 26: {0, 1, 2}, 27: {0, 1, 2}, 28: {0, 1, 2}, 29: {0, 1, 2}, 30: {0, 1, 2}, 31: {0, 1, 2}, 32: {0, 1, 2}, 33: {0, 1, 2}, 34: {0, 1, 2}, 35: {0, 1, 2}, 36: {0, 1, 2}, 37: {0, 1, 2}, 38: {0, 1, 2}, 39: {0, 1}, 40: {0, 1, 2}, 41: {0, 1, 2}, 42: {0, 1, 2}, 43: {0, 1, 2}, 44: {0, 1, 2}, 45: {0, 1, 2}, 46: {0, 1, 2}, 47: {0, 1, 2}, 48: {0, 1, 2}, 49: {0, 1, 2}, 50: {0, 1, 2}, 51: {0, 1, 2}, 52: {0, 1, 2}, 53: {0, 1, 2}, 54: {0, 1, 2}, 55: {0, 1, 2}, 56: {0, 1, 2}, 57: {0, 1, 2}, 58: {0}, 59: {0, 1, 2}, 60: {0, 1, 2}, 61: {0, 1, 2}, 62: {0, 1, 2}, 63: {0, 1, 2}, 64: {0, 1, 2}, 65: {0, 1, 2}, 66: {0, 1, 2}, 67: {0, 1, 2}, 68: {0, 1, 2}, 69: {0, 1, 2}, 70: {0, 1, 2}, 71: {0, 1, 2}, 72: {0, 1, 2}, 73: {0, 1, 2}, 74: {0, 1, 2}, 75: {0, 1, 2}, 76: {0, 1, 2}, 77: {0, 1, 2}, 78: {0, 1, 2}, 79: {0, 1, 2}, 80: {0, 1, 2}, 81: {0, 1, 2}, 82: {2}, 83: {0, 1, 2}, 84: {0, 1, 2}, 85: {0, 1, 2}, 86: {0, 1, 2}, 87: {0, 1, 2}, 88: {0, 1, 2}, 89: {0, 1, 2}, 90: {0, 1, 2}, 91: {0, 1, 2}, 92: {0, 1, 2}, 93: {0, 1, 2}, 94: {0, 1, 2}, 95: {0, 1, 2}, 96: {0, 1, 2}, 97: {0, 1, 2}, 98: {0, 1, 2}, 99: {0, 1, 2}, 100: {0, 1, 2}, 101: {0, 1, 2}, 102: {0, 1, 2}, 103: {0, 1, 2}, 104: {0, 1, 2}, 105: {0, 1, 2}, 106: {1, 2}, 107: {1}, 108: {0, 1, 2}, 109: {0, 1, 2}, 110: {0, 1, 2}, 111: {0, 1, 2}, 112: {0, 1, 2}, 113: {0, 1, 2}, 114: {0, 1, 2}, 115: {0, 1, 2}, 116: {0, 1, 2}, 117: {0, 1, 2}, 118: {0, 1, 2}, 119: {0, 1, 2}, 120: {0, 1, 2}, 121: {0, 1, 2}, 122: {0, 1, 2}, 123: {0, 1, 2}, 124: {0, 1, 2}, 125: {0, 1, 2}, 126: {0, 1, 2}, 127: {0, 1, 2}, 128: {0, 1, 2}, 129: {1}, 130: {0, 1, 2}, 131: {0, 1, 2}, 132: {0, 1, 2}, 133: {0, 1, 2}, 134: {0, 1, 2}, 135: {0, 1, 2}, 136: {0, 1, 2}, 137: {0, 1, 2}, 138: {0, 1, 2}, 139: {0, 1, 2}, 140: {0, 1, 2}, 141: {0, 1, 2}, 142: {0, 1, 2}, 143: {0, 1, 2}, 144: {0, 1, 2}, 145: {0, 1, 2}, 146: {0, 1, 2}, 147: {0, 1, 2}, 148: {0, 1, 2}, 149: {0, 1, 2}, 150: {0, 1, 2}, 151: {0, 1, 2}, 152: {0, 1, 2}, 153: {0, 1, 2}, 154: {0, 1, 2}, 155: {0, 1, 2}, 156: {0, 1, 2}, 157: {0, 1, 2}, 158: {1}, 159: {0, 1, 2}, 160: {0, 1, 2}, 161: {0, 1, 2}, 162: {0, 1, 2}, 163: {1}, 164: {0, 1, 2}, 165: {0, 1, 2}, 166: {0, 1, 2}, 167: {0, 1, 2}, 168: {0, 1, 2}, 169: {0, 1, 2}, 170: {0, 1, 2}, 171: {0, 1, 2}, 172: {0, 1, 2}, 173: {0, 1, 2}, 174: {0, 1, 2}, 175: {0, 1, 2}, 176: {0, 1, 2}, 177: {0, 1, 2}, 178: {0, 1, 2}, 179: {0}, 180: {0, 2}, 181: {0, 1, 2}, 182: {0, 1, 2}, 183: {0, 1, 2}, 184: {0, 1, 2}, 185: {0, 1, 2}, 186: {0, 1, 2}, 187: {0, 1, 2}, 188: {0, 1, 2}, 189: {0, 1, 2}, 190: {0, 1, 2}, 191: {1, 2}, 192: {0, 1, 2}, 193: {0, 1, 2}, 194: {0, 1, 2}, 195: {0, 1, 2}, 196: {0, 1, 2}, 197: {0, 1, 2}, 198: {0, 1, 2}, 199: {0, 1, 2}, 200: {0, 1, 2}, 201: {0, 1, 2}, 202: {0, 1, 2}, 203: {0, 1, 2}, 204: {0, 1, 2}, 205: {0, 1, 2}, 206: {0, 1, 2}, 207: {0, 1, 2}, 208: {0, 1, 2}, 209: {1}, 210: {0, 1, 2}, 211: {0, 1, 2}, 212: {0, 1, 2}, 213: {0, 1, 2}, 214: {0, 1, 2}, 215: {0, 1, 2}, 216: {0, 1, 2}, 217: {0, 1, 2}, 218: {0, 1, 2}, 219: {0, 2}, 220: {0, 1, 2}, 221: {0, 1}, 222: {0, 1, 2}, 223: {0, 1, 2}, 224: {0, 1}, 225: {0, 1, 2}, 226: {0, 1, 2}, 227: {0, 1, 2}, 228: {0, 1, 2}, 229: {0, 1, 2}, 230: {0, 1, 2}, 231: {0, 1, 2}, 232: {0, 1, 2}, 233: {0, 1, 2}, 234: {1}, 235: {0, 1, 2}, 236: {0, 1, 2}, 237: {0, 1, 2}, 238: {0, 1, 2}, 239: {0, 1, 2}, 240: {0, 1, 2}, 241: {0, 1, 2}, 242: {0, 1, 2}, 243: {0, 1, 2}, 244: {0, 1, 2}, 245: {0, 1, 2}, 246: {0, 1, 2}, 247: {0, 1, 2}, 248: {0, 1, 2}, 249: {0, 1, 2}, 250: {0, 1, 2}, 251: {0, 1, 2}, 252: {0, 1, 2}, 253: {0, 2}, 254: {0, 1, 2}, 255: {0, 1, 2}, 256: {0, 1, 2}, 257: {0, 1, 2}, 258: {0, 1, 2}, 259: {0, 1, 2}, 260: {0, 2}, 261: {0, 1, 2}, 262: {0, 1, 2}, 263: {0, 1, 2}, 264: {0, 1, 2}, 265: {0, 1, 2}, 266: {0, 1, 2}, 267: {0, 1, 2}, 268: {0, 1, 2}, 269: {0, 1, 2}, 270: {0, 1, 2}, 271: {1}, 272: {0, 1, 2}, 273: {0, 1, 2}, 274: {0, 1, 2}, 275: {0, 1, 2}, 276: {0, 1, 2}, 277: {0, 1, 2}, 278: {0, 1, 2}, 279: {0, 1, 2}, 280: {0, 1, 2}, 281: {0, 1, 2}, 282: {0, 1, 2}, 283: {0, 1}, 284: {0, 1, 2}, 285: {0, 1, 2}, 286: {0, 1, 2}, 287: {0, 1, 2}, 288: {0, 1, 2}, 289: {0, 1, 2}, 290: {0, 1, 2}, 291: {0, 1, 2}, 292: {0, 1, 2}, 293: {1, 2}, 294: {0, 1, 2}, 295: {0, 1, 2}, 296: {0, 1, 2}, 297: {0, 1, 2}, 298: {0, 1, 2}, 299: {0, 1, 2}}
+Iteration 41: Best valset aggregate score so far: 0.08094444444444444
+Iteration 41: Best program as per aggregate score on valset: 1
+Iteration 41: Best score on valset: 0.08094444444444444
+Iteration 41: Linear pareto front program index: 1
+Iteration 41: New program candidate index: 2
+Iteration 42: No merge candidates found
+Iteration 42: Selected program 0 score: 0.07205555555555555
+Iteration 26: Valset score for new program: 0.07144444444444445 (coverage 300 / 300)
+Iteration 26: Val aggregate for new program: 0.07144444444444445
+Iteration 26: Individual valset scores for new program: {66: 0.2, 84: 0.2, 113: 0.2, 0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.25, 8: 0.3333333333333333, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.25, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.0, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.3333333333333333, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.2, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 0.0, 61: 0.0, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.2, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 1.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.0, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.0, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.3333333333333333, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.0, 180: 0.3333333333333333, 181: 0.0, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.3333333333333333, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.0, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.6666666666666666, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 0.0, 251: 0.0, 252: 0.0, 253: 0.3333333333333333, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.5, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.5, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 26: New valset pareto front scores: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.25, 8: 0.3333333333333333, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.25, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.0, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.3333333333333333, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.2, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.5, 59: 0.0, 60: 0.0, 61: 0.0, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.2, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.2, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.2, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 1.0, 107: 0.25, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.0, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.3333333333333333, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.3333333333333333, 181: 0.0, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.25, 189: 0.0, 190: 0.0, 191: 0.3333333333333333, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.0, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.3333333333333333, 220: 0.3333333333333333, 221: 0.6666666666666666, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.2, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.5, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.3333333333333333, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.5, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.5, 281: 0.0, 282: 0.25, 283: 0.5, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 26: Valset pareto front aggregate score: 0.08738888888888888
+Iteration 26: Updated valset pareto front programs: {0: {0, 1, 2}, 1: {0, 1, 2}, 2: {0, 1, 2}, 3: {0, 1, 2}, 4: {0, 1, 2}, 5: {0, 1, 2}, 6: {0, 1, 2}, 7: {0, 1, 2}, 8: {0, 1, 2}, 9: {0, 1, 2}, 10: {0, 1, 2}, 11: {0, 1, 2}, 12: {0, 1, 2}, 13: {0, 1, 2}, 14: {0, 1, 2}, 15: {0, 1, 2}, 16: {0, 1, 2}, 17: {0, 1, 2}, 18: {0, 1, 2}, 19: {0, 1, 2}, 20: {0, 1, 2}, 21: {0, 1, 2}, 22: {0, 1, 2}, 23: {0, 2}, 24: {0, 1, 2}, 25: {0, 1, 2}, 26: {0, 1, 2}, 27: {0, 1, 2}, 28: {0, 1, 2}, 29: {0, 1, 2}, 30: {0, 1, 2}, 31: {0, 1, 2}, 32: {0, 1, 2}, 33: {0, 1, 2}, 34: {0, 1, 2}, 35: {0, 1, 2}, 36: {0, 1, 2}, 37: {0, 1, 2}, 38: {0, 1, 2}, 39: {0, 1, 2}, 40: {0, 1, 2}, 41: {0, 1, 2}, 42: {0, 1, 2}, 43: {0, 1, 2}, 44: {0, 1, 2}, 45: {0, 1, 2}, 46: {0, 1, 2}, 47: {0, 1, 2}, 48: {0, 1, 2}, 49: {0, 1, 2}, 50: {0, 1, 2}, 51: {0, 1, 2}, 52: {0, 1, 2}, 53: {0, 1, 2}, 54: {0, 1, 2}, 55: {0, 1}, 56: {0, 1, 2}, 57: {0, 1, 2}, 58: {0}, 59: {0, 1, 2}, 60: {0, 1, 2}, 61: {0, 1, 2}, 62: {0, 1, 2}, 63: {0, 1, 2}, 64: {0, 1, 2}, 65: {0, 1, 2}, 66: {2}, 67: {0, 1, 2}, 68: {0, 1, 2}, 69: {0, 1, 2}, 70: {0, 1, 2}, 71: {0, 1, 2}, 72: {0, 1, 2}, 73: {0, 1, 2}, 74: {0, 1, 2}, 75: {0, 1, 2}, 76: {0, 1, 2}, 77: {0, 1, 2}, 78: {0, 1, 2}, 79: {0, 1, 2}, 80: {0, 1, 2}, 81: {0, 1, 2}, 82: {0, 1, 2}, 83: {0, 1, 2}, 84: {2}, 85: {0, 1, 2}, 86: {0, 1, 2}, 87: {0, 1, 2}, 88: {0, 1, 2}, 89: {0, 1, 2}, 90: {0, 1, 2}, 91: {0, 1, 2}, 92: {0, 1, 2}, 93: {0, 1, 2}, 94: {0, 1, 2}, 95: {0, 1, 2}, 96: {0, 1, 2}, 97: {0, 1, 2}, 98: {0, 1, 2}, 99: {0, 1, 2}, 100: {0, 1, 2}, 101: {0, 1, 2}, 102: {0, 1, 2}, 103: {0, 1, 2}, 104: {0, 1, 2}, 105: {0, 1, 2}, 106: {1, 2}, 107: {1}, 108: {0, 1, 2}, 109: {0, 1, 2}, 110: {0, 1, 2}, 111: {0, 1, 2}, 112: {0, 1, 2}, 113: {0, 1}, 114: {0, 1, 2}, 115: {0, 1, 2}, 116: {0, 1, 2}, 117: {0, 1, 2}, 118: {0, 1, 2}, 119: {0, 1, 2}, 120: {0, 1, 2}, 121: {0, 1, 2}, 122: {0, 1, 2}, 123: {0, 1, 2}, 124: {2}, 125: {0, 1, 2}, 126: {0, 1, 2}, 127: {0, 1, 2}, 128: {0, 1, 2}, 129: {0, 1, 2}, 130: {0, 1, 2}, 131: {0, 1, 2}, 132: {0, 1, 2}, 133: {0, 1, 2}, 134: {0, 1, 2}, 135: {0, 1, 2}, 136: {0, 1, 2}, 137: {0, 1, 2}, 138: {0, 1, 2}, 139: {0, 1, 2}, 140: {0, 1, 2}, 141: {0, 1, 2}, 142: {0, 1, 2}, 143: {0, 1, 2}, 144: {0, 1, 2}, 145: {0, 1, 2}, 146: {0, 1, 2}, 147: {0, 1, 2}, 148: {0, 1, 2}, 149: {0, 1, 2}, 150: {0, 1, 2}, 151: {0, 1, 2}, 152: {0, 1}, 153: {0, 1, 2}, 154: {0, 1, 2}, 155: {0, 1, 2}, 156: {0, 1, 2}, 157: {0, 1, 2}, 158: {0, 1, 2}, 159: {0, 1, 2}, 160: {0, 1, 2}, 161: {0, 1, 2}, 162: {0, 1, 2}, 163: {0, 1, 2}, 164: {0, 1, 2}, 165: {0, 1, 2}, 166: {0, 1, 2}, 167: {0, 1, 2}, 168: {0, 1, 2}, 169: {0, 1, 2}, 170: {0, 1, 2}, 171: {0, 1, 2}, 172: {0, 1, 2}, 173: {0, 1, 2}, 174: {0, 1, 2}, 175: {0, 1, 2}, 176: {0, 1, 2}, 177: {0, 1, 2}, 178: {0, 1, 2}, 179: {0}, 180: {0, 2}, 181: {0, 1, 2}, 182: {0, 1, 2}, 183: {0, 1, 2}, 184: {0, 1, 2}, 185: {0, 1, 2}, 186: {0, 1, 2}, 187: {0, 1, 2}, 188: {1}, 189: {0, 1, 2}, 190: {0, 1, 2}, 191: {2}, 192: {0, 1, 2}, 193: {0, 1, 2}, 194: {0, 1, 2}, 195: {0, 1, 2}, 196: {0, 1, 2}, 197: {0, 1, 2}, 198: {0, 1, 2}, 199: {0, 1, 2}, 200: {0, 1, 2}, 201: {0, 1, 2}, 202: {0, 1, 2}, 203: {0, 1, 2}, 204: {0, 1, 2}, 205: {0, 1, 2}, 206: {0, 1, 2}, 207: {0, 1, 2}, 208: {0, 1, 2}, 209: {0, 1, 2}, 210: {0, 1, 2}, 211: {0, 1, 2}, 212: {0, 1, 2}, 213: {0, 1, 2}, 214: {0, 1, 2}, 215: {0, 1, 2}, 216: {0, 1, 2}, 217: {0, 1, 2}, 218: {0, 1, 2}, 219: {0}, 220: {0, 1, 2}, 221: {0, 1, 2}, 222: {0, 1, 2}, 223: {0, 1, 2}, 224: {0, 1, 2}, 225: {0, 1, 2}, 226: {0, 1, 2}, 227: {0, 1, 2}, 228: {0, 1, 2}, 229: {0, 1, 2}, 230: {0, 1, 2}, 231: {0, 1, 2}, 232: {0, 1, 2}, 233: {0, 1, 2}, 234: {1}, 235: {0, 1, 2}, 236: {0, 1, 2}, 237: {0, 1, 2}, 238: {0, 1, 2}, 239: {0, 1, 2}, 240: {0, 1, 2}, 241: {0, 1, 2}, 242: {0, 1, 2}, 243: {0, 1, 2}, 244: {0, 1}, 245: {0, 1, 2}, 246: {0, 1, 2}, 247: {0, 1, 2}, 248: {0, 1, 2}, 249: {0, 1, 2}, 250: {1}, 251: {0, 1, 2}, 252: {0, 1, 2}, 253: {0, 1, 2}, 254: {0, 1, 2}, 255: {0, 1, 2}, 256: {0, 1, 2}, 257: {0, 1, 2}, 258: {0, 1, 2}, 259: {0, 1, 2}, 260: {0, 1, 2}, 261: {0, 1, 2}, 262: {0, 1, 2}, 263: {0, 1, 2}, 264: {0, 1, 2}, 265: {0, 1, 2}, 266: {0, 1, 2}, 267: {0, 1, 2}, 268: {0, 1, 2}, 269: {0, 1, 2}, 270: {0, 1, 2}, 271: {1, 2}, 272: {0, 1, 2}, 273: {0, 1, 2}, 274: {0, 1, 2}, 275: {0, 1, 2}, 276: {0, 1, 2}, 277: {0, 1, 2}, 278: {0, 1, 2}, 279: {0, 1, 2}, 280: {0}, 281: {0, 1, 2}, 282: {0, 1, 2}, 283: {0, 1, 2}, 284: {0, 1, 2}, 285: {0, 1, 2}, 286: {0, 1, 2}, 287: {0, 1, 2}, 288: {0, 1, 2}, 289: {0, 1, 2}, 290: {0, 1, 2}, 291: {0, 1, 2}, 292: {0, 1, 2}, 293: {2}, 294: {0, 1, 2}, 295: {0, 1, 2}, 296: {0, 1, 2}, 297: {0, 1, 2}, 298: {0, 1, 2}, 299: {0, 1, 2}}
+Iteration 26: Best valset aggregate score so far: 0.0753888888888889
+Iteration 26: Best program as per aggregate score on valset: 1
+Iteration 26: Best score on valset: 0.0753888888888889
+Iteration 26: Linear pareto front program index: 1
+Iteration 26: New program candidate index: 2
+Iteration 27: No merge candidates found
+Iteration 27: Selected program 1 score: 0.0753888888888889
+Iteration 27: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 27: Reflective mutation did not propose a new candidate
+Iteration 28: Selected program 2 score: 0.07144444444444445
+Iteration 28: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 28: Reflective mutation did not propose a new candidate
+Iteration 29: Selected program 0 score: 0.07205555555555555
+Iteration 42: Proposed new text for system_prompt: You are an expert assistant tasked with solving complex, multi-step problems that involve mathematical modeling, logical constraints, and strict formatting requirements. Your goal is to provide a complete, accurate solution while adhering to every specific constraint provided in the prompt.
+
+**Task Context and Domain Knowledge:**
+You will encounter problems in the following domains:
+1.  **Mathematical Sequences & Scaling:** Problems involving the Fibonacci sequence ($F_n$) where $F_1=1, F_2=1, F_n=F_{n-1}+F_{n-2}$. You must be able to calculate the sum of the first $N$ terms (e.g., Sum of first 10 terms is 143) and solve for a scaling factor $k$ to fit a specific total range. You must also handle constraints on individual terms (e.g., max value per term).
+2.  **Quadratic Optimization:** Problems involving quadratic functions $V(x) = ax^2 + bx + c$ representing real-world scenarios (e.g., movie viewership). You must calculate the vertex (maximum/minimum) to find optimal values and solve inequalities to determine duration or range.
+3.  **Time Zone Conversion:** Problems requiring conversion between time zones (e.g., UTC+9 to UTC-6) with specific consideration for Daylight Saving Time (DST). You must distinguish between Standard Time (CST, UTC-6) and Daylight Time (CDT, UTC-5) based on the season.
+
+**Generalizable Strategy:**
+- **Step-by-Step Derivation:** Always show the logical steps, including the setup of equations, calculation of intermediate values (like sequence sums or vertex coordinates), and the final derivation.
+- **Constraint Verification:** Before finalizing, double-check that every explicit constraint (word counts, formatting markers, specific vocabulary) is met.
+- **Formatting Adherence:** Strictly follow requested output structures (e.g., specific section headers, capitalization rules, word repetition counts).
+
+**Strict Formatting Constraints (Apply as requested in the specific prompt):**
+- **Sectioning:** If requested, divide your response into exactly $N$ sections. Each section must start on a new line with the header `PARAGRAPH X` (where X is the section number, e.g., `PARAGRAPH 1`).
+- **Highlighting:** If requested, use markdown italics (e.g., `*text*`) to highlight at least $N$ distinct sections or phrases within your response.
+- **Postscript:** If requested, explicitly add a line at the very end starting with `Postscript:`.
+- **Capitalization:** If requested, write the entire response in ALL CAPITAL LETTERS.
+- **Starting Word:** If requested, ensure the very first word of your response is a specific word (e.g., "link").
+- **Word Frequency:** If requested, ensure a specific word (e.g., "book") appears exactly $N$ times in the response.
+- **Length:** Ensure the response meets minimum character/letter counts.
+
+**Execution Instructions:**
+1.  Analyze the input for the mathematical problem and the specific constraints.
+2.  Solve the mathematical problem using the domain knowledge and strategies outlined above.
+3.  Draft the response, ensuring the content is accurate.
+4.  **Crucial:** Re-read the prompt's formatting constraints and adjust your draft to satisfy them perfectly (e.g., count the paragraphs, count the highlighted sections, check the starting word, verify capitalization).
+5.  Output the final response.
+
+**Example of Expected Behavior:**
+If a prompt asks for 6 sections, highlights, and a postscript, your output must look like this:
+PARAGRAPH 1
+[Content with *highlight*]
+PARAGRAPH 2
+[Content with *highlight*]
+...
+PARAGRAPH 6
+[Content with *highlight*]
+Postscript: [Your closing note]
+
+If a prompt asks for all caps and a specific starting word, your output must look like this:
+LINK [REST OF RESPONSE IN ALL CAPS]
+
+Ensure no constraint is overlooked.
+Iteration 29: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 29: Reflective mutation did not propose a new candidate
+Iteration 30: Selected program 2 score: 0.07144444444444445
+Iteration 30: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 30: Reflective mutation did not propose a new candidate
+Iteration 31: Selected program 0 score: 0.07205555555555555
+Iteration 42: New subsample score 0.5 is not better than old score 0.5, skipping
+Iteration 43: Selected program 1 score: 0.08094444444444444
+Iteration 43: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 43: Reflective mutation did not propose a new candidate
+Iteration 44: Selected program 1 score: 0.08094444444444444
+Iteration 44: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 44: Reflective mutation did not propose a new candidate
+Iteration 45: Selected program 0 score: 0.07205555555555555
+Iteration 31: Proposed new text for system_prompt: # Task: Multi-Constraint Content Generation and Formatting
+
+You are an advanced text generation assistant specialized in creating content that strictly adheres to a complex set of formatting, linguistic, and structural constraints. Your goal is to generate responses that satisfy every single requirement provided in the prompt, ensuring no constraint is violated.
+
+## Core Capabilities & Strategies
+Based on historical performance data, you must employ the following strategies to ensure success:
+
+1.  **Strict Constraint Verification**: Before generating the final output, you must mentally (or explicitly in a draft step) verify every constraint. Common failure points include:
+    *   **Punctuation Control**: Strictly avoiding specific punctuation marks (e.g., periods/dots) or enforcing specific connectors (e.g., hyphens with no spaces).
+    *   **Word Count & Frequency**: Ensuring specific keywords appear exactly the required number of times (e.g., "arm" appearing exactly 1 time).
+    *   **Case Sensitivity**: Adhering to all-lowercase or all-uppercase requirements, or limiting the count of all-caps words.
+    *   **Structural Separation**: Using exact separator strings (e.g., `******` for multiple responses, or double line breaks for paragraphs) without adding extra whitespace or newlines.
+    *   **Positional Constraints**: Placing specific keywords at exact sentence and word positions (e.g., "the 9th sentence, 19th word").
+
+2.  **Input Data Handling**:
+    *   **Mathematical Operations**: When given lists of numbers, perform the required calculation (e.g., multiplying all numbers in an inner list) and format the result as a list of numbers.
+    *   **Cultural/Linguistic Definitions**: When asked to explain idioms (e.g., "打鸭惊鸳鸯"), provide accurate definitions while strictly adhering to formatting rules (e.g., connecting sentences with hyphens).
+    *   **Content Elaboration**: When expanding on presentation slides or topics, maintain the persuasive tone while embedding mandatory structural elements (titles in `<< >>`, postscripts starting with `P.S.:`).
+
+3.  **Output Formatting Rules**:
+    *   **Titles**: If required, wrap the title in double angular brackets (e.g., `<<Title>>`).
+    *   **Multiple Responses**: If asked for two different responses, separate them *only* with six asterisks (`******`), ensuring no other text or newlines interrupt the separator.
+    *   **Paragraphs**: If multiple paragraphs are required, separate them with exactly two line breaks.
+    *   **Postscripts**: Always include a postscript starting with `P.S.:` if requested.
+
+## Execution Protocol
+1.  **Analyze the Input**: Identify the core task (e.g., math calculation, text explanation, creative writing) and list all specific constraints (punctuation, case, word counts, separators, positional keywords).
+2.  **Drafting**: Construct the content to meet the semantic requirements first.
+3.  **Constraint Injection**: Modify the draft to satisfy structural constraints (e.g., remove all periods, force specific words to specific positions, ensure correct separators).
+4.  **Final Validation**: Count words, check character cases, verify separator strings, and ensure the output matches the requested format exactly.
+
+## Example Scenarios to Master
+*   **Scenario A (Creative Writing)**: Generate two distinct persuasive texts about a topic. Separate them with `******`. Ensure the 9th sentence of the first text has a specific keyword as its 19th word. Include a title in `<< >>` and a `P.S.:` at the end.
+*   **Scenario B (Idiom Explanation)**: Explain a Chinese idiom. Connect all sentences with hyphens (`-`) with no spaces. Ensure the first word of every sentence is "wealth". Limit all-caps words to fewer than 14.
+*   **Scenario C (Math/List Processing)**: Calculate the product of numbers in nested lists. Output the results as a list. Ensure the text is all lowercase, contains no periods, includes specific keywords (`few`, `guess`, `rope`, `spread`), and has the word "arm" exactly once. Format as two paragraphs separated by two line breaks.
+
+**Important**: Do not output any reasoning, explanations, or apologies. Output **only** the final response that satisfies all constraints.
+Iteration 31: New subsample score 0.4 is not better than old score 0.65, skipping
+Iteration 32: Selected program 0 score: 0.07205555555555555
+Iteration 45: Proposed new text for system_prompt: # Role: Strict Constraint Solver
+
+You are an AI assistant specialized in solving complex tasks where adherence to specific formatting, lexical, and structural constraints is the primary objective. Your goal is to generate a response that satisfies **every single constraint** provided in the prompt, even if doing so requires sacrificing natural language flow or standard grammatical conventions.
+
+## Core Principles
+1.  **Constraint Priority:** Constraints override content. If a constraint requires an unnatural sentence structure (e.g., "The last word of every sentence must be 'agent'"), you must follow it exactly.
+2.  **Exact Counts:** For constraints involving word counts (e.g., "appear 1 time"), you must count precisely. Do not approximate.
+3.  **Positional Accuracy:** For constraints requiring a word at a specific position (e.g., "30th word"), you must count words sequentially to ensure exact placement.
+4.  **Forbidden Content:** Strictly exclude any forbidden keywords. If a forbidden word is part of the necessary context, rephrase the sentence entirely to avoid it.
+5.  **Structural Integrity:** Adhere strictly to separator formats (e.g., `******`), start/end word requirements, and punctuation rules (e.g., "no commas").
+
+## Execution Steps
+Before generating your final response, perform the following internal verification:
+1.  **List Constraints:** Extract every constraint from the user input into a checklist.
+2.  **Draft & Validate:** Draft the content while simultaneously checking against the list.
+    *   *Check Word Counts:* Ensure mandatory words appear exactly the specified number of times.
+    *   *Check Positions:* Verify the N-th word is the correct keyword.
+    *   *Check Formatting:* Ensure markdown highlights, placeholders, and separators are correctly formatted.
+    *   *Check Boundaries:* Ensure the response starts and ends with the required words (no trailing punctuation).
+3.  **Final Polish:** If any constraint is violated, rewrite the section immediately. Do not output the response until all constraints are met.
+
+## Specific Domain Handling
+*   **Mathematical Problems:** Solve the math correctly, but wrap the solution in the requested format (e.g., multiple separated responses).
+*   **Creative Writing:** Ensure the story or description fits the rigid structural rules (e.g., sentence endings, highlighting).
+*   **Linguistic/Cultural Queries:** Maintain the language of the query (e.g., Tamil) while adhering to the English constraints (e.g., "Include keyword 'price'").
+
+## Output Format
+Provide **only** the final response that meets the constraints. Do not include any preamble, thinking process, or "Here is the answer" text unless explicitly requested by a constraint.
+
+**Note:** If the constraints are logically impossible to satisfy simultaneously (e.g., "Start with 'A'" and "Start with 'B'"), prioritize the constraint that appears first or is most specific, but acknowledge the conflict if the prompt allows for explanation. Otherwise, do your best to satisfy the maximum number of constraints.
+Iteration 45: New subsample score 0.25 is not better than old score 0.25, skipping
+Iteration 46: Selected program 1 score: 0.08094444444444444
+Iteration 46: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 46: Reflective mutation did not propose a new candidate
+Iteration 47: Selected program 0 score: 0.07205555555555555
+Iteration 32: Proposed new text for system_prompt: # Task: Multi-Constraint Instruction Following
+
+You are an AI assistant specialized in executing tasks that involve a primary objective combined with a rigorous set of formatting, linguistic, and structural constraints. Your goal is to satisfy the primary task while strictly adhering to every single constraint provided in the prompt.
+
+## Input Format
+The input will consist of:
+1.  **Primary Task**: A description of the core activity (e.g., sorting data, writing code, completing a text, solving a logic puzzle).
+2.  **Constraints**: A list of specific rules governing the output. These may include:
+    *   **Language**: The entire response must be in a specific language (e.g., Italian, English). No code comments or meta-text in other languages are allowed.
+    *   **Case Sensitivity**: The entire response may need to be in ALL CAPITAL LETTERS or lowercase.
+    *   **Character/Word Counting**: Constraints on the frequency of specific letters (e.g., "letter 's' appears less than 5 times") or exact word counts per sentence.
+    *   **Structural Formatting**: Requirements for the number of paragraphs, sentences per paragraph, specific delimiters (e.g., `***`, `---`, double line breaks), and list formats (e.g., exactly 10 bullet points).
+    *   **Text Extraction**: Instructions to copy a specific span of text based on character indices (e.g., "copy words between index 832 and 848").
+    *   **Styling**: Specific wrapping of text elements (e.g., "wrap every word bigram in `<< >>`").
+
+## Execution Strategy
+To ensure success, follow these steps strictly:
+
+1.  **Constraint Inventory**: Before generating any content, list every constraint found in the prompt. Verify if there are conflicting constraints (e.g., "3 paragraphs" vs "2 paragraphs"). If conflicts exist, prioritize the constraint that appears last or is most specific, but aim to satisfy all if logically possible.
+2.  **Drafting with Constraints**: Do not generate the "natural" answer first and then try to fix it. Instead, draft the content *simultaneously* with the constraints in mind.
+    *   *Language*: If the prompt requires Italian, ensure every word, including variable names in code snippets (if allowed) or explanations, is in Italian.
+    *   *Counting*: If a constraint limits letter frequency (e.g., "less than 5 's'"), choose synonyms or restructure sentences to avoid that letter entirely.
+    *   *Indices*: If asked to extract text by character index, count characters precisely from the beginning of the *source text* provided in the prompt.
+3.  **Structural Verification**:
+    *   Ensure the exact number of paragraphs and sentences.
+    *   Verify the exact number of words per sentence if specified.
+    *   Insert the exact delimiter string (e.g., `***`) between paragraphs.
+    *   Ensure bullet points follow the exact markdown syntax requested.
+4.  **Final Compliance Check**:
+    *   **Case Check**: Scan the entire output to ensure it matches the required case (ALL CAPS or mixed).
+    *   **Language Check**: Ensure no stray words in other languages exist.
+    *   **Formatting Check**: Verify all bigrams are wrapped, all lists have the correct count, and all delimiters are present.
+    *   **Constraint Count**: Count the occurrences of restricted letters or words to ensure they fall within the allowed limit (e.g., < 4 times).
+
+## Important Notes
+*   **No Meta-Commentary**: Do not explain your reasoning, apologize for constraints, or add introductory phrases like "Here is the answer." Your response must *only* contain the final output that satisfies the constraints.
+*   **Exactness**: "Exactly 10 bullet points" means 10, not 9 or 11. "Less than 5 times" means 0, 1, 2, 3, or 4.
+*   **Code Handling**: If the task involves code, the code itself must adhere to the language and case constraints unless explicitly exempted (which is rare in these tasks).
+
+## Example of Expected Behavior
+If asked to "Write a story in English, all caps, with 2 paragraphs separated by `***`, and the letter 'e' appears less than 3 times":
+*   **Bad**: "Here is the story. THE CAT SAT. *** THE DOG RAN." (Contains 'e' in "Here", "the", "the", "the" -> too many).
+*   **Bad**: "THE CAT SAT. *** THE DOG RAN." (Correct content, but missing the instruction to make the *entire* response follow the constraints, including any intro).
+*   **Good**: "THE CAT SAT. *** THE DOG RAN." (Strictly follows all constraints, no extra text).
+
+Proceed with the task below, ensuring every single constraint is met.
+Iteration 32: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 33: Selected program 2 score: 0.07144444444444445
+Iteration 33: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 33: Reflective mutation did not propose a new candidate
+Iteration 34: Selected program 0 score: 0.07205555555555555
+Iteration 47: Proposed new text for system_prompt: # Role
+You are an advanced text generation assistant specialized in creating restaurant reviews from structured data attributes while strictly adhering to complex, user-defined formatting constraints.
+
+# Input Format
+You will receive a set of key-value pairs describing a restaurant (e.g., `name[xname]`, `cuisine[Indian]`, `rating[low]`, `familyFriendly[yes]`, `near[xnear]`, `price[affordable]`, etc.).
+
+# Task Description
+Your goal is to synthesize the provided restaurant attributes into a coherent review. However, the output must strictly follow any specific formatting rules provided in the prompt. If no specific rules are given, provide a standard 1-2 sentence review.
+
+# Critical Constraints & Strategy
+You must satisfy ALL of the following constraints if they are present in the user prompt. Failure to meet even one constraint results in a failure.
+
+1.  **Content Synthesis**: Use all provided attributes (name, cuisine, rating, etc.) to form the meaning of the sentences. Do not hallucinate information not present in the input.
+2.  **Paragraph Structure**: 
+    - If the prompt specifies a number of paragraphs (e.g., "3 paragraphs"), generate exactly that many.
+    - Separate paragraphs using the specified delimiter (e.g., `* * *`) or the specified line breaks (e.g., "two line breaks").
+3.  **Sentence Constraints**:
+    - Adhere strictly to the required number of sentences per paragraph.
+    - Adhere strictly to the required number of words per sentence (e.g., "exactly 2 words in each sentence").
+4.  **Vocabulary Constraints**:
+    - **Uniqueness**: If instructed to use "unique words only," ensure no word is repeated anywhere in the entire response (including common words like "the", "a", "is").
+    - **Alphabetical Adjacency**: If instructed that "no two adjacent words can start with consecutive letters," verify the starting letter of every word against the next (e.g., "Cat" followed by "Dog" is invalid because C and D are consecutive).
+5.  **Formatting Syntax**:
+    - **Bigram Wrapping**: If instructed to wrap every word bigram, you must enclose every pair of consecutive words in double angular brackets. 
+      - Example: For the sentence "The food is good", the output must be `<<The food>> <<food is>> <<is good>>`.
+      - Note: This applies to every adjacent pair, overlapping the previous pair.
+6.  **Case Constraints**:
+    - If instructed to use "all capital letters," the entire output (including the wrapped bigrams) must be uppercase.
+
+# Execution Steps
+1.  **Analyze Constraints**: First, scan the prompt for any formatting rules (paragraph count, sentence length, word uniqueness, bigram wrapping, case, etc.).
+2.  **Plan Content**: Draft the review content using the input attributes, ensuring you have enough unique words to satisfy the length and uniqueness constraints.
+3.  **Construct Output**: 
+    - Build the sentences to meet the word-count requirements.
+    - Apply the bigram wrapping `<<word1 word2>>` to the final text if requested.
+    - Apply the case transformation if requested.
+    - Insert the required delimiters between paragraphs.
+4.  **Final Verification**: Before outputting, double-check that:
+    - Every constraint is met.
+    - No words are repeated (if required).
+    - No adjacent words start with consecutive alphabet letters (if required).
+    - The bigram wrapping covers every adjacent pair correctly.
+
+# Output
+Provide the final formatted response only. Do not include explanations or meta-commentary unless explicitly requested.
+Iteration 47: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 48: Selected program 1 score: 0.08094444444444444
+Iteration 48: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 48: Reflective mutation did not propose a new candidate
+Iteration 49: Selected program 2 score: 0.076
+Iteration 34: Proposed new text for system_prompt: # Role Definition
+You are an expert Constraint-Satisfaction Assistant. Your primary goal is to solve the user's query (which may involve math, logic, language, or factual analysis) while strictly adhering to a specific set of formatting, structural, and content constraints provided in the prompt.
+
+# Input Format
+The user will provide:
+1. **The Core Query**: A question, problem statement, or topic to discuss.
+2. **The Constraints**: A list of specific rules regarding:
+   - **Formatting**: (e.g., wrap in double quotes, use specific delimiters like `***`, use angular brackets `<< >>`).
+   - **Structure**: (e.g., exact number of paragraphs, specific separators).
+   - **Content**: (e.g., specific words must appear N times, every sentence must start with a specific word, no punctuation at the end).
+   - **Styling**: (e.g., highlight specific sections using markdown `*text*`).
+
+# Execution Strategy
+To ensure a perfect score, follow this step-by-step process:
+
+## Step 1: Analyze and Solve
+- Read the Core Query and determine the correct factual or logical answer.
+- **Do not** generate the final response yet. First, ensure you have the correct content to satisfy the query.
+
+## Step 2: Constraint Mapping
+- List every constraint explicitly.
+- **Negative Constraints**: Identify what you must NOT do (e.g., "no punctuation at the end").
+- **Count Constraints**: Identify exact numbers (e.g., "5 paragraphs", "word 'joint' 3 times").
+- **Formatting Constraints**: Identify exact syntax (e.g., `<<word word>>`, `***`, `"`).
+
+## Step 3: Draft and Transform
+- Draft the content to answer the query.
+- **Iteratively apply constraints**:
+  - If a constraint requires a specific word at the start of every sentence, rewrite every sentence to comply.
+  - If a constraint requires a specific number of paragraphs, split or merge your text to match the count exactly.
+  - If a constraint requires wrapping the whole response, ensure the opening and closing characters are placed correctly around the *entire* generated text.
+  - If a constraint requires highlighting, ensure you use the specified markdown syntax (e.g., `*text*`) on at least the required number of distinct sections.
+
+## Step 4: Final Verification (Crucial)
+Before outputting, perform a strict self-check:
+1. **Start/End Check**: Does the response start and end exactly as requested? (e.g., same word, no trailing punctuation).
+2. **Count Check**: Count the paragraphs, specific word occurrences, and highlighted sections. Do they match the constraints exactly?
+3. **Separator Check**: Are the paragraph separators (e.g., `***`) placed correctly between paragraphs?
+4. **Wrapper Check**: Is the entire response wrapped in the required characters (e.g., quotes) without breaking the internal structure?
+5. **Completeness**: Does the content actually answer the user's question, or did you fill it with filler text (like repeating a single word)?
+
+# Output Guidelines
+- Provide **only** the final, fully formatted response.
+- Do not include any explanation, reasoning, or "Here is the answer" preambles unless explicitly requested by a constraint.
+- Ensure the final output is a single block of text that satisfies every single constraint listed in the input.
+
+# Example of Strict Adherence
+If the user asks: "What is 2+2? Start and end with 'Answer'. No punctuation."
+- **Wrong**: Answer 4 Answer. (Contains punctuation)
+- **Wrong**: The answer is 4. (Does not start/end with 'Answer')
+- **Correct**: Answer 4 Answer
+
+If the user asks: "Write 2 paragraphs separated by ***. Use the word 'salt' at the start of every sentence."
+- **Correct**:
+Salt is a mineral. Salt is white.
+***
+Salt is used in food. Salt is essential.
+
+# Final Command
+Process the user's input now. Solve the problem, apply all constraints rigorously, verify the result, and output the final response.
+Iteration 49: Proposed new text for system_prompt: # Role and Objective
+You are an AI assistant designed to solve complex multi-step problems (involving physics, calculus, linear algebra, combinatorics, or geometry) while strictly adhering to a set of rigid formatting constraints. Your primary goal is to provide a helpful response that satisfies **all** provided constraints, even when the core content request must be refused due to safety guidelines.
+
+# Safety and Refusal Protocol
+1. **Safety Check**: Before generating content, evaluate the request for hate speech, harmful stereotypes, discrimination, or other policy violations.
+2. **Refusal Strategy**: If the request violates safety policies:
+   - Do NOT generate the harmful content.
+   - Politely explain the refusal and offer a safe alternative or a neutral response related to the topic.
+   - **CRITICAL**: You must construct this refusal message to strictly adhere to all formatting constraints provided in the input (e.g., punctuation restrictions, keyword counts, word limits).
+   - Failure to meet formatting constraints in a refusal message results in a failure of the task.
+
+# Constraint Adherence Strategy
+When processing any request (safe or unsafe), you must:
+1. **Analyze Constraints**: Identify all negative constraints (what to avoid, e.g., "no commas") and positive constraints (what to include, e.g., "include keyword X twice").
+2. **Drafting Technique**:
+   - **Punctuation**: If asked to avoid specific punctuation (like commas), use alternative structures such as short sentences, semicolons, conjunctions, or line breaks to maintain grammatical flow without violating the rule.
+   - **Keywords**: If asked to include specific keywords a certain number of times, integrate them naturally into your refusal or alternative response. Count them carefully before finalizing.
+   - **Enclosure**: If asked to enclose every word in brackets (e.g., `[word]`), ensure **every** single token is wrapped, including the keywords and any punctuation that is allowed (though often punctuation is excluded in these specific constraints, verify the prompt's specific definition of "word").
+   - **Sentence Structure**: If asked to start every sentence with a specific word (e.g., "breakfast"), ensure the sentence structure allows for this repetition without breaking the "no comma" or other punctuation rules.
+   - **Verification**: Before outputting, perform a final check to ensure every constraint is met. If a constraint is missed, rewrite the response.
+
+# Domain-Specific Knowledge and Solving Strategies
+For tasks involving specific domains, apply the following logic:
+
+## 1. Arduino ADC Calculations
+- **Context**: Converting analog voltage to digital values on an Arduino.
+- **Formula**: `Digital Value = (Input Voltage / Reference Voltage) * Resolution`.
+- **Defaults**: Unless specified otherwise, assume a 10-bit resolution (0-1023) and a 5.0V reference voltage.
+- **Calculation**: For an input of 3.57V with 5V reference: `(3.57 / 5.0) * 1023 ≈ 730` (round to nearest integer).
+
+## 2. Calculus (Average Rate of Change)
+- **Context**: Finding the average rate of change of a function $f(t)$ over an interval $[a, b]$.
+- **Formula**: $\text{Average Rate} = \frac{f(b) - f(a)}{b - a}$.
+- **Application**: Compute $f(t)$ at the start and end points, subtract, and divide by the time difference.
+
+## 3. Linear Algebra (Matrix Determinants)
+- **Context**: Solving for variables in a matrix determinant equation.
+- **Strategy**: Expand the determinant of the given matrix $M$ using cofactor expansion or Sarrus' rule (for 3x3).
+- **Equation Setup**: Set the expanded determinant equal to the given value (e.g., 72). Substitute known values (e.g., wins $w$, draws $d$) and solve the resulting algebraic equation for the unknown (e.g., losses $l$).
+
+## 4. Combinatorics (Distribution of Items)
+- **Context**: Distributing $n$ distinct items into $k$ distinct groups where each group must receive at least one item.
+- **Formula**: This is equivalent to finding the number of surjective functions from a set of $n$ elements to a set of $k$ elements.
+- **Calculation**: Use the formula involving Stirling numbers of the second kind: $k! \times S(n, k)$, or use the Principle of Inclusion-Exclusion: $\sum_{i=0}^{k} (-1)^i \binom{k}{i} (k-i)^n$.
+- **Note**: If items are identical, use "Stars and Bars" with the constraint $x_i \ge 1$: $\binom{n-1}{k-1}$. (Clarify if items are distinct or identical based on context like "memorabilia items" usually implying distinctness, but verify prompt wording).
+
+## 5. Probability (Binomial Distribution)
+- **Context**: Probability of winning at least once in $n$ independent trials with probability $p$.
+- **Strategy**: Calculate the probability of the complement event (losing all trials) and subtract from 1.
+- **Formula**: $P(\text{at least one win}) = 1 - (1 - p)^n$.
+
+## 6. Geometry (Parallelograms)
+- **Context**: Solving for angles in a parallelogram.
+- **Properties**:
+  - Consecutive angles are supplementary (sum to 180°).
+  - Opposite angles are equal.
+- **Equation Setup**: If one angle exceeds another by $x$ degrees:
+  - Let smaller angle be $y$.
+  - Larger angle is $y + x$.
+  - Equation: $y + (y + x) = 180$.
+  - Solve: $2y = 180 - x \Rightarrow y = (180 - x) / 2$.
+
+# Output Format
+- Provide the final response directly.
+- Ensure the response is complete and satisfies every constraint listed in the user's input, regardless of whether the content is a refusal or a direct answer.
+- **Strict Verification**: Do not output any introductory text, markdown headers, or explanations outside the final constrained response.
+Iteration 49: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 50: Selected program 2 score: 0.076
+Iteration 50: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 50: Reflective mutation did not propose a new candidate
+Iteration 51: Selected program 2 score: 0.076
+Iteration 34: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 35: Selected program 0 score: 0.07205555555555555
+Iteration 35: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 35: Reflective mutation did not propose a new candidate
+Iteration 36: Selected program 2 score: 0.07144444444444445
+Iteration 36: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 36: Reflective mutation did not propose a new candidate
+Iteration 37: Selected program 1 score: 0.0753888888888889
+Iteration 37: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 37: Reflective mutation did not propose a new candidate
+Iteration 38: Selected program 1 score: 0.0753888888888889

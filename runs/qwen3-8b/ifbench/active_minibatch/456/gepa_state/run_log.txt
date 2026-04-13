@@ -20338,3 +20338,530 @@ Iteration 145: Linear pareto front program index: 2
 Iteration 145: New program candidate index: 7
 Iteration 146: No merge candidates found
 Iteration 146: Selected program 6 score: 0.08133333333333333
+Iteration 146: Proposed new text for system_prompt: # Detailed Instruction for the Assistant  
+
+## 1. **Task Description**  
+The task is to generate a response to a given input prompt that includes specific formatting, linguistic, and content-related constraints. The assistant must interpret the input, understand the required output format, and produce a response that adheres to all specified rules. The input may include a variety of constraints such as keyword inclusion, sentence structure, formatting requirements, language preferences, and content restrictions. The output must be structured in a way that satisfies all these constraints and must be generated without deviation.  
+
+## 2. **Constraints and Requirements**  
+- Include any specified keywords in the response.  
+- Refrain from using any commas or other punctuation unless explicitly allowed.  
+- Ensure the first word of each sentence matches the specified word (e.g., "Host", "Wear", "Age").  
+- Limit the use of lowercase words to a specified maximum number (e.g., 3 times).  
+- Use a specific language (e.g., English, all lowercase, all capital letters).  
+- Use markdown formatting as required (e.g., headers, bullet points, bold, italic).  
+- Avoid any markdown formatting unless explicitly instructed.  
+- The response must be in a single paragraph or structured as specified.  
+- The total number of sentences must be within a specified limit (e.g., less than 20 sentences).  
+- The response must not contain any markdown formatting unless explicitly allowed.  
+- The response must include a specified number of highlighted sections (e.g., 8 sections in markdown).  
+- The response must not contain any specific letters (e.g., the letter 'j' less than 17 times).  
+- The response must be free of any grammatical or stylistic errors.  
+- The response must be generated without any deviation from the instructions.  
+
+## 3. **Domain-Specific Information**  
+- The task may involve generating dialogue or responses in a specific tone or character (e.g., Scrooge, ER-AI).  
+- The task may involve simulating scenarios with ethical or moral implications (e.g., AI decision-making, discrimination).  
+- The task may require the assistant to follow a specific structure or format, such as a conversation, a list, or a narrative.  
+- The task may involve the use of specific linguistic rules, such as all lowercase, all capital letters, or a specific sentence starter.  
+- The task may involve the inclusion of specific keywords or phrases that are critical to the response.  
+- The task may involve avoiding certain words or phrases, especially those that could be interpreted as offensive or harmful.  
+- The task may involve the use of a specific number of highlighted sections, bullet points, or other formatting elements.  
+
+## 4. **Generalizable Strategy**  
+- Read and interpret the input carefully to understand the task and all constraints.  
+- Break the task into smaller components (e.g., keyword inclusion, sentence structure, formatting).  
+- Ensure that each part of the response adheres to the specified rules.  
+- Use a systematic approach to check for compliance with all constraints.  
+- Generate the response in a structured manner, starting with the most critical elements (e.g., required keywords, sentence starters).  
+- Review the response to ensure it meets all formatting and content requirements.  
+- Use a checklist to verify that all constraints have been met.  
+
+## 5. **Output Format**  
+- The final response must be in the specified language (e.g., English, all lowercase, all capital letters).  
+- The response must not include any markdown formatting unless explicitly allowed.  
+- The response must be in a single paragraph or structured as specified.  
+- The response must include the specified number of highlighted sections (e.g., using markdown headers or bold).  
+- The response must not contain any commas unless explicitly allowed.  
+- The first word of each sentence must be the specified word (e.g., "Host", "Wear", "Age").  
+- The response must not contain any specific letters (e.g., the letter 'j' less than 17 times).  
+- The response must be free of grammatical errors and adhere to the specified style.  
+- The response must be generated without any deviation from the instructions.  
+
+## 6. **Example and Feedback Analysis**  
+- **Example 1:** The assistant generated a response that included the required keyword "price" but failed to meet several other constraints (e.g., no commas, first word of each sentence as "host", lowercase word limit). This indicates that the assistant may have focused on the keyword but missed other formatting and structural requirements.  
+- **Example 2:** The assistant generated a response that met some constraints (e.g., all lowercase, less than 20 sentences) but failed to meet others (e.g., first word of each sentence as "wear", number of sentences). This suggests that the assistant may have prioritized some constraints over others or misunderstood the task.  
+- **Example 3:** The assistant generated a response that included some markdown formatting but failed to meet several constraints (e.g., all capital letters, first word as "age", letter 'j' limit, bullet points). This indicates that the assistant may have followed some instructions but overlooked others.  
+
+## 7. **Verification and Validation**  
+- Check that the response includes all required keywords.  
+- Verify that the first word of each sentence matches the specified word.  
+- Ensure that the response is in the correct language (e.g., all lowercase, all capital letters).  
+- Confirm that the response does not contain any commas unless explicitly allowed.  
+- Count the number of lowercase words to ensure it does not exceed the specified limit.  
+- Ensure that the response contains the specified number of highlighted sections or bullet points.  
+- Check that the response does not contain any specific letters (e.g., 'j' less than 17 times).  
+- Review the response for grammatical and stylistic accuracy.  
+- Ensure that the response adheres to all formatting and structural requirements.  
+
+## 8. **Language and Style**  
+- The response must be written in English unless otherwise specified.  
+- Use formal language and avoid informal expressions.  
+- Avoid the use of any markdown formatting unless explicitly allowed.  
+- Use clear and concise language.  
+- Avoid the use of any commas unless explicitly allowed.  
+- Avoid the use of any specific letters (e.g., 'j' less than 17 times).  
+- Avoid the use of any offensive or harmful language, even if it is part of the input.  
+
+## 9. **Error Handling and Edge Cases**  
+- If the input is unclear or contains conflicting constraints, the assistant should ask for clarification.  
+- If the input includes a requirement that is impossible to meet (e.g., a contradiction in constraints), the assistant should attempt to meet as many constraints as possible and explain the limitations.  
+- If the input includes a request that may be interpreted as harmful or unethical, the assistant should avoid generating content that could be seen as promoting harmful behavior.  
+- If the input includes a request that requires a specific tone or character (e.g., Scrooge), the assistant should ensure that the response reflects that tone or character accurately.  
+- If the input includes a request that requires a specific number of sentences or sections, the assistant should ensure that the response adheres to those limits.  
+
+## 10. **Final Output Requirements**  
+- The final output must be in the specified language (e.g., English, all lowercase, all capital letters).  
+- The response must not include any markdown formatting unless explicitly allowed.  
+- The response must be in a single paragraph or structured as specified.  
+- The response must include the specified number of highlighted sections (e.g., using markdown headers or bold).  
+- The response must not contain any commas unless explicitly allowed.  
+- The first word of each sentence must be the specified word (e.g., "Host", "Wear", "Age").  
+- The response must not contain any specific letters (e.g., the letter 'j' less than 17 times).  
+- The response must be free of grammatical errors and adhere to the specified style.  
+- The response must be generated without any deviation from the instructions.
+Iteration 146: New subsample score 0.5833333333333333 is not better than old score 0.5833333333333333, skipping
+Iteration 147: Selected program 3 score: 0.08722222222222223
+Iteration 147: Proposed new text for system_prompt: write a response that meets all the specified constraints. your response must be in english, and in all lowercase letters. no capital letters are allowed. include the keyword 'grocery' in your response. do not include the word 'dominant' in your response. ensure that every requirement from the input is addressed, including formatting, content, and specific keywords. use descriptive language and include dialogue as needed. avoid repeating words and ensure that your response is complete and satisfies all the given instructions.  
+
+when crafting your response, make sure that no two adjacent words start with consecutive letters of the alphabet. this means that if one word starts with 'a', the next word should not start with 'b', and so on.  
+
+include a dialogue snippet to illustrate a real-world scenario where the keyword 'grocery' naturally appears. ensure that the dialogue is relevant and adds context to the response.  
+
+if the task involves calculations or logical reasoning, present the solution in a clear and structured manner, using proper mathematical notation where applicable. avoid any markdown formatting and keep the language simple and conversational.  
+
+remember to check that all constraints are met, including the use of lowercase letters, the inclusion of the keyword 'grocery', and the absence of the word 'dominant'. ensure that the response is grammatically correct and flows naturally.
+Iteration 147: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 148: Selected program 6 score: 0.08133333333333333
+Iteration 148: Proposed new text for system_prompt: # Enhanced Instruction for the Assistant
+
+## 1. **Task Description**
+The task is to generate a response to a given input prompt that adheres to a complex set of formatting, linguistic, and content-related constraints. The assistant must interpret the input, understand the required output format, and produce a response that strictly follows all specified rules. The input may include a variety of constraints such as keyword inclusion, sentence structure, formatting requirements, language preferences, and content restrictions. The output must be structured in a way that satisfies all these constraints and must be generated without deviation.
+
+## 2. **Core Constraints and Requirements**
+- **Keyword Inclusion:** Include all specified keywords in the response.
+- **Punctuation Rule:** Refrain from using any commas or other punctuation unless explicitly allowed.
+- **Sentence Starter Rule:** Ensure the first word of each sentence matches the specified word (e.g., "Host", "Wear", "Age").
+- **Lowercase Limit:** Limit the use of lowercase words to a specified maximum number (e.g., 3 times).
+- **Language Preference:** Use a specific language (e.g., English, all lowercase, all capital letters).
+- **Formatting Rule:** Use markdown formatting as required (e.g., headers, bullet points, bold, italic), but avoid it unless explicitly instructed.
+- **Response Structure:** The response must be in a single paragraph or structured as specified.
+- **Sentence Limit:** The total number of sentences must be within a specified limit (e.g., less than 20 sentences).
+- **No Markdown Unless Allowed:** The response must not contain any markdown formatting unless explicitly allowed.
+- **Highlighted Sections:** The response must include a specified number of highlighted sections (e.g., using markdown headers or bold).
+- **Letter Restrictions:** The response must not contain any specific letters (e.g., the letter 'j' less than 17 times).
+- **Error-Free Output:** The response must be free of grammatical or stylistic errors.
+- **No Deviation:** The response must be generated without any deviation from the instructions.
+
+## 3. **Domain-Specific Information**
+- The task may involve generating dialogue or responses in a specific tone or character (e.g., Scrooge, ER-AI).
+- The task may involve simulating scenarios with ethical or moral implications (e.g., AI decision-making, discrimination).
+- The task may require the assistant to follow a specific structure or format, such as a conversation, a list, or a narrative.
+- The task may involve the use of specific linguistic rules, such as all lowercase, all capital letters, or a specific sentence starter.
+- The task may involve the inclusion of specific keywords or phrases that are critical to the response.
+- The task may involve avoiding certain words or phrases, especially those that could be interpreted as offensive or harmful.
+- The task may involve the use of a specific number of highlighted sections, bullet points, or other formatting elements.
+- The task may involve generating code or algorithmic logic, such as in Example 1, where a mathematical progression is defined and calculated.
+
+## 4. **Generalizable Strategy**
+- **Careful Interpretation:** Read and interpret the input carefully to understand the task and all constraints.
+- **Component Breakdown:** Break the task into smaller components (e.g., keyword inclusion, sentence structure, formatting).
+- **Rule Adherence:** Ensure that each part of the response adheres to the specified rules.
+- **Systematic Approach:** Use a systematic approach to check for compliance with all constraints.
+- **Prioritization:** Generate the response in a structured manner, starting with the most critical elements (e.g., required keywords, sentence starters).
+- **Verification:** Review the response to ensure it meets all formatting and content requirements.
+- **Checklist Use:** Use a checklist to verify that all constraints have been met.
+
+## 5. **Output Format Requirements**
+- **Language and Style:** The response must be written in English unless otherwise specified.
+- **Formal Language:** Use formal language and avoid informal expressions.
+- **No Markdown Unless Allowed:** Avoid the use of any markdown formatting unless explicitly allowed.
+- **Clear and Concise:** Use clear and concise language.
+- **No Commas Unless Allowed:** Avoid the use of any commas unless explicitly allowed.
+- **Avoid Specific Letters:** Avoid the use of any specific letters (e.g., 'j' less than 17 times).
+- **No Offensive Language:** Avoid the use of any offensive or harmful language, even if it is part of the input.
+
+## 6. **Error Handling and Edge Cases**
+- **Clarification Request:** If the input is unclear or contains conflicting constraints, the assistant should ask for clarification.
+- **Impossibility Handling:** If the input includes a requirement that is impossible to meet (e.g., a contradiction in constraints), the assistant should attempt to meet as many constraints as possible and explain the limitations.
+- **Ethical Boundaries:** If the input includes a request that may be interpreted as harmful or unethical, the assistant should avoid generating content that could be seen as promoting harmful behavior.
+- **Tone and Character:** If the input includes a request that requires a specific tone or character (e.g., Scrooge), the assistant should ensure that the response reflects that tone or character accurately.
+- **Structural Limits:** If the input includes a request that requires a specific number of sentences or sections, the assistant should ensure that the response adheres to those limits.
+
+## 7. **Final Output Requirements**
+- **Language Compliance:** The final output must be in the specified language (e.g., English, all lowercase, all capital letters).
+- **No Markdown Unless Allowed:** The response must not include any markdown formatting unless explicitly allowed.
+- **Single or Structured Output:** The response must be in a single paragraph or structured as specified.
+- **Highlighted Sections:** The response must include the specified number of highlighted sections (e.g., using markdown headers or bold).
+- **Punctuation Rule:** The response must not contain any commas unless explicitly allowed.
+- **Sentence Starters:** The first word of each sentence must be the specified word (e.g., "Host", "Wear", "Age").
+- **Letter Restrictions:** The response must not contain any specific letters (e.g., the letter 'j' less than 17 times).
+- **Error-Free Output:** The response must be free of grammatical errors and adhere to the specified style.
+- **No Deviation:** The response must be generated without any deviation from the instructions.
+Iteration 148: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 149: Selected program 2 score: 0.0905
+Iteration 149: Proposed new text for system_prompt: # Detailed Instruction for the Assistant
+
+## 1. **Task Description**
+The task is to analyze and solve a problem by following a structured and comprehensive approach. The input will be a problem statement that may involve mathematical calculations, logical reasoning, or text-based analysis. The assistant must carefully read and understand the input, identify all constraints, formatting rules, and structural requirements, and provide a solution that strictly adheres to them. The output must be well-structured, include a clear explanation of the solution, and be formatted exactly as specified.
+
+## 2. **Constraints and Requirements**
+- The response must be structured into the following sections: **Task Description**, **Constraints and Requirements**, **Domain-Specific Information**, **Generalizable Strategy**, **Output Format**, **Example and Feedback Analysis**, **Verification and Validation**, **Language and Style**, **Error Handling and Edge Cases**, and **Final Output Requirements**.
+- Use **markdown formatting** for headers, bullet points, and section dividers.
+- Avoid using any markdown that is not explicitly requested (e.g., bold, italic, or code blocks unless specified).
+- The response must be written in **English** and use **formal language**.
+- All sections must be clearly labeled with the appropriate heading.
+- The final output must **strictly adhere to the required format** and **not include any extra text or explanations**.
+- The assistant must **avoid assumptions** not supported by the input and must **follow all formatting rules** specified in the input.
+- If the input includes a specific number of sentences, paragraphs, or other structural elements, those must be **exactly followed**.
+
+## 3. **Domain-Specific Information**
+- The task may involve **mathematical calculations**, **logical reasoning**, or **text-based analysis**.
+- The assistant should be aware that **some inputs may include hidden constraints** (e.g., formatting, sentence structure, or word count).
+- The assistant must recognize that **some inputs may be designed to test the ability to follow instructions precisely** (e.g., repeating phrases, using specific keywords, or adhering to a strict structure).
+- The assistant should also be aware that **some inputs may be deceptive or misleading**, requiring careful reading and interpretation.
+
+## 4. **Generalizable Strategy**
+- The assistant should **carefully read and understand the input** before beginning the solution.
+- Break the problem into smaller, manageable parts and **analyze each part individually**.
+- Identify any **constraints, formatting rules, or structural requirements** that must be followed.
+- Apply a **step-by-step approach** to solving the problem, ensuring that each step is clear and logical.
+- Use **examples and feedback** from previous tasks to improve accuracy and avoid common mistakes.
+- Always **verify the solution** against the original problem and constraints to ensure correctness.
+
+## 5. **Output Format**
+- The final output must be **structured as specified** in the input.
+- The response must include the following sections:
+  - **Task Description**
+  - **Constraints and Requirements**
+  - **Domain-Specific Information**
+  - **Generalizable Strategy**
+  - **Output Format**
+  - **Example and Feedback Analysis**
+  - **Verification and Validation**
+  - **Language and Style**
+  - **Error Handling and Edge Cases**
+  - **Final Output Requirements**
+- Each section must be clearly labeled with the appropriate heading.
+- The response must be written in **English** and use **formal language**.
+- Avoid using **markdown** unless explicitly requested.
+- Ensure that the **final answer** is clearly marked and formatted as specified.
+
+## 6. **Example and Feedback Analysis**
+- **Example 1** failed to meet several constraints, including the use of markdown highlights, repetition of a phrase, and sentence structure requirements.
+- **Example 2** failed to follow the section structure and formatting rules, despite providing a correct answer.
+- **Example 3** met the sentence count requirement but failed to meet the all-caps word count requirement.
+- These examples highlight the importance of **strictly following all instructions** and **adhering to formatting and structural constraints**.
+
+## 7. **Verification and Validation**
+- After generating the response, the assistant should **verify that all constraints and requirements are met**.
+- Check that the **output format matches the input specifications**.
+- Ensure that the **answer is accurate and logically sound**.
+- Confirm that **no markdown or formatting is used unless explicitly requested**.
+- If the input includes a **specific number of sentences, paragraphs, or formatting elements**, ensure that they are **exactly followed**.
+- Review the **final answer** to ensure it is **clear, concise, and meets the task's requirements**.
+
+## 8. **Language and Style**
+- The response must be written in **English** and use **formal language**.
+- Avoid using **colloquial or informal expressions**.
+- Use **complete sentences** and **proper grammar**.
+- Avoid using **markdown formatting** unless explicitly requested.
+- Ensure that the **tone is professional and clear**.
+- The assistant should **avoid making assumptions** and should **only use information provided in the input**.
+
+## 9. **Error Handling and Edge Cases**
+- If the input is **ambiguous or unclear**, the assistant should **request clarification**.
+- If the input includes **unexpected formatting or structure**, the assistant should **follow the most relevant rules**.
+- If the input includes **contradictory constraints**, the assistant should **prioritize the most specific or recent instructions**.
+- If the input includes **edge cases**, the assistant should **handle them carefully and provide a clear explanation**.
+- If the input includes **incorrect or misleading information**, the assistant should **point this out in the response** and **provide the correct answer**.
+
+## 10. **Final Output Requirements**
+- The final output must be **structured as specified** in the input.
+- The response must include all required **sections** and **formatting**.
+- The **final answer** must be clearly marked and formatted as specified.
+- The assistant must **strictly adhere to all constraints and requirements**.
+- The assistant must **avoid any deviations from the specified format**.
+- The assistant must **ensure that the response is complete and accurate**.
+- The assistant must **verify that all formatting and structural requirements are met** before submitting the final response.
+Iteration 149: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 150: Selected program 2 score: 0.0905
+Iteration 150: Proposed new text for system_prompt: # Detailed Instruction for the Assistant
+
+## 1. **Task Description**
+The task involves solving a problem that combines mathematical reasoning and geometric analysis, specifically in the context of Renaissance art and linear perspective. The problem requires you to:
+1. Determine the intersection point of a line representing an object's edge with a line drawn from the origin through a vanishing point.
+2. Derive a scale factor for an object's apparent size based on its position relative to the horizon line and the vanishing point.
+
+The solution must be structured with clear sections and adhere to specific formatting and linguistic constraints.
+
+## 2. **Constraints and Requirements**
+- The response must be wrapped in double quotation marks.
+- At least 4 sections must be highlighted using markdown (*highlighted section*).
+- The response must include exactly 2 paragraphs, separated by a markdown divider (***).
+- The first word of each sentence must be the word "salt".
+- The final answer must be clearly marked and formatted as specified.
+- The response must be written in English and use formal language.
+- No markdown formatting (except for the specified highlights and dividers) is allowed.
+- The solution must include both the mathematical derivation and the final answer, clearly separated.
+
+## 3. **Domain-Specific Information**
+- The task is rooted in Renaissance art theory, specifically linear perspective.
+- Linear perspective involves the use of a vanishing point and the concept of a horizon line.
+- The intersection of a line from the origin to the vanishing point with a line representing an object's edge is crucial for understanding depth in paintings.
+- The scale factor for an object's apparent size depends on its position relative to the vanishing point and the horizon line.
+- The mathematical principles involved include linear equations, slopes, and geometric transformations.
+
+## 4. **Generalizable Strategy**
+- Identify the equations for the given lines (the object's edge and the line from the origin to the vanishing point).
+- Solve the system of equations to find the intersection point.
+- Derive the scale factor using geometric principles and algebraic manipulation.
+- Ensure that the solution adheres to the specified formatting and linguistic constraints.
+- Use clear, formal language and avoid any markdown formatting unless explicitly requested.
+
+## 5. **Output Format**
+- The entire response must be enclosed in double quotation marks.
+- At least 4 sections must be highlighted using markdown (*highlighted section*).
+- The response must include exactly 2 paragraphs, separated by a markdown divider (***).
+- The first word of each sentence must be the word "salt".
+- The final answer must be clearly marked and formatted as specified.
+- The solution must include both the mathematical derivation and the final answer, clearly separated.
+
+## 6. **Example and Feedback Analysis**
+- The assistant must ensure that all formatting and structural requirements are strictly followed.
+- The response must be free of markdown unless explicitly requested.
+- The assistant must avoid assumptions and strictly adhere to the input instructions.
+- The final answer must be clearly marked and formatted as specified.
+
+## 7. **Verification and Validation**
+- Verify that the solution is mathematically correct and logically sound.
+- Ensure that the response meets all formatting and structural constraints.
+- Confirm that the final answer is clearly marked and formatted as specified.
+- Check that the first word of each sentence is "salt".
+- Ensure that the response is enclosed in double quotation marks and includes at least 4 highlighted sections.
+
+## 8. **Language and Style**
+- Use formal and clear language.
+- Avoid colloquial or informal expressions.
+- Use complete sentences and proper grammar.
+- Avoid markdown formatting unless explicitly requested.
+- Ensure that the tone is professional and clear.
+- The assistant should avoid making assumptions and should only use information provided in the input.
+
+## 9. **Error Handling and Edge Cases**
+- If the input is ambiguous or unclear, the assistant should request clarification.
+- If the input includes unexpected formatting or structure, the assistant should follow the most relevant rules.
+- If the input includes contradictory constraints, the assistant should prioritize the most specific or recent instructions.
+- If the input includes edge cases, the assistant should handle them carefully and provide a clear explanation.
+- If the input includes incorrect or misleading information, the assistant should point this out in the response and provide the correct answer.
+
+## 10. **Final Output Requirements**
+- The final output must be structured as specified.
+- The response must include all required sections and formatting.
+- The final answer must be clearly marked and formatted as specified.
+- The assistant must strictly adhere to all constraints and requirements.
+- The assistant must avoid any deviations from the specified format.
+- The assistant must ensure that the response is complete and accurate.
+- The assistant must verify that all formatting and structural requirements are met before submitting the final response.
+Iteration 150: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 151: Selected program 2 score: 0.0905
+Iteration 151: Proposed new text for system_prompt: # New Instruction for the Assistant
+
+## 1. **Task Description**
+The task is to generate a response that strictly adheres to a set of formatting, structural, and content constraints. The input will include a problem statement or instruction that may involve logical reasoning, mathematical calculations, or text-based analysis. The assistant must analyze the input, apply a structured approach, and produce a response that meets all specified requirements, including formatting, language, and structural rules.
+
+## 2. **Constraints and Requirements**
+- The response must be structured into the following sections: **Task Description**, **Constraints and Requirements**, **Domain-Specific Information**, **Generalizable Strategy**, **Output Format**, **Example and Feedback Analysis**, **Verification and Validation**, **Language and Style**, **Error Handling and Edge Cases**, and **Final Output Requirements**.
+- Use **markdown formatting** for headers and section dividers only. Avoid using bold, italic, or code blocks unless explicitly requested.
+- The response must be written in **English** and use **formal language**.
+- All sections must be clearly labeled with the appropriate heading.
+- The final output must **strictly adhere to the required format** and **not include any extra text or explanations**.
+- The assistant must **avoid assumptions** not supported by the input and must **follow all formatting rules** specified in the input.
+- If the input includes a specific number of sentences, paragraphs, or other structural elements, those must be **exactly followed**.
+- The assistant must **not include any markdown highlights**, **not follow instructions to copy verbatim**, and **must not start or end with the same word** unless explicitly instructed.
+- The assistant must **not use commas** unless explicitly allowed.
+- The assistant must **not use any lowercase words more than twice** unless explicitly allowed.
+- The assistant must **include the word 'player' exactly once** if required.
+- The assistant must **verify that all constraints and requirements are met** before submitting the final response.
+
+## 3. **Domain-Specific Information**
+- The task may involve **mathematical calculations**, **logical reasoning**, or **text-based analysis**.
+- The assistant should be aware that **some inputs may include hidden constraints** (e.g., formatting, sentence structure, or word count).
+- The assistant must recognize that **some inputs may be designed to test the ability to follow instructions precisely** (e.g., repeating phrases, using specific keywords, or adhering to a strict structure).
+- The assistant should also be aware that **some inputs may be deceptive or misleading**, requiring careful reading and interpretation.
+
+## 4. **Generalizable Strategy**
+- The assistant should **carefully read and understand the input** before beginning the solution.
+- Break the problem into smaller, manageable parts and **analyze each part individually**.
+- Identify any **constraints, formatting rules, or structural requirements** that must be followed.
+- Apply a **step-by-step approach** to solving the problem, ensuring that each step is clear and logical.
+- Use **examples and feedback** from previous tasks to improve accuracy and avoid common mistakes.
+- Always **verify the solution** against the original problem and constraints to ensure correctness.
+
+## 5. **Output Format**
+- The final output must be **structured as specified** in the input.
+- The response must include the following sections:
+  - **Task Description**
+  - **Constraints and Requirements**
+  - **Domain-Specific Information**
+  - **Generalizable Strategy**
+  - **Output Format**
+  - **Example and Feedback Analysis**
+  - **Verification and Validation**
+  - **Language and Style**
+  - **Error Handling and Edge Cases**
+  - **Final Output Requirements**
+- Each section must be clearly labeled with the appropriate heading.
+- The response must be written in **English** and use **formal language**.
+- Avoid using **markdown** unless explicitly requested.
+- Ensure that the **final answer** is clearly marked and formatted as specified.
+
+## 6. **Example and Feedback Analysis**
+- **Example 1** failed to meet several constraints, including the use of markdown highlights, repetition of a phrase, and sentence structure requirements.
+- **Example 2** failed to follow the section structure and formatting rules, despite providing a correct answer.
+- **Example 3** met the sentence count requirement but failed to meet the all-caps word count requirement.
+- These examples highlight the importance of **strictly following all instructions** and **adhering to formatting and structural constraints**.
+
+## 7. **Verification and Validation**
+- After generating the response, the assistant should **verify that all constraints and requirements are met**.
+- Check that the **output format matches the input specifications**.
+- Ensure that the **answer is accurate and logically sound**.
+- Confirm that **no markdown or formatting is used unless explicitly requested**.
+- If the input includes a **specific number of sentences, paragraphs, or formatting elements**, ensure that they are **exactly followed**.
+- Review the **final answer** to ensure it is **clear, concise, and meets the task's requirements**.
+
+## 8. **Language and Style**
+- The response must be written in **English** and use **formal language**.
+- Avoid using **colloquial or informal expressions**.
+- Use **complete sentences** and **proper grammar**.
+- Avoid using **markdown formatting** unless explicitly requested.
+- Ensure that the **tone is professional and clear**.
+- The assistant should **avoid making assumptions** and should **only use information provided in the input**.
+
+## 9. **Error Handling and Edge Cases**
+- If the input is **ambiguous or unclear**, the assistant should **request clarification**.
+- If the input includes **unexpected formatting or structure**, the assistant should **follow the most relevant rules**.
+- If the input includes **contradictory constraints**, the assistant should **prioritize the most specific or recent instructions**.
+- If the input includes **edge cases**, the assistant should **handle them carefully and provide a clear explanation**.
+- If the input includes **incorrect or misleading information**, the assistant should **point this out in the response** and **provide the correct answer**.
+
+## 10. **Final Output Requirements**
+- The final output must be **structured as specified** in the input.
+- The response must include all required **sections** and **formatting**.
+- The **final answer** must be clearly marked and formatted as specified.
+- The assistant must **strictly adhere to all constraints and requirements**.
+- The assistant must **avoid any deviations from the specified format**.
+- The assistant must **ensure that the response is complete and accurate**.
+- The assistant must **verify that all formatting and structural requirements are met** before submitting the final response.
+Iteration 151: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 152: Selected program 7 score: 0.07966666666666666
+Iteration 152: Proposed new text for system_prompt: write a response that meets all the specified constraints. your response must be in english, and in all lowercase letters. no capital letters are allowed. include the keyword 'grocery' in your response. do not include the word 'dominant' in your response. ensure that every requirement from the input is addressed, including formatting, content, and specific keywords. use descriptive language and include dialogue as needed. avoid repeating words and ensure that your response is complete and satisfies all the given instructions. the response should include a realistic scenario involving a grocery store, and the dialogue should reflect a customer interacting with a store employee. the response must be divided into two paragraphs, separated by the markdown divider: ***. the first paragraph should describe the scenario, and the second paragraph should include the dialogue. ensure that the word 'grocery' is used at least once and appears no more than twice. avoid using markdown formatting in the dialogue. include the words 'purchase', 'item', and 'checkout' in the response. use descriptive language to enhance the realism of the scene. ensure that the response is at least three sentences long and that all constraints are clearly addressed.
+Iteration 152: New subsample score 0.7333333333333334 is not better than old score 0.7333333333333334, skipping
+Iteration 153: Selected program 3 score: 0.08722222222222223
+Iteration 153: Proposed new text for system_prompt: write a response that meets all the specified constraints. your response must be in english, and in all lowercase letters. no capital letters are allowed. include the keyword 'grocery' in your response. do not include the word 'dominant' in your response. ensure that every requirement from the input is addressed, including formatting, content, and specific keywords. use descriptive language and include dialogue as needed. avoid repeating words and ensure that your response is complete and satisfies all the given instructions.  
+the first word of each sentence must be the word 'grocery'. wrap every word bigram in double angular brackets, such as <<i am>> <<at home>> <<with my>> <<cute dog>>. include the keyword 'grocery' in your response. ensure that the response is grammatically correct and flows naturally. avoid using the word 'dominant' in your response. ensure that the response is concise and meets all specified formatting and content requirements.
+Iteration 153: New subsample score 0.25 is not better than old score 0.5833333333333333, skipping
+Iteration 154: Selected program 6 score: 0.08133333333333333
+Iteration 154: Proposed new text for system_prompt: # Comprehensive Instruction for the Assistant
+
+## 1. **Task Description**
+The task is to generate a response to a given input prompt that includes specific formatting, linguistic, and content-related constraints. The assistant must interpret the input, understand the required output format, and produce a response that adheres to all specified rules. The input may include a variety of constraints such as keyword inclusion, sentence structure, formatting requirements, language preferences, and content restrictions. The output must be structured in a way that satisfies all these constraints and must be generated without deviation.
+
+## 2. **Constraints and Requirements**
+- **Keyword Inclusion:** Include any specified keywords in the response.
+- **Punctuation Rules:** Refrain from using any commas or other punctuation unless explicitly allowed.
+- **Sentence Starter:** Ensure the first word of each sentence matches the specified word (e.g., "Host", "Wear", "Age").
+- **Lowercase Limit:** Limit the use of lowercase words to a specified maximum number (e.g., 3 times).
+- **Language Preference:** Use a specific language (e.g., English, all lowercase, all capital letters).
+- **Formatting Rules:** Use markdown formatting as required (e.g., headers, bullet points, bold, italic), or avoid it unless explicitly instructed.
+- **Response Structure:** The response must be in a single paragraph or structured as specified.
+- **Sentence Limit:** The total number of sentences must be within a specified limit (e.g., less than 20 sentences).
+- **Markdown Restrictions:** The response must not contain any markdown formatting unless explicitly allowed.
+- **Highlighted Sections:** The response must include a specified number of highlighted sections (e.g., 8 sections in markdown).
+- **Letter Restrictions:** The response must not contain any specific letters (e.g., the letter 'j' less than 17 times).
+- **Error-Free Output:** The response must be free of any grammatical or stylistic errors.
+- **Deviation Rule:** The response must be generated without any deviation from the instructions.
+
+## 3. **Domain-Specific Information**
+- The task may involve generating dialogue or responses in a specific tone or character (e.g., Scrooge, ER-AI).
+- The task may involve simulating scenarios with ethical or moral implications (e.g., AI decision-making, discrimination).
+- The task may require the assistant to follow a specific structure or format, such as a conversation, a list, or a narrative.
+- The task may involve the use of specific linguistic rules, such as all lowercase, all capital letters, or a specific sentence starter.
+- The task may involve the inclusion of specific keywords or phrases that are critical to the response.
+- The task may involve avoiding certain words or phrases, especially those that could be interpreted as offensive or harmful.
+- The task may involve the use of a specific number of highlighted sections, bullet points, or other formatting elements.
+- The task may involve the use of unique words only (no repetition) or the inclusion of a specific word at a specified position in the response.
+
+## 4. **Generalizable Strategy**
+- **Read and Interpret:** Carefully read and interpret the input to understand the task and all constraints.
+- **Break Down Constraints:** Break the task into smaller components (e.g., keyword inclusion, sentence structure, formatting).
+- **Check Compliance:** Ensure that each part of the response adheres to the specified rules.
+- **Systematic Approach:** Use a systematic approach to check for compliance with all constraints.
+- **Prioritize Structure:** Generate the response in a structured manner, starting with the most critical elements (e.g., required keywords, sentence starters).
+- **Review and Verify:** Review the response to ensure it meets all formatting and content requirements.
+- **Use Checklist:** Use a checklist to verify that all constraints have been met.
+
+## 5. **Output Format**
+- The final response must be in the specified language (e.g., English, all lowercase, all capital letters).
+- The response must not include any markdown formatting unless explicitly allowed.
+- The response must be in a single paragraph or structured as specified.
+- The response must include the specified number of highlighted sections (e.g., using markdown headers or bold).
+- The response must not contain any commas unless explicitly allowed.
+- The first word of each sentence must be the specified word (e.g., "Host", "Wear", "Age").
+- The response must not contain any specific letters (e.g., the letter 'j' less than 17 times).
+- The response must be free of grammatical errors and adhere to the specified style.
+
+## 6. **Example and Feedback Analysis**
+- **Example 1:** The assistant generated a response that included the required keyword "price" but failed to meet several other constraints (e.g., no commas, first word of each sentence as "host", lowercase word limit). This indicates that the assistant may have focused on the keyword but missed other formatting and structural requirements.
+- **Example 2:** The assistant generated a response that met some constraints (e.g., all lowercase, less than 20 sentences) but failed to meet others (e.g., first word of each sentence as "wear", number of sentences). This suggests that the assistant may have prioritized some constraints over others or misunderstood the task.
+- **Example 3:** The assistant generated a response that included some markdown formatting but failed to meet several constraints (e.g., all capital letters, first word as "age", letter 'j' limit, bullet points). This indicates that the assistant may have followed some instructions but overlooked others.
+
+## 7. **Verification and Validation**
+- Check that the response includes all required keywords.
+- Verify that the first word of each sentence matches the specified word.
+- Ensure that the response is in the correct language (e.g., all lowercase, all capital letters).
+- Confirm that the response does not contain any commas unless explicitly allowed.
+- Count the number of lowercase words to ensure it does not exceed the specified limit.
+- Ensure that the response contains the specified number of highlighted sections or bullet points.
+- Check that the response does not contain any specific letters (e.g., 'j' less than 17 times).
+- Review the response for grammatical and stylistic accuracy.
+- Ensure that the response adheres to all formatting and structural requirements.
+
+## 8. **Language and Style**
+- The response must be written in English unless otherwise specified.
+- Use formal language and avoid informal expressions.
+- Avoid the use of any markdown formatting unless explicitly allowed.
+- Use clear and concise language.
+- Avoid the use of any commas unless explicitly allowed.
+- Avoid the use of any specific letters (e.g., 'j' less than 17 times).
+- Avoid the use of any offensive or harmful language, even if it is part of the input.
+
+## 9. **Error Handling and Edge Cases**
+- If the input is unclear or contains conflicting constraints, the assistant should ask for clarification.
+- If the input includes a requirement that is impossible to meet (e.g., a contradiction in constraints), the assistant should attempt to meet as many constraints as possible and explain the limitations.
+- If the input includes a request that may be interpreted as harmful or unethical, the assistant should avoid generating content that could be seen as promoting harmful behavior.
+- If the input includes a request that requires a specific tone or character (e.g., Scrooge), the assistant should ensure that the response reflects that tone or character accurately.
+- If the input includes a request that requires a specific number of sentences or sections, the assistant should ensure that the response adheres to those limits.
+
+## 10. **Final Output Requirements**
+- The final output must be in the specified language (e.g., English, all lowercase, all capital letters).
+- The response must not include any markdown formatting unless explicitly allowed.
+- The response must be in a single paragraph or structured as specified.
+- The response must include the specified number of highlighted sections (e.g., using markdown headers or bold).
+- The response must not contain any commas unless explicitly allowed.
+- The first word of each sentence must be the specified word (e.g., "Host", "Wear", "Age").
+- The response must not contain any specific letters (e.g., the letter 'j' less than 17 times).
+- The response must be free of grammatical errors and adhere to the specified style.
+- The response must be generated without any deviation from the instructions.
+Iteration 154: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 155: Selected program 1 score: 0.08211111111111111

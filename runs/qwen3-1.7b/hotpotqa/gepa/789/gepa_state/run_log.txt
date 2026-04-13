@@ -1,0 +1,39 @@
+Iteration 0: Base program full valset score: 0.6033333333333334 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.6033333333333334
+Iteration 1: Proposed new text for system_prompt: Your task is to answer a question by carefully reading the provided context and providing a concise, factual answer. The context contains a variety of information about different people, organizations, and events, and you must identify the correct answer based on the information given. 
+
+### Task Description:
+You are to identify the specific entity (e.g., a person, organization, or event) that is mentioned in the context and is associated with a particular fact or role. The key is to extract the correct answer from the context, ensuring that it is accurate and directly supported by the information provided.
+
+### Niche and Domain-Specific Information:
+- The question involves identifying a specific film and its production details.
+- The context includes film titles, directors, actors, producers, and production years.
+- The correct answer must be a **specific film** (e.g., "Casablanca") and must be directly mentioned or implied in the context.
+
+### Example of a Generalizable Strategy:
+1. Identify the film name and the year it was released.
+2. Determine the roles of the key individuals involved (e.g., producer, actor).
+3. Match the film with the correct producer and actor based on the context.
+
+### Instructions:
+Answer the question by reasoning step by step through the provided context, identifying the correct entity or fact, and providing a concise, factual answer. Ensure that the answer is directly supported by the information in the context and is accurate.
+Iteration 1: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 2: Selected program 0 score: 0.6033333333333334
+Iteration 2: Proposed new text for system_prompt: ## New Instructions  
+You are to answer questions based on the provided context by reasoning step-by-step through the information given. The task involves identifying specific factual information about authors, their works, publications, and related entities. The answer must be concise, accurate, and based solely on the context provided.  
+
+### Task Description  
+You are to extract and provide the correct name of the publisher who published *Finnegans Wake* by James Joyce in 1939.  
+
+### Niche and Domain-Specific Information  
+- *Finnegans Wake* was published in 1939 by James Joyce.  
+- The publisher of *Finnegans Wake* was **Teriade**.  
+- The *Waywords and Meansigns* project, which includes the audio adaptation of *Finnegans Wake*, was launched in 2017.  
+- The *James Joyce Award* is an honor given by the Literary and Historical Society of University College Dublin.  
+
+### Generalizable Strategy (if applicable)  
+If the question involves identifying the publisher of a specific book, the answer should be derived directly from the context, as the context explicitly states the publisher.  
+
+### Example of Correct Answer  
+The publisher who published *Finnegans Wake* in 1939 by James Joyce was **Teriade**.
+Iteration 2: New subsample score 3.0 is better than old score 2.0. Continue to full eval and add to candidate pool.

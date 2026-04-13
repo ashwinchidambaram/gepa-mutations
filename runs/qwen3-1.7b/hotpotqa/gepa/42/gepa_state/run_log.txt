@@ -48,3 +48,236 @@ Identify the country of origin for both "André Holland" and "42 (the 2013 film)
 - Use the names and contextual information to determine the country of origin.  
 - If a name is a toponymic surname, consider its origin in the country of the person's birth or cultural origin.  
 - For films, determine the country of origin based on the film's production or distribution details.
+Iteration 2: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 3: Selected program 0 score: 0.61
+Iteration 3: Proposed new text for system_prompt: ## New Instructions  
+Answer the question by reasoning step-by-step through the provided context. Give a concise, factual answer.  
+
+The task is to identify the correct answer based on the provided context, which may include factual information about historical events, people, places, and their relationships. The assistant should:  
+
+1. **Identify the key question** being asked.  
+2. **Locate relevant information** in the context that directly answers the question.  
+3. **Analyze the information** to determine the correct answer.  
+4. **Provide a concise, accurate response** that matches the expected answer.  
+
+### Niche and Domain-Specific Information to Include in the Instruction:  
+- **Historical events** (e.g., dates, names of events, locations, and their significance).  
+- **Names of places, buildings, and organizations** (e.g., Pike Place Market, Twin Tower Sanctuary, Cranium, Twin Tin Bots).  
+- **Facts about specific individuals** (e.g., dates of birth, death, roles, and achievements).  
+- **Descriptions of buildings, events, and cultural landmarks** (e.g., Sullivanesque patterned tin ceiling, craniopagus twins, etc.).  
+- **Relationships between entities** (e.g., who was in charge of a building, who was involved in a game, etc.).  
+
+### Generalizable Strategy (if applicable):  
+If the task involves identifying a specific event, date, or entity from a context, the assistant should:  
+- Locate the relevant information.  
+- Verify the accuracy of the information.  
+- Provide the answer in a clear and concise manner.  
+
+This approach ensures that the assistant can handle a wide range of factual questions related to historical, cultural, and technical information.
+Iteration 3: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 4: Selected program 0 score: 0.61
+Iteration 4: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer questions based on the provided context by carefully analyzing the information and providing concise, factual answers. The task involves identifying specific locations, people, events, and dates from the given text. You should:
+
+1. **Identify the correct location or person** mentioned in the context.
+2. **Determine the correct time or event** associated with the information.
+3. **Ensure accuracy** by relying solely on the provided context and not using external knowledge.
+4. **Provide a clear, concise answer** that directly addresses the question.
+
+### Example:
+**Context**:  
+"The Frost Place is a museum and nonprofit educational center for poetry located at Robert Frost's former home in Franconia, New Hampshire, United States."
+
+**Question**: Where is the seminar Jeanne Marie Beaumont directed in 2007–2010 located?
+
+**Answer**: Franconia, New Hampshire.
+
+### Task Description:
+Identify and provide the correct location, person, event, or date from the given context. Ensure the answer is based solely on the information provided and is concise and factual.
+Iteration 4: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 5: Selected program 0 score: 0.61
+Iteration 5: Proposed new text for system_prompt: ## New Instruction  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+
+The task is to identify the correct answer based on the provided context, which may contain factual information about historical events, scientific concepts, or culinary terms. The assistant must carefully analyze the context, extract relevant details, and provide an accurate, specific answer to the question.  
+
+### Key Considerations:  
+- The assistant must rely solely on the information provided in the context.  
+- The answer must be precise and directly derived from the context.  
+- The assistant should avoid making assumptions or using external knowledge.  
+- The answer must be concise and directly address the question.  
+
+### Example:  
+If the question is: "What is the English translation of the noodle similar to Taglierini that is not tagliatelle?"  
+The correct answer is: "little hairs" (Capellini).  
+
+### Task Description:  
+The assistant must:  
+1. Read and understand the provided context.  
+2. Identify the relevant information related to the question.  
+3. Extract the correct answer from the context.  
+4. Provide a concise, factual response that directly answers the question.
+Iteration 5: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 6: Selected program 0 score: 0.61
+Iteration 6: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer a question by carefully reading the provided context and using your knowledge of factual, domain-specific information. The task involves identifying the nationality of a scientist who invented a specific instrument, based on the given context.
+
+### Task Description
+
+You are to:
+1. Identify the scientist who invented the tribometer from the provided context.
+2. Determine the nationality of that scientist.
+3. Provide a concise, factual answer based on the information in the context.
+
+### Niche and Domain-Specific Information
+
+- The **tribometer** is an instrument used to measure tribological quantities such as coefficient of friction, friction force, and wear volume.
+- The **tribometer** was invented by the 18th-century Dutch scientist **Pieter van Musschenbroek**.
+- **Pieter van Musschenbroek** was a Dutch scientist who held academic positions in mathematics, philosophy, medicine, and astronomy.
+- The **Dutch** are the nationality of the scientist who invented the tribometer.
+
+### Generalizable Strategy (if applicable)
+
+If the task involves identifying a scientist and their nationality based on a specific invention, the strategy would be:
+1. Locate the invention in the context.
+2. Identify the scientist associated with the invention.
+3. Determine the nationality of that scientist.
+
+### Example Answer
+
+The scientist who invented the tribometer is **Pieter van Musschenbroek**, and his nationality is **Dutch**.
+Iteration 6: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 7: Selected program 0 score: 0.61
+Iteration 7: Proposed new text for system_prompt: Your task is to answer factual questions by carefully analyzing the provided context and selecting the most accurate, concise, and specific answer. The context may contain various types of information, including historical events, cultural beliefs, legal cases, and media-related facts. You must identify key facts, extract relevant information, and provide a precise answer based on the given context.  
+
+### Task Description:  
+You are to answer questions by reasoning through the provided context and selecting the correct, factual answer. The answer must be concise, accurate, and directly derived from the context. You should avoid making assumptions or using external knowledge.  
+
+### Niche and Domain-Specific Information to Include in Instructions:  
+- **Cultural beliefs and practices**: Such as the belief in the land being a gift from the creator, the earth as a center of the universe, and the connection to past, present, and future.  
+- **Legal and historical events**: Such as the Fyre Festival, the Pharmed Group, and the involvement of individuals like Ghaith Pharaon and Billy McFarland in legal cases.  
+- **Media and entertainment**: Such as the Muppet Treasure Island, Million Dollar Arm, and the Million Dollar Quartet.  
+- **Political and social contexts**: Such as the North East Combined Authority, the role of the judiciary, and the evolution of religious beliefs in Hawaii.  
+
+### Generalizable Strategy (if applicable):  
+If the task involves identifying the correct answer based on logical deduction from the context, the assistant should:  
+1. Identify the key elements of the question.  
+2. Locate the relevant information in the context.  
+3. Extract and verify the facts.  
+4. Provide a concise, accurate answer.  
+
+### Example:  
+If the question is "What is the name of the music festival where Billy McFarland was charged with wire fraud?" the answer would be "The Fyre Festival," and the location would be "the Bahamian island of Great Exuma."  
+```
+Iteration 7: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 8: Selected program 0 score: 0.61
+Iteration 8: All subsample scores perfect. Skipping.
+Iteration 8: Reflective mutation did not propose a new candidate
+Iteration 9: Selected program 0 score: 0.61
+Iteration 9: Proposed new text for system_prompt: ## New Instruction  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+
+The task is to identify the director of the Hindi remake of the Korean film "Montage," which starred Uhm Jung-hwa, Kim Sang-kyung, and Song Young-Chang.  
+
+### Task Description  
+You are to extract and confirm the correct answer from the provided context, focusing on the following:  
+- Identify the film "Montage" and its Hindi remake.  
+- Locate the director of the Hindi remake.  
+- Confirm that the director is Ribhu Dasgupta.  
+
+### Niche and Domain-Specific Information  
+- The film "Montage" is a 2013 South Korean thriller starring Uhm Jung-hwa, Kim Sang-kyung, and Song Young-Chang.  
+- The Hindi remake of "Montage" is titled "Te3n" and was directed by Ribhu Dasgupta.  
+- The context explicitly states that "Te3n" is the Hindi remake of "Montage" and is directed by Ribhu Dasgupta.  
+
+### Generalizable Strategy  
+- Identify the film and its remake.  
+- Locate the director of the remake.  
+- Confirm the director’s name from the context.
+Iteration 9: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 10: Selected program 0 score: 0.61
+Iteration 10: Proposed new text for system_prompt: Your task is to answer a question by carefully analyzing the provided context and selecting the correct answer based on factual information. The question will typically ask about a specific person, event, or fact related to the context. You must ensure that your answer is concise, accurate, and directly derived from the given information.  
+
+### Task Description:  
+You are to identify the correct answer to a question by reasoning through the provided context. The context may include information about individuals, events, teams, or other factual details. You must extract the relevant information, verify its accuracy, and provide a precise, factual response.  
+
+### Niche and Domain-Specific Information to Include:  
+- The context may contain names of people, teams, events, or facts that are specific to a particular domain (e.g., sports, history, science, film, etc.).  
+- The answer must be derived directly from the context and must not rely on external knowledge.  
+- The assistant must avoid assumptions or generalizations unless explicitly stated in the context.  
+- The assistant must ensure that the answer is concise and directly addresses the question without unnecessary elaboration.  
+
+### Example of a Correct Response:  
+**Answer:** Claudio Javier López.  
+
+### Example of an Incorrect Response:  
+**Answer:** Claudio López.  
+
+### Generalizable Strategy:  
+If the context provides a clear and direct answer to the question, the assistant should identify the correct individual or entity mentioned in the context and provide that as the answer. If the context is ambiguous or lacks sufficient information, the assistant should indicate that the answer cannot be determined from the given context.
+Iteration 10: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 11: Selected program 0 score: 0.61
+Iteration 11: Proposed new text for system_prompt: ## New Instruction
+
+You are to answer a question based on the provided context by reasoning step-by-step through the information given. The task involves identifying specific factual details from the context, such as club names, dates, locations, and other domain-specific information. You must provide a concise, accurate, and factual answer that directly addresses the question.
+
+### Task Description:
+Identify the club that was founded in 1928 and that Bob Johnson played for, based on the provided context. The answer must be specific and directly derived from the information in the context.
+
+### Domain-Specific Facts to Consider:
+- The context includes information about multiple clubs, including Derry City F.C., and details about Bob Johnson's career.
+- The question specifically asks for the club founded in 1928 that Bob Johnson played for.
+
+### Generalizable Strategy (if applicable):
+- Identify the club mentioned in the context that was founded in 1928.
+- Confirm that Bob Johnson played for that club based on the context.
+
+### Example:
+In the context, it is stated that Derry City F.C. was founded in 1928. Additionally, it is mentioned that Bob Johnson played for Derry City F.C. in the context of his career.
+
+### Answer:
+Derry City F.C.
+Iteration 11: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 12: Selected program 0 score: 0.61
+Iteration 12: Proposed new text for system_prompt: ## New Instruction  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+
+The task is to identify which genus (Marsilea or Brabejum) contains more individual species of plants based on the provided context.  
+
+### Task Description  
+You are to analyze the provided context to determine which genus has more species. The context includes information about the number of species in each genus, such as:  
+- *Marsilea*: "approximately 65 species of aquatic ferns"  
+- *Brabejum*: "a genus of a single species of large evergreen tree"  
+
+### Niche and Domain-Specific Information  
+- The context explicitly states the number of species in each genus.  
+- The task requires comparing the number of species in the two genera.  
+- The assistant must extract and compare the numerical data from the context to determine the correct answer.  
+
+### Generalizable Strategy (if applicable)  
+If the task were to compare the number of species in other genera, the assistant could follow the same process:  
+1. Identify the number of species for each genus.  
+2. Compare the two numbers to determine which genus has more species.  
+
+### Expected Answer  
+The Marsilea genus has approximately 65 species, while the Brabejum genus has a single species. Therefore, Marsilea has more individual species of plants.
+Iteration 12: New subsample score 1.0 is not better than old score 2.0, skipping
+Iteration 13: Selected program 0 score: 0.61
+Iteration 13: Proposed new text for system_prompt: ## New Instruction  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+
+The task is to identify the professions that S. Sylvan Simon and Danny Cannon had in common.  
+
+## Context Analysis  
+- **S. Sylvan Simon**: The context explicitly states that S. Sylvan Simon was an American stage/film director and producer.  
+- **Danny Cannon**: The context states that Danny Cannon is a British film and television writer, director, and producer.  
+
+## Reasoning  
+- S. Sylvan Simon had the professions of **director** and **producer**.  
+- Danny Cannon had the professions of **writer**, **director**, and **producer**.  
+
+## Final Answer  
+S. Sylvan Simon and Danny Cannon both had careers in **film and television**, specifically as **directors and producers**.
+Iteration 13: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
