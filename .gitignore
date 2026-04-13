@@ -29,11 +29,15 @@ Thumbs.db
 temp/
 
 # Data and results
-data/raw/
-data/results/
+data/
 *.parquet
 *.csv
-!data/.gitkeep
+*.pkl
+*.bin
+*.h5
+*.hdf5
+*.arrow
+*.feather
 
 # Notebooks checkpoints
 .ipynb_checkpoints/
