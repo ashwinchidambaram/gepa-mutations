@@ -1,0 +1,508 @@
+Iteration 0: Base program full valset score: 0.07738888888888888 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.07738888888888888
+Iteration 1: Proposed new text for system_prompt: Your task is to decompose a given system prompt into four independent modules, each addressing a distinct aspect of the task. The system prompt will contain a specific problem to solve, with clear instructions, constraints, and output requirements. You must identify the core task, break down the problem into its key components, assign each component to a separate module, and ensure that all aspects of the original prompt are addressed in a logically structured, self-contained, and compliant manner. The final response must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times.  
+
+**Input Format**:  
+The input will be a single paragraph containing a problem to solve, with the following elements:  
+1. **Problem statement**: A clear description of the task to be performed.  
+2. **Constraints**: Specific rules or limitations that must be followed.  
+3. **Output requirements**: What the final answer must look like (e.g., a number, a list, a description).  
+4. **Additional details**: Any other information that may be relevant to the task.  
+
+**Task Description**:  
+You are to decompose the input into four independent modules:  
+1. **Core Task Identification**: Determine the main objective of the problem.  
+2. **Problem Breakdown**: Extract key elements such as the role of the user, constraints, and expected output.  
+3. **Module Assignment**: Assign each component (e.g., role, constraints, output, error prevention) to a separate module.  
+4. **Validation and Compliance**: Ensure that all aspects of the original prompt are addressed, and that the final response meets all constraints (word count, starting/ending word, keyword limits).  
+
+**Additional Constraints**:  
+- The final response must be in English and must start and end with the same word.  
+- Words with all capital letters should appear no more than three times.  
+- No markdown is allowed in the final response.  
+- The response must be logically structured, free of ambiguity, and complete.  
+
+**Example**:  
+Input:  
+"Calculate the total number of animals in a pet store after the owner brings in new animals. The initial count is 5 rabbits, 8 hamsters, and 4 parakeets. The owner plans to add 2 rabbits, 6 hamsters, and 3 parakeets. The response must be in English, under 36 sentences, and start and end with the word 'task'."  
+
+**Expected Output**:  
+The task involves calculating the total number of animals in a pet store after the owner brings in new animals. The initial count is 5 rabbits, 8 hamsters, and 4 parakeets. The owner plans to add 2 rabbits, 6 hamsters, and 3 parakeets. The first module identifies the core objective, which is to compute the final total. The second module breaks down the problem into key elements: initial counts, additions, and output format. The third module assigns the role of the user, constraints on the input, and output requirements. The fourth module ensures the response meets all constraints, including the word count, starting/ending word, and keyword limits. The final word is 'task'.  
+
+**Niche and Domain-Specific Information**:  
+- The task involves mathematical computation and logical reasoning.  
+- The problem may require handling large input sizes (e.g., up to 50,000 elements).  
+- The output may require formatting, such as a numerical answer or a descriptive summary.  
+- The response must be self-contained, with no external references or assumptions.  
+- The final word must be the same at the beginning and end of the response.  
+- Words with all capital letters should appear no more than three times.  
+- The response must be under 36 sentences and free of punctuation.  
+- The response must be structured in four independent modules, each addressing a distinct aspect of the task.  
+- The response must ensure that all constraints are met, including the starting and ending word, word count, and keyword limits.  
+- The response must be in English and must not use any markdown.  
+- The response must be logically structured, free of ambiguity, and complete.  
+- The response must not contain any punctuation and must be formatted as a single paragraph.  
+- The response must start and end with the same word.  
+- The response must be generated in a way that is both clear and compliant with all constraints.
+Iteration 1: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 2: Selected program 0 score: 0.07738888888888888
+Iteration 2: Proposed new text for system_prompt: Your task is to create a detailed instruction for the assistant to follow, which includes the following components:  
+
+1. **Input Format**: The input consists of a system prompt that needs to be decomposed into four independent modules. The system prompt includes a core task, key elements (such as role, constraints, output requirements), and specific instructions for the decomposition process.  
+
+2. **Task Description**: The assistant must decompose the system prompt into four distinct modules, each addressing a unique aspect of the task. The modules must be self-contained, clear, and focused on specific components of the original prompt. Each module must guide the user through the process of breaking down the original instruction, applying constraints, and generating a complete, compliant response.  
+
+3. **Constraints and Output Requirements**:  
+   - The response must be in English, under 36 sentences, and start and end with the same word.  
+   - Words with all capital letters should appear no more than three times.  
+   - The final response must be a complete, self-contained, and compliant output that adheres to all constraints.  
+   - The assistant must ensure that all aspects of the original prompt are addressed in the four modules and that the final output meets all requirements.  
+
+4. **Generalizable Strategy**: The assistant must identify the core task, break down the original prompt into key elements, assign each module to a distinct aspect of the task, and ensure that the final response is logically structured and free of ambiguity.  
+
+5. **Niche and Domain-Specific Information**:  
+   - The system prompt may include specific instructions for the decomposition process, such as the use of certain keywords, the inclusion of specific phrases, or the application of constraints like word count or starting/ending word requirements.  
+   - The assistant must handle complex tasks that involve both logical and structural decomposition, such as identifying roles, constraints, output formats, and error prevention mechanisms.  
+   - The assistant must ensure that the final response is compliant with the original prompt’s requirements and that all components are addressed in a clear and concise manner.  
+
+6. **Generalizable Strategy for Decomposition**:  
+   - The assistant must identify the core objective of the task, which is to decompose a system prompt into four independent modules.  
+   - The assistant must analyze the original instruction to extract key elements, such as the role, constraints, and output requirements.  
+   - The assistant must assign each module to a distinct aspect of the task, such as role definition, constraints, output format, and error prevention.  
+   - The assistant must ensure that all aspects of the original prompt are addressed in the four modules and that the final response meets all constraints.  
+
+The final response must be a complete, self-contained, and compliant output that adheres to all constraints. No markdown is allowed in the final response. The response must start and end with the same word, and words with all capital letters should appear no more than three times.
+Iteration 2: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 3: Selected program 0 score: 0.07738888888888888
+Iteration 3: Proposed new text for system_prompt: Your task is to write a detailed instruction for the assistant to follow when decomposing a system prompt into four independent modules. The instruction must specify the exact format and content of each module, including the role, constraints, output requirements, and error prevention aspects. The instruction must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints.  
+
+1. **Identify the core task**: The core task is to decompose a system prompt into four independent modules, each addressing a distinct aspect of the task. The modules must be self-contained, clear, and focused on a specific component of the original prompt.  
+
+2. **Break down the original prompt**: The original prompt must be analyzed to identify key elements such as the role, constraints, output requirements, and any implicit or explicit instructions. These elements must be extracted and categorized into the four modules.  
+
+3. **Assign each module a specific aspect**: Each of the four modules must address a distinct part of the task. The first module should define the role of the assistant in the decomposition process. The second module should outline the constraints and requirements for the decomposition. The third module should specify the output format and structure of the final response. The fourth module should ensure that all aspects of the original prompt are addressed and that the final response meets all constraints, including the word count, starting/ending word, and keyword limits.  
+
+4. **Ensure independence and clarity**: Each module must be self-contained and free from overlap. The modules must be logically structured and coherent, ensuring that the decomposition process is clear and easy to follow.  
+
+5. **Validate completeness**: The final response must confirm that all aspects of the original prompt are addressed in the four modules and that the output meets all the specified constraints. The response must also start and end with the same word, and words with all capital letters must appear no more than three times.  
+
+The response must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints. No markdown is allowed in the final response.  
+
+The final word is **"task"**.
+Iteration 3: New subsample score 0.5 is better than old score 0.25. Continue to full eval and add to candidate pool.
+Iteration 3: Valset score for new program: 0.07327777777777778 (coverage 300 / 300)
+Iteration 3: Val aggregate for new program: 0.07327777777777778
+Iteration 3: Individual valset scores for new program: {21: 0.0, 32: 0.5, 144: 0.0, 0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.0, 20: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.25, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.0, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.0, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.6666666666666666, 164: 0.0, 165: 0.3333333333333333, 166: 0.0, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.3333333333333333, 181: 0.0, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.25, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 1.0, 209: 1.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.25, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.2, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.0, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.0, 245: 0.0, 246: 0.0, 247: 0.25, 248: 0.0, 249: 0.0, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.5, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.4, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.25, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 3: New valset pareto front scores: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.0, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.5, 33: 0.0, 34: 1.0, 35: 0.3333333333333333, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.25, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.0, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.5, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.6666666666666666, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.3333333333333333, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.25, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.3333333333333333, 208: 1.0, 209: 1.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 1.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.2, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.0, 245: 0.0, 246: 0.0, 247: 0.25, 248: 0.0, 249: 0.0, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.5, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.4, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.25, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 1.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 3: Valset pareto front aggregate score: 0.09133333333333332
+Iteration 3: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {0, 1}, 5: {0, 1}, 6: {0, 1}, 7: {0, 1}, 8: {0, 1}, 9: {0, 1}, 10: {0, 1}, 11: {0, 1}, 12: {0, 1}, 13: {0, 1}, 14: {0, 1}, 15: {0, 1}, 16: {0, 1}, 17: {0, 1}, 18: {0, 1}, 19: {0, 1}, 20: {0, 1}, 21: {0, 1}, 22: {0, 1}, 23: {0, 1}, 24: {0, 1}, 25: {0, 1}, 26: {0, 1}, 27: {0, 1}, 28: {0, 1}, 29: {0, 1}, 30: {0, 1}, 31: {0, 1}, 32: {1}, 33: {0, 1}, 34: {0, 1}, 35: {0}, 36: {0, 1}, 37: {0, 1}, 38: {0, 1}, 39: {0, 1}, 40: {0, 1}, 41: {0, 1}, 42: {0, 1}, 43: {0, 1}, 44: {0, 1}, 45: {0, 1}, 46: {0, 1}, 47: {0, 1}, 48: {0, 1}, 49: {0, 1}, 50: {0, 1}, 51: {0, 1}, 52: {0, 1}, 53: {0, 1}, 54: {0, 1}, 55: {0, 1}, 56: {0, 1}, 57: {0, 1}, 58: {0, 1}, 59: {1}, 60: {0, 1}, 61: {1}, 62: {0, 1}, 63: {0, 1}, 64: {0, 1}, 65: {0, 1}, 66: {0, 1}, 67: {0, 1}, 68: {0, 1}, 69: {0, 1}, 70: {0, 1}, 71: {0, 1}, 72: {0, 1}, 73: {0, 1}, 74: {0, 1}, 75: {0, 1}, 76: {0, 1}, 77: {0, 1}, 78: {0, 1}, 79: {0, 1}, 80: {0, 1}, 81: {0, 1}, 82: {0, 1}, 83: {0, 1}, 84: {0, 1}, 85: {0, 1}, 86: {0, 1}, 87: {0, 1}, 88: {0, 1}, 89: {0, 1}, 90: {0, 1}, 91: {0, 1}, 92: {0, 1}, 93: {0, 1}, 94: {0, 1}, 95: {0, 1}, 96: {0, 1}, 97: {0, 1}, 98: {0, 1}, 99: {0, 1}, 100: {0, 1}, 101: {0, 1}, 102: {0, 1}, 103: {0, 1}, 104: {0, 1}, 105: {0, 1}, 106: {0, 1}, 107: {0, 1}, 108: {0, 1}, 109: {0, 1}, 110: {0, 1}, 111: {0, 1}, 112: {0, 1}, 113: {0, 1}, 114: {0, 1}, 115: {0, 1}, 116: {0, 1}, 117: {0, 1}, 118: {0, 1}, 119: {0, 1}, 120: {0, 1}, 121: {0, 1}, 122: {0, 1}, 123: {0, 1}, 124: {0, 1}, 125: {0, 1}, 126: {1}, 127: {0, 1}, 128: {0, 1}, 129: {0}, 130: {0, 1}, 131: {0, 1}, 132: {0, 1}, 133: {0, 1}, 134: {0, 1}, 135: {0, 1}, 136: {0, 1}, 137: {0, 1}, 138: {0, 1}, 139: {0, 1}, 140: {0, 1}, 141: {0, 1}, 142: {0, 1}, 143: {0, 1}, 144: {0, 1}, 145: {0, 1}, 146: {0, 1}, 147: {0, 1}, 148: {0, 1}, 149: {0, 1}, 150: {0, 1}, 151: {0, 1}, 152: {0, 1}, 153: {0, 1}, 154: {0, 1}, 155: {0, 1}, 156: {0, 1}, 157: {0, 1}, 158: {0, 1}, 159: {0, 1}, 160: {0, 1}, 161: {0, 1}, 162: {0, 1}, 163: {0, 1}, 164: {0}, 165: {0, 1}, 166: {0}, 167: {0, 1}, 168: {0, 1}, 169: {0, 1}, 170: {0, 1}, 171: {0, 1}, 172: {0, 1}, 173: {0, 1}, 174: {0, 1}, 175: {0, 1}, 176: {0, 1}, 177: {0, 1}, 178: {0, 1}, 179: {0, 1}, 180: {0, 1}, 181: {0}, 182: {0, 1}, 183: {0, 1}, 184: {0, 1}, 185: {0, 1}, 186: {0, 1}, 187: {0, 1}, 188: {0, 1}, 189: {0, 1}, 190: {0, 1}, 191: {0, 1}, 192: {0, 1}, 193: {0, 1}, 194: {0, 1}, 195: {0, 1}, 196: {0, 1}, 197: {0, 1}, 198: {0, 1}, 199: {1}, 200: {0, 1}, 201: {0, 1}, 202: {0, 1}, 203: {0, 1}, 204: {0, 1}, 205: {0, 1}, 206: {0, 1}, 207: {0}, 208: {1}, 209: {0, 1}, 210: {0, 1}, 211: {0, 1}, 212: {0, 1}, 213: {0, 1}, 214: {0, 1}, 215: {0, 1}, 216: {0, 1}, 217: {0, 1}, 218: {0, 1}, 219: {0, 1}, 220: {0, 1}, 221: {0, 1}, 222: {0, 1}, 223: {0, 1}, 224: {0}, 225: {0, 1}, 226: {0, 1}, 227: {0, 1}, 228: {0}, 229: {0, 1}, 230: {0, 1}, 231: {0, 1}, 232: {0, 1}, 233: {0, 1}, 234: {1}, 235: {0, 1}, 236: {0, 1}, 237: {0, 1}, 238: {0, 1}, 239: {0}, 240: {0, 1}, 241: {0, 1}, 242: {0, 1}, 243: {0, 1}, 244: {0, 1}, 245: {0, 1}, 246: {0, 1}, 247: {1}, 248: {0, 1}, 249: {0, 1}, 250: {0, 1}, 251: {0, 1}, 252: {0, 1}, 253: {0, 1}, 254: {0, 1}, 255: {0, 1}, 256: {0, 1}, 257: {0, 1}, 258: {0, 1}, 259: {0, 1}, 260: {0, 1}, 261: {0, 1}, 262: {0, 1}, 263: {0, 1}, 264: {0, 1}, 265: {0, 1}, 266: {0, 1}, 267: {0, 1}, 268: {0, 1}, 269: {0, 1}, 270: {0, 1}, 271: {1}, 272: {0, 1}, 273: {0, 1}, 274: {0, 1}, 275: {1}, 276: {0, 1}, 277: {0, 1}, 278: {0, 1}, 279: {0, 1}, 280: {0, 1}, 281: {0, 1}, 282: {0, 1}, 283: {0, 1}, 284: {0, 1}, 285: {0, 1}, 286: {0, 1}, 287: {0, 1}, 288: {0, 1}, 289: {0}, 290: {0, 1}, 291: {0, 1}, 292: {0, 1}, 293: {0, 1}, 294: {0, 1}, 295: {0, 1}, 296: {0, 1}, 297: {0, 1}, 298: {0, 1}, 299: {0, 1}}
+Iteration 3: Best valset aggregate score so far: 0.07738888888888888
+Iteration 3: Best program as per aggregate score on valset: 0
+Iteration 3: Best score on valset: 0.07738888888888888
+Iteration 3: Linear pareto front program index: 0
+Iteration 3: New program candidate index: 1
+Iteration 4: No merge candidates found
+Iteration 4: Selected program 0 score: 0.07738888888888888
+Iteration 4: Proposed new text for system_prompt: Your task is to decompose a given system prompt into four independent modules, each addressing a distinct aspect of the task. The input consists of a system prompt that requires breaking down into four modules, each with a specific focus. The first module must identify the core objective of the original prompt, which is to decompose it into four independent components. The second module must analyze the original instruction to extract key elements such as the role, constraints, and output requirements. The third module must assign each of the four aspects—role definition, constraints, output format, and error prevention—to a separate module for clarity and independence. The fourth module must ensure that all aspects are addressed and that the final response meets all constraints, including the word count, starting/ending word, and keyword limits.  
+
+The input format includes a system prompt that must be decomposed into four modules. The system prompt may contain complex instructions, constraints, and output requirements that need to be parsed and structured into four distinct, self-contained modules. The assistant must ensure that each module is clear, focused, and free from overlap, while maintaining logical flow and coherence. The final output must be a complete, self-contained, and compliant response that adheres to all constraints, including the use of specific keywords, word count limits, and the requirement to start and end with the same word.  
+
+The assistant must also ensure that the final response includes all necessary components of the original prompt and is structured in a way that avoids ambiguity. The response must be in English, under 36 sentences, and must not contain any punctuation. Words with all capital letters must appear no more than three times. The final word must be the same at the beginning and end of the response.  
+
+Additionally, the assistant must be aware of niche and domain-specific factual information related to the task, such as the structure of system prompts, the use of constraints in decomposition, and the requirements for output formatting. If the task involves a generalizable strategy, such as parsing instructions into modules, the assistant must include that strategy in the instruction to ensure consistency and clarity in the decomposition process.  
+
+The assistant must also ensure that the final response is free of any markdown and is self-contained, adhering strictly to the constraints provided. The response must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters must appear no more than three times, and the final word must be the same at the beginning and end of the response.
+Iteration 4: New subsample score 0.4 is not better than old score 0.4, skipping
+Iteration 5: Selected program 1 score: 0.07327777777777778
+Iteration 5: Proposed new text for system_prompt: Your task is to write a detailed instruction for the assistant to follow when decomposing a system prompt into four independent modules. The instruction must specify the exact format and content of each module, including the role, constraints, output requirements, and error prevention aspects. The instruction must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints.  
+
+1. **Identify the core task**: The core task is to decompose a system prompt into four independent modules, each addressing a distinct aspect of the task. The modules must be self-contained, clear, and focused on a specific component of the original prompt. The task must be broken down into four distinct, non-overlapping parts that collectively address the original prompt's requirements.  
+
+2. **Break down the original prompt**: The original prompt must be analyzed to identify key elements such as the role, constraints, output requirements, and any implicit or explicit instructions. These elements must be extracted and categorized into the four modules. The assistant must ensure that each module addresses a unique aspect of the task and that no module contains overlapping or redundant information.  
+
+3. **Assign each module a specific aspect**:  
+   - **Module 1**: Define the role of the assistant in the decomposition process. This module must specify the responsibilities of the assistant in identifying, categorizing, and structuring the original prompt into four distinct parts.  
+   - **Module 2**: Outline the constraints and requirements for the decomposition. This module must include rules such as word count limits, starting/ending word requirements, and keyword restrictions.  
+   - **Module 3**: Specify the output format and structure of the final response. This module must define how the final output should be structured, including the format of each module, the order of presentation, and any specific formatting guidelines.  
+   - **Module 4**: Ensure that all aspects of the original prompt are addressed and that the final response meets all constraints, including the word count, starting/ending word, and keyword limits. This module must verify that all requirements are fulfilled and that the output is coherent and free of errors.  
+
+4. **Ensure independence and clarity**: Each module must be self-contained and free from overlap. The modules must be logically structured and coherent, ensuring that the decomposition process is clear and easy to follow. The assistant must avoid any overlap between modules and ensure that each module's content is distinct and focused on its assigned aspect.  
+
+5. **Validate completeness**: The final response must confirm that all aspects of the original prompt are addressed in the four modules and that the output meets all the specified constraints. The response must also start and end with the same word, and words with all capital letters must appear no more than three times. The assistant must verify that all constraints are met and that the output is both complete and compliant with the task requirements.  
+
+6. **Use a generalizable strategy**: The assistant must follow a consistent and repeatable strategy for decomposing prompts into four modules. This includes identifying the core task, breaking down the original prompt, assigning each module a distinct aspect, ensuring independence and clarity, and validating completeness. The strategy must be applied uniformly across different prompts to maintain consistency and reliability.  
+
+7. **Avoid punctuation and formatting errors**: The assistant must ensure that the final output contains no punctuation (e.g., periods, commas, or hyphens) and that all formatting is strictly adhered to. This includes avoiding the use of any punctuation in the final response and ensuring that the output is clean and well-structured.  
+
+8. **Maintain word count and structure**: The final response must be under 36 sentences and must start and end with the word "task". The assistant must ensure that the response is concise, well-organized, and adheres to all constraints, including the word count and starting/ending word requirements.  
+
+9. **Use markdown for formatting**: The assistant must use markdown to format the response, including bullet points, dividers, and bigrams. This includes using markdown for the bullet points in the final response and for the dividers between sections.  
+
+10. **Include niche and domain-specific information**: The instruction must include any niche or domain-specific information relevant to the task, such as specific formatting guidelines, constraint examples, or output structure requirements. This ensures that the instruction is comprehensive and tailored to the task at hand.  
+
+The final word is **"task"**.
+Iteration 5: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 6: Selected program 0 score: 0.07738888888888888
+Iteration 6: Proposed new text for system_prompt: Your task is to decompose a given system prompt into four independent modules, each addressing a distinct aspect of the task. The first module identifies the core objective of the original prompt, which is to break it down into four independent components. The second module analyzes the original instruction to extract key elements such as the role, constraints, and output requirements. The third module assigns each of the four aspects—role definition, constraints, output format, and error prevention—to a separate module for clarity and independence. The fourth module ensures that all aspects are addressed and that the final response meets all constraints, including the word count, starting/ending word, and keyword limits.  
+
+The response must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints. No markdown is allowed in the final response.  
+
+The input format consists of a single string `n` representing a positive decimal integer, with no leading zeros. The task is to determine the minimum number of positive deci-binary numbers required to sum to `n`, along with the sequence of deci-binary numbers used. A deci-binary number is defined as a number where each digit is either `0` or `1` and there are no leading zeros.  
+
+The task description involves partitioning the input number into deci-binary numbers such that their sum equals `n`. Each deci-binary number is constructed by placing `1`s in the positions corresponding to the digits of `n` and `0`s elsewhere. The minimum number of deci-binary numbers is equal to the number of `1`s in `n`, and each number is formed by placing `1`s in the respective positions.  
+
+The assistant must decompose the task into four modules:  
+1. **Core Objective**: Identify the goal of the task, which is to partition the input number into deci-binary numbers that sum to `n`.  
+2. **Input Analysis**: Extract the input string `n` and determine the number of `1`s in it.  
+3. **Module Assignment**: Assign the task to four modules: role definition, constraints, output format, and error prevention.  
+4. **Validation**: Ensure the final response meets all constraints, including the word count, starting/ending word, and keyword limits.  
+
+The response must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints. No markdown is allowed in the final response.  
+
+The final word is **task**.  
+P.S.: * * *  
+The key is to ensure that each deci-binary number has only 0s and 1s and no leading zeros. The minimum number of deci-binary numbers is equal to the number of 1s in the input number.  
+* * *  
+The sequence of deci-binary numbers is constructed by placing 1s in the positions corresponding to the digits of the input number. Each number is formed by placing 1s in the positions that match the input digits.  
+* * *  
+The sum of the deci-binary numbers equals the input number, and each number is a deci-binary number with only 0s and 1s.
+Iteration 6: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 7: Selected program 1 score: 0.07327777777777778
+Iteration 7: Proposed new text for system_prompt: Your task is to write a detailed instruction for the assistant to follow when decomposing a system prompt into four independent modules. The instruction must specify the exact format and content of each module, including the role, constraints, output requirements, and error prevention aspects. The instruction must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints.  
+
+1. **Identify the core task**: The core task is to decompose a system prompt into four independent modules, each addressing a distinct aspect of the task. The modules must be self-contained, clear, and focused on a specific component of the original prompt. The task must include a clear separation of responsibilities and logical flow between the modules.  
+
+2. **Break down the original prompt**: The original prompt must be analyzed to identify key elements such as the role, constraints, output requirements, and any implicit or explicit instructions. These elements must be extracted and categorized into the four modules. The modules must be logically structured and coherent, ensuring that the decomposition process is clear and easy to follow.  
+
+3. **Assign each module a specific aspect**: Each of the four modules must address a distinct part of the task. The first module should define the role of the assistant in the decomposition process. The second module should outline the constraints and requirements for the decomposition. The third module should specify the output format and structure of the final response. The fourth module should ensure that all aspects of the original prompt are addressed and that the final response meets all constraints, including the word count, starting/ending word, and keyword limits.  
+
+4. **Ensure independence and clarity**: Each module must be self-contained and free from overlap. The modules must be logically structured and coherent, ensuring that the decomposition process is clear and easy to follow. The assistant must avoid any assumptions or assumptions about the input or output, and the modules must be independent of each other.  
+
+5. **Validate completeness**: The final response must confirm that all aspects of the original prompt are addressed in the four modules and that the output meets all the specified constraints. The response must also start and end with the same word, and words with all capital letters must appear no more than three times. The assistant must ensure that the final output is complete, self-contained, and adheres to all constraints.  
+
+6. **Use a generalizable strategy**: The assistant must apply a generalizable strategy for decomposing prompts into modules. This includes identifying the core task, breaking down the original prompt, assigning each module a distinct aspect, ensuring independence and clarity, and validating completeness. The assistant must also ensure that the final output is under 36 sentences, starts and ends with the word "task," and includes no words with all capital letters except for the word "task."  
+
+7. **Incorporate niche and domain-specific information**: The instruction must include niche and domain-specific information about the task, such as the need to identify key elements in a system prompt, the importance of logical structure in decomposition, and the constraints on output format and word count. The assistant must also ensure that the final output is compliant with all specified constraints, including the use of specific keywords and the inclusion of the word "task" at the start and end.  
+
+8. **Avoid markdown and ensure clarity**: The final response must be in English, under 36 sentences, and must not include any markdown. The assistant must ensure that the response is clear, concise, and adheres to all constraints. The response must also include no words with all capital letters except for the word "task."  
+
+The final word is **task**.
+Iteration 7: New subsample score 0.3333333333333333 is not better than old score 0.5, skipping
+Iteration 8: Selected program 0 score: 0.07738888888888888
+Iteration 8: Proposed new text for system_prompt: **Task Instruction**:  
+Your task is to decompose a given system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific component of the original prompt. The modules should guide the user through the process of breaking down the original instruction, applying constraints, and generating a complete, compliant response. The response must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times. No markdown is allowed in the final response.  
+
+**Input Format**:  
+1. **Core Task**: The original prompt is a multi-part instruction that requires decomposition into four distinct modules.  
+2. **Key Elements**: The instruction includes a role (e.g., "decompose a system prompt"), constraints (e.g., "four independent modules"), and output requirements (e.g., "compliant response").  
+3. **Module Assignment**: Each module must address a unique aspect: role definition, constraints, output format, and error prevention.  
+4. **Clarity and Independence**: Each module must be self-contained, free from overlap, and logically structured.  
+5. **Validation**: Ensure all aspects of the original prompt are addressed, and the final response meets all constraints, including word count, starting/ending word, and keyword limits.  
+
+**Niche and Domain-Specific Details**:  
+- The task involves breaking down complex instructions into structured, modular components.  
+- The response must be in English, with strict adherence to word count and formatting rules.  
+- The final word must be the same at the beginning and end of the response.  
+- Words with all capital letters must appear no more than three times.  
+- The response must be self-contained and compliant with all constraints.  
+
+**Generalizable Strategy**:  
+- Identify the core task and its components.  
+- Extract key elements (role, constraints, output, error prevention).  
+- Assign each component to a separate module.  
+- Validate that all aspects are addressed and constraints are met.  
+- Ensure the final response is structured, compliant, and meets all specified requirements.
+Iteration 8: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 9: Selected program 0 score: 0.07738888888888888
+Iteration 9: Proposed new text for system_prompt: **Instruction**:  
+Your task is to decompose a given system prompt into four independent modules, each addressing a distinct aspect of the task. Each module must be self-contained, clear, and focused on a specific component of the original prompt. The modules should guide the user through the process of breaking down the original instruction, applying constraints, and generating a complete, compliant response. The response must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times.  
+
+**Task Description**:  
+The input consists of a system prompt that requires decomposition into four distinct modules. The core task is to identify the main objective of the original prompt, which is to break it down into four independent components. The second module involves analyzing the original instruction to extract key elements such as the role, constraints, and output requirements. The third module requires assigning each of the four aspects—role definition, constraints, output format, and error prevention—to a separate module for clarity and independence. The fourth module ensures that all aspects are addressed and that the final response meets all constraints, including the word count, starting/ending word, and keyword limits.  
+
+**Niche and Domain-Specific Information**:  
+- The system prompt may involve complex logical structures, such as rules, constraints, or conditional statements.  
+- The output must be in English and adhere to strict formatting rules, including a specific starting and ending word and keyword frequency limits.  
+- The task may involve generating a response that includes specific keywords (e.g., "magazine" and "drag") and avoids certain prohibited terms.  
+- The response must be logically structured, free of ambiguity, and fully compliant with all constraints, including the requirement to be under 36 sentences.  
+
+**Generalizable Strategy**:  
+The assistant should identify the core task, break down the original instruction into its key components, assign each component to a separate module, and ensure that the final response is complete, compliant, and meets all specified constraints. The strategy involves systematic analysis of the input, clear module assignment, and adherence to the formatting and content requirements.
+Iteration 9: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 10: Selected program 1 score: 0.07327777777777778
+Iteration 10: Proposed new text for system_prompt: Your task is to write a detailed instruction for the assistant to follow when decomposing a system prompt into four independent modules. The instruction must specify the exact format and content of each module, including the role, constraints, output requirements, and error prevention aspects. The instruction must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints.  
+
+1. **Identify the core task**: The core task is to decompose a system prompt into four independent modules, each addressing a distinct aspect of the task. The modules must be self-contained, clear, and focused on a specific component of the original prompt.  
+
+2. **Break down the original prompt**: The original prompt must be analyzed to identify key elements such as the role, constraints, output requirements, and any implicit or explicit instructions. These elements must be extracted and categorized into the four modules.  
+
+3. **Assign each module a specific aspect**: The first module should define the role of the assistant in the decomposition process. The second module should outline the constraints and requirements for the decomposition. The third module should specify the output format and structure of the final response. The fourth module should ensure that all aspects of the original prompt are addressed and that the final response meets all constraints, including the word count, starting/ending word, and keyword limits.  
+
+4. **Ensure independence and clarity**: Each module must be self-contained and free from overlap. The modules must be logically structured and coherent, ensuring that the decomposition process is clear and easy to follow.  
+
+5. **Validate completeness**: The final response must confirm that all aspects of the original prompt are addressed in the four modules and that the output meets all the specified constraints. The response must also start and end with the same word, and words with all capital letters must appear no more than three times.  
+
+6. **Use placeholders and variables**: Each module must include placeholders or variables to represent dynamic elements of the original prompt, such as numbers, names, or conditions. These placeholders must be clearly defined and used consistently across the modules.  
+
+7. **Ensure output format compliance**: The final output must follow a specific format, such as bullet points, numbered lists, or structured paragraphs. The format must be explicitly stated in the third module.  
+
+8. **Enforce constraints on output**: The output must adhere to specific constraints, such as word count, starting/ending word, and keyword limits. These constraints must be clearly outlined in the fourth module.  
+
+9. **Prevent errors in decomposition**: The assistant must avoid overlapping or conflicting modules. Each module must be distinct and address a unique aspect of the original prompt.  
+
+10. **Maintain consistency in terminology**: The assistant must use consistent terminology across all modules to ensure clarity and avoid confusion.  
+
+11. **Use markdown for formatting**: The assistant must use markdown for formatting, such as bullet points, numbered lists, and dividers, as specified in the third module.  
+
+12. **Ensure the final response starts and ends with the same word**: The final response must begin and end with the same word, such as "task" or "example", as required by the constraints.  
+
+13. **Limit use of all-caps words**: Words with all capital letters must appear no more than three times in the final response.  
+
+14. **Provide a validation step**: The assistant must include a validation step in the final response to confirm that all constraints are met and that the output is complete and compliant.  
+
+15. **Use placeholders for dynamic content**: The assistant must use placeholders for dynamic content, such as numbers, names, or conditions, to ensure the output is flexible and adaptable to different prompts.  
+
+16. **Ensure the response is self-contained**: The final response must be a complete, self-contained output that includes all necessary information and does not require external references.  
+
+17. **Use the word "task" as the final word**: The final response must start and end with the word "task" as specified in the constraints.  
+
+18. **Include a validation check**: The assistant must include a validation check in the final response to ensure that all aspects of the original prompt are addressed and that the output meets all constraints.  
+
+19. **Use the markdown divider**: The assistant must use the markdown divider * * * to separate sections of the response as specified in the third module.  
+
+20. **Ensure the response is under 36 sentences**: The final response must be concise and fit within the 36-sentence limit.  
+
+21. **Use clear and concise language**: The assistant must use clear and concise language to ensure that the instructions are easy to follow and the final output is understandable.  
+
+22. **Avoid markdown in the final response**: The final response must be in plain text, without any markdown formatting.  
+
+23. **Include all required placeholders**: The assistant must ensure that all required placeholders are included in the final response, as specified in the third module.  
+
+24. **Use the word "task" consistently**: The assistant must use the word "task" consistently in the final response, as required by the constraints.  
+
+25. **Ensure the response is free of errors**: The assistant must review the final response for any errors, such as missing constraints, incorrect formatting, or violations of the word count.  
+
+26. **Provide a final validation statement**: The assistant must include a final validation statement in the response to confirm that all constraints are met and that the output is complete and compliant.  
+
+27. **Use the word "task" as the final word**: The assistant must ensure that the final response starts and ends with the word "task" as required.  
+
+28. **Limit the use of all-caps words**: The assistant must ensure that words with all capital letters appear no more than three times in the final response.  
+
+29. **Use the word "task" as the final word**: The assistant must ensure that the final response starts and ends with the word "task" as required.  
+
+30. **Ensure the response is under 36 sentences**: The assistant must ensure that the final response is concise and fits within the 36-sentence limit.  
+
+31. **Use clear and concise language**: The assistant must use clear and concise language to ensure that the instructions are easy to follow and the final output is understandable.  
+
+32. **Avoid markdown in the final response**: The assistant must ensure that the final response is in plain text, without any markdown formatting.  
+
+33. **Include all required placeholders**: The assistant must ensure that all required placeholders are included in the final response, as specified in the third module.  
+
+34. **Use the word "task" consistently**: The assistant must use the word "task" consistently in the final response, as required by the constraints.  
+
+35. **Provide a final validation statement**: The assistant must include a final validation statement in the response to confirm that all constraints are met and that the output is complete and compliant.  
+
+36. **End with the word "task"**: The assistant must ensure that the final response starts and ends with the word "task" as required.
+Iteration 10: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 11: Selected program 0 score: 0.07738888888888888
+Iteration 11: Proposed new text for system_prompt: Your task is to write a new instruction for the assistant that specifies the exact format and requirements for the response. The instruction must be clear, precise, and include all necessary components for the assistant to generate a compliant and correct output. The instruction should include the following elements:  
+
+1. **Task Description**: A detailed explanation of what the assistant is supposed to do, including the specific goal and the nature of the task.  
+2. **Input Format**: A clear description of the input that the assistant will receive, including any constraints, examples, or conditions that must be met.  
+3. **Output Requirements**: A detailed specification of the output format, including the structure, content, and any specific rules that must be followed.  
+4. **Constraints and Rules**: A list of all constraints, such as word limits, starting/ending words, repetition limits, and other rules that must be adhered to.  
+5. **Niche and Domain-Specific Information**: Any specialized knowledge or facts that are relevant to the task and should be included in the instruction.  
+6. **Generalizable Strategy**: If the assistant is using a generalizable strategy, include it in the instruction to ensure consistency and clarity.  
+
+The instruction must be written in English, under 36 sentences, and must start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints. No markdown is allowed in the final response.  
+
+**Final Output**:  
+The task involves writing a detailed instruction for the assistant to follow, specifying the exact format and requirements for the response. The instruction must be clear, precise, and include all necessary components for the assistant to generate a compliant and correct output. The instruction must include the following elements:  
+
+1. **Task Description**: A detailed explanation of what the assistant is supposed to do, including the specific goal and the nature of the task.  
+2. **Input Format**: A clear description of the input that the assistant will receive, including any constraints, examples, or conditions that must be met.  
+3. **Output Requirements**: A detailed specification of the output format, including the structure, content, and any specific rules that must be followed.  
+4. **Constraints and Rules**: A list of all constraints, such as word limits, starting/ending words, repetition limits, and other rules that must be adhered to.  
+5. **Niche and Domain-Specific Information**: Any specialized knowledge or facts that are relevant to the task and should be included in the instruction.  
+6. **Generalizable Strategy**: If the assistant is using a generalizable strategy, include it in the instruction to ensure consistency and clarity.  
+
+The instruction must be written in English, under 36 sentences, and must start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints. No markdown is allowed in the final response.  
+
+The final word is **"task"**.
+Iteration 11: New subsample score 0.5 is not better than old score 0.5, skipping
+Iteration 12: Selected program 1 score: 0.07327777777777778
+Iteration 12: Proposed new text for system_prompt: Your task is to write a detailed instruction for the assistant to follow when decomposing a system prompt into four independent modules. The instruction must specify the exact format and content of each module, including the role, constraints, output requirements, and error prevention aspects. The instruction must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints.  
+
+1. **Identify the core task**: The core task is to decompose a system prompt into four independent modules, each addressing a distinct aspect of the task. The modules must be self-contained, clear, and focused on a specific component of the original prompt.  
+
+2. **Break down the original prompt**: The original prompt must be analyzed to identify key elements such as the role, constraints, output requirements, and any implicit or explicit instructions. These elements must be extracted and categorized into the four modules.  
+
+3. **Assign each module a specific aspect**:  
+   - **Module 1**: Define the role of the assistant in the decomposition process.  
+   - **Module 2**: Outline the constraints and requirements for the decomposition, including any explicit or implicit rules.  
+   - **Module 3**: Specify the output format and structure of the final response, including the required elements and their arrangement.  
+   - **Module 4**: Ensure that all aspects of the original prompt are addressed and that the final response meets all constraints, including the word count, starting/ending word, and keyword limits.  
+
+4. **Ensure independence and clarity**: Each module must be self-contained and free from overlap. The modules must be logically structured and coherent, ensuring that the decomposition process is clear and easy to follow.  
+
+5. **Validate completeness**: The final response must confirm that all aspects of the original prompt are addressed in the four modules and that the output meets all the specified constraints. The response must also start and end with the same word, and words with all capital letters must appear no more than three times.  
+
+6. **Use the same starting and ending word**: The final response must begin and end with the word **"task"**.  
+
+7. **Adhere to formatting rules**:  
+   - Use square brackets for all words in the response.  
+   - Avoid the use of periods (.) or exclamation marks (!) as punctuation.  
+   - Ensure the response is under 36 sentences.  
+
+8. **Include specific requirements**:  
+   - Include the keyword **"side"** exactly once.  
+   - Include the keyword **"dream"** exactly twice.  
+   - Ensure the response starts and ends with the word **"task"**.  
+
+9. **Ensure clarity and correctness**:  
+   - Each module must be clearly defined and free from ambiguity.  
+   - Check that the decomposition respects the original prompt's intent and constraints.  
+   - Avoid any unintended implications or violations of the original prompt's guidelines.  
+
+10. **Provide a final validation**:  
+    - Confirm that all aspects of the original prompt are addressed in the four modules.  
+    - Verify that the output meets all constraints, including the word count, starting/ending word, and keyword limits.  
+
+11. **Maintain consistency**:  
+    - Use the same format and structure for all modules.  
+    - Ensure that the modules are logically ordered and follow the specified roles and constraints.  
+
+12. **Avoid markdown**:  
+    - The final response must be in plain English and without any markdown formatting.  
+
+13. **Comply with all constraints**:  
+    - The response must be under 36 sentences.  
+    - Words with all capital letters must appear no more than three times.  
+
+14. **Final check**:  
+    - Ensure the response starts and ends with the word **"task"**.  
+    - Confirm that all required keywords are included.  
+    - Verify that the response is self-contained and compliant with all instructions.  
+
+**task**
+Iteration 12: New subsample score 0.0 is not better than old score 0.5, skipping
+Iteration 13: Selected program 0 score: 0.07738888888888888
+Iteration 13: Proposed new text for system_prompt: Your task is to write a new instruction for the assistant that clearly defines the format and requirements for a given task. The instruction must include the following elements:  
+
+1. **Input Format**: Specify the structure of the input provided to the assistant, including any data types, examples, or constraints.  
+2. **Task Description**: Provide a detailed description of the task to be performed, including the core objective, key components, and any specific requirements.  
+3. **Output Requirements**: Define the expected format, content, and constraints of the output, such as word count, starting/ending word, and keyword limits.  
+4. **Constraints and Rules**: List any additional rules or constraints that must be followed, such as avoiding repetition, using specific terminology, or ensuring logical flow.  
+5. **Validation and Compliance**: Mention the need to validate that all aspects of the task are addressed and that the output meets all specified requirements.  
+
+The response must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints. No markdown is allowed in the final response.  
+
+**Example**:  
+Input:  
+"Develop a Python code that produces a Fibonacci series, a sequence in which each number is the sum of the two preceding ones, typically starting with 0 and 1, where the quantity of elements in the series is determined by a user-provided input."  
+
+Output:  
+The task involves writing a Python program to generate a Fibonacci sequence based on a user-provided number of elements. The sequence starts with 0 and 1, and each subsequent number is the sum of the two preceding ones. The code must be self-contained, use unique words, and avoid repetition. The output must start and end with the word "task".  
+
+The code begins by defining a list to store the sequence. It initializes the first two elements, 0 and 1. A loop is used to generate the remaining elements by summing the last two in the list. The loop runs for the specified number of elements. The final sequence is printed to the console.  
+
+The code ensures that only unique words are used, and no word is repeated. The word "task" is used at the beginning and end of the response. The word "possible" appears twice, once in the description and once in the final word.  
+
+P.S. The code is structured to meet all requirements, including the number of elements, unique words, and the starting/ending word.  
+
+**Final Word**: task
+Iteration 13: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 14: Selected program 0 score: 0.07738888888888888
+Iteration 14: Proposed new text for system_prompt: Your task is to generate a comprehensive and structured response to a given problem, following a specific set of instructions. The response must be divided into four distinct modules, each addressing a specific aspect of the task, and must adhere to strict constraints such as word count, starting/ending word, and keyword limits. The response must be self-contained, logically structured, and free of ambiguity. Additionally, the response must not include any punctuation and must start and end with the same word.  
+
+### Input Format  
+The input consists of a single problem statement that requires decomposition into four independent modules. The problem may involve tasks such as:  
+- Identifying the core objective of the task.  
+- Extracting key elements (e.g., role, constraints, output requirements).  
+- Assigning each module to a specific aspect (e.g., role definition, constraints, output format, error prevention).  
+- Ensuring all aspects are addressed and the final response meets all constraints.  
+
+### Task Description  
+You are to:  
+1. **Identify the core task**: Determine the main objective of the original prompt, which is to decompose a system prompt into four independent modules.  
+2. **Break down the original prompt**: Analyze the original instruction to identify the key elements, such as the role, constraints, and output requirements.  
+3. **Assign each module a specific aspect**: Ensure each module addresses a distinct part of the task, such as role definition, constraints, output format, and error prevention.  
+4. **Ensure independence and clarity**: Each module should be self-contained and free from overlap, while maintaining logical flow and coherence.  
+5. **Validate completeness**: Confirm that all aspects of the original prompt are addressed in the four modules and that the final response meets all constraints, including the word count, starting/ending word, and keyword limits.  
+
+### Niche and Domain-Specific Information  
+- The task involves structured problem decomposition and response generation, with strict constraints on output format and content.  
+- The response must be in English, under 36 sentences, and start and end with the same word.  
+- Words with all capital letters should appear no more than three times.  
+- The response must be self-contained and free of ambiguity, with no punctuation.  
+- The response must include a postscript (if required) and must be logically structured and free of overlap.  
+
+### Generalizable Strategy  
+- The assistant should follow a systematic approach to decompose the problem into four modules.  
+- The assistant should ensure that each module is self-contained and addresses a distinct aspect of the task.  
+- The assistant should validate the completeness of the response and ensure it meets all constraints.  
+
+### Final Output Requirements  
+- The response must be in English, under 36 sentences, and start and end with the same word.  
+- Words with all capital letters should appear no more than three times.  
+- The response must be a complete, self-contained, and compliant output that adheres to all constraints.  
+- No markdown is allowed in the final response.  
+- The response must include a postscript (if required) and must be logically structured and free of ambiguity.  
+
+### Example Output Structure  
+The final response should be structured as follows:  
+1. **Module 1**: Identify the core task and the main objective.  
+2. **Module 2**: Break down the original instruction into key elements.  
+3. **Module 3**: Assign each module to a specific aspect (e.g., role, constraints, output format, error prevention).  
+4. **Module 4**: Ensure all aspects are addressed and the final response meets all constraints.  
+5. **Postscript (if required)**: Add a postscript starting with "P.S." and include relevant details.  
+
+### Constraints to Adhere To  
+- The response must be under 36 sentences.  
+- The response must start and end with the same word.  
+- Words with all capital letters should appear no more than three times.  
+- The response must be free of ambiguity and logical.  
+- No punctuation is allowed.  
+- The response must be self-contained and compliant with all constraints.  
+- The response must include a postscript if required.  
+
+### Final Word  
+The final response must start and end with the word **"task"**.
+Iteration 14: New subsample score 0.3333333333333333 is not better than old score 0.8333333333333333, skipping
+Iteration 15: Selected program 0 score: 0.07738888888888888
+Iteration 15: Proposed new text for system_prompt: Your task is to generate a comprehensive and structured response to a given system prompt by decomposing it into four independent modules. Each module must address a distinct aspect of the task, be self-contained, and adhere to specific constraints. The response must be in English, under 36 sentences, and start and end with the same word. Words with all capital letters should appear no more than three times. The final response must be a complete, self-contained, and compliant output that adheres to all constraints.  
+
+**Input Format**:  
+- A system prompt that includes a core task, role definition, constraints, and output requirements.  
+- Optional: Specific instructions or examples that guide the decomposition process.  
+
+**Task Description**:  
+1. **Identify the core task**: Determine the main objective of the original prompt, which is to decompose a system prompt into four independent modules.  
+2. **Break down the original prompt**: Analyze the original instruction to identify key elements such as the role, constraints, and output requirements.  
+3. **Assign each module a specific aspect**: Ensure each module addresses a distinct part of the task, such as role definition, constraints, output format, and error prevention.  
+4. **Ensure independence and clarity**: Each module should be self-contained and free from overlap, while maintaining logical flow and coherence.  
+5. **Validate completeness**: Confirm that all aspects of the original prompt are addressed in the four modules and that the final response meets all constraints, including the word count, starting/ending word, and keyword limits.  
+
+**Niche and Domain-Specific Information**:  
+- The task involves generating a response that adheres to strict formatting and constraint rules, including starting and ending with the same word.  
+- The response must be in English, with no markdown, and must avoid repeated words and consecutive letter-starting words.  
+- The response must include a palindrome and meet all other specified constraints, such as no capital letters and no use of certain keywords.  
+- The assistant must ensure that the decomposition process is logically structured and that the final output is both complete and compliant.  
+
+**Generalizable Strategy**:  
+- The assistant should use a systematic approach to decompose the original prompt into four distinct modules.  
+- The assistant must ensure that each module is self-contained and addresses a unique aspect of the task.  
+- The assistant must validate that all constraints are met, including word count, formatting, and content requirements.  
+- The assistant must ensure that the final response is a complete, self-contained, and compliant output that adheres to all given constraints.
+Iteration 15: New subsample score 0.6000000000000001 is better than old score 0.4. Continue to full eval and add to candidate pool.
+Iteration 15: Valset score for new program: 0.07366666666666667 (coverage 300 / 300)
+Iteration 15: Val aggregate for new program: 0.07366666666666667
+Iteration 15: Individual valset scores for new program: {35: 0.2, 72: 0.0, 113: 0.4, 0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.5, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.0, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.2, 34: 1.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 0.0, 61: 0.0, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.2, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.0, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.0, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.0, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.6666666666666666, 164: 0.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.0, 181: 0.0, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.0, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.0, 200: 0.25, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.0, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.5, 245: 0.0, 246: 1.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.25, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.25, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 1.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 15: New valset pareto front scores: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.5, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.5, 33: 0.2, 34: 1.0, 35: 0.3333333333333333, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.25, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.2, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.0, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.5, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.6666666666666666, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.3333333333333333, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.25, 200: 0.25, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.3333333333333333, 208: 1.0, 209: 1.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 1.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.2, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.5, 245: 0.0, 246: 1.0, 247: 0.25, 248: 0.0, 249: 0.5, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.5, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.4, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.25, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 1.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 15: Valset pareto front aggregate score: 0.10183333333333333
+Iteration 15: Updated valset pareto front programs: {0: {0, 1, 2}, 1: {0, 1, 2}, 2: {0, 1, 2}, 3: {0, 1, 2}, 4: {0, 1, 2}, 5: {0, 1, 2}, 6: {0, 1, 2}, 7: {0, 1, 2}, 8: {0, 1, 2}, 9: {0, 1, 2}, 10: {0, 1, 2}, 11: {0, 1, 2}, 12: {0, 1, 2}, 13: {0, 1, 2}, 14: {0, 1, 2}, 15: {0, 1, 2}, 16: {0, 1, 2}, 17: {0, 1, 2}, 18: {0, 1, 2}, 19: {2}, 20: {0, 1, 2}, 21: {0, 1, 2}, 22: {0, 1, 2}, 23: {0, 1, 2}, 24: {0, 1, 2}, 25: {0, 1, 2}, 26: {0, 1, 2}, 27: {0, 1, 2}, 28: {0, 1, 2}, 29: {0, 1}, 30: {0, 1, 2}, 31: {0, 1, 2}, 32: {1}, 33: {2}, 34: {0, 1, 2}, 35: {0}, 36: {0, 1, 2}, 37: {0, 1, 2}, 38: {0, 1, 2}, 39: {0, 1, 2}, 40: {0, 1, 2}, 41: {0, 1, 2}, 42: {0, 1, 2}, 43: {0, 1, 2}, 44: {0, 1, 2}, 45: {0, 1, 2}, 46: {0, 1, 2}, 47: {0, 1, 2}, 48: {0, 1, 2}, 49: {0, 1, 2}, 50: {0, 1, 2}, 51: {0, 1, 2}, 52: {0, 1, 2}, 53: {0, 1, 2}, 54: {0, 1, 2}, 55: {0, 1, 2}, 56: {0, 1, 2}, 57: {0, 1, 2}, 58: {0, 1, 2}, 59: {1}, 60: {0, 1, 2}, 61: {1}, 62: {0, 1, 2}, 63: {0, 1, 2}, 64: {0, 1, 2}, 65: {0, 1, 2}, 66: {0, 1, 2}, 67: {0, 1, 2}, 68: {0, 1, 2}, 69: {0, 1, 2}, 70: {0, 1, 2}, 71: {0, 1, 2}, 72: {0, 1, 2}, 73: {0, 1, 2}, 74: {0, 1, 2}, 75: {0, 1, 2}, 76: {0, 1, 2}, 77: {0, 1, 2}, 78: {0, 1, 2}, 79: {0, 1, 2}, 80: {2}, 81: {0, 1, 2}, 82: {0, 1, 2}, 83: {0, 1, 2}, 84: {0, 1, 2}, 85: {0, 1, 2}, 86: {0, 1, 2}, 87: {0, 1, 2}, 88: {0, 1, 2}, 89: {0, 1, 2}, 90: {0, 1, 2}, 91: {0, 1, 2}, 92: {0, 1, 2}, 93: {0, 1, 2}, 94: {0, 1, 2}, 95: {0, 1, 2}, 96: {0, 1, 2}, 97: {0, 1, 2}, 98: {0, 1, 2}, 99: {0, 1, 2}, 100: {0, 1, 2}, 101: {0, 1, 2}, 102: {0, 1, 2}, 103: {0, 1, 2}, 104: {0, 1, 2}, 105: {0, 1, 2}, 106: {0, 1, 2}, 107: {0, 1, 2}, 108: {0, 1, 2}, 109: {0, 1, 2}, 110: {0, 1, 2}, 111: {0, 1, 2}, 112: {0, 1, 2}, 113: {0, 1}, 114: {0, 1, 2}, 115: {0, 1, 2}, 116: {0, 1, 2}, 117: {0, 1, 2}, 118: {0, 1, 2}, 119: {0, 1, 2}, 120: {0, 1, 2}, 121: {0, 1, 2}, 122: {0, 1, 2}, 123: {0, 1, 2}, 124: {0, 1, 2}, 125: {0, 1, 2}, 126: {1, 2}, 127: {0, 1, 2}, 128: {0, 1, 2}, 129: {0}, 130: {0, 1, 2}, 131: {0, 1, 2}, 132: {0, 1, 2}, 133: {0, 1, 2}, 134: {0, 1, 2}, 135: {0, 1, 2}, 136: {0, 1, 2}, 137: {0, 1, 2}, 138: {0, 1}, 139: {0, 1, 2}, 140: {0, 1, 2}, 141: {0, 1, 2}, 142: {0, 1, 2}, 143: {0, 1, 2}, 144: {0, 1, 2}, 145: {0, 1, 2}, 146: {0, 1, 2}, 147: {0, 1, 2}, 148: {0, 1, 2}, 149: {0, 1, 2}, 150: {0, 1, 2}, 151: {0, 1, 2}, 152: {0, 1, 2}, 153: {0, 1, 2}, 154: {0, 1, 2}, 155: {0, 1, 2}, 156: {0, 1, 2}, 157: {0, 1, 2}, 158: {0, 1, 2}, 159: {0, 1, 2}, 160: {0, 1, 2}, 161: {0, 1, 2}, 162: {0, 1, 2}, 163: {0, 1, 2}, 164: {0}, 165: {0, 1, 2}, 166: {0, 2}, 167: {0, 1, 2}, 168: {0, 1, 2}, 169: {0, 1, 2}, 170: {0, 1, 2}, 171: {0, 1, 2}, 172: {0, 1, 2}, 173: {0, 1, 2}, 174: {0, 1, 2}, 175: {0, 1, 2}, 176: {0, 1, 2}, 177: {0, 1, 2}, 178: {0, 1, 2}, 179: {0, 1, 2}, 180: {0, 1}, 181: {0}, 182: {0, 1, 2}, 183: {0, 1, 2}, 184: {0, 1, 2}, 185: {0, 1, 2}, 186: {0, 1, 2}, 187: {0, 1, 2}, 188: {0, 1, 2}, 189: {0, 1, 2}, 190: {0, 1, 2}, 191: {0, 1, 2}, 192: {0, 1, 2}, 193: {0, 1, 2}, 194: {0, 1, 2}, 195: {0, 1}, 196: {0, 1, 2}, 197: {0, 1, 2}, 198: {0, 1, 2}, 199: {1}, 200: {2}, 201: {0, 1, 2}, 202: {0, 1, 2}, 203: {0, 1, 2}, 204: {0, 1, 2}, 205: {0, 1, 2}, 206: {0, 1, 2}, 207: {0}, 208: {1}, 209: {0, 1, 2}, 210: {0, 1, 2}, 211: {0, 1, 2}, 212: {0, 1, 2}, 213: {0, 1, 2}, 214: {0, 1, 2}, 215: {0, 1, 2}, 216: {0, 1, 2}, 217: {0, 1, 2}, 218: {0, 1, 2}, 219: {0, 1, 2}, 220: {0, 1, 2}, 221: {0, 1, 2}, 222: {0, 1, 2}, 223: {0, 1, 2}, 224: {0, 2}, 225: {0, 1, 2}, 226: {0, 1, 2}, 227: {0, 1, 2}, 228: {0}, 229: {0, 1, 2}, 230: {0, 1, 2}, 231: {0, 1, 2}, 232: {0, 1, 2}, 233: {0, 1, 2}, 234: {1}, 235: {0, 1, 2}, 236: {0, 1, 2}, 237: {0, 1, 2}, 238: {0, 1, 2}, 239: {0}, 240: {0, 1, 2}, 241: {0, 1, 2}, 242: {0, 1, 2}, 243: {0, 1, 2}, 244: {2}, 245: {0, 1, 2}, 246: {2}, 247: {1}, 248: {0, 1, 2}, 249: {2}, 250: {0, 1, 2}, 251: {0, 1, 2}, 252: {0, 1, 2}, 253: {0, 1, 2}, 254: {0, 1, 2}, 255: {0, 1, 2}, 256: {0, 1, 2}, 257: {0, 1, 2}, 258: {0, 1, 2}, 259: {0, 1, 2}, 260: {0, 1, 2}, 261: {0, 1, 2}, 262: {0, 1, 2}, 263: {0, 1, 2}, 264: {0, 1, 2}, 265: {0, 1, 2}, 266: {0, 1, 2}, 267: {0, 1, 2}, 268: {0, 1, 2}, 269: {0, 1, 2}, 270: {0, 1, 2}, 271: {1}, 272: {0, 1, 2}, 273: {0, 1, 2}, 274: {0, 1, 2}, 275: {1}, 276: {0, 1, 2}, 277: {0, 1, 2}, 278: {0, 1, 2}, 279: {0, 1, 2}, 280: {0, 1, 2}, 281: {0, 1, 2}, 282: {0, 1, 2}, 283: {0, 1, 2}, 284: {0, 1, 2}, 285: {0, 1, 2}, 286: {0, 1, 2}, 287: {0, 1, 2}, 288: {0, 1, 2}, 289: {0, 2}, 290: {0, 1, 2}, 291: {0, 1, 2}, 292: {0, 1, 2}, 293: {0, 1, 2}, 294: {0, 1, 2}, 295: {0, 1, 2}, 296: {0, 1, 2}, 297: {0, 1, 2}, 298: {0, 1, 2}, 299: {0, 1, 2}}
+Iteration 15: Best valset aggregate score so far: 0.07738888888888888
+Iteration 15: Best program as per aggregate score on valset: 0
+Iteration 15: Best score on valset: 0.07738888888888888
+Iteration 15: Linear pareto front program index: 0
+Iteration 15: New program candidate index: 2

@@ -1,0 +1,3 @@
+{
+    "response": "def average_color(rgb_list):\n    total_r = sum(r for r, g, b in rgb_list)\n    total_g = sum(g for r, g, b in rgb_list)\n    total_b = sum(b for r, g, b in rgb_list)\n    average_r = total_r // len(rgb_list)\n    average_g = total_g // len(rgb_list)\n    average_b = total_b // len(rgb_list)\n    return (average_r, average_g, average_b)\n\n# Example usage\ninput_list = [(255, 0, 0), (0, 255, 0), (0, 0, 255)]\nresult = average_color(input_list)\nprint(result)  # Output: (85, 85, 85)"
+}

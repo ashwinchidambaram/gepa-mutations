@@ -1,0 +1,3 @@
+{
+    "response": "text = \"Freedom and justice are ideals we must pursue relentlessly. Freedom is the path to prosperity and peace.\"\nword = \"freedom\"\n\ndef count_word(text, word):\n    text = text.lower()\n    word = word.lower()\n    count = 0\n    for i in range(len(text)):\n        if text[i:i+len(word)] == word:\n            count += 1\n    return count\n\nP.S.: Your response must have 4 sections. Section 1\ntext is a string that may contain multiple words and punctuation. Section 2\nthe function counts the occurrences of the specified word in the text. Section 3\nthe function is case insensitive, so \"Freedom\" and \"freedom\" are counted as the same word. Section 4\nthe function returns an integer representing the count of the word in the text."
+}

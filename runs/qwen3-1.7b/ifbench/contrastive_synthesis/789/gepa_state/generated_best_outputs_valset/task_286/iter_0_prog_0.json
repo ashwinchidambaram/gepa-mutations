@@ -1,0 +1,3 @@
+{
+    "response": "def average_color(rgb_list):\n    total_r = sum(r for r, g, b in rgb_list)\n    total_g = sum(g for r, g, b in rgb_list)\n    total_b = sum(b for r, g, b in rgb_list)\n    average_r = round(total_r / len(rgb_list))\n    average_g = round(total_g / len(rgb_list))\n    average_b = round(total_b / len(rgb_list))\n    return (average_r, average_g, average_b)"
+}

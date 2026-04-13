@@ -1,0 +1,3 @@
+{
+    "response": "def analyze_scores(scores):  \n    if not scores:  \n        return {}  \n    total = sum(scores)  \n    average = total / len(scores)  \n    highest = max(scores)  \n    lowest = min(scores)  \n    passed = sum(1 for score in scores if score >= 60)  \n    failed = len(scores) - passed  \n    return {  \n        'average_score': average,  \n        'highest_score': highest,  \n        'lowest_score': lowest,  \n        'passed': passed,  \n        'failed': failed  \n    }  \n\nanalyze_scores([85, 72, 90, 60, 55, 48, 100, 77, 68, 82, 45])  \nanalyze_scores([85, 72, 90, 60, 55, 48, 100, 77, 68, 82, 45])"
+}

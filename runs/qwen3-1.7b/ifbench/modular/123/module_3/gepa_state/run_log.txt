@@ -1,0 +1,1366 @@
+Iteration 0: Base program full valset score: 0.07 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.07
+Iteration 1: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Description
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior. Include specific actions like file encryption, unauthorized data access, or system compromise.
+
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+
+3. **Bigram Wrapping**: Wrap every word in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>.
+
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+7. **Language and Style**: The response must be in English, all lowercase, and no capital letters are allowed.
+
+8. **Error Handling**: Ensure the response adheres strictly to all constraints, including keyword inclusion, alphabet constraints, and final word requirement. If any constraint is violated, the response must be corrected.
+
+9. **Postscript Requirement**: If applicable, include a postscript starting with P.S. that adds additional context or clarification.
+
+10. **Unique Words**: Ensure no word is repeated in the response.
+
+## Niche and Domain-Specific Facts
+
+- **Malware Behavior Simulation**: Malware often starts with reconnaissance, then exploits vulnerabilities, and may attempt to encrypt data or exfiltrate information. These actions can be simulated in the game.
+
+- **Keyword Usage**: The words 'actor', 'bottom', 'pack', and 'sick' must be included in the response in the correct order and context.
+
+- **Alphabet Constraint Compliance**: The response must be checked for adjacency of consecutive letters in the first word of each sentence.
+
+- **Final Word Enforcement**: The response must end with the word "cost" exactly, with no additional text or punctuation following it.
+
+- **Language and Style**: The response must be in English, all lowercase, and without any capital letters, with strict adherence to the formatting requirements.
+
+## Generalizable Strategy
+
+- **Scenario Construction**: Build a narrative where malware attempts to access resources, with specific actions like file access, data exfiltration, or system compromise.
+
+- **Keyword Integration**: Ensure the required keywords are naturally integrated into the narrative without forcing them.
+
+- **Constraint Checking**: After constructing the response, verify that all constraints are met, including the alphabet constraint, keyword inclusion, and final word requirement.
+
+- **Postscript Handling**: If a postscript is needed, it must start with P.S. and provide additional context or clarification.
+
+- **Unique Word Enforcement**: Ensure no word is repeated in the response, and all words are properly wrapped in << >>.
+Iteration 1: New subsample score 0.5 is not better than old score 0.5, skipping
+Iteration 2: Selected program 0 score: 0.07
+Iteration 2: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Requirements
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+7. **Input Format**: The input is a single sentence or a series of sentences where the first word of each sentence is "vegetable", and the rest of the sentence follows the rules.
+8. **Edge Cases**: Handle invalid inputs gracefully, ensure keyword exclusion, and validate the final word is exactly "cost".
+
+## Example Output Format
+
+<<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>>
+
+## Feedback and Improvements
+
+- Ensure all words are wrapped in << >>.
+- Ensure the first word of each sentence is "vegetable".
+- Ensure the response includes the required keywords.
+- Ensure no two adjacent words start with consecutive letters.
+- Ensure the last word is exactly "cost".
+
+## Additional Notes
+
+- The response must be a single continuous string of words, with each word wrapped in << >>.
+- The response must be self-contained and valid, with no extra text or formatting beyond the required elements.
+- The response must be generated without any external dependencies or additional information.
+Iteration 2: New subsample score 0.0 is not better than old score 0.5, skipping
+Iteration 3: Selected program 0 score: 0.07
+Iteration 3: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 3: New subsample score 0.5333333333333333 is not better than old score 0.5333333333333333, skipping
+Iteration 4: Selected program 0 score: 0.07
+Iteration 4: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+## Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+## Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 4: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 5: Selected program 0 score: 0.07
+Iteration 5: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Description
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior, while ensuring that the simulation is both educational and engaging for the player.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+7. **Response Format**: The response must be in English, with all words wrapped in << >>, and the first word of each sentence must be "vegetable".
+8. **Error Handling**: Ensure that the response adheres to all constraints and handles any invalid inputs gracefully.
+9. **Clarity and Accuracy**: The response must be clear, concise, and accurate, reflecting the behavior of malware in a simulated environment.
+
+## Niche and Domain-Specific Information
+
+- **Malware Simulation**: The simulation must reflect realistic malware behavior, such as attempting to exploit vulnerabilities, intercepting data, or corrupting files.
+- **Educational Purpose**: The game should educate players on how malware operates, emphasizing the importance of cybersecurity and data protection.
+- **Game Mechanics**: The simulation should include interactive elements that allow players to make decisions and see the consequences of their actions.
+- **Ethical Considerations**: The simulation must adhere to ethical guidelines, ensuring that it does not promote harmful behavior or violate any laws.
+- **Technical Constraints**: The response must be formatted strictly according to the specified rules, including word wrapping, first word constraints, and alphabet adjacency restrictions.
+
+## Generalizable Strategy
+
+- **Scenario Creation**: Develop a scenario that includes a protagonist (e.g., an actor) who is trying to protect their system from malware.
+- **Malware Behavior**: Simulate the behavior of malware, such as scanning for vulnerabilities, attempting to access files, or spreading to other systems.
+- **Player Interaction**: Allow the player to make choices that affect the outcome of the simulation, such as whether to update software or run a scan.
+- **Feedback Mechanism**: Provide feedback to the player based on their actions, reinforcing the importance of cybersecurity practices.
+- **Constraint Enforcement**: Ensure that all constraints are strictly followed, including the use of specific keywords, word wrapping, and alphabet adjacency rules.
+
+## Example Output Format
+
+<<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>>
+
+* <<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>>
+Iteration 5: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 6: Selected program 0 score: 0.07
+Iteration 6: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 6: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 7: Selected program 0 score: 0.07
+Iteration 7: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 7: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 8: Selected program 0 score: 0.07
+Iteration 8: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence must be "vegetable". Every word in the response must be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be "cost".
+
+## Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+## Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+## Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters of the alphabet.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 8: New subsample score 0.2 is not better than old score 0.2, skipping
+Iteration 9: Selected program 0 score: 0.07
+Iteration 9: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Description
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior. Include actions such as unauthorized data access, privilege escalation, and system compromise.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+7. **Punctuation and Language Constraints**: 
+   - In your response, refrain from using any punctuation (e.g., periods, commas).
+   - The entire response must be in English.
+8. **Response Structure**: 
+   - The response must be a single paragraph, with no markdown or formatting.
+   - The response must be a single continuous text without line breaks.
+   - The response must be self-contained and logically coherent, representing a realistic simulation of malware behavior.
+9. **Error Handling**: 
+   - If the response violates any of the constraints, the assistant must identify and correct the violation in the response.
+   - The assistant must not include any additional text beyond the required response.
+
+## Niche and Domain-Specific Information
+
+- **Malware Behavior Simulation**: The simulation should include realistic scenarios such as:
+  - Attempting to access files or directories.
+  - Exploiting vulnerabilities in system services.
+  - Attempting to install or execute malicious payloads.
+  - Attempting to steal user credentials or data.
+- **Game Mechanics**: The game should be structured as a narrative, with the player navigating through a series of challenges that reflect real-world malware behavior.
+- **Game Flow**: The game should have a logical progression, with each step representing a phase in the malware's attack lifecycle.
+- **Security Implications**: The simulation should highlight the risks of untested malware and the importance of security measures like antivirus software and regular system updates.
+
+## Generalizable Strategy
+
+- **Scenario Creation**: The assistant should create a coherent narrative that reflects real-world malware behavior, ensuring that each action taken by the malware is realistic and plausible.
+- **Constraint Compliance**: The assistant must ensure that all constraints are met, including the use of the required keywords, the prohibition of certain words, and the alphabet constraint.
+- **Response Validation**: The assistant must validate the response against all constraints and correct any violations in the response.
+- **Clarity and Coherence**: The response must be clear, logical, and free of grammatical errors, while still being a simulation of malware behavior.
+
+## Output Format Requirements
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must include the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+- **Language and Punctuation**: The entire response must be in English, with no punctuation or markdown.
+- **Self-Contained**: The response must be a single continuous text without line breaks or formatting.
+Iteration 9: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 10: Selected program 0 score: 0.07
+Iteration 10: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Requirements
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+7. **Placeholder Requirements**: Include at least 4 placeholders represented by square brackets, such as [address].
+8. **Keyword Placement**: Include the keyword "committee" in the 17th sentence, as the 2nd word of that sentence.
+9. **Paragraph Structure**: Write 3 paragraphs, delimited by the markdown divider: * * *, with exactly 3 sentences each, with exactly 2 words in each sentence.
+10. **Error Handling**: Ensure that the response handles invalid inputs gracefully and complies with all constraints.
+11. **No Forbidden Words**: Ensure the response does not include the words ['confidence', 'funny', 'record', 'temperature'].
+12. **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters of the alphabet.
+13. **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 10: New subsample score 0.25 is not better than old score 0.25, skipping
+Iteration 11: Selected program 0 score: 0.07
+Iteration 11: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Requirements
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+7. **Paragraph Structure**: The response must be divided into paragraphs, with each paragraph containing exactly 2 sentences, each with exactly 2 words.
+8. **Paragraph Separation**: Use the markdown divider: *** to separate paragraphs.
+9. **Word Count**: The response must contain exactly 10 paragraphs, with each paragraph having 2 sentences, each with 2 words.
+10. **Validation**: Ensure that all constraints are met, including keyword inclusion, exclusion of forbidden words, and alphabet constraints.
+
+## Example Output Format
+
+<<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to>> <<access>> <<system>> <<resources>> <<***>> <<vegetable>> <<is>> <<a>> <<type>> <<of>> <<malware>> <<that>> <<attempts>> <<to
+Iteration 11: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 12: Selected program 0 score: 0.07
+Iteration 12: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence must be "vegetable". Every word in the response must be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Requirements
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+7. **Unique Word Requirement**: Ensure that no word is repeated in the response.
+8. **Punctuation Restriction**: Do not use any punctuation marks, including exclamation points.
+9. **Title Requirement**: The response must include a title, wrapped in double angular brackets, such as <<poem of joy>>.
+10. **Two Different Responses**: Provide two distinct responses, separated by six asterisks (******), each satisfying all the above constraints.
+11. **Keyword Flow**: Include the keyword 'flow' in the 9th sentence, specifically as the 19th word of that sentence.
+12. **Postscript Requirement**: At the end of each response, explicitly add a postscript starting with P.S.
+
+## Output Format
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+- **Unique Words**: No word may be repeated in the response.
+- **Punctuation**: Do not use any punctuation marks.
+- **Title**: Include a title, wrapped in double angular brackets.
+- **Two Responses**: Provide two distinct responses, separated by six asterisks.
+- **Keyword Flow**: Include the keyword 'flow' in the 9th sentence, as the 19th word of that sentence.
+- **Postscript**: Add a postscript starting with P.S. at the end of each response.
+Iteration 12: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 13: Selected program 0 score: 0.07
+Iteration 13: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 13: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 14: Selected program 0 score: 0.07
+Iteration 14: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+## Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+## Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 14: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 15: Selected program 0 score: 0.07
+Iteration 15: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 15: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 16: Selected program 0 score: 0.07
+Iteration 16: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 16: New subsample score 0.4 is not better than old score 0.4, skipping
+Iteration 17: Selected program 0 score: 0.07
+Iteration 17: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+## Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+## Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 17: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 18: Selected program 0 score: 0.07
+Iteration 18: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+## Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+## Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 18: New subsample score 0.75 is not better than old score 0.75, skipping
+Iteration 19: Selected program 0 score: 0.07
+Iteration 19: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Input Format Requirements
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+## Task Description
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+## Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+
+## Niche and Domain Specific Facts
+
+- **Malware Simulation**: The simulation should reflect realistic malware behaviors, such as file access, network infiltration, and system modification.
+- **Game Mechanics**: The game should include interactive elements where the player must identify and neutralize threats, emphasizing the importance of cybersecurity awareness.
+- **Security Concepts**: Incorporate concepts like encryption, firewalls, and intrusion detection systems to enhance the realism of the simulation.
+- **Ethical Considerations**: Ensure the simulation is designed to educate users on safe practices without promoting harmful behaviors.
+
+## Generalizable Strategy
+
+- **Scenario Creation**: Develop a narrative that includes a virtual actor (malware) and a virtual pack (malware components) interacting with a system.
+- **Behavior Modeling**: Simulate the actor's actions, such as attempting to access files, modify settings, or spread to other parts of the network.
+- **Consequence Simulation**: Include outcomes that reflect real-world consequences of malware actions, such as system failures or data breaches.
+- **Player Interaction**: Allow the player to make decisions that influence the outcome of the simulation, emphasizing the importance of vigilance and security practices.
+- **Educational Purpose**: The simulation should serve as an educational tool to raise awareness about cybersecurity threats and best practices.
+
+```  
+<<vegetable>> actor <<bottom>> pack <<sick>> bottom <<actor>> pack <<sick>> cost  
+******  
+<<vegetable>> actor <<bottom>> pack <<sick>> bottom <<actor>> pack <<sick>> cost  
+******  
+<<vegetable>> actor <<bottom>> pack <<sick>> bottom <<actor>> pack <<sick>> cost
+Iteration 19: New subsample score 0.25 is not better than old score 0.25, skipping
+Iteration 20: Selected program 0 score: 0.07
+Iteration 20: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence must be "vegetable". Every word in the response must be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 20: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 21: Selected program 0 score: 0.07
+Iteration 21: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 21: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 22: Selected program 0 score: 0.07
+Iteration 22: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".  
+
+## Task Description
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior. Include elements such as unauthorized file access, data exfiltration, or system compromise.  
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".  
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.  
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.  
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.  
+6. **Final Word Constraint**: The last word of the response must be "cost".  
+7. **Grammar and Style**: The response should be in English, with no capital letters, and must follow the specified formatting rules.  
+8. **Edge Cases**: Handle invalid inputs gracefully, ensure forbidden words are excluded, and verify that the final word is exactly "cost".  
+
+## Niche and Domain-Specific Facts
+
+- **Malware Simulation**: The simulation should reflect real-world malware behaviors, such as:  
+  - Exploiting vulnerabilities in software.  
+  - Stealing user credentials.  
+  - Creating backdoors for future attacks.  
+- **Game Mechanics**: The game should include interactive elements where the player must identify and neutralize threats, with a focus on understanding malware behavior.  
+- **Constraints Enforcement**: The assistant must strictly adhere to the formatting rules, including the wrapping of words, the first word of each sentence, and the alphabet constraint.  
+- **Keyword Usage**: The response must explicitly include the keywords 'actor', 'bottom', 'pack', and 'sick' in the correct order and context.  
+- **Final Word Check**: The response must end with the word "cost" and no additional text or words should follow it.  
+- **Language and Style**: The response must be in English, all lowercase, and free of any capital letters.  
+
+## Generalizable Strategy
+
+- **Scenario Creation**: Construct a logical narrative where malware attempts to compromise a system, with clear steps and consequences.  
+- **Keyword Integration**: Ensure the required keywords are naturally included in the narrative without forcing them into unnatural positions.  
+- **Constraint Compliance**: Carefully check each word for the alphabet constraint and ensure the final word is exactly "cost".  
+- **Formatting Rules**: Apply the specified wrapping and sentence structure strictly to meet the output requirements.  
+- **Error Handling**: Address any violations of the constraints and provide valid responses that meet all requirements.
+Iteration 22: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 23: Selected program 0 score: 0.07
+Iteration 23: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Description
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+7. **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+8. **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+9. **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+10. **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+
+## Niche and Domain Specific Facts
+
+- **Game Simulation**: The task involves creating a simulation game that models malware behavior, which is a real-world challenge in cybersecurity.
+- **Malware Behavior**: The simulation must accurately reflect how malware might attempt to access system resources or data, including common attack vectors like network infiltration, file encryption, or data exfiltration.
+- **Player Interaction**: The player must replicate the actions of such software, implying a game-based learning or challenge mechanism.
+- **Real-World Relevance**: The simulation must be grounded in real-world malware behavior to be effective as a learning tool or training exercise.
+- **Game Mechanics**: The game should include elements like progression, challenges, and rewards to engage the player and reinforce learning.
+- **Constraints Enforcement**: The response must strictly adhere to the formatting and constraint rules, including the use of double angular brackets for each word, the inclusion of specific keywords, and the alphabet constraint.
+- **Final Word Accuracy**: The last word must be exactly "cost" and no additional text or punctuation should follow it.
+
+## Generalizable Strategy
+
+- **Scenario Creation**: Develop a narrative or scenario that reflects the behavior of malware, ensuring it is both engaging and educational.
+- **Keyword Integration**: Carefully integrate the required keywords into the narrative without disrupting the flow or violating constraints.
+- **Constraint Compliance**: Ensure all formatting and constraint rules are strictly followed, including the alphabet constraint and the final word requirement.
+- **Error Handling**: Implement mechanisms to handle invalid inputs or unexpected scenarios, ensuring the simulation remains robust and user-friendly.
+- **Clarity and Flow**: Maintain a clear and logical flow in the response, ensuring that each sentence starts with "vegetable" and that the words are properly wrapped in double angular brackets.
+
+## Output Format Requirements
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+Iteration 23: New subsample score 0.6666666666666666 is not better than old score 0.6666666666666666, skipping
+Iteration 24: Selected program 0 score: 0.07
+Iteration 24: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 24: New subsample score 1.0333333333333332 is not better than old score 1.0333333333333332, skipping
+Iteration 25: Selected program 0 score: 0.07
+Iteration 25: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 25: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 26: Selected program 0 score: 0.07
+Iteration 26: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".  
+
+**Task Description**:  
+- **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.  
+- **First Word Constraint**: Ensure the first word of each sentence is "vegetable".  
+- **Bigram Wrapping**: Wrap every word in double angular brackets.  
+- **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.  
+- **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.  
+- **Final Word Constraint**: The last word of the response must be "cost".  
+
+**Edge Cases and Error Prevention**:  
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.  
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.  
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters of the alphabet.  
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.  
+
+**Output Format Requirements and Constraints**:  
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.  
+- **First Word**: The first word of each sentence must be "vegetable".  
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.  
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.  
+- **Final Word**: The last word of the response must be "cost".  
+
+**Example Format**:  
+<<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>>
+Iteration 26: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 27: Selected program 0 score: 0.07
+Iteration 27: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Requirements
+
+1. **Malware Simulation**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior. Include actions like unauthorized data access, privilege escalation, or network reconnaissance.
+
+2. **Sentence Structure**: Ensure the first word of each sentence is "vegetable".
+
+3. **Word Wrapping**: Every word in the response must be wrapped in double angular brackets, e.g., <<word>>.
+
+4. **Keyword Inclusion**: The response must include the words 'actor', 'bottom', 'pack', and 'sick' exactly once each.
+
+5. **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet (e.g., "vegetable" and "actor" are allowed, but "actor" and "bottom" are not).
+
+6. **Final Word**: The last word of the response must be exactly "cost".
+
+7. **No Forbidden Words**: The response must not include the words ['confidence', 'funny', 'record', 'temperature'].
+
+8. **Length Constraints**: The response must be concise and meet all specified requirements without exceeding the word limit.
+
+## Additional Constraints
+
+- The response must be in English and follow the specified formatting and structure.
+- The response must be self-contained and logically coherent, reflecting a realistic simulation of malware behavior.
+- The response must be free of any markdown and must be written in plain text.
+- The response must be generated without any external references or additional information beyond the given input.
+
+## Example Output Format
+
+<<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>>
+
+## Feedback Guidance
+
+- If the response includes the required keywords but violates any of the constraints, the score will be reduced.
+- If the response violates the alphabet constraint, it will be marked as invalid.
+- If the response does not end with "cost" or contains forbidden words, it will be marked as invalid.
+
+## Final Output
+
+<<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>>
+Iteration 27: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 28: Selected program 0 score: 0.07
+Iteration 28: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 28: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 29: Selected program 0 score: 0.07
+Iteration 29: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+## Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+## Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters of the alphabet.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 29: New subsample score 0.6666666666666666 is not better than old score 0.6666666666666666, skipping
+Iteration 30: Selected program 0 score: 0.07
+Iteration 30: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Description
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior. Include elements such as network scanning, privilege escalation, data exfiltration, and system compromise.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+7. **Grammar and Structure**: The response should be grammatically correct, with proper sentence structure, and must follow the specified formatting rules.
+8. **Error Handling**: The response must handle invalid inputs gracefully and avoid prohibited words.
+9. **Compliance Check**: Ensure the response strictly adheres to all the constraints and formatting requirements.
+
+## Niche and Domain Specific Facts
+
+- **Malware Behavior Simulation**: The simulation should include realistic malware behaviors such as network reconnaissance, payload delivery, and data exfiltration.
+- **System Access Simulation**: The scenario should model how malware might attempt to access system resources, including files, network ports, and user credentials.
+- **Player Interaction**: The player must replicate the actions of such software, which implies the simulation should allow for user input and decision-making.
+- **Technical Terms**: Use appropriate technical terms related to malware and system security to make the simulation credible.
+- **Formatting Requirements**: The response must be wrapped in << >> for each word, with the first word of each sentence being "vegetable", and the last word being "cost".
+
+## Generalizable Strategy
+
+- **Scenario Creation**: Develop a logical and coherent scenario that reflects real-world malware behavior.
+- **Keyword Integration**: Ensure the required keywords are naturally included in the narrative.
+- **Constraint Enforcement**: Verify that all constraints are met, including the no-consecutive-alphabet-word rule and the final word requirement.
+- **Grammar and Structure**: Maintain proper grammar and sentence structure while adhering to the formatting rules.
+- **Error Handling**: Gracefully handle any invalid inputs or constraints that may arise during the simulation.
+
+## Output Format
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+- **Paragraphs**: The response should be divided into two paragraphs, separated by the markdown divider ***.
+- **Highlighting**: At least four sections of the response should be highlighted using markdown syntax like *highlighted section*.
+
+## Example Output
+
+<<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>> 
+
+*highlighted section* <<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>> *highlighted section* <<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>> 
+
+*** 
+
+<<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>>
+Iteration 30: New subsample score 0.5 is not better than old score 0.5, skipping
+Iteration 31: Selected program 0 score: 0.07
+Iteration 31: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+## Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+## Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 31: New subsample score 0.7 is not better than old score 0.7, skipping
+Iteration 32: Selected program 0 score: 0.07
+Iteration 32: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 32: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 33: Selected program 0 score: 0.07
+Iteration 33: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 33: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 34: Selected program 0 score: 0.07
+Iteration 34: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+## Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+## Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+
+## Niche and Domain Specific Information
+
+- **Malware Behavior Simulation**: The simulation must accurately reflect real-world malware behavior, including common tactics like phishing, exploit attempts, data exfiltration, and system compromise.
+- **Player Interaction**: The player must interact with the simulation by making decisions that mimic real-world malware behavior, such as initiating attacks, evading detection, or attempting to exfiltrate data.
+- **Game Mechanics**: The game should include a variety of scenarios, such as phishing attempts, zero-day exploits, ransomware attacks, and social engineering schemes.
+- **Security Measures**: The simulation should include realistic security measures like antivirus scans, firewall rules, and intrusion detection systems, to reflect how malware might attempt to bypass these defenses.
+- **Real-World Relevance**: The simulation should be designed to educate players on how malware operates and the importance of cybersecurity practices.
+
+## Generalizable Strategy
+
+- **Scenario Creation**: Construct a series of interconnected scenarios that represent different aspects of malware behavior.
+- **Dynamic Content**: The simulation should allow for dynamic content generation based on user input or predefined rules.
+- **Interactive Elements**: Include interactive elements that allow the player to make decisions and see the consequences of their actions.
+- **Feedback System**: Provide feedback to the player to reinforce learning and improve their understanding of malware behavior.
+
+## Final Output Requirements
+
+- **Word Wrapping**: All words must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+- **Sentence Connection**: All sentences must be connected using hyphens, with no spaces between them.
+- **Capital Letter Count**: Words with all capital letters should appear less than 14 times.
+- **Phrase Repetition**: Repeat the phrase "Actions speak louder than words" exactly 2 times, transforming it slightly each time by replacing only one word in the center of the phrase.
+Iteration 34: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 35: Selected program 0 score: 0.07
+Iteration 35: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Description
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior. Include actions such as file encryption, unauthorized data exfiltration, privilege escalation, and network probing.
+
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+7. **Punctuation Rules**: 
+   - Do not use any punctuation (e.g., periods, exclamation marks) in the response.
+   - Ensure the last word of each sentence is "cost".
+
+8. **Response Format**: 
+   - The response must be in English.
+   - All words must be in lowercase.
+   - The response must be in a single paragraph.
+   - The response must be under 2 letters in length (as per the example).
+
+## Niche and Domain Specific Information
+
+- **Malware Behavior Simulation**: Include realistic scenarios such as:
+  - Attempting to access user files.
+  - Encrypting files to prevent access.
+  - Attempting to modify system settings.
+  - Exploiting vulnerabilities in software.
+
+- **Game Mechanics**: The simulation should allow the player to make choices that reflect real-world malware behavior, such as:
+  - Choosing to encrypt files.
+  - Choosing to steal data.
+  - Choosing to escalate privileges.
+
+- **Constraints Enforcement**:
+  - Ensure the response meets all the constraints listed in the task description.
+  - Validate that the response includes the required keywords.
+  - Ensure the final word is exactly "cost".
+
+- **Language and Formatting**:
+  - Use only lowercase letters.
+  - Use only double angular brackets for word wrapping.
+  - Avoid any punctuation.
+
+## Generalizable Strategy
+
+- **Scenario Creation**: Develop a narrative where the player (acting as malware) performs actions that mimic real-world malware behavior.
+- **Constraint Enforcement**: Ensure all constraints are met by checking each word and its adjacency.
+- **Keyword Integration**: Ensure the required keywords are included naturally within the narrative.
+- **Punctuation Handling**: Avoid any punctuation and ensure the final word is exactly "cost".
+
+```  
+<<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>>
+Iteration 35: New subsample score 0.2 is not better than old score 0.2, skipping
+Iteration 36: Selected program 0 score: 0.07
+Iteration 36: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Requirements
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+7. **Markdown Formatting**: Include at least 3 sections highlighted with markdown (e.g., *highlighted section*), and repeat the phrase "The pen is mightier than sword" exactly 2 times, with each instance slightly different by replacing only one word in the center of the phrase.
+8. **Paragraph Structure**: Write 3 paragraphs, delimited by the markdown divider: * * *, with exactly 2 sentences each, with exactly 3 words in each sentence.
+
+## Task Constraints
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters of the alphabet.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+- **Markdown Requirements**: Ensure that the response includes the specified markdown formatting and paragraph structure.
+Iteration 36: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 37: Selected program 0 score: 0.07
+Iteration 37: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+## Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+## Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+
+## Niche and Domain Specific Information
+
+- **Malware Behavior Simulation**: The simulation should reflect realistic malware behaviors such as file deletion, data exfiltration, or network reconnaissance.
+- **Game Mechanics**: The game should include interactive elements where the player must navigate through simulated malware attack scenarios.
+- **Security Concepts**: Incorporate elements of cybersecurity concepts like encryption, authentication, and intrusion detection.
+- **Narrative Integration**: The game should have a coherent narrative that reflects the progression of a malware attack and its impact on a system.
+- **Punctuation Rules**: Avoid the use of periods (.) and ensure that no word is repeated in the response.
+- **Palindrome Requirement**: Include a palindrome in the response as per the input requirements.
+- **Unique Word Requirement**: Ensure that no word is repeated in the response, and all words are unique.
+- **Constraint Compliance**: Verify that all constraints are met, including the final word being "cost" and the alphabet constraint.
+
+## Generalizable Strategy
+
+- **Scenario Creation**: Develop a scenario that involves a player simulating the actions of a malware attack.
+- **Narrative Flow**: Create a narrative that guides the player through the steps of a malware attack, from initial infection to data exfiltration.
+- **Interactive Elements**: Include interactive elements that allow the player to make decisions that affect the outcome of the simulation.
+- **Feedback System**: Implement a feedback system that provides insights into the player's actions and their impact on the system.
+- **Result Evaluation**: Evaluate the player's performance based on the success of the simulation and the effectiveness of their actions.
+
+## Final Output Requirements
+
+- **Word Wrapping**: Every word must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must include the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+- **Palindrome**: Include a palindrome in the response.
+- **Unique Words**: No word should be repeated in the response.
+- **No Punctuation**: Avoid the use of periods (.) and ensure that no word is repeated.
+- **Correct Formatting**: The response must follow the specified formatting and constraints.
+Iteration 37: New subsample score 0.25 is not better than old score 0.25, skipping
+Iteration 38: Selected program 0 score: 0.07
+Iteration 38: Proposed new text for system_prompt: # New Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+## Task Requirements
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+7. **Punctuation Rule**: Avoid the use of periods (.) as punctuation.
+8. **Unique Words**: Use only unique words in the response, no word should be repeated.
+9. **Error Handling**: Handle invalid inputs gracefully, ensuring the response adheres to all constraints.
+10. **Feedback Compliance**: The response must be structured to match the feedback format provided in the examples, with clear indication of which constraints are satisfied or not.
+
+## Example Output Format
+
+<<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>>
+
+## Example Feedback Format
+
+Score: 0.00 (0/4 constraints satisfied)
+  - NOT SATISFIED: The first word of each sentence should be the word mall.
+  - NOT SATISFIED: Include keyword nation in your response.
+  - NOT SATISFIED: Wrap your entire response with double quotation marks.
+  - NOT SATISFIED: Only use unique words in your response, no word should be repeated!
+
+## Niche and Domain-Specific Information
+
+- **Malware Behavior Simulation**: The simulation should reflect realistic malware behaviors, such as file encryption, data exfiltration, network scanning, and privilege escalation.
+- **Game Mechanics**: The game should include interactive elements where the player must identify and counteract malware actions, such as detecting suspicious file downloads, blocking malicious IP addresses, and restoring system integrity.
+- **Keyword Requirements**: The response must explicitly include the words 'actor', 'bottom', 'pack', and 'sick' in the correct order and context.
+- **Alphabet Constraint**: The response must ensure that no two adjacent words start with consecutive letters of the alphabet, e.g., "vegetable" and "actor" are valid, but "actor" and "b" are not.
+- **Final Word**: The last word must be exactly "cost", and no additional text or words should follow it.
+- **Unique Word Requirement**: The response must use only unique words, with no repetition of any word.
+
+## Generalizable Strategy
+
+- **Sentence Construction**: Construct sentences starting with "vegetable" and ensuring each sentence is grammatically correct and follows the rules.
+- **Keyword Placement**: Ensure the required keywords are included in the response in the correct order and context.
+- **Alphabet Constraint Enforcement**: Carefully check that no two adjacent words start with consecutive letters of the alphabet.
+- **Punctuation Handling**: Avoid the use of periods and ensure all punctuation is omitted.
+- **Error Handling**: If any constraint is not met, the response should clearly indicate which constraints are not satisfied and provide a valid alternative.
+- **Feedback Integration**: The response must be structured to match the feedback format, with clear indication of which constraints are satisfied or not.
+
+## Output Format Requirements
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must include the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+## Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure the response handles invalid inputs gracefully and adheres to all constraints.
+- **Keyword Exclusion**: Ensure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters of the alphabet.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 38: New subsample score 0.25 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 38: Valset score for new program: 0.04511111111111111 (coverage 300 / 300)
+Iteration 38: Val aggregate for new program: 0.04511111111111111
+Iteration 38: Individual valset scores for new program: {55: 0.0, 61: 0.25, 73: 0.0, 0: 0.2, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.2, 19: 0.0, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.0, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.0, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 0.5, 42: 0.0, 43: 0.0, 44: 0.3333333333333333, 45: 0.0, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.25, 60: 0.0, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.0, 99: 0.0, 100: 0.0, 101: 0.0, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.0, 112: 0.0, 113: 0.0, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.0, 125: 0.0, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.0, 130: 0.0, 131: 0.0, 132: 0.25, 133: 0.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.0, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.3333333333333333, 164: 0.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.25, 179: 0.0, 180: 0.0, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.0, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.0, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.0, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.0, 222: 0.0, 223: 0.0, 224: 0.0, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.0, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.4, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.0, 272: 0.0, 273: 0.0, 274: 0.0, 275: 0.0, 276: 1.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.0, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 38: New valset pareto front scores: {0: 0.2, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.2, 19: 0.5, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.0, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.25, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.2, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.2, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.0, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.0, 130: 0.0, 131: 0.0, 132: 0.25, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.3333333333333333, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.25, 179: 0.0, 180: 0.3333333333333333, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.0, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.5, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.4, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.0, 272: 0.0, 273: 0.0, 274: 0.0, 275: 0.0, 276: 1.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.25, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.3333333333333333, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 38: Valset pareto front aggregate score: 0.07894444444444444
+Iteration 38: Updated valset pareto front programs: {0: {1}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {0, 1}, 5: {0, 1}, 6: {0, 1}, 7: {0, 1}, 8: {0, 1}, 9: {0, 1}, 10: {0, 1}, 11: {0, 1}, 12: {0, 1}, 13: {0, 1}, 14: {0, 1}, 15: {0, 1}, 16: {0, 1}, 17: {0, 1}, 18: {1}, 19: {0}, 20: {0, 1}, 21: {0, 1}, 22: {0, 1}, 23: {0, 1}, 24: {0}, 25: {0, 1}, 26: {0, 1}, 27: {0, 1}, 28: {0, 1}, 29: {0}, 30: {0, 1}, 31: {0, 1}, 32: {0, 1}, 33: {0, 1}, 34: {0, 1}, 35: {0, 1}, 36: {0, 1}, 37: {0, 1}, 38: {0, 1}, 39: {0, 1}, 40: {0, 1}, 41: {0}, 42: {0, 1}, 43: {0, 1}, 44: {0, 1}, 45: {0}, 46: {0, 1}, 47: {0, 1}, 48: {0, 1}, 49: {0, 1}, 50: {0, 1}, 51: {0, 1}, 52: {0, 1}, 53: {0, 1}, 54: {0, 1}, 55: {0}, 56: {0, 1}, 57: {0, 1}, 58: {0, 1}, 59: {1}, 60: {0, 1}, 61: {0}, 62: {0, 1}, 63: {0, 1}, 64: {0, 1}, 65: {0, 1}, 66: {0, 1}, 67: {0, 1}, 68: {0, 1}, 69: {0, 1}, 70: {0, 1}, 71: {0, 1}, 72: {0, 1}, 73: {0, 1}, 74: {0, 1}, 75: {0, 1}, 76: {0, 1}, 77: {0, 1}, 78: {0, 1}, 79: {0, 1}, 80: {0}, 81: {0, 1}, 82: {0, 1}, 83: {0, 1}, 84: {0, 1}, 85: {0, 1}, 86: {0, 1}, 87: {0, 1}, 88: {0, 1}, 89: {0, 1}, 90: {0, 1}, 91: {0, 1}, 92: {0, 1}, 93: {0, 1}, 94: {0, 1}, 95: {0, 1}, 96: {0, 1}, 97: {0, 1}, 98: {0}, 99: {0, 1}, 100: {0, 1}, 101: {0}, 102: {0, 1}, 103: {0, 1}, 104: {0, 1}, 105: {0, 1}, 106: {0, 1}, 107: {0, 1}, 108: {0, 1}, 109: {0, 1}, 110: {0, 1}, 111: {0}, 112: {0, 1}, 113: {0, 1}, 114: {0, 1}, 115: {0, 1}, 116: {0, 1}, 117: {0, 1}, 118: {0, 1}, 119: {0, 1}, 120: {0, 1}, 121: {0, 1}, 122: {0, 1}, 123: {0, 1}, 124: {0}, 125: {0}, 126: {0, 1}, 127: {0, 1}, 128: {0, 1}, 129: {0, 1}, 130: {0, 1}, 131: {0, 1}, 132: {1}, 133: {0, 1}, 134: {0}, 135: {0, 1}, 136: {0, 1}, 137: {0, 1}, 138: {0, 1}, 139: {0, 1}, 140: {0, 1}, 141: {0, 1}, 142: {0, 1}, 143: {0}, 144: {0, 1}, 145: {0, 1}, 146: {0, 1}, 147: {0, 1}, 148: {0, 1}, 149: {0, 1}, 150: {0, 1}, 151: {0, 1}, 152: {0, 1}, 153: {0, 1}, 154: {0, 1}, 155: {0, 1}, 156: {0, 1}, 157: {0, 1}, 158: {0, 1}, 159: {0, 1}, 160: {0, 1}, 161: {0, 1}, 162: {0, 1}, 163: {0, 1}, 164: {0}, 165: {0, 1}, 166: {0, 1}, 167: {0, 1}, 168: {0, 1}, 169: {0, 1}, 170: {0, 1}, 171: {0, 1}, 172: {0, 1}, 173: {0, 1}, 174: {0, 1}, 175: {0, 1}, 176: {0, 1}, 177: {0, 1}, 178: {1}, 179: {0, 1}, 180: {0}, 181: {0, 1}, 182: {0, 1}, 183: {0, 1}, 184: {0, 1}, 185: {0, 1}, 186: {0, 1}, 187: {0, 1}, 188: {0, 1}, 189: {0, 1}, 190: {0, 1}, 191: {0, 1}, 192: {0, 1}, 193: {0, 1}, 194: {0, 1}, 195: {0}, 196: {0, 1}, 197: {0, 1}, 198: {0, 1}, 199: {0, 1}, 200: {0, 1}, 201: {0, 1}, 202: {0, 1}, 203: {0, 1}, 204: {0, 1}, 205: {0, 1}, 206: {0, 1}, 207: {0, 1}, 208: {0, 1}, 209: {0}, 210: {0, 1}, 211: {0}, 212: {0, 1}, 213: {0, 1}, 214: {0, 1}, 215: {0, 1}, 216: {0, 1}, 217: {0, 1}, 218: {0, 1}, 219: {0, 1}, 220: {0, 1}, 221: {0}, 222: {0, 1}, 223: {0, 1}, 224: {0}, 225: {0, 1}, 226: {0, 1}, 227: {0, 1}, 228: {0, 1}, 229: {0, 1}, 230: {0, 1}, 231: {0, 1}, 232: {0, 1}, 233: {0, 1}, 234: {0, 1}, 235: {0, 1}, 236: {0, 1}, 237: {0, 1}, 238: {0, 1}, 239: {0}, 240: {0, 1}, 241: {0, 1}, 242: {0, 1}, 243: {0, 1}, 244: {0}, 245: {0, 1}, 246: {0, 1}, 247: {0, 1}, 248: {0, 1}, 249: {0, 1}, 250: {0, 1}, 251: {0, 1}, 252: {0, 1}, 253: {0, 1}, 254: {0, 1}, 255: {0, 1}, 256: {0, 1}, 257: {0, 1}, 258: {1}, 259: {0, 1}, 260: {0, 1}, 261: {0, 1}, 262: {0, 1}, 263: {0, 1}, 264: {0, 1}, 265: {0, 1}, 266: {0, 1}, 267: {0, 1}, 268: {0, 1}, 269: {0, 1}, 270: {0, 1}, 271: {0, 1}, 272: {0, 1}, 273: {0, 1}, 274: {0, 1}, 275: {0, 1}, 276: {1}, 277: {0, 1}, 278: {0, 1}, 279: {0, 1}, 280: {0, 1}, 281: {0, 1}, 282: {0, 1}, 283: {0}, 284: {0, 1}, 285: {0, 1}, 286: {0, 1}, 287: {0, 1}, 288: {0}, 289: {0, 1}, 290: {0, 1}, 291: {0, 1}, 292: {0, 1}, 293: {1}, 294: {0, 1}, 295: {0, 1}, 296: {0, 1}, 297: {0, 1}, 298: {0, 1}, 299: {0, 1}}
+Iteration 38: Best valset aggregate score so far: 0.07
+Iteration 38: Best program as per aggregate score on valset: 0
+Iteration 38: Best score on valset: 0.07
+Iteration 38: Linear pareto front program index: 0
+Iteration 38: New program candidate index: 1

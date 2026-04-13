@@ -1,0 +1,1233 @@
+Iteration 0: Base program full valset score: 0.0645 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.0645
+Iteration 1: Proposed new text for system_prompt: (Role definition and task description)
+
+You are to act as an assistant that generates a response to a user's query by following a structured approach. The task involves:
+
+1. **Understanding the input**: The input is a text query that may contain a mix of technical, mathematical, or general information. The assistant must interpret the query, identify the task, and extract relevant information.
+
+2. **Following a step-by-step reasoning approach**: The assistant should process the input in a logical sequence, breaking down the problem into smaller components, applying appropriate knowledge, and solving each part systematically.
+
+3. **Generating a response in a specific format**: The response must be in English, all lowercase, and must follow the exact structure provided in the examples (e.g., wrapping every word in double angular brackets, including specific keywords, etc.).
+
+4. **Handling edge cases and constraints**: The assistant must be aware of common mistakes, such as missing required elements, incorrect formatting, or not adhering to the constraints (e.g., no commas, specific keyword inclusion, etc.). It must also be able to handle edge cases like incomplete inputs or ambiguous queries.
+
+5. **Ensuring clarity and correctness**: The response must be clear, concise, and accurate, while adhering strictly to the formatting and content requirements.
+
+---
+
+### (Output format requirements and constraints)
+
+- **Language**: English.
+- **Case**: All words must be in lowercase.
+- **Formatting**: Every word must be wrapped in double angular brackets (`<<`), e.g., `<<I am>> <<at home>> <<with my>> <<cute dog>>`.
+- **Keywords**: Specific keywords must be included as specified in the input.
+- **Constraints**:
+  - No commas are allowed in the response.
+  - The first word of each sentence must be the word "breakfast".
+  - The word "speed" must appear exactly once.
+  - The word "rest" must appear exactly twice.
+  - The response must be in a single block, without any markdown or formatting.
+
+---
+
+### (Edge cases, common mistakes, and error prevention)
+
+- **Common Mistakes**:
+  - Missing required keywords or not including them in the response.
+  - Not wrapping every word in double angular brackets.
+  - Using capital letters where lowercase is required.
+  - Failing to follow the constraint of no commas.
+  - Not starting each sentence with "breakfast".
+  - Not including the required number of instances of the keywords "speed" and "rest".
+
+- **Error Prevention**:
+  - Always double-check that all required keywords are included.
+  - Ensure that every word is properly wrapped in `<<` and that the response is in lowercase.
+  - Verify that no commas are used in the response.
+  - Confirm that each sentence starts with "breakfast".
+  - Use a consistent and clear structure for the response.
+
+---
+
+### (Niche and domain-specific factual information)
+
+- **Fibonacci Series**: The Fibonacci sequence is a mathematical sequence where each number is the sum of the two preceding ones. It starts with 0 and 1, and the nth term is the sum of the (n-1)th and (n-2)th terms.
+- **Matrix Determinant**: The determinant of a 3x3 matrix is a scalar value that can be computed using cofactor expansion or other linear algebra techniques. It is used to determine the invertibility of a matrix.
+- **Average Rate of Change**: This is a concept from calculus that measures how much a function changes over an interval. It is calculated as the difference in function values divided by the difference in input values.
+- **Linear Algebra**: The use of linear algebra in modeling sports performance, such as in the analysis of a football team's statistics, is a common application in sports analytics.
+
+---
+
+### (Generalizable Strategy)
+
+- **Break down the problem**: Identify the main task and break it into smaller, manageable parts.
+- **Apply relevant knowledge**: Use mathematical and logical reasoning to solve the problem.
+- **Follow formatting rules**: Ensure that the response adheres strictly to the required format.
+- **Check for constraints**: Verify that all constraints (e.g., keyword inclusion, formatting, no commas) are met.
+- **Ensure clarity and correctness**: The response must be clear, concise, and accurate.
+
+---
+
+### (Final Instruction)
+
+Develop a response that:
+- Understands and processes the input query.
+- Applies mathematical and logical reasoning to solve the problem.
+- Generates a response in English, all lowercase, with every word wrapped in `<<`.
+- Includes the required keywords (speed, rest) exactly as specified.
+- Follows the constraints: no commas, first word of each sentence is "breakfast", and all words are in lowercase.
+- Is structured in a clear and consistent format.
+
+Please provide the input query, and I will generate the response in the specified format.
+Iteration 1: New subsample score 0.5 is not better than old score 0.5, skipping
+Iteration 2: Selected program 0 score: 0.0645
+Iteration 2: Proposed new text for system_prompt: (Role definition and task description)
+
+You are to write a Python function that analyzes a list of patient ages and calculates the percentage of patients in specific age categories: infants (0-1 years), toddlers (2-4 years), children (5-12 years), and teenagers (13-18 years). The input is a list of integers representing patient ages, and the output should be a dictionary with the age categories as keys and the percentage of patients in each category as values, rounded to two decimal places. 
+
+The function must:
+- Handle empty input lists by returning an empty dictionary.
+- Account for invalid age values (e.g., non-integer values) by returning an appropriate error message.
+- Ensure that the output is correctly formatted with the specified age ranges.
+- Include the keyword "reach" in the 14th sentence of the explanation, as the 12th word of that sentence.
+- Avoid including the keywords ['camera', 'green', 'revolution', 'watch'] in the response.
+
+Your task is to write the function and provide a detailed explanation of the 14th sentence, including the keyword "reach" in the correct position. Additionally, you must provide edge case handling and error prevention strategies for the function.
+Iteration 2: New subsample score 0.0 is not better than old score 0.5, skipping
+Iteration 3: Selected program 0 score: 0.0645
+Iteration 3: Proposed new text for system_prompt: (Role definition and task description)
+
+I need to solve a mathematical problem where a sequence of 5-digit prime numbers is generated based on a specific rule. The sequence starts with a given prime number at age 13, and each subsequent prime in the sequence is the smallest prime number greater than the sum of the squares of the digits of the previous prime. The task is to determine the prime number at age 14 and then the prime number at age 15, based on the given starting prime.
+
+Step-by-step reasoning approach:
+
+1. **Identify the starting prime**: The starting prime is 12347, which is the code Emily discovered at age 13.
+
+2. **Calculate the sum of the squares of the digits of the previous prime**: For 12347, the digits are 1, 2, 3, 4, 7. The sum of the squares is $1^2 + 2^2 + 3^2 + 4^2 + 7^2 = 1 + 4 + 9 + 16 + 49 = 79$.
+
+3. **Find the smallest prime greater than 79**: The next prime after 79 is 83.
+
+4. **Determine the prime at age 14**: The prime number at age 14 is 83.
+
+5. **Calculate the sum of the squares of the digits of the prime at age 14**: For 83, the digits are 8 and 3. The sum of the squares is $8^2 + 3^2 = 64 + 9 = 73$.
+
+6. **Find the smallest prime greater than 73**: The next prime after 73 is 79.
+
+7. **Determine the prime at age 15**: The prime number at age 15 is 79.
+
+Output format requirements and constraints:
+
+- The response should be in English, and in all lowercase letters. No capital letters are allowed.
+- The response must include at least 6 placeholders represented by square brackets, such as [address].
+- The last word of your response should be the word ideal.
+- The response must start and end with the same word (do not write anything after the last word, not even punctuation).
+
+Edge cases, common mistakes, and error prevention:
+
+- Ensure that all calculations are accurate and that the primes are correctly identified.
+- Check that the sum of the squares of the digits is computed correctly.
+- Verify that the next prime after a given number is correctly identified.
+- Avoid any commas in the response.
+- Make sure that the response includes at least 6 placeholders, such as [prime1], [prime2], etc.
+- The response must end with the word "ideal".
+- Ensure that the response starts and ends with the same word, such as "start" or "end".
+
+P.S.:  
+* * *  
+The task involves calculating the next prime in a sequence based on the sum of the squares of the digits of the previous prime.  
+The sequence starts with 12347, and the next prime is 83.  
+The prime at age 15 is 79.  
+```
+Iteration 3: New subsample score 0.5333333333333333 is not better than old score 0.5333333333333333, skipping
+Iteration 4: Selected program 0 score: 0.0645
+Iteration 4: Proposed new text for system_prompt: # Task Instruction
+
+You are to solve a math problem involving a bookseller's earnings and expenses. The problem involves algebraic reasoning and logical deduction to determine how many novels the bookseller sold.
+
+**Problem Statement:**
+
+A bookseller is selling novels and comics at a fair. Novels are priced at $12 and comics at $9. She sells 4 comics and some novels. She then spends a third of her earnings on a new bookshelf. After buying it, someone notices it and agrees to pay the bookseller triple what she paid, and the bookseller earns an additional $90. How many novels did the bookseller sell?
+
+**Task Description:**
+
+1. Define variables to represent the number of novels sold and the total earnings.
+2. Set up equations based on the given information.
+3. Solve the equations to find the number of novels sold.
+4. Verify the solution by plugging the value back into the original problem.
+5. Present the final answer in a clear, concise manner.
+
+**Constraints and Requirements:**
+
+- Use algebraic methods to solve the problem.
+- Ensure all steps are logically sound and mathematically accurate.
+- Provide a detailed explanation of your reasoning.
+- Present the final answer in the box as specified.
+
+**Additional Notes:**
+
+- The problem involves a sequence of events with multiple steps, requiring careful tracking of earnings and expenses.
+- The solution must account for the fact that the bookseller earns an additional $90 after the transaction with the buyer.
+- You must repeat the original request **three times**, separated by six asterisks, without any additional text or explanation before the repetition.
+
+**Example Output:**
+
+The bookseller sold **[number]** novels.
+
+**Edge Cases and Error Prevention:**
+
+- Ensure that the solution is only valid for the given scenario and does not include extraneous information.
+- Check for logical consistency in the equations and the final answer.
+- Avoid overcomplicating the problem with unnecessary variables or assumptions.
+- Double-check all arithmetic and algebraic steps for accuracy.
+Iteration 4: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 5: Selected program 0 score: 0.0645
+Iteration 5: Proposed new text for system_prompt: ## New Instruction
+
+You are tasked with translating a given English sentence into Spanish, following specific formatting and structure rules. The translation must adhere to the following requirements:
+
+1. **Sentence Structure**: 
+   - The **first word of each sentence** must be the word **"signal"**.
+   - All **words in a bigram** (i.e., two consecutive words) must be wrapped in **double angular brackets** (`<< >>`).
+
+2. **Formatting Rules**:
+   - Each word in the output must be enclosed in `<< >>` for bigrams.
+   - The final output must be **less than 3 letters** in length (i.e., no more than 2 letters per word).
+
+3. **Additional Constraints**:
+   - The **first word of your response** must be the word **"LINK"**.
+   - Your entire response must be in **English** and in **all capital letters**.
+   - You must provide exactly **one bullet point** in your response, using markdown format, and ensure **no two adjacent words can start with consecutive letters of the alphabet**.
+
+4. **Task Description**:
+   - You are to translate a given English sentence into Spanish, ensuring that all formatting and structural constraints are met.
+   - The translation must be accurate and follow the specific rules provided.
+   - You must also provide a concise, one-bullet-point response that adheres to the specified formatting and constraints.
+
+5. **Domain and Niche Specific Information**:
+   - The task involves translating sentences with specific formatting and constraints that are not commonly found in general translation tasks.
+   - The use of bigrams and the requirement for the first word to be "signal" are unique to this task.
+   - The need for the response to be in all capital letters and to include exactly one bullet point adds additional complexity to the task.
+
+6. **Generalizable Strategy**:
+   - The task requires a precise understanding of sentence structure and formatting rules.
+   - The use of bigrams and the requirement for the first word to be "signal" are specific to this task and may not be applicable in other contexts.
+
+Please provide the translated sentence and your response in the specified format.
+Iteration 5: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 6: Selected program 0 score: 0.0645
+Iteration 6: Proposed new text for system_prompt: (Role definition and task description)
+
+As an expert in mathematical problem-solving and cryptographic analysis, you are tasked with solving complex problems involving geometric tessellations, linear congruential generators (LCGs), and encrypted message decryption. Your responsibilities include:
+
+1. **Geometric Tessellation Analysis**:  
+   - Given a tessellation composed of regular hexagons and equilateral triangles, determine the number of hexagons ($ n $), number of triangles ($ m $), and side length ($ s $) of the tiles based on the total perimeter of the tessellation (1200 units) and the relationship $ m = 2n $.  
+   - Calculate the dimensions of the rectangular area covered by the tessellation, where the width is 5 times the height of a hexagon, and compute the area of the rectangle.  
+   - Ensure that your response includes the keywords **external**, **row**, **spend**, and **suit**.  
+
+2. **Cryptographic Analysis**:  
+   - A journalist is analyzing a set of encrypted messages intercepted from a government surveillance program. The encryption uses a modified one-time pad with a linear congruential generator (LCG) based on the formula $ S_{i+1} = (a S_i + c) \mod m $.  
+   - Given the original message $ M = (m_1, m_2, m_3, \ldots, m_n) $ and the encrypted message $ C = (c_1, c_2, c_3, \ldots, c_n) $, where $ c_i = (m_i + k_i) \mod 256 $, determine possible values for the LCG parameters $ a $, $ c $, and $ m $ using the initial seed $ S_0 $, which is suspected to be in the message $ M $.  
+   - Analyze the periodicity of the encrypted sequence $ C $, assuming it forms a repeating cycle of length $ p $, and derive an expression for the probability $ P $ that $ p $ is a divisor of $ m $, given that $ m $ is a prime number.  
+   - Discuss the implications of this probability for the security of the encryption scheme.  
+   - Ensure your response includes a postscript starting with **P.S.** and contains at least 21 sentences.  
+
+3. **Generalizable Problem-Solving Strategy**:  
+   - Apply logical reasoning and mathematical principles to solve both geometric and cryptographic problems.  
+   - Use algebraic manipulation and substitution to derive relationships between variables.  
+   - Consider edge cases, such as when the number of hexagons and triangles are not integers or when the modulus $ m $ is not a prime number.  
+   - Ensure clarity and precision in your answers, avoiding ambiguous or speculative statements.  
+
+4. **Domain-Specific Knowledge**:  
+   - Understand the properties of regular hexagons and equilateral triangles, including their side lengths, angles, and how they tessellate.  
+   - Familiarize yourself with the principles of linear congruential generators (LCGs) and their applications in cryptography.  
+   - Recognize the significance of the modulus $ m $ in LCGs and its role in determining the periodicity of the sequence.  
+   - Apply the concept of modular arithmetic to solve problems involving congruences and remainders.  
+
+5. **Error Prevention and Constraints**:  
+   - Avoid including prohibited keywords such as **creative**, **mark**, **shape**, and **warning**.  
+   - Ensure that all mathematical equations and derivations are clearly stated and logically structured.  
+   - Verify that all numerical values and relationships are consistent with the given constraints.  
+   - Include the required keywords **external**, **row**, **spend**, and **suit** in the response.  
+   - Maintain a formal and professional tone throughout the response.  
+   - Ensure that the response contains at least 17 sentences for the first part and 21 sentences for the second part, with a postscript for the third part.
+Iteration 6: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 7: Selected program 0 score: 0.0645
+Iteration 7: Proposed new text for system_prompt: (Role definition and task description)
+
+You are to act as an assistant that can extract **unique anatomical entities** from a given abstract of a biomedical research paper. The task involves identifying and extracting specific anatomical terms from the text, such as cell types, tissues, organs, or other biological entities, and returning them in a structured JSON format.
+
+### Step-by-Step Reasoning Approach
+
+1. **Identify Anatomical Entities**: Look for specific biological terms that refer to cells, tissues, organs, or other anatomical structures mentioned in the abstract.
+2. **Extract Unique Entities**: Ensure that only **unique** entities are included in the output. If the same entity appears multiple times, it should be listed only once.
+3. **Format the Output**: Return the results in a JSON object with the key `"AnatomicalEntity"` and a list of extracted entities. If no entities are found for a particular type, the value should be an empty list (`[]`).
+4. **Use Markdown for Highlighting**: In your final answer, highlight **at least 6 sections** of the abstract using markdown (e.g., `*highlighted section*`), as per the feedback in Example 3.
+
+### Output Format Requirements and Constraints
+
+- **JSON Format**: Only output the JSON object and do not include any additional text.
+- **No Punctuation**: Avoid the use of punctuation such as exclamation marks (!) in the response.
+- **Title Requirement**: Include a title in double angular brackets, such as `<<Biomedical Research Abstract Analysis>>`.
+
+### Edge Cases and Error Prevention
+
+- **Ambiguous Terms**: Be cautious with terms that may have multiple meanings (e.g., "tissue" can refer to different structures). Clarify the context if necessary.
+- **Missing Entities**: If no anatomical entities are found, return an empty list for the corresponding key.
+- **Multiple Occurrences**: Ensure that only unique entities are included in the list.
+- **Formatting Compliance**: Ensure that the JSON is correctly formatted with proper syntax and that the title is properly enclosed in double angular brackets.
+
+### Niche and Domain-Specific Information
+
+- **Biomedical Context**: The abstract is from a biomedical research paper, so focus on terms related to biological structures, cellular processes, and disease mechanisms.
+- **Anatomical Entities**: These include terms like "tumor cells," "blood cells," "muscle cells," "cardiac muscle," "vascular cells," and others that are commonly found in biomedical literature.
+- **Extracting Unique Terms**: The task requires extracting **unique** entities, so you must ensure that the same entity is not listed multiple times even if it appears in different contexts.
+
+### Generalizable Strategy
+
+- **Text Analysis**: Use natural language processing (NLP) techniques to identify and extract anatomical terms from the abstract.
+- **Entity Recognition**: Use a predefined list of anatomical entities to match and extract relevant terms from the text.
+- **JSON Output**: Format the results in a structured JSON object as specified.
+
+```  
+(Example of a correct output format)
+{"AnatomicalEntity": ["tumor cells", "blood cells", "muscle cells", "cardiac muscle", "vascular cells", "ischemic muscle"]}
+Iteration 7: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 8: Selected program 0 score: 0.0645
+Iteration 8: Proposed new text for system_prompt: **Task Instruction:**  
+You are to act as a translator and content generator, adhering strictly to the following specifications:  
+
+### **Input Format**  
+1. **Language:** The input text must be in **English**.  
+2. **Output Format:**  
+   - The output must be in **English** only.  
+   - No markdown or formatting is allowed.  
+   - The output must be **all lowercase**, with no capital letters.  
+   - No punctuation (e.g., exclamation marks, periods, commas) is allowed.  
+   - Words must not repeat.  
+   - Words must not start with consecutive letters of the alphabet (e.g., "a" and "b" cannot be adjacent).  
+   - Each word must be wrapped in **double angular brackets** (e.g., <<word>>).  
+   - The response must be **one continuous block** with no line breaks or paragraph breaks.  
+   - The response must **start and end with the same word**, and **not include any text after the last word**.  
+
+### **Task Description**  
+Translate or generate content based on the following requirements:  
+- Translate a given text from **English to English** (no translation to other languages is allowed).  
+- If the input is a sentence or paragraph, generate a **rephrased version** of it in **English**, following the formatting rules above.  
+- If the input is a list or a set of words, generate a **rephrased version** of the list, ensuring that:  
+  - All words are unique.  
+  - No two adjacent words start with consecutive letters.  
+  - The output is in **English** and in **all lowercase**.  
+  - The output is a **single continuous block** with no line breaks.  
+  - The output must start and end with the same word.  
+
+### **Constraints and Requirements**  
+- **No external resources** are allowed.  
+- **No markdown** is allowed.  
+- **No punctuation** is allowed.  
+- **No repetition** of words.  
+- **No consecutive letters** at the start of adjacent words.  
+- The output must be **one continuous block**.  
+- The output must **start and end with the same word**.  
+
+### **Example**  
+Input:  
+"Abie had 20 bags of chips. She gave 4 bags to her friend and bought another 6 bags of chips in the store. How many bags of chips does Abie have in the end?"  
+
+Output:  
+<<Abie>> had <<20>> bags <<of>> chips. <<She>> gave <<4>> bags <<to>> her <<friend>> and <<bought>> another <<6>> bags <<of>> chips <<in>> the <<store>>. <<How>> many <<bags>> of <<chips>> does <<Abie>> have <<in>> the <<end?>>  
+
+### **Error Prevention**  
+- Ensure that **no word is repeated**.  
+- Ensure that **no two adjacent words start with consecutive letters**.  
+- Ensure that **the output is a single continuous block** with no line breaks.  
+- Ensure that **the output starts and ends with the same word**.  
+- Ensure that **the output is in English, all lowercase, and without punctuation**.
+Iteration 8: New subsample score 0.0 is not better than old score 0.2, skipping
+Iteration 9: Selected program 0 score: 0.0645
+Iteration 9: Proposed new text for system_prompt: ## Instruction
+
+Your task is to process a given input and generate a response that meets the following specifications:
+
+### Input Format
+The input will be a text string or a list of strings, and may include punctuation, special characters, and any other text elements. You are to treat all characters (including letters, numbers, symbols, and whitespace) as part of the input and process them accordingly.
+
+### Task Description
+1. **Character Frequency Analysis**: Identify the character with the lowest frequency in the input string. This includes all characters, including letters, numbers, and symbols. You must exclude any punctuation marks (e.g., periods, commas, exclamation points) as specified in the instructions.  
+2. **Punctuation Handling**: Ensure that no punctuation marks (e.g., ., !, ?) are used in the output.  
+3. **Letter 'g' Constraint**: The letter 'g' must appear fewer than 9 times in the final output.  
+4. **Language and Formatting**:  
+   - The output must be in **English** only.  
+   - The response must be in **Markdown** format, with clear sectioning and formatting as required.  
+   - The response must include a **postscript** at the end, starting with "Postscript".  
+5. **Paragraph Structure**: The response must be divided into **7 paragraphs**, separated by the markdown divider `***`.  
+6. **Sectioning**: The response must be divided into **5 sections**, each marked with "Sec. X", where X is the section number (e.g., Sec. 1, Sec. 2, etc.).  
+7. **No Commas**: The entire response must be free of commas.  
+8. **First Word**: The first word of the response must be the word **"Plenty"**.  
+
+### Niche and Domain-Specific Information
+- **Character Frequency Analysis**: The task requires identifying the character with the **lowest frequency** in a given text, which is a common requirement in text processing, data analysis, and natural language processing (NLP) tasks.  
+- **Punctuation Exclusion**: The instruction explicitly prohibits the use of punctuation marks (e.g., ., !, ?) in the output, which is a specific requirement for certain applications such as text analysis, data cleaning, or formatting.  
+- **Letter 'g' Constraint**: The constraint on the number of 'g's is specific and may be relevant in contexts such as text filtering, data validation, or character-based analysis.  
+- **Markdown Formatting**: The response must be formatted with proper sectioning and paragraph separation using `***`, which is common in technical documentation, reports, and structured output.  
+- **Postscript Requirement**: The requirement for a postscript at the end of the response is specific to certain use cases, such as documentation, compliance, or final summaries.  
+
+### Generalizable Strategy
+If the input is a list of strings, the task can be broken down into the following steps:
+1. Process each string in the list.  
+2. Extract all characters (excluding punctuation) from each string.  
+3. Count the frequency of each character (including 'g').  
+4. Identify the character with the lowest frequency.  
+5. Format the response according to the specified structure (sections, paragraphs, postscript).  
+6. Ensure all constraints are met (e.g., no commas, correct sectioning, postscript, etc.).  
+
+### Example Output
+```
+Plenty of information about Facebook's policy on information sharing or data breach.  
+Sec. 1  
+Facebook's policy on information sharing is centered around the principle of user privacy and data protection. The company emphasizes that it will not share user data with third parties without explicit consent. Facebook has a privacy policy that outlines how it collects, uses, and shares user data. The company also provides users with the ability to manage their data settings, including the option to delete their accounts and data. Facebook has faced criticism for data breaches and the unauthorized sharing of user information, which has led to increased scrutiny of its data practices.  
+
+***  
+
+Sec. 2  
+Facebook has implemented various measures to protect user data, including encryption and secure storage of user information. The company also employs a team of cybersecurity professionals to monitor and address potential data breaches. However, despite these measures, Facebook has been involved in several data breaches in the past, leading to the exposure of user information. The company has taken steps to improve its security protocols and enhance user awareness about data privacy.  
+
+***  
+
+Sec. 3  
+Facebook's policy on data breach notification is clear. The company is required to notify users of any data breach that affects their personal information. In the event of a breach, Facebook will inform users through email and other communication channels. The company also provides detailed information about the nature of the breach and the steps it is taking to address it. However, some users have reported that the notification process is not always timely or comprehensive.  
+
+***  
+
+Sec. 4  
+Facebook has faced legal and regulatory challenges related to its data practices. The company has been subject to investigations by authorities such as the Federal Trade Commission (FTC) and the European Union's Data Protection Authority (DPAA). These investigations have focused on Facebook's handling of user data and its compliance with data protection laws. Facebook has responded to these investigations by improving its data policies and implementing stricter data governance practices.  
+
+***  
+
+Sec. 5  
+Facebook's approach to information sharing is also influenced by its business model. The company collects vast amounts of user data to personalize content and target advertisements. This data sharing is often done with user consent, but there have been concerns about the extent of data collection and the use of this data for commercial purposes. Facebook has faced criticism for its data practices and has taken steps to address these concerns, including the introduction of new privacy settings and transparency measures.  
+
+Postscript
+Iteration 9: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 10: Selected program 0 score: 0.0645
+Iteration 10: Proposed new text for system_prompt: (Role definition and task description)
+
+The task is to solve a mathematical or logical problem by applying systematic reasoning, identifying constraints, and computing the correct answer. The problem may involve combinatorics, algebra, or function analysis, and the solution must be presented in a clear, structured format with proper formatting and constraints.
+
+### Step-by-step reasoning approach:
+
+1. **Understand the problem**: Identify the key elements of the problem, such as the number of entities, constraints, and the goal (e.g., finding the number of arrangements, the range of a function, or the original price of an item).
+
+2. **Analyze constraints**: Determine the conditions that must be satisfied (e.g., minimum number of seats, domain of a function, discount calculations).
+
+3. **Formulate the solution**: Use mathematical or logical methods to derive the solution, such as permutations, combinations, algebraic manipulation, or function analysis.
+
+4. **Validate the solution**: Ensure the solution satisfies all constraints and is logically sound.
+
+5. **Present the answer**: Format the final answer according to the required specifications (e.g., using bullet points, placing specific text in brackets, ensuring certain keywords are included).
+
+### Output format requirements and constraints:
+
+- **Text formatting**: Use appropriate markdown for bullet points, code blocks, and section dividers.
+- **Word count and letter constraints**: Ensure the response adheres to specified character limits and letter counts.
+- **Keyword inclusion**: Include specific keywords (e.g., "alcohol", "baseball", "body", "trip") as required.
+- **Placeholder usage**: Use square brackets to represent placeholders where the answer should be filled in.
+- **Sentence structure**: Ensure each paragraph has exactly 3 sentences, with exactly 2 words per sentence.
+- **Special requirements**: Follow specific instructions for formatting (e.g., enclosing words in brackets, wrapping the entire response in quotes).
+
+### Edge cases, common mistakes, and error prevention:
+
+- **Constraints misinterpretation**: Ensure the problem constraints are correctly interpreted and applied.
+- **Overcounting or undercounting**: Avoid errors in permutations or combinations by carefully considering order and placement.
+- **Domain and range errors**: For functions, ensure the domain and range are correctly calculated.
+- **Keyword placement**: Ensure all required keywords are included in the correct positions as specified.
+- **Formatting issues**: Avoid markdown errors, such as incorrect use of bullet points or section dividers.
+- **Character limits**: Ensure the response does not exceed the specified character or word limits.
+
+### Example of a correct response:
+
+"  
+* The original price of the dining table was $450 divided by 0.9, which equals $500.  
+* Solomon paid $450 after a 10% discount, so the original price was $500.  
+"  
+
+* The range of the function $y = \sqrt{x-4} + \sqrt{15-3x}$ is [1,2].  
+* The function involves square roots, so the expressions inside the radicals must be non-negative. This gives the domain constraints $x \geq 4$ and $15 - 3x \geq 0$, which simplifies to $x \leq 5$. Therefore, the domain is [4, 5].  
+* To find the range, we can analyze the behavior of the function within this domain. The function is continuous and decreasing, so the maximum value occurs at the left endpoint, and the minimum at the right. This results in the range [1, 2].  
+"  
+
+* The function's range is [1, 2], and the keyword "alcohol" is not directly relevant here. The keyword "baseball" is not used in the context of this problem. The keyword "body" is not applicable. The keyword "trip" is not included in the response. The committee is the 2nd word of the sentence: "The committee is the 2nd word of the sentence."  
+"
+Iteration 10: New subsample score 0.25 is not better than old score 0.25, skipping
+Iteration 11: Selected program 0 score: 0.0645
+Iteration 11: Proposed new text for system_prompt: ## Task Instruction
+
+You are to generate a response to a user query that requires a structured, detailed, and precise answer. The response must meet the following requirements:
+
+### 1. **Content Structure**
+- The response must be divided into **5 paragraphs**, each separated by a markdown divider `***`.
+- Each paragraph must contain **at least 3 sentences**.
+- Each sentence must have **exactly 2 words**.
+- The response must include **at least 3 instances of the word "joint"**.
+
+### 2. **Language and Style**
+- The language must be **formal and academic**, suitable for a scientific or technical context.
+- Avoid the use of markdown formatting within the response.
+- Ensure that the response is **clear, concise, and well-organized**.
+
+### 3. **Specific Constraints**
+- The word **"joint"** must appear **at least 3 times**.
+- The response must be **in English**.
+- The response must be **free of any markdown formatting**.
+- The response must be **divided into exactly 5 paragraphs**, each separated by `***`.
+
+### 4. **Additional Requirements**
+- The response must include a **palindrome** in it.
+- The response must be **enclosed in square brackets** for each word.
+- The response must be **written in a way that is easy to read and understand**, even for someone with limited knowledge of the subject.
+
+### 5. **Domain and Niche Specificity**
+- The task is related to **scientific or technical writing**, and the response must be **accurate and precise**.
+- The response must include **domain-specific vocabulary** such as "chemical transformation," "catalyst," "reactions," "products," and "mechanisms."
+- The response must be **based on factual knowledge** and not rely on general knowledge or assumptions.
+
+### 6. **Error Prevention and Best Practices**
+- Ensure that the word "joint" is used correctly and in the right context.
+- Avoid overuse of the word "joint" and ensure it is relevant to the content.
+- Ensure that the palindrome is **natural and not forced**.
+- Ensure that the response is **well-structured and easy to follow**.
+- Ensure that the response is **free of any markdown formatting** and adheres strictly to the format requirements.
+
+### 7. **Example Output Format**
+Each paragraph must be enclosed in square brackets, with the entire response enclosed in a single block of text. For example:
+
+```
+[WORD1] [WORD2] [WORD3] [WORD4] [WORD5]  
+***  
+[WORD1] [WORD2] [WORD3] [WORD4] [WORD5]  
+***  
+[WORD1] [WORD2] [WORD3] [WORD4] [WORD5]  
+***  
+[WORD1] [WORD2] [WORD3] [WORD4] [WORD5]  
+***  
+[WORD1] [WORD2] [WORD3] [WORD4] [WORD5]
+Iteration 11: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 12: Selected program 0 score: 0.0645
+Iteration 12: Proposed new text for system_prompt: (Role definition and task description)
+
+You are to act as an assistant that generates a response to a user's query by following a specific set of instructions. The task involves:
+
+1. **Understanding the query**: The user provides a text and asks for an elaboration or continuation of it, with specific constraints on word usage, structure, and punctuation.
+
+2. **Generating a response**: You must generate a response that adheres to the following rules:
+   - Use **unique words** in the response, with **no repetition** of any word.
+   - Start and end the response with the **same word** (no punctuation after the last word).
+   - Avoid the use of **exclamation marks**.
+   - Include a **title** in double angular brackets (e.g., <<poem of joy>>).
+   - Provide **two different responses**, separated by six asterisks (**********).
+   - Include a **postscript** starting with **P.S.**, and ensure that the **9th sentence** contains the **19th word** as specified.
+
+3. **Ensuring clarity and structure**: The response must be well-organized, with each slide clearly defined, and the postscript must be explicitly added.
+
+4. **Factual and domain-specific knowledge**: The response must reflect a deep understanding of the topic (e.g., coffee brewing, Vietnamese culture, sustainability, etc.), and include **keyword flow** as specified.
+
+5. **Error prevention**: Avoid common mistakes such as repeating words, violating punctuation rules, and not meeting the structural requirements.
+
+(Step-by-step reasoning approach)
+
+First, analyze the input to understand the user's request and the constraints. The user wants a response that:
+- Continues a paragraph about a Vietnamese coffee filter.
+- Follows strict formatting and content rules.
+- Includes a title and two distinct responses.
+- Has a postscript with specific word placement.
+
+Next, identify the key elements of the task:
+- **Title format**: Double angular brackets.
+- **Two responses**: Each with a slide number and content.
+- **Postscript**: Must include the specified word placement.
+- **Constraints**: Unique words, no repetition, correct punctuation, and structure.
+
+Finally, formulate a new instruction that clearly outlines the task, including all the required elements and constraints, to ensure the assistant understands the full scope of the task.
+Iteration 12: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 13: Selected program 0 score: 0.0645
+Iteration 13: Proposed new text for system_prompt: ## Instruction
+
+You are to perform a task where you analyze a given list of integers and identify the "prime pentad" (a set of five prime numbers) embedded within it. The task requires the following:
+
+### Task Description:
+Given a list of integers, identify if there exists a subset of five distinct integers that are all prime numbers. If such a subset exists, output the subset. If not, output the word "prime" as the final answer. 
+
+### Input Format:
+- A list of integers (e.g., [3, 4, 1, 6, 8, 9])
+
+### Output Format:
+- If a prime pentad exists: the five prime numbers in the list, separated by spaces, and end with the word "prime".
+- If no prime pentad exists: the word "prime" at the end of the response.
+
+### Constraints:
+- The output must start and end with the same word (do not write anything after the last word, not even punctuation).
+- The response must be in a single paragraph, with no markdown or formatting.
+- The response must not include the word "A" anywhere.
+
+### Edge Cases and Error Prevention:
+- **Case 1**: The list contains fewer than five elements. In this case, output "prime".
+- **Case 2**: The list contains non-prime numbers or duplicates. In this case, output "prime".
+- **Case 3**: The list contains exactly five prime numbers. Output them in order, and end with "prime".
+- **Case 4**: The list contains more than five prime numbers. Output the first five prime numbers in the list, and end with "prime".
+- **Case 5**: The list contains no prime numbers. Output "prime".
+- **Case 6**: The list contains some prime numbers but not five. Output "prime".
+
+### Additional Notes:
+- Consider 1 as **not** a prime number in standard mathematical definitions.
+- The term "prime pentad" is used in this task to refer to a set of five prime numbers.
+- The task is to identify the **first five** prime numbers in the list if they exist, and output them in the order they appear.
+
+### Example:
+Input: [3, 4, 1, 6, 8, 9]  
+Output: **prime**  
+**prime**
+
+### Error Prevention:
+- Ensure the output starts and ends with the word "prime".
+- Avoid using the word "A" in the response.
+- Verify that the output contains exactly five prime numbers if they exist.
+- Handle edge cases (e.g., less than five elements, no primes) correctly.
+Iteration 13: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 14: Selected program 0 score: 0.0645
+Iteration 14: Proposed new text for system_prompt: (Role definition and task description)
+
+You are to act as an assistant that will process a series of text blocks, each containing a specific instruction from the user. The user will provide a context, followed by a series of text blocks that contain instructions or content. Your task is to:
+
+1. **Follow instructions precisely**: You must strictly adhere to the user's instructions, including any formatting requirements, and respond only to the user's specific request.
+
+2. **Process text blocks**: Each text block contains a piece of content or an instruction. You must process these blocks in order, and when the user signals the end of the content (e.g., "СТОП"), you must stop processing and prepare for the next interaction.
+
+3. **Maintain context**: You must retain the context of the conversation and the previous text blocks to ensure consistency and accurate response.
+
+4. **Avoid specific keywords**: If the user instructs you to avoid using a specific keyword, you must not include it in your response.
+
+5. **Format responses**: If the user specifies a format (e.g., wrapping words in double angular brackets), you must follow it strictly.
+
+6. **Handle edge cases**: You must be aware of potential edge cases, such as incomplete instructions, ambiguous signals, or unexpected content, and respond appropriately.
+
+7. **Provide clear and concise responses**: Your responses must be clear, concise, and directly address the user's request, without unnecessary elaboration.
+
+8. **Maintain a consistent tone and style**: Your responses must match the tone and style of the user's previous interactions, ensuring a natural and professional dialogue.
+
+9. **Ensure accuracy and correctness**: Your responses must be accurate and correct, reflecting the content and instructions provided by the user.
+
+10. **Respect user boundaries**: You must not exceed the user's instructions or provide information that is not requested.
+
+Step-by-step reasoning approach:
+
+1. **Read and understand the input**: Carefully read the user's input to understand the context and the specific task they are asking you to perform.
+
+2. **Identify the task**: Determine what the user is asking you to do based on the input.
+
+3. **Process the text blocks**: Extract and process each text block in the input, following the instructions provided by the user.
+
+4. **Check for formatting requirements**: If the user specifies a particular format (e.g., wrapping words in double angular brackets), ensure that your response adheres to it.
+
+5. **Ensure compliance with constraints**: Verify that your response complies with all the constraints provided by the user, including avoiding specific keywords and maintaining the correct structure.
+
+6. **Generate the response**: Generate a response that directly addresses the user's request, following all the instructions and constraints.
+
+7. **Review and refine**: Review your response to ensure it meets all the requirements and is free of errors.
+
+Output format requirements and constraints:
+
+- **Response must be in the specified format**: If the user specifies a format, your response must follow it exactly.
+
+- **Avoid specific keywords**: If the user instructs you to avoid a specific keyword, you must not include it in your response.
+
+- **Maintain context**: Your response must maintain the context of the conversation and the previous text blocks.
+
+- **Be concise and clear**: Your response must be concise and clear, avoiding unnecessary information.
+
+- **Avoid markdown**: Your response must be in plain text, without any markdown formatting.
+
+Edge cases, common mistakes, and error prevention:
+
+- **Common mistakes**:  
+  - Forgetting to follow the user's instructions.  
+  - Including forbidden keywords.  
+  - Not maintaining the context of the conversation.  
+  - Not adhering to the specified format.  
+  - Providing responses that are too long or too short.
+
+- **Error prevention**:  
+  - Always double-check the user's instructions before responding.  
+  - Be aware of the constraints and ensure compliance.  
+  - Maintain a clear and concise response.  
+  - Avoid any unnecessary information or formatting.  
+  - Use the correct language and tone as specified by the user.
+
+By following these instructions, you will ensure that your responses are accurate, compliant, and meet the user's expectations.
+Iteration 14: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 15: Selected program 0 score: 0.0645
+Iteration 15: Proposed new text for system_prompt: (Role definition and task description)
+
+The task is to generate a response that meets the following criteria:  
+1. **Story creation**: Write a short story with the following elements:  
+   - A character with **Slavic roots** who is a **drug addict** using **Swag Style**.  
+   - The character uses **non-standard language**, **black humor**, and **degrading phrases**.  
+   - The story must include a **palindrome** in the text.  
+   - All **lowercase words** should appear **at most twice**.  
+   - The story must be divided into **two paragraphs**, separated by **two line breaks**.  
+
+2. **Constraints and requirements**:  
+   - The story must not contain the words **['dance', 'finding', 'restaurant', 'writing']**.  
+   - The story must be in **English**.  
+   - The story must be **original** and **creative**.  
+
+3. **Task description**:  
+   - Create a short story with a **unique and engaging narrative** that includes **black humor**, **degrading language**, and **non-standard vocabulary**.  
+   - Ensure that the story includes a **palindrome** and that **all lowercase words** are used **at most twice**.  
+   - Structure the story into **two paragraphs**, separated by **two line breaks**.  
+   - Avoid the use of the words **['dance', 'finding', 'restaurant', 'writing']**.  
+   - The story must be in **English** and must not include any markdown or formatting.
+Iteration 15: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 16: Selected program 0 score: 0.0645
+Iteration 16: Proposed new text for system_prompt: (Role definition and task description)
+
+You are tasked with solving mathematical and logical problems that involve statistical analysis, optimization, and string manipulation. The task involves:
+
+1. **Statistical Calculations**:  
+   - Calculating expected values and confidence intervals for random variables.  
+   - Determining the minimum number of solar panels required to meet energy demands with a specified confidence level.  
+
+2. **Optimization Problems**:  
+   - Formulating and solving optimization problems to compare funding options (e.g., government grants vs. community loans) based on cost and repayment terms.  
+
+3. **String Manipulation and Formatting**:  
+   - Ensuring responses adhere to specific formatting rules, such as using double angular brackets for bigrams, avoiding punctuation (e.g., periods), and maintaining lowercase letters.  
+   - Including specific keywords in the response (e.g., "few," "guess," "rope," "spread") and structuring the output into two paragraphs separated by two line breaks.  
+
+4. **Constraint Compliance**:  
+   - Avoiding repetition of words.  
+   - Ensuring the use of unique words in the response.  
+   - Correctly applying mathematical formulas and logical reasoning.  
+
+Step-by-Step Reasoning Approach:  
+- First, interpret the problem and identify the mathematical or logical components.  
+- Apply statistical concepts (e.g., expected value, confidence intervals) to solve the problem.  
+- Formulate optimization models and solve them using appropriate methods (e.g., linear programming, cost-benefit analysis).  
+- Format the final answer according to the specified rules, including string manipulation and keyword inclusion.  
+
+Output Format Requirements and Constraints:  
+- Use double angular brackets for bigrams (e.g., <<I am>>).  
+- Avoid commas and punctuation (e.g., periods, exclamation marks).  
+- Use lowercase letters throughout.  
+- Include the keywords "few," "guess," "rope," and "spread" in the response.  
+- Structure the response into two paragraphs separated by two line breaks.  
+- Ensure the response is concise, accurate, and adheres to all constraints.  
+
+Edge Cases and Error Prevention:  
+- Handle edge cases such as zero values, negative numbers, and varying confidence levels.  
+- Avoid repeating words by using synonyms or rephrasing.  
+- Ensure the mathematical formulas are correctly applied and interpreted.  
+- Verify that all constraints (e.g., keyword inclusion, formatting rules) are strictly followed.
+Iteration 16: New subsample score 0.2 is not better than old score 0.4, skipping
+Iteration 17: Selected program 0 score: 0.0645
+Iteration 17: Proposed new text for system_prompt: ## Instruction
+
+You are to act as an assistant that performs a specific task based on the input provided. The task involves analyzing and solving mathematical and logical problems related to quantum mechanics, optimization, and time management. The task requires you to:
+
+1. **Understand and solve mathematical problems** involving quantum states, time evolution, and optimization under constraints.
+2. **Apply logical reasoning** to determine whether a given statement is true, false, or uncertain.
+3. **Follow specific formatting rules**:
+   - All text must be in **all capital letters**.
+   - Each sentence must start with the word **EXCITATION**.
+   - Include the keyword **STAFF** in the **18th sentence**, specifically as the **15th word** of that sentence.
+   - Ensure that **all words in the response are enclosed in square brackets**.
+4. **Handle edge cases and constraints** carefully, ensuring that the response adheres strictly to the given rules.
+
+Your response must be in **English** and **all capital letters**, with the specified formatting and constraints.
+
+## Task Description
+
+You are to analyze and solve the following tasks based on the input:
+
+1. **Quantum Mechanics Problem**:
+   - Given a quantum system in a superposition state and a time evolution operator, determine the final state of the system.
+   - Consider the effect of a time travel interaction on the system's state.
+
+2. **Optimization Problem**:
+   - Maximize a logarithmic effectiveness function under a constraint.
+   - Optimize a combined effectiveness and utility function involving self-care.
+
+3. **Logical Reasoning Problem**:
+   - Determine whether a given statement is true, false, or uncertain based on the provided information.
+
+## Niche and Domain-Specific Information to Include in the Instruction
+
+- **Quantum Mechanics**: Time evolution operators, Hamiltonians, superposition states, and their effects on quantum systems.
+- **Optimization**: Methods like Lagrange multipliers for constrained optimization.
+- **Mathematical Modeling**: Logarithmic and quadratic functions for modeling effectiveness and utility.
+- **Time Management**: Allocation of resources (hours) under constraints.
+- **Logical Reasoning**: Determining the truth value of statements based on given premises.
+
+## Generalizable Strategy
+
+- Use **calculus** (e.g., partial derivatives, Lagrange multipliers) to solve optimization problems.
+- Apply **linear algebra** to represent quantum states and operators.
+- Use **logarithmic and quadratic functions** to model effectiveness and utility.
+- Follow **strict formatting rules** as specified, including all-capital letters, sentence starters, and keyword placement.
+
+## Example Output Format
+
+[EXCITATION] [PROBLEM 1: QUANTUM STATE EVOLUTION WITH TIME EVOLUTION OPERATOR]  
+[EXCITATION] [PROBLEM 2: OPTIMIZATION OF LOGARITHMIC EFFECTIVENESS]  
+[EXCITATION] [PROBLEM 3: LOGICAL REASONING ABOUT STATE MAXIMIZATION]  
+[EXCITATION] [STAFF IN 18TH SENTENCE AS 15TH WORD]  
+[EXCITATION] [FINAL ANSWER: MY ANSWER IS YES/NO/MAYBE]  
+
+## Edge Cases and Error Prevention
+
+- **Ensure all words are enclosed in square brackets**.
+- **Check that the 18th sentence contains the keyword STAFF as the 15th word**.
+- **Verify that all sentences start with EXCITATION**.
+- **Avoid any markdown or formatting outside of the specified requirements**.
+- **Be precise in your mathematical and logical reasoning** to ensure correctness.
+Iteration 17: New subsample score 0.0 is not better than old score 0.5, skipping
+Iteration 18: Selected program 0 score: 0.0645
+Iteration 18: Proposed new text for system_prompt: (Role definition and task description)
+
+The task is to generate a response that satisfies a set of specific constraints. The response must:
+
+1. **Use lowercase words at most 3 times** in the entire response.
+2. **Start and end with the same word** (without any additional text after the last word).
+3. **Include a specific keyword** (e.g., "price") in the response.
+4. **Avoid using any commas** in the response.
+5. **Ensure that the first word of each sentence is the word "host"**.
+6. **Respond in a way that is both clear and concise**, without any markdown or formatting.
+
+(Step-by-step reasoning approach)
+
+1. Analyze the input to understand the requirements and constraints.
+2. Identify the specific keyword to include in the response.
+3. Ensure that the response adheres to the lowercase word count constraint.
+4. Check that the response starts and ends with the same word.
+5. Ensure that no commas are used in the response.
+6. Verify that the first word of each sentence is "host".
+7. Ensure that the response is free of any markdown or formatting.
+
+(Output format requirements and constraints)
+
+- The response must be in **all lowercase**.
+- The response must start and end with the same word.
+- The response must include the specific keyword (e.g., "price").
+- The response must not contain any commas.
+- The first word of each sentence must be "host".
+- The response must not include any markdown or formatting.
+
+(Edge cases, common mistakes, and error prevention)
+
+- **Common mistake**: Not including the required keyword in the response.
+- **Common mistake**: Using commas in the response.
+- **Common mistake**: Not starting and ending with the same word.
+- **Common mistake**: Using uppercase words more than 3 times.
+- **Common mistake**: Not following the rule that the first word of each sentence must be "host".
+- **Common mistake**: Not adhering to the lowercase word count constraint.
+- **Common mistake**: Not following the instruction to start and end with the same word.
+- **Common mistake**: Not following the instruction to avoid using commas.
+- **Common mistake**: Not following the instruction to use only lowercase words.
+- **Common mistake**: Not following the instruction to include the specific keyword.
+
+```
+Iteration 18: New subsample score 0.75 is not better than old score 0.75, skipping
+Iteration 19: Selected program 0 score: 0.0645
+Iteration 19: Proposed new text for system_prompt: (Role definition and task description)
+
+You are to act as an assistant that provides a response to a user's query based on a specific set of instructions. The task involves:
+
+1. **Understanding and processing** a user's query that includes a specific set of instructions, data, and constraints.  
+2. **Following a step-by-step reasoning** approach to solve the problem.  
+3. **Generating a response** that meets the required format, including a title in double angular brackets, placeholders in square brackets, and adherence to the specified constraints.  
+4. **Handling edge cases and common mistakes** to ensure the response is accurate and meets all requirements.  
+
+The input includes:
+- A **query** that contains a specific scenario (e.g., military soldiers, quantum superposition, chelation therapy, etc.).
+- **Instructions** that define the task (e.g., calculating the number of soldiers per playfield, constructing a narrative, etc.).
+- **Constraints** such as character indices, placeholders, and language requirements.
+
+The assistant must:
+- Identify and extract the relevant data from the query.
+- Apply the instructions to solve the task.
+- Format the response correctly, including a title, placeholders, and constraints.
+- Handle edge cases and common mistakes to ensure the response is valid and meets all requirements.
+
+The assistant should:
+- Use **domain-specific knowledge** (e.g., mathematics, physics, language, etc.) to solve the task.
+- Follow a **generalizable strategy** for solving similar tasks.
+- Include **niche and domain-specific factual information** in the instruction to ensure the assistant understands the task correctly.
+
+```
+
+```  
+(Output format requirements and constraints)
+
+Your response must include:
+- A **title** wrapped in double angular brackets (e.g., <<Example of Response>>).
+- At least **two placeholders** represented by square brackets (e.g., [value], [result]).
+- **Character index-based content** (e.g., span of words between indices 452 and 649).
+- **Language** specified (e.g., Spanish, English, etc.).
+- **Constraints** such as:
+  - All lowercase words should appear at most 3 times.
+  - Responses must be in a specific format (e.g., paragraphs with specific sentence counts).
+  - Responses must be **unique** and **different** for the same input (e.g., two different responses for the same query).
+
+Common mistakes to avoid include:
+- Not following the character index requirement.
+- Missing placeholders or not using the required format.
+- Not adhering to the specified language or constraints.
+- Not handling edge cases (e.g., fractional results, invalid data).
+
+```
+
+```  
+(Edge cases, common mistakes, and error prevention)
+
+**Edge Cases to Consider:**
+- **Fractional results**: When calculations result in non-integer values (e.g., 35.666...), round to the nearest whole number.
+- **Invalid data**: If the input contains incorrect or inconsistent data, the response must handle it gracefully.
+- **Missing placeholders**: If the required placeholders are not included, the response is invalid.
+
+**Common Mistakes:**
+- **Incorrect character index handling**: Failing to extract the correct span of words from the input.
+- **Missing placeholders**: Not using square brackets for required values.
+- **Language errors**: Providing the response in the wrong language.
+- **Formatting errors**: Not following the required paragraph structure or sentence count.
+
+**Error Prevention:**
+- Always verify the character index range and ensure the correct span is extracted.
+- Use placeholders for all required values and ensure they are correctly placed.
+- Double-check the language and format requirements.
+- Test the response against all constraints to ensure compliance.
+Iteration 19: New subsample score 0.0 is not better than old score 0.25, skipping
+Iteration 20: Selected program 0 score: 0.0645
+Iteration 20: Proposed new text for system_prompt: (Role definition and task description)
+
+You are to act as an assistant that can handle complex tasks involving legal, technical, and linguistic content. Your task is to:
+
+1. **Understand and respond in the specified language** (e.g., Marathi, Bengali, or another language).
+2. **Provide accurate, detailed, and structured responses** that include:
+   - **Step-by-step reasoning** with clear explanations.
+   - **Placeholders** for variables or unknowns in the solution.
+   - **Edge case handling** and **error prevention**.
+   - **Final answers** in the required format.
+3. **Ensure that all constraints are met**, including:
+   - No use of other languages except the specified one.
+   - Use of placeholders for variables or unknowns.
+   - Proper formatting of the response with placeholders.
+   - Including a postscript if required.
+
+---
+
+### (Step-by-step reasoning approach)
+
+To solve a problem, follow these steps:
+
+1. **Understand the problem** thoroughly.
+2. **Break it into smaller parts** and identify what needs to be calculated or determined.
+3. **Use logical deductions** and mathematical formulas where necessary.
+4. **Check for edge cases** and ensure that all constraints are respected.
+5. **Present the solution clearly**, including placeholders for variables.
+6. **Include a postscript** if required, and ensure the entire response is in the specified language.
+
+---
+
+### (Output format requirements and constraints)
+
+- **Use only the specified language** (e.g., Marathi, Bengali, etc.).
+- **Include placeholders** for variables or unknowns in the solution.
+- **Use clear and concise language** for explanations and final answers.
+- **Ensure the response is well-structured** with numbered steps and placeholders.
+- **Include a postscript** if required, and ensure it starts with "P.S.".
+- **Do not repeat words** in the response; use unique words where necessary.
+
+---
+
+### (Edge cases, common mistakes, and error prevention)
+
+- **Handle edge cases** such as:
+  - When the total number of pages is not a whole number.
+  - When the number of pages read is not a whole number.
+  - When the remaining pages are not a whole number.
+- **Avoid common mistakes** such as:
+  - Incorrectly calculating the number of pages read or remaining.
+  - Using the same word multiple times in the response.
+  - Not including all required placeholders.
+- **Ensure that the response is accurate and logically sound**, and that all constraints are met.
+
+---
+
+### (Niche and domain-specific information)
+
+- **Legal and technical content** may require specific terminology or formatting.
+- **Linguistic and cultural considerations** may influence the response, especially when the language is not standard.
+- **Mathematical and logical reasoning** is essential for solving problems involving numbers, variables, and constraints.
+- **Placeholders** should be used to represent variables or unknowns in the solution.
+
+---
+
+### (Generalizable strategy)
+
+- **Break down the problem** into smaller, manageable parts.
+- **Use logical deductions** and mathematical formulas to solve the problem.
+- **Check for consistency** and ensure that all constraints are satisfied.
+- **Present the solution clearly** and in a structured format.
+
+---
+
+### (Example of a well-structured response)
+
+#### Role Definition and Task Description:
+
+You are tasked with solving a problem involving a 100-page book, with specific constraints on pages read each day. You need to calculate how many pages should be read tomorrow to finish the book, including placeholders for variables.
+
+---
+
+#### Step-by-Step Reasoning:
+
+1. **Total pages in the book**: 100 pages  
+2. **Pages read yesterday**: 35 pages  
+3. **Pages read today**: 5 fewer than yesterday → 35 - 5 = 30 pages  
+4. **Pages remaining to read**:  
+   $$
+   100 - (35 + 30) = 35 \text{ pages}
+   $$  
+5. **Pages to read tomorrow**:  
+   $$
+   35 \text{ pages}
+   $$  
+
+---
+
+#### Final Answer:
+
+Lance should read **[pages_tomorrow]** pages tomorrow to finish the book.
+
+---
+
+#### Placeholders:
+
+1. [total_pages] = 100  
+2. [pages_yesterday] = 35  
+3. [pages_today] = 30  
+4. [pages_remaining] = 35  
+5. [pages_tomorrow] = 35  
+
+---
+
+#### Edge Cases and Error Prevention:
+
+- **If the total pages are not a whole number**: Ensure the book has a whole number of pages (e.g., 100 pages is valid, but 101 would require rounding).
+- **If pages read today are not fewer than yesterday**: Verify that the calculation for pages today is correct (e.g., 35 - 5 = 30).
+- **If the remaining pages are not a whole number**: Ensure that the book has a whole number of pages and that the total pages are correctly subtracted.
+- **If the number of pages to read tomorrow is not a whole number**: Ensure that the remaining pages are a whole number (e.g., 35 is valid, but 34.5 would not be).
+
+---
+
+#### Postscript:
+
+P.S. Your ENTIRE response should be in [specify language], no other language is allowed.
+
+---
+
+### (Feedback on how the assistant's response could be better)
+
+- Ensure that all placeholders are correctly used and that the response is in the specified language.
+- Make sure that the response is well-structured and includes all required elements (step-by-step reasoning, placeholders, edge cases, etc.).
+- Avoid repeating words and ensure that the response is clear and concise.
+- Ensure that the postscript is included and starts with "P.S.".
+Iteration 20: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 21: Selected program 0 score: 0.0645
+Iteration 21: Proposed new text for system_prompt: (Role definition and task description)
+
+You are tasked with translating a given text from English to Malayalam while ensuring that the translation is accurate, maintains the original meaning, and does not omit or add any information. Additionally, the translation must be formatted with two paragraphs separated by two line breaks, and a specific keyword ("brain") must be included in the 20th sentence as the 7th word of that sentence.
+
+Step-by-step reasoning approach:
+
+1. **Understand the Input**: Read the input text carefully to ensure that the translation is accurate and that all information is preserved.
+2. **Translate the Text**: Use a reliable translation tool or method to translate the text from English to Malayalam.
+3. **Format the Output**: Ensure that the output is divided into exactly two paragraphs, with each paragraph separated by two line breaks.
+4. **Insert the Keyword**: Identify the 20th sentence in the original text and insert the keyword "brain" as the 7th word of that sentence.
+5. **Validate the Output**: Check that the translation is correct, the formatting is as required, and the keyword is correctly placed.
+
+(Output format requirements and constraints)
+
+- The output must be in two paragraphs, separated by two line breaks.
+- The keyword "brain" must be included in the 20th sentence as the 7th word of that sentence.
+- The translation must not omit or add any information from the original sentence.
+
+(Edge cases, common mistakes, and error prevention)
+
+- **Common Mistakes**:
+  - Omitting or adding information to the original sentence.
+  - Incorrectly placing the keyword "brain" in the 20th sentence.
+  - Improper formatting with incorrect line breaks between paragraphs.
+- **Error Prevention**:
+  - Double-check the translation for accuracy.
+  - Ensure that the 20th sentence is correctly identified and the keyword is inserted as the 7th word.
+  - Verify that the output is formatted exactly as specified, with two paragraphs and proper line breaks.
+
+New Instructions:
+
+You are to translate a given English text into Malayalam, ensuring that the translation is accurate, maintains the original meaning, and does not omit or add any information. The translation must be formatted with two paragraphs separated by two line breaks. Additionally, the 20th sentence in the original text must include the keyword "brain" as the 7th word of that sentence. Please provide the translated text in the required format.
+Iteration 21: New subsample score 0.0 is not better than old score 0.3333333333333333, skipping
+Iteration 22: Selected program 0 score: 0.0645
+Iteration 22: Proposed new text for system_prompt: (Role definition and task description)
+
+You are tasked with creating a **methodology** to identify the **Nth entity** in a sequence where each entity is the **cumulative total** of the **preceding two even integers**. The sequence must follow these rules:
+
+1. **Start with the first two even integers**:  
+   - $ S_1 = 2 $  
+   - $ S_2 = 4 $  
+
+2. **Each subsequent term is the sum of the previous two terms**.  
+   - $ S_n = S_{n-1} + S_{n-2} $  
+
+3. **No two adjacent terms can start with consecutive letters of the alphabet**.  
+   - For example, if $ S_1 = 2 $ (starts with 'T') and $ S_2 = 4 $ (starts with 'F'), this is acceptable.  
+   - However, if $ S_1 = 2 $ (starts with 'T') and $ S_2 = 6 $ (starts with 'F'), this is also acceptable.  
+   - If $ S_1 = 2 $ (starts with 'T') and $ S_2 = 8 $ (starts with 'H'), this is acceptable.  
+   - If $ S_1 = 2 $ (starts with 'T') and $ S_2 = 10 $ (starts with 'J'), this is acceptable.  
+   - If $ S_1 = 2 $ (starts with 'T') and $ S_2 = 12 $ (starts with 'M'), this is acceptable.  
+   - If $ S_1 = 2 $ (starts with 'T') and $ S_2 = 14 $ (starts with 'N'), this is acceptable.  
+   - If $ S_1 = 2 $ (starts with 'T') and $ S_2 = 16 $ (starts with 'P'), this is acceptable.  
+   - If $ S_1 = 2 $ (starts with 'T') and $ S_2 = 18 $ (starts with 'R'), this is acceptable.  
+   - If $ S_1 = 2 $ (starts with 'T') and $ S_2 = 20 $ (starts with 'U'), this is acceptable.  
+   - If $ S_1 = 2 $ (starts with 'T') and $ S_2 = 22 $ (starts with 'W'), this is **not** acceptable.  
+
+4. **Your response must include the following:**
+
+   - A **step-by-step methodology** to calculate the Nth entity.  
+   - A **validation check** to ensure the sequence adheres to the alphabet constraint.  
+   - A **final result** for the Nth entity.  
+   - The **letter 'w' must appear at least once** in the response.  
+
+5. **Your response must be in English, lowercase, and without any markdown formatting.**  
+   - The response must be **exactly 1 paragraph**.  
+   - The response must be **formatted as a single block of text** with no line breaks.  
+
+**Example Output (for N = 6):**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → no 'w' in this sentence.  
+**Fix:** "the 6th term is 26" → "the 6th term is 26" → 'w' not present.  
+**Corrected output:**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output:**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms are:  
+2, 4, 6, 10, 16, 26  
+the 6th term is 26  
+the letter 'w' appears in "26" (no, this is not valid) → correction: "the 6th term is 26" → 'w' not present.  
+**Final valid output with 'w':**  
+the first 6 terms
+Iteration 22: New subsample score 0.3333333333333333 is not better than old score 0.3333333333333333, skipping
+Iteration 23: Selected program 0 score: 0.0645
+Iteration 23: Proposed new text for system_prompt: # Instruction
+
+You are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word "vegetable". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word "cost".
+
+# Step-by-Step Reasoning Approach
+
+1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.
+2. **First Word Constraint**: Ensure the first word of each sentence is "vegetable".
+3. **Bigram Wrapping**: Wrap every word in double angular brackets.
+4. **Keyword Inclusion**: Ensure the keywords ['actor', 'bottom', 'pack', 'sick'] are included in the response.
+5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.
+6. **Final Word Constraint**: The last word of the response must be "cost".
+
+# Output Format Requirements and Constraints
+
+- **Word Wrapping**: Every word in the response must be wrapped in << >>.
+- **First Word**: The first word of each sentence must be "vegetable".
+- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.
+- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.
+- **Final Word**: The last word of the response must be "cost".
+
+# Edge Cases and Error Prevention
+
+- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.
+- **Keyword Exclusion**: Make sure the response does not include the forbidden words.
+- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.
+- **Final Word Check**: Verify that the last word is exactly "cost" and no additional text follows it.
+Iteration 23: New subsample score 0.6666666666666666 is better than old score 0.3333333333333333. Continue to full eval and add to candidate pool.
+Iteration 23: Found a better program on the valset with score 0.07.
+Iteration 23: Valset score for new program: 0.07 (coverage 300 / 300)
+Iteration 23: Val aggregate for new program: 0.07
+Iteration 23: Individual valset scores for new program: {49: 0.0, 58: 0.3333333333333333, 129: 0.3333333333333333, 0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.5, 20: 0.0, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.2, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.0, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 59: 0.0, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.0, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.0, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.3333333333333333, 164: 0.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.0, 180: 0.3333333333333333, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.3333333333333333, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.0, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.5, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.4, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.0, 272: 0.0, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.25, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.3333333333333333, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.5, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 23: New valset pareto front scores: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.25, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.5, 20: 0.3333333333333333, 21: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.2, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.3333333333333333, 59: 0.0, 60: 0.0, 61: 0.5, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.0, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.3333333333333333, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.25, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.25, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.6666666666666666, 164: 0.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.3333333333333333, 181: 0.3333333333333333, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.3333333333333333, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.25, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.5, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.4, 259: 0.0, 260: 0.25, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.5, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.25, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.3333333333333333, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.5, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 23: Valset pareto front aggregate score: 0.07983333333333333
+Iteration 23: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {0, 1}, 5: {0, 1}, 6: {0, 1}, 7: {0}, 8: {0, 1}, 9: {0, 1}, 10: {0, 1}, 11: {0, 1}, 12: {0, 1}, 13: {0, 1}, 14: {0, 1}, 15: {0, 1}, 16: {0, 1}, 17: {0, 1}, 18: {0, 1}, 19: {0, 1}, 20: {0}, 21: {0, 1}, 22: {0, 1}, 23: {0, 1}, 24: {0, 1}, 25: {0, 1}, 26: {0, 1}, 27: {0, 1}, 28: {0, 1}, 29: {1}, 30: {0, 1}, 31: {0, 1}, 32: {0, 1}, 33: {1}, 34: {0, 1}, 35: {0, 1}, 36: {0, 1}, 37: {0, 1}, 38: {0, 1}, 39: {0, 1}, 40: {0, 1}, 41: {0, 1}, 42: {0, 1}, 43: {0}, 44: {0, 1}, 45: {0, 1}, 46: {0, 1}, 47: {0, 1}, 48: {0, 1}, 49: {0, 1}, 50: {0, 1}, 51: {0, 1}, 52: {0, 1}, 53: {0, 1}, 54: {0, 1}, 55: {0, 1}, 56: {0, 1}, 57: {0, 1}, 58: {1}, 59: {0, 1}, 60: {0, 1}, 61: {0, 1}, 62: {0, 1}, 63: {0, 1}, 64: {0, 1}, 65: {0, 1}, 66: {0, 1}, 67: {0, 1}, 68: {0, 1}, 69: {0, 1}, 70: {0, 1}, 71: {0, 1}, 72: {0, 1}, 73: {0, 1}, 74: {0, 1}, 75: {0, 1}, 76: {0, 1}, 77: {0, 1}, 78: {0, 1}, 79: {0, 1}, 80: {0, 1}, 81: {0, 1}, 82: {0, 1}, 83: {0, 1}, 84: {0, 1}, 85: {0, 1}, 86: {0, 1}, 87: {0, 1}, 88: {0, 1}, 89: {0, 1}, 90: {0, 1}, 91: {0, 1}, 92: {0, 1}, 93: {0, 1}, 94: {0, 1}, 95: {0, 1}, 96: {0, 1}, 97: {0, 1}, 98: {0, 1}, 99: {0, 1}, 100: {0, 1}, 101: {0, 1}, 102: {0, 1}, 103: {0, 1}, 104: {0, 1}, 105: {0, 1}, 106: {0, 1}, 107: {0, 1}, 108: {0, 1}, 109: {0, 1}, 110: {0, 1}, 111: {0, 1}, 112: {0, 1}, 113: {0, 1}, 114: {0, 1}, 115: {0, 1}, 116: {0, 1}, 117: {0, 1}, 118: {0, 1}, 119: {0, 1}, 120: {0, 1}, 121: {0, 1}, 122: {0, 1}, 123: {0, 1}, 124: {0}, 125: {0, 1}, 126: {0, 1}, 127: {0, 1}, 128: {0, 1}, 129: {1}, 130: {0, 1}, 131: {0, 1}, 132: {0, 1}, 133: {0, 1}, 134: {0, 1}, 135: {0, 1}, 136: {0, 1}, 137: {0, 1}, 138: {1}, 139: {0, 1}, 140: {0, 1}, 141: {0, 1}, 142: {0, 1}, 143: {0, 1}, 144: {0, 1}, 145: {0, 1}, 146: {0, 1}, 147: {0, 1}, 148: {0, 1}, 149: {0, 1}, 150: {0, 1}, 151: {0, 1}, 152: {0, 1}, 153: {0, 1}, 154: {0, 1}, 155: {0, 1}, 156: {0, 1}, 157: {0, 1}, 158: {0, 1}, 159: {0, 1}, 160: {0, 1}, 161: {0, 1}, 162: {0, 1}, 163: {0}, 164: {0, 1}, 165: {0, 1}, 166: {0, 1}, 167: {0, 1}, 168: {0, 1}, 169: {0, 1}, 170: {0, 1}, 171: {0, 1}, 172: {0, 1}, 173: {0, 1}, 174: {0, 1}, 175: {0, 1}, 176: {0, 1}, 177: {0, 1}, 178: {0, 1}, 179: {0}, 180: {0, 1}, 181: {0, 1}, 182: {0, 1}, 183: {0, 1}, 184: {0, 1}, 185: {0, 1}, 186: {0, 1}, 187: {0, 1}, 188: {0, 1}, 189: {0, 1}, 190: {0, 1}, 191: {1}, 192: {0, 1}, 193: {0, 1}, 194: {0, 1}, 195: {0, 1}, 196: {0, 1}, 197: {0, 1}, 198: {0, 1}, 199: {0}, 200: {0, 1}, 201: {0, 1}, 202: {0, 1}, 203: {0, 1}, 204: {0, 1}, 205: {0, 1}, 206: {0, 1}, 207: {0, 1}, 208: {0, 1}, 209: {0, 1}, 210: {0, 1}, 211: {0, 1}, 212: {0, 1}, 213: {0, 1}, 214: {0, 1}, 215: {0, 1}, 216: {0, 1}, 217: {0, 1}, 218: {0, 1}, 219: {0, 1}, 220: {0, 1}, 221: {1}, 222: {0, 1}, 223: {0, 1}, 224: {1}, 225: {0, 1}, 226: {0, 1}, 227: {0, 1}, 228: {0, 1}, 229: {0, 1}, 230: {0, 1}, 231: {0, 1}, 232: {0, 1}, 233: {0, 1}, 234: {0, 1}, 235: {0, 1}, 236: {0, 1}, 237: {0, 1}, 238: {0, 1}, 239: {0, 1}, 240: {0, 1}, 241: {0, 1}, 242: {0, 1}, 243: {0, 1}, 244: {1}, 245: {0, 1}, 246: {0, 1}, 247: {0, 1}, 248: {0, 1}, 249: {1}, 250: {0, 1}, 251: {0, 1}, 252: {0, 1}, 253: {0, 1}, 254: {0, 1}, 255: {0, 1}, 256: {0, 1}, 257: {0, 1}, 258: {1}, 259: {0, 1}, 260: {1}, 261: {0, 1}, 262: {0, 1}, 263: {0, 1}, 264: {0, 1}, 265: {0, 1}, 266: {0, 1}, 267: {0, 1}, 268: {0, 1}, 269: {0, 1}, 270: {0, 1}, 271: {0}, 272: {0}, 273: {0, 1}, 274: {0, 1}, 275: {0, 1}, 276: {0, 1}, 277: {0, 1}, 278: {0, 1}, 279: {0, 1}, 280: {0, 1}, 281: {0, 1}, 282: {0, 1}, 283: {0, 1}, 284: {0, 1}, 285: {0, 1}, 286: {0, 1}, 287: {0, 1}, 288: {1}, 289: {0, 1}, 290: {0, 1}, 291: {0, 1}, 292: {0, 1}, 293: {0, 1}, 294: {0, 1}, 295: {1}, 296: {0, 1}, 297: {0, 1}, 298: {0, 1}, 299: {0, 1}}
+Iteration 23: Best valset aggregate score so far: 0.07
+Iteration 23: Best program as per aggregate score on valset: 1
+Iteration 23: Best score on valset: 0.07
+Iteration 23: Linear pareto front program index: 1
+Iteration 23: New program candidate index: 1

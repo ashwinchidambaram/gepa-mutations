@@ -1,0 +1,3 @@
+{
+    "response": "def extract_politician_counts(articles, politician_names):\n    counts = {}\n    for article in articles:\n        for name in politician_names:\n            # convert to lowercase and remove punctuation\n            name_lower = name.lower()\n            article_lower = article.lower()\n            # remove punctuation from article\n            article_clean = article_lower.replace(\"?\", \"\").replace(\",\", \"\").replace(\".\", \"\").replace(\"!\", \"\")\n            if name_lower in article_clean:\n                counts[name_lower] = counts.get(name_lower, 0) + 1\n    return counts"
+}

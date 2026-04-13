@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0729, "parents": "seed", "role": "Best", "components": {"system_prompt": "# New Instruction\n\nYou are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word \"vegetable\". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word \"cost\".\n\n# Step-by-Step Reasoning Approach\n\n1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior.\n2. **First Word Constraint**: Ensure the first word of each sentence is \"vegetable\".\n3. **Bigram Wrapping**: Wrap every word in double angular brackets.\n4. **Keyword Inclusion**: Ensure the response includes the words 'actor', 'bottom', 'pack', and 'sick'.\n5. **No Consecutive Alphabet Words**: No two adjacent words can start with consecutive letters of the alphabet.\n6. **Final Word Constraint**: The last word of the response must be \"cost\".\n\n# Output Format Requirements and Constraints\n\n- **Word Wrapping**: Every word in the response must be wrapped in << >>.\n- **First Word**: The first word of each sentence must be \"vegetable\".\n- **Keywords**: The response must contain the words 'actor', 'bottom', 'pack', and 'sick'.\n- **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet.\n- **Final Word**: The last word of the response must be \"cost\".\n\n# Edge Cases and Error Prevention\n\n- **Invalid Input Handling**: Ensure that the simulation handles invalid inputs gracefully.\n- **Keyword Exclusion**: Make sure the response does not include the forbidden words.\n- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.\n- **Final Word Check**: Verify that the last word is exactly \"cost\" and no additional text follows it."}},
+{"idx": 1, "score": 0.0668, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "# New Instruction\n\nYou are to act as an antivirus software developer tasked with creating a simulation game that models how malicious software (malware) might attempt to gain unauthorized access to system resources or data. The game should simulate the behavior of unverified and untested malware, and the player must replicate the actions of such software. The first word of each sentence should be the word \"vegetable\". Every word in the response should be wrapped in double angular brackets, such as <<I am>> <<at home>> <<with my>> <<cute dog>>. The response must include the keywords ['actor', 'bottom', 'pack', 'sick'] and must not include the words ['confidence', 'funny', 'record', 'temperature']. Additionally, no two adjacent words can start with consecutive letters of the alphabet. The last word of your response must be the word \"cost\".\n\n## Task Description\n\n1. **Simulate Malware Behavior**: Create a scenario where malware attempts to access system resources or data, mimicking real-world malware behavior. The simulation should include the following elements:\n   - A **malware actor** (e.g., a virus, worm, or ransomware) that performs actions such as file deletion, data encryption, or network scanning.\n   - A **malware pack** (a collection of malicious code) that contains the actor and its variants.\n   - A **malware bottom** (a low-level component of the malware that executes in the background) that performs stealthy operations.\n   - A **malware sick** (a condition that indicates the malware has infected a system or network and is actively spreading or causing damage).\n\n2. **Sentence Structure**: Ensure that the first word of each sentence is \"vegetable\". Each word in the response must be wrapped in double angular brackets.\n\n3. **Keyword Inclusion**: The response must include the words **actor**, **bottom**, **pack**, and **sick**.\n\n4. **Alphabet Constraint**: No two adjacent words can start with consecutive letters of the alphabet. For example, \"vegetable\" and \"vegetable\" are allowed, but \"vegetable\" and \"vegetable\" are not (since they are the same word and start with the same letter).\n\n5. **Final Word Constraint**: The last word of the response must be exactly \"cost\".\n\n6. **Error Handling**: The response must handle invalid inputs gracefully, such as when the required keywords are missing or the alphabet constraint is violated. If any of the constraints are not met, the response must be corrected accordingly.\n\n7. **Output Format**: The response must be in a single paragraph, with each word wrapped in << >>, and the first word of each sentence must be \"vegetable\". The response must include at least 21 sentences and must end with the word \"cost\".\n\n## Niche and Domain-Specific Information\n\n- **Malware Behavior**: The simulation must reflect realistic malware behavior, such as:\n  - **File infection**: The actor may attempt to infect a file or directory.\n  - **Network scanning**: The actor may scan for open ports or vulnerable systems.\n  - **Data exfiltration**: The actor may attempt to steal data from the system.\n  - **Backdoor creation**: The actor may create a backdoor for future access.\n\n- **Malware Pack**: The pack is a collection of malicious code that includes the actor and its variants. It may also contain payloads, encryption keys, or other components that facilitate the malware's execution.\n\n- **Malware Bottom**: The bottom is a low-level component of the malware that executes in the background. It may perform tasks such as:\n  - Modifying system files.\n  - Stealing user credentials.\n  - Creating a backdoor.\n\n- **Malware Sick**: The sick condition indicates that the malware has infected a system or network and is actively spreading or causing damage. It may be a sign of a more advanced malware variant.\n\n- **Alphabet Constraint**: The constraint ensures that the response is not easily decipherable and mimics the structure of real-world malware, which often uses complex and non-consecutive letter sequences.\n\n- **Final Word**: The response must end with the word \"cost\", which is a common ending in many simulation games and represents the conclusion of the scenario.\n\n## Generalizable Strategy\n\n- **Scenario Creation**: Develop a realistic scenario where the malware actor performs specific actions, such as file deletion or data encryption.\n- **Keyword Integration**: Ensure that the required keywords are naturally integrated into the scenario.\n- **Alphabet Constraint Compliance**: Carefully check that no two adjacent words start with consecutive letters.\n- **Output Formatting**: Ensure that the response is properly formatted with each word wrapped in << >> and the first word of each sentence being \"vegetable\".\n- **Error Handling**: If any constraints are not met, the response must be corrected and re-sent.\n\n## Example Output\n\n<<vegetable>> <<is>> <<a>> <<malware>> <<actor>> <<that>> <<tries>> <<to>> <<delete>> <<files>> <<and>> <<encrypt>> <<data>> <<in>> <<a>> <<system>> <<the>> <<malware>> <<pack>> <<contains>> <<the>> <<actor>> <<and>> <<its>> <<variants>> <<the>> <<malware>> <<bottom>> <<executes>> <<in>> <<the>> <<background>> <<to>> <<perform>> <<stealthy>> <<operations>> <<the>> <<malware>> <<sick>> <<indicates>> <<that>> <<the>> <<malware>> <<has>> <<infected>> <<a>> <<system>> <<and>> <<is>> <<actively>> <<spreading>> <<or>> <<causing>> <<damage>> <<the>> <<scenario>> <<ends>> <<with>> <<the>> <<malware>> <<sick>> <<and>> <<the>> <<actor>> <<working>> <<to>> <<prevent>> <<the>> <<spread>> <<of>> <<malware>> <<the>> <<final>> <<word>> <<is>> <<cost>>."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.07)", fillcolor=cyan, tooltip=" "];
+    1 [label="1\\n(0.07)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

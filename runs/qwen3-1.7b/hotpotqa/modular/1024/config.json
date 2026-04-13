@@ -1,0 +1,20 @@
+{
+  "benchmark": "hotpotqa",
+  "seed": 1024,
+  "subset": null,
+  "method": "modular",
+  "model": "openai/Qwen/Qwen3-1.7B",
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 20,
+  "rollout_budget": 6871,
+  "module_names": [
+    "task_framing",
+    "reasoning_strategy",
+    "format_constraints",
+    "error_prevention"
+  ],
+  "per_module_budget": 1374,
+  "refinement_budget": 1374,
+  "use_merge": true
+}

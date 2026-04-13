@@ -1,0 +1,3 @@
+{
+    "response": "<<vegetable>> <<if>> <<grade>> <<==>> <<\"A\">> <<then>> <<gradeValue>> <<=>> <<4.0>> <<end>> <<if>> <<else>> <<if>> <<grade>> <<==>> <<\"B\">> <<then>> <<gradeValue>> <<=>> <<3.0>> <<end>> <<if>> <<else>> <<if>> <<grade>> <<==>> <<\"C\">> <<then>> <<gradeValue>> <<=>> <<2.0>> <<end>> <<if>> <<else>> <<if>> <<grade>> <<==>> <<\"D\">> <<then>> <<gradeValue>> <<=>> <<1.0>> <<end>> <<if>> <<else>> <<gradeValue>> <<=>> <<0.0>> <<end>> <<switch>> <<grade>> <<case>> <<\"A\">> <<break>> <<case>> <<\"B\">> <<break>> <<case>> <<\"C\">> <<break>> <<case>> <<\"D\">> <<break>> <<default>> <<gradeValue>> <<=>> <<0.0>> <<end>> <<switch>> <<gradeValue>> <<=>> <<0.0>> <<end>> <<<<cost>>"
+}

@@ -1,0 +1,3 @@
+{
+    "response": "```python\nimport re\n\ndef count_politicians(articles, politician_names):\n    # Create a case-insensitive dictionary to store counts\n    politician_counts = {}\n\n    # Define a regex pattern to match politician names, ignoring punctuation and case\n    pattern = r'\\b' + re.escape('|'.join(politician_names)) + r'\\b'\n\n    # Iterate through each article and count occurrences\n    for article in articles:\n        # Find all matches using the regex pattern\n        matches = re.findall(pattern, article, re.IGNORECASE)\n        # Update the counts\n        for name in matches:\n            politician_counts[name] = politician_counts.get(name, 0) + 1\n\n    return politician_counts\n```"
+}

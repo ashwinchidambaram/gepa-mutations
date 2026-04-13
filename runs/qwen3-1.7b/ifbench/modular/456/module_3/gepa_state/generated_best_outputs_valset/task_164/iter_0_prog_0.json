@@ -1,0 +1,3 @@
+{
+    "response": "the input table:  \n|Tournament|Wins|Top-5|Top-10|Top-25|Events|Cuts made|  \n|---|---|---|---|---|---|---|  \n|Master's Tournament|0|2|4|6|14|9|  \n|U.S. Open|0|3|5|7|16|12|  \n|The Open Championship|2|4|4|7|17|12|  \n|PGA Championship|1|1|2|4|14|9|  \n|Totals|3|10|15|24|61|42|  \n\nquestion:  \nwhat is the average for the top five having a number of 42 cuts made.  \n\nmodule 1:  \nframe the question and identify the relevant data.  \n\nmodule 2:  \ndetermine the condition for the top five and the cuts made.  \n\nmodule 3:  \ncalculate the average of the top five values that meet the condition.  \n\nmodule 4:  \nformat the final result as specified.  \n\n{\"SQL\": \"SELECT AVG(`Top-5`) FROM table WHERE `Top-5` = 42 AND `Cuts made` = 42\"}"
+}
