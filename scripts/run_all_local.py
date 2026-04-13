@@ -331,8 +331,8 @@ def _notify_html(html: str) -> None:
 # Digest timing helpers
 # ---------------------------------------------------------------------------
 
-DIGEST_INTERVAL_SECS = 3600  # 1 hour during waking hours
-QUIET_HOURS = (23, 8)  # 11pm–8am local time — suppress digests
+DIGEST_INTERVAL_SECS = 1800  # 30 min digests
+QUIET_HOURS = (2, 8)  # 2am–8am local time — suppress digests
 
 
 def _should_send_digest(last_digest_time: float) -> bool:
