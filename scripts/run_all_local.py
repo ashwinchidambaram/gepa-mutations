@@ -23,6 +23,7 @@ import os
 import re as _re
 import subprocess
 import sys
+import threading
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from dataclasses import dataclass
@@ -313,6 +314,79 @@ def _notify_html(html: str) -> None:
         log.debug(f"Telegram notification failed (non-fatal): {e}")
 
 
+# ---------------------------------------------------------------------------
+# Digest timing helpers
+# ---------------------------------------------------------------------------
+
+DIGEST_INTERVAL_SECS = 3600  # 1 hour during waking hours
+QUIET_HOURS = (23, 8)  # 11pm–8am local time — suppress digests
+
+
+def _should_send_digest(last_digest_time: float) -> bool:
+    now = time.time()
+    if now - last_digest_time < DIGEST_INTERVAL_SECS:
+        return False
+    local_hour = datetime.now().hour
+    if local_hour >= QUIET_HOURS[0] or local_hour < QUIET_HOURS[1]:
+        return False  # overnight — suppress
+    return True
+
+
+def _fmt_elapsed(seconds: float) -> str:
+    """Alias for _fmt_duration for clarity in notification strings."""
+    return _fmt_duration(seconds)
+
+
+def _estimate_finish(completed: int, total: int, wall_elapsed: float) -> str:
+    """Estimate wall-clock finish time based on current throughput."""
+    if completed == 0 or wall_elapsed < 60:
+        return "calculating..."
+    rate = completed / wall_elapsed
+    remaining = (total - completed) / rate
+    finish_time = datetime.now() + timedelta(seconds=remaining)
+    hours = int(remaining // 3600)
+    mins = int((remaining % 3600) // 60)
+    return f"{finish_time.strftime('%b %d %H:%M')} ({hours}h {mins}m)"
+
+
+def _running_cost(wall_elapsed: float) -> str:
+    """Return formatted cost string based on RUNPOD_GPU_COST_HR env var."""
+    cost_per_hr = float(os.environ.get("RUNPOD_GPU_COST_HR", "0"))
+    if cost_per_hr <= 0:
+        return ""
+    cost = (wall_elapsed / 3600) * cost_per_hr
+    return f"\U0001f4b0 ~${cost:.2f} ({wall_elapsed/3600:.1f}h \xd7 ${cost_per_hr:.2f}/hr)"
+
+
+def _health_monitor(stop_event: threading.Event) -> None:
+    """Background thread that polls vLLM health every 2 minutes."""
+    base_url = os.environ.get("GEPA_BASE_URL", "")
+    if not base_url:
+        return
+    health_url = base_url.rstrip("/").replace("/v1", "") + "/v1/models"
+    was_down = False
+    last_alert = 0.0
+
+    while not stop_event.is_set():
+        try:
+            import urllib.request
+            req = urllib.request.Request(health_url, method="GET")
+            urllib.request.urlopen(req, timeout=10)
+            if was_down:
+                was_down = False
+                _notify_html(f"\U0001f7e2 <b>vLLM recovered</b> \xb7 {_esc(_MODEL_TAG)}")
+        except Exception:
+            now = time.time()
+            if not was_down or (now - last_alert > 1800):  # throttle to 30 min
+                was_down = True
+                last_alert = now
+                _notify_html(
+                    f"\U0001f534 <b>vLLM DOWN</b> \xb7 {_esc(_MODEL_TAG)}\n"
+                    f"Endpoint: {_esc(health_url)}"
+                )
+        stop_event.wait(120)  # check every 2 min
+
+
 def _build_digest(
     completed_window: list[dict],
     running_exps: set[str],
@@ -324,6 +398,8 @@ def _build_digest(
     window_elapsed: float,
     workers: int,
     model_tag: str = "",
+    wall_start: float = 0.0,
+    total_experiments: int = 0,
 ) -> str:
     """Build a mobile-friendly HTML digest message."""
     from collections import defaultdict
@@ -343,6 +419,14 @@ def _build_digest(
         lines.append(f"   {failed_total} failed  ·  {total - completed_total} remaining")
     else:
         lines.append(f"   {total - completed_total} remaining")
+
+    # ── ETA + cost ───────────────────────────────────────────
+    effective_total = total_experiments if total_experiments > 0 else total
+    effective_elapsed = wall_elapsed if wall_elapsed > 0 else (time.time() - wall_start if wall_start > 0 else 0)
+    lines.append(f"\u23f1 Est. finish: {_estimate_finish(completed_total, effective_total, effective_elapsed)}")
+    cost_line = _running_cost(effective_elapsed)
+    if cost_line:
+        lines.append(cost_line)
 
     # ── Active methods ───────────────────────────────────────
     if running_exps:
@@ -387,13 +471,19 @@ def _build_digest(
         lines.append("<i>No completions this window</i>")
 
     # ── Method scores ────────────────────────────────────────
+    gepa_sc = scores.get("gepa")
+    gepa_mean = sum(gepa_sc) / len(gepa_sc) if gepa_sc else None
     method_scores_lines = []
     for m in METHODS:
         sc = scores.get(m)
         if sc:
             mean = sum(sc) / len(sc)
+            delta = ""
+            if gepa_mean is not None and m != "gepa":
+                diff = (mean - gepa_mean) * 100
+                delta = f"  ({'+' if diff >= 0 else ''}{diff:.1f}pp)"
             method_scores_lines.append(
-                f"  <code>{_esc(m):<28} {mean:.1%}  ({len(sc)} seeds)</code>"
+                f"  <code>{_esc(m):<28} {mean:.1%}{delta}  ({len(sc)} seeds)</code>"
             )
     if method_scores_lines:
         lines.append("")
@@ -529,19 +619,36 @@ def main() -> None:
         f"{args.workers} workers  ·  {len(pending)} pending"
     )
 
+    # RunPod cost tracking (optional; set RUNPOD_GPU_COST_HR env var)
+    RUNPOD_COST_PER_HR = float(os.environ.get("RUNPOD_GPU_COST_HR", "0"))
+
     # Run experiments
     total = len(pending)
+    total_experiments = len(experiments)  # includes already-done ones
     completed = 0
     failed = 0
     scores: dict[str, list[float]] = {}
     wall_start = time.time()
     last_digest = time.time()
 
+    # Milestone notifications (25%, 50%, 75%)
+    milestones_sent: set[float] = set()
+    MILESTONES = [0.25, 0.50, 0.75]
+
+    # Stall detection
+    last_completion = time.time()
+    stall_alerted = False
+
     # Track which experiments are actively executing (approximated by pool FIFO order)
     pending_list = list(pending)  # already sorted
     queue_pos = min(args.workers, len(pending_list))
     running_exps: set[str] = {str(e) for e in pending_list[:args.workers]}
     completed_window: list[dict] = []  # accumulates since last digest
+
+    # Start vLLM health monitor background thread
+    health_stop = threading.Event()
+    health_thread = threading.Thread(target=_health_monitor, args=(health_stop,), daemon=True)
+    health_thread.start()
 
     with ProcessPoolExecutor(max_workers=args.workers) as pool:
         futures = {
@@ -576,14 +683,44 @@ def main() -> None:
                 log.error(f"[{completed}/{total}] {exp} FAILED: {error}")
                 # Immediate failure alert
                 _notify_html(
-                    f"❌ <b>[{_esc(_MODEL_TAG or 'unknown')}] FAILED</b>: <code>{_esc(str(exp))}</code>\n"
-                    f"<code>{completed}/{total}  ·  {failed} failed so far</code>\n"
+                    f"\u274c <b>[{_esc(_MODEL_TAG or 'unknown')}] FAILED</b>: <code>{_esc(str(exp))}</code>\n"
+                    f"<code>{completed}/{total}  \xb7  {failed} failed so far</code>\n"
                     f"<code>{_esc(error[:250])}</code>"
                 )
 
-            # 30-minute digest
+            # Stall detection: check how long since the *previous* completion
+            # (before resetting last_completion to now)
+            if time.time() - last_completion > 5400 and not stall_alerted:
+                stall_alerted = True
+                _notify_html(
+                    f"\U0001f7e1 <b>STALL</b> \xb7 {_esc(model_label)}\n"
+                    f"No completions in 90 min\n"
+                    f"Check: <code>tail -f logs/orchestrator_*.log</code>"
+                )
+
+            # Update stall tracking on each completion
+            last_completion = time.time()
+            stall_alerted = False
+
+            # Milestone notifications (25%, 50%, 75%)
+            pct = completed / total
+            for m in MILESTONES:
+                if m not in milestones_sent and pct >= m:
+                    milestones_sent.add(m)
+                    wall_elapsed_ms = time.time() - wall_start
+                    cost_line = _running_cost(wall_elapsed_ms)
+                    milestone_msg = (
+                        f"\U0001f3af <b>{int(m*100)}% complete \xb7 {_esc(model_label)}</b>\n"
+                        f"{completed}/{total} experiments \xb7 {_fmt_elapsed(wall_elapsed_ms)}\n"
+                        f"Est. finish: {_estimate_finish(completed, total, wall_elapsed_ms)}"
+                    )
+                    if cost_line:
+                        milestone_msg += f"\n{cost_line}"
+                    _notify_html(milestone_msg)
+
+            # Hourly digest with overnight suppression
             now = time.time()
-            if now - last_digest >= 1800:
+            if _should_send_digest(last_digest):
                 digest = _build_digest(
                     completed_window=completed_window,
                     running_exps=set(running_exps),
@@ -595,34 +732,61 @@ def main() -> None:
                     window_elapsed=now - last_digest,
                     workers=args.workers,
                     model_tag=_MODEL_TAG,
+                    wall_start=wall_start,
+                    total_experiments=total_experiments,
                 )
                 _notify_html(digest)
                 completed_window.clear()
                 last_digest = now
 
+    # Stop vLLM health monitor
+    health_stop.set()
+
     # Final summary
     wall_secs = time.time() - wall_start
+
+    gepa_sc = scores.get("gepa")
+    gepa_mean = sum(gepa_sc) / len(gepa_sc) if gepa_sc else None
+
     result_lines: list[str] = []
     for m in METHODS:
         sc = scores.get(m, [])
         if sc:
             mean = sum(sc) / len(sc)
-            result_lines.append(f"  <code>{_esc(m):<28} {mean:.1%}  ({len(sc)} seeds)</code>")
+            delta = ""
+            if gepa_mean is not None and m != "gepa":
+                diff = (mean - gepa_mean) * 100
+                delta = f"  ({'+' if diff >= 0 else ''}{diff:.1f}pp)"
+            result_lines.append(f"  <code>{_esc(m):<28} {mean:.1%}{delta}  ({len(sc)} seeds)</code>")
         else:
-            result_lines.append(f"  <code>{_esc(m):<28} —</code>")
+            result_lines.append(f"  <code>{_esc(m):<28} \u2014</code>")
 
-    model_label = _MODEL_TAG or "unknown-model"
-    finish_icon = "🏁" if failed == 0 else "⚠️"
-    summary_html = (
-        f"{finish_icon} <b>gepa-mutations complete · {_esc(model_label)}</b>\n"
-        f"⏱ {_fmt_duration(wall_secs)}\n"
-        f"\n"
-        f"<code>{_progress_bar(completed, total)}</code>\n"
-        f"{failed} failed\n"
-        f"\n"
-        f"<b>Results (mean test score):</b>\n"
-        + "\n".join(result_lines)
-    )
+    finish_icon = "\U0001f3c1" if failed == 0 else "\u26a0\ufe0f"
+    summary_lines: list[str] = [
+        f"{finish_icon} <b>gepa-mutations complete \xb7 {_esc(model_label)}</b>",
+        f"\u23f1 {_fmt_duration(wall_secs)}",
+        "",
+        f"<code>{_progress_bar(completed, total)}</code>",
+        f"{failed} failed",
+        "",
+        "<b>Results (mean test score):</b>",
+    ] + result_lines
+
+    cost_line = _running_cost(wall_secs)
+    if cost_line:
+        summary_lines.append("")
+        summary_lines.append(cost_line)
+
+    # Phase transition: hint for next model
+    NEXT_MODEL_CMD: dict[str, str | None] = {
+        "qwen3-1.7b": "bash scripts/runpod_start.sh 2",
+        "qwen3-4b": None,  # last model
+    }
+    next_cmd = NEXT_MODEL_CMD.get(_MODEL_TAG)
+    if next_cmd:
+        summary_lines.append(f"\n<b>NEXT:</b> <code>{_esc(next_cmd)}</code>")
+
+    summary_html = "\n".join(summary_lines)
     log.info(summary_html.replace("<b>", "").replace("</b>", "")
              .replace("<code>", "").replace("</code>", "")
              .replace("<i>", "").replace("</i>", ""))

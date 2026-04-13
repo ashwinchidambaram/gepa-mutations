@@ -505,6 +505,12 @@ def run_synaptic_pruning(
         best_prompt=best_prompt_dict,
         test_example_scores=test_eval.example_scores,
         test_example_ids=test_eval.example_ids,
+        model=model_id(settings),
+        model_tag=mtagval,
+        benchmark=benchmark,
+        seed=seed,
+        method="synaptic_pruning",
+        seed_prompt=seed_prompt,
     )
     metrics_data["train_score"] = train_eval.score
     metrics_data["train_example_scores"] = train_eval.example_scores
