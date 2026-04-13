@@ -47,7 +47,7 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-ALL_BENCHMARKS = ["hotpotqa", "pupa", "ifbench"]
+ALL_BENCHMARKS = ["hotpotqa", "hover", "pupa", "ifbench", "livebench", "aime"]
 ALL_SEEDS = [42, 123, 456, 789, 1024]
 
 
@@ -167,8 +167,8 @@ def main():
                         help="Model name (e.g. Qwen/Qwen3-8B). Also reads GEPA_MODEL env var.")
     parser.add_argument("--base-url", default=os.environ.get("GEPA_BASE_URL", ""),
                         help="vLLM endpoint URL. Also reads GEPA_BASE_URL env var.")
-    parser.add_argument("--benchmark", default="all",
-                        help="Benchmark name or 'all' (default: all). Choices: " + ", ".join(ALL_BENCHMARKS))
+    parser.add_argument("--benchmark", nargs="+", default=None,
+                        help="Benchmark names (space-separated). Default: all benchmarks. Choices: " + ", ".join(ALL_BENCHMARKS))
     parser.add_argument("--seed", default=",".join(str(s) for s in ALL_SEEDS),
                         help="Comma-separated seeds (default: 42,123,456,789,1024)")
     parser.add_argument("--dry-run", action="store_true",
@@ -188,7 +188,7 @@ def main():
                      os.environ.get("GEPA_MODEL", ""))
 
     # Parse benchmarks and seeds
-    benchmarks = ALL_BENCHMARKS if args.benchmark == "all" else [args.benchmark]
+    benchmarks = args.benchmark if args.benchmark else ALL_BENCHMARKS
     seeds = [int(s.strip()) for s in args.seed.split(",")]
 
     # Build run list

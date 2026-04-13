@@ -22,7 +22,10 @@ from gepa_mutations.config import (
     Settings,
     api_base_kwargs,
     model_id,
+    model_tag as get_model_tag,
 )
+from gepa_mutations.metrics.collector import MetricsCollector
+from gepa_mutations.metrics.tracked_lm import TrackedLM
 from gepa_mutations.runner.callbacks import MetricsCallback, ProgressStreamerCallback
 from gepa_mutations.runner.experiment import (
     BENCHMARK_SEED_PROMPTS,
@@ -252,11 +255,14 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
 
     # 3. Build task LM and adapter — all benchmarks use direct LM calls
     # (AIME switched from DSPy/JSONAdapter to avoid math notation parse failures)
+    collector = MetricsCollector()
     qa_lm = build_qa_task_lm(settings)
-    adapter = get_adapter(config.benchmark, task_lm=qa_lm)
+    tracked_qa_lm = TrackedLM(qa_lm, collector, role="task")
+    adapter = get_adapter(config.benchmark, task_lm=tracked_qa_lm)
 
     # 4. Build reflection LM
     reflection_lm = build_reflection_lm(settings)
+    tracked_reflection_lm = TrackedLM(reflection_lm, collector, role="reflection")
 
     # 5. Rollout budget
     max_metric_calls = config.max_metric_calls
@@ -264,7 +270,8 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
         max_metric_calls = PAPER_ROLLOUTS["gepa"].get(config.benchmark, 5000)
 
     # 6. Run directory
-    run_dir = f"runs/{config.benchmark}/{config.mutation_name}/{config.seed}/gepa_state"
+    _mtag = get_model_tag(settings)
+    run_dir = f"runs/{_mtag}/{config.benchmark}/{config.mutation_name}/{config.seed}/gepa_state"
 
     # 7. Callbacks (metrics + progress streamer)
     metrics_cb = MetricsCallback(
@@ -291,7 +298,7 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
         trainset=trainset,
         valset=valset,
         adapter=adapter,
-        reflection_lm=reflection_lm,
+        reflection_lm=tracked_reflection_lm,
         candidate_selection_strategy=config.candidate_selection_strategy,
         frontier_type=config.frontier_type,
         skip_perfect_score=True,
@@ -328,7 +335,28 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
 
     wall_clock = time.time() - start_time
 
-    # 12. Build experiment result
+    # 12. Finalize token-tracked metrics and merge with GEPA callback data
+    token_metrics = collector.finalize(
+        test_score=test_eval.score,
+        best_prompt=best_prompt,
+        test_example_scores=test_eval.example_scores,
+        test_example_ids=test_eval.example_ids,
+        model=model_id(settings),
+        model_tag=_mtag,
+        benchmark=config.benchmark,
+        seed=config.seed,
+        method=config.mutation_name,
+    )
+    # Combine: GEPA-specific fields take precedence, token fields fill the gap
+    gepa_metrics = metrics_cb.metrics.to_dict()
+    combined_metrics = {**token_metrics, **gepa_metrics}
+    # Ensure token fields from collector are always present (gepa_metrics lacks them)
+    for k in ["total_tokens", "task_input_tokens", "task_output_tokens",
+              "reflection_input_tokens", "reflection_output_tokens",
+              "model", "model_tag"]:
+        combined_metrics[k] = token_metrics.get(k, 0)
+
+    # 13. Build experiment result
     exp_result = ExperimentResult(
         benchmark=config.benchmark,
         seed=config.seed,
@@ -339,23 +367,24 @@ def run_mutation(config: MutationConfig, settings: Settings | None = None) -> Ex
         config_snapshot=config_snapshot(config, settings),
         wall_clock_seconds=wall_clock,
         method=config.mutation_name,
-        metrics=metrics_cb.metrics.to_dict(),
+        metrics=combined_metrics,
         all_candidates=result.candidates,
         test_example_scores=test_eval.example_scores,
         test_example_ids=test_eval.example_ids,
     )
 
-    # 13. Save results (method= routes to mutation-specific directory)
+    # 14. Save results (method= routes to mutation-specific directory)
     save_result(
         benchmark=config.benchmark,
         seed=config.seed,
         result_data=exp_result.to_dict(),
         config_data=exp_result.config_snapshot,
-        metrics_data=exp_result.metrics,
+        metrics_data=combined_metrics,
         method=config.mutation_name,
+        model_tag=_mtag,
     )
     console.print(
-        f"  Results saved to runs/{config.benchmark}/{config.mutation_name}/{config.seed}/"
+        f"  Results saved to runs/{_mtag}/{config.benchmark}/{config.mutation_name}/{config.seed}/"
     )
 
     return exp_result

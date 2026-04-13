@@ -21,6 +21,11 @@ nvidia-smi --query-gpu=index,name,memory.total --format=csv,noheader
 GPU_COUNT=$(nvidia-smi --query-gpu=index --format=csv,noheader | wc -l)
 echo "GPUs detected: $GPU_COUNT"
 
+# Validate GPU count for Phase 1
+if [ "$PHASE" = "1" ] && [ "$GPU_COUNT" -lt 2 ]; then
+    echo "WARNING: Phase 1 requires 2 GPUs, found $GPU_COUNT"
+fi
+
 # --- Check existing results ---
 echo ""
 echo "--- Results so far ---"
@@ -100,13 +105,13 @@ launch_orchestrator() {
 }
 
 # =========================================================================
-# Phase 1: 1.7B (GPU 0) + 8B (GPU 2)
+# Phase 1: 1.7B (GPU 0) + 8B (GPU 1)
 # =========================================================================
 if [ "$PHASE" = "1" ]; then
     echo ""
     echo "--- Starting vLLM servers (Phase 1) ---"
-    start_vllm 0 "Qwen/Qwen3-1.7B" 8127 32768 "1.7b"
-    start_vllm 2 "Qwen/Qwen3-8B"   8125 16384 "8b"
+    start_vllm 0 "Qwen/Qwen3-1.7B" 8127 16384 "1.7b"
+    start_vllm 1 "Qwen/Qwen3-8B"   8125 16384 "8b"
 
     echo ""
     echo "--- Waiting for servers ---"
