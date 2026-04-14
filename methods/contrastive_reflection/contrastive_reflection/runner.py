@@ -165,6 +165,19 @@ def run_contrastive_reflection(
     seed_prompt = BENCHMARK_SEED_PROMPTS.get(benchmark, SEED_PROMPT)
     seed_candidate = {"system_prompt": seed_prompt}
 
+    # Evaluate seed prompt on test and val sets BEFORE optimization
+    console.print(f"\n[bold]Evaluating seed prompt on test set ({len(testset)} examples)...[/bold]")
+    seed_test_eval = evaluate_on_test(benchmark, seed_candidate, testset, settings)
+    console.print(f"  Seed test score: {seed_test_eval.score:.4f}")
+    console.print(f"\n[bold]Evaluating seed prompt on val set ({len(data.val)} examples)...[/bold]")
+    seed_val_eval = evaluate_on_test(benchmark, seed_candidate, data.val, settings)
+    console.print(f"  Seed val score: {seed_val_eval.score:.4f}")
+    seed_prompt_test_score = seed_test_eval.score
+    seed_prompt_val_score = seed_val_eval.score
+
+    # Inject rollout=0 as the first trajectory point
+    collector.record_val_score(iteration=0, score=seed_prompt_val_score)
+
     console.print(f"[bold]Running mutation: {mutation_name}[/bold]")
     console.print(f"  Benchmark: {benchmark}, Seed: {seed}")
     console.print(f"  Rollout budget: {max_metric_calls}")
@@ -298,6 +311,15 @@ def run_contrastive_reflection(
     test_eval = evaluate_on_test(benchmark, best_prompt, testset, settings)
     console.print(f"  Test score: {test_eval.score:.4f} ({test_eval.score * 100:.2f}%)")
 
+    # Evaluate best prompt on train set
+    console.print(f"\n[bold]Evaluating on train set ({len(trainset)} examples)...[/bold]")
+    train_eval = evaluate_on_test(benchmark, best_prompt, trainset, settings)
+    console.print(f"  Train score: {train_eval.score:.4f}")
+
+    # Evaluate best prompt on val set (per-example scores)
+    console.print(f"\n[bold]Evaluating on val set ({len(valset)} examples)...[/bold]")
+    val_eval = evaluate_on_test(benchmark, best_prompt, valset, settings)
+
     wall_clock = time.time() - start_time
 
     # 18. Build MutationConfig for config snapshot
@@ -315,6 +337,15 @@ def run_contrastive_reflection(
     config_data = config_snapshot(mutation_config, settings)
     config_data["contrastive_config"] = contrastive_config.model_dump()
 
+    # Build candidates_with_scores: pair each candidate with its val score
+    candidates_with_scores = []
+    for i, cand in enumerate(result.candidates[:20]):  # cap at 20
+        score = result.val_aggregate_scores[i] if i < len(result.val_aggregate_scores) else None
+        candidates_with_scores.append({
+            "system_prompt": cand.get("system_prompt", str(cand)) if isinstance(cand, dict) else str(cand),
+            "val_score": score,
+        })
+
     exp_result = ExperimentResult(
         benchmark=benchmark,
         seed=seed,
@@ -326,9 +357,12 @@ def run_contrastive_reflection(
         wall_clock_seconds=wall_clock,
         method=mutation_name,
         metrics=metrics_cb.metrics.to_dict(),
-        all_candidates=result.candidates,
+        all_candidates=candidates_with_scores,
         test_example_scores=test_eval.example_scores,
         test_example_ids=test_eval.example_ids,
+        seed_prompt_test_score=seed_prompt_test_score,
+        seed_prompt_val_score=seed_prompt_val_score,
+        train_score=train_eval.score,
     )
 
     # 20. Save results (combine standard + contrastive + token metrics)
@@ -342,6 +376,7 @@ def run_contrastive_reflection(
         benchmark=benchmark,
         seed=seed,
         method=mutation_name,
+        seed_prompt=seed_prompt,
     )
     combined_metrics = metrics_cb.metrics.to_dict()
     combined_metrics["contrastive_reflection"] = contrastive_cb.metrics.to_dict()
@@ -350,6 +385,23 @@ def run_contrastive_reflection(
               "reflection_input_tokens", "reflection_output_tokens",
               "model", "model_tag"]:
         combined_metrics[k] = token_metrics.get(k, 0)
+    # Add train/val per-example scores
+    combined_metrics["train_score"] = train_eval.score
+    combined_metrics["train_example_scores"] = train_eval.example_scores
+    combined_metrics["val_example_scores"] = val_eval.example_scores
+    combined_metrics["val_example_ids"] = val_eval.example_ids
+
+    # Build per-example outputs list for qualitative error analysis
+    test_outputs = [
+        {
+            "example_id": test_eval.example_ids[i],
+            "input": getattr(testset[i], 'input', str(testset[i])),
+            "expected": getattr(testset[i], 'output', getattr(testset[i], 'answer', '')),
+            "output": test_eval.example_outputs[i] if i < len(test_eval.example_outputs) else "",
+            "score": test_eval.example_scores[i],
+        }
+        for i in range(len(testset))
+    ]
 
     mtagval = get_model_tag(settings)
     save_result(
@@ -360,6 +412,7 @@ def run_contrastive_reflection(
         metrics_data=combined_metrics,
         method=mutation_name,
         model_tag=mtagval,
+        test_outputs=test_outputs,
     )
     console.print(f"  Results saved to runs/{mtagval}/{benchmark}/{mutation_name}/{seed}/")
 
