@@ -41,61 +41,25 @@ The paper's 4-step iterative loop: trajectory sampling on a minibatch, natural-l
 
 Augments GEPA's reflection step with mined contrastive pairs — historical examples where one candidate succeeded and another failed. Zero extra LLM cost.
 
-```mermaid
-graph LR
-    S[Seed Prompt] --> T[Trajectory Sample]
-    T --> CI[Mine Contrastive<br/>Pairs from History]
-    CI --> R[Reflect +<br/>Contrastive Context]
-    R --> P[Pareto Select]
-    P --> M[Merge]
-    M --> T
-    P --> B["Best Prompt"]
-```
+![Contrastive Reflection](diagrams/contrastive-reflection.png)
 
 ### Synaptic Pruning
 
 One-shot pipeline: generate overspecified prompts, ablate each section to measure impact, prune low-impact sections, strengthen survivors. Uses **15-100x fewer rollouts** than GEPA.
 
-```mermaid
-graph LR
-    S[Seed] --> G[Generate 3<br/>Overspecified Prompts]
-    G --> A[Ablate Each<br/>Section]
-    A --> P[Prune<br/>Low-Impact]
-    P --> R[Recover<br/>Critical]
-    R --> St[Strengthen<br/>Survivors]
-    St --> B["Minimal Effective<br/>Prompt"]
-```
+![Synaptic Pruning](diagrams/synaptic-pruning.png)
 
 ### Slime Mold
 
 Progressive colony pruning with failure-informed mutation between rounds. Inspired by slime mold's resource allocation — paths that don't lead to food are abandoned.
 
-```mermaid
-graph LR
-    G["Generate 20<br/>Candidates"] --> R1["Eval → Keep 10"]
-    R1 --> M1[Mutate via<br/>Failure Analysis]
-    M1 --> R2["Eval → Keep 5"]
-    R2 --> M2[Mutate]
-    M2 --> R3["Eval → Keep 3"]
-    R3 --> M3[Mutate]
-    M3 --> R4["Eval → Keep 1"]
-    R4 --> C["Champion"]
-```
+![Slime Mold](diagrams/slime-mold.png)
 
 ### Tournament
 
 64-candidate single-elimination bracket. Relies on initial diversity rather than iterative refinement.
 
-```mermaid
-graph TD
-    P["Generate 64 Candidates<br/>(4 strategies × 16 each)"] --> R1["Round 1: 32 Matchups"]
-    R1 --> R2["Round 2: 16 Matchups"]
-    R2 --> R3["Round 3: 8"]
-    R3 --> R4["Round 4: 4"]
-    R4 --> SF["Semifinals"]
-    SF --> F["Final"]
-    F --> C["Champion"]
-```
+![Tournament](diagrams/tournament.png)
 
 ---
 
