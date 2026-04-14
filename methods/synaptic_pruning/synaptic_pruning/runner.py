@@ -271,6 +271,7 @@ def run_synaptic_pruning(
 
     best_initial_score = -1.0
     best_initial_prompt = initial_prompts[0]
+    initial_prompt_scores = []
 
     for i, prompt_text in enumerate(initial_prompts):
         if collector.rollout_count >= budget:
@@ -279,6 +280,7 @@ def run_synaptic_pruning(
         candidate = {"system_prompt": prompt_text}
         score, _ = evaluate_prompt(adapter, valset, candidate, collector, indices=ablation_val_indices)
         console.print(f"  Initial prompt {i+1}: val score = {score:.4f}")
+        initial_prompt_scores.append(score)
         if score > best_initial_score:
             best_initial_score = score
             best_initial_prompt = prompt_text
@@ -534,6 +536,14 @@ def run_synaptic_pruning(
         "interaction_threshold": _INTERACTION_THRESHOLD,
     }
 
+    # Collect all candidates for result.json
+    sp_all_candidates = []
+    for i, prompt_text in enumerate(initial_prompts):
+        score = initial_prompt_scores[i] if i < len(initial_prompt_scores) else None
+        sp_all_candidates.append({"system_prompt": prompt_text, "val_score": score})
+    # Add the final strengthened prompt
+    sp_all_candidates.insert(0, {"system_prompt": best_prompt_text, "val_score": best_val_score})
+
     exp_result = ExperimentResult(
         benchmark=benchmark,
         seed=seed,
@@ -550,6 +560,7 @@ def run_synaptic_pruning(
         seed_prompt_test_score=seed_prompt_test_score,
         seed_prompt_val_score=seed_prompt_val_score,
         train_score=train_eval.score,
+        all_candidates=sp_all_candidates[:20],
     )
 
     test_outputs = [

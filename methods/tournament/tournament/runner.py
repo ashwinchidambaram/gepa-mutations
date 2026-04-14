@@ -390,6 +390,16 @@ def run_tournament(
         "bracket_depth": bracket_depth,
     }
 
+    # Collect all candidates for result.json (top 20 from pool with any available scores)
+    t_all_candidates = []
+    # Add champion first
+    t_all_candidates.append({"system_prompt": champion_prompt, "val_score": best_val_score})
+    # Add other pool members (no individual scores available, just the prompt text)
+    for p in pool[:19]:
+        if p != champion_prompt:
+            t_all_candidates.append({"system_prompt": p, "val_score": None})
+    t_all_candidates = t_all_candidates[:20]
+
     exp_result = ExperimentResult(
         benchmark=benchmark,
         seed=seed,
@@ -406,6 +416,7 @@ def run_tournament(
         seed_prompt_test_score=seed_prompt_test_score,
         seed_prompt_val_score=seed_prompt_val_score,
         train_score=train_eval.score,
+        all_candidates=t_all_candidates,
     )
 
     mtagval = get_model_tag(settings)
