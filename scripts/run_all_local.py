@@ -422,7 +422,9 @@ def _build_digest(
     status_icon = "⚠️" if failed_total else "✅"
 
     # ── GPU Status Card ──────────────────────────────────────
-    lines.append(f"📊 <b>Sweep Update · {_esc(model_label)}</b>")
+    pod_label = os.environ.get("POD_LABEL", "")
+    title_prefix = f"[{pod_label} · {_esc(model_label)}]" if pod_label else f"[{_esc(model_label)}]"
+    lines.append(f"📊 <b>Sweep Update {title_prefix}</b>")
     lines.append(f"⏱ {_fmt_duration(wall_elapsed)} elapsed  ·  +{_fmt_duration(window_elapsed)} this window")
     lines.append("")
     lines.append(
@@ -528,7 +530,7 @@ def _run_experiment(exp: Experiment, subset: int | None = None, max_metric_calls
             cwd=project_root,
             capture_output=True,
             text=True,
-            timeout=36000,  # 10 hour hard limit per run
+            timeout=72000,  # 10 hour hard limit per run
         )
         elapsed = time.time() - start
 
