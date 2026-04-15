@@ -294,11 +294,6 @@ class QAAdapter:
         )
 
 
-    def _score(self, example, response: str) -> tuple[float, str]:
-        """Score a single example — compatibility shim for _evaluate_qa()."""
-        answer_text = self._extract_integer(response) or ""
-        prediction = type("Prediction", (), {"answer": answer_text})()
-        return _math_metric(example, prediction)
 
     def make_reflective_dataset(
         self,
