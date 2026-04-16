@@ -563,7 +563,11 @@ def _build_digest(
 
 _STALL_CHECK_INTERVAL = 300   # check every 5 minutes
 _STALL_THRESHOLD = 1800       # 30 min with no rollout progress → stalled
-_WALL_CLOCK_TIMEOUT_SECONDS = 7200  # 2 hours — hard kill any subprocess that runs longer
+# Default 2 hours — hard kill any subprocess that runs longer.
+# Override via WALL_CLOCK_TIMEOUT_SECONDS env var when running with --workers 2
+# and a shared vLLM endpoint (single-run ~75min on Qwen3-8B/HotpotQA at
+# workers=1, ~2.5hr at workers=2 due to shared throughput).
+_WALL_CLOCK_TIMEOUT_SECONDS = int(os.environ.get("WALL_CLOCK_TIMEOUT_SECONDS", 7200))
 
 
 def _read_rollout_count(exp: Experiment) -> int | None:

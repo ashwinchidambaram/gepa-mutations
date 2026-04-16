@@ -32,6 +32,11 @@ export OPENAI_API_KEY="${OPENAI_API_KEY:-EMPTY}"
 # 5 parallel workers per method × 1 sequential method = 5 max concurrent
 # requests on vLLM, well within A40's batch capacity.
 export TEST_EVAL_WORKERS="${TEST_EVAL_WORKERS:-5}"
+
+# Bump per-subprocess wall-clock timeout from 2hr (default) → 4hr.
+# At --workers 2 with shared vLLM, runs take ~2.5hr. The 2hr default killed
+# slime_mold/seed=999 mid-run during the pilot's first attempt.
+export WALL_CLOCK_TIMEOUT_SECONDS="${WALL_CLOCK_TIMEOUT_SECONDS:-14400}"
 export EXPERIMENT_LOGS_DIR="$LOG_DIR"
 
 _usage() {
