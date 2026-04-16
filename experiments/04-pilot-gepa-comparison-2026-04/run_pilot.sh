@@ -16,6 +16,12 @@ VLLM_URL="http://localhost:$PORT/v1"
 export GEPA_MODEL="$MODEL"
 export GEPA_BASE_URL="$VLLM_URL"
 export API_BASE_URL="$VLLM_URL"
+# MODEL_PREFIX=openai routes litellm through the local vLLM endpoint
+# (using OpenAI-compatible API). Without this, model_id becomes
+# "openrouter/Qwen/Qwen3-8B" and litellm tries to authenticate against
+# OpenRouter regardless of api_base. See scripts/launch_mac_sweep.sh for
+# the same convention.
+export MODEL_PREFIX="openai"
 export EXPERIMENT_LOGS_DIR="$LOG_DIR"
 
 _usage() {
