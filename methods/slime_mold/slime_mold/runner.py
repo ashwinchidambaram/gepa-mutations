@@ -41,6 +41,58 @@ from slime_mold.naming import _derive_method_name
 
 console = Console()
 
+
+def _write_progress_json(
+    benchmark: str,
+    seed: int,
+    method_name: str,
+    model_tag: str,
+    rollouts_used: int,
+    best_val_score: float,
+    iteration: int,
+    wall_clock_seconds: float,
+) -> None:
+    """Write progress.json matching GEPA's schema for orchestrator stall detection."""
+    import json
+    import os
+    from pathlib import Path
+
+    base = Path(os.environ.get("RUNS_DIR", "runs"))
+    if model_tag:
+        run_dir = base / model_tag / benchmark / method_name / str(seed) / "gepa_state"
+    else:
+        run_dir = base / benchmark / method_name / str(seed) / "gepa_state"
+    run_dir.mkdir(parents=True, exist_ok=True)
+
+    progress_data = {
+        "benchmark": benchmark,
+        "seed": seed,
+        "rollouts_used": rollouts_used,
+        "best_val_score": best_val_score,
+        "iteration": iteration,
+        "wall_clock_seconds": round(wall_clock_seconds, 2),
+    }
+
+    target = run_dir / "progress.json"
+    tmp = run_dir / "progress.json.tmp"
+    tmp.write_text(json.dumps(progress_data, indent=2))
+    os.replace(str(tmp), str(target))
+
+
+def _evaluate_holdout(
+    adapter,
+    candidate_text: str,
+    holdout_examples: list,
+    collector: MetricsCollector,
+) -> float:
+    """Evaluate a candidate on the hold-out set. Returns mean score."""
+    if not holdout_examples:
+        return 0.0
+    candidate = {"system_prompt": candidate_text}
+    score, _ = evaluate_prompt(adapter, holdout_examples, candidate, collector)
+    return score
+
+
 # Progressive pruning schedule: (n_examples_per_eval, keep_top_k)
 _PRUNING_SCHEDULE = [
     (10, 10),   # R1: 20 candidates × 10 examples = 200 rollouts → keep 10
@@ -102,6 +154,13 @@ def run_slime_mold(
     valset = data.val[:subset] if subset is not None else data.val
     testset = data.test
 
+    # Sample 50 fixed hold-out examples (deterministic per benchmark, not per seed)
+    _holdout_rng = random.Random(hash(benchmark) & 0xFFFFFFFF)
+    _holdout_size = min(50, len(trainset))
+    holdout_indices = sorted(_holdout_rng.sample(range(len(trainset)), k=_holdout_size))
+    holdout_examples = [trainset[i] for i in holdout_indices]
+    console.print(f"  Hold-out: {len(holdout_examples)} examples (deterministic per benchmark)")
+
     # =========================================================================
     # 2. Build LMs and adapter
     # =========================================================================
@@ -143,6 +202,17 @@ def run_slime_mold(
     # Inject rollout=0 as the first trajectory point
     collector.record_val_score(iteration=0, score=seed_prompt_val_score,
                                prompt_length=len(seed_prompt))
+
+    # Evaluate seed on hold-out (iteration 0)
+    seed_holdout = _evaluate_holdout(adapter, seed_prompt, holdout_examples, collector)
+    collector.record_trajectory_point(
+        iteration=0,
+        holdout_score=seed_holdout,
+        best_so_far=seed_holdout,
+        prompt_length=len(seed_prompt),
+    )
+    _running_best_holdout = seed_holdout
+    _running_best_holdout_prompt = seed_prompt
 
     # =========================================================================
     # 5. Generate diverse candidates (dispatch on strategy_mode)
@@ -320,6 +390,29 @@ def run_slime_mold(
         survivors = sorted_candidates[:keep_k]
         survivor_scores = sorted_scores[:keep_k]
         method_specific["round_survivors"].append(len(survivors))
+
+        # Evaluate round's best on hold-out + write progress.json (common to all strategy modes)
+        _round_best_text = sorted_candidates[0] if sorted_candidates else seed_prompt
+        _holdout_score = _evaluate_holdout(adapter, _round_best_text, holdout_examples, collector)
+        if _holdout_score > _running_best_holdout:
+            _running_best_holdout = _holdout_score
+            _running_best_holdout_prompt = _round_best_text
+        collector.record_trajectory_point(
+            iteration=round_num,
+            holdout_score=_holdout_score,
+            best_so_far=_running_best_holdout,
+            prompt_length=len(_round_best_text),
+        )
+        _write_progress_json(
+            benchmark=benchmark,
+            seed=seed,
+            method_name=method_name,
+            model_tag=get_model_tag(settings),
+            rollouts_used=collector.rollout_count,
+            best_val_score=_running_best_holdout,
+            iteration=round_num,
+            wall_clock_seconds=time.time() - start_time,
+        )
 
         # Between rounds: mutate survivors using failure info (skip after last round)
         if round_idx < len(_PRUNING_SCHEDULE) - 1:

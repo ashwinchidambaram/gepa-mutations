@@ -36,6 +36,9 @@ class MetricsCollector:
     rollout_trajectory: list[tuple[int, int]] = field(default_factory=list)
     prompt_length_trajectory: list[tuple[int, int]] = field(default_factory=list)
 
+    # Hold-out trajectory (rich per-round dicts, one per round evaluated)
+    holdout_trajectory: list[dict[str, Any]] = field(default_factory=list)
+
     # Method-specific metrics (each method populates its own keys)
     method_specific: dict[str, Any] = field(default_factory=dict)
 
@@ -68,6 +71,27 @@ class MetricsCollector:
     def record_reflection_error(self) -> None:
         """Increment reflection LM error counter."""
         self.reflection_error_count += 1
+
+    def record_trajectory_point(
+        self,
+        iteration: int,
+        holdout_score: float,
+        best_so_far: float,
+        prompt_length: int | None = None,
+    ) -> None:
+        """Record a trajectory checkpoint with both rollout + reflection counts.
+
+        Used by methods that evaluate on a fixed hold-out set at each round,
+        allowing clean comparison across methods at equivalent budgets.
+        """
+        self.holdout_trajectory.append({
+            "iteration": iteration,
+            "cumulative_rollouts": self.rollout_count,
+            "cumulative_reflection_calls": self.reflection_call_count,
+            "holdout_score": holdout_score,
+            "best_so_far": best_so_far,
+            "prompt_length": prompt_length,
+        })
 
     def record_val_score(self, iteration: int, score: float, prompt_length: int | None = None) -> None:
         """Record a validation score checkpoint (for iterative methods)."""
@@ -171,6 +195,8 @@ class MetricsCollector:
             "rollout_trajectory": self.rollout_trajectory,
             "best_val_trajectory": self.best_val_trajectory,
             "prompt_length_trajectory": self.prompt_length_trajectory,
+            # Hold-out trajectory
+            "holdout_trajectory": self.holdout_trajectory,
             # Method-specific
             **self.method_specific,
         }

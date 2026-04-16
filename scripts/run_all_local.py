@@ -563,6 +563,7 @@ def _build_digest(
 
 _STALL_CHECK_INTERVAL = 300   # check every 5 minutes
 _STALL_THRESHOLD = 1800       # 30 min with no rollout progress → stalled
+_WALL_CLOCK_TIMEOUT_SECONDS = 7200  # 2 hours — hard kill any subprocess that runs longer
 
 
 def _read_rollout_count(exp: Experiment) -> int | None:
@@ -608,6 +609,25 @@ def _run_experiment(exp: Experiment, subset: int | None = None, max_metric_calls
 
             current_rollouts = _read_rollout_count(exp)
             now = time.time()
+
+            # Hard wall-clock timeout — takes precedence over stall check
+            if now - start > _WALL_CLOCK_TIMEOUT_SECONDS:
+                elapsed = now - start
+                log.error(
+                    f"WALL_CLOCK_TIMEOUT {exp} after {elapsed:.0f}s — exceeds "
+                    f"{_WALL_CLOCK_TIMEOUT_SECONDS}s limit. Killing subprocess."
+                )
+                proc.kill()
+                proc.wait()
+                try:
+                    _notify_html(
+                        f"⏱️ <b>WALL_CLOCK_TIMEOUT</b>\n"
+                        f"Experiment: {_esc(str(exp))}\n"
+                        f"Elapsed: {elapsed:.0f}s (limit: {_WALL_CLOCK_TIMEOUT_SECONDS}s)"
+                    )
+                except Exception:
+                    pass
+                return {"exp": str(exp), "status": "wall_clock_timeout", "elapsed": elapsed}
 
             if current_rollouts is not None:
                 if last_rollouts is None or current_rollouts > last_rollouts:
