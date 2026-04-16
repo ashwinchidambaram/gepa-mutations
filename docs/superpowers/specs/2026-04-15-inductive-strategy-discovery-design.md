@@ -315,6 +315,221 @@ Add all 14 method names to `METHODS` list and `METHOD_COMMANDS` dict. Each maps 
 
 ---
 
+## Data Organization Strategy
+
+We've now run 2 experiments (SLURM sweep, RunPod baseline) and this is our 3rd. Going forward, experiments are self-contained directories under `experiments/`.
+
+### Directory Structure
+
+```
+experiments/
+  01-slurm-sweep-2026-03/            # Experiment 1 (current runs_archive_slurm_sweep/)
+    README.md                        # Purpose, dates, findings, status
+    runs/                            # {model_tag}/{benchmark}/{method}/{seed}/
+    plots/                           # Analysis plots specific to this experiment
+    logs/                            # Orchestrator and vLLM logs
+    report.md                        # Findings write-up
+
+  02-runpod-baseline-2026-04/        # Experiment 2 (current runs/)
+    README.md
+    runs/
+    plots/
+    logs/
+    report.md
+
+  03-inductive-discovery-2026-04/    # Experiment 3 (this one)
+    README.md
+    spec.md -> ../../docs/superpowers/specs/2026-04-15-inductive-strategy-discovery-design.md
+    runs/
+    plots/
+    logs/
+    report.md
+
+# Shared at repo root:
+runs/                                # SYMLINK -> experiments/{active}/runs/
+docs/superpowers/specs/              # All design specs
+analysis/                            # Cross-experiment comparison plots only
+scripts/                             # Reusable orchestration
+```
+
+### Naming Convention
+
+`{NN}-{short-slug}-{YYYY-MM}`
+- Sequential number makes progression obvious
+- Short slug identifies purpose
+- Date suffix for when it started
+
+### Symlink Strategy
+
+`runs/` at the repo root is a symlink to the active experiment's `runs/`. This keeps all existing code (`save_result`, `validate_sweep`, `run_all_local.py`) working unchanged — they still read/write `runs/{model_tag}/{benchmark}/{method}/{seed}/`.
+
+When starting a new experiment:
+```bash
+mkdir -p experiments/NN-slug-YYYY-MM/{runs,plots,logs}
+ln -sfn experiments/NN-slug-YYYY-MM/runs runs
+```
+
+### Experiment README Template
+
+Each experiment has a `README.md`:
+
+```markdown
+# Experiment NN: Short Title
+
+**Dates:** YYYY-MM-DD to YYYY-MM-DD
+**Status:** active | complete | abandoned
+**Model(s):** qwen3-Xb
+**Deployment:** RunPod 2x RTX 4090 / SLURM cluster / Mac MLX
+**Spec:** docs/superpowers/specs/YYYY-MM-DD-name-design.md
+**Report:** report.md (filled in after completion)
+
+## Purpose
+One paragraph on what this experiment tested and why.
+
+## Methods Tested
+List of method names and brief description.
+
+## Benchmarks x Seeds
+Which benchmarks, which seeds, total runs.
+
+## Key Findings
+Top 3-5 results (filled in when experiment completes).
+
+## Cost
+Total GPU hours and $ spent.
+```
+
+### Immutability Rule
+
+**Finalized experiments are read-only.** Once `report.md` is filled in and committed, nobody re-runs methods into that directory. If a bug is found or more data is needed, start a new experiment (e.g., `05-inductive-rerun-2026-05/`) rather than polluting the original.
+
+### Per-experiment Git Strategy
+
+- Commit `runs/` data incrementally during execution (per benchmark)
+- Commit `plots/` when analysis is done
+- Commit `report.md` when findings are written
+- Tag the repo when experiment completes: `git tag exp-03-complete`
+
+### Migration (Phase 0 of Implementation)
+
+```bash
+# Experiment 1 — rename archive
+git mv runs_archive_slurm_sweep experiments/01-slurm-sweep-2026-03/runs
+# + write README.md
+
+# Experiment 2 — move active runs
+git mv runs experiments/02-runpod-baseline-2026-04/runs
+# + write README.md
+
+# Experiment 3 — create fresh
+mkdir -p experiments/03-inductive-discovery-2026-04/{runs,plots,logs}
+# + write README.md + spec.md symlink
+
+# Point active symlink
+ln -s experiments/03-inductive-discovery-2026-04/runs runs
+```
+
+### Orchestrator Log Location
+
+`run_all_local.py` writes logs to `$EXPERIMENT_LOGS_DIR/` when set, else falls back to `logs/`. Set `EXPERIMENT_LOGS_DIR=experiments/03-inductive-discovery-2026-04/logs` in the pod's shell env.
+
+---
+
+## Pre-flight Fixes — Issues Already Resolved
+
+Reviewed `docs/issues.md` and `CLAUDE/known_bugs_and_fixes.md`. Most critical issues are already fixed. Confirmed:
+
+| Issue | Status | Evidence |
+|-------|--------|----------|
+| #1 Sequential test eval (slow) | **FIXED** | `base.py:206` uses `ThreadPoolExecutor(max_workers=workers)` for test eval |
+| #2 PUPA/LiveBench dataset IDs | FIXED | Committed |
+| #3 PUPA scoring (substring match) | FIXED | PUPA adapter uses LLM-as-judge + PII leakage check |
+| #4 No progress logging during test eval | FIXED | Per-10-example logging added |
+| #5 dspy ChainOfThought hangs (no timeout) | FIXED | `timeout=settings.lm_timeout` at base.py:88, 104 |
+| #8 DSPy + thinking mode conflict | N/A | Skipping AIME; `enable_thinking: False` set globally |
+| #10 BestOfK callback wiring | FIXED (N/A) | Not using BestOfK |
+| #11 IFBench substring evaluator (CRITICAL) | FIXED | Programmatic constraint checking |
+| #12 HoVer substring evaluator (CRITICAL) | FIXED | `_extract_hover_verdict()` with ordered patterns |
+| #13 AIME duplicated questions | N/A | Skipping AIME |
+| gepa state FileNotFoundError | FIXED | `os.makedirs(exist_ok=True)` in submodule |
+| model_tag substring collision (14b vs 4b) | FIXED | 14b check before 4b |
+| vLLM IPC socket path length | FIXED | `cd /tmp` before vLLM launch |
+
+### Infrastructure Confirmed Working
+
+- ✅ Atomic JSON writes (`storage/local.py:_atomic_json_write`)
+- ✅ `is_done` resumption check (`run_all_local.py:211`) — if an experiment has completed, orchestrator skips it
+- ✅ vLLM health monitor (2-min polling, `run_all_local.py:374`)
+- ✅ Stall detection (30-min threshold, kills hung subprocesses)
+- ✅ Telegram notifications (25%/50%/75% milestones, failures, completion)
+- ✅ `MetricsCollector` unified schema for standalone methods (Slime Mold family uses this)
+
+## Pre-flight Fixes — Still Needed for This Experiment
+
+### Critical
+
+1. **Register all 14 new method names in `run_all_local.py`.**
+   - Add to `METHODS` list
+   - Add to `METHOD_COMMANDS` dict mapping each to the parameterized slime_mold runner with appropriate CLI flags
+   - Add to `METHOD_PRIORITY` fallback ordering
+   - Missing registration means orchestrator can't launch the method.
+
+2. **Parameterize the slime_mold runner to accept new flags.**
+   - Currently the runner hardcodes personality strategies and blind mutation
+   - Add CLI args: `--strategy-mode`, `--k`, `--mutation-mode`, `--refresh-mode`
+   - Method name derivation logic (mapping flags to method name for `save_result`)
+
+3. **Verify `is_done` works for new method names.**
+   - `is_done` checks for `runs/{model_tag}/{benchmark}/{method}/{seed}/result.json`
+   - Should work automatically for new method names — but smoke test verifies
+
+### Important
+
+4. **Smoke test all 5 Tier 1 methods before full launch.**
+   - `scripts/run_all_local.py --smoke-test --workers 4 --method <each new method>`
+   - Catch parsing/config bugs in the new discovery/mutation code with 5 examples
+   - ~10 minutes total on 2x RTX 4090
+
+5. **Verify vLLM health monitor handles dual-endpoint setup.**
+   - Currently polls one `GEPA_BASE_URL` — with nginx, all traffic routes through one endpoint (nginx port 8124)
+   - If nginx down, health monitor correctly detects failure
+   - If one backend vLLM dies, nginx fails over — health monitor doesn't see it directly
+   - Add backend health check: `curl localhost:8125/v1/models && curl localhost:8126/v1/models` in pre-flight
+
+6. **Experiment directory migration before first run.**
+   - Migrate existing `runs/` and `runs_archive_slurm_sweep/` to new structure
+   - Create `experiments/03-inductive-discovery-2026-04/` skeleton with README
+   - Update symlink
+
+### Nice to Have
+
+7. **Pre-flight check script** (`scripts/preflight_check.sh`):
+   - Verify both vLLM endpoints respond
+   - Verify nginx routing works
+   - Verify disk space (need ~1GB for runs + logs)
+   - Verify `.env` has TELEGRAM_BOT_TOKEN if notifications wanted
+   - Run `python scripts/run_all_local.py --dry-run` to print experiment order
+   - Exit non-zero if any check fails; orchestrator won't start.
+
+8. **Cross-experiment result schema check.**
+   - Add `--validate-schema` mode to `scripts/validate_results.py` that confirms all runs have: `test_score`, `val_score`, `rollout_count`, `val_score_trajectory`, `best_prompt`, `seed_prompt_test_score`
+   - Run after Tier 1 completes; flag any malformed results before analysis.
+
+9. **Live dashboard** (`scripts/live_dashboard.py`):
+   - Static PNG generation every 5 minutes (simpler than web server)
+   - Reads completed results from `experiments/{active}/runs/`
+   - Writes to `experiments/{active}/plots/`
+   - Can run in a tmux pane on the pod or locally with rsync'd data
+
+### Non-blockers (Defer)
+
+- Issue #15 (Metrics format split) — Slime Mold family uses unified `MetricsCollector`, not affected
+- Issue #7 (Contrastive reflection needs large subsets) — not using contrastive_reflection
+- Issue #14 (Contrastive AIME regression) — skipping AIME
+- Issue #16 (DSPy framework leak) — tolerable; refactor later
+
+---
+
 ## Deployment Plan
 
 ### Infrastructure
