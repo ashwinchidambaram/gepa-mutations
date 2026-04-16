@@ -34,20 +34,22 @@ def get_task_description(benchmark: str) -> str:
 
 
 def format_examples(examples: list, max_examples: int = 10) -> str:
-    """Format benchmark examples for discovery prompt (truncate for readability)."""
+    """Format benchmark examples for discovery prompt.
+
+    Uses the same extraction as production discover_strategies() in colony.py:
+    tries .input, .question, then falls back to str(ex). This is what the
+    production discovery LLM sees — keep the preflight aligned with it.
+    """
     formatted = []
     for i, ex in enumerate(examples[:max_examples]):
-        # Try to get a string representation of the example
-        if hasattr(ex, "__dict__"):
-            ex_dict = ex.__dict__
-            # Extract key fields (input/question + expected output)
-            ex_str = " | ".join(f"{k}: {str(v)[:100]}" for k, v in ex_dict.items())
-        else:
-            ex_str = str(ex)[:200]
-        # Truncate each example to 200 chars for markdown readability
-        ex_str = ex_str[:200]
-        formatted.append(f"{i+1}. {ex_str}")
-    return "\n".join(formatted)
+        input_str = getattr(ex, "input", None) or getattr(ex, "question", None) or str(ex)
+        answer_str = getattr(ex, "answer", None) or getattr(ex, "output", "") or ""
+        formatted.append(
+            f"Example {i+1}:\n"
+            f"  Input: {str(input_str)[:500]}\n"
+            f"  Expected answer: {str(answer_str)[:200]}"
+        )
+    return "\n\n".join(formatted)
 
 
 def discover_skills_fixed_k(

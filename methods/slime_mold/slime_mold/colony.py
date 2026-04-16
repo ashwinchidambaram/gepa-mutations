@@ -336,25 +336,94 @@ def discover_strategies(
 
     # Build prompt
     k_text = f"exactly {k}" if k is not None else "the number of skills you actually see (typically 3-10)"
-    prompt = f"""Task: Identify the distinct skills or capabilities required to solve the following task.
+    prompt = f"""# Task: Identify the Distinctive Skills of a Specific Benchmark
 
-Benchmark: {benchmark}
-Task description: {task_description}
+You are a senior evaluator analyzing a language benchmark. Your job: produce a skill decomposition that captures what makes THIS benchmark's examples hard, in a way that a prompt engineer could use to build specialized prompts. Generic skills are useless — they waste the analysis.
 
-Examples from this benchmark:
+---
+
+## Benchmark
+{benchmark}
+
+## Task description
+{task_description}
+
+## Examples
 {examples_text}
 
-Identify {k_text} distinct skills or reasoning capabilities needed to solve these examples well.
-For each skill, provide:
-  - Name (2-3 words)
-  - Brief description (1 sentence)
-  - Failure pattern (what going wrong looks like)
+---
 
-Format as a numbered list:
-1. <skill name>: <description>. Failure: <failure pattern>
-2. <skill name>: <description>. Failure: <failure pattern>
-...
-"""
+## Process (follow each step in your response — think step by step)
+
+### Step 1 — Pattern observation (private, do NOT output)
+Before proposing any skill, silently observe:
+- What is the *structural shape* of inputs? (paragraphs, evidence lists, questions, PII-bearing text, constraints, math problems, …)
+- What is the *answer shape*? (short span, yes/no label, redacted text, final number, free text, …)
+- What *specific operations* do multiple examples require? (e.g., "follow a bridge entity from paragraph A to paragraph B", "count constraints", "substitute names with typed placeholders")
+- What *failure modes* does the answer shape invite? (e.g., answering from the wrong paragraph, producing the right label with wrong justification, leaking PII)
+
+### Step 2 — Generate {k_text} candidate skills grounded in patterns from Step 1
+Each skill MUST satisfy ALL THREE criteria:
+
+**(A) Specific to this benchmark**
+The skill name and description must reference the structural/semantic pattern of THESE examples. Do NOT use terms that could apply to any reading-comprehension task. If you could imagine the exact same skill name fitting HotpotQA, HOVER, PUPA, IFBench, LiveBench, and AIME equally well, it's generic — throw it out.
+
+**(B) Targets a different failure mode than your other skills**
+Two skills should never both be about "understanding the text" or "reading carefully". If two of your skills could both be replaced by the phrase "pay attention", collapse them into one specific skill and replace the other with something new.
+
+**(C) Implementable as a prompt technique**
+Imagine you are writing a prompt that EXCELS at this skill. What would that prompt say or do differently from a generic baseline? If you cannot name a concrete prompting technique (a verification step, a decomposition rule, a canonical output form, a scratchpad structure), the skill is too vague.
+
+### Step 3 — Self-critique (for each candidate, silently ask)
+- "If I rename this skill, does its meaning change? If I just renamed 'Contextual Understanding' to 'Contextual Reading', I've learned nothing — that's generic."
+- "Can I point to a specific example number above that STRESSES this skill?"
+- "What concrete prompting technique would this skill inspire?"
+- If any answer is weak, discard or replace the skill.
+
+### Step 4 — Output (this is what you actually write)
+
+Output ONLY a numbered list. Each item has three parts separated clearly:
+
+```
+1. <specific skill name — 2 to 5 words, distinctive to this benchmark>: <one sentence describing the skill, referencing a pattern visible in the examples>. Failure: <one sentence describing what a prompt that LACKS this skill would produce incorrectly on a specific example>.
+2. ...
+```
+
+---
+
+## Hard bans — do NOT output any skill named or described as:
+- "Contextual Understanding" / "Context Comprehension" / "Contextual Reading"
+- "Attention to Detail" / "Careful Reading"
+- "Fact Extraction" / "Information Extraction" (unless you specify WHAT KIND of fact/information from where)
+- "Entity Recognition" (unless you specify the role entities play in THIS task)
+- "Logical Reasoning" / "Logical Deduction"
+- "Conciseness" / "Brevity"
+- "Pattern Recognition" (too vague — specify WHICH patterns)
+- "Data Filtering" (too vague)
+- Any skill whose description contains phrases like "ability to comprehend", "ability to understand", "ability to interpret" without a domain-specific operator
+
+If your draft includes any of these, rewrite that skill from scratch, grounded in a specific pattern you observed in the examples.
+
+## Anti-examples (what a lazy answer looks like — these are BAD)
+```
+1. Contextual Understanding: Comprehending the context. Failure: Misinterpreting the context.
+2. Attention to Detail: Reading carefully. Failure: Missing details.
+```
+☝️ Those are USELESS. If you produce output like that, you have failed the task.
+
+## Good-example shapes (what a GOOD answer looks like — for illustration only; do not copy these specific skills unless they genuinely apply to the examples above):
+```
+[Multi-hop QA example]
+1. Bridge-entity chaining: the input contains multiple paragraphs; the answer requires picking an entity from paragraph A, looking up a fact about it in paragraph B, and returning that fact. Failure: answering from paragraph A alone and missing the bridge.
+2. Distractor paragraph suppression: several paragraphs mention the query entity but only one contains the answer. Failure: answering from the first-mentioned paragraph rather than the one with the target relation.
+```
+```
+[Fact verification example]
+1. Evidence-polarity aggregation: each retrieved evidence item is labeled supporting / contradicting / neutral; the verdict is the majority-signed product. Failure: treating any mention as supporting, ignoring contradicting evidence.
+2. Single-hop vs multi-hop claim decomposition: some claims require verifying 1 fact, others require conjoining 2–3 facts. Failure: declaring supported based on partial verification.
+```
+
+Now do the work. Produce {k_text} skills specific to THIS benchmark's examples above."""
 
     # Attempt 1
     raw_output = ""
