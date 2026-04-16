@@ -13,7 +13,6 @@ Usage:
 
 import argparse
 import json
-import os
 import re
 import sys
 from datetime import datetime
@@ -53,7 +52,7 @@ def discover_skills_adaptive(
     benchmark: str,
     examples: list,
     task_description: str,
-) -> tuple[int, list[str], str]:
+) -> tuple[int | None, list[str], str]:
     """Run adaptive-K discovery on benchmark examples.
 
     Returns: (k_value, skill_names, raw_response)
@@ -173,9 +172,10 @@ def main():
 
             # Run discovery
             task_desc = get_task_description(benchmark)
-            k, skills, raw_response = discover_skills_adaptive(
+            result_tuple = discover_skills_adaptive(
                 lm, benchmark, examples, task_desc
             )
+            k, skills = result_tuple[0], result_tuple[1]
 
             if k is not None:
                 print(f"k={k}")
