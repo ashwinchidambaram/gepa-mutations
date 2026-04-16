@@ -223,9 +223,12 @@ class Experiment:
 
     @property
     def result_path(self) -> Path:
+        # Honor RUNS_DIR override so is_done() looks in the same place that
+        # save_result() writes to (storage/local.py also reads this env var).
+        base = os.environ.get("RUNS_DIR") or "runs"
         if _MODEL_TAG:
-            return Path(f"runs/{_MODEL_TAG}/{self.benchmark}/{self.method}/{self.seed}/result.json")
-        return Path(f"runs/{self.benchmark}/{self.method}/{self.seed}/result.json")
+            return Path(f"{base}/{_MODEL_TAG}/{self.benchmark}/{self.method}/{self.seed}/result.json")
+        return Path(f"{base}/{self.benchmark}/{self.method}/{self.seed}/result.json")
 
     @property
     def is_done(self) -> bool:
