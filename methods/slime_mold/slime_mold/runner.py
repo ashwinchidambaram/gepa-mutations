@@ -26,7 +26,13 @@ from gepa_mutations.config import PAPER_ROLLOUTS, Settings, model_tag as get_mod
 from gepa_mutations.metrics.collector import MetricsCollector
 from gepa_mutations.metrics.standalone_eval import evaluate_prompt
 from gepa_mutations.metrics.tracked_lm import TrackedLM
-from gepa_mutations.runner.experiment import BENCHMARK_SEED_PROMPTS, SEED_PROMPT, ExperimentResult
+from gepa_mutations.runner.experiment import (
+    BENCHMARK_OUTPUT_SHAPES,
+    BENCHMARK_SEED_PROMPTS,
+    BENCHMARK_TASK_INSTRUCTIONS,
+    SEED_PROMPT,
+    ExperimentResult,
+)
 from gepa_mutations.storage.local import save_result
 
 from slime_mold.colony import (
@@ -187,7 +193,15 @@ def run_slime_mold(
     # =========================================================================
     seed_prompt = BENCHMARK_SEED_PROMPTS.get(benchmark, SEED_PROMPT)
     seed_candidate = {"system_prompt": seed_prompt}
-    task_description = f"Benchmark: {benchmark}. Seed prompt: {seed_prompt}"
+    # Discovery-only signals — deliberately separate from `seed_prompt` so baselines
+    # start from minimal seeds while discovery still has a useful task anchor.
+    # Phrased without naming the benchmark to avoid memorization-based skill recall.
+    task_description = BENCHMARK_TASK_INSTRUCTIONS.get(
+        benchmark, "Solve the examples correctly."
+    )
+    output_shape = BENCHMARK_OUTPUT_SHAPES.get(
+        benchmark, "a response in the format shown by the examples"
+    )
 
     console.print(f"\n[bold]Running SMNO optimization[/bold]")
     console.print(f"  Benchmark: {benchmark}, Seed: {seed}")
@@ -279,6 +293,7 @@ def run_slime_mold(
             reflection_lm=tracked_reflection,
             benchmark=benchmark,
             task_description=task_description,
+            output_shape=output_shape,
             examples=trainset,
             k=k,
             rng=rng,
@@ -289,7 +304,12 @@ def run_slime_mold(
             "raw_llm_output": raw_disc,
             "fallback_used": fallback,
             "skills": [
-                {"name": s.name, "description": s.description, "failure_pattern": s.failure_pattern}
+                {
+                    "name": s.name,
+                    "description": s.description,
+                    "failure_pattern": s.failure_pattern,
+                    "technique": s.technique,
+                }
                 for s in strategies_used
             ],
         })
@@ -461,6 +481,7 @@ def run_slime_mold(
                     reflection_lm=tracked_reflection,
                     benchmark=benchmark,
                     task_description=task_description,
+                    output_shape=output_shape,
                     hard_examples=hard_examples_objects,
                     existing_strategies=strategies_used,
                     k_new=2,
@@ -472,7 +493,12 @@ def run_slime_mold(
                     "raw_llm_output": refresh_raw,
                     "fallback_used": False,
                     "skills": [
-                        {"name": s.name, "description": s.description, "failure_pattern": s.failure_pattern}
+                        {
+                            "name": s.name,
+                            "description": s.description,
+                            "failure_pattern": s.failure_pattern,
+                            "technique": s.technique,
+                        }
                         for s in new_strategies
                     ],
                 })

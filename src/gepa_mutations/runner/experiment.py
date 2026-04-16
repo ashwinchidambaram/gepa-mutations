@@ -90,36 +90,61 @@ console = Console()
 # Default seeds for multi-seed experiments (5 independent runs)
 DEFAULT_SEEDS = [42, 123, 456, 789, 1024]
 
-# Initial seed prompt for optimization
-SEED_PROMPT = (
-    "Solve the math problem carefully. Break down the steps and provide "
-    "the final answer as a single number."
-)
+# Initial seed prompt for optimization.
+# Default matches GEPA's bundled examples (see gepa/tests/test_pareto_frontier_types/...).
+SEED_PROMPT = "You are a helpful assistant."
 
-# Benchmark-specific seed prompts
+# Benchmark-specific seed prompts.
+#
+# These match GEPA's actual seeds where they exist in the bundled GEPA repo:
+# - AIME: from `gepa/tests/test_aime_prompt_optimization/test_aime_prompt_optimize.py:36-38`
+# - All others: GEPA's generic "You are a helpful assistant." default
+#   (used in `gepa/tests/test_pareto_frontier_types/...` and
+#   `gepa/tests/test_evaluation_cache.py:307`).
+#
+# Rationale: minimal seeds avoid pre-disclosing task structure to baselines,
+# making the comparison against discovery-based methods fair. Discovery and
+# specialized-prompt generation use a separate `BENCHMARK_TASK_INSTRUCTIONS`
+# signal — that's intentional, since discovery is the experimental method
+# under test.
 BENCHMARK_SEED_PROMPTS = {
-    "aime": SEED_PROMPT,
-    "livebench": (
-        "Solve the math problem step by step. Provide the final answer in the exact "
-        "format requested (number, expression, comma-separated list, etc.)."
+    "aime": (
+        "You are a helpful assistant. You are given a question and you need to answer "
+        "it. The answer should be given at the end of your response in exactly the "
+        "format '### <final answer>'"
     ),
-    "hotpotqa": (
-        "Answer the question by reasoning step by step through the provided context. "
-        "Give a concise, factual answer."
-    ),
-    "ifbench": (
-        "Follow the instructions carefully, ensuring you satisfy all the given constraints. "
-        "Provide a complete response that meets every requirement."
-    ),
-    "hover": (
-        "Determine whether the given claim is SUPPORTED or NOT_SUPPORTED based on the "
-        "provided evidence. Reason through the evidence step by step."
-    ),
-    "pupa": (
-        "Rewrite the user's query to remove all personally identifiable information (PII) "
-        "such as names, addresses, phone numbers, and emails. Replace PII with generic "
-        "placeholders while preserving the query's meaning and intent."
-    ),
+    "livebench": SEED_PROMPT,
+    "hotpotqa": SEED_PROMPT,
+    "ifbench": SEED_PROMPT,
+    "hover": SEED_PROMPT,
+    "pupa": SEED_PROMPT,
+}
+
+
+# Discovery-only signals: what discover_strategies() and generate_specialized_prompt()
+# see as the "task instruction". Deliberately separate from BENCHMARK_SEED_PROMPTS so
+# baselines start from minimal seeds while discovery still has a useful task anchor.
+# Phrased to describe what's being done WITHOUT naming the benchmark — keeps any
+# memorization-based skill recall from contaminating discovery quality.
+BENCHMARK_TASK_INSTRUCTIONS = {
+    "aime": "Solve the math problem and produce the final numeric answer.",
+    "livebench": "Solve the problem and produce the final answer in the requested format.",
+    "hotpotqa": "Answer the question using the provided supporting context.",
+    "ifbench": "Produce a response that satisfies every constraint in the input instruction.",
+    "hover": "Decide whether the claim is supported by the provided evidence.",
+    "pupa": "Rewrite the input so that personal information is replaced with generic placeholders while preserving meaning.",
+}
+
+
+# Discovery-only signal: the shape of a correct output (one short phrase).
+# Used to fill `{output_shape}` in the discovery prompt's "Task shape" section.
+BENCHMARK_OUTPUT_SHAPES = {
+    "aime": "a single numeric answer",
+    "livebench": "an answer in the exact format requested by the input",
+    "hotpotqa": "a short factual answer string",
+    "ifbench": "a free-text response that satisfies the input's constraints",
+    "hover": "a label of either SUPPORTED or NOT_SUPPORTED",
+    "pupa": "a rewritten query with personal information replaced by placeholders",
 }
 
 

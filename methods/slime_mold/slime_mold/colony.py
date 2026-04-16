@@ -30,8 +30,9 @@ class Strategy:
     name: str
     description: str
     failure_pattern: str = ""
+    technique: str = ""  # Discovery-only: the prompting technique this skill maps to
     stress_examples: list[int] = field(default_factory=list)  # example indices
-    source: str = "discovered"  # "discovered" | "prescribed"
+    source: str = "discovered"  # "discovered" | "prescribed" | "refresh_discovered"
 
 
 # ---------------------------------------------------------------------------
@@ -237,18 +238,92 @@ def generate_diverse_prompts(
 # ---------------------------------------------------------------------------
 
 
-def _parse_discovered_skills(text: str) -> list[Strategy]:
-    """Parse a numbered-list discovery output into Strategy objects.
+def _parse_failure_modes(text: str) -> dict[int, str]:
+    """Parse the `### Failure modes` section into {1: desc, 2: desc, ...}."""
+    section = re.search(
+        r'###\s*Failure modes\s*\n(.+?)(?=\n###|\Z)',
+        text,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if not section:
+        return {}
 
-    Expected format:
-        1. <name>: <description>. Failure: <failure pattern>
-        2. <name>: <description>. Failure: <failure pattern>
-        ...
+    modes: dict[int, str] = {}
+    for line in section.group(1).splitlines():
+        m = re.match(r'^\s*[-*•]?\s*\*{0,2}F(\d+)\*{0,2}\s*[:.\-—]\s*(.+?)$', line.strip())
+        if m:
+            modes[int(m.group(1))] = m.group(2).strip().rstrip(".")
+    return modes
 
-    Falls back gracefully on malformed input — returns whatever was parseable.
+
+def _parse_new_skill_block(section: str, failure_modes: dict[int, str]) -> list[Strategy]:
+    """Parse new-format skills:
+        1. **<Name>** — Addresses: F<n(s)>. <What it does>. Technique: <technique>.
     """
-    # Match numbered items: "1. " or "1) " at start of line
-    # Capture everything until next numbered item or end of string
+    pattern = r'^\s*\d+[.)]\s+(.+?)(?=\n\s*\d+[.)]|\Z)'
+    matches = re.findall(pattern, section, re.MULTILINE | re.DOTALL)
+
+    skills: list[Strategy] = []
+    for raw in matches:
+        content = raw.strip()
+        if not content:
+            continue
+
+        # Name: prefer **bold** at the start; otherwise take text up to first em dash / hyphen / colon
+        name = ""
+        rest = content
+        bold = re.match(r'\*\*(.+?)\*\*\s*[—\-:]\s*(.+)', content, re.DOTALL)
+        if bold:
+            name = bold.group(1).strip()
+            rest = bold.group(2).strip()
+        else:
+            sep = re.search(r'\s[—\-:]\s', content)
+            if sep:
+                name = content[:sep.start()].strip().strip("*")
+                rest = content[sep.end():].strip()
+            else:
+                words = content.split()
+                name = " ".join(words[:4]) if words else content[:50]
+                rest = " ".join(words[4:]) if len(words) > 4 else ""
+
+        # Addresses: F1, F2, F3
+        addressed: list[int] = []
+        addr = re.search(r'Addresses:\s*([^.]+?)(?:\.|$)', rest, re.IGNORECASE)
+        if addr:
+            for fn in re.findall(r'F\s*(\d+)', addr.group(1)):
+                addressed.append(int(fn))
+            rest = (rest[:addr.start()] + rest[addr.end():]).strip()
+
+        # Technique: <name>
+        technique = ""
+        tech = re.search(r'Technique:\s*(.+?)(?:\.\s|\.$|$)', rest, re.IGNORECASE | re.DOTALL)
+        if tech:
+            technique = tech.group(1).strip().rstrip(".").strip("*")
+            rest = (rest[:tech.start()] + rest[tech.end():]).strip().rstrip(".")
+
+        description = rest.strip().lstrip("—-:.").strip().rstrip(".")
+
+        # Build failure_pattern by looking up addressed F<n> modes
+        failure = "; ".join(
+            failure_modes[n] for n in addressed if n in failure_modes
+        )
+
+        if name:
+            skills.append(Strategy(
+                name=name,
+                description=description,
+                failure_pattern=failure,
+                technique=technique,
+                source="discovered",
+            ))
+
+    return skills
+
+
+def _parse_old_skill_block(text: str) -> list[Strategy]:
+    """Backward-compat parser for old format:
+        1. <name>: <description>. Failure: <failure pattern>
+    """
     pattern = r'^\s*\d+[.)]\s+(.+?)(?=\n\s*\d+[.)]|\Z)'
     matches = re.findall(pattern, text, re.MULTILINE | re.DOTALL)
 
@@ -262,24 +337,21 @@ def _parse_discovered_skills(text: str) -> list[Strategy]:
         description = ""
         failure = ""
 
-        # Extract failure section first (if present)
         fail_match = re.search(r'\bFailure:\s*(.+?)$', content, re.IGNORECASE | re.DOTALL)
         if fail_match:
             failure = fail_match.group(1).strip().rstrip(".")
             content = content[:fail_match.start()].rstrip(" .")
 
-        # Now split name / description by first colon
         colon_idx = content.find(":")
         if colon_idx != -1:
-            name = content[:colon_idx].strip()
+            name = content[:colon_idx].strip().strip("*")
             description = content[colon_idx + 1:].strip()
         else:
-            # No colon — use first 3 words as name, rest as description
             words = content.split()
             name = " ".join(words[:3]) if words else content[:50]
             description = " ".join(words[3:]) if len(words) > 3 else ""
 
-        if name:  # only keep if we got a name
+        if name:
             skills.append(Strategy(
                 name=name,
                 description=description,
@@ -290,10 +362,38 @@ def _parse_discovered_skills(text: str) -> list[Strategy]:
     return skills
 
 
+def _parse_discovered_skills(text: str) -> list[Strategy]:
+    """Parse discovery output into Strategy objects.
+
+    Primary format (new template):
+        ### Failure modes
+        - F1: ...
+        - F2: ...
+        ### Skills
+        1. **<Name>** — Addresses: F<n(s)>. <What it does>. Technique: <technique>.
+
+    Falls back to the legacy "1. <name>: <desc>. Failure: <pat>" format if no
+    Skills section is found, so old smoke outputs and unit tests still parse.
+    Returns whatever is parseable; never raises.
+    """
+    failure_modes = _parse_failure_modes(text)
+
+    skills_section = re.search(
+        r'###\s*Skills\s*\n(.+?)(?=\n###|\Z)',
+        text,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if skills_section:
+        return _parse_new_skill_block(skills_section.group(1), failure_modes)
+
+    return _parse_old_skill_block(text)
+
+
 def discover_strategies(
     reflection_lm: Any,
     benchmark: str,
     task_description: str,
+    output_shape: str,
     examples: list,
     k: int | None = None,
     rng: Any = None,
@@ -303,10 +403,15 @@ def discover_strategies(
 
     Args:
         reflection_lm: Callable LM (already wrapped with TrackedLM).
-        benchmark: Benchmark name (for logging).
-        task_description: Brief task description.
+        benchmark: Benchmark name (used only for logging — NOT shown to the LLM,
+            to prevent memorization-based skill recall).
+        task_description: 1-sentence task instruction (e.g. "Decide whether the
+            claim is supported by the evidence."). Phrased without the benchmark
+            name.
+        output_shape: Short phrase describing the output (e.g.
+            "a SUPPORTED or NOT_SUPPORTED label").
         examples: List of benchmark examples.
-        k: If int, ask for exactly k skills. If None, adaptive (LLM decides).
+        k: If int, ask for exactly k skills. If None, adaptive (4-6).
         rng: Optional random.Random for deterministic example sampling.
         max_examples: Max examples to show the LM.
 
@@ -316,6 +421,8 @@ def discover_strategies(
         - raw_output: raw LLM text (for logging/debugging)
         - fallback_used: True if we fell back to PRESCRIBED_STRATEGIES
     """
+    del benchmark  # intentionally unused — kept in signature for telemetry call sites
+
     # Sample examples
     if rng is not None and len(examples) > max_examples:
         sampled = rng.sample(examples, max_examples)
@@ -334,18 +441,20 @@ def discover_strategies(
         )
     examples_text = "\n\n".join(formatted)
 
-    # Build prompt
-    k_text = f"exactly {k}" if k is not None else "the number of skills you actually see (typically 3-10)"
-    prompt = f"""# Task: Identify the Distinctive Skills of a Specific Benchmark
+    k_text = f"exactly {k} skills" if k is not None else "between 4 and 6 skills"
 
-You are a senior evaluator analyzing a language benchmark. Your job: produce a skill decomposition that captures what makes THIS benchmark's examples hard, in a way that a prompt engineer could use to build specialized prompts. Generic skills are useless — they waste the analysis.
+    prompt = f"""# Task: Identify Specialized Skills for This Task
+
+You are analyzing a task to find skills whose corresponding prompts will make *different kinds of mistakes*. The downstream system generates multiple prompt candidates — one per skill — and needs them to fail on *different* examples, not the same ones.
+
+This means: skills that are merely reworded versions of each other are useless. Skills that sound impressive but share the same underlying technique are useless. What matters is that each skill, when turned into a prompt, stresses a structurally different part of the task.
 
 ---
 
-## Benchmark
-{benchmark}
+## Task shape
+This task takes an input and produces {output_shape}. The examples below show the exact patterns.
 
-## Task description
+## Task instruction
 {task_description}
 
 ## Examples
@@ -353,77 +462,70 @@ You are a senior evaluator analyzing a language benchmark. Your job: produce a s
 
 ---
 
-## Process (follow each step in your response — think step by step)
+## Step 1 — List 4–6 failure modes
 
-### Step 1 — Pattern observation (private, do NOT output)
-Before proposing any skill, silently observe:
-- What is the *structural shape* of inputs? (paragraphs, evidence lists, questions, PII-bearing text, constraints, math problems, …)
-- What is the *answer shape*? (short span, yes/no label, redacted text, final number, free text, …)
-- What *specific operations* do multiple examples require? (e.g., "follow a bridge entity from paragraph A to paragraph B", "count constraints", "substitute names with typed placeholders")
-- What *failure modes* does the answer shape invite? (e.g., answering from the wrong paragraph, producing the right label with wrong justification, leaking PII)
+Name specific ways a language model could get examples like these wrong. Each failure mode must name a *wrong behavior* and what *triggers* it, and cite example numbers.
 
-### Step 2 — Generate {k_text} candidate skills grounded in patterns from Step 1
-Each skill MUST satisfy ALL THREE criteria:
+Good: "Answers using the first paragraph that mentions the query entity, even when the target relation is in a later paragraph (Examples 2, 5)."
 
-**(A) Specific to this benchmark**
-The skill name and description must reference the structural/semantic pattern of THESE examples. Do NOT use terms that could apply to any reading-comprehension task. If you could imagine the exact same skill name fitting HotpotQA, HOVER, PUPA, IFBench, LiveBench, and AIME equally well, it's generic — throw it out.
+Bad: "Misreads the question." — names no behavior, no trigger, cites nothing.
 
-**(B) Targets a different failure mode than your other skills**
-Two skills should never both be about "understanding the text" or "reading carefully". If two of your skills could both be replaced by the phrase "pay attention", collapse them into one specific skill and replace the other with something new.
+## Step 2 — Propose {k_text}
 
-**(C) Implementable as a prompt technique**
-Imagine you are writing a prompt that EXCELS at this skill. What would that prompt say or do differently from a generic baseline? If you cannot name a concrete prompting technique (a verification step, a decomposition rule, a canonical output form, a scratchpad structure), the skill is too vague.
+For each skill, provide exactly these four fields:
 
-### Step 3 — Self-critique (for each candidate, silently ask)
-- "If I rename this skill, does its meaning change? If I just renamed 'Contextual Understanding' to 'Contextual Reading', I've learned nothing — that's generic."
-- "Can I point to a specific example number above that STRESSES this skill?"
-- "What concrete prompting technique would this skill inspire?"
-- If any answer is weak, discard or replace the skill.
+- **Name** (2–5 words, distinctive — no generic labels)
+- **Addresses**: F<number(s)> from your failure mode list
+- **What it does** (one sentence, references patterns visible in the examples)
+- **Technique** — pick ONE from the list below. *No two skills may use the same technique.* This constraint exists to force your skills to differ in kind, not just in wording.
 
-### Step 4 — Output (this is what you actually write)
+## Technique list
 
-Output ONLY a numbered list. Each item has three parts separated clearly:
+Pick one per skill. Each skill must use a *different* technique.
 
-```
-1. <specific skill name — 2 to 5 words, distinctive to this benchmark>: <one sentence describing the skill, referencing a pattern visible in the examples>. Failure: <one sentence describing what a prompt that LACKS this skill would produce incorrectly on a specific example>.
-2. ...
-```
+- **Decomposition** — split input into labeled sub-parts before answering (e.g., "list each constraint as a bullet")
+- **Scratchpad** — write a named intermediate form before the final answer (e.g., "(entity, source_paragraph) pairs")
+- **Verification step** — re-check the draft against a specific criterion after writing it
+- **Canonical output form** — enforce a fixed answer template
+- **Ordering rule** — require sub-operations in a specific sequence (e.g., "identify bridge entity before searching for target fact")
+- **Grounding citation** — cite the source span supporting each claim
+- **Consistency discipline** — enforce a rule across repeated transformations (e.g., "same input entity → same placeholder, always")
+- **Negative check** — explicitly rule out a named wrong-answer pattern
+- **Constraint enumeration** — list every requirement from the input before drafting, check each off while writing
+
+## Hard bans on skill names
+
+Do not produce skills named or renamed as:
+- Contextual Understanding / Careful Reading / Attention to Detail
+- Logical Reasoning / Logical Deduction
+- Pattern Recognition (unless you name *which* pattern)
+- Fact Extraction / Information Extraction (unless you specify *what* and *from where*)
+- Entity Recognition (unless you specify the entity's *role*)
+- Conciseness / Brevity / Data Filtering
+
+Also banned: any description using "ability to comprehend/understand/interpret" without a specific operator.
+
+If you find yourself writing one of these, the skill is wrong — rewrite it from scratch, grounded in a specific failure mode.
 
 ---
 
-## Hard bans — do NOT output any skill named or described as:
-- "Contextual Understanding" / "Context Comprehension" / "Contextual Reading"
-- "Attention to Detail" / "Careful Reading"
-- "Fact Extraction" / "Information Extraction" (unless you specify WHAT KIND of fact/information from where)
-- "Entity Recognition" (unless you specify the role entities play in THIS task)
-- "Logical Reasoning" / "Logical Deduction"
-- "Conciseness" / "Brevity"
-- "Pattern Recognition" (too vague — specify WHICH patterns)
-- "Data Filtering" (too vague)
-- Any skill whose description contains phrases like "ability to comprehend", "ability to understand", "ability to interpret" without a domain-specific operator
+## Output format
 
-If your draft includes any of these, rewrite that skill from scratch, grounded in a specific pattern you observed in the examples.
+### Failure modes
+- F1: ...
+- F2: ...
+(4 to 6 total)
 
-## Anti-examples (what a lazy answer looks like — these are BAD)
-```
-1. Contextual Understanding: Comprehending the context. Failure: Misinterpreting the context.
-2. Attention to Detail: Reading carefully. Failure: Missing details.
-```
-☝️ Those are USELESS. If you produce output like that, you have failed the task.
+### Skills
+1. **<Name>** — Addresses: F<n>. <What it does>. Technique: <technique name>.
+2. ...
 
-## Good-example shapes (what a GOOD answer looks like — for illustration only; do not copy these specific skills unless they genuinely apply to the examples above):
-```
-[Multi-hop QA example]
-1. Bridge-entity chaining: the input contains multiple paragraphs; the answer requires picking an entity from paragraph A, looking up a fact about it in paragraph B, and returning that fact. Failure: answering from paragraph A alone and missing the bridge.
-2. Distractor paragraph suppression: several paragraphs mention the query entity but only one contains the answer. Failure: answering from the first-mentioned paragraph rather than the one with the target relation.
-```
-```
-[Fact verification example]
-1. Evidence-polarity aggregation: each retrieved evidence item is labeled supporting / contradicting / neutral; the verdict is the majority-signed product. Failure: treating any mention as supporting, ignoring contradicting evidence.
-2. Single-hop vs multi-hop claim decomposition: some claims require verifying 1 fact, others require conjoining 2–3 facts. Failure: declaring supported based on partial verification.
-```
+Produce {k_text}. Every skill must use a *different* technique from the list above."""
 
-Now do the work. Produce {k_text} skills specific to THIS benchmark's examples above."""
+    _retry_nudge = (
+        "\n\nIMPORTANT: Follow the output format exactly — start with `### Failure modes`, "
+        "then `### Skills` with a numbered list. No preamble or explanation."
+    )
 
     # Attempt 1
     raw_output = ""
@@ -432,8 +534,7 @@ Now do the work. Produce {k_text} skills specific to THIS benchmark's examples a
     except Exception:
         # Attempt 2 with clearer instruction
         try:
-            retry_prompt = prompt + "\n\nIMPORTANT: Output ONLY the numbered list of skills, no preamble or explanation."
-            raw_output = reflection_lm(retry_prompt)
+            raw_output = reflection_lm(prompt + _retry_nudge)
         except Exception:
             # Fall back to prescribed
             return PRESCRIBED_STRATEGIES, raw_output, True
@@ -444,9 +545,8 @@ Now do the work. Produce {k_text} skills specific to THIS benchmark's examples a
     # Retry once if too few
     expected = k if k is not None else 3  # minimum threshold for adaptive
     if len(skills) < expected:
-        retry_prompt = prompt + "\n\nIMPORTANT: Output ONLY the numbered list of skills, no preamble or explanation."
         try:
-            raw_output = reflection_lm(retry_prompt)
+            raw_output = reflection_lm(prompt + _retry_nudge)
             skills = _parse_discovered_skills(raw_output)
         except Exception:
             pass
@@ -610,6 +710,7 @@ def discover_refresh_strategies(
     reflection_lm: Any,
     benchmark: str,
     task_description: str,
+    output_shape: str,
     hard_examples: list,
     existing_strategies: list,
     k_new: int = 2,
@@ -619,16 +720,20 @@ def discover_refresh_strategies(
 
     Args:
         reflection_lm: Wrapped LM for reflection calls.
-        benchmark: Benchmark name.
-        task_description: Brief task description.
+        benchmark: Benchmark name (used only for telemetry — NOT shown to LLM).
+        task_description: 1-sentence task instruction.
+        output_shape: Short phrase describing the output.
         hard_examples: List of benchmark examples that were difficult in R1.
-        existing_strategies: Current strategies (to avoid rediscovery).
+        existing_strategies: Current strategies (to avoid rediscovery and to
+            forbid reusing their techniques).
         k_new: Target number of NEW skills to identify.
         max_examples: Maximum number of hard examples to include in prompt.
 
     Returns:
         (new_strategies, raw_output)
     """
+    del benchmark  # intentionally unused — kept for telemetry call sites
+
     # Format hard examples
     formatted = []
     for i, ex in enumerate(hard_examples[:max_examples]):
@@ -639,34 +744,76 @@ def discover_refresh_strategies(
         )
     examples_text = "\n\n".join(formatted)
 
-    # Format existing strategies
-    existing_text = "\n".join(
-        f"- {s.name}: {s.description}" for s in existing_strategies
-    )
+    # Format existing strategies (and the techniques they already use, so the
+    # refresh pass is forbidden from reusing them).
+    existing_lines = []
+    used_techniques = []
+    for s in existing_strategies:
+        tech = getattr(s, "technique", "") or "(unspecified)"
+        existing_lines.append(f"- **{s.name}** (Technique: {tech}): {s.description}")
+        if getattr(s, "technique", ""):
+            used_techniques.append(s.technique)
+    existing_text = "\n".join(existing_lines) if existing_lines else "(none)"
+    used_tech_text = ", ".join(sorted(set(used_techniques))) if used_techniques else "(none)"
 
-    prompt = f"""Task: Identify NEW skills required to solve difficult examples.
+    prompt = f"""# Task: Identify Additional Specialized Skills for Hard Examples
 
-Benchmark: {benchmark}
-Task description: {task_description}
+The downstream system already has a set of skills (listed below). Each was meant to address a different failure mode using a different prompting technique. Despite that, the examples below all failed for most candidates — meaning the existing skills do NOT cover the failure modes these examples expose.
 
-The following examples were difficult — most of our current strategies failed on them:
-{examples_text}
+Your job: identify {k_new} NEW skills that address failure modes the existing skills miss. Skills that are merely reworded versions of existing ones are useless. Skills that reuse a technique already used below are useless.
 
-Our current strategies:
+---
+
+## Task shape
+This task takes an input and produces {output_shape}. The hard examples below show the patterns.
+
+## Task instruction
+{task_description}
+
+## Existing skills (DO NOT re-discover these)
 {existing_text}
 
-Identify {k_new} NEW skills or reasoning capabilities that would help on these difficult
-examples — skills that are DISTINCT from the existing strategies listed above.
+## Techniques already used (you may NOT pick any of these)
+{used_tech_text}
 
-For each new skill, provide:
-  - Name (2-3 words)
-  - Brief description (1 sentence)
-  - Failure pattern (what going wrong looks like)
+## Hard examples (failed for most existing candidates)
+{examples_text}
 
-Format as a numbered list:
-1. <skill name>: <description>. Failure: <failure pattern>
+---
+
+## Step 1 — Diagnose what the existing skills miss
+
+List 2–3 failure modes visible in the hard examples that the existing skills do NOT address. Each must name a wrong behavior, what triggers it, and cite example numbers.
+
+## Step 2 — Propose {k_new} new skills
+
+Each skill must:
+- Address a failure mode from Step 1 (NOT one already covered by an existing skill)
+- Use a technique NOT in the "Techniques already used" list
+
+Pick from the technique list below. Each new skill must use a *different* technique from each other AND from the techniques already used.
+
+## Technique list
+
+- **Decomposition**, **Scratchpad**, **Verification step**, **Canonical output form**, **Ordering rule**, **Grounding citation**, **Consistency discipline**, **Negative check**, **Constraint enumeration**
+
+## Hard bans on skill names
+
+Banned: Contextual Understanding / Careful Reading / Attention to Detail / Logical Reasoning / Logical Deduction / Pattern Recognition (without naming *which*) / Fact Extraction / Information Extraction (unspecified) / Entity Recognition (unspecified) / Conciseness / Brevity / Data Filtering / any "ability to comprehend/understand/interpret" phrasing.
+
+---
+
+## Output format
+
+### Failure modes
+- F1: ...
+- F2: ...
+
+### Skills
+1. **<Name>** — Addresses: F<n>. <What it does>. Technique: <technique name>.
 2. ...
-"""
+
+Produce {k_new} skills. Each must use a different technique, and none may reuse a technique listed under "Techniques already used"."""
 
     raw_output = ""
     try:
@@ -674,7 +821,7 @@ Format as a numbered list:
     except Exception:
         return [], raw_output
 
-    # Reuse existing parser
+    # Reuse parser
     skills = _parse_discovered_skills(raw_output)
     # Mark as discovered (from refresh pass)
     for s in skills[:k_new]:

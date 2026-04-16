@@ -14,31 +14,30 @@ Usage:
 """
 
 import argparse
-import re
 import sys
 from datetime import datetime
 from pathlib import Path
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+# Add slime_mold to path (so we can import the production discovery function)
+sys.path.insert(0, str(Path(__file__).parent.parent / "methods" / "slime_mold"))
 
 from gepa_mutations.config import Settings
 from gepa_mutations.base import build_reflection_lm
 from gepa_mutations.benchmarks.loader import load_benchmark
-from gepa_mutations.runner.experiment import BENCHMARK_SEED_PROMPTS
-
-
-def get_task_description(benchmark: str) -> str:
-    """Get task description for a benchmark."""
-    return BENCHMARK_SEED_PROMPTS.get(benchmark, f"Solve {benchmark} task.")
+from gepa_mutations.runner.experiment import (
+    BENCHMARK_OUTPUT_SHAPES,
+    BENCHMARK_TASK_INSTRUCTIONS,
+)
+from slime_mold.colony import discover_strategies
 
 
 def format_examples(examples: list, max_examples: int = 10) -> str:
-    """Format benchmark examples for discovery prompt.
+    """Format benchmark examples for display in the markdown report.
 
-    Uses the same extraction as production discover_strategies() in colony.py:
-    tries .input, .question, then falls back to str(ex). This is what the
-    production discovery LLM sees — keep the preflight aligned with it.
+    Mirrors the extraction used by production discover_strategies() in colony.py:
+    tries .input, .question, then falls back to str(ex).
     """
     formatted = []
     for i, ex in enumerate(examples[:max_examples]):
@@ -56,63 +55,35 @@ def discover_skills_fixed_k(
     lm,
     benchmark: str,
     examples: list,
-    task_description: str,
     k: int,
-) -> tuple[list[str], str]:
-    """Run fixed-K discovery on benchmark examples.
+) -> tuple[list[str], list[str], str, bool]:
+    """Run fixed-K discovery on benchmark examples via the production function.
 
-    Returns: (skill_names, raw_response)
+    Returns: (skill_names, technique_names, raw_response, fallback_used)
     """
-    # Format examples
-    examples_text = format_examples(examples, max_examples=10)
+    task_description = BENCHMARK_TASK_INSTRUCTIONS.get(
+        benchmark, "Solve the examples correctly."
+    )
+    output_shape = BENCHMARK_OUTPUT_SHAPES.get(
+        benchmark, "a response in the format shown by the examples"
+    )
 
-    # Build fixed-K discovery prompt
-    prompt = f"""Task: Identify the distinct skills or capabilities required to solve the following task.
-
-Benchmark: {benchmark}
-Task description: {task_description}
-
-Examples from this benchmark:
-{examples_text}
-
-Identify exactly {k} distinct skills or reasoning capabilities needed to solve these examples well.
-For each skill, provide:
-  - Name (2-3 words)
-  - Brief description (1 sentence)
-  - Failure pattern (what going wrong looks like)
-
-Format as a numbered list:
-1. <skill name>: <description> Failure: <failure pattern>
-2. ...
-"""
-
-    # Call LM
     try:
-        response = lm(prompt)
+        strategies, raw_response, fallback = discover_strategies(
+            reflection_lm=lm,
+            benchmark=benchmark,
+            task_description=task_description,
+            output_shape=output_shape,
+            examples=examples,
+            k=k,
+        )
     except Exception as e:
-        print(f"  Warning: LM call failed: {e}", file=sys.stderr)
-        return [], ""
+        print(f"  Warning: discover_strategies failed: {e}", file=sys.stderr)
+        return [], [], "", False
 
-    # Parse numbered list
-    pattern = r'^\s*(\d+)[.)]\s+(.+?)(?=\n\s*\d+[.)]|\Z)'
-    matches = list(re.finditer(pattern, response, re.MULTILINE | re.DOTALL))
-
-    if not matches:
-        print(f"  Warning: Could not parse skills from response", file=sys.stderr)
-        return [], response
-
-    # Extract skills
-    skills = []
-    for match in matches:
-        skill_text = match.group(2).strip()
-        # Extract just the skill name (before the colon)
-        if ":" in skill_text:
-            skill_name = skill_text.split(":")[0].strip()
-        else:
-            skill_name = skill_text.split("\n")[0].strip()
-        skills.append(skill_name)
-
-    return skills, response
+    skill_names = [s.name for s in strategies]
+    techniques = [s.technique for s in strategies]
+    return skill_names, techniques, raw_response, fallback
 
 
 def main():
@@ -186,35 +157,39 @@ def main():
                     print(f"Error: {e}")
                     continue
 
-                # Run discovery
-                task_desc = get_task_description(benchmark)
-                skills, raw_response = discover_skills_fixed_k(
-                    lm, benchmark, examples, task_desc, args.k
+                # Run discovery (calls the production discover_strategies function)
+                skills, techniques, raw_response, fallback = discover_skills_fixed_k(
+                    lm, benchmark, examples, args.k
                 )
-                print(f"{len(skills)} skills parsed")
+                fallback_tag = " (FELL BACK TO PRESCRIBED)" if fallback else ""
+                print(f"{len(skills)} skills parsed{fallback_tag}")
 
                 # Write to markdown
                 f.write(f"## {benchmark} / seed {seed}\n\n")
 
-                f.write("### Task description\n\n")
-                f.write(f"{task_desc}\n\n")
+                f.write("### Discovery context\n\n")
+                f.write(f"- **Task instruction:** {BENCHMARK_TASK_INSTRUCTIONS.get(benchmark, '(default)')}\n")
+                f.write(f"- **Output shape:** {BENCHMARK_OUTPUT_SHAPES.get(benchmark, '(default)')}\n")
+                if fallback:
+                    f.write(f"- **Fallback used:** YES — discovery produced too few skills, fell back to PRESCRIBED_STRATEGIES\n")
+                f.write("\n")
 
                 f.write("### Examples shown to discovery LLM\n\n")
                 examples_text = format_examples(examples, max_examples=10)
-                # Escape markdown special chars minimally
                 f.write(f"{examples_text}\n\n")
 
                 f.write("### Raw LLM output\n\n")
                 f.write("```\n")
-                f.write(raw_response[:2000])  # Limit to 2000 chars for readability
-                if len(raw_response) > 2000:
+                f.write(raw_response[:3000])  # Limit for readability
+                if len(raw_response) > 3000:
                     f.write(f"\n... ({len(raw_response)} total chars)\n")
                 f.write("```\n\n")
 
-                f.write("### Parsed skills\n\n")
+                f.write("### Parsed skills (with techniques)\n\n")
                 if skills:
-                    for i, skill in enumerate(skills, 1):
-                        f.write(f"{i}. {skill}\n")
+                    for i, (skill, tech) in enumerate(zip(skills, techniques), 1):
+                        tech_label = f" — *{tech}*" if tech else ""
+                        f.write(f"{i}. {skill}{tech_label}\n")
                 else:
                     f.write("(no skills parsed — check raw output above)\n")
 
