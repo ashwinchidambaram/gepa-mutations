@@ -32,6 +32,8 @@ from gepa_mutations.storage.local import save_result
 from slime_mold.colony import (
     PRESCRIBED_STRATEGIES,
     build_failure_matrix,
+    collect_hard_examples,
+    discover_refresh_strategies,
     discover_strategies,
     find_donor,
     generate_diverse_prompts,
@@ -116,6 +118,7 @@ def run_slime_mold(
     k: int | None = None,
     mutation_mode: str = "blind",
     refresh_mode: str = "none",
+    hard_example_threshold: float = 0.7,
 ) -> ExperimentResult:
     """Run the SMNO (Slime Mold Network Optimization) experiment.
 
@@ -129,14 +132,15 @@ def run_slime_mold(
         k: Number of skills for inductive discovery (3, 5, or None for adaptive).
         mutation_mode: Mutation approach: blind (current) or crosspollin.
         refresh_mode: Refresh pass after R1: none, expand, or replace.
+        hard_example_threshold: Fraction of candidates that must have failed on an
+            example for it to count as "hard" (used by refresh_mode='expand'). Default 0.7.
 
     Returns:
         ExperimentResult with test/val scores, best prompt, and diagnostics.
     """
     # Phase 4 note: strategy_mode dispatch is implemented below in candidate generation.
-    # Phase 8: raise early for unsupported refresh mode
-    if refresh_mode != "none":
-        raise NotImplementedError(f"refresh_mode={refresh_mode} will be implemented in Phase 8")
+    if refresh_mode not in ("none", "expand"):
+        raise NotImplementedError(f"refresh_mode={refresh_mode} not yet implemented")
 
     method_name = _derive_method_name(strategy_mode, k, mutation_mode, refresh_mode)
     settings = settings or Settings()
@@ -336,6 +340,7 @@ def run_slime_mold(
             for s in strategies_used
         ],
         "discovery_outputs": discovery_outputs,
+        "hard_examples_found_count": 0,
     }
 
     _running_best_score = 0.0
@@ -436,6 +441,63 @@ def run_slime_mold(
             wall_clock_seconds=time.time() - start_time,
         )
 
+        # Refresh pass (expand variant): after R1, discover new strategies on hard examples
+        # and inject new candidates into the pool before R2.
+        _refresh_new_candidates: list[str] = []
+        _refresh_new_strategy_labels: list[str] = []
+        if round_num == 1 and refresh_mode == "expand" and strategy_mode == "inductive":
+            refresh_failure_matrix = build_failure_matrix(per_example_scores, threshold=0.5)
+            hard_ex_ids = collect_hard_examples(
+                failure_matrix=refresh_failure_matrix,
+                n_candidates=len(sorted_candidates),
+                threshold=hard_example_threshold,
+            )
+            hard_examples_count = len(hard_ex_ids)
+            method_specific["hard_examples_found_count"] = hard_examples_count
+
+            if hard_examples_count > 0:
+                hard_examples_objects = [trainset[i] for i in hard_ex_ids if i < len(trainset)]
+                new_strategies, refresh_raw = discover_refresh_strategies(
+                    reflection_lm=tracked_reflection,
+                    benchmark=benchmark,
+                    task_description=task_description,
+                    hard_examples=hard_examples_objects,
+                    existing_strategies=strategies_used,
+                    k_new=2,
+                )
+
+                method_specific.setdefault("discovery_outputs", []).append({
+                    "pass": "refresh",
+                    "k_requested": 2,
+                    "raw_llm_output": refresh_raw,
+                    "fallback_used": False,
+                    "skills": [
+                        {"name": s.name, "description": s.description, "failure_pattern": s.failure_pattern}
+                        for s in new_strategies
+                    ],
+                })
+
+                for new_strategy in new_strategies:
+                    specialized = generate_specialized_prompt(
+                        reflection_lm=tracked_reflection,
+                        strategy=new_strategy,
+                        task_description=task_description,
+                        seed_prompt=seed_prompt,
+                        examples=trainset,
+                        n=4,
+                        rng=rng,
+                    )
+                    for sp in specialized[:4]:
+                        _refresh_new_candidates.append(sp)
+                        _refresh_new_strategy_labels.append(new_strategy.name)
+
+                console.print(
+                    f"  Refresh: {hard_examples_count} hard examples found; "
+                    f"added {len(_refresh_new_candidates)} new candidates from {len(new_strategies)} new skills"
+                )
+            else:
+                console.print(f"  Refresh: 0 hard examples found; no new candidates added")
+
         # Between rounds: mutate survivors using failure info (skip after last round)
         if round_idx < len(_PRUNING_SCHEDULE) - 1:
             console.print(f"  Mutating {len(survivors)} survivors...")
@@ -531,6 +593,10 @@ def run_slime_mold(
                 mutated.append(improved)
                 # Mutated survivors keep their strategy (prompt improved, not replaced)
                 mutated_strategies.append(sorted_pos_to_strategy.get(survivor_pos, "unknown"))
+
+            # Append refresh new candidates unchanged (unevaluated; R2 will eval them fresh)
+            mutated.extend(_refresh_new_candidates)
+            mutated_strategies.extend(_refresh_new_strategy_labels)
 
             candidates = mutated
             candidate_strategies = mutated_strategies
@@ -715,6 +781,10 @@ if __name__ == "__main__":
         "--refresh-mode", choices=["none", "expand", "replace"], default="none",
         help="Refresh pass after R1: none, expand (add new candidates), or replace (swap weakest)"
     )
+    parser.add_argument(
+        "--hard-example-threshold", type=float, default=0.7,
+        help="Fraction of candidates that must fail on an example for it to be 'hard' (default: 0.7)"
+    )
     args = parser.parse_args()
 
     run_slime_mold(
@@ -726,4 +796,5 @@ if __name__ == "__main__":
         k=args.k,
         mutation_mode=args.mutation_mode,
         refresh_mode=args.refresh_mode,
+        hard_example_threshold=args.hard_example_threshold,
     )

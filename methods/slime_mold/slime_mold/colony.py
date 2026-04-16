@@ -506,6 +506,113 @@ def mutate_prompt(
 # ---------------------------------------------------------------------------
 
 
+def collect_hard_examples(
+    failure_matrix: dict[int, set[int]],
+    n_candidates: int,
+    threshold: float = 0.7,
+) -> list[int]:
+    """Identify examples that a high fraction of candidates failed on.
+
+    Args:
+        failure_matrix: {candidate_idx: set_of_failed_example_ids} from build_failure_matrix()
+        n_candidates: Total number of candidates evaluated in the round.
+        threshold: Fraction (0.0-1.0). Examples failed by >= this fraction of
+                   candidates are "hard". Default 0.7.
+
+    Returns:
+        Sorted list of example ids that are "hard" (universally difficult).
+    """
+    if n_candidates == 0 or not failure_matrix:
+        return []
+
+    # Count how many candidates failed on each example
+    failure_count: dict[int, int] = {}
+    for failed_set in failure_matrix.values():
+        for ex_id in failed_set:
+            failure_count[ex_id] = failure_count.get(ex_id, 0) + 1
+
+    # An example is "hard" if failure_count / n_candidates >= threshold
+    min_failures = threshold * n_candidates
+    hard = [ex_id for ex_id, count in failure_count.items() if count >= min_failures]
+    return sorted(hard)
+
+
+def discover_refresh_strategies(
+    reflection_lm: Any,
+    benchmark: str,
+    task_description: str,
+    hard_examples: list,
+    existing_strategies: list,
+    k_new: int = 2,
+    max_examples: int = 10,
+) -> tuple[list, str]:
+    """Run a focused discovery pass on hard examples to find missed skills.
+
+    Args:
+        reflection_lm: Wrapped LM for reflection calls.
+        benchmark: Benchmark name.
+        task_description: Brief task description.
+        hard_examples: List of benchmark examples that were difficult in R1.
+        existing_strategies: Current strategies (to avoid rediscovery).
+        k_new: Target number of NEW skills to identify.
+        max_examples: Maximum number of hard examples to include in prompt.
+
+    Returns:
+        (new_strategies, raw_output)
+    """
+    # Format hard examples
+    formatted = []
+    for i, ex in enumerate(hard_examples[:max_examples]):
+        input_str = getattr(ex, "input", None) or getattr(ex, "question", None) or str(ex)
+        answer_str = getattr(ex, "answer", None) or getattr(ex, "output", "") or ""
+        formatted.append(
+            f"Example {i+1}:\n  Input: {str(input_str)[:300]}\n  Expected: {str(answer_str)[:200]}"
+        )
+    examples_text = "\n\n".join(formatted)
+
+    # Format existing strategies
+    existing_text = "\n".join(
+        f"- {s.name}: {s.description}" for s in existing_strategies
+    )
+
+    prompt = f"""Task: Identify NEW skills required to solve difficult examples.
+
+Benchmark: {benchmark}
+Task description: {task_description}
+
+The following examples were difficult — most of our current strategies failed on them:
+{examples_text}
+
+Our current strategies:
+{existing_text}
+
+Identify {k_new} NEW skills or reasoning capabilities that would help on these difficult
+examples — skills that are DISTINCT from the existing strategies listed above.
+
+For each new skill, provide:
+  - Name (2-3 words)
+  - Brief description (1 sentence)
+  - Failure pattern (what going wrong looks like)
+
+Format as a numbered list:
+1. <skill name>: <description>. Failure: <failure pattern>
+2. ...
+"""
+
+    raw_output = ""
+    try:
+        raw_output = reflection_lm(prompt)
+    except Exception:
+        return [], raw_output
+
+    # Reuse existing parser
+    skills = _parse_discovered_skills(raw_output)
+    # Mark as discovered (from refresh pass)
+    for s in skills[:k_new]:
+        s.source = "refresh_discovered"
+    return skills[:k_new], raw_output
+
+
 def build_failure_matrix(
     per_example_scores: dict[int, dict[int, float]],
     threshold: float = 0.5,
