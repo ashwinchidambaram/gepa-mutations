@@ -20,7 +20,10 @@ from typing import Any
 import socket
 
 
-RUNS_DIR = Path("runs")
+# Allow orchestrators to override the runs directory via RUNS_DIR env var,
+# so a pilot can write to experiments/04-.../runs without disturbing the
+# repo-committed `runs/` symlink that points at the active experiment.
+RUNS_DIR = Path(os.environ.get("RUNS_DIR") or "runs")
 
 
 def _atomic_json_write(path: Path, data: dict | list) -> None:

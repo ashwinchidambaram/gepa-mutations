@@ -303,9 +303,13 @@ class ExperimentRunner:
         if max_metric_calls is None:
             max_metric_calls = PAPER_ROLLOUTS["gepa"].get(benchmark, 5000)
 
-        # Run directory for GEPA state persistence
+        # Run directory for GEPA state persistence.
+        # Honor RUNS_DIR override so orchestrators can route per-experiment outputs
+        # without touching the repo-committed `runs/` symlink.
+        import os as _os
         _mtag = get_model_tag(self.settings)
-        run_dir = f"runs/{_mtag}/{benchmark}/gepa/{seed}/gepa_state"
+        _runs_base = _os.environ.get("RUNS_DIR") or "runs"
+        run_dir = f"{_runs_base}/{_mtag}/{benchmark}/gepa/{seed}/gepa_state"
 
         # Metrics callback (with intermediate checkpointing)
         metrics_cb = MetricsCallback(benchmark=benchmark, seed=seed, run_dir=run_dir)
