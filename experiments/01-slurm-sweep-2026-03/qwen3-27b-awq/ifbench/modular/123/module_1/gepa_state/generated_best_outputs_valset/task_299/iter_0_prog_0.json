@@ -1,0 +1,3 @@
+{
+    "response": "class Node:\n    def __init__(self, value):\n        self.value = value\n        self.left = None\n        self.right = None\n\ndef insert(root, char):\n    if root is None:\n        return Node(char)\n    if char < root.value:\n        root.left = insert(root.left, char)\n    elif char > root.value:\n        root.right = insert(root.right, char)\n    return root\n\ndef recursive_process(sequence, index, tree_root):\n    if index >= len(sequence):\n        return tree_root\n    char = sequence[index].lower()\n    tree_root = insert(tree_root, char)\n    return recursive_process(sequence, index + 1, tree_root)\n\nsequence = \"aBc123\"\nroot = None\nroot = recursive_process(sequence, 0, root)\n\nThat's my answer."
+}

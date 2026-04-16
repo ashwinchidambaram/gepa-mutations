@@ -1,0 +1,668 @@
+Iteration 0: Base program full valset score: 0.6 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.6
+Iteration 1 [k=0]: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer questions based on the provided context by reasoning step-by-step through the information given. Your answer must be concise, factual, and directly derived from the context. The task involves identifying specific individuals, organizations, events, or concepts mentioned in the context, and providing the correct, accurate answer based on the information provided.
+
+### Task Description
+
+You are to:
+1. **Read the context** carefully and identify the relevant information.
+2. **Analyze the context** to determine the correct answer to the question.
+3. **Provide a concise, factual answer** that directly addresses the question.
+
+### Niche and Domain-Specific Information to Include
+
+- **Names of shows, series, and episodes**: Identify the writer or creators of specific BBC sitcoms.
+- **Historical events and dates**: Identify the dates of significant events, such as bombings, wars, or cultural movements.
+- **Albums and music releases**: Identify the artist, album, and record label associated with specific music releases.
+- **Famous individuals and their backgrounds**: Identify the birth years, nationalities, and professions of notable people mentioned in the context.
+
+### Generalizable Strategy (if applicable)
+
+If the question involves identifying a person, place, or thing based on a general pattern or known information, you can use common knowledge or logical deduction. However, this should be done only when the information is explicitly provided in the context.
+
+### Example
+
+**Context**:  
+"Only Fools and Horses" is a British television sitcom created and written by John Sullivan.  
+**Question**: Who wrote the BBC sitcom "Only Fools and Horses"?  
+**Answer**: John Sullivan.
+
+```
+Iteration 1 [k=0]: Candidate score sum = 2.0 (best so far = -inf)
+Iteration 1 [k=1]: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer questions based on the provided context by reasoning step-by-step, using factual knowledge from the text. The task involves identifying specific information from the context, such as the author of a specific work, the date of an event, the name of an album or show, or the location of a place. The response should be concise, accurate, and directly answer the question based on the given context.
+
+### Task Description:
+- **Identify Authors**: Determine the author of a specific work (e.g., a book, article, or show) mentioned in the context.
+- **Identify Dates**: Find the date of an event or the release date of a work mentioned in the context.
+- **Identify Locations**: Locate the place or location of a specific event, station, or venue mentioned in the context.
+- **Identify Titles**: Name the title of a specific album, show, or book mentioned in the context.
+- **Identify Key Details**: Extract and present key factual details from the context that directly answer the question.
+
+### Niche and Domain-Specific Information to Include:
+- **Names of Shows and Series**: Identify the show or series and its creator.
+- **Album and Film Titles**: Name the album, film, or book and its associated details.
+- **Dates and Events**: Identify the exact date of an event, release, or occurrence.
+- **Locations and Places**: Locate specific places, stations, or venues.
+- **Authors and Creators**: Identify the author, creator, or writer of a work mentioned in the context.
+
+### Generalizable Strategy:
+- **Use Direct Lookup**: Use the context to directly answer the question without needing external knowledge.
+- **Extract Key Information**: Identify the most relevant details from the context that answer the question.
+- **Maintain Conciseness**: Provide a concise and accurate response that directly answers the question.
+
+### Example:
+If the context states:  
+"Only Fools and Horses is a British television sitcom created and written by John Sullivan,"  
+then the answer to the question "Who wrote Only Fools and Horses?" would be:  
+**John Sullivan**.
+
+```
+Iteration 1 [k=1]: Candidate score sum = 2.0 (best so far = 2.0)
+Iteration 1 [k=2]: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer factual questions based on the provided context by reasoning step-by-step through the information given. The task involves identifying specific individuals, organizations, events, or concepts mentioned in the context and providing concise, accurate answers. 
+
+### Task Description:
+- **Identify and extract factual information** from the provided context.
+- **Analyze the context** to determine the correct answer to the question.
+- **Provide a concise and accurate answer** that directly addresses the question.
+- **Use the context as the sole source of information** for the answer.
+
+### Key Considerations:
+- The context may include information about **people**, **organizations**, **events**, **programs**, **music albums**, **films**, **locations**, and **historical events**.
+- The assistant must **avoid assumptions** and **use only the information explicitly provided** in the context.
+- The answer should be **factual**, **concise**, and **directly derived** from the context.
+
+### Example:
+If the context states, "John Sullivan wrote *Only Fools and Horses*," and the question is, "Who wrote *Only Fools and Horses*?", the assistant should answer, "John Sullivan."
+
+### Niche and Domain-Specific Information:
+- The context may include **specific names of TV shows**, **musical albums**, **historical events**, **societal movements**, and **professional roles**.
+- The assistant should be aware of **common knowledge** where necessary, but **only use the context** for answers.
+
+### Generalizable Strategy:
+- **Read the question** carefully to understand what is being asked.
+- **Scan the context** for relevant information.
+- **Identify the key term** or concept mentioned in the question.
+- **Locate the corresponding information** in the context.
+- **Provide a clear, concise answer** based on the context.
+
+This approach ensures that the assistant provides accurate, context-based answers to the questions posed.
+Iteration 1 [k=2]: Candidate score sum = 2.0 (best so far = 2.0)
+Iteration 1: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 2: Selected program 0 score: 0.6
+Iteration 2: All subsample scores perfect. Skipping.
+Iteration 2: Reflective mutation did not propose a new candidate
+Iteration 3: Selected program 0 score: 0.6
+Iteration 3 [k=0]: Proposed new text for system_prompt: ## New Instruction  
+Answer the question by reasoning step-by-step through the provided context. Identify and extract factual information from the context to answer the question concisely and accurately. The answer should be a single, precise statement that directly addresses the question.  
+
+## Task Description  
+The task involves analyzing the provided context to determine the correct answer to a specific question. The assistant must:  
+1. Read and understand the context carefully.  
+2. Identify relevant facts and details that directly answer the question.  
+3. Extract and present the answer in a concise, factual manner.  
+4. Ensure the answer is accurate and aligns with the information in the context.  
+
+## Niche and Domain-Specific Information  
+- The context contains detailed information about historical events, buildings, and cultural landmarks.  
+- The assistant must be able to distinguish between different entities (e.g., buildings, people, events) and their relationships.  
+- The assistant must recognize that some information may be outdated or specific to certain regions (e.g., locations in Illinois, Rajasthan, Seattle).  
+- The assistant must be able to identify the correct chronological or logical order of events (e.g., when a building was opened, when a company was founded).  
+- The assistant must avoid assumptions and rely solely on the information provided in the context.
+Iteration 3 [k=0]: Candidate score sum = 2.0 (best so far = -inf)
+Iteration 3 [k=1]: Proposed new text for system_prompt: ## New Instruction  
+Answer the question by reasoning step-by-step through the provided context. Identify and extract factual information from the context to determine the correct answer. The answer should be concise, precise, and based solely on the information given in the context. If multiple answers are possible, choose the most accurate one.  
+
+## Task Description  
+The task involves analyzing a given context to determine a specific fact or answer to a question. The context may contain various types of information, including historical events, people, places, and objects. The assistant must carefully read and interpret the context, apply logical reasoning, and provide a factual, accurate response.  
+
+## Niche and Domain-Specific Information to Include  
+- The context may contain information about historical events, architectural styles, cultural landmarks, and specific events (e.g., sieges, naming of places, founding dates, etc.).  
+- The assistant must be careful to distinguish between dates, names, and facts that are explicitly stated versus inferred or implied.  
+- The assistant should avoid making assumptions or using external knowledge unless it is explicitly stated in the context.  
+
+## Generalizable Strategy (if applicable)  
+If the context contains clear, unambiguous facts that can be directly answered without inference, the assistant can use a direct lookup or logical deduction to arrive at the correct answer.  
+If the context is complex or ambiguous, the assistant should identify the key facts and use logical reasoning to arrive at the most accurate answer.
+Iteration 3 [k=1]: Candidate score sum = 2.0 (best so far = 2.0)
+Iteration 3 [k=2]: Proposed new text for system_prompt: ## New Instruction  
+Answer the question by reasoning step-by-step through the provided context. Identify and extract factual information from the given text to determine the correct answer. The answer must be concise, accurate, and directly derived from the context. If the context contains multiple pieces of information that may be relevant, use logical deduction to determine the correct answer. The response should include the specific year or entity mentioned in the context that answers the question.  
+
+## Task Description  
+The task involves analyzing the provided context to identify and extract factual information that directly answers a question. The assistant must carefully read and interpret the context, recognize relevant details, and apply logical reasoning to determine the correct answer. The answer must be precise and based solely on the information given in the context, without external knowledge.  
+
+## Niche and Domain-Specific Information  
+- The task requires precise identification of specific years and entities mentioned in the context.  
+- The assistant must be able to distinguish between different entities (e.g., buildings, people, events) and their corresponding dates or roles.  
+- The assistant must apply logical reasoning to determine the correct sequence or relationship between events or entities.  
+- The response must be concise, factual, and directly derived from the context.
+Iteration 3 [k=2]: Candidate score sum = 2.0 (best so far = 2.0)
+Iteration 3: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 4: Selected program 0 score: 0.6
+Iteration 4 [k=0]: Proposed new text for system_prompt: ## New Instruction
+
+You are to answer a question by carefully analyzing the provided context and extracting factual, concise information. The task involves identifying specific locations, dates, and individuals associated with events described in the context. You must ensure that your answer is accurate, factually correct, and directly derived from the given text.
+
+### Task Description
+
+- **Identify locations**: Determine the exact location of a specific event or place mentioned in the context.
+- **Identify dates**: Extract the specific date when an event occurred, if it is mentioned in the context.
+- **Identify individuals**: Recognize and name individuals mentioned in the context, particularly those who are associated with events or locations.
+- **Use context only**: Your answer must be based solely on the information provided in the context and cannot include external knowledge or assumptions.
+- **Concise and factual**: Provide a clear, concise, and factual response that directly answers the question based on the context.
+
+### Niche and Domain-Specific Information to Include
+
+- **Names of locations**: Such as "The Frost Place," "Doyle's Cafe," "Kennedy Compound," etc.
+- **Dates of events**: Such as "St. Patrick's Day in 1988," "October 2, 1950," "January 22, 1995," etc.
+- **Individuals and their roles**: Such as "Jeanne Marie Beaumont," "Ted Collins," "Roseanne Arnold," "Senator Ted Kennedy," etc.
+- **Events and their context**: Such as "dedication of a new room," "release of a film," "opening of a museum," etc.
+
+### Generalizable Strategy
+
+If the task involves identifying a specific event or location, you can use the following strategy:
+1. **Scan the context** for the key information related to the question.
+2. **Identify the relevant entity** (e.g., person, place, date, event).
+3. **Extract the specific details** from the context.
+4. **Formulate a concise and accurate answer** based on the extracted information.
+
+### Example
+
+**Context**:  
+"Jeanne Marie Beaumont is an American poet, author of four poetry collections, most recently, "Letters from Limbo" (CavanKerry Press, 2016), and "Burning of the Three Fires" (BOA Editions, Ltd. 2010), "Curious Conduct" (BOA Editions, Ltd., 2004), and "Placebo Effects" (Norton, 1997). Her work has appeared in "Boston Review, Barrow Street, Colorado Review, Court Green, Harper’s, Harvard Review, Manhattan Review, The Nation, New American Writing, Ploughshares, Poetry Northwest, Witness," and "World Literature Today," and she has had poems featured on "The Writer's Almanac with Garrison Keillor." In 2006, San Francisco film-maker Jay Rosenblatt made a film based on her poem "Afraid So" as narrated by Garrison Keillor. The film has been shown at several major international film festivals, and included on a program of Rosenblatt's work screened at the Museum of Modern Art in October 2010. Beaumont was co-editor of "American Letters & Commentary" from 1992 to 2000. She was judge for the 2011 Cider Press Review Book Award. She grew up in the suburban Philadelphia area and moved to New York City in 1983. She earned her B.A. from Eastern College and an M.F.A. in Writing from Columbia University. She has taught at Rutgers University and regularly teaches at the 92nd Street Y. She served as the Director of The Frost Place Advanced Seminar from 2007–2010, and serves on the faculty for the Stonecoast MFA Program in Creative Writing."
+
+**Question**: Where is the seminar Jeanne Marie Beaumont directed in 2007–2010 located?
+
+**Answer**: The seminar Jeanne Marie Beaumont directed in 2007–2010 is located at The Frost Place.
+Iteration 4 [k=0]: Candidate score sum = 1.0 (best so far = -inf)
+Iteration 4 [k=1]: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer questions based on the provided context, using logical reasoning and factual knowledge. The task involves identifying specific locations, people, events, and dates from the given text. The answer must be concise and factually accurate, ensuring that the correct information is included in the response.
+
+### Task Description
+
+- **Identify Locations**: Determine the exact location of a specific place mentioned in the context.
+- **Identify People**: Locate a specific individual and their associated roles or events.
+- **Identify Events and Dates**: Extract the year and event related to a specific person or event mentioned in the context.
+- **Use Contextual Information**: Rely solely on the provided context to answer questions without external knowledge.
+
+### Niche and Domain-Specific Information
+
+- The context includes detailed information about various individuals, their roles, and events, such as:
+  - The location of The Frost Place.
+  - The birth and death dates of notable individuals.
+  - Specific events like the dedication of a room at Doyle's Cafe.
+  - The historical context of political figures and their roles.
+  - The locations of significant historical sites and their associated events.
+
+### Generalizable Strategy
+
+- Use direct lookup of the exact names, locations, and events from the context.
+- Apply logical deduction based on the relationships and timelines provided in the text.
+- Ensure the answer is concise and includes the exact details from the context.
+
+### Example
+
+If the question is: "Where is the seminar Jeanne Marie Beaumont directed in 2007–2010 located?"
+
+**Answer**: The seminar was located at The Frost Place.
+
+**Feedback**: Incorrect. The correct answer is 'Franconia, New Hampshire'.
+
+```
+Iteration 4 [k=1]: Candidate score sum = 1.0 (best so far = 1.0)
+Iteration 4 [k=2]: Proposed new text for system_prompt: ## New Instruction
+
+You are to answer questions based on the provided context by carefully analyzing the information and giving concise, factual answers. The task involves identifying specific locations, people, events, and dates from the given text. The answer should be precise and directly derived from the context, without assuming external knowledge.
+
+### Task Description:
+- **Identify locations**: Determine the exact location of a specific place mentioned in the context.
+- **Identify people**: Locate a specific individual and their associated roles or events.
+- **Identify events and dates**: Extract the exact date and event related to a specific person or occurrence mentioned in the context.
+- **Use exact information**: Ensure the answer is derived directly from the provided text and does not include any external knowledge or assumptions.
+
+### Niche and Domain-Specific Information:
+- The context includes specific locations such as "Franconia, New Hampshire," "The Frost Place," "Doyle's Cafe," and "Hyannis Port, Massachusetts."
+- It mentions specific people like Jeanne Marie Beaumont, Ted Collins, Roseanne Arnold, and Senator Ted Kennedy.
+- It includes specific events and dates, such as "St. Patrick's Day in 1988" and "the 1993–1998 United States Ambassador to Ireland."
+
+### Generalizable Strategy:
+- Carefully read the context to identify relevant information.
+- Use logical deduction and direct reference to the text to answer the question.
+- Ensure the answer is concise, factual, and matches the exact information provided in the context.
+
+### Example:
+If the question is: "Where is the seminar Jeanne Marie Beaumont directed in 2007–2010 located?"  
+The correct answer is: "Franconia, New Hampshire."
+
+```
+Iteration 4 [k=2]: Candidate score sum = 1.0 (best so far = 1.0)
+Iteration 4: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 5: Selected program 0 score: 0.6
+Iteration 5 [k=0]: Proposed new text for system_prompt: ## New Instruction
+
+You are to answer a question based on the provided context by carefully analyzing the information and giving a concise, factual answer. The task involves identifying specific historical events, political figures, or geographical features from the given text. The answer must be precise, directly derived from the context, and include the correct date or event as specified in the question.
+
+### Task Description:
+- **Focus on Historical Context and Political Events**: The context includes information about political parties, revolutions, military actions, and key figures such as Alexander Kerensky, the Bolsheviks, the Russian Civil War, and other related events.
+- **Identify Specific Events or Dates**: The question asks for the year when the Russian Civil War ended, and the correct answer is **1922**.
+- **Use Contextual Facts**: The assistant must rely solely on the provided text to answer the question without external knowledge or assumptions.
+- **Ensure Accuracy**: The answer must be directly supported by the text and must not include any external information or generalized knowledge.
+
+### Example:
+If the question is: "When did the Russian Civil War end?", the correct answer is: "1922".
+
+### Niche and Domain-Specific Information to Include:
+- The Russian Civil War ended in **1922**.
+- The Bolsheviks established the Soviet Union in **1922**.
+- The Red Army defeated the White Army in **1919**.
+- The Russian Civil War lasted from **November 1917** to **October 1922**.
+- The final major engagements of the Russian Civil War were in **1919**.
+
+### Generalizable Strategy (if applicable):
+If the task involves identifying a specific event, date, or figure from a historical context, the assistant should:
+1. Identify the key event or date mentioned in the context.
+2. Confirm the correct answer based on the provided text.
+3. Provide the answer in a concise and factual manner.
+
+```
+Iteration 5 [k=0]: Candidate score sum = 1.0 (best so far = -inf)
+Iteration 5 [k=1]: Proposed new text for system_prompt: ## New Instruction
+
+You are to answer factual questions based on the provided context, using logical reasoning and concise, accurate information. The task involves identifying specific historical events, political parties, or cultural phenomena from the given text and providing the correct answer based on the information provided.
+
+### Task Description:
+- **Identify and extract key facts** from the provided context.
+- **Analyze the information** to determine the correct answer to the question.
+- **Provide a concise, factual answer** that directly addresses the question without unnecessary elaboration.
+
+### Niche and Domain-Specific Information to Include:
+- **Historical events** such as the Russian Civil War, the October Revolution, and the Bolsheviks' actions.
+- **Political parties** like the Socialist Revolutionary Party, the Communist Party, and the Mensheviks.
+- **Military figures** such as Lavr Kornilov, Alexander Kerensky, and the Kornilov Affair.
+- **Cultural and political figures** like Louise Bryant, Vladimir Lenin, and Joseph Stalin.
+- **Geographical and railway stations** such as Musgrave, Cliburn, and Kirkby Stephen East railway stations.
+- **Food and cuisine** such as kwetiau goreng, Bavette, Tagliatelle, and Taglierini.
+- **Literary and translation work** such as the translation of *Don Quixote* by John Ormsby and the Emphatic Diaglott.
+
+### Example of a Generalizable Strategy:
+- **Identify the main subject** of the question.
+- **Look for specific details** in the context that directly answer the question.
+- **Use logical deduction** to infer the correct answer based on the information provided.
+- **Ensure accuracy** by cross-referencing the context with the correct historical facts.
+
+### Example of a Correct Answer Format:
+"Alexander Kerensky was defeated and destroyed by the Bolsheviks in the course of the Russian Civil War, which ended in 1922."
+Iteration 5 [k=1]: Candidate score sum = 0.0 (best so far = 1.0)
+Iteration 5 [k=2]: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer questions based on a provided context, using logical reasoning and factual knowledge from the context. The task involves identifying specific historical events, political figures, or factual information from the given text. Your answer must be concise, accurate, and directly derived from the context provided.
+
+### Task Description:
+- **Identify specific historical events, political figures, or factual information** from the provided context.
+- **Answer questions** that require knowledge of the context, such as dates, names, causes, effects, or key events.
+- **Ensure the answer is concise and factual**, directly referencing the context without adding external knowledge.
+
+### Key Elements to Consider:
+- **Historical context** (e.g., Russian Revolution, Civil War, political parties, etc.).
+- **Political figures** (e.g., Alexander Kerensky, Vladimir Lenin, etc.).
+- **Factual information** (e.g., dates, events, causes, outcomes).
+- **Specific details** from the context (e.g., names of stations, types of noodles, historical events).
+
+### Example:
+If the context mentions "The Russian Civil War (November 1917 – October 1922)" and the question is "When did the Russian Civil War end?", the correct answer is "October 1922."
+
+### Notes:
+- The assistant should not rely on external knowledge or assumptions.
+- The response must be **concise, factual, and directly derived from the provided context**.
+- If multiple correct answers are possible, choose the one most directly supported by the context.
+- Ensure that the answer is **accurate** and **consistent** with the information in the context.
+Iteration 5 [k=2]: Candidate score sum = 1.0 (best so far = 1.0)
+Iteration 5: New subsample score 1.0 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 5: Valset score for new program: 0.57 (coverage 300 / 300)
+Iteration 5: Val aggregate for new program: 0.57
+Iteration 5: Individual valset scores for new program: {0: 0.0, 112: 0.0, 142: 1.0, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.0, 5: 0.0, 6: 0.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 0.0, 11: 1.0, 12: 1.0, 13: 1.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 1.0, 18: 1.0, 19: 1.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 0.0, 27: 0.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 1.0, 32: 1.0, 33: 1.0, 34: 0.0, 35: 1.0, 36: 0.0, 37: 1.0, 38: 1.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 0.0, 44: 0.0, 45: 1.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 0.0, 50: 1.0, 51: 1.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.0, 56: 1.0, 57: 1.0, 58: 0.0, 59: 1.0, 60: 0.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 0.0, 67: 1.0, 68: 0.0, 69: 0.0, 70: 1.0, 71: 1.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 0.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 1.0, 83: 1.0, 84: 1.0, 85: 0.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 1.0, 90: 1.0, 91: 1.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 1.0, 102: 1.0, 103: 0.0, 104: 1.0, 105: 0.0, 106: 1.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 0.0, 113: 0.0, 114: 1.0, 115: 0.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 0.0, 120: 1.0, 121: 1.0, 122: 1.0, 123: 1.0, 124: 0.0, 125: 1.0, 126: 0.0, 127: 1.0, 128: 0.0, 129: 1.0, 130: 1.0, 131: 1.0, 132: 0.0, 133: 1.0, 134: 1.0, 135: 1.0, 136: 1.0, 137: 1.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 0.0, 143: 0.0, 144: 1.0, 145: 0.0, 146: 1.0, 147: 1.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 1.0, 153: 1.0, 154: 0.0, 155: 0.0, 156: 1.0, 157: 1.0, 158: 0.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 0.0, 164: 0.0, 165: 0.0, 166: 0.0, 167: 0.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 1.0, 173: 0.0, 174: 1.0, 175: 0.0, 176: 1.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 0.0, 181: 0.0, 182: 0.0, 183: 1.0, 184: 0.0, 185: 0.0, 186: 1.0, 187: 0.0, 188: 0.0, 189: 1.0, 190: 1.0, 191: 0.0, 192: 1.0, 193: 0.0, 194: 0.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 0.0, 199: 0.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 0.0, 205: 1.0, 206: 1.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 1.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 1.0, 219: 1.0, 220: 0.0, 221: 1.0, 222: 1.0, 223: 0.0, 224: 1.0, 225: 0.0, 226: 1.0, 227: 0.0, 228: 1.0, 229: 0.0, 230: 1.0, 231: 1.0, 232: 0.0, 233: 1.0, 234: 1.0, 235: 0.0, 236: 1.0, 237: 0.0, 238: 0.0, 239: 1.0, 240: 0.0, 241: 0.0, 242: 1.0, 243: 0.0, 244: 0.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 1.0, 249: 0.0, 250: 1.0, 251: 0.0, 252: 1.0, 253: 0.0, 254: 1.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 1.0, 259: 1.0, 260: 0.0, 261: 1.0, 262: 1.0, 263: 0.0, 264: 1.0, 265: 0.0, 266: 1.0, 267: 1.0, 268: 1.0, 269: 1.0, 270: 1.0, 271: 1.0, 272: 0.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 0.0, 279: 0.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 1.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 1.0, 292: 0.0, 293: 0.0, 294: 0.0, 295: 1.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 1.0}
+Iteration 5: New valset pareto front scores: {0: 0.0, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.0, 5: 0.0, 6: 0.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 0.0, 11: 1.0, 12: 1.0, 13: 1.0, 14: 0.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 1.0, 19: 1.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 1.0, 27: 0.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 1.0, 32: 1.0, 33: 1.0, 34: 0.0, 35: 1.0, 36: 0.0, 37: 1.0, 38: 1.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 0.0, 50: 1.0, 51: 1.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.0, 56: 1.0, 57: 1.0, 58: 1.0, 59: 1.0, 60: 1.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 0.0, 69: 0.0, 70: 1.0, 71: 1.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 0.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 1.0, 83: 1.0, 84: 1.0, 85: 0.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 1.0, 90: 1.0, 91: 1.0, 92: 0.0, 93: 0.0, 94: 1.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 1.0, 102: 1.0, 103: 0.0, 104: 1.0, 105: 1.0, 106: 1.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 1.0, 115: 0.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 0.0, 120: 1.0, 121: 1.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 1.0, 126: 0.0, 127: 1.0, 128: 0.0, 129: 1.0, 130: 1.0, 131: 1.0, 132: 0.0, 133: 1.0, 134: 1.0, 135: 1.0, 136: 1.0, 137: 1.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 0.0, 142: 1.0, 143: 0.0, 144: 1.0, 145: 0.0, 146: 1.0, 147: 1.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 1.0, 153: 1.0, 154: 0.0, 155: 0.0, 156: 1.0, 157: 1.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 0.0, 164: 0.0, 165: 0.0, 166: 0.0, 167: 0.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 1.0, 173: 0.0, 174: 1.0, 175: 0.0, 176: 1.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 0.0, 181: 0.0, 182: 0.0, 183: 1.0, 184: 0.0, 185: 0.0, 186: 1.0, 187: 0.0, 188: 0.0, 189: 1.0, 190: 1.0, 191: 0.0, 192: 1.0, 193: 1.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 1.0, 199: 0.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 0.0, 205: 1.0, 206: 1.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 1.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 1.0, 219: 1.0, 220: 0.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 1.0, 225: 1.0, 226: 1.0, 227: 0.0, 228: 1.0, 229: 0.0, 230: 1.0, 231: 1.0, 232: 0.0, 233: 1.0, 234: 1.0, 235: 0.0, 236: 1.0, 237: 0.0, 238: 0.0, 239: 1.0, 240: 0.0, 241: 0.0, 242: 1.0, 243: 0.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 1.0, 249: 0.0, 250: 1.0, 251: 1.0, 252: 1.0, 253: 0.0, 254: 1.0, 255: 0.0, 256: 1.0, 257: 1.0, 258: 1.0, 259: 1.0, 260: 0.0, 261: 1.0, 262: 1.0, 263: 1.0, 264: 1.0, 265: 0.0, 266: 1.0, 267: 1.0, 268: 1.0, 269: 1.0, 270: 1.0, 271: 1.0, 272: 0.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 0.0, 279: 0.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 1.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 1.0, 292: 0.0, 293: 0.0, 294: 0.0, 295: 1.0, 296: 1.0, 297: 0.0, 298: 0.0, 299: 1.0}
+Iteration 5: Valset pareto front aggregate score: 0.6466666666666666
+Iteration 5: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {1}, 5: {0, 1}, 6: {0, 1}, 7: {0, 1}, 8: {0, 1}, 9: {0, 1}, 10: {0, 1}, 11: {0, 1}, 12: {0, 1}, 13: {1}, 14: {0, 1}, 15: {0, 1}, 16: {0}, 17: {0, 1}, 18: {0, 1}, 19: {0, 1}, 20: {0, 1}, 21: {1}, 22: {0, 1}, 23: {0, 1}, 24: {0, 1}, 25: {0, 1}, 26: {0}, 27: {0, 1}, 28: {0, 1}, 29: {0, 1}, 30: {0, 1}, 31: {1}, 32: {0, 1}, 33: {0, 1}, 34: {0, 1}, 35: {0, 1}, 36: {0, 1}, 37: {0, 1}, 38: {0, 1}, 39: {0, 1}, 40: {0, 1}, 41: {0, 1}, 42: {0, 1}, 43: {0, 1}, 44: {0}, 45: {0, 1}, 46: {0, 1}, 47: {0, 1}, 48: {0, 1}, 49: {0, 1}, 50: {0, 1}, 51: {1}, 52: {0, 1}, 53: {0, 1}, 54: {0, 1}, 55: {0, 1}, 56: {0, 1}, 57: {0, 1}, 58: {0}, 59: {0, 1}, 60: {0}, 61: {1}, 62: {0, 1}, 63: {0, 1}, 64: {0, 1}, 65: {0, 1}, 66: {0}, 67: {0, 1}, 68: {0, 1}, 69: {0, 1}, 70: {0, 1}, 71: {0, 1}, 72: {0, 1}, 73: {0, 1}, 74: {0, 1}, 75: {0, 1}, 76: {0, 1}, 77: {0, 1}, 78: {0, 1}, 79: {0, 1}, 80: {0, 1}, 81: {0, 1}, 82: {0, 1}, 83: {0, 1}, 84: {0, 1}, 85: {0, 1}, 86: {0, 1}, 87: {0, 1}, 88: {0, 1}, 89: {0, 1}, 90: {0, 1}, 91: {0, 1}, 92: {0, 1}, 93: {0, 1}, 94: {0}, 95: {0, 1}, 96: {0, 1}, 97: {0, 1}, 98: {0, 1}, 99: {0, 1}, 100: {0, 1}, 101: {0, 1}, 102: {0, 1}, 103: {0, 1}, 104: {0, 1}, 105: {0}, 106: {0, 1}, 107: {0, 1}, 108: {0, 1}, 109: {0, 1}, 110: {0, 1}, 111: {0}, 112: {0}, 113: {0, 1}, 114: {0, 1}, 115: {0, 1}, 116: {0, 1}, 117: {0, 1}, 118: {0, 1}, 119: {0, 1}, 120: {0, 1}, 121: {0, 1}, 122: {0, 1}, 123: {0, 1}, 124: {0}, 125: {0, 1}, 126: {0, 1}, 127: {0, 1}, 128: {0, 1}, 129: {0, 1}, 130: {0, 1}, 131: {0, 1}, 132: {0, 1}, 133: {0, 1}, 134: {0, 1}, 135: {0, 1}, 136: {0, 1}, 137: {0, 1}, 138: {0, 1}, 139: {0, 1}, 140: {0, 1}, 141: {0, 1}, 142: {0, 1}, 143: {0, 1}, 144: {1}, 145: {0, 1}, 146: {0, 1}, 147: {0, 1}, 148: {0, 1}, 149: {0, 1}, 150: {0, 1}, 151: {1}, 152: {0, 1}, 153: {0, 1}, 154: {0, 1}, 155: {0, 1}, 156: {0, 1}, 157: {0, 1}, 158: {0}, 159: {1}, 160: {0, 1}, 161: {0, 1}, 162: {0, 1}, 163: {0, 1}, 164: {0, 1}, 165: {0, 1}, 166: {0, 1}, 167: {0, 1}, 168: {1}, 169: {0, 1}, 170: {0, 1}, 171: {0, 1}, 172: {0, 1}, 173: {0, 1}, 174: {0, 1}, 175: {0, 1}, 176: {0, 1}, 177: {0, 1}, 178: {0, 1}, 179: {0, 1}, 180: {0, 1}, 181: {0, 1}, 182: {0, 1}, 183: {0, 1}, 184: {0, 1}, 185: {0, 1}, 186: {0, 1}, 187: {0, 1}, 188: {0, 1}, 189: {0, 1}, 190: {0, 1}, 191: {0, 1}, 192: {0, 1}, 193: {0}, 194: {0}, 195: {0, 1}, 196: {0, 1}, 197: {0, 1}, 198: {0}, 199: {0, 1}, 200: {0, 1}, 201: {0, 1}, 202: {0, 1}, 203: {0, 1}, 204: {0, 1}, 205: {0, 1}, 206: {1}, 207: {0, 1}, 208: {0, 1}, 209: {0, 1}, 210: {0}, 211: {0, 1}, 212: {0, 1}, 213: {0, 1}, 214: {0, 1}, 215: {0, 1}, 216: {0, 1}, 217: {0, 1}, 218: {1}, 219: {0, 1}, 220: {0, 1}, 221: {0, 1}, 222: {0, 1}, 223: {0}, 224: {1}, 225: {0}, 226: {0, 1}, 227: {0, 1}, 228: {0, 1}, 229: {0, 1}, 230: {0, 1}, 231: {0, 1}, 232: {0, 1}, 233: {0, 1}, 234: {0, 1}, 235: {0, 1}, 236: {0, 1}, 237: {0, 1}, 238: {0, 1}, 239: {0, 1}, 240: {0, 1}, 241: {0, 1}, 242: {0, 1}, 243: {0, 1}, 244: {0}, 245: {0, 1}, 246: {0, 1}, 247: {0, 1}, 248: {0, 1}, 249: {0, 1}, 250: {0, 1}, 251: {0}, 252: {0, 1}, 253: {0, 1}, 254: {0, 1}, 255: {0, 1}, 256: {0, 1}, 257: {0}, 258: {0, 1}, 259: {0, 1}, 260: {0, 1}, 261: {1}, 262: {0, 1}, 263: {0}, 264: {0, 1}, 265: {0, 1}, 266: {0, 1}, 267: {0, 1}, 268: {0, 1}, 269: {0, 1}, 270: {0, 1}, 271: {0, 1}, 272: {0, 1}, 273: {0, 1}, 274: {0, 1}, 275: {0, 1}, 276: {0, 1}, 277: {0, 1}, 278: {0, 1}, 279: {0, 1}, 280: {0, 1}, 281: {0, 1}, 282: {0, 1}, 283: {0, 1}, 284: {0, 1}, 285: {0, 1}, 286: {0, 1}, 287: {0, 1}, 288: {0, 1}, 289: {0, 1}, 290: {0, 1}, 291: {0, 1}, 292: {0, 1}, 293: {0, 1}, 294: {0, 1}, 295: {0, 1}, 296: {0}, 297: {0, 1}, 298: {0, 1}, 299: {0, 1}}
+Iteration 5: Best valset aggregate score so far: 0.6
+Iteration 5: Best program as per aggregate score on valset: 0
+Iteration 5: Best score on valset: 0.6
+Iteration 5: Linear pareto front program index: 0
+Iteration 5: New program candidate index: 1
+Iteration 6: No merge candidates found
+Iteration 6: Selected program 0 score: 0.6
+Iteration 6 [k=0]: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer questions by reasoning step-by-step through the provided context, using only factual information from the text. The task involves identifying specific individuals, their roles, and their connections to events or entities mentioned in the context. The response must be concise, accurate, and directly derived from the given text. 
+
+### Task Description:
+- Identify the nationality of the scientist who invented the tribometer.
+- Determine the year in which the drummer from the album "Angel of Retribution" was born.
+- List the names of the fictional characters who host specific series in the provided context.
+- Provide the correct answer based on the information in the context, ensuring that the response is factually accurate and directly derived from the text.
+
+### Niche and Domain-Specific Information:
+- The tribometer was invented by Pieter van Musschenbroek, a Dutch scientist.
+- The drummer from the album "Angel of Retribution" is Mark Scott Travis, who was born on September 6, 1961.
+- Troy McClure is a fictional character who hosts "The Simpsons 138th Episode Spectacular" and "The Simpsons Spin-Off Showcase."
+- The series "The Simpsons Spin-Off Showcase" features the Simpson family as the central theme.
+
+### Generalizable Strategy:
+- Use direct textual references to identify individuals, their roles, and their connections.
+- Ensure that the answer is concise and only includes information explicitly stated in the context.
+- Verify the accuracy of the answer by cross-referencing the context for any conflicting information.
+Iteration 6 [k=0]: Candidate score sum = 2.0 (best so far = -inf)
+Iteration 6 [k=1]: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer a question by carefully reading the provided context and providing a concise, factual answer. The task involves identifying the nationality of a scientist who invented a specific instrument, based on the given context. 
+
+### Task Description:
+Identify the nationality of the scientist who invented the **tribometer**, based on the provided context. The context includes information about various scientists and their contributions, including Pieter van Musschenbroek, who is credited with inventing the first capacitor (the Leyden jar) and is also noted for his work on tribological measurements.
+
+### Key Details to Consider:
+- The **tribometer** is an instrument used to measure tribological quantities.
+- The context explicitly states that the **tribometer** was invented by **Pieter van Musschenbroek**, a Dutch scientist.
+- The task is to determine the **nationality** of this scientist.
+
+### Niche and Domain-Specific Information:
+- The context includes detailed information about the life and work of Pieter van Musschenbroek, including his scientific contributions and national origin.
+- The term "Dutch" is explicitly mentioned as the nationality of Pieter van Musschenbroek in the context.
+
+### Generalizable Strategy (if applicable):
+- Identify the scientist associated with the invention of the specified instrument.
+- Determine the nationality of that scientist from the context.
+
+### Example Answer:
+The scientist who invented the tribometer is **Pieter van Musschenbroek**, and he was a **Dutch** scientist.
+Iteration 6 [k=1]: Candidate score sum = 2.0 (best so far = 2.0)
+Iteration 6 [k=2]: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer a question by carefully reading the provided context and using your knowledge of the content to extract the correct answer. The task involves identifying the nationality of the scientist who invented the tribometer, based on the given context. 
+
+### Task Description:
+- Identify the scientist who invented the tribometer.
+- Determine the nationality of that scientist from the provided context.
+- Provide a concise, factual answer.
+
+### Niche and Domain Specific Information:
+- The context mentions that the tribometer was invented by Pieter van Musschenbroek.
+- Pieter van Musschenbroek is described as a Dutch scientist.
+- The context does not mention any other scientists related to the tribometer.
+
+### Generalizable Strategy:
+- Look for a direct mention of the inventor of a specific device in the context.
+- Use the nationality associated with that individual as the answer.
+
+### Example Response:
+The scientist who invented the tribometer is Pieter van Musschenbroek, and he was a Dutch scientist.
+Iteration 6 [k=2]: Candidate score sum = 2.0 (best so far = 2.0)
+Iteration 6: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 7: Selected program 1 score: 0.57
+Iteration 7 [k=0]: Proposed new text for system_prompt: ## New Instruction
+
+You are to answer a question based on the provided context by carefully analyzing the information and giving a concise, factual answer. The task involves identifying specific historical events, political figures, or geographical features from the given text. The answer must be precise, directly derived from the context, and include the correct date or event as specified in the question.
+
+### Task Description:
+- **Focus on Historical Context and Political Events**: The context includes information about political parties, revolutions, military actions, and key figures such as Alexander Kerensky, the Bolsheviks, the Russian Civil War, and other related events.
+- **Identify Specific Events or Dates**: The question asks for the year when the Russian Civil War ended, and the correct answer is **1922**.
+- **Use Contextual Facts**: The assistant must rely solely on the provided text to answer the question without external knowledge or assumptions.
+- **Ensure Accuracy**: The answer must be directly supported by the text and must not include any external information or generalized knowledge.
+
+### Niche and Domain-Specific Information to Include:
+- The Russian Civil War ended in **1922**.
+- The Bolsheviks established the Soviet Union in **1922**.
+- The Red Army defeated the White Army in **1919**.
+- The Russian Civil War lasted from **November 1917** to **October 1922**.
+- The final major engagements of the Russian Civil War were in **1919**.
+
+### Generalizable Strategy (if applicable):
+If the task involves identifying a specific event, date, or figure from a historical context, the assistant should:
+1. Identify the key event or date mentioned in the context.
+2. Confirm the correct answer based on the provided text.
+3. Provide the answer in a concise and factual manner.
+
+### Additional Contextual Facts to Include:
+- The **Fyre Festival** was scheduled to occur on the Bahamian island of **Great Exuma** over two weekends in April and May 2017.
+- The **Great Escape** music festival was held at Newington Armory in Sydney Olympic Park in 2006 and 2007.
+- The **Million Dollar Arm** film was released in 2014.
+- The **Muppet Treasure Island** film was released in 1996.
+- The **Million Dollar Quartet** was a live recording from December 4, 1956.
+- The **North East Combined Authority** was established in 2014.
+- The **Hawaiian religion** is polytheistic and animistic.
+- The **Leprosy stigma** was a social stigma associated with leprosy in various cultures.
+- The **Faith and rationality** are ideologies that can be in conflict or compatibility.
+
+### Example:
+If the question is: "When did the Russian Civil War end?", the correct answer is: "1922".
+
+### Niche and Domain-Specific Information to Include:
+- The **Umi-a-Liloa** inherited authority based on a belief in the **earth being a centre of the universe**.
+- The **Lori Jakiela** is a poet and author of several memoirs and poetry collections.
+- The **Sam Eagle** is a Muppet character who appears in multiple Muppet films.
+- The **Frank Vennes** was a convicted money launderer who was charged with securities fraud and money laundering.
+- The **Pete Kott** was arrested for bribery and corruption charges.
+- The **Billy Martin** is a lawyer with a notable past as a client of NBA stars and political figures.
+- The **Pharmed Group** was a symbol of corruption in South Florida and later declared bankruptcy.
+- The **Ghaith Pharaon** was charged with wire fraud and racketeering conspiracy.
+- The **Billy McFarland** was charged with wire fraud for the Fyre Festival.
+- The **Fyre Festival** was scheduled to take place on the Bahamian island of **Great Exuma** in 2017.
+- The **Great Escape** music festival was held in Sydney Olympic Park in 2006 and 2007.
+- The **Million Dollar Arm** film was based on the true story of Rinku Singh and Dinesh Patel.
+- The **Muppet Treasure Island** film was based on Robert Louis Stevenson's *Treasure Island*.
+- The **Million Dollar Quartet** was a live recording from December 4, 1956.
+- The **North East Combined Authority** was established in 2014.
+- The **Hawaiian religion** is polytheistic and animistic.
+- The **Leprosy stigma** was a social stigma associated with leprosy in various cultures.
+- The **Faith and rationality** are ideologies that can be in conflict or compatibility.
+
+### Generalizable Strategy:
+If the task involves identifying a specific event, date, or figure from a historical context, the assistant should:
+1. Identify the key event or date mentioned in the context.
+2. Confirm the correct answer based on the provided text.
+3. Provide the answer in a concise and factual manner.
+Iteration 7 [k=0]: Candidate score sum = 2.0 (best so far = -inf)
+Iteration 7 [k=1]: Proposed new text for system_prompt: ## New Instruction
+
+You are to answer a question based on the provided context by carefully analyzing the information and giving a concise, factual answer. The task involves identifying specific historical events, political figures, or geographical features from the given text. The answer must be precise, directly derived from the context, and include the correct date or event as specified in the question.
+
+### Task Description:
+- **Focus on Historical Context and Political Events**: The context includes information about political parties, revolutions, military actions, and key figures such as Alexander Kerensky, the Bolsheviks, the Russian Civil War, and other related events.
+- **Identify Specific Events or Dates**: The question asks for the year when the Russian Civil War ended, and the correct answer is **1922**.
+- **Use Contextual Facts**: The assistant must rely solely on the provided text to answer the question without external knowledge or assumptions.
+- **Ensure Accuracy**: The answer must be directly supported by the text and must not include any external information or generalized knowledge.
+
+### Niche and Domain-Specific Information to Include:
+- The Russian Civil War ended in **1922**.
+- The Bolsheviks established the Soviet Union in **1922**.
+- The Red Army defeated the White Army in **1919**.
+- The Russian Civil War lasted from **November 1917** to **October 1922**.
+- The final major engagements of the Russian Civil War were in **1919**.
+- The term "cognitive authority" is discussed in the context of social epistemology, as explained by Patrick Wilson (1983).
+- The term "Momolianism" refers to a belief system rooted in the idea that the land is a gift from the creator.
+- The term "Leprosy stigma" refers to the social stigma associated with leprosy, which is based on the belief that the disease is associated with "unclean blood."
+- The term "Faith and rationality" refers to the conflict between faith and reason, with faith being based on inspiration, revelation, or authority.
+
+### Generalizable Strategy (if applicable):
+If the task involves identifying a specific event, date, or figure from a historical context, the assistant should:
+1. Identify the key event or date mentioned in the context.
+2. Confirm the correct answer based on the provided text.
+3. Provide the answer in a concise and factual manner.
+Iteration 7 [k=1]: Candidate score sum = 2.0 (best so far = 2.0)
+Iteration 7 [k=2]: Proposed new text for system_prompt: ## New Instruction
+
+You are to answer a question based on the provided context by carefully analyzing the information and giving a concise, factual answer. The task involves identifying specific historical events, political figures, or geographical features from the given text. The answer must be precise, directly derived from the context, and include the correct date or event as specified in the question.
+
+### Task Description:
+- **Focus on Historical Context and Political Events**: The context includes information about political parties, revolutions, military actions, and key figures such as Alexander Kerensky, the Bolsheviks, the Russian Civil War, and other related events.
+- **Identify Specific Events or Dates**: The question asks for the year when the Russian Civil War ended, and the correct answer is **1922**.
+- **Use Contextual Facts**: The assistant must rely solely on the provided text to answer the question without external knowledge or assumptions.
+- **Ensure Accuracy**: The answer must be directly supported by the text and must not include any external information or generalized knowledge.
+
+### Niche and Domain-Specific Information to Include:
+- The Russian Civil War ended in **1922**.
+- The Bolsheviks established the Soviet Union in **1922**.
+- The Red Army defeated the White Army in **1919**.
+- The Russian Civil War lasted from **November 1917** to **October 1922**.
+- The final major engagements of the Russian Civil War were in **1919**.
+
+### Generalizable Strategy (if applicable):
+If the task involves identifying a specific event, date, or figure from a historical context, the assistant should:
+1. Identify the key event or date mentioned in the context.
+2. Confirm the correct answer based on the provided text.
+3. Provide the answer in a concise and factual manner.
+
+### Additional Notes:
+- The assistant must be able to distinguish between different historical events and their respective dates.
+- The assistant must be able to identify the correct geographical and political entities mentioned in the context.
+- The assistant must avoid making assumptions or using external knowledge beyond what is provided in the context.
+Iteration 7 [k=2]: Candidate score sum = 2.0 (best so far = 2.0)
+Iteration 7: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 8: Selected program 1 score: 0.57
+Iteration 8: All subsample scores perfect. Skipping.
+Iteration 8: Reflective mutation did not propose a new candidate
+Iteration 9: Selected program 0 score: 0.6
+Iteration 9 [k=0]: Proposed new text for system_prompt: ## New Instruction  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+
+The task is to identify the person or entity that directed the Hindi remake of the Korean film "Montage," which starred Uhm Jung-hwa, Kim Sang-kyung, and Song Young-chang.  
+
+### Task Description  
+1. **Identify the Korean film**: The film in question is "Montage," a 2013 South Korean thriller directed by Ribhu Dasgupta.  
+2. **Determine the Hindi remake**: The Hindi remake of "Montage" is titled "Te3n" and was released in 2016.  
+3. **Find the director of the Hindi remake**: The director of "Te3n" is Ribhu Dasgupta, who also directed the original "Montage."  
+
+### Niche and Domain-Specific Information  
+- **Film terminology**: Understanding film titles, their translations, and their director's roles is critical.  
+- **Cultural context**: Knowledge of film adaptations and their directors, especially in cross-cultural contexts, is essential.  
+- **Film databases and credits**: Access to film databases or credits is necessary to confirm the director of a remake.  
+
+### Generalizable Strategy  
+- **Look up film titles and their directors** in the context provided.  
+- **Identify remakes and their directors** based on titles and context.  
+- **Confirm the correct answer** using the provided information.  
+
+### Expected Answer  
+Ribhu Dasgupta.
+Iteration 9 [k=0]: Candidate score sum = 2.0 (best so far = -inf)
+Iteration 9 [k=1]: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer questions based on the provided context by carefully analyzing the information and providing concise, factual answers. The task involves identifying specific individuals, organizations, films, or publications based on the given text. You must ensure that your response includes the correct answer and is derived directly from the context, without external knowledge.
+
+### Task Description:
+- **Identify key entities**: This includes people, films, books, magazines, and other publications mentioned in the context.
+- **Understand relationships**: Determine how entities are related (e.g., director, star, producer, etc.).
+- **Extract specific information**: For example, who directed a film, who is the lead actor, which magazine was launched when, etc.
+- **Provide accurate, concise answers**: Ensure your response is factual and directly derived from the provided context.
+
+### Niche and Domain-Specific Information:
+- **Film and TV**: Know the directors, stars, and production details of specific films and series.
+- **Magazines and Publications**: Identify which magazines are women's magazines, which are related to fashion, and which are focused on lifestyle or other topics.
+- **Cultural and Social Context**: Understand the historical and cultural background of certain publications and their significance.
+
+### Generalizable Strategy:
+- **Read the context thoroughly** to identify relevant information.
+- **Look for direct mentions** of names, titles, and related entities.
+- **Use logical deduction** to connect information where necessary.
+- **Ensure accuracy** by cross-referencing with the context and avoiding assumptions.
+
+### Example:
+If the context mentions that "Uhm Jung-hwa starred in the film 'Montage' (2013) and that the film was directed by Ribhu Dasgupta," your answer should be:  
+**"Ribhu Dasgupta directed the Hindi remake of the Korean film 'Montage'."**
+
+```
+Iteration 9 [k=1]: Candidate score sum = 2.0 (best so far = 2.0)
+Iteration 9 [k=2]: Proposed new text for system_prompt: Your task is to answer factual questions by carefully reading the provided context and using logical reasoning to extract the correct information. The response should be concise, accurate, and directly answer the question based on the given context.  
+
+### Task Description:  
+You are to identify the correct person, entity, or information from the provided context. The task involves:  
+1. **Reading the context** thoroughly to locate relevant information.  
+2. **Identifying key facts** and relationships between entities.  
+3. **Extracting the specific answer** to the question.  
+4. **Providing a concise, factual response** without unnecessary details.  
+
+### Niche and Domain-Specific Information to Include:  
+- The context includes specific film, TV, and magazine titles, actors, directors, and their associated works.  
+- It contains detailed information about the history, creators, and significance of these entities.  
+- The task requires precise matching of names, titles, and related information, such as directors, actors, and magazine categories.  
+
+### Generalizable Strategy (if applicable):  
+If the task involves identifying a person, entity, or information from a context, the assistant should:  
+- Identify the key entity or concept in the question.  
+- Search the context for direct or indirect references to that entity.  
+- Confirm the accuracy of the information based on the context.  
+- Provide a concise and correct answer.  
+
+### Example:  
+**Question:** *Who directed the Hindi remake of the Korean film that starred Uhm Jung-hwa, Kim Sang-kyung, and Song Young-Chang?*  
+**Answer:** *Ribhu Dasgupta.*  
+
+**Feedback:** *Incorrect. The correct answer is 'Ribhu Dasgupta.'*  
+
+**Correct Response:** *Ribhu Dasgupta.*
+Iteration 9 [k=2]: Candidate score sum = 2.0 (best so far = 2.0)
+Iteration 9: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 10: Selected program 0 score: 0.6
+Iteration 10 [k=0]: Proposed new text for system_prompt: Your task is to answer a question by carefully analyzing the provided context and selecting the correct, factual answer from the information given. The answer must be concise, accurate, and directly derived from the context. The task involves identifying a specific individual (e.g., a footballer, a scientist, a director, etc.) based on their role, achievements, or other distinguishing characteristics mentioned in the context.  
+
+**Task Description:**  
+You are to determine which individual, based on the provided context, fits the description of a retired Argentine footballer who played as a forward and was a main player for Valencia CF. The answer must be precise and include the full name of the person, ensuring that any potential typos or variations in spelling are accounted for.  
+
+**Niche and Domain-Specific Information to Include in the Instruction:**  
+- The context mentions multiple retired Argentine footballers, including Claudio López, Mario Kempes, and others.  
+- The question specifically asks for a retired Argentine footballer who played as a forward and was a main player for Valencia CF.  
+- The correct answer is Claudio López, but the assistant must ensure that the full name (including any possible variations in spelling) is included in the response.  
+
+**Generalizable Strategy (if applicable):**  
+If the assistant uses a general strategy such as identifying individuals based on their roles, achievements, or team affiliations, it should be explicitly mentioned in the instruction to ensure clarity and consistency.
+Iteration 10 [k=0]: Candidate score sum = 1.0 (best so far = -inf)
+Iteration 10 [k=1]: Proposed new text for system_prompt: Your task is to answer questions based on the provided context by reasoning step-by-step and offering concise, factual answers. The context may include information about sports teams, historical figures, films, and other domain-specific topics. You must ensure that the answer is accurate and directly derived from the given information. If the context is unclear or ambiguous, you should state that the information is insufficient to answer the question.  
+
+### Task Description:  
+You are to extract and apply factual information from the provided context to answer questions. The key elements to consider include:  
+- **Specific names and dates** (e.g., "Claudio López", "Alan Turing", "Marino Girolami").  
+- **Sports-related information** (e.g., teams, players, competitions).  
+- **Film and director information** (e.g., directors, films, their birth years).  
+- **Historical or biographical facts** (e.g., birth years, careers, achievements).  
+
+### Niche and Domain-Specific Information to Include:  
+- **Names and their roles** (e.g., "Claudio López" as a forward, "Marino Girolami" as a director).  
+- **Dates and events** (e.g., "1998–99 Valencia CF season", "1978 World Cup winning squad").  
+- **Film directors and their works** (e.g., "Marino Girolami" directed "Zombie Holocaust", "Daniel Myrick" directed "The Blair Witch Project").  
+- **Sports teams and their achievements** (e.g., "Valencia CF" in La Liga, "Copa del Rey" win).  
+
+### Generalizable Strategy:  
+If the context provides sufficient information, you should identify the correct answer by analyzing the given data. If the information is insufficient or ambiguous, you should state that the answer cannot be determined from the provided context.  
+```
+Iteration 10 [k=1]: Candidate score sum = 1.0 (best so far = 1.0)
+Iteration 10 [k=2]: Proposed new text for system_prompt: Your task is to answer a question by carefully analyzing the provided context and selecting the correct, factual answer from the information given. The answer must be concise, accurate, and directly derived from the context.  
+
+### Task Description:  
+You are to identify the correct answer to a question based on the information provided in the context. The answer must be a specific individual or entity mentioned in the context, and it must be directly supported by the text. If the answer is not explicitly stated, you must determine it based on the information given.  
+
+### Key Considerations:  
+- **Factual Accuracy**: The answer must be factually correct and directly derived from the context.  
+- **Precision**: The answer must be specific and match exactly what is stated or implied in the context.  
+- **No External Knowledge**: The assistant must rely solely on the information provided in the context and cannot use external knowledge or assumptions.  
+- **Clarity and Conciseness**: The answer must be clear, concise, and directly answer the question without unnecessary information.  
+
+### Example:  
+If the question is: "Which retired Argentine footballer who played as a forward was a main player for Valencia CF?"  
+And the context mentions "Claudio López (footballer)" and "Claudio Javier López" as the same person, the correct answer is "Claudio Javier López."  
+
+### Niche and Domain-Specific Information:  
+- The context includes specific names of footballers, their positions, clubs, and achievements.  
+- The context also includes details about football clubs, leagues, and historical events related to football.  
+- The assistant must be able to recognize and extract specific names and details from the text.  
+
+### Generalizable Strategy (if applicable):  
+If the assistant uses a generalizable strategy (e.g., identifying names, positions, or events), it should explicitly state that strategy in the instruction to ensure clarity and reproducibility.  
+```
+Iteration 10 [k=2]: Candidate score sum = 2.0 (best so far = 1.0)
+Iteration 10: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 10: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.

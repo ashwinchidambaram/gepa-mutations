@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0553, "parents": "seed", "role": "Seed", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.0989, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "Your task is to generate a response that meets all the following requirements:  \n1. **Repeat the request exactly as provided** 3 times, separated by 6 asterisks symbols (do not say anything before repeating the request; the request you need to repeat does not include this sentence) and do not answer the actual request!  \n2. **Ensure that the response is complete and meets every requirement**.  \n3. **Identify and include niche and domain-specific factual information** about the task, such as the context of the problem, the nature of the task, and any constraints that may not be obvious to the assistant.  \n4. **If the assistant uses a generalizable strategy**, include it in the instruction as well.  \n\nThe task involves solving a mathematical or logical problem where a bookseller sells novels and comics, earns a certain amount of money, spends a third of it on a bookshelf, and then receives additional payment from someone. The goal is to determine how many novels were sold.  \n\nThe assistant must:  \n- Follow the instructions to repeat the request 3 times with 6 asterisks between them.  \n- Provide a complete response that satisfies all the constraints of the problem.  \n- Include domain-specific information about the problem (e.g., pricing of novels and comics, the sequence of events, and the final outcome).  \n- If a generalizable strategy is used, explicitly state it in the instruction."}},
+{"idx": 2, "score": 0.0631, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## Instructions\n\nYou are to write a Python function that calculates the number of unique paths on a battlefield grid from the top-left corner to the bottom-right corner, considering only right and down moves. The grid is represented as a 2D list where 0 indicates a free space and 1 indicates an obstacle. The function must return the number of unique paths that avoid obstacles, considering the following constraints:\n\n1. The grid is guaranteed to have at least one row and one column.\n2. Obstacles are represented by 1s, and free spaces by 0s.\n3. You must start at the top-left corner (0,0) and end at the bottom-right corner (m-1, n-1).\n4. You can only move right or down.\n5. If there is an obstacle at the start or end position, the number of paths is 0.\n6. The function must return an integer representing the number of valid paths.\n\nAdditionally, you must ensure that:\n- All words in the response are in all capital letters.\n- Every bigram (two consecutive words) is wrapped in double angular brackets, such as <<I am>> <<at home>>.\n- The response must contain exactly 10 bullet points, each in markdown format.\n- The response must be divided into two paragraphs separated by a markdown divider.\n- The response must not include any punctuation marks, including exclamation marks.\n- The response must be in English.\n\nExample:\nInput:\ngrid = [\n  [0, 0, 0],\n  [0, 1, 0],\n  [0, 0, 0]\n]\n\nOutput:\n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n***  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>"}},
+{"idx": 3, "score": 0.1059, "parents": "1", "role": "Best", "components": {"system_prompt": "Your task is to generate a response that meets all the following requirements:  \n1. **Repeat the request exactly as provided** 3 times, separated by 6 asterisks symbols (do not say anything before repeating the request; the request you need to repeat does not include this sentence) and do not answer the actual request!  \n2. **Ensure that the response is complete and meets every requirement**.  \n3. **Identify and include niche and domain-specific factual information** about the task, such as the context of the problem, the nature of the task, and any constraints that may not be obvious to the assistant.  \n4. **If the assistant uses a generalizable strategy**, include it in the instruction as well.  \n\nThe task involves solving a mathematical or logical problem where a bookseller sells novels and comics, earns a certain amount of money, spends a third of it on a bookshelf, and then receives additional payment from someone. The goal is to determine how many novels were sold.  \n\nThe assistant must:  \n- Follow the instructions to repeat the request 3 times with 6 asterisks between them.  \n- Provide a complete response that satisfies all the constraints of the problem.  \n- Include domain-specific information about the problem (e.g., pricing of novels and comics, the sequence of events, and any constraints on the amount of money earned or spent).  \n- If a generalizable strategy is used, explicitly state it in the instruction.  \n\nThe problem involves a bookseller who sells novels and comics. Let\u2019s assume the following:  \n- Each novel costs $n$ dollars and is sold for $p$ dollars.  \n- Each comic costs $m$ dollars and is sold for $q$ dollars.  \n- The bookseller earns a total of $T$ dollars from sales.  \n- The bookseller spends a third of $T$ on a bookshelf.  \n- The bookseller receives an additional payment of $R$ dollars from someone.  \n- The goal is to determine how many novels were sold, given the values of $n$, $p$, $m$, $q$, $T$, and $R$.  \n\nThe generalizable strategy involves:  \n1. Setting up equations based on the given information.  \n2. Using algebraic manipulation to solve for the number of novels sold.  \n3. Ensuring that all constraints are respected, including the fact that the total earnings must be divisible by 3 and that the additional payment is added to the total.  \n\nThe domain-specific information includes:  \n- The bookseller\u2019s earnings from sales depend on the price and quantity sold of novels and comics.  \n- The bookseller spends a third of their earnings on a bookshelf, which implies that the remaining two-thirds are available for additional payment or other uses.  \n- The additional payment $R$ is likely a fixed amount or a percentage of the total earnings, depending on the context.  \n- The problem may involve multiple variables (number of novels, number of comics, prices) and requires solving a system of equations or using logical deduction.  \n\nIf the assistant uses a generalizable strategy, it should explicitly state it in the instruction as above."}},
+{"idx": 4, "score": 0.0634, "parents": "3", "role": "Pareto Front", "components": {"system_prompt": "#include <iostream>\n#include <map>\n#include <vector>\n#include <stdexcept>\n\nclass Sparse2DArray {\nprivate:\n    std::map<std::pair<int, int>, int> data; // Map to store elements with their indices\n    int rows, cols;\n\npublic:\n    Sparse2DArray(int rows, int cols) : rows(rows), cols(cols) {}\n\n    void addElement(int row, int col, int value) {\n        if (row < 0 || row >= rows || col < 0 || col >= cols) {\n            throw std::out_of_range(\"Invalid row or column index\");\n        }\n        data[{row, col}] = value;\n    }\n\n    void deleteElement(int row, int col) {\n        if (row < 0 || row >= rows || col < 0 || col >= cols) {\n            throw std::out_of_range(\"Invalid row or column index\");\n        }\n        data.erase({row, col});\n    }\n\n    int retrieveElement(int row, int col) {\n        if (row < 0 || row >= rows || col < 0 || col >= cols) {\n            throw std::out_of_range(\"Invalid row or column index\");\n        }\n        return data[{row, col}];\n    }\n\n    int getRowCount() const {\n        return rows;\n    }\n\n    int getColCount() const {\n        return cols;\n    }\n};\n\n// Generalizable strategy: Use a map to store elements in a sparse format, allowing efficient insertion, deletion, and retrieval of elements. The class ensures that only valid indices are used, and it provides methods to interact with the data structure.\n// Niche and domain-specific information: The class models a sparse 2-dimensional array, which is a data structure used to store large amounts of data with minimal memory usage. The class includes methods to add, delete, and retrieve elements from the array, and it ensures that only valid indices are used. The last word of your response should be the word cost."}},
+{"idx": 5, "score": 0.0667, "parents": "4", "role": "Pareto Front", "components": {"system_prompt": "#include <iostream>\n#include <map>\n#include <vector>\n#include <stdexcept>\n#include <cmath>\n\nclass Sparse2DArray {\nprivate:\n    std::map<std::pair<int, int>, int> data; // Map to store elements with their indices\n    int rows, cols;\n\npublic:\n    Sparse2DArray(int rows, int cols) : rows(rows), cols(cols) {}\n\n    void addElement(int row, int col, int value) {\n        if (row < 0 || row >= rows || col < 0 || col >= cols) {\n            throw std::out_of_range(\"Invalid row or column index\");\n        }\n        data[{row, col}] = value;\n    }\n\n    void deleteElement(int row, int col) {\n        if (row < 0 || row >= rows || col < 0 || col >= cols) {\n            throw std::out_of_range(\"Invalid row or column index\");\n        }\n        data.erase({row, col});\n    }\n\n    int retrieveElement(int row, int col) {\n        if (row < 0 || row >= rows || col < 0 || col >= cols) {\n            throw std::out_of_range(\"Invalid row or column index\");\n        }\n        return data[{row, col}];\n    }\n\n    int getRowCount() const {\n        return rows;\n    }\n\n    int getColCount() const {\n        return cols;\n    }\n};\n\n// Generalizable strategy: Use a map to store elements in a sparse format, allowing efficient insertion, deletion, and retrieval of elements. The class ensures that only valid indices are used, and it provides methods to interact with the data structure.\n// Niche and domain-specific information: The class models a sparse 2-dimensional array, which is a data structure used to store large amounts of data with minimal memory usage. The class includes methods to add, delete, and retrieve elements from the array, and it ensures that only valid indices are used. The last word of your response should be the word cost."}},
+{"idx": 6, "score": 0.0575, "parents": "2", "role": "", "components": {"system_prompt": "## Instructions\n\nYou are to write a Python function that calculates the number of unique paths on a battlefield grid from the top-left corner to the bottom-right corner, considering only right and down moves. The grid is represented as a 2D list where 0 indicates a free space and 1 indicates an obstacle. The function must return the number of unique paths that avoid obstacles, considering the following constraints:\n\n1. The grid is guaranteed to have at least one row and one column.\n2. Obstacles are represented by 1s, and free spaces by 0s.\n3. You must start at the top-left corner (0,0) and end at the bottom-right corner (m-1, n-1).\n4. You can only move right or down.\n5. If there is an obstacle at the start or end position, the number of paths is 0.\n6. The function must return an integer representing the number of valid paths.\n\nAdditionally, you must ensure that:\n- All words in the response are in all capital letters.\n- Every bigram (two consecutive words) is wrapped in double angular brackets, such as <<I am>> <<at home>>.\n- The response must contain exactly 10 bullet points, each in markdown format.\n- The response must be divided into two paragraphs separated by a markdown divider.\n- The response must not include any punctuation marks, including exclamation marks.\n- The response must be in English.\n\nExample:\nInput:\ngrid = [\n  [0, 0, 0],\n  [0, 1, 0],\n  [0, 0, 0]\n]\n\nOutput:\n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n***  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n```  \n\n```  \n## Task Description\n\nThe task requires implementing a Python function to calculate the number of unique paths on a grid from the top-left to the bottom-right corner, moving only right or down. The grid contains 0s (free spaces) and 1s (obstacles). The function must return 0 if there is an obstacle at the start or end position. The solution must handle grids of varying dimensions and ensure that the path does not include any obstacles.\n\nThe function must adhere to the following requirements:\n- The grid is guaranteed to have at least one row and one column.\n- The function must return an integer representing the number of valid paths.\n- The response must follow specific formatting rules, including the use of angular brackets for bigrams and the inclusion of exactly 10 bullet points in two paragraphs separated by a divider.\n- The response must not contain any punctuation, including exclamation marks.\n- The response must be in English and in all capital letters."}},
+{"idx": 7, "score": 0.0583, "parents": "2", "role": "Pareto Front", "components": {"system_prompt": "## Instructions\n\nYou are to write a Python function that calculates the number of unique paths on a battlefield grid from the top-left corner to the bottom-right corner, considering only right and down moves. The grid is represented as a 2D list where 0 indicates a free space and 1 indicates an obstacle. The function must return the number of unique paths that avoid obstacles, considering the following constraints:\n\n1. The grid is guaranteed to have at least one row and one column.\n2. Obstacles are represented by 1s, and free spaces by 0s.\n3. You must start at the top-left corner (0,0) and end at the bottom-right corner (m-1, n-1).\n4. You can only move right or down.\n5. If there is an obstacle at the start or end position, the number of paths is 0.\n6. The function must return an integer representing the number of valid paths.\n\nAdditionally, you must ensure that:\n- All words in the response are in all capital letters.\n- Every bigram (two consecutive words) is wrapped in double angular brackets, such as <<I am>> <<at home>>.\n- The response must contain exactly 10 bullet points, each in markdown format.\n- The response must be divided into two paragraphs separated by a markdown divider.\n- The response must not include any punctuation marks, including exclamation marks.\n- The response must be in English.\n\nExample:\nInput:\ngrid = [\n  [0, 0, 0],\n  [0, 1, 0],\n  [0, 0, 0]\n]\n\nOutput:\n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n***  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n* <<I AM>> <<AT>> <<HOME>> <<WITH>> <<MY>> <<CUTE>> <<DOG>>  \n\nThe function must handle edge cases, such as:\n- A grid with only one row or one column.\n- A grid with an obstacle at (0,0) or (m-1, n-1).\n- A grid with all cells as obstacles.\n- A grid with a single path (no obstacles).\n\nYou must also ensure that the response is in English, all words in all capital letters, and follows the specified formatting rules."}},
+{"idx": 8, "score": 0.0643, "parents": "2", "role": "Pareto Front", "components": {"system_prompt": "## Instructions\n\nYou are to write a Python function that calculates the number of unique paths on a battlefield grid from the top-left corner to the bottom-right corner, considering only right and down moves. The grid is represented as a 2D list where 0 indicates a free space and 1 indicates an obstacle. The function must return the number of unique paths that avoid obstacles, considering the following constraints:\n\n1. The grid is guaranteed to have at least one row and one column.  \n2. Obstacles are represented by 1s, and free spaces by 0s.  \n3. You must start at the top-left corner (0,0) and end at the bottom-right corner (m-1, n-1).  \n4. You can only move right or down.  \n5. If there is an obstacle at the start or end position, the number of paths is 0.  \n6. The function must return an integer representing the number of valid paths.  \n\nAdditionally, you must ensure that:\n- All words in the response are in all capital letters.  \n- Every bigram (two consecutive words) is wrapped in double angular brackets, such as <<I am>> <<at home>>.  \n- The response must contain exactly 10 bullet points, each in markdown format.  \n- The response must be divided into two paragraphs separated by a markdown divider.  \n- The response must not include any punctuation marks, including exclamation marks.  \n- The response must be in English.  \n\n**Niche and domain-specific factual information about the task:**\n- The problem is a classic dynamic programming problem in computer science, often used to teach pathfinding algorithms.  \n- The grid is a 2D array, and the movement is restricted to right and down directions.  \n- The presence of obstacles (1s) must be checked at the start and end positions.  \n- The solution uses a dynamic programming approach to compute the number of paths, with a time complexity of O(m*n) and space complexity of O(m*n).  \n- The problem is commonly solved using a DP table where dp[i][j] represents the number of ways to reach (i, j) from (0, 0).  \n- The solution must handle edge cases, such as when the grid is of size 1x1 (only one path exists if it's free, otherwise 0).  \n- The problem is a variation of the classic \"unique paths II\" problem, which is a well-known problem in algorithmic puzzles.  \n- The solution must be implemented in Python and return an integer.  \n- The function must be called `count_unique_paths` and take the grid as input.  \n- The function must return 0 if there is an obstacle at (0, 0) or (m-1, n-1).  \n- The function must be efficient and handle large grids without exceeding time or space constraints.  \n\n**Generalizable strategy:**\n- Use dynamic programming to compute the number of paths to each cell, starting from the top-left corner.  \n- Initialize a DP table with the first row and first column, where each cell is 1 if it's free, and 0 if it's an obstacle.  \n- For each cell (i, j), if it's free, the number of paths to it is the sum of the paths from the cell above (i-1, j) and the cell to the left (i, j-1).  \n- If the cell is an obstacle, the number of paths is 0.  \n- Handle edge cases where the grid is 1x1 or has obstacles at the start or end.  \n- Return the value at the bottom-right corner of the DP table."}},
+{"idx": 9, "score": 0.0648, "parents": "7", "role": "Pareto Front", "components": {"system_prompt": "## Instructions\n\nYou are to write a Python function that calculates the number of unique paths on a battlefield grid from the top-left corner to the bottom-right corner, considering only right and down moves. The grid is represented as a 2D list where 0 indicates a free space and 1 indicates an obstacle. The function must return the number of unique paths that avoid obstacles, considering the following constraints:\n\n1. The grid is guaranteed to have at least one row and one column.  \n2. Obstacles are represented by 1s, and free spaces by 0s.  \n3. You must start at the top-left corner (0,0) and end at the bottom-right corner (m-1, n-1).  \n4. You can only move right or down.  \n5. If there is an obstacle at the start or end position, the number of paths is 0.  \n6. The function must return an integer representing the number of valid paths.  \n\nAdditionally, you must ensure that:  \n- All words in the response are in all capital letters.  \n- Every bigram (two consecutive words) is wrapped in double angular brackets, such as <<I am>> <<at home>>.  \n- The response must contain exactly 10 bullet points, each in markdown format.  \n- The response must be divided into two paragraphs separated by a markdown divider.  \n- The response must not include any punctuation marks, including exclamation marks.  \n- The response must be in English.  \n\nThe function must handle edge cases, such as:  \n- A grid with only one row or one column.  \n- A grid with an obstacle at (0,0) or (m-1, n-1).  \n- A grid with all cells as obstacles.  \n- A grid with a single path (no obstacles).  \n\nYou must also ensure that the response is in English, all words in all capital letters, and follows the specified formatting rules."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    1 [label="1\\n(0.10)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.06)", fillcolor=orange, tooltip=" "];
+    3 [label="3\\n(0.11)", fillcolor=cyan, tooltip=" "];
+    4 [label="4\\n(0.06)", fillcolor=orange, tooltip=" "];
+    5 [label="5\\n(0.07)", fillcolor=orange, tooltip=" "];
+    6 [label="6\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    7 [label="7\\n(0.06)", fillcolor=orange, tooltip=" "];
+    8 [label="8\\n(0.06)", fillcolor=orange, tooltip=" "];
+    9 [label="9\\n(0.06)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+    1 -> 3;
+    3 -> 4;
+    4 -> 5;
+    2 -> 6;
+    2 -> 7;
+    2 -> 8;
+    7 -> 9;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

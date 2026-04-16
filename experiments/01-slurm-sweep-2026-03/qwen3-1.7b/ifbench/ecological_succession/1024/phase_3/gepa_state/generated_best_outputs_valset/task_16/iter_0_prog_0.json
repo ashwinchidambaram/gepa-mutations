@@ -1,0 +1,3 @@
+{
+    "response": "text  \n```python  \ndef calculate_average_effectiveness(feedback, treatment_name):  \n    treatments = []  \n    for patient in feedback:  \n        if treatment_name in patient[\"treatments\"]:  \n            treatments.append(patient[\"treatments\"][treatment_name])  \n    if not treatments:  \n        return 0.0  \n    average = sum(treatments) / len(treatments)  \n    return round(average, 2)  \n```  \npiece  \n```json  \n{\"average_effectiveness\": 6.0}  \n```  \npiece  \ntext"
+}

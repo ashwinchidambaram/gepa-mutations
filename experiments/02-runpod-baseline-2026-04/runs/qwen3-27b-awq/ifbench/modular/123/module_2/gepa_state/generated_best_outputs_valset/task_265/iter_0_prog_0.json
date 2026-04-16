@@ -1,0 +1,3 @@
+{
+    "response": "C# lacks built-in one-way UDP timing. You need server-side timestamping. Send data with local time. Server logs arrival time. Calculate delta on server. Return result via next packet. This avoids round-trip error."
+}

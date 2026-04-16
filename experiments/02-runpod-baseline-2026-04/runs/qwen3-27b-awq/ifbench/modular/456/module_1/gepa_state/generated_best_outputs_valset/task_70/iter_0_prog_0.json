@@ -1,0 +1,3 @@
+{
+    "response": "<<query for sorting by length>>\nSQL Query:\nSELECT title, director\nFROM your_table_name\nORDER BY LENGTH(title) DESC, LENGTH(director) DESC;\n\nTo handle ties where lengths are equal, the query uses secondary sorting on the director column length. If you need alphabetical tie-breaking, add `title` and `director` as subsequent sort keys.\nHere is a palindrome: noon."
+}

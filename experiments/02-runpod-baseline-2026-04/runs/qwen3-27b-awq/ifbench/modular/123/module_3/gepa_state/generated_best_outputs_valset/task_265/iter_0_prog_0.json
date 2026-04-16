@@ -1,0 +1,3 @@
+{
+    "response": "No direct C# method exists for one way timing. You need a custom protocol. Add a timestamp field to your packet data. The server must record arrival time and reply with that value. Calculate the difference locally to find travel duration. This approach requires server side changes."
+}

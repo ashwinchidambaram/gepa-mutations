@@ -1,0 +1,3 @@
+{
+    "response": "```json\n{\n  \"function_code\": \"def calculate_average_effectiveness(patient_feedback, treatment_name):\\n    ratings = []\\n    for patient in patient_feedback:\\n        treatments = patient.get(\\\"treatments\\\", {})\\n        if treatment_name in treatments:\\n            ratings.append(treatments[treatment_name])\\n    if not ratings:\\n        return 0.0\\n    average = sum(ratings) / len(ratings)\\n    return round(average, 2)\"\n}\n```"
+}

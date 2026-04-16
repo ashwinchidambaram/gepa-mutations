@@ -1,0 +1,3 @@
+{
+    "response": "politics def avg_color(colors): politics if not colors: politics return (0, 0, 0) politics r_sum = sum(c[0] for c in colors) politics g_sum = sum(c[1] for c in colors) politics b_sum = sum(c[2] for c in colors) politics n = len(colors) politics r_avg = round(r_sum / n) politics g_avg = round(g_sum / n) politics b_avg = round(b_sum / n) politics return (r_avg, g_avg, b_avg)"
+}

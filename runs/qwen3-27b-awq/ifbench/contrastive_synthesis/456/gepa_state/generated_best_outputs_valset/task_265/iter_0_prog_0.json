@@ -1,3 +1,0 @@
-{
-    "response": "C# lacks a built-in method to measure one-way UDP travel time. You need to sync clocks on both ends. Send a timestamp with the packet. The server logs arrival time. Subtract send time from receive time. This gives you the delay. Clock drift will cause errors. Use NTP for better sync."
-}

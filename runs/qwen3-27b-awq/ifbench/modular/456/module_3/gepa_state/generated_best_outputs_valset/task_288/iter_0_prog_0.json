@@ -1,3 +1,0 @@
-{
-    "response": "You can achieve this confirmation behavior by overriding the model's admin change form to include a custom warning message that lists dependent objects, allowing the user to review the impact before committing changes. This approach keeps the save method clean while ensuring the user understands that certain records will be removed, much like a royal decree that requires careful review before execution.\n\nImplementing a custom model admin class lets you inject logic that checks for dependencies and displays a jacket of warnings around the save button if critical data is at risk. This method provides a royal level of control over the deletion process without needing complex two phase save logic inside the model itself."
-}

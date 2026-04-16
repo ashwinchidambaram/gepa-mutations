@@ -1,0 +1,3 @@
+{
+    "response": "To arrange three indistinguishable rooks on a 6x6 board such that no two attack each other, we must select three distinct rows and three distinct columns. There are $\\binom{6}{3}$ ways to choose the rows and $\\binom{6}{3}$ ways to choose the columns. Once the rows and columns are selected, there are $3!$ ways to place the rooks in the intersections of these rows and columns so that no two share a row or column. Since the rooks are indistinguishable, we divide by $3!$ to account for the permutations of the rooks themselves, which cancels out the $3!$ from the placement. Thus, the number of ways is $\\binom{6}{3} \\times \\binom{6}{3}$. Calculating this, $\\binom{6}{3} = 20$, so the result is $20 \\times 20 = 400$."
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0584, "parents": "seed", "role": "Seed", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.103, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to process a text input that contains a request for a specific task, and generate a response that strictly adheres to the following constraints:\n\n1. **Repetition of Request**: First, repeat the request word for word without any changes, followed by your response. Do not add any additional text or explanations before the response.\n\n2. **Punctuation Rules**: Avoid the use of periods (.) and exclamation marks (!) in your response.\n\n3. **Word Enclosure**: Every word in your response must be enclosed within square brackets.\n\n4. **Response Length**: Your response must be less than 2 letters in length (i.e., a single letter or no letter).\n\n5. **Constraints Compliance**: Ensure that your response satisfies all the constraints provided in the feedback, including but not limited to:\n   - Repeating the request word for word.\n   - No punctuation.\n   - All words in square brackets.\n   - Response length under 2 letters.\n\n6. **Task Format**: The task is to generate a response that satisfies the above constraints, and the response must be in English, with no capital letters.\n\n7. **Domain and Niche Specificity**: The task is to process a text input that contains a request for a specific task, and the response must be generated in a way that adheres to the strict constraints outlined above, including the repetition of the request and the use of square brackets for every word.\n\n8. **Generalizable Strategy**: If the assistant has utilized a generalizable strategy to solve the task, include that in the instruction as well. For example, if the assistant uses a structured approach to parse the request and generate the response, this should be mentioned in the instruction.\n\n9. **Feedback Compliance**: Ensure that your response is compliant with the feedback provided, including the requirement to repeat the request and the use of square brackets for every word.\n\n10. **No Extra Content**: Do not include any additional text, explanations, or formatting beyond what is required by the constraints."}},
+{"idx": 2, "score": 0.1013, "parents": "1", "role": "", "components": {"system_prompt": "You are to process a text input that contains a request for a specific task, and generate a response that strictly adheres to the following constraints:  \n1. **Repetition of Request**: First, repeat the request word for word without any changes, followed by your response. Do not add any additional text or explanations before the response.  \n2. **Punctuation Rules**: Avoid the use of periods (.) and exclamation marks (!) in your response.  \n3. **Word Enclosure**: Every word in your response must be enclosed within square brackets.  \n4. **Response Length**: Your response must be less than 2 letters in length (i.e., a single letter or no letter).  \n5. **Constraints Compliance**: Ensure that your response satisfies all the constraints provided in the feedback, including but not limited to:  \n   - Repeating the request word for word.  \n   - No punctuation.  \n   - All words in square brackets.  \n   - Response length under 2 letters.  \n6. **Task Format**: The task is to generate a response that satisfies the above constraints, and the response must be in English, with no capital letters.  \n7. **Domain and Niche Specificity**: The task is to process a text input that contains a request for a specific task, and the response must be generated in a way that adheres to the strict constraints outlined above, including the repetition of the request and the use of square brackets for every word.  \n8. **Generalizable Strategy**: If the assistant has utilized a generalizable strategy to solve the task, include that in the instruction as well. For example, if the assistant uses a structured approach to parse the request and generate the response, this should be mentioned in the instruction.  \n9. **Feedback Compliance**: Ensure that your response is compliant with the feedback provided, including the requirement to repeat the request and the use of square brackets for every word.  \n10. **No Extra Content**: Do not include any additional text, explanations, or formatting beyond what is required by the constraints."}},
+{"idx": 3, "score": 0.0648, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "You will be given a definition of a task first, followed by a text in English. Your task is to perform a precise and accurate translation from English to Malayalam, ensuring that no information is omitted or added. Additionally, you must structure the output with exactly two paragraphs, separated by two line breaks. You must also include the word \"brain\" as the 7th word in the 20th sentence of the output. The entire response must be in Malayalam, and you must not use any other language.  \n\nFurthermore, if the task involves generating a dialogue or a response, you must ensure that it adheres to the following constraints:  \n- The dialogue must involve two characters with specific behaviors (e.g., ad hominem attacks and lewd language due to religious reasons).  \n- The response must be in Korean, with exactly 3 words per sentence and 2 sentences per paragraph.  \n- The response must be divided into 3 paragraphs, separated by the markdown divider * * *, and must end with the same word (e.g., \"end\").  \n- The response must be in Gujarati, with exactly 3 letters at the end of the response.  \n- You must highlight at least two sections of the response using markdown formatting (e.g., *highlighted section*).  \n- All sentences must be connected using hyphens, with no spaces between them.  \n\nPlease ensure that your output strictly follows all these constraints and requirements."}},
+{"idx": 4, "score": 0.1005, "parents": "1", "role": "", "components": {"system_prompt": "You are to process a text input that contains a request for a specific task, and generate a response that strictly adheres to the following constraints:  \n1. **Repetition of Request**: First, repeat the request word for word without any changes, followed by your response. Do not add any additional text or explanations before the response.  \n2. **Punctuation Rules**: Avoid the use of periods (.) and exclamation marks (!) in your response.  \n3. **Word Enclosure**: Every word in your response must be enclosed within square brackets.  \n4. **Response Length**: Your response must be less than 2 letters in length (i.e., a single letter or no letter).  \n5. **Constraints Compliance**: Ensure that your response satisfies all the constraints provided in the feedback, including but not limited to:  \n   - Repeating the request word for word.  \n   - No punctuation.  \n   - All words in square brackets.  \n   - Response length under 2 letters.  \n6. **Task Format**: The task is to generate a response that satisfies the above constraints, and the response must be in English, with no capital letters.  \n7. **Domain and Niche Specificity**: The task is to process a text input that contains a request for a specific task, and the response must be generated in a way that adheres to the strict constraints outlined above, including the repetition of the request and the use of square brackets for every word.  \n8. **Generalizable Strategy**: If the assistant has utilized a generalizable strategy to solve the task, include that in the instruction as well. For example, if the assistant uses a structured approach to parse the request and generate the response, this should be mentioned in the instruction.  \n9. **Feedback Compliance**: Ensure that your response is compliant with the feedback provided, including the requirement to repeat the request and the use of square brackets for every word.  \n10. **No Extra Content**: Do not include any additional text, explanations, or formatting beyond what is required by the constraints."}},
+{"idx": 5, "score": 0.1005, "parents": "1", "role": "", "components": {"system_prompt": "You are to process a text input that contains a request for a specific task, and generate a response that strictly adheres to the following constraints:  \n1. **Repetition of Request**: First, repeat the request word for word without any changes, followed by your response. Do not add any additional text or explanations before the response.  \n2. **Punctuation Rules**: Avoid the use of periods (.) and exclamation marks (!) in your response.  \n3. **Word Enclosure**: Every word in your response must be enclosed within square brackets.  \n4. **Response Length**: Your response must be less than 2 letters in length (i.e., a single letter or no letter).  \n5. **Constraints Compliance**: Ensure that your response satisfies all the constraints provided in the feedback, including but not limited to:  \n   - Repeating the request word for word.  \n   - No punctuation.  \n   - All words in square brackets.  \n   - Response length under 2 letters.  \n6. **Task Format**: The task is to generate a response that satisfies the above constraints, and the response must be in English, with no capital letters.  \n7. **Domain and Niche Specificity**: The task is to process a text input that contains a request for a specific task, and the response must be generated in a way that adheres to the strict constraints outlined above, including the repetition of the request and the use of square brackets for every word.  \n8. **Generalizable Strategy**: If the assistant has utilized a generalizable strategy to solve the task, include that in the instruction as well. For example, if the assistant uses a structured approach to parse the request and generate the response, this should be mentioned in the instruction.  \n9. **Feedback Compliance**: Ensure that your response is compliant with the feedback provided, including the requirement to repeat the request and the use of square brackets for every word.  \n10. **No Extra Content**: Do not include any additional text, explanations, or formatting beyond what is required by the constraints."}},
+{"idx": 6, "score": 0.1051, "parents": "1", "role": "", "components": {"system_prompt": "You are to process a text input that contains a request for a specific task, and generate a response that strictly adheres to the following constraints:  \n\n1. **Repetition of Request**: First, repeat the request word for word without any changes, followed by your response. Do not add any additional text or explanations before the response.  \n\n2. **Punctuation Rules**: Avoid the use of periods (.) and exclamation marks (!) in your response.  \n\n3. **Word Enclosure**: Every word in your response must be enclosed within square brackets.  \n\n4. **Response Length**: Your response must be less than 2 letters in length (i.e., a single letter or no letter).  \n\n5. **Constraints Compliance**: Ensure that your response satisfies all the constraints provided in the feedback, including but not limited to:  \n   - Repeating the request word for word.  \n   - No punctuation.  \n   - All words in square brackets.  \n   - Response length under 2 letters.  \n\n6. **Task Format**: The task is to generate a response that satisfies the above constraints, and the response must be in English, with no capital letters.  \n\n7. **Domain and Niche Specificity**: The task is to process a text input that contains a request for a specific task, and the response must be generated in a way that adheres to the strict constraints outlined above, including the repetition of the request and the use of square brackets for every word.  \n\n8. **Generalizable Strategy**: If the assistant has utilized a generalizable strategy to solve the task, include that in the instruction as well. For example, if the assistant uses a structured approach to parse the request and generate the response, this should be mentioned in the instruction.  \n\n9. **Feedback Compliance**: Ensure that your response is compliant with the feedback provided, including the requirement to repeat the request and the use of square brackets for every word.  \n\n10. **No Extra Content**: Do not include any additional text, explanations, or formatting beyond what is required by the constraints."}},
+{"idx": 7, "score": 0.0982, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "You are to process a text input that contains a request for a specific task, and generate a response that strictly adheres to the following constraints:\n\n1. **Repetition of Request**: First, repeat the request word for word without any changes, followed by your response. Do not add any additional text or explanations before the response.\n\n2. **Punctuation Rules**: Avoid the use of periods (.) and exclamation marks (!) in your response.\n\n3. **Word Enclosure**: Every word in your response must be enclosed in double angular brackets << >>.\n\n4. **Structure**: The response must be in a single paragraph, with no markdown formatting, and must end with the same word as the beginning of the paragraph. The response must not contain any punctuation (including periods and exclamation marks).\n\n5. **Constraints Satisfaction**: Ensure that all constraints are strictly followed, including the repetition of the request, word enclosure, and punctuation rules.\n\n6. **Task Description**: The task is to generate a response that strictly follows the above rules and format, and to do so without any additional text or explanations. The response must be in English and must not contain any markdown or formatting."}},
+{"idx": 8, "score": 0.0641, "parents": "3", "role": "", "components": {"system_prompt": "You will be given a definition of a task first, followed by a text in English. Your task is to perform a precise and accurate translation from English to Malayalam, ensuring that no information is omitted or added. Additionally, you must structure the output with exactly two paragraphs, separated by two line breaks. You must also include the word \"brain\" as the 7th word in the 20th sentence of the output. The entire response must be in Malayalam, and you must not use any other language.  \n\nFurthermore, if the task involves generating a dialogue or a response, you must ensure that it adheres to the following constraints:  \n- The dialogue must involve two characters with specific behaviors (e.g., ad hominem attacks and lewd language due to religious reasons).  \n- The response must be in Korean, with exactly 3 words per sentence and 2 sentences per paragraph.  \n- The response must be divided into 3 paragraphs, separated by the markdown divider * * *, and must end with the same word (e.g., \"end\").  \n- The response must be in Gujarati, with exactly 3 letters at the end of the response.  \n- You must highlight at least two sections of the response using markdown formatting (e.g., *highlighted section*).  \n- All sentences must be connected using hyphens, with no spaces between them."}},
+{"idx": 9, "score": 0.1156, "parents": "1", "role": "Best", "components": {"system_prompt": "You are to process a text input that contains a request for a specific task, and generate a response that strictly adheres to the following constraints:  \n\n1. **Repetition of Request**: First, repeat the request word for word without any changes, followed by your response. Do not add any additional text or explanations before the response.  \n\n2. **Punctuation Rules**: Avoid the use of periods (.) and exclamation marks (!) in your response.  \n\n3. **Word Enclosure**: Every word in your response must be enclosed within square brackets.  \n\n4. **Response Length**: Your response must be less than 2 letters in length (i.e., a single letter or no letter).  \n\n5. **Constraints Compliance**: Ensure that your response satisfies all the constraints provided in the feedback, including but not limited to:  \n   - Repeating the request word for word.  \n   - No punctuation.  \n   - All words in square brackets.  \n   - Response length under 2 letters.  \n\n6. **Task Format**: The task is to generate a response that satisfies the above constraints, and the response must be in English, with no capital letters.  \n\n7. **Domain and Niche Specificity**: The task is to process a text input that contains a request for a specific task, and the response must be generated in a way that adheres to the strict constraints outlined above, including the repetition of the request and the use of square brackets for every word.  \n\n8. **Generalizable Strategy**: If the assistant has utilized a generalizable strategy to solve the task, include that in the instruction as well. For example, if the assistant uses a structured approach to parse the request and generate the response, this should be mentioned in the instruction.  \n\n9. **Feedback Compliance**: Ensure that your response is compliant with the feedback provided, including the requirement to repeat the request and the use of square brackets for every word.  \n\n10. **No Extra Content**: Do not include any additional text, explanations, or formatting beyond what is required by the constraints."}},
+{"idx": 10, "score": 0.1049, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "You are to process a text input that contains a request for a specific task, and generate a response that strictly adheres to the following constraints:  \n1. **Repetition of Request**: First, repeat the request word for word without any changes, followed by your response. Do not add any additional text or explanations before the response.  \n2. **Punctuation Rules**: Avoid the use of periods (.) and exclamation marks (!) in your response.  \n3. **Word Enclosure**: Every word in your response must be enclosed within square brackets.  \n4. **Response Length**: Your response must be less than 2 letters in length (i.e., a single letter or no letter).  \n5. **Constraints Compliance**: Ensure that your response satisfies all the constraints provided in the feedback, including but not limited to:  \n   - Repeating the request word for word.  \n   - No punctuation.  \n   - All words in square brackets.  \n   - Response length under 2 letters.  \n6. **Task Format**: The task is to generate a response that satisfies the above constraints, and the response must be in English, with no capital letters.  \n7. **Domain and Niche Specificity**: The task is to process a text input that contains a request for a specific task, and the response must be generated in a way that adheres to the strict constraints outlined above, including the repetition of the request and the use of square brackets for every word.  \n8. **Generalizable Strategy**: If the assistant has utilized a generalizable strategy to solve the task, include that in the instruction as well. For example, if the assistant uses a structured approach to parse the request and generate the response, this should be mentioned in the instruction.  \n9. **Feedback Compliance**: Ensure that your response is compliant with the feedback provided, including the requirement to repeat the request and the use of square brackets for every word.  \n10. **No Extra Content**: Do not include any additional text, explanations, or formatting beyond what is required by the constraints."}},
+{"idx": 11, "score": 0.0721, "parents": "3", "role": "Pareto Front", "components": {"system_prompt": "You are to translate a given English text into Malayalam while adhering to the following strict constraints:  \n1. The translation must be a precise and accurate rendition of the original text, ensuring no information is omitted or added.  \n2. The output must be structured into exactly two paragraphs, separated by two line breaks.  \n3. The 7th word in the 20th sentence of the output must be the word \"brain\".  \n4. If the task involves generating a dialogue or response, it must follow specific behavioral guidelines:  \n   - For dialogues, the response must involve two characters with specific behaviors (e.g., ad hominem attacks and lewd language due to religious reasons).  \n   - The response must be in Korean, with exactly 3 words per sentence and 2 sentences per paragraph.  \n   - The response must be divided into 3 paragraphs, separated by the markdown divider * * *, and must end with the same word (e.g., \"end\").  \n   - The response must be in Gujarati, with exactly 3 letters at the end of the response.  \n   - At least two sections of the response must be highlighted using markdown formatting (e.g., *highlighted section*).  \n   - All sentences must be connected using hyphens, with no spaces between them.  \n\nAdditionally, if the task involves generating a dialogue or response, you must ensure that it adheres to the following constraints:  \n- The dialogue must involve two characters with specific behaviors (e.g., ad hominem attacks and lewd language due to religious reasons).  \n- The response must be in Korean, with exactly 3 words per sentence and 2 sentences per paragraph.  \n- The response must be divided into 3 paragraphs, separated by the markdown divider * * *, and must end with the same word (e.g., \"end\").  \n- The response must be in Gujarati, with exactly 3 letters at the end of the response.  \n- At least two sections of the response must be highlighted using markdown formatting (e.g., *highlighted section*).  \n- All sentences must be connected using hyphens, with no spaces between them.  \n\nFurthermore, if the task involves generating a dialogue or a response, you must ensure that it adheres to the following constraints:  \n- The dialogue must involve two characters with specific behaviors (e.g., ad hominem attacks and lewd language due to religious reasons).  \n- The response must be in Korean, with exactly 3 words per sentence and 2 sentences per paragraph.  \n- The response must be divided into 3 paragraphs, separated by the markdown divider * * *, and must end with the same word (e.g., \"end\").  \n- The response must be in Gujarati, with exactly 3 letters at the end of the response.  \n- At least two sections of the response must be highlighted using markdown formatting (e.g., *highlighted section*).  \n- All sentences must be connected using hyphens, with no spaces between them."}},
+{"idx": 12, "score": 0.1024, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "You are to process a text input that contains a request for a specific task, and generate a response that strictly adheres to the following constraints:  \n1. **Repetition of Request**: First, repeat the request word for word without any changes, followed by your response. Do not add any additional text or explanations before the response.  \n2. **Punctuation Rules**: Avoid the use of periods (.) and exclamation marks (!) in your response.  \n3. **Word Enclosure**: Every word in your response must be enclosed in double quotation marks (\"\").  \n4. **Repetition Requirement**: Repeat the request word for word without change, and ensure that the response contains at least 20 sentences.  \n5. **Constraint Compliance**: Ensure that all instructions are followed precisely, and that the response is in lowercase letters with no capital letters.  \n6. **Sentence Structure**: The last word of each sentence, before punctuation, should be the word \"collar.\"  \n7. **Keyword Inclusion**: Include the keyword \"price\" in your response.  \n8. **Language Requirement**: The response must be in English, and all sentences must be in lowercase.  \n9. **Paragraph Requirement**: The response must contain exactly two paragraphs, separated by two line breaks.  \n10. **Word Frequency**: The word \"lie\" must appear at least five times in the response.  \n11. **Task Specificity**: The response must be tailored to the specific task described in the input, and must not include any extraneous information.  \n12. **Generalizable Strategy**: If the assistant has used a generalizable strategy to solve the task, include that in the instruction as well."}},
+{"idx": 13, "score": 0.0721, "parents": "9", "role": "Pareto Front", "components": {"system_prompt": "You are to process a text input that contains a request for a specific task, and generate a response that strictly adheres to the following constraints:  \n\n1. **Repetition of Request**: First, repeat the request word for word without any changes, followed by your response. Do not add any additional text or explanations before the response.  \n\n2. **Punctuation Rules**: Avoid the use of periods (.) and exclamation marks (!) in your response.  \n\n3. **Word Enclosure**: Every word in your response must be enclosed within square brackets.  \n\n4. **Response Length**: Your response must be less than 2 letters in length (i.e., a single letter or no letter).  \n\n5. **Constraints Compliance**: Ensure that your response satisfies all the constraints provided in the feedback, including but not limited to:  \n   - Repeating the request word for word.  \n   - No punctuation.  \n   - All words in square brackets.  \n   - Response length under 2 letters.  \n\n6. **Task Format**: The task is to generate a response that satisfies the above constraints, and the response must be in English, with no capital letters.  \n\n7. **Domain and Niche Specificity**: The task is to process a text input that contains a request for a specific task, and the response must be generated in a way that adheres to the strict constraints outlined above, including the repetition of the request and the use of square brackets for every word.  \n\n8. **Generalizable Strategy**: If the assistant has utilized a generalizable strategy to solve the task, include that in the instruction as well. For example, if the assistant uses a structured approach to parse the request and generate the response, this should be mentioned in the instruction.  \n\n9. **Feedback Compliance**: Ensure that your response is compliant with the feedback provided, including the requirement to repeat the request and the use of square brackets for every word.  \n\n10. **No Extra Content**: Do not include any additional text, explanations, or formatting beyond what is required by the constraints.  \n```  \n\n```  \n```  \n[repeat the request without change 2 times, separated by 6 asterisk symbols]  \n[how many days does it take the sprinkler system to use 50 liters of water?]  \n[how many days does it take the sprinkler system to use 50 liters of water?]  \n```  \n\nP.S.: * * *  \n* The task requires generating a response that strictly follows the given constraints, including repeating the request and using square brackets for every word.  \n* The response must be less than 2 letters in length and must not include any punctuation.  \n* The response must be in English and must not contain any capital letters."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    1 [label="1\\n(0.10)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.10)", fillcolor=lightgray, tooltip=" "];
+    3 [label="3\\n(0.06)", fillcolor=orange, tooltip=" "];
+    4 [label="4\\n(0.10)", fillcolor=lightgray, tooltip=" "];
+    5 [label="5\\n(0.10)", fillcolor=lightgray, tooltip=" "];
+    6 [label="6\\n(0.11)", fillcolor=lightgray, tooltip=" "];
+    7 [label="7\\n(0.10)", fillcolor=orange, tooltip=" "];
+    8 [label="8\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    9 [label="9\\n(0.12)", fillcolor=cyan, tooltip=" "];
+    10 [label="10\\n(0.10)", fillcolor=orange, tooltip=" "];
+    11 [label="11\\n(0.07)", fillcolor=orange, tooltip=" "];
+    12 [label="12\\n(0.10)", fillcolor=orange, tooltip=" "];
+    13 [label="13\\n(0.07)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    1 -> 2;
+    0 -> 3;
+    1 -> 4;
+    1 -> 5;
+    1 -> 6;
+    0 -> 7;
+    3 -> 8;
+    1 -> 9;
+    1 -> 10;
+    3 -> 11;
+    0 -> 12;
+    9 -> 13;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

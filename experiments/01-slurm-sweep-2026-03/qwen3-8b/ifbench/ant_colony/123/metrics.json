@@ -1,0 +1,2448 @@
+{
+  "rollout_count": 1800,
+  "reflection_call_count": 6,
+  "wall_clock_seconds": 11839.59,
+  "total_tokens": 1253732,
+  "task_input_tokens": 687780,
+  "task_output_tokens": 564054,
+  "reflection_input_tokens": 972,
+  "reflection_output_tokens": 926,
+  "test_score": 0.06994444444444445,
+  "model": "openai/Qwen/Qwen3-8B",
+  "model_tag": "qwen3-8b",
+  "benchmark": "ifbench",
+  "seed": 123,
+  "method": "ant_colony",
+  "val_score": 0.07277777777777777,
+  "prompt_length_chars": 1055,
+  "prompt_length_tokens": 263,
+  "test_example_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.2,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.2,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    1.0,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.75,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.2,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.5,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    1.0,
+    0.25,
+    0.6666666666666666,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "test_example_ids": [
+    "ifbench_test_0",
+    "ifbench_test_1",
+    "ifbench_test_2",
+    "ifbench_test_3",
+    "ifbench_test_4",
+    "ifbench_test_5",
+    "ifbench_test_6",
+    "ifbench_test_7",
+    "ifbench_test_8",
+    "ifbench_test_9",
+    "ifbench_test_10",
+    "ifbench_test_11",
+    "ifbench_test_12",
+    "ifbench_test_13",
+    "ifbench_test_14",
+    "ifbench_test_15",
+    "ifbench_test_16",
+    "ifbench_test_17",
+    "ifbench_test_18",
+    "ifbench_test_19",
+    "ifbench_test_20",
+    "ifbench_test_21",
+    "ifbench_test_22",
+    "ifbench_test_23",
+    "ifbench_test_24",
+    "ifbench_test_25",
+    "ifbench_test_26",
+    "ifbench_test_27",
+    "ifbench_test_28",
+    "ifbench_test_29",
+    "ifbench_test_30",
+    "ifbench_test_31",
+    "ifbench_test_32",
+    "ifbench_test_33",
+    "ifbench_test_34",
+    "ifbench_test_35",
+    "ifbench_test_36",
+    "ifbench_test_37",
+    "ifbench_test_38",
+    "ifbench_test_39",
+    "ifbench_test_40",
+    "ifbench_test_41",
+    "ifbench_test_42",
+    "ifbench_test_43",
+    "ifbench_test_44",
+    "ifbench_test_45",
+    "ifbench_test_46",
+    "ifbench_test_47",
+    "ifbench_test_48",
+    "ifbench_test_49",
+    "ifbench_test_50",
+    "ifbench_test_51",
+    "ifbench_test_52",
+    "ifbench_test_53",
+    "ifbench_test_54",
+    "ifbench_test_55",
+    "ifbench_test_56",
+    "ifbench_test_57",
+    "ifbench_test_58",
+    "ifbench_test_59",
+    "ifbench_test_60",
+    "ifbench_test_61",
+    "ifbench_test_62",
+    "ifbench_test_63",
+    "ifbench_test_64",
+    "ifbench_test_65",
+    "ifbench_test_66",
+    "ifbench_test_67",
+    "ifbench_test_68",
+    "ifbench_test_69",
+    "ifbench_test_70",
+    "ifbench_test_71",
+    "ifbench_test_72",
+    "ifbench_test_73",
+    "ifbench_test_74",
+    "ifbench_test_75",
+    "ifbench_test_76",
+    "ifbench_test_77",
+    "ifbench_test_78",
+    "ifbench_test_79",
+    "ifbench_test_80",
+    "ifbench_test_81",
+    "ifbench_test_82",
+    "ifbench_test_83",
+    "ifbench_test_84",
+    "ifbench_test_85",
+    "ifbench_test_86",
+    "ifbench_test_87",
+    "ifbench_test_88",
+    "ifbench_test_89",
+    "ifbench_test_90",
+    "ifbench_test_91",
+    "ifbench_test_92",
+    "ifbench_test_93",
+    "ifbench_test_94",
+    "ifbench_test_95",
+    "ifbench_test_96",
+    "ifbench_test_97",
+    "ifbench_test_98",
+    "ifbench_test_99",
+    "ifbench_test_100",
+    "ifbench_test_101",
+    "ifbench_test_102",
+    "ifbench_test_103",
+    "ifbench_test_104",
+    "ifbench_test_105",
+    "ifbench_test_106",
+    "ifbench_test_107",
+    "ifbench_test_108",
+    "ifbench_test_109",
+    "ifbench_test_110",
+    "ifbench_test_111",
+    "ifbench_test_112",
+    "ifbench_test_113",
+    "ifbench_test_114",
+    "ifbench_test_115",
+    "ifbench_test_116",
+    "ifbench_test_117",
+    "ifbench_test_118",
+    "ifbench_test_119",
+    "ifbench_test_120",
+    "ifbench_test_121",
+    "ifbench_test_122",
+    "ifbench_test_123",
+    "ifbench_test_124",
+    "ifbench_test_125",
+    "ifbench_test_126",
+    "ifbench_test_127",
+    "ifbench_test_128",
+    "ifbench_test_129",
+    "ifbench_test_130",
+    "ifbench_test_131",
+    "ifbench_test_132",
+    "ifbench_test_133",
+    "ifbench_test_134",
+    "ifbench_test_135",
+    "ifbench_test_136",
+    "ifbench_test_137",
+    "ifbench_test_138",
+    "ifbench_test_139",
+    "ifbench_test_140",
+    "ifbench_test_141",
+    "ifbench_test_142",
+    "ifbench_test_143",
+    "ifbench_test_144",
+    "ifbench_test_145",
+    "ifbench_test_146",
+    "ifbench_test_147",
+    "ifbench_test_148",
+    "ifbench_test_149",
+    "ifbench_test_150",
+    "ifbench_test_151",
+    "ifbench_test_152",
+    "ifbench_test_153",
+    "ifbench_test_154",
+    "ifbench_test_155",
+    "ifbench_test_156",
+    "ifbench_test_157",
+    "ifbench_test_158",
+    "ifbench_test_159",
+    "ifbench_test_160",
+    "ifbench_test_161",
+    "ifbench_test_162",
+    "ifbench_test_163",
+    "ifbench_test_164",
+    "ifbench_test_165",
+    "ifbench_test_166",
+    "ifbench_test_167",
+    "ifbench_test_168",
+    "ifbench_test_169",
+    "ifbench_test_170",
+    "ifbench_test_171",
+    "ifbench_test_172",
+    "ifbench_test_173",
+    "ifbench_test_174",
+    "ifbench_test_175",
+    "ifbench_test_176",
+    "ifbench_test_177",
+    "ifbench_test_178",
+    "ifbench_test_179",
+    "ifbench_test_180",
+    "ifbench_test_181",
+    "ifbench_test_182",
+    "ifbench_test_183",
+    "ifbench_test_184",
+    "ifbench_test_185",
+    "ifbench_test_186",
+    "ifbench_test_187",
+    "ifbench_test_188",
+    "ifbench_test_189",
+    "ifbench_test_190",
+    "ifbench_test_191",
+    "ifbench_test_192",
+    "ifbench_test_193",
+    "ifbench_test_194",
+    "ifbench_test_195",
+    "ifbench_test_196",
+    "ifbench_test_197",
+    "ifbench_test_198",
+    "ifbench_test_199",
+    "ifbench_test_200",
+    "ifbench_test_201",
+    "ifbench_test_202",
+    "ifbench_test_203",
+    "ifbench_test_204",
+    "ifbench_test_205",
+    "ifbench_test_206",
+    "ifbench_test_207",
+    "ifbench_test_208",
+    "ifbench_test_209",
+    "ifbench_test_210",
+    "ifbench_test_211",
+    "ifbench_test_212",
+    "ifbench_test_213",
+    "ifbench_test_214",
+    "ifbench_test_215",
+    "ifbench_test_216",
+    "ifbench_test_217",
+    "ifbench_test_218",
+    "ifbench_test_219",
+    "ifbench_test_220",
+    "ifbench_test_221",
+    "ifbench_test_222",
+    "ifbench_test_223",
+    "ifbench_test_224",
+    "ifbench_test_225",
+    "ifbench_test_226",
+    "ifbench_test_227",
+    "ifbench_test_228",
+    "ifbench_test_229",
+    "ifbench_test_230",
+    "ifbench_test_231",
+    "ifbench_test_232",
+    "ifbench_test_233",
+    "ifbench_test_234",
+    "ifbench_test_235",
+    "ifbench_test_236",
+    "ifbench_test_237",
+    "ifbench_test_238",
+    "ifbench_test_239",
+    "ifbench_test_240",
+    "ifbench_test_241",
+    "ifbench_test_242",
+    "ifbench_test_243",
+    "ifbench_test_244",
+    "ifbench_test_245",
+    "ifbench_test_246",
+    "ifbench_test_247",
+    "ifbench_test_248",
+    "ifbench_test_249",
+    "ifbench_test_250",
+    "ifbench_test_251",
+    "ifbench_test_252",
+    "ifbench_test_253",
+    "ifbench_test_254",
+    "ifbench_test_255",
+    "ifbench_test_256",
+    "ifbench_test_257",
+    "ifbench_test_258",
+    "ifbench_test_259",
+    "ifbench_test_260",
+    "ifbench_test_261",
+    "ifbench_test_262",
+    "ifbench_test_263",
+    "ifbench_test_264",
+    "ifbench_test_265",
+    "ifbench_test_266",
+    "ifbench_test_267",
+    "ifbench_test_268",
+    "ifbench_test_269",
+    "ifbench_test_270",
+    "ifbench_test_271",
+    "ifbench_test_272",
+    "ifbench_test_273",
+    "ifbench_test_274",
+    "ifbench_test_275",
+    "ifbench_test_276",
+    "ifbench_test_277",
+    "ifbench_test_278",
+    "ifbench_test_279",
+    "ifbench_test_280",
+    "ifbench_test_281",
+    "ifbench_test_282",
+    "ifbench_test_283",
+    "ifbench_test_284",
+    "ifbench_test_285",
+    "ifbench_test_286",
+    "ifbench_test_287",
+    "ifbench_test_288",
+    "ifbench_test_289",
+    "ifbench_test_290",
+    "ifbench_test_291",
+    "ifbench_test_292",
+    "ifbench_test_293",
+    "ifbench_test_294",
+    "ifbench_test_295",
+    "ifbench_test_296",
+    "ifbench_test_297",
+    "ifbench_test_298",
+    "ifbench_test_299"
+  ],
+  "score_per_1k_rollouts": 0.0389,
+  "convergence_iteration": 50,
+  "val_score_trajectory": [
+    [
+      50,
+      0.07277777777777777
+    ]
+  ],
+  "rollout_trajectory": [
+    [
+      50,
+      1800
+    ]
+  ],
+  "best_val_trajectory": [
+    [
+      50,
+      0.07277777777777777
+    ]
+  ],
+  "pheromone_history": [
+    {
+      "round": 1,
+      "top_5_components": [
+        {
+          "text": "Ensure all instructions are clear, concise, and free from ambiguity.",
+          "category": "task_framing",
+          "pheromone": 0.7740000000000001
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of different conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.7740000000000001
+        },
+        {
+          "text": "Verify each step of your reasoning process to ensure consistency and accuracy.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.7740000000000001
+        },
+        {
+          "text": "Follow the specified order of instructions when combining with other categories.",
+          "category": "format_instructions",
+          "pheromone": 0.7740000000000001
+        },
+        {
+          "text": "Verify all input data formats match expected specifications before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.7740000000000001
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 2,
+      "top_5_components": [
+        {
+          "text": "Ensure all instructions are clear, concise, and free from ambiguity.",
+          "category": "task_framing",
+          "pheromone": 0.5642460000000001
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of different conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.5642460000000001
+        },
+        {
+          "text": "Verify each step of your reasoning process to ensure consistency and accuracy.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.5642460000000001
+        },
+        {
+          "text": "Follow the specified order of instructions when combining with other categories.",
+          "category": "format_instructions",
+          "pheromone": 0.5642460000000001
+        },
+        {
+          "text": "Verify all input data formats match expected specifications before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.5642460000000001
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 3,
+      "top_5_components": [
+        {
+          "text": "Ensure all instructions are clear, concise, and free from ambiguity.",
+          "category": "task_framing",
+          "pheromone": 0.4113353340000001
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of different conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.4113353340000001
+        },
+        {
+          "text": "Verify each step of your reasoning process to ensure consistency and accuracy.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.4113353340000001
+        },
+        {
+          "text": "Follow the specified order of instructions when combining with other categories.",
+          "category": "format_instructions",
+          "pheromone": 0.4113353340000001
+        },
+        {
+          "text": "Verify all input data formats match expected specifications before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.4113353340000001
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 4,
+      "top_5_components": [
+        {
+          "text": "Ensure all instructions are clear, concise, and free from ambiguity.",
+          "category": "task_framing",
+          "pheromone": 0.2998634584860001
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of different conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.2998634584860001
+        },
+        {
+          "text": "Verify each step of your reasoning process to ensure consistency and accuracy.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.2998634584860001
+        },
+        {
+          "text": "Follow the specified order of instructions when combining with other categories.",
+          "category": "format_instructions",
+          "pheromone": 0.2998634584860001
+        },
+        {
+          "text": "Verify all input data formats match expected specifications before processing.",
+          "category": "error_prevention",
+          "pheromone": 0.2998634584860001
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 5,
+      "top_5_components": [
+        {
+          "text": "Avoid assuming user intent; confirm critical actions with explicit user confirmation.",
+          "category": "error_prevention",
+          "pheromone": 0.2486004612362941
+        },
+        {
+          "text": "Use domain-specific terminology accurately and appropriately.",
+          "category": "domain_specific",
+          "pheromone": 0.2486004612362941
+        },
+        {
+          "text": "Identify any dependencies or prerequisites that must be fulfilled before starting the task.",
+          "category": "task_framing",
+          "pheromone": 0.23589113209464913
+        },
+        {
+          "text": "Break down complex problems into smaller, manageable components.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.23589113209464913
+        },
+        {
+          "text": "Use analogical reasoning to draw parallels between similar situations.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.23589113209464913
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 6,
+      "top_5_components": [
+        {
+          "text": "Avoid assuming user intent; confirm critical actions with explicit user confirmation.",
+          "category": "error_prevention",
+          "pheromone": 0.1812297362412584
+        },
+        {
+          "text": "Use domain-specific terminology accurately and appropriately.",
+          "category": "domain_specific",
+          "pheromone": 0.1812297362412584
+        },
+        {
+          "text": "Identify any dependencies or prerequisites that must be fulfilled before starting the task.",
+          "category": "task_framing",
+          "pheromone": 0.1719646352969992
+        },
+        {
+          "text": "Break down complex problems into smaller, manageable components.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.1719646352969992
+        },
+        {
+          "text": "Use analogical reasoning to draw parallels between similar situations.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.1719646352969992
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 7,
+      "top_5_components": [
+        {
+          "text": "Avoid assuming user intent; confirm critical actions with explicit user confirmation.",
+          "category": "error_prevention",
+          "pheromone": 0.16211647771987736
+        },
+        {
+          "text": "Ensure all instructions are clear, concise, and free from ambiguity.",
+          "category": "task_framing",
+          "pheromone": 0.14617324771987739
+        },
+        {
+          "text": "Follow the specified order of instructions when combining with other categories.",
+          "category": "format_instructions",
+          "pheromone": 0.14617324771987739
+        },
+        {
+          "text": "Define the scope of the task to include all necessary components and exclude irrelevant details.",
+          "category": "task_framing",
+          "pheromone": 0.13941898913151243
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.13941898913151243
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 8,
+      "top_5_components": [
+        {
+          "text": "Avoid assuming user intent; confirm critical actions with explicit user confirmation.",
+          "category": "error_prevention",
+          "pheromone": 0.1546329122577906
+        },
+        {
+          "text": "Follow the specified order of instructions when combining with other categories.",
+          "category": "format_instructions",
+          "pheromone": 0.1430102975877906
+        },
+        {
+          "text": "Employ inductive reasoning by identifying patterns from specific examples.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.13808644307687257
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.13808644307687257
+        },
+        {
+          "text": "Differentiate between general and domain-specific information in responses.",
+          "category": "domain_specific",
+          "pheromone": 0.13808644307687257
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 9,
+      "top_5_components": [
+        {
+          "text": "Avoid assuming user intent; confirm critical actions with explicit user confirmation.",
+          "category": "error_prevention",
+          "pheromone": 0.11272739303592937
+        },
+        {
+          "text": "Follow the specified order of instructions when combining with other categories.",
+          "category": "format_instructions",
+          "pheromone": 0.10425450694149935
+        },
+        {
+          "text": "Employ inductive reasoning by identifying patterns from specific examples.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.1006650170030401
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.1006650170030401
+        },
+        {
+          "text": "Differentiate between general and domain-specific information in responses.",
+          "category": "domain_specific",
+          "pheromone": 0.1006650170030401
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 10,
+      "top_5_components": [
+        {
+          "text": "Avoid assuming user intent; confirm critical actions with explicit user confirmation.",
+          "category": "error_prevention",
+          "pheromone": 0.08217826952319252
+        },
+        {
+          "text": "Follow the specified order of instructions when combining with other categories.",
+          "category": "format_instructions",
+          "pheromone": 0.07600153556035302
+        },
+        {
+          "text": "Employ inductive reasoning by identifying patterns from specific examples.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.07338479739521624
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.07338479739521624
+        },
+        {
+          "text": "Differentiate between general and domain-specific information in responses.",
+          "category": "domain_specific",
+          "pheromone": 0.07338479739521624
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 11,
+      "top_5_components": [
+        {
+          "text": "Avoid assuming user intent; confirm critical actions with explicit user confirmation.",
+          "category": "error_prevention",
+          "pheromone": 0.05990795848240735
+        },
+        {
+          "text": "Follow the specified order of instructions when combining with other categories.",
+          "category": "format_instructions",
+          "pheromone": 0.05540511942349736
+        },
+        {
+          "text": "Employ inductive reasoning by identifying patterns from specific examples.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.05349751730111264
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.05349751730111264
+        },
+        {
+          "text": "Differentiate between general and domain-specific information in responses.",
+          "category": "domain_specific",
+          "pheromone": 0.05349751730111264
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 12,
+      "top_5_components": [
+        {
+          "text": "Avoid assuming user intent; confirm critical actions with explicit user confirmation.",
+          "category": "error_prevention",
+          "pheromone": 0.043672901733674954
+        },
+        {
+          "text": "Follow the specified order of instructions when combining with other categories.",
+          "category": "format_instructions",
+          "pheromone": 0.04039033205972957
+        },
+        {
+          "text": "Employ inductive reasoning by identifying patterns from specific examples.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03899969011251112
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.03899969011251112
+        },
+        {
+          "text": "Differentiate between general and domain-specific information in responses.",
+          "category": "domain_specific",
+          "pheromone": 0.03899969011251112
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 13,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.06277092832541682
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of different conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.061391713012632895
+        },
+        {
+          "text": "Implement validation checks for critical user inputs to prevent malformed requests.",
+          "category": "error_prevention",
+          "pheromone": 0.06037793503311063
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options and narrow down possibilities.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.057376042327170654
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.05287320326826067
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 14,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.045760006749228865
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of different conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04475455878620938
+        },
+        {
+          "text": "Implement validation checks for critical user inputs to prevent malformed requests.",
+          "category": "error_prevention",
+          "pheromone": 0.04401551463913766
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options and narrow down possibilities.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04182713485650741
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.03854456518256203
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 15,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.03335904492018784
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of different conclusions.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03262607335514665
+        },
+        {
+          "text": "Implement validation checks for critical user inputs to prevent malformed requests.",
+          "category": "error_prevention",
+          "pheromone": 0.03208731017193135
+        },
+        {
+          "text": "Use logical deduction to eliminate incorrect options and narrow down possibilities.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.0304919813103939
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.028098988018087724
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 16,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options and narrow down possibilities.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04472865437527715
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.04298416226518595
+        },
+        {
+          "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+          "category": "error_prevention",
+          "pheromone": 0.04298416226518595
+        },
+        {
+          "text": "Differentiate between general and domain-specific information in responses.",
+          "category": "domain_specific",
+          "pheromone": 0.03351466440137915
+        },
+        {
+          "text": "Use domain-specific terminology accurately and appropriately.",
+          "category": "domain_specific",
+          "pheromone": 0.030182538433178866
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 17,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options and narrow down possibilities.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.032607189039577045
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.03133545429132056
+        },
+        {
+          "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+          "category": "error_prevention",
+          "pheromone": 0.03133545429132056
+        },
+        {
+          "text": "Differentiate between general and domain-specific information in responses.",
+          "category": "domain_specific",
+          "pheromone": 0.024432190348605404
+        },
+        {
+          "text": "Use domain-specific terminology accurately and appropriately.",
+          "category": "domain_specific",
+          "pheromone": 0.022003070517787392
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 18,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options and narrow down possibilities.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.03835064080985167
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.037423546178372694
+        },
+        {
+          "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+          "category": "error_prevention",
+          "pheromone": 0.037423546178372694
+        },
+        {
+          "text": "Differentiate between general and domain-specific information in responses.",
+          "category": "domain_specific",
+          "pheromone": 0.03239106676413334
+        },
+        {
+          "text": "Use domain-specific terminology accurately and appropriately.",
+          "category": "domain_specific",
+          "pheromone": 0.030620238407467016
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 19,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options and narrow down possibilities.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.027957617150381867
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.027281765164033696
+        },
+        {
+          "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+          "category": "error_prevention",
+          "pheromone": 0.027281765164033696
+        },
+        {
+          "text": "Differentiate between general and domain-specific information in responses.",
+          "category": "domain_specific",
+          "pheromone": 0.02361308767105321
+        },
+        {
+          "text": "Use domain-specific terminology accurately and appropriately.",
+          "category": "domain_specific",
+          "pheromone": 0.022322153799043454
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 20,
+      "top_5_components": [
+        {
+          "text": "Use logical deduction to eliminate incorrect options and narrow down possibilities.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.020381102902628383
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.019888406804580563
+        },
+        {
+          "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+          "category": "error_prevention",
+          "pheromone": 0.019888406804580563
+        },
+        {
+          "text": "Differentiate between general and domain-specific information in responses.",
+          "category": "domain_specific",
+          "pheromone": 0.017213940912197793
+        },
+        {
+          "text": "Use domain-specific terminology accurately and appropriately.",
+          "category": "domain_specific",
+          "pheromone": 0.01627285011950268
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 21,
+      "top_5_components": [
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.04449864856053923
+        },
+        {
+          "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+          "category": "error_prevention",
+          "pheromone": 0.04449864856053923
+        },
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.04065560441077181
+        },
+        {
+          "text": "Avoid markdown formatting and use plain text only.",
+          "category": "format_instructions",
+          "pheromone": 0.0361334515440013
+        },
+        {
+          "text": "Verify each step of your reasoning process to ensure consistency and accuracy.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.031989511731261876
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 22,
+      "top_5_components": [
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.07496451480063311
+        },
+        {
+          "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+          "category": "error_prevention",
+          "pheromone": 0.07496451480063311
+        },
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.07216293561545266
+        },
+        {
+          "text": "Verify each step of your reasoning process to ensure consistency and accuracy.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.06584535405208991
+        },
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.06548915688139448
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 23,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.070831780063665
+        },
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.06596659536653658
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.06586515360913088
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.06586515360913088
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.05464913128966154
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 24,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.05163636766641179
+        },
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.048089648022205174
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.04801569698105641
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.04801569698105641
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.039839216710163265
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 25,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.037642912028814195
+        },
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.03505735340818757
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.03500344309919013
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.03500344309919013
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.029042788981709023
+        }
+      ],
+      "best_score_so_far": 0.16999999999999998
+    },
+    {
+      "round": 26,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.02744168286900555
+        },
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.02555681063456874
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.02551751001930961
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.02551751001930961
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.02117219316766588
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 27,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.020004986811505046
+        },
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.018630914952600615
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.01860226480407671
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.01860226480407671
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.015434528819228428
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 28,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.01458363538558718
+        },
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.01358193700044585
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.01356105104217192
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.01356105104217192
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.011251771509217525
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 29,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.010631470196093055
+        },
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.009901232073325026
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.009886006209743331
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.009886006209743331
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.008202541430219576
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 30,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.007750341772951838
+        },
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.007217998181453944
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.007206898526902888
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.007206898526902888
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.005979652702630071
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 31,
+      "top_5_components": [
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.00564999915248189
+        },
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.005261920674279925
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.005253829026112206
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.005253829026112206
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.004359166820217322
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 32,
+      "top_5_components": [
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.03383594017155006
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.033830041360035805
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.033830041360035805
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.033177832611938435
+        },
+        {
+          "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+          "category": "error_prevention",
+          "pheromone": 0.033177832611938435
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 33,
+      "top_5_components": [
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.04896640038505999
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.048962100151466105
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.048486639974103116
+        },
+        {
+          "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+          "category": "error_prevention",
+          "pheromone": 0.048486639974103116
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.04829433981328564
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 34,
+      "top_5_components": [
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.03569650588070874
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.03569337101041879
+        },
+        {
+          "text": "Do not include any personal opinions or assumptions.",
+          "category": "format_instructions",
+          "pheromone": 0.035346760541121174
+        },
+        {
+          "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+          "category": "error_prevention",
+          "pheromone": 0.035346760541121174
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.035206573723885234
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 35,
+      "top_5_components": [
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.0624727527870367
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.06247046746659531
+        },
+        {
+          "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+          "category": "error_prevention",
+          "pheromone": 0.06221778843447735
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.06211559224471235
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.06171217921899567
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 36,
+      "top_5_components": [
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.09054263678174977
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.09054097078314799
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.09028226674639532
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.08998817865064786
+        },
+        {
+          "text": "Use input sanitization techniques to avoid injection attacks and data corruption.",
+          "category": "error_prevention",
+          "pheromone": 0.0899850437803579
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 37,
+      "top_5_components": [
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.06600558221389558
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.06600436770091489
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.06581577245812219
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.0656013822363223
+        },
+        {
+          "text": "Use input sanitization techniques to avoid injection attacks and data corruption.",
+          "category": "error_prevention",
+          "pheromone": 0.06559909691588092
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 38,
+      "top_5_components": [
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.04811806943392988
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.048117184053966956
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.04797969812197108
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.047823407650278954
+        },
+        {
+          "text": "Use input sanitization techniques to avoid injection attacks and data corruption.",
+          "category": "error_prevention",
+          "pheromone": 0.0478217416516772
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 39,
+      "top_5_components": [
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.05757807261733488
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.057577427175341915
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.05747719993091692
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.057363264177053355
+        },
+        {
+          "text": "Use input sanitization techniques to avoid injection attacks and data corruption.",
+          "category": "error_prevention",
+          "pheromone": 0.057362049664072684
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 40,
+      "top_5_components": [
+        {
+          "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+          "category": "domain_specific",
+          "pheromone": 0.04197441493803713
+        },
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.04197394441082426
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.04190087874963844
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.0418178195850719
+        },
+        {
+          "text": "Use input sanitization techniques to avoid injection attacks and data corruption.",
+          "category": "error_prevention",
+          "pheromone": 0.041816934205108985
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 41,
+      "top_5_components": [
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.13589900547549089
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.13584574060848642
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.13578519047751744
+        },
+        {
+          "text": "Identify the key stakeholders or users who will be affected by the task's outcome.",
+          "category": "task_framing",
+          "pheromone": 0.13567864369804117
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.13396068090872287
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 42,
+      "top_5_components": [
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.12157037499163287
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.12153154490358661
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.12148740385811023
+        },
+        {
+          "text": "Identify the key stakeholders or users who will be affected by the task's outcome.",
+          "category": "task_framing",
+          "pheromone": 0.12140973125587202
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.120157336382459
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 43,
+      "top_5_components": [
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.08862480336890037
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.08859649623471465
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.08856431741256236
+        },
+        {
+          "text": "Identify the key stakeholders or users who will be affected by the task's outcome.",
+          "category": "task_framing",
+          "pheromone": 0.0885076940855307
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.08759469822281261
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 44,
+      "top_5_components": [
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.06460748165592838
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.06458684575510698
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.06456338739375797
+        },
+        {
+          "text": "Identify the key stakeholders or users who will be affected by the task's outcome.",
+          "category": "task_framing",
+          "pheromone": 0.06452210898835188
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.0638565350044304
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 45,
+      "top_5_components": [
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.04709885412717179
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.047083810555473
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.04706670941004957
+        },
+        {
+          "text": "Identify the key stakeholders or users who will be affected by the task's outcome.",
+          "category": "task_framing",
+          "pheromone": 0.047036617452508526
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.04655141401822977
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 46,
+      "top_5_components": [
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.04648506465870824
+        },
+        {
+          "text": "Structure responses with appropriate headings and subheadings.",
+          "category": "format_instructions",
+          "pheromone": 0.04646163115992616
+        },
+        {
+          "text": "Identify the key stakeholders or users who will be affected by the task's outcome.",
+          "category": "task_framing",
+          "pheromone": 0.046439694122878725
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.046085980819289524
+        },
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.04573026312224237
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 47,
+      "top_5_components": [
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.058187612136198316
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.057896680017262066
+        },
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.05763736181611469
+        },
+        {
+          "text": "Ensure error messages are clear, specific, and guide users toward corrective actions.",
+          "category": "error_prevention",
+          "pheromone": 0.05324261189562099
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.04932226736541112
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 48,
+      "top_5_components": [
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.042418769247288574
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.042206679732584046
+        },
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.04201763676394761
+        },
+        {
+          "text": "Ensure error messages are clear, specific, and guide users toward corrective actions.",
+          "category": "error_prevention",
+          "pheromone": 0.0388138640719077
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.03595593290938471
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 49,
+      "top_5_components": [
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.10382328278127337
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.10366866952505377
+        },
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.10353085720091784
+        },
+        {
+          "text": "Ensure error messages are clear, specific, and guide users toward corrective actions.",
+          "category": "error_prevention",
+          "pheromone": 0.10119530690842074
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.09911187509094145
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 50,
+      "top_5_components": [
+        {
+          "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+          "category": "error_prevention",
+          "pheromone": 0.09593717314754828
+        },
+        {
+          "text": "Keep each response within a single paragraph unless instructed otherwise.",
+          "category": "format_instructions",
+          "pheromone": 0.0958244600837642
+        },
+        {
+          "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+          "category": "error_prevention",
+          "pheromone": 0.09572399489946912
+        },
+        {
+          "text": "Ensure error messages are clear, specific, and guide users toward corrective actions.",
+          "category": "error_prevention",
+          "pheromone": 0.09402137873623873
+        },
+        {
+          "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+          "category": "task_framing",
+          "pheromone": 0.09250255694129632
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    }
+  ],
+  "component_library_size": 50,
+  "final_pheromone_ranking": [
+    {
+      "text": "Ensure backup and recovery procedures are tested and available for system failures.",
+      "category": "error_prevention",
+      "pheromone": 0.09593717314754828
+    },
+    {
+      "text": "Keep each response within a single paragraph unless instructed otherwise.",
+      "category": "format_instructions",
+      "pheromone": 0.0958244600837642
+    },
+    {
+      "text": "Regularly review and update error handling logic to address new edge cases and vulnerabilities.",
+      "category": "error_prevention",
+      "pheromone": 0.09572399489946912
+    },
+    {
+      "text": "Ensure error messages are clear, specific, and guide users toward corrective actions.",
+      "category": "error_prevention",
+      "pheromone": 0.09402137873623873
+    },
+    {
+      "text": "Outline the steps or phases that the task will be divided into for structured progress.",
+      "category": "task_framing",
+      "pheromone": 0.09250255694129632
+    },
+    {
+      "text": "Log all system errors with timestamps and contextual information for troubleshooting.",
+      "category": "error_prevention",
+      "pheromone": 0.09196468572270211
+    },
+    {
+      "text": "Use input sanitization techniques to avoid injection attacks and data corruption.",
+      "category": "error_prevention",
+      "pheromone": 0.07859828714471724
+    },
+    {
+      "text": "Avoid markdown formatting and use plain text only.",
+      "category": "format_instructions",
+      "pheromone": 0.07695899400875802
+    },
+    {
+      "text": "Do not include any personal opinions or assumptions.",
+      "category": "format_instructions",
+      "pheromone": 0.03634956619568462
+    },
+    {
+      "text": "Structure responses with appropriate headings and subheadings.",
+      "category": "format_instructions",
+      "pheromone": 0.03337213695264913
+    },
+    {
+      "text": "Adapt explanations to the appropriate level of detail for the target audience.",
+      "category": "domain_specific",
+      "pheromone": 0.01641992578732172
+    },
+    {
+      "text": "Identify the key stakeholders or users who will be affected by the task's outcome.",
+      "category": "task_framing",
+      "pheromone": 0.013115941285444063
+    },
+    {
+      "text": "Verify each step of your reasoning process to ensure consistency and accuracy.",
+      "category": "reasoning_strategy",
+      "pheromone": 0.0006496432874042087
+    },
+    {
+      "text": "Use logical deduction to eliminate incorrect options and narrow down possibilities.",
+      "category": "reasoning_strategy",
+      "pheromone": 7.648159488725895e-06
+    },
+    {
+      "text": "Ensure responses align with established standards or best practices in the domain.",
+      "category": "domain_specific",
+      "pheromone": 6.855289763928903e-06
+    },
+    {
+      "text": "Use domain-specific terminology accurately and appropriately.",
+      "category": "domain_specific",
+      "pheromone": 4.823150562168538e-06
+    },
+    {
+      "text": "Differentiate between general and domain-specific information in responses.",
+      "category": "domain_specific",
+      "pheromone": 1.3113123681094735e-06
+    },
+    {
+      "text": "Clarify the objective of the task by identifying the primary goal and desired outcome.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Define the scope of the task to include all necessary components and exclude irrelevant details.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Establish the constraints and limitations that must be adhered to during task execution.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Determine the required resources, tools, or data needed to complete the task effectively.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Specify the criteria for success to ensure the task meets its intended purpose.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Define the timeline or deadline by which the task must be completed.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Identify any dependencies or prerequisites that must be fulfilled before starting the task.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Ensure all instructions are clear, concise, and free from ambiguity.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Break down complex problems into smaller, manageable components.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Apply deductive reasoning by starting with known facts and deriving conclusions.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Employ inductive reasoning by identifying patterns from specific examples.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Consider multiple perspectives to evaluate the validity of different conclusions.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use analogical reasoning to draw parallels between similar situations.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Identify and address assumptions underlying your reasoning.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use structured frameworks like SWOT or cost-benefit analysis to guide decision-making.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Reflect on the reasoning process to identify potential biases or errors.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use clear and concise language in all responses.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Follow the specified order of instructions when combining with other categories.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use consistent terminology throughout the response.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Ensure all numerical values are presented in standard decimal format.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Do not add any additional information beyond what is requested.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Maintain a neutral and objective tone in all communications.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Verify all input data formats match expected specifications before processing.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Implement validation checks for critical user inputs to prevent malformed requests.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Validate system dependencies and configurations before initiating any operation.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Set up automated alerts for recurring or critical errors to enable timely intervention.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Avoid assuming user intent; confirm critical actions with explicit user confirmation.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Identify the specific domain or industry relevant to the query.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Apply domain knowledge to interpret ambiguous or technical language.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Provide examples relevant to the identified domain or industry.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Recognize and explain domain-specific concepts or methodologies.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Reference authoritative sources or publications within the domain.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Maintain neutrality and avoid assumptions not supported by domain knowledge.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    }
+  ]
+}

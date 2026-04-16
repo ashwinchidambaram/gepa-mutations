@@ -1,0 +1,1018 @@
+Iteration 0: Base program full valset score: 0.5733333333333334 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.5733333333333334
+Iteration 1: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The response should include only the correct answer in the exact format requested, without any additional explanations or formatting.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and consistent with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.  
+
+(Niche and domain specific factual information)  
+- The context includes specific names, dates, and roles of individuals, such as "Ernst Messerschmid," "Philippe Perrin," "Bob Johnson," and others.  
+- The answer must be based on the exact information provided in the context and must not include any external knowledge or assumptions.  
+- The task may involve comparing dates of birth or death, identifying the correct name, or determining the relationship between individuals based on the context.  
+
+(Generalizable strategy for solving the task)  
+- If the question involves comparing dates, the answer should be based on the exact dates provided in the context.  
+- If the question involves identifying a person's role or association with a project, the answer should be based on the specific details provided in the context.  
+- If the question involves identifying a person's name or role, the answer should be based on the exact name and role mentioned in the context.
+Iteration 1: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 2: Selected program 0 score: 0.5733333333333334
+Iteration 2: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 2: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 2: Valset score for new program: 0.5633333333333334 (coverage 300 / 300)
+Iteration 2: Val aggregate for new program: 0.5633333333333334
+Iteration 2: Individual valset scores for new program: {64: 0.0, 68: 1.0, 96: 1.0, 0: 0.0, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.0, 5: 0.0, 6: 0.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 0.0, 11: 1.0, 12: 1.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 1.0, 19: 1.0, 20: 1.0, 21: 0.0, 22: 1.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 1.0, 27: 0.0, 28: 1.0, 29: 0.0, 30: 1.0, 31: 0.0, 32: 1.0, 33: 1.0, 34: 0.0, 35: 1.0, 36: 1.0, 37: 1.0, 38: 1.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 0.0, 50: 1.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.0, 56: 1.0, 57: 1.0, 58: 1.0, 59: 1.0, 60: 0.0, 61: 1.0, 62: 1.0, 63: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 69: 0.0, 70: 1.0, 71: 1.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 0.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 1.0, 83: 1.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 1.0, 90: 1.0, 91: 1.0, 92: 0.0, 93: 1.0, 94: 1.0, 95: 0.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 1.0, 102: 1.0, 103: 0.0, 104: 1.0, 105: 0.0, 106: 1.0, 107: 1.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 0.0, 115: 0.0, 116: 0.0, 117: 0.0, 118: 1.0, 119: 0.0, 120: 1.0, 121: 1.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 1.0, 126: 1.0, 127: 1.0, 128: 0.0, 129: 1.0, 130: 1.0, 131: 1.0, 132: 0.0, 133: 1.0, 134: 1.0, 135: 0.0, 136: 1.0, 137: 0.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 0.0, 142: 1.0, 143: 0.0, 144: 0.0, 145: 0.0, 146: 0.0, 147: 1.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 1.0, 154: 0.0, 155: 0.0, 156: 1.0, 157: 1.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 0.0, 164: 0.0, 165: 1.0, 166: 0.0, 167: 0.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 1.0, 173: 0.0, 174: 1.0, 175: 0.0, 176: 1.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 0.0, 181: 0.0, 182: 0.0, 183: 1.0, 184: 0.0, 185: 0.0, 186: 1.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 1.0, 191: 0.0, 192: 1.0, 193: 0.0, 194: 0.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 0.0, 199: 0.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 0.0, 205: 1.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 1.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 1.0, 219: 1.0, 220: 0.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 0.0, 225: 0.0, 226: 1.0, 227: 0.0, 228: 1.0, 229: 0.0, 230: 1.0, 231: 1.0, 232: 0.0, 233: 0.0, 234: 1.0, 235: 0.0, 236: 1.0, 237: 0.0, 238: 0.0, 239: 1.0, 240: 0.0, 241: 0.0, 242: 1.0, 243: 0.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 1.0, 249: 0.0, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 1.0, 255: 0.0, 256: 0.0, 257: 1.0, 258: 1.0, 259: 1.0, 260: 0.0, 261: 0.0, 262: 1.0, 263: 0.0, 264: 1.0, 265: 0.0, 266: 1.0, 267: 1.0, 268: 1.0, 269: 0.0, 270: 1.0, 271: 1.0, 272: 0.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 0.0, 279: 0.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 1.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 0.0, 288: 1.0, 289: 0.0, 290: 0.0, 291: 1.0, 292: 0.0, 293: 0.0, 294: 0.0, 295: 1.0, 296: 1.0, 297: 0.0, 298: 0.0, 299: 1.0}
+Iteration 2: New valset pareto front scores: {0: 0.0, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.0, 5: 0.0, 6: 0.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 0.0, 11: 1.0, 12: 1.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 1.0, 19: 1.0, 20: 1.0, 21: 0.0, 22: 1.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 1.0, 29: 0.0, 30: 1.0, 31: 0.0, 32: 1.0, 33: 1.0, 34: 0.0, 35: 1.0, 36: 1.0, 37: 1.0, 38: 1.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 0.0, 50: 1.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.0, 56: 1.0, 57: 1.0, 58: 1.0, 59: 1.0, 60: 0.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 1.0, 69: 0.0, 70: 1.0, 71: 1.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 0.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 1.0, 83: 1.0, 84: 1.0, 85: 0.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 1.0, 90: 1.0, 91: 1.0, 92: 0.0, 93: 1.0, 94: 1.0, 95: 0.0, 96: 1.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 1.0, 102: 1.0, 103: 0.0, 104: 1.0, 105: 0.0, 106: 1.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 0.0, 115: 0.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 0.0, 120: 1.0, 121: 1.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 1.0, 126: 1.0, 127: 1.0, 128: 0.0, 129: 1.0, 130: 1.0, 131: 1.0, 132: 0.0, 133: 1.0, 134: 1.0, 135: 0.0, 136: 1.0, 137: 1.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 0.0, 142: 1.0, 143: 0.0, 144: 0.0, 145: 0.0, 146: 0.0, 147: 1.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 1.0, 154: 0.0, 155: 0.0, 156: 1.0, 157: 1.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 0.0, 164: 0.0, 165: 1.0, 166: 0.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 1.0, 173: 1.0, 174: 1.0, 175: 0.0, 176: 1.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 0.0, 181: 0.0, 182: 0.0, 183: 1.0, 184: 0.0, 185: 0.0, 186: 1.0, 187: 0.0, 188: 0.0, 189: 1.0, 190: 1.0, 191: 0.0, 192: 1.0, 193: 1.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 1.0, 199: 0.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 0.0, 205: 1.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 1.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 1.0, 219: 1.0, 220: 0.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 0.0, 225: 1.0, 226: 1.0, 227: 0.0, 228: 1.0, 229: 0.0, 230: 1.0, 231: 1.0, 232: 0.0, 233: 0.0, 234: 1.0, 235: 0.0, 236: 1.0, 237: 0.0, 238: 0.0, 239: 1.0, 240: 0.0, 241: 0.0, 242: 1.0, 243: 0.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 1.0, 249: 0.0, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 1.0, 255: 0.0, 256: 0.0, 257: 1.0, 258: 1.0, 259: 1.0, 260: 0.0, 261: 1.0, 262: 1.0, 263: 0.0, 264: 1.0, 265: 0.0, 266: 1.0, 267: 1.0, 268: 1.0, 269: 0.0, 270: 1.0, 271: 1.0, 272: 0.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 0.0, 279: 0.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 1.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 0.0, 288: 1.0, 289: 0.0, 290: 0.0, 291: 1.0, 292: 0.0, 293: 0.0, 294: 0.0, 295: 1.0, 296: 1.0, 297: 0.0, 298: 0.0, 299: 1.0}
+Iteration 2: Valset pareto front aggregate score: 0.6133333333333333
+Iteration 2: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {0, 1}, 5: {0, 1}, 6: {0, 1}, 7: {0, 1}, 8: {0, 1}, 9: {0, 1}, 10: {0, 1}, 11: {0, 1}, 12: {0, 1}, 13: {0, 1}, 14: {0, 1}, 15: {0, 1}, 16: {0, 1}, 17: {0, 1}, 18: {0, 1}, 19: {0, 1}, 20: {0, 1}, 21: {0, 1}, 22: {0, 1}, 23: {0, 1}, 24: {0, 1}, 25: {0, 1}, 26: {0, 1}, 27: {0}, 28: {0, 1}, 29: {0, 1}, 30: {0, 1}, 31: {0, 1}, 32: {0, 1}, 33: {0, 1}, 34: {0, 1}, 35: {0, 1}, 36: {0, 1}, 37: {0, 1}, 38: {0, 1}, 39: {0, 1}, 40: {0, 1}, 41: {0, 1}, 42: {0, 1}, 43: {0, 1}, 44: {0, 1}, 45: {0, 1}, 46: {0, 1}, 47: {0, 1}, 48: {0, 1}, 49: {0, 1}, 50: {0, 1}, 51: {0, 1}, 52: {0, 1}, 53: {0, 1}, 54: {0, 1}, 55: {0, 1}, 56: {0, 1}, 57: {0, 1}, 58: {0, 1}, 59: {0, 1}, 60: {0, 1}, 61: {0, 1}, 62: {0, 1}, 63: {0, 1}, 64: {0}, 65: {0, 1}, 66: {0, 1}, 67: {0, 1}, 68: {1}, 69: {0, 1}, 70: {0, 1}, 71: {0, 1}, 72: {0, 1}, 73: {0, 1}, 74: {0, 1}, 75: {0, 1}, 76: {0, 1}, 77: {0, 1}, 78: {0, 1}, 79: {0, 1}, 80: {0, 1}, 81: {0, 1}, 82: {0, 1}, 83: {0, 1}, 84: {0}, 85: {0, 1}, 86: {0, 1}, 87: {0, 1}, 88: {0, 1}, 89: {0, 1}, 90: {0, 1}, 91: {0, 1}, 92: {0, 1}, 93: {1}, 94: {1}, 95: {0, 1}, 96: {1}, 97: {0, 1}, 98: {0, 1}, 99: {0, 1}, 100: {0, 1}, 101: {0, 1}, 102: {0, 1}, 103: {0, 1}, 104: {0, 1}, 105: {0, 1}, 106: {0, 1}, 107: {0, 1}, 108: {0}, 109: {0}, 110: {0, 1}, 111: {0, 1}, 112: {0, 1}, 113: {0, 1}, 114: {0, 1}, 115: {0, 1}, 116: {0, 1}, 117: {0}, 118: {0, 1}, 119: {0, 1}, 120: {0, 1}, 121: {0, 1}, 122: {0, 1}, 123: {0, 1}, 124: {0, 1}, 125: {0, 1}, 126: {1}, 127: {0, 1}, 128: {0, 1}, 129: {0, 1}, 130: {0, 1}, 131: {0, 1}, 132: {0, 1}, 133: {0, 1}, 134: {0, 1}, 135: {0, 1}, 136: {0, 1}, 137: {0}, 138: {0, 1}, 139: {0, 1}, 140: {0, 1}, 141: {0, 1}, 142: {0, 1}, 143: {0, 1}, 144: {0, 1}, 145: {0, 1}, 146: {0, 1}, 147: {0, 1}, 148: {0, 1}, 149: {0, 1}, 150: {0, 1}, 151: {0, 1}, 152: {0, 1}, 153: {0, 1}, 154: {0, 1}, 155: {0, 1}, 156: {0, 1}, 157: {1}, 158: {0, 1}, 159: {1}, 160: {0, 1}, 161: {0, 1}, 162: {0, 1}, 163: {0, 1}, 164: {0, 1}, 165: {1}, 166: {0, 1}, 167: {0}, 168: {0, 1}, 169: {0, 1}, 170: {0, 1}, 171: {0, 1}, 172: {0, 1}, 173: {0}, 174: {0, 1}, 175: {0, 1}, 176: {0, 1}, 177: {0, 1}, 178: {0, 1}, 179: {0, 1}, 180: {0, 1}, 181: {0, 1}, 182: {0, 1}, 183: {0, 1}, 184: {0, 1}, 185: {0, 1}, 186: {0, 1}, 187: {0, 1}, 188: {0, 1}, 189: {0}, 190: {0, 1}, 191: {0, 1}, 192: {0, 1}, 193: {0}, 194: {0}, 195: {0, 1}, 196: {0, 1}, 197: {0, 1}, 198: {0}, 199: {0, 1}, 200: {0, 1}, 201: {0, 1}, 202: {0, 1}, 203: {0, 1}, 204: {0, 1}, 205: {0, 1}, 206: {0, 1}, 207: {0, 1}, 208: {0, 1}, 209: {0, 1}, 210: {0, 1}, 211: {0, 1}, 212: {0, 1}, 213: {0, 1}, 214: {0, 1}, 215: {0, 1}, 216: {0, 1}, 217: {0, 1}, 218: {0, 1}, 219: {1}, 220: {0, 1}, 221: {0, 1}, 222: {0, 1}, 223: {0, 1}, 224: {0, 1}, 225: {0}, 226: {0, 1}, 227: {0, 1}, 228: {0, 1}, 229: {0, 1}, 230: {0, 1}, 231: {0, 1}, 232: {0, 1}, 233: {0, 1}, 234: {0, 1}, 235: {0, 1}, 236: {0, 1}, 237: {0, 1}, 238: {0, 1}, 239: {0, 1}, 240: {0, 1}, 241: {0, 1}, 242: {0, 1}, 243: {0, 1}, 244: {0, 1}, 245: {0, 1}, 246: {0, 1}, 247: {0, 1}, 248: {0, 1}, 249: {0, 1}, 250: {0, 1}, 251: {0, 1}, 252: {0, 1}, 253: {0, 1}, 254: {0, 1}, 255: {0, 1}, 256: {0, 1}, 257: {0, 1}, 258: {0, 1}, 259: {0, 1}, 260: {0, 1}, 261: {0}, 262: {0, 1}, 263: {0, 1}, 264: {0, 1}, 265: {0, 1}, 266: {0, 1}, 267: {0, 1}, 268: {0, 1}, 269: {0, 1}, 270: {0, 1}, 271: {0, 1}, 272: {0, 1}, 273: {0, 1}, 274: {0, 1}, 275: {0, 1}, 276: {0, 1}, 277: {1}, 278: {0, 1}, 279: {0, 1}, 280: {0, 1}, 281: {0, 1}, 282: {0, 1}, 283: {0, 1}, 284: {0, 1}, 285: {0, 1}, 286: {0, 1}, 287: {0, 1}, 288: {1}, 289: {0, 1}, 290: {0, 1}, 291: {1}, 292: {0, 1}, 293: {0, 1}, 294: {0, 1}, 295: {0, 1}, 296: {0, 1}, 297: {0, 1}, 298: {0, 1}, 299: {0, 1}}
+Iteration 2: Best valset aggregate score so far: 0.5733333333333334
+Iteration 2: Best program as per aggregate score on valset: 0
+Iteration 2: Best score on valset: 0.5733333333333334
+Iteration 2: Linear pareto front program index: 0
+Iteration 2: New program candidate index: 1
+Iteration 3: No merge candidates found
+Iteration 3: Selected program 1 score: 0.5633333333333334
+Iteration 3: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.  
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 3: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 4: Selected program 1 score: 0.5633333333333334
+Iteration 4: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations. The assistant must verify that the answer is accurate and consistent with the context.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 4: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 5: Selected program 1 score: 0.5633333333333334
+Iteration 5: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations. The assistant must verify that the answer is accurate and consistent with the context provided.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 5: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 6: Selected program 0 score: 0.5733333333333334
+Iteration 6: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.
+Iteration 6: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 7: Selected program 0 score: 0.5733333333333334
+Iteration 7: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not include external knowledge or assumptions.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.
+Iteration 7: New subsample score 1.0 is not better than old score 2.0, skipping
+Iteration 8: Selected program 1 score: 0.5633333333333334
+Iteration 8: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations. The assistant must verify that the answer is accurate and consistent with the context provided.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 8: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 8: Valset score for new program: 0.57 (coverage 300 / 300)
+Iteration 8: Val aggregate for new program: 0.57
+Iteration 8: Individual valset scores for new program: {9: 0.0, 12: 1.0, 65: 1.0, 104: 0.0, 105: 1.0, 118: 1.0, 0: 1.0, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.0, 5: 0.0, 6: 0.0, 7: 1.0, 8: 1.0, 10: 0.0, 11: 1.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 1.0, 19: 1.0, 20: 1.0, 21: 0.0, 22: 1.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 0.0, 27: 0.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 0.0, 32: 1.0, 33: 1.0, 34: 0.0, 35: 1.0, 36: 1.0, 37: 1.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 0.0, 48: 1.0, 49: 0.0, 50: 1.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.0, 56: 1.0, 57: 1.0, 58: 1.0, 59: 0.0, 60: 0.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 66: 1.0, 67: 1.0, 68: 0.0, 69: 0.0, 70: 1.0, 71: 1.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 0.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 1.0, 83: 1.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 1.0, 90: 1.0, 91: 1.0, 92: 0.0, 93: 1.0, 94: 1.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 1.0, 102: 1.0, 103: 0.0, 106: 1.0, 107: 1.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 0.0, 115: 0.0, 116: 0.0, 117: 0.0, 119: 0.0, 120: 1.0, 121: 1.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 1.0, 126: 1.0, 127: 1.0, 128: 0.0, 129: 1.0, 130: 1.0, 131: 1.0, 132: 0.0, 133: 1.0, 134: 1.0, 135: 0.0, 136: 1.0, 137: 0.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 0.0, 142: 1.0, 143: 0.0, 144: 1.0, 145: 0.0, 146: 1.0, 147: 1.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 1.0, 154: 0.0, 155: 0.0, 156: 1.0, 157: 1.0, 158: 0.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 0.0, 164: 1.0, 165: 0.0, 166: 0.0, 167: 0.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 1.0, 173: 1.0, 174: 1.0, 175: 0.0, 176: 1.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 0.0, 181: 0.0, 182: 0.0, 183: 1.0, 184: 0.0, 185: 0.0, 186: 1.0, 187: 0.0, 188: 1.0, 189: 0.0, 190: 1.0, 191: 0.0, 192: 1.0, 193: 0.0, 194: 0.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 0.0, 199: 0.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 0.0, 205: 1.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 1.0, 215: 0.0, 216: 1.0, 217: 0.0, 218: 0.0, 219: 1.0, 220: 0.0, 221: 1.0, 222: 1.0, 223: 0.0, 224: 0.0, 225: 1.0, 226: 1.0, 227: 0.0, 228: 1.0, 229: 0.0, 230: 1.0, 231: 1.0, 232: 0.0, 233: 1.0, 234: 1.0, 235: 0.0, 236: 1.0, 237: 0.0, 238: 0.0, 239: 1.0, 240: 0.0, 241: 0.0, 242: 1.0, 243: 0.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 0.0, 248: 1.0, 249: 0.0, 250: 1.0, 251: 1.0, 252: 0.0, 253: 0.0, 254: 1.0, 255: 0.0, 256: 0.0, 257: 1.0, 258: 1.0, 259: 1.0, 260: 0.0, 261: 0.0, 262: 1.0, 263: 0.0, 264: 1.0, 265: 0.0, 266: 1.0, 267: 1.0, 268: 1.0, 269: 1.0, 270: 1.0, 271: 1.0, 272: 0.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 1.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 0.0, 288: 1.0, 289: 0.0, 290: 0.0, 291: 1.0, 292: 0.0, 293: 0.0, 294: 0.0, 295: 1.0, 296: 1.0, 297: 0.0, 298: 0.0, 299: 1.0}
+Iteration 8: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.0, 5: 0.0, 6: 0.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 0.0, 11: 1.0, 12: 1.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 1.0, 19: 1.0, 20: 1.0, 21: 0.0, 22: 1.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 0.0, 32: 1.0, 33: 1.0, 34: 0.0, 35: 1.0, 36: 1.0, 37: 1.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 0.0, 50: 1.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.0, 56: 1.0, 57: 1.0, 58: 1.0, 59: 1.0, 60: 0.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 1.0, 69: 0.0, 70: 1.0, 71: 1.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 0.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 1.0, 83: 1.0, 84: 1.0, 85: 0.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 1.0, 90: 1.0, 91: 1.0, 92: 0.0, 93: 1.0, 94: 1.0, 95: 0.0, 96: 1.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 1.0, 102: 1.0, 103: 0.0, 104: 1.0, 105: 1.0, 106: 1.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 0.0, 115: 0.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 0.0, 120: 1.0, 121: 1.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 1.0, 126: 1.0, 127: 1.0, 128: 0.0, 129: 1.0, 130: 1.0, 131: 1.0, 132: 0.0, 133: 1.0, 134: 1.0, 135: 0.0, 136: 1.0, 137: 1.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 0.0, 142: 1.0, 143: 0.0, 144: 1.0, 145: 0.0, 146: 1.0, 147: 1.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 1.0, 154: 0.0, 155: 0.0, 156: 1.0, 157: 1.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 0.0, 164: 1.0, 165: 1.0, 166: 0.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 1.0, 173: 1.0, 174: 1.0, 175: 0.0, 176: 1.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 0.0, 181: 0.0, 182: 0.0, 183: 1.0, 184: 0.0, 185: 0.0, 186: 1.0, 187: 0.0, 188: 1.0, 189: 1.0, 190: 1.0, 191: 0.0, 192: 1.0, 193: 1.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 1.0, 199: 0.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 0.0, 205: 1.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 1.0, 215: 0.0, 216: 1.0, 217: 0.0, 218: 1.0, 219: 1.0, 220: 0.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 0.0, 225: 1.0, 226: 1.0, 227: 0.0, 228: 1.0, 229: 0.0, 230: 1.0, 231: 1.0, 232: 0.0, 233: 1.0, 234: 1.0, 235: 0.0, 236: 1.0, 237: 0.0, 238: 0.0, 239: 1.0, 240: 0.0, 241: 0.0, 242: 1.0, 243: 0.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 1.0, 249: 0.0, 250: 1.0, 251: 1.0, 252: 0.0, 253: 0.0, 254: 1.0, 255: 0.0, 256: 0.0, 257: 1.0, 258: 1.0, 259: 1.0, 260: 0.0, 261: 1.0, 262: 1.0, 263: 0.0, 264: 1.0, 265: 0.0, 266: 1.0, 267: 1.0, 268: 1.0, 269: 1.0, 270: 1.0, 271: 1.0, 272: 0.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 0.0, 279: 0.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 1.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 0.0, 288: 1.0, 289: 0.0, 290: 0.0, 291: 1.0, 292: 0.0, 293: 0.0, 294: 0.0, 295: 1.0, 296: 1.0, 297: 0.0, 298: 0.0, 299: 1.0}
+Iteration 8: Valset pareto front aggregate score: 0.6533333333333333
+Iteration 8: Updated valset pareto front programs: {0: {2}, 1: {0, 1, 2}, 2: {0, 1, 2}, 3: {0, 1, 2}, 4: {0, 1, 2}, 5: {0, 1, 2}, 6: {0, 1, 2}, 7: {0, 1, 2}, 8: {0, 1, 2}, 9: {0, 1}, 10: {0, 1, 2}, 11: {0, 1, 2}, 12: {0, 1, 2}, 13: {0, 1, 2}, 14: {0, 1, 2}, 15: {0, 1, 2}, 16: {0, 1, 2}, 17: {0, 1, 2}, 18: {0, 1, 2}, 19: {0, 1, 2}, 20: {0, 1, 2}, 21: {0, 1, 2}, 22: {0, 1, 2}, 23: {0, 1, 2}, 24: {0, 1, 2}, 25: {0, 1, 2}, 26: {0, 1}, 27: {0}, 28: {0, 1, 2}, 29: {2}, 30: {0, 1, 2}, 31: {0, 1, 2}, 32: {0, 1, 2}, 33: {0, 1, 2}, 34: {0, 1, 2}, 35: {0, 1, 2}, 36: {0, 1, 2}, 37: {0, 1, 2}, 38: {0, 1, 2}, 39: {2}, 40: {0, 1, 2}, 41: {0, 1, 2}, 42: {0, 1, 2}, 43: {0, 1, 2}, 44: {0, 1, 2}, 45: {0, 1, 2}, 46: {0, 1, 2}, 47: {0, 1}, 48: {0, 1, 2}, 49: {0, 1, 2}, 50: {0, 1, 2}, 51: {0, 1, 2}, 52: {0, 1, 2}, 53: {0, 1, 2}, 54: {0, 1, 2}, 55: {0, 1, 2}, 56: {0, 1, 2}, 57: {0, 1, 2}, 58: {0, 1, 2}, 59: {0, 1}, 60: {0, 1, 2}, 61: {0, 1, 2}, 62: {0, 1, 2}, 63: {0, 1, 2}, 64: {0, 2}, 65: {0, 1, 2}, 66: {0, 1, 2}, 67: {0, 1, 2}, 68: {1}, 69: {0, 1, 2}, 70: {0, 1, 2}, 71: {0, 1, 2}, 72: {0, 1, 2}, 73: {0, 1, 2}, 74: {0, 1, 2}, 75: {0, 1, 2}, 76: {0, 1, 2}, 77: {0, 1, 2}, 78: {0, 1, 2}, 79: {0, 1, 2}, 80: {0, 1, 2}, 81: {0, 1, 2}, 82: {0, 1, 2}, 83: {0, 1, 2}, 84: {0}, 85: {0, 1, 2}, 86: {0, 1, 2}, 87: {0, 1, 2}, 88: {0, 1, 2}, 89: {0, 1, 2}, 90: {0, 1, 2}, 91: {0, 1, 2}, 92: {0, 1, 2}, 93: {1, 2}, 94: {1, 2}, 95: {0, 1, 2}, 96: {1}, 97: {0, 1, 2}, 98: {0, 1, 2}, 99: {0, 1, 2}, 100: {0, 1, 2}, 101: {0, 1, 2}, 102: {0, 1, 2}, 103: {0, 1, 2}, 104: {0, 1}, 105: {2}, 106: {0, 1, 2}, 107: {0, 1, 2}, 108: {0}, 109: {0}, 110: {0, 1, 2}, 111: {0, 1, 2}, 112: {0, 1, 2}, 113: {0, 1, 2}, 114: {0, 1, 2}, 115: {0, 1, 2}, 116: {0, 1, 2}, 117: {0}, 118: {0, 1, 2}, 119: {0, 1, 2}, 120: {0, 1, 2}, 121: {0, 1, 2}, 122: {0, 1, 2}, 123: {0, 1, 2}, 124: {0, 1, 2}, 125: {0, 1, 2}, 126: {1, 2}, 127: {0, 1, 2}, 128: {0, 1, 2}, 129: {0, 1, 2}, 130: {0, 1, 2}, 131: {0, 1, 2}, 132: {0, 1, 2}, 133: {0, 1, 2}, 134: {0, 1, 2}, 135: {0, 1, 2}, 136: {0, 1, 2}, 137: {0}, 138: {0, 1, 2}, 139: {0, 1, 2}, 140: {0, 1, 2}, 141: {0, 1, 2}, 142: {0, 1, 2}, 143: {0, 1, 2}, 144: {2}, 145: {0, 1, 2}, 146: {2}, 147: {0, 1, 2}, 148: {0, 1, 2}, 149: {0, 1, 2}, 150: {0, 1, 2}, 151: {0, 1, 2}, 152: {0, 1, 2}, 153: {0, 1, 2}, 154: {0, 1, 2}, 155: {0, 1, 2}, 156: {0, 1, 2}, 157: {1, 2}, 158: {0, 1}, 159: {1, 2}, 160: {0, 1, 2}, 161: {0, 1, 2}, 162: {0, 1, 2}, 163: {0, 1, 2}, 164: {2}, 165: {1}, 166: {0, 1, 2}, 167: {0}, 168: {0, 1, 2}, 169: {0, 1, 2}, 170: {0, 1, 2}, 171: {0, 1, 2}, 172: {0, 1, 2}, 173: {0, 2}, 174: {0, 1, 2}, 175: {0, 1, 2}, 176: {0, 1, 2}, 177: {0, 1, 2}, 178: {0, 1, 2}, 179: {0, 1, 2}, 180: {0, 1, 2}, 181: {0, 1, 2}, 182: {0, 1, 2}, 183: {0, 1, 2}, 184: {0, 1, 2}, 185: {0, 1, 2}, 186: {0, 1, 2}, 187: {0, 1, 2}, 188: {2}, 189: {0}, 190: {0, 1, 2}, 191: {0, 1, 2}, 192: {0, 1, 2}, 193: {0}, 194: {0}, 195: {0, 1, 2}, 196: {0, 1, 2}, 197: {0, 1, 2}, 198: {0}, 199: {0, 1, 2}, 200: {0, 1, 2}, 201: {0, 1, 2}, 202: {0, 1, 2}, 203: {0, 1, 2}, 204: {0, 1, 2}, 205: {0, 1, 2}, 206: {0, 1, 2}, 207: {0, 1, 2}, 208: {0, 1, 2}, 209: {0, 1, 2}, 210: {0, 1, 2}, 211: {0, 1, 2}, 212: {0, 1, 2}, 213: {0, 1, 2}, 214: {0, 1, 2}, 215: {0, 1, 2}, 216: {2}, 217: {0, 1, 2}, 218: {0, 1}, 219: {1, 2}, 220: {0, 1, 2}, 221: {0, 1, 2}, 222: {0, 1, 2}, 223: {0, 1}, 224: {0, 1, 2}, 225: {0, 2}, 226: {0, 1, 2}, 227: {0, 1, 2}, 228: {0, 1, 2}, 229: {0, 1, 2}, 230: {0, 1, 2}, 231: {0, 1, 2}, 232: {0, 1, 2}, 233: {2}, 234: {0, 1, 2}, 235: {0, 1, 2}, 236: {0, 1, 2}, 237: {0, 1, 2}, 238: {0, 1, 2}, 239: {0, 1, 2}, 240: {0, 1, 2}, 241: {0, 1, 2}, 242: {0, 1, 2}, 243: {0, 1, 2}, 244: {0, 1, 2}, 245: {0, 1, 2}, 246: {0, 1, 2}, 247: {0, 1}, 248: {0, 1, 2}, 249: {0, 1, 2}, 250: {0, 1, 2}, 251: {2}, 252: {0, 1, 2}, 253: {0, 1, 2}, 254: {0, 1, 2}, 255: {0, 1, 2}, 256: {0, 1, 2}, 257: {0, 1, 2}, 258: {0, 1, 2}, 259: {0, 1, 2}, 260: {0, 1, 2}, 261: {0}, 262: {0, 1, 2}, 263: {0, 1, 2}, 264: {0, 1, 2}, 265: {0, 1, 2}, 266: {0, 1, 2}, 267: {0, 1, 2}, 268: {0, 1, 2}, 269: {2}, 270: {0, 1, 2}, 271: {0, 1, 2}, 272: {0, 1, 2}, 273: {0, 1, 2}, 274: {0, 1, 2}, 275: {0, 1, 2}, 276: {0, 1, 2}, 277: {1}, 278: {0, 1, 2}, 279: {0, 1, 2}, 280: {0, 1, 2}, 281: {0, 1, 2}, 282: {0, 1, 2}, 283: {0, 1, 2}, 284: {0, 1, 2}, 285: {0, 1, 2}, 286: {0, 1, 2}, 287: {0, 1, 2}, 288: {1, 2}, 289: {0, 1, 2}, 290: {0, 1, 2}, 291: {1, 2}, 292: {0, 1, 2}, 293: {0, 1, 2}, 294: {0, 1, 2}, 295: {0, 1, 2}, 296: {0, 1, 2}, 297: {0, 1, 2}, 298: {0, 1, 2}, 299: {0, 1, 2}}
+Iteration 8: Best valset aggregate score so far: 0.5733333333333334
+Iteration 8: Best program as per aggregate score on valset: 0
+Iteration 8: Best score on valset: 0.5733333333333334
+Iteration 8: Linear pareto front program index: 0
+Iteration 8: New program candidate index: 2
+Iteration 9: No merge candidates found
+Iteration 9: Selected program 1 score: 0.5633333333333334
+Iteration 9: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.  
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 9: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 10: Selected program 1 score: 0.5633333333333334
+Iteration 10: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations.  
+The assistant must ensure that the answer is accurate and consistent with the context provided.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.  
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 10: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 11: Selected program 0 score: 0.5733333333333334
+Iteration 11: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and consistent with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.
+Iteration 11: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 12: Selected program 1 score: 0.5633333333333334
+Iteration 12: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations. The assistant must ensure that the answer is accurate and consistent with the context provided.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 12: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 13: Selected program 0 score: 0.5733333333333334
+Iteration 13: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves identifying the correct answer to a question based on the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be derived solely from the given context and must be accurate and consistent with the information provided.  
+
+(The step-by-step reasoning approach)  
+1. **Identify the question or query** that needs to be answered.  
+2. **Analyze the provided context** to find relevant information.  
+3. **Extract key facts or details** from the context that directly relate to the question.  
+4. **Synthesize the information** into a concise, factual answer without adding assumptions or interpretations.  
+5. **Verify that the answer** is accurate and consistent with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.  
+
+(Niche and domain-specific information)  
+- The task involves factual knowledge about historical and political figures, particularly those related to Colombia and its vice presidents.  
+- The answer must be precise and include the correct name of the individual who served as the 1st Vice President of Colombia under Simón Bolívar (El Libertador).  
+- The answer must be based exclusively on the provided context and must not include any external knowledge or assumptions.  
+
+(Generalizable strategy)  
+- If the question involves identifying a specific person or position based on a historical context, the answer should be derived directly from the provided text without external references.  
+- The answer must be exact and match the name of the individual mentioned in the context.
+Iteration 13: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 14: Selected program 2 score: 0.57
+Iteration 14: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations. The assistant must verify that the answer is accurate and consistent with the context provided.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 14: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 15: Selected program 1 score: 0.5633333333333334
+Iteration 15: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.  
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 15: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 16: Selected program 0 score: 0.5733333333333334
+Iteration 16: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not include external knowledge. The response should be in the exact format requested, without additional explanations or formatting.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and consistent with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.  
+
+(Niche and domain specific factual information)  
+- The task requires precise identification of specific individuals, events, and dates based on the provided context.  
+- The answer must be accurate and consistent with the exact information given in the context.  
+- The assistant must be aware of the specific names, titles, and dates mentioned in the context, such as "Dennis Allen," "Chris Stockley," "The Dingoes," and "1971" as a specific year.  
+- The assistant must avoid making assumptions or inferences beyond the provided text.  
+- The assistant must ensure that the answer is based on the exact information in the context and not on external knowledge or general knowledge.  
+- The assistant must be aware of the structure of the context, such as the mention of "the man who shot Chris Stockley" and the year "1971" in the context.  
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to identify the question, analyze the context, extract relevant information, and synthesize the answer.  
+- The assistant should ensure that the answer is concise, factual, and directly addresses the query without adding or omitting information.  
+- The assistant should verify the answer against the context to ensure accuracy.
+Iteration 16: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 16: Valset score for new program: 0.57 (coverage 300 / 300)
+Iteration 16: Val aggregate for new program: 0.57
+Iteration 16: Individual valset scores for new program: {19: 1.0, 103: 1.0, 145: 0.0, 0: 0.0, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.0, 5: 0.0, 6: 0.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 0.0, 11: 1.0, 12: 1.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 1.0, 20: 1.0, 21: 0.0, 22: 1.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 1.0, 27: 0.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 0.0, 32: 1.0, 33: 1.0, 34: 0.0, 35: 1.0, 36: 1.0, 37: 1.0, 38: 1.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 0.0, 48: 1.0, 49: 0.0, 50: 1.0, 51: 1.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.0, 56: 1.0, 57: 1.0, 58: 1.0, 59: 1.0, 60: 0.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 0.0, 69: 0.0, 70: 1.0, 71: 1.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 0.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 1.0, 83: 1.0, 84: 1.0, 85: 0.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 1.0, 90: 1.0, 91: 1.0, 92: 0.0, 93: 1.0, 94: 1.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 1.0, 102: 1.0, 104: 1.0, 105: 0.0, 106: 1.0, 107: 1.0, 108: 1.0, 109: 0.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 0.0, 115: 0.0, 116: 0.0, 117: 0.0, 118: 1.0, 119: 0.0, 120: 1.0, 121: 1.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 1.0, 126: 1.0, 127: 1.0, 128: 0.0, 129: 1.0, 130: 1.0, 131: 1.0, 132: 0.0, 133: 1.0, 134: 1.0, 135: 0.0, 136: 1.0, 137: 0.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 0.0, 142: 1.0, 143: 0.0, 144: 1.0, 146: 0.0, 147: 1.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 1.0, 154: 0.0, 155: 0.0, 156: 1.0, 157: 1.0, 158: 0.0, 159: 0.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 0.0, 164: 0.0, 165: 0.0, 166: 0.0, 167: 0.0, 168: 0.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 1.0, 173: 1.0, 174: 1.0, 175: 0.0, 176: 1.0, 177: 1.0, 178: 0.0, 179: 1.0, 180: 1.0, 181: 0.0, 182: 0.0, 183: 1.0, 184: 0.0, 185: 0.0, 186: 1.0, 187: 0.0, 188: 0.0, 189: 1.0, 190: 1.0, 191: 0.0, 192: 1.0, 193: 1.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 0.0, 199: 0.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 0.0, 205: 1.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 1.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 1.0, 220: 0.0, 221: 1.0, 222: 1.0, 223: 0.0, 224: 0.0, 225: 0.0, 226: 1.0, 227: 0.0, 228: 1.0, 229: 0.0, 230: 1.0, 231: 1.0, 232: 0.0, 233: 1.0, 234: 1.0, 235: 0.0, 236: 1.0, 237: 0.0, 238: 0.0, 239: 1.0, 240: 0.0, 241: 0.0, 242: 1.0, 243: 0.0, 244: 0.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 1.0, 249: 0.0, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 1.0, 255: 0.0, 256: 0.0, 257: 1.0, 258: 1.0, 259: 1.0, 260: 0.0, 261: 1.0, 262: 1.0, 263: 1.0, 264: 1.0, 265: 0.0, 266: 1.0, 267: 1.0, 268: 1.0, 269: 0.0, 270: 1.0, 271: 1.0, 272: 0.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 0.0, 279: 0.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 1.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 1.0, 292: 0.0, 293: 0.0, 294: 0.0, 295: 1.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 1.0}
+Iteration 16: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.0, 5: 0.0, 6: 0.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 0.0, 11: 1.0, 12: 1.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 1.0, 19: 1.0, 20: 1.0, 21: 0.0, 22: 1.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 0.0, 32: 1.0, 33: 1.0, 34: 0.0, 35: 1.0, 36: 1.0, 37: 1.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 0.0, 50: 1.0, 51: 1.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.0, 56: 1.0, 57: 1.0, 58: 1.0, 59: 1.0, 60: 0.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 1.0, 69: 0.0, 70: 1.0, 71: 1.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 0.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 1.0, 83: 1.0, 84: 1.0, 85: 0.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 1.0, 90: 1.0, 91: 1.0, 92: 0.0, 93: 1.0, 94: 1.0, 95: 0.0, 96: 1.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 1.0, 102: 1.0, 103: 1.0, 104: 1.0, 105: 1.0, 106: 1.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 0.0, 115: 0.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 0.0, 120: 1.0, 121: 1.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 1.0, 126: 1.0, 127: 1.0, 128: 0.0, 129: 1.0, 130: 1.0, 131: 1.0, 132: 0.0, 133: 1.0, 134: 1.0, 135: 0.0, 136: 1.0, 137: 1.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 0.0, 142: 1.0, 143: 0.0, 144: 1.0, 145: 0.0, 146: 1.0, 147: 1.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 1.0, 154: 0.0, 155: 0.0, 156: 1.0, 157: 1.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 0.0, 164: 1.0, 165: 1.0, 166: 0.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 1.0, 173: 1.0, 174: 1.0, 175: 0.0, 176: 1.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 1.0, 181: 0.0, 182: 0.0, 183: 1.0, 184: 0.0, 185: 0.0, 186: 1.0, 187: 0.0, 188: 1.0, 189: 1.0, 190: 1.0, 191: 0.0, 192: 1.0, 193: 1.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 1.0, 199: 0.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 0.0, 205: 1.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 1.0, 215: 0.0, 216: 1.0, 217: 0.0, 218: 1.0, 219: 1.0, 220: 0.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 0.0, 225: 1.0, 226: 1.0, 227: 0.0, 228: 1.0, 229: 0.0, 230: 1.0, 231: 1.0, 232: 0.0, 233: 1.0, 234: 1.0, 235: 0.0, 236: 1.0, 237: 0.0, 238: 0.0, 239: 1.0, 240: 0.0, 241: 0.0, 242: 1.0, 243: 0.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 1.0, 249: 0.0, 250: 1.0, 251: 1.0, 252: 0.0, 253: 0.0, 254: 1.0, 255: 0.0, 256: 0.0, 257: 1.0, 258: 1.0, 259: 1.0, 260: 0.0, 261: 1.0, 262: 1.0, 263: 1.0, 264: 1.0, 265: 0.0, 266: 1.0, 267: 1.0, 268: 1.0, 269: 1.0, 270: 1.0, 271: 1.0, 272: 0.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 0.0, 279: 0.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 1.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 0.0, 288: 1.0, 289: 0.0, 290: 0.0, 291: 1.0, 292: 0.0, 293: 0.0, 294: 0.0, 295: 1.0, 296: 1.0, 297: 0.0, 298: 0.0, 299: 1.0}
+Iteration 16: Valset pareto front aggregate score: 0.6666666666666666
+Iteration 16: Updated valset pareto front programs: {0: {2}, 1: {0, 1, 2, 3}, 2: {0, 1, 2, 3}, 3: {0, 1, 2, 3}, 4: {0, 1, 2, 3}, 5: {0, 1, 2, 3}, 6: {0, 1, 2, 3}, 7: {0, 1, 2, 3}, 8: {0, 1, 2, 3}, 9: {0, 1, 3}, 10: {0, 1, 2, 3}, 11: {0, 1, 2, 3}, 12: {0, 1, 2, 3}, 13: {0, 1, 2, 3}, 14: {0, 1, 2, 3}, 15: {0, 1, 2, 3}, 16: {0, 1, 2, 3}, 17: {0, 1, 2, 3}, 18: {0, 1, 2, 3}, 19: {0, 1, 2, 3}, 20: {0, 1, 2, 3}, 21: {0, 1, 2, 3}, 22: {0, 1, 2, 3}, 23: {0, 1, 2, 3}, 24: {0, 1, 2, 3}, 25: {0, 1, 2, 3}, 26: {0, 1, 3}, 27: {0}, 28: {0, 1, 2, 3}, 29: {2, 3}, 30: {0, 1, 2, 3}, 31: {0, 1, 2, 3}, 32: {0, 1, 2, 3}, 33: {0, 1, 2, 3}, 34: {0, 1, 2, 3}, 35: {0, 1, 2, 3}, 36: {0, 1, 2, 3}, 37: {0, 1, 2, 3}, 38: {0, 1, 2, 3}, 39: {2}, 40: {0, 1, 2, 3}, 41: {0, 1, 2, 3}, 42: {0, 1, 2, 3}, 43: {0, 1, 2, 3}, 44: {0, 1, 2, 3}, 45: {0, 1, 2, 3}, 46: {0, 1, 2, 3}, 47: {0, 1}, 48: {0, 1, 2, 3}, 49: {0, 1, 2, 3}, 50: {0, 1, 2, 3}, 51: {3}, 52: {0, 1, 2, 3}, 53: {0, 1, 2, 3}, 54: {0, 1, 2, 3}, 55: {0, 1, 2, 3}, 56: {0, 1, 2, 3}, 57: {0, 1, 2, 3}, 58: {0, 1, 2, 3}, 59: {0, 1, 3}, 60: {0, 1, 2, 3}, 61: {0, 1, 2, 3}, 62: {0, 1, 2, 3}, 63: {0, 1, 2, 3}, 64: {0, 2, 3}, 65: {0, 1, 2, 3}, 66: {0, 1, 2, 3}, 67: {0, 1, 2, 3}, 68: {1}, 69: {0, 1, 2, 3}, 70: {0, 1, 2, 3}, 71: {0, 1, 2, 3}, 72: {0, 1, 2, 3}, 73: {0, 1, 2, 3}, 74: {0, 1, 2, 3}, 75: {0, 1, 2, 3}, 76: {0, 1, 2, 3}, 77: {0, 1, 2, 3}, 78: {0, 1, 2, 3}, 79: {0, 1, 2, 3}, 80: {0, 1, 2, 3}, 81: {0, 1, 2, 3}, 82: {0, 1, 2, 3}, 83: {0, 1, 2, 3}, 84: {0, 3}, 85: {0, 1, 2, 3}, 86: {0, 1, 2, 3}, 87: {0, 1, 2, 3}, 88: {0, 1, 2, 3}, 89: {0, 1, 2, 3}, 90: {0, 1, 2, 3}, 91: {0, 1, 2, 3}, 92: {0, 1, 2, 3}, 93: {1, 2, 3}, 94: {1, 2, 3}, 95: {0, 1, 2, 3}, 96: {1}, 97: {0, 1, 2, 3}, 98: {0, 1, 2, 3}, 99: {0, 1, 2, 3}, 100: {0, 1, 2, 3}, 101: {0, 1, 2, 3}, 102: {0, 1, 2, 3}, 103: {3}, 104: {0, 1, 3}, 105: {2}, 106: {0, 1, 2, 3}, 107: {0, 1, 2, 3}, 108: {0, 3}, 109: {0}, 110: {0, 1, 2, 3}, 111: {0, 1, 2, 3}, 112: {0, 1, 2, 3}, 113: {0, 1, 2, 3}, 114: {0, 1, 2, 3}, 115: {0, 1, 2, 3}, 116: {0, 1, 2, 3}, 117: {0}, 118: {0, 1, 2, 3}, 119: {0, 1, 2, 3}, 120: {0, 1, 2, 3}, 121: {0, 1, 2, 3}, 122: {0, 1, 2, 3}, 123: {0, 1, 2, 3}, 124: {0, 1, 2, 3}, 125: {0, 1, 2, 3}, 126: {1, 2, 3}, 127: {0, 1, 2, 3}, 128: {0, 1, 2, 3}, 129: {0, 1, 2, 3}, 130: {0, 1, 2, 3}, 131: {0, 1, 2, 3}, 132: {0, 1, 2, 3}, 133: {0, 1, 2, 3}, 134: {0, 1, 2, 3}, 135: {0, 1, 2, 3}, 136: {0, 1, 2, 3}, 137: {0}, 138: {0, 1, 2, 3}, 139: {0, 1, 2, 3}, 140: {0, 1, 2, 3}, 141: {0, 1, 2, 3}, 142: {0, 1, 2, 3}, 143: {0, 1, 2, 3}, 144: {2, 3}, 145: {0, 1, 2, 3}, 146: {2}, 147: {0, 1, 2, 3}, 148: {0, 1, 2, 3}, 149: {0, 1, 2, 3}, 150: {0, 1, 2, 3}, 151: {0, 1, 2, 3}, 152: {0, 1, 2, 3}, 153: {0, 1, 2, 3}, 154: {0, 1, 2, 3}, 155: {0, 1, 2, 3}, 156: {0, 1, 2, 3}, 157: {1, 2, 3}, 158: {0, 1}, 159: {1, 2}, 160: {0, 1, 2, 3}, 161: {0, 1, 2, 3}, 162: {0, 1, 2, 3}, 163: {0, 1, 2, 3}, 164: {2}, 165: {1}, 166: {0, 1, 2, 3}, 167: {0}, 168: {0, 1, 2}, 169: {0, 1, 2, 3}, 170: {0, 1, 2, 3}, 171: {0, 1, 2, 3}, 172: {0, 1, 2, 3}, 173: {0, 2, 3}, 174: {0, 1, 2, 3}, 175: {0, 1, 2, 3}, 176: {0, 1, 2, 3}, 177: {0, 1, 2, 3}, 178: {0, 1, 2}, 179: {0, 1, 2, 3}, 180: {3}, 181: {0, 1, 2, 3}, 182: {0, 1, 2, 3}, 183: {0, 1, 2, 3}, 184: {0, 1, 2, 3}, 185: {0, 1, 2, 3}, 186: {0, 1, 2, 3}, 187: {0, 1, 2, 3}, 188: {2}, 189: {0, 3}, 190: {0, 1, 2, 3}, 191: {0, 1, 2, 3}, 192: {0, 1, 2, 3}, 193: {0, 3}, 194: {0, 3}, 195: {0, 1, 2, 3}, 196: {0, 1, 2, 3}, 197: {0, 1, 2, 3}, 198: {0}, 199: {0, 1, 2, 3}, 200: {0, 1, 2, 3}, 201: {0, 1, 2, 3}, 202: {0, 1, 2, 3}, 203: {0, 1, 2, 3}, 204: {0, 1, 2, 3}, 205: {0, 1, 2, 3}, 206: {0, 1, 2, 3}, 207: {0, 1, 2, 3}, 208: {0, 1, 2, 3}, 209: {0, 1, 2, 3}, 210: {0, 1, 2, 3}, 211: {0, 1, 2, 3}, 212: {0, 1, 2, 3}, 213: {0, 1, 2, 3}, 214: {0, 1, 2, 3}, 215: {0, 1, 2, 3}, 216: {2}, 217: {0, 1, 2, 3}, 218: {0, 1}, 219: {1, 2, 3}, 220: {0, 1, 2, 3}, 221: {0, 1, 2, 3}, 222: {0, 1, 2, 3}, 223: {0, 1}, 224: {0, 1, 2, 3}, 225: {0, 2}, 226: {0, 1, 2, 3}, 227: {0, 1, 2, 3}, 228: {0, 1, 2, 3}, 229: {0, 1, 2, 3}, 230: {0, 1, 2, 3}, 231: {0, 1, 2, 3}, 232: {0, 1, 2, 3}, 233: {2, 3}, 234: {0, 1, 2, 3}, 235: {0, 1, 2, 3}, 236: {0, 1, 2, 3}, 237: {0, 1, 2, 3}, 238: {0, 1, 2, 3}, 239: {0, 1, 2, 3}, 240: {0, 1, 2, 3}, 241: {0, 1, 2, 3}, 242: {0, 1, 2, 3}, 243: {0, 1, 2, 3}, 244: {0, 1, 2}, 245: {0, 1, 2, 3}, 246: {0, 1, 2, 3}, 247: {0, 1, 3}, 248: {0, 1, 2, 3}, 249: {0, 1, 2, 3}, 250: {0, 1, 2, 3}, 251: {2}, 252: {0, 1, 2, 3}, 253: {0, 1, 2, 3}, 254: {0, 1, 2, 3}, 255: {0, 1, 2, 3}, 256: {0, 1, 2, 3}, 257: {0, 1, 2, 3}, 258: {0, 1, 2, 3}, 259: {0, 1, 2, 3}, 260: {0, 1, 2, 3}, 261: {0, 3}, 262: {0, 1, 2, 3}, 263: {3}, 264: {0, 1, 2, 3}, 265: {0, 1, 2, 3}, 266: {0, 1, 2, 3}, 267: {0, 1, 2, 3}, 268: {0, 1, 2, 3}, 269: {2}, 270: {0, 1, 2, 3}, 271: {0, 1, 2, 3}, 272: {0, 1, 2, 3}, 273: {0, 1, 2, 3}, 274: {0, 1, 2, 3}, 275: {0, 1, 2, 3}, 276: {0, 1, 2, 3}, 277: {1, 3}, 278: {0, 1, 2, 3}, 279: {0, 1, 2, 3}, 280: {0, 1, 2, 3}, 281: {0, 1, 2, 3}, 282: {0, 1, 2, 3}, 283: {0, 1, 2, 3}, 284: {0, 1, 2, 3}, 285: {0, 1, 2, 3}, 286: {0, 1, 2, 3}, 287: {0, 1, 2, 3}, 288: {1, 2}, 289: {0, 1, 2, 3}, 290: {0, 1, 2, 3}, 291: {1, 2, 3}, 292: {0, 1, 2, 3}, 293: {0, 1, 2, 3}, 294: {0, 1, 2, 3}, 295: {0, 1, 2, 3}, 296: {0, 1, 2}, 297: {0, 1, 2, 3}, 298: {0, 1, 2, 3}, 299: {0, 1, 2, 3}}
+Iteration 16: Best valset aggregate score so far: 0.5733333333333334
+Iteration 16: Best program as per aggregate score on valset: 0
+Iteration 16: Best score on valset: 0.5733333333333334
+Iteration 16: Linear pareto front program index: 0
+Iteration 16: New program candidate index: 3
+Iteration 17: No merge candidates found
+Iteration 17: Selected program 3 score: 0.57
+Iteration 17: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not include external knowledge. The response should be in the exact format requested, without additional explanations or formatting.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and consistent with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.  
+
+(Niche and domain specific factual information)  
+- The task requires precise identification of specific individuals, events, and dates based on the provided context.  
+- The answer must be accurate and consistent with the exact information given in the context.  
+- The assistant must be aware of the specific names, titles, and dates mentioned in the context, such as "Mahesh Manjrekar," "Raj Babbar," "Mahesh Manjrekar," "Hazel Keech," and "2011" as a specific year.  
+- The assistant must avoid making assumptions or inferences beyond the provided text.  
+- The assistant must ensure that the answer is based on the exact information in the context and not on external knowledge or general knowledge.  
+- The assistant must be aware of the structure of the context, such as the mention of "Hazel Keech" and "2011" in the context.  
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to identify the question, analyze the context, extract relevant information, and synthesize the answer.  
+- The assistant should ensure that the answer is concise, factual, and directly addresses the query without adding or omitting information.  
+- The assistant should verify the answer against the context to ensure accuracy.
+Iteration 17: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 18: Selected program 1 score: 0.5633333333333334
+Iteration 18: All subsample scores perfect. Skipping.
+Iteration 18: Reflective mutation did not propose a new candidate
+Iteration 19: Selected program 0 score: 0.5733333333333334
+Iteration 19: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and consistent with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.
+Iteration 19: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 20: Selected program 3 score: 0.57
+Iteration 20: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not include external knowledge. The response should be in the exact format requested, without additional explanations or formatting.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and consistent with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.  
+
+(Niche and domain specific factual information)  
+- The task requires precise identification of specific individuals, events, and dates based on the provided context.  
+- The answer must be accurate and consistent with the exact information given in the context.  
+- The assistant must be aware of the specific names, titles, and dates mentioned in the context, such as "Dennis Allen," "Chris Stockley," "The Dingoes," and "1971" as a specific year.  
+- The assistant must avoid making assumptions or inferences beyond the provided text.  
+- The assistant must ensure that the answer is based on the exact information in the context and not on external knowledge or general knowledge.  
+- The assistant must be aware of the structure of the context, such as the mention of "the man who shot Chris Stockley" and the year "1971" in the context.  
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to identify the question, analyze the context, extract relevant information, and synthesize the answer.  
+- The assistant should ensure that the answer is concise, factual, and directly addresses the query without adding or omitting information.  
+- The assistant should verify the answer against the context to ensure accuracy.
+Iteration 20: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 21: Selected program 1 score: 0.5633333333333334
+Iteration 21: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations. The assistant must verify that the answer is accurate and consistent with the context.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 21: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 22: Selected program 0 score: 0.5733333333333334
+Iteration 22: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves identifying which of two given products came to market first by analyzing the provided context and extracting relevant information about the release dates or chronological order of the products. The answer must be concise, factual, and directly address the query without assumptions or external knowledge.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information about the products.  
+3. Extract key facts or details about the release dates or chronological order of the products.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context provided.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.
+Iteration 22: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 23: Selected program 3 score: 0.57
+Iteration 23: All subsample scores perfect. Skipping.
+Iteration 23: Reflective mutation did not propose a new candidate
+Iteration 24: Selected program 2 score: 0.57
+Iteration 24: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations. The assistant must verify that the answer is accurate and consistent with the context provided.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 24: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 25: Selected program 2 score: 0.57
+Iteration 25: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations. The assistant must verify that the answer is accurate and consistent with the context provided.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 25: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 26: Selected program 3 score: 0.57
+Iteration 26: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not include external knowledge. The response should be in the exact format requested, without additional explanations or formatting.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and consistent with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.  
+
+(Niche and domain specific factual information)  
+- The task requires precise identification of specific individuals, events, and dates based on the provided context.  
+- The answer must be accurate and consistent with the exact information given in the context.  
+- The assistant must be aware of the specific names, titles, and dates mentioned in the context, such as "Dennis Allen," "Chris Stockley," "The Dingoes," and "1971" as a specific year.  
+- The assistant must avoid making assumptions or inferences beyond the provided text.  
+- The assistant must ensure that the answer is based on the exact information in the context and not on external knowledge or general knowledge.  
+- The assistant must be aware of the structure of the context, such as the mention of "the man who shot Chris Stockley" and the year "1971" in the context.  
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to identify the question, analyze the context, extract relevant information, and synthesize the answer.  
+- The assistant should ensure that the answer is concise, factual, and directly addresses the query without adding or omitting information.  
+- The assistant should verify the answer against the context to ensure accuracy.
+Iteration 26: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 27: Selected program 0 score: 0.5733333333333334
+Iteration 27: All subsample scores perfect. Skipping.
+Iteration 27: Reflective mutation did not propose a new candidate
+Iteration 28: Selected program 1 score: 0.5633333333333334
+Iteration 28: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations. The assistant must verify that the answer is accurate and consistent with the context.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "USNS Bull Run (T-AO-156)", "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 28: New subsample score 1.0 is not better than old score 2.0, skipping
+Iteration 29: Selected program 1 score: 0.5633333333333334
+Iteration 29: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.  
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 29: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 30: Selected program 1 score: 0.5633333333333334
+Iteration 30: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.  
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 30: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 31: Selected program 1 score: 0.5633333333333334
+Iteration 31: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves identifying the name of the actress who played the role of Blair Cramer on the daytime drama series "One Life to Live" for a period of 20 years and is currently portraying Eve Donovan on the soap opera "Days of Our Lives." The answer must be based solely on the provided context and not on external knowledge. The answer should be concise, factual, and directly addresses the query without assumptions or interpretations.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find the relevant information about the actress who played Blair Cramer on "One Life to Live" for 20 years and is currently playing Eve Donovan on "Days of Our Lives."  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context provided.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- The answer must include the name of the actress.  
+- The answer must be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "One Life to Live," "Blair Cramer," "Kassie DePaiva," "Days of Our Lives," "Eve Donovan," "General Hospital," "NYPD Blue," "The Bold and the Beautiful," "Sunset Beach," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young and the Restless," "The Bold and the Beautiful," "The Young
+Iteration 31: New subsample score 1.0 is not better than old score 2.0, skipping
+Iteration 32: Selected program 0 score: 0.5733333333333334
+Iteration 32: All subsample scores perfect. Skipping.
+Iteration 32: Reflective mutation did not propose a new candidate
+Iteration 33: Selected program 2 score: 0.57
+Iteration 33: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not on external knowledge. The answer should be in the exact format requested, without additional explanations or formatting. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer without adding assumptions or interpretations. The assistant must verify that the answer is accurate and consistent with the context provided.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "The Testimony" film, "The 55th Rifle Division", "Landwehr", "88th Infantry Division", "Australian Army Training Team Vietnam", "Finola Dwyer", "Steve Tisch", "Mitchell Block", "Michael Sarnoski", etc.).  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 33: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 34: Selected program 3 score: 0.57
+Iteration 34: All subsample scores perfect. Skipping.
+Iteration 34: Reflective mutation did not propose a new candidate
+Iteration 35: Selected program 0 score: 0.5733333333333334
+Iteration 35: All subsample scores perfect. Skipping.
+Iteration 35: Reflective mutation did not propose a new candidate
+Iteration 36: Selected program 3 score: 0.57
+Iteration 36: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves answering a question by reasoning step by step through the provided context, ensuring the answer is concise, factual, and directly addresses the query. The answer must be based solely on the provided context and not include external knowledge. The response should be in the exact format requested, without additional explanations or formatting.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and consistent with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.  
+
+(Niche and domain specific factual information)  
+- The task requires precise identification of specific individuals, events, and dates based on the provided context.  
+- The answer must be accurate and consistent with the exact information given in the context.  
+- The assistant must be aware of the specific names, titles, and dates mentioned in the context, such as "Dennis Allen," "Chris Stockley," "The Dingoes," and "1971" as a specific year.  
+- The assistant must avoid making assumptions or inferences beyond the provided text.  
+- The assistant must ensure that the answer is based on the exact information in the context and not on external knowledge or general knowledge.  
+- The assistant must be aware of the structure of the context, such as the mention of "the man who shot Chris Stockley" and the year "1971" in the context.  
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to identify the question, analyze the context, extract relevant information, and synthesize the answer.  
+- The assistant should ensure that the answer is concise, factual, and directly addresses the query without adding or omitting information.  
+- The assistant should verify the answer against the context to ensure accuracy.
+Iteration 36: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 37: Selected program 1 score: 0.5633333333333334
+Iteration 37: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves identifying a specific fictional MI6 agent created by the British journalist and novelist Ian Fleming in 1952. The answer must be based solely on the provided context and not on external knowledge. The answer should be concise, factual, and directly addresses the query without assumptions or interpretations. The assistant must identify key facts from the context, extract relevant information, and synthesize it into a concise answer.
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.
+
+(Niche and domain specific factual information)  
+- The context includes specific names, events, and roles (e.g., "James Bond," "Ian Fleming," "MI6 agent," "fictional character," "British journalist," "novelist," "1952").  
+- The task may involve identifying specific individuals, organizations, or events mentioned in the context.  
+- The assistant must be careful to extract only the relevant information and avoid including external knowledge.  
+- The assistant must ensure that the answer is precise, accurate, and directly addresses the query without interpretation or assumption.
+
+(Generalizable strategy)  
+- The assistant should use a structured approach to extract and verify information from the context.  
+- The assistant should identify key entities, relationships, and events mentioned in the context.  
+- The assistant should ensure that the answer is concise, factual, and directly answers the question without unnecessary details.  
+- The assistant should verify the accuracy of the answer by cross-checking with the provided context.
+Iteration 37: New subsample score 0.0 is not better than old score 1.0, skipping
+Iteration 38: Selected program 0 score: 0.5733333333333334
+Iteration 38: Proposed new text for system_prompt: (Role definition and task description)  
+The task involves identifying which institution among the provided list was founded as a vocational high school, based on the information in the context. The answer must be concise, factual, and directly address the query.  
+
+(The step-by-step reasoning approach)  
+1. Identify the question or query that needs to be answered.  
+2. Analyze the provided context to find relevant information about the founding of the institutions.  
+3. Extract key facts or details from the context that directly relate to the question.  
+4. Synthesize the information into a concise, factual answer without adding assumptions or interpretations.  
+5. Verify that the answer is accurate and aligns with the context.  
+
+(Output format requirements and constraints)  
+- The answer must be concise and factual.  
+- Each module should be self-contained and address one aspect of the task.  
+- The final answer should be in the exact format requested, without additional explanations or formatting.  
+- Avoid any markdown or extra text beyond the specified modules.  
+
+(Edge cases, common mistakes, and error prevention)  
+- Avoid overcomplicating the answer by including unnecessary information.  
+- Ensure that the answer is based solely on the provided context and not on external knowledge.  
+- Be cautious of ambiguous or vague questions that may require more clarification.  
+- Verify that the answer is accurate and consistent with the context provided.  
+
+(Niche and domain specific factual information)  
+- The task requires knowledge of the founding history of specific educational institutions, including their origins as vocational high schools.  
+- The context includes detailed information about the founding of multiple universities and institutions, including their origins and evolution.  
+- The assistant must be able to identify which institution among the listed options was founded as a vocational high school based on the provided information.  
+- The assistant must be able to distinguish between vocational high schools and other types of educational institutions, such as universities or colleges.  
+- The assistant must be able to accurately interpret and extract the relevant facts from the context, ensuring that the answer is both correct and concise.
+Iteration 38: New subsample score 1.0 is not better than old score 1.0, skipping

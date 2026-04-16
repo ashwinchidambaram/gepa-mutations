@@ -1,3 +1,0 @@
-{
-    "response": "<<Order by Length, Then by Name>>\n\n```sql\nSELECT title, director\nFROM movies\nORDER BY \n    LENGTH(title) DESC,\n    title COLLATE utf8mb4_unicode_ci,\n    LENGTH(director) DESC,\n    director COLLATE utf8mb4_unicode_ci;\n```\n\nThis SQL query organizes records by the length of the `title` column in descending order. If two titles have the same length, it sorts them alphabetically. It then does the same for the `director` column. The use of `COLLATE utf8mb4_unicode_ci` ensures case-insensitive and accent-insensitive sorting, which is commonly desired for names.\n\nA palindrome: **\"madam\"**."
-}

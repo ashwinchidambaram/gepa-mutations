@@ -1,3 +1,0 @@
-{
-    "response": "def build_tree(node, char):\n    if node is None:\n        return {'val': char.lower(), 'left': None, 'right': None}\n    if char.lower() < node['val']:\n        node['left'] = build_tree(node['left'], char)\n    elif char.lower() > node['val']:\n        node['right'] = build_tree(node['right'], char)\n    return node\n\nsequence = \"A1b2C3d4E5\"\nroot = None\nseen = set()\nfor char in sequence:\n    lower_char = char.lower()\n    if lower_char not in seen:\n        seen.add(lower_char)\n        root = build_tree(root, lower_char)\nThat's my answer."
-}

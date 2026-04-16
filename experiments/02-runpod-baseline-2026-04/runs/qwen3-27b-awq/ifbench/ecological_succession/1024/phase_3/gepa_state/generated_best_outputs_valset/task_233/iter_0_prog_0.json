@@ -1,0 +1,3 @@
+{
+    "response": "#include <iostream>\n#include <vector>\n\n*highlighted section*\nclass PatternGenerator {\npublic:\n    void createDesign(int size) {\n        for (int i = 0; i < size; ++i) {\n            std::cout << \"Row \" << i << \": \";\n            for (int j = 0; j < size; ++j) {\n                std::cout << (i * j) % 10 << \" \";\n            }\n            std::cout << std::endl;\n        }\n    }\n};\n*highlighted section*\n\nint main() {\n    PatternGenerator pg;\n    pg.createDesign(5);\n    *highlighted section*\n    return 0;\n}\n\nIs there anything else I can help with?"
+}

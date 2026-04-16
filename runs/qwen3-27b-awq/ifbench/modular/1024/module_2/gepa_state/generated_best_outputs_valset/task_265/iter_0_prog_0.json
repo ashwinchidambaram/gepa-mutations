@@ -1,3 +1,0 @@
-{
-    "response": "You cannot measure one way travel time for UDP packets in C# without synchronized clocks on both ends. Standard ping measures round trip time only. One way latency requires precise time synchronization like NTP or PTP. You need to record send time on client and receive time on server. Then calculate the difference between those two timestamps. This approach needs both systems to share accurate time. Without synchronization the result will be inaccurate. You might try using a specialized library for this task. The core issue remains clock drift between machines."
-}

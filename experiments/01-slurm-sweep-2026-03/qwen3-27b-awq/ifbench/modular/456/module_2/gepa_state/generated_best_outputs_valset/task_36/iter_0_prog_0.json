@@ -1,0 +1,3 @@
+{
+    "response": "the error likely occurs because the session id is not being created or validated correctly before the api call which causes the tmdb server to reject the request with an authentication failure since the session token is invalid or expired at that moment\n\nyou should verify that the createSessionId function returns a valid promise and ensure the session id is properly stored in local storage before making the account request to prevent the api from rejecting the login attempt due to missing or malformed session data"
+}

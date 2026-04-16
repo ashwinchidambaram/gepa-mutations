@@ -1,3 +1,0 @@
-{
-    "response": "def calculate_cost(services):\n    rates = {\n        \"Lawn Mowing\": 50,\n        \"Tree Trimming\": 60,\n        \"Flower Planting\": 40,\n        \"General Cleanup\": 30\n    }\n    total = sum(rates[s] * h for s, h in services)\n    return total * 0.8"
-}

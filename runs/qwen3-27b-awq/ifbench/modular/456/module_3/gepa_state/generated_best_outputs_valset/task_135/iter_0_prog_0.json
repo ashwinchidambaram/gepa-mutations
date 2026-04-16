@@ -1,3 +1,0 @@
-{
-    "response": "delete from users where status equals Inactive.\ninsert into status_log select user_id status now() from users where status equals Inactive.\nbegin transaction.\ndelete from users where status equals Inactive.\ninsert into status_log select user_id status now() from users where status equals Inactive.\ncommit transaction.\nhandle exception by rolling back.\necho error message if any occurs.\ncreate procedure named cleanup_inactive_users.\ncall procedure to execute logic.\nradar is a palindrome word.\ntotal count shows records removed.\nverify data integrity after run."
-}

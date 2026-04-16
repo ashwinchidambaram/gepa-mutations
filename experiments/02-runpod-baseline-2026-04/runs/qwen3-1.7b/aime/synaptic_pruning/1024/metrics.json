@@ -1,0 +1,392 @@
+{
+  "rollout_count": 205,
+  "reflection_call_count": 3,
+  "wall_clock_seconds": 1719.23,
+  "total_tokens": 275546,
+  "task_input_tokens": 167321,
+  "task_output_tokens": 104460,
+  "reflection_input_tokens": 1620,
+  "reflection_output_tokens": 2145,
+  "test_score": 0.0,
+  "model": "openrouter/Qwen/Qwen3-1.7B",
+  "model_tag": "qwen3-1.7b",
+  "benchmark": "aime",
+  "seed": 1024,
+  "method": "synaptic_pruning",
+  "val_score": 0.025,
+  "prompt_length_chars": 3393,
+  "prompt_length_tokens": 848,
+  "test_example_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "test_example_ids": [
+    "aime_test_0",
+    "aime_test_1",
+    "aime_test_2",
+    "aime_test_3",
+    "aime_test_4",
+    "aime_test_5",
+    "aime_test_6",
+    "aime_test_7",
+    "aime_test_8",
+    "aime_test_9",
+    "aime_test_10",
+    "aime_test_11",
+    "aime_test_12",
+    "aime_test_13",
+    "aime_test_14",
+    "aime_test_15",
+    "aime_test_16",
+    "aime_test_17",
+    "aime_test_18",
+    "aime_test_19",
+    "aime_test_20",
+    "aime_test_21",
+    "aime_test_22",
+    "aime_test_23",
+    "aime_test_24",
+    "aime_test_25",
+    "aime_test_26",
+    "aime_test_27",
+    "aime_test_28",
+    "aime_test_29"
+  ],
+  "score_per_1k_rollouts": 0.0,
+  "convergence_iteration": 1,
+  "prompt_char_delta": 3290,
+  "prompt_levenshtein_ratio": 0.0166,
+  "prompt_word_count": 483,
+  "task_error_count": 0,
+  "reflection_error_count": 0,
+  "val_score_trajectory": [
+    [
+      0,
+      0.0
+    ],
+    [
+      1,
+      0.025
+    ],
+    [
+      2,
+      0.025
+    ],
+    [
+      5,
+      0.025
+    ],
+    [
+      6,
+      0.022222222222222223
+    ]
+  ],
+  "rollout_trajectory": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      120
+    ],
+    [
+      2,
+      160
+    ],
+    [
+      5,
+      160
+    ],
+    [
+      6,
+      205
+    ]
+  ],
+  "best_val_trajectory": [
+    [
+      0,
+      0.0
+    ],
+    [
+      1,
+      0.025
+    ],
+    [
+      2,
+      0.025
+    ],
+    [
+      5,
+      0.025
+    ],
+    [
+      6,
+      0.025
+    ]
+  ],
+  "prompt_length_trajectory": [
+    [
+      0,
+      103
+    ],
+    [
+      120,
+      3393
+    ],
+    [
+      160,
+      3393
+    ],
+    [
+      160,
+      3393
+    ],
+    [
+      205,
+      3393
+    ]
+  ],
+  "stage_timings": [
+    {
+      "stage": "initial_generation",
+      "seconds": 31.02,
+      "rollouts_used": 0
+    },
+    {
+      "stage": "ablation",
+      "seconds": 302.0,
+      "rollouts_used": 40
+    },
+    {
+      "stage": "pruning",
+      "seconds": 0.0,
+      "rollouts_used": 0
+    },
+    {
+      "stage": "strengthening",
+      "seconds": 0.0,
+      "rollouts_used": 0
+    },
+    {
+      "stage": "final_eval",
+      "seconds": 331.12,
+      "rollouts_used": 45
+    }
+  ],
+  "sections_tested": 6,
+  "sections_pruned": 0,
+  "sections_kept": 6,
+  "per_section_ablation_scores": [
+    {
+      "section_idx": 0,
+      "score_without": null,
+      "score_delta": null,
+      "skipped": "baseline_below_floor"
+    },
+    {
+      "section_idx": 1,
+      "score_without": null,
+      "score_delta": null,
+      "skipped": "baseline_below_floor"
+    },
+    {
+      "section_idx": 2,
+      "score_without": null,
+      "score_delta": null,
+      "skipped": "baseline_below_floor"
+    },
+    {
+      "section_idx": 3,
+      "score_without": null,
+      "score_delta": null,
+      "skipped": "baseline_below_floor"
+    },
+    {
+      "section_idx": 4,
+      "score_without": null,
+      "score_delta": null,
+      "skipped": "baseline_below_floor"
+    },
+    {
+      "section_idx": 5,
+      "score_without": null,
+      "score_delta": null,
+      "skipped": "baseline_below_floor"
+    }
+  ],
+  "original_prompt_length": 3393,
+  "final_prompt_length": 3393,
+  "n_initial_prompts": 3,
+  "best_initial_score": 0.025,
+  "train_score": 0.022222222222222223,
+  "train_example_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "val_example_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "val_example_ids": [
+    "aime_test_0",
+    "aime_test_1",
+    "aime_test_2",
+    "aime_test_3",
+    "aime_test_4",
+    "aime_test_5",
+    "aime_test_6",
+    "aime_test_7",
+    "aime_test_8",
+    "aime_test_9",
+    "aime_test_10",
+    "aime_test_11",
+    "aime_test_12",
+    "aime_test_13",
+    "aime_test_14",
+    "aime_test_15",
+    "aime_test_16",
+    "aime_test_17",
+    "aime_test_18",
+    "aime_test_19",
+    "aime_test_20",
+    "aime_test_21",
+    "aime_test_22",
+    "aime_test_23",
+    "aime_test_24",
+    "aime_test_25",
+    "aime_test_26",
+    "aime_test_27",
+    "aime_test_28",
+    "aime_test_29",
+    "aime_test_30",
+    "aime_test_31",
+    "aime_test_32",
+    "aime_test_33",
+    "aime_test_34",
+    "aime_test_35",
+    "aime_test_36",
+    "aime_test_37",
+    "aime_test_38",
+    "aime_test_39",
+    "aime_test_40",
+    "aime_test_41",
+    "aime_test_42",
+    "aime_test_43",
+    "aime_test_44"
+  ]
+}

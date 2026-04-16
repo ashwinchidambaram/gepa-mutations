@@ -1,3 +1,0 @@
-{
-    "response": "In C# you can measure the time it takes to send a UDP packet by using the Stopwatch class. This will give you the duration from when the packet is sent until it is transmitted from your machine. However this does not include the time it takes for the packet to reach the server. To get the one way transmission time you would need to record the time before sending the packet and then stop the timer immediately after the send operation completes. This approach will only measure the local transmission time not the network latency. You can use the following code structure to achieve this."
-}

@@ -1,0 +1,3 @@
+{
+    "response": "your code fails because the session id lacks proper authentication headers for the tmdb api request.\nyou must include the api key and session id in the query parameters or headers correctly.\n\nyour current logic creates a session but does not send the required api key with the account request.\nadd the api key to the url to fix the authentication error immediately."
+}

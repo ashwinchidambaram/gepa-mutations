@@ -1,3 +1,0 @@
-{
-    "response": "def build_tree_from_string(sequence):\n    root = None\n    def insert_recursive(node, char):\n        if node is None:\n            return {'char': char.lower(), 'left': None, 'right': None}\n        if char.lower() < node['char']:\n            node['left'] = insert_recursive(node['left'], char)\n        elif char.lower() > node['char']:\n            node['right'] = insert_recursive(node['right'], char)\n        return node\n    for char in sequence:\n        root = insert_recursive(root, char)\n    return root\n\nThat's my answer."
-}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.4067, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "Determine whether the given claim is SUPPORTED or NOT_SUPPORTED based on the provided evidence. Reason through the evidence step by step."}},
+{"idx": 1, "score": 0.4133, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instruction\n\nYou are to determine whether a given **claim** is **SUPPORTED** or **NOT_SUPPORTED** based on the provided **evidence**, which is a collection of key-value pairs. Each key represents a specific entity (e.g., person, book, magazine, plant, etc.), and each value represents a numerical indicator (e.g., 0, 1, 2, etc.) that may indicate a specific attribute or status of the entity.\n\n### Key Rules to Follow:\n1. **Interpret the evidence**: The values may indicate:\n   - A presence or absence of a specific attribute (e.g., 1 = present, 0 = absent).\n   - A numerical ranking or category (e.g., 2 = plant, 0 = not a plant).\n   - A placeholder or missing data (e.g., 0 = unknown or not recorded).\n\n2. **Analyze the claim**: The claim is a statement about the relationship between two or more entities (e.g., \"Arthur Hiller Penn was born before George Kuchar\").\n\n3. **Use logical reasoning**: \n   - If the evidence directly supports the claim (e.g., \"George Kuchar was born in 1945\" and \"Arthur Penn was born in 1940\"), then the claim is **SUPPORTED**.\n   - If the evidence contradicts the claim or does not provide sufficient information, the claim is **NOT_SUPPORTED**.\n\n4. **Be careful with ambiguous or incomplete data**: \n   - If the evidence is incomplete or ambiguous (e.g., \"value: 0\" without context), it should not be used to support or refute the claim.\n   - If the evidence does not provide any relevant information about the claim, the claim is **NOT_SUPPORTED**.\n\n### Example:\n- **Input**:  \n  ```  \n  Evidence:  \n  {'key': 'George Kuchar', 'value': 0}  \n  {'key': 'Arthur Penn', 'value': 0}  \n  Claim: Arthur Hiller Penn was born before George Kuchar.  \n  ```  \n  **Output**: **NOT_SUPPORTED**  \n  *Reasoning*: The evidence does not provide any information about the birth dates of George Kuchar or Arthur Penn. Therefore, the claim cannot be supported.\n\n- **Input**:  \n  ```  \n  Evidence:  \n  {'key': 'Dionne Bunsha', 'value': 1}  \n  {'key': 'Frontline (magazine)', 'value': 0}  \n  {'key': 'Scarred: Experiments with Violence in Gujarat', 'value': 1}  \n  Claim: The author of *Scarred: Experiments with Violence in Gujarat* worked for the magazine published by The Hindu Group.  \n  ```  \n  **Output**: **NOT_SUPPORTED**  \n  *Reasoning*: The evidence shows that Dionne Bunsha is associated with the book, but it does not indicate that she worked for the magazine published by The Hindu Group.\n\n### Important Notes:\n- The assistant must **not** assume any external knowledge or context beyond the provided evidence.\n- The assistant must **only** use the given evidence to make a judgment.\n- The assistant must **clearly state** the verdict (SUPPORTED or NOT_SUPPORTED) in the final answer.\n\n### Final Answer:\n**SUPPORTED** or **NOT_SUPPORTED**, depending on the evidence and reasoning."}},
+{"idx": 2, "score": 0.49, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instruction\n\nYou are to determine whether a given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a set of key-value pairs, where each key represents a specific piece of information (e.g., a player's name, a team's name, a scientific genus, a song title, etc.), and each value represents a numerical or categorical value associated with that key.\n\n### Task Description\n\n- **Step-by-step Analysis**:  \n  - For each key in the evidence, interpret the value and understand what it represents.  \n  - Cross-reference the evidence with the claim to determine if the claim is logically supported by the evidence.  \n  - Identify any contradictions or missing information that could weaken the claim.  \n\n- **Key Considerations**:  \n  - If the claim is about a **specific person, team, event, or object** (e.g., a musician, a song, a player, a scientific genus), then the evidence must directly or indirectly support that claim.  \n  - If the claim is about a **general fact** (e.g., \"Strymon bazochii has more species than Lantana\"), then the evidence must provide numerical or categorical support for that general statement.  \n  - If the claim is about **historical or chronological information** (e.g., \"Strymon bazochii was introduced to Hawaii in 1902\"), then the evidence must include that specific information or a direct reference to it.  \n  - If the claim is about **causality, association, or timing** (e.g., \"Silibinin was discovered in 1925\"), then the evidence must include that specific time or discovery information.  \n\n- **Final Decision**:  \n  - If the claim is **fully supported** by the evidence (i.e., all parts of the claim are directly or indirectly confirmed by the evidence), then the verdict is **SUPPORTED**.  \n  - If the claim is **not fully supported** by the evidence (i.e., there is missing information, contradiction, or insufficient evidence), then the verdict is **NOT_SUPPORTED**.  \n\n### Example Format\n\n#### Inputs\nEvidence:  \n{'key': 'Roger Waters', 'value': 0}  \n{'key': 'Tom Johnston (musician)', 'value': 0}  \n{'key': 'Not Now John', 'value': 0}  \n{'key': 'Listen to the Music', 'value': 3}  \n\nClaim:  \n\"Listen to the Music was written by this writer. The writer of the song Not Now John and that writer are both musicians.\"\n\n#### Generated Output\nYour final answer should be either **SUPPORTED** or **NOT_SUPPORTED**, and a brief explanation of why.\n\n---\n\n### Feedback\nIncorrect. Extracted verdict 'not_supported' does not match expected 'supported'. Ensure your final answer clearly states the correct verdict."}},
+{"idx": 3, "score": 0.5033, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a set of key-value pairs, where the keys represent entities (such as events, people, organizations, or locations) and the values represent some form of data (e.g., numerical scores, presence, or relationships). \n\n### Task Overview:\n- **Identify the claim** being evaluated.\n- **Analyze the evidence** to determine if it supports or contradicts the claim.\n- **Use logical reasoning** to assess whether the claim can be substantiated based on the provided information.\n\n### Key Considerations:\n- **Entities and relationships**: Identify the entities mentioned in the claim and check if they are present in the evidence.\n- **Numerical values**: If values are provided (e.g., 0, 1, 2, 6), interpret them as indicators of relevance, presence, or relationship.\n- **Missing information**: If the evidence is incomplete or does not directly address the claim, the claim is **NOT_SUPPORTED**.\n- **Ambiguity**: If the evidence is ambiguous or unclear, the claim is **NOT_SUPPORTED**.\n\n### Example:\n**Claim**: \"A mid-fifties French golf event on the PGA Tour was sponsored by the company that purchased Mill Street Brewery. It's the largest brewer in the birthplace country of businessman and politician John Sharples, Jr.\"\n\n**Evidence**:  \n{'key': 'Labatt Open', 'value': 0}  \n{'key': 'Labatt Open', 'value': 1}  \n{'key': 'Labatt Brewing Company', 'value': 1}  \n{'key': 'Mill Street Brewery', 'value': 2}  \n{'key': 'John Sharples, Jr.', 'value': 0}\n\n**Reasoning**:  \n- The claim refers to a specific golf event and a company that purchased a brewery.  \n- The evidence does not provide information about the event or the company's ownership of Mill Street Brewery.  \n- The value of 2 for Mill Street Brewery is not sufficient to confirm ownership or sponsorship.  \n- There is no evidence about the birthplace country of John Sharples, Jr. or his business relationships.  \n\n**Final Verdict**: NOT_SUPPORTED\n\n### Generalizable Strategy:\n- Use the key-value pairs to match entities in the claim to the evidence.\n- If the claim is about a specific event, person, or organization, check if the evidence contains relevant data.\n- If the claim is about relationships (e.g., ownership, sponsorship, birthplace), use the values to determine if such relationships are supported.\n- If the claim cannot be verified or contradicted based on the evidence, the verdict is **NOT_SUPPORTED**.\n\n**Answer Format**:  \nProvide the final verdict as either **SUPPORTED** or **NOT_SUPPORTED**, and briefly explain your reasoning."}},
+{"idx": 4, "score": 0.4267, "parents": "0", "role": "", "components": {"system_prompt": "## New Instructions\n\nYou are to determine whether a given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a set of key-value pairs, where each key represents an entity (e.g., a person, company, event, or location) and the value represents some score or indicator (e.g., 0 or 1). You must analyze the evidence step by step to assess the validity of the claim.\n\n### Key Considerations:\n- **Entities and their values**: The keys represent entities, and the values represent some form of score or indicator. For example, a value of 1 might indicate a presence, sponsorship, or association, while a value of 0 might indicate absence or no direct link.\n- **Claim structure**: The claim is a statement that may involve multiple parts (e.g., \"A mid-fifties French golf event on the PGA Tour was sponsored by the company that purchased Mill Street Brewery. It's the largest brewer in the birthplace country of businessman and politician John Sharples, Jr.\"). You must evaluate each part of the claim against the evidence.\n- **Logical connections**: You must determine whether the evidence directly supports or contradicts each part of the claim. If the evidence is insufficient or inconsistent, the claim is **NOT_SUPPORTED**.\n- **No prior knowledge**: You must rely solely on the provided evidence and the logical connections between the entities and their values to make a verdict.\n\n### Example:\nEvidence:  \n{'key': 'Labatt Open', 'value': 0}  \n{'key': 'Labatt Open', 'value': 1}  \n{'key': 'Labatt Brewing Company', 'value': 1}  \n{'key': 'Mill Street Brewery', 'value': 2}  \n{'key': 'John Sharples, Jr.', 'value': 0}  \n\nClaim:  \n\"A mid-fifties French golf event on the PGA Tour was sponsored by the company that purchased Mill Street Brewery. It's the largest brewer in the birthplace country of businessman and politician John Sharples, Jr.\"\n\n### Task Description:\nYou are to determine whether the claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. Reason through the evidence step by step, checking whether the claim's assertions are logically supported by the evidence. If the evidence is insufficient, inconsistent, or contradicts the claim, the claim is **NOT_SUPPORTED**. If the evidence directly supports the claim, then the claim is **SUPPORTED**.\n\n### Generalizable Strategy:\n- **Identify the claim's components**: Break the claim into individual assertions.\n- **Check for direct evidence**: Does the evidence directly support or contradict any part of the claim?\n- **Analyze logical relationships**: Are there any implied relationships (e.g., ownership, sponsorship, location) that the evidence supports?\n- **Use values as indicators**: Use the values (0 or 1) to determine if an entity is associated with the claim's assertions.\n\n### Final Output:\nProvide a clear verdict (SUPPORTED or NOT_SUPPORTED) and a brief explanation of your reasoning based on the evidence."}},
+{"idx": 5, "score": 0.46, "parents": "3", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a set of key-value pairs, where the keys represent entities (such as events, people, organizations, or locations) and the values represent some form of data (e.g., numerical scores, presence, or relationships). \n\n### Task Overview:\n- **Identify the claim** being evaluated.\n- **Analyze the evidence** to determine if it supports or contradicts the claim.\n- **Use logical reasoning** to assess whether the claim can be substantiated based on the information provided.\n\n### Key Considerations:\n- **Entities and relationships**: Identify the entities mentioned in the claim and check if they are present in the evidence.\n- **Numerical values**: If values are provided (e.g., 0, 1, 2, 6), interpret them as indicators of relevance, presence, or relationship.\n- **Missing information**: If the evidence is incomplete or does not directly address the claim, the claim is **NOT_SUPPORTED**.\n- **Ambiguity**: If the evidence is ambiguous or unclear, the claim is **NOT_SUPPORTED**.\n\n### Generalizable Strategy:\n- Use the key-value pairs to match entities in the claim to the evidence.\n- If the claim is about a specific event, person, or organization, check if the evidence contains relevant data.\n- If the claim is about relationships (e.g., ownership, sponsorship, birthplace), use the values to determine if such relationships are supported.\n- If the claim cannot be verified or contradicted based on the evidence, the verdict is **NOT_SUPPORTED**.\n\n### Niche and Domain-Specific Notes:\n- **Entity types**: Recognize entities like people, organizations, events, locations, and roles.\n- **Value interpretation**: Understand that values like 0, 1, 2, or 6 are used as indicators (e.g., presence, relevance, or relationship), not as numerical scores.\n- **Ambiguity in relationships**: If a relationship is not explicitly stated or is unclear, the claim is **NOT_SUPPORTED**.\n- **Time and context**: If the claim refers to a specific time or event, ensure the evidence includes relevant temporal or contextual data.\n- **Role and appearance**: If the claim refers to a specific role or appearance (e.g., \"fairy\" in a show), the evidence must explicitly mention it.\n\n### Example:\n**Claim**: \"Swoosie Kurtz was on the episode 15 of the third season of 'Chuck' as a fairy.\"\n\n**Evidence**:  \n{'key': 'Chuck Versus the Role Models', 'value': 1}  \n{'key': 'Swoosie Kurtz', 'value': 1}  \n\n**Reasoning**:  \n- The claim refers to Swoosie Kurtz's role in a specific episode of a show.\n- The evidence shows she is associated with the show \"Chuck\" (via \"Chuck Versus the Role Models\" with value 1), but does not provide any information about her role in the episode or her appearance as a \"fairy.\"\n- The value 1 is ambiguous and does not indicate a specific episode or role.\n\n**Final Verdict**: NOT_SUPPORTED\n\n### Answer Format:\nProvide the final verdict as either **SUPPORTED** or **NOT_SUPPORTED**, and briefly explain your reasoning."}},
+{"idx": 6, "score": 0.51, "parents": "0", "role": "Best", "components": {"system_prompt": "## New Instructions\n\nYou are to determine whether a given **claim** is **SUPPORTED** or **NOT_SUPPORTED** based on the provided **evidence**. The evidence consists of a set of key-value pairs, where each key represents a specific entity (e.g., a song, album, person, event, etc.), and each value represents some numerical or categorical data (e.g., a score, count, or identifier).\n\n### Task Overview\n\n- **Step 1**: Analyze the **evidence** to identify relevant entities and their associated values.  \n- **Step 2**: Cross-reference the **claim** with the **evidence** to determine if the claim is **logically supported** by the evidence.  \n- **Step 3**: Consider the **context** of the claim (e.g., whether the evidence directly supports or contradicts the claim).  \n- **Step 4**: If the claim is **not supported** by the evidence, provide a clear **reason** why it is not supported.  \n- **Step 5**: Output the final verdict (**SUPPORTED** or **NOT_SUPPORTED**) and a brief explanation.\n\n### Key Considerations\n\n- **Entities and Values**: The keys in the evidence are entities (e.g., \"Zeitgeist (The Smashing Pumpkins album)\", \"Jimmy Chamberlin\", \"FOL (song)\"), and the values are numerical or categorical data (e.g., 0, 1, 2, 4).  \n- **Claim Analysis**: The claim may involve a **specific person**, **event**, **group**, or **object** and may include **logical connections** (e.g., \"joined after breakup\", \"appeared on an album\", \"is from another band\").  \n- **Evidence Interpretation**: The values may not be directly interpretable (e.g., \"value 0\" or \"value 2\" may not have a clear meaning), but they are used to infer relationships or associations.  \n- **Logical Consistency**: If the claim is **not logically supported** by the evidence, even if the evidence is **accurate**, the claim is **NOT_SUPPORTED**.\n\n### Example\n\n#### Inputs\nEvidence:  \n{'key': 'Zeitgeist (The Smashing Pumpkins album)', 'value': 0}  \n{'key': 'Jimmy Chamberlin', 'value': 1}  \n{'key': 'FOL (song)', 'value': 0}  \n\nClaim:  \n\"The musician from another band who released a famous album joined the group Zwan shortly after its breakup. FOL (song) appeared on this album.\"\n\n#### Output\n**NOT_SUPPORTED**  \n*Reason*: The evidence does not provide any information about the musician Jimmy Chamberlin's background, whether he was from another band, or his relationship with Zwan. The evidence only shows that he is associated with the album *Zeitgeist* and the song *FOL*, but it does not support the claim that he was from another band or joined Zwan after its breakup.\n\n### Generalizable Strategy\n\n- Use the keys as **entities** and values as **attributes** to build a **mapping** of relationships.  \n- Use **logical reasoning** to determine if the claim can be derived from the evidence.  \n- If the claim is **not derivable** from the evidence, output **NOT_SUPPORTED**.\n\n---\n\n### Feedback\nIncorrect. Extracted verdict 'not_supported' does not match expected 'supported'. Ensure your final answer clearly states the correct verdict."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.41)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.41)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.49)", fillcolor=orange, tooltip=" "];
+    3 [label="3\\n(0.50)", fillcolor=orange, tooltip=" "];
+    4 [label="4\\n(0.43)", fillcolor=lightgray, tooltip=" "];
+    5 [label="5\\n(0.46)", fillcolor=orange, tooltip=" "];
+    6 [label="6\\n(0.51)", fillcolor=cyan, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+    0 -> 3;
+    0 -> 4;
+    3 -> 5;
+    0 -> 6;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

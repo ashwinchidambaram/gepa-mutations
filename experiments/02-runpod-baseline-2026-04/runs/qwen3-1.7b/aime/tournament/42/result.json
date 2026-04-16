@@ -1,0 +1,146 @@
+{
+  "benchmark": "aime",
+  "method": "tournament",
+  "seed": 42,
+  "test_score": 0.0,
+  "val_score": 0.044444444444444446,
+  "train_score": 0.022222222222222223,
+  "best_prompt": {
+    "system_prompt": "Solve the math problem carefully. Break down the steps and provide the final answer as a single number."
+  },
+  "rollout_count": 994,
+  "wall_clock_seconds": 7592.000533342361,
+  "num_candidates": 16,
+  "all_candidates": [
+    {
+      "system_prompt": "Solve the math problem carefully. Break down the steps and provide the final answer as a single number.",
+      "val_score": 0.044444444444444446
+    },
+    {
+      "system_prompt": "16. Evaluate 25 - (10 + 5) * 2. Break down the parentheses first and then the multiplication. Provide the final answer.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "1. Solve the following math problem: 2 + 3 * 4. Break down the steps and provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "5. **Prompt 5:** Find the sum of the first 5 even numbers. Break down the steps and provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "13. Find the value of 6 * 5 - 3 * 2. Perform the multiplications first and then subtract.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 4 (JSON Format):**  \n```json\n{\n  \"task\": \"Solve the math problem\",\n  \"steps\": [\n    \"Read the problem carefully and understand what is being asked.\",\n    \"Identify the mathematical operations required.\",\n    \"Perform the calculations in the correct order.\",\n    \"Verify each step for accuracy.\",\n    \"Provide the final answer as a single number.\"\n  ],\n  \"answer\": 42\n}\n```",
+      "val_score": null
+    },
+    {
+      "system_prompt": "15. **Prompt 15:** Calculate the total number of legs for 4 chickens and 2 dogs. Break down the steps and provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "3. **Prompt 3:** Calculate the area of a rectangle with length 8 and width 3. Break down the steps and provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "10. Calculate 9 * 3 + 12 / 4. Perform the division first and then the multiplication.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "11. Solve 15 - (8 + 2) * 3. Explain the parentheses first and then the multiplication.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 3 (Paragraph Form):**  \nTo solve the math problem, first, carefully read the question to understand the task. Then, identify the relevant operations and perform them in the correct sequence. Ensure that each step is calculated accurately. After completing all steps, review the solution to confirm there are no errors. Finally, present the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "3. Evaluate 10 - (8 / 2) + 3. Explain the order of operations and provide the final answer.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "10. **Step-by-step with verification**: Perform each step, verify calculations, and ensure accuracy before finalizing the answer.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 1 (Bullet Points):**  \n- Break the problem into smaller, manageable parts.  \n- Identify the mathematical operations needed.  \n- Perform calculations step-by-step.  \n- Check for errors in each step.  \n- Provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "12. **Analogy-based with logic**: Use a metaphor or analogy to explain the problem and then solve it.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 5 (List of 16 Prompts with Different Formats):**  \n1. **Bullet Points:** As above.  \n2. **Numbered Steps:** As above.  \n3. **Paragraph Form:** As above.  \n4. **JSON Format:** As above.  \n5. **Step-by-Step Instructions:**  \n   - Read the problem.  \n   - Identify operations.  \n   - Perform calculations.  \n   - Check for errors.  \n   - Provide the answer.  \n6. **Simple List:**  \n   - Read the problem.  \n   - Identify operations.  \n   - Calculate step-by-step.  \n   - Check for errors.  \n   - Provide the answer.  \n7. **Short Description:**  \n   Solve the math problem by breaking it into steps, performing calculations, and providing the final answer as a single number.  \n8. **Detailed Explanation:**  \n   To solve the math problem, first, understand the question, then break it into steps, perform calculations, verify accuracy, and present the final answer as a single number.  \n9. **Step-by-Step Instructions (Different Format):**  \n   1. Read the problem.  \n   2. Identify the operations.  \n   3. Calculate step-by-step.  \n   4. Check for errors.  \n   5. Provide the final answer.  \n10. **Simple Instructions:**  \n    Solve the math problem by following these steps: read, identify, calculate, check, and provide the answer.  \n11. **List of 5 Steps:**  \n    - Read the problem.  \n    - Identify the operations.  \n    - Perform calculations.  \n    - Check for errors.  \n    - Provide the final answer.  \n12. **One-Sentence Summary:**  \n    Solve the math problem by breaking it down into steps, performing calculations, and providing the final answer as a single number.  \n13. **List of 6 Steps:**  \n    1. Read the problem.  \n    2. Identify the operations.  \n    3. Perform calculations.  \n    4. Check for errors.  \n    5. Provide the answer.  \n    6. Confirm the result.  \n14. **Short List:**  \n    - Read the problem.  \n    - Identify operations.  \n    - Calculate.  \n    - Check.  \n    - Provide answer.  \n15. **List of 4 Steps:**  \n    1. Read the problem.  \n    2. Identify operations.  \n    3. Calculate.  \n    4. Provide answer.  \n16. **Simple List with Formatting:**  \n    - Read the problem.  \n    - Identify operations.  \n    - Perform calculations.  \n    - Check for errors.  \n    - Provide the final answer as a single number.",
+      "val_score": null
+    }
+  ],
+  "test_example_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "test_example_ids": [
+    "aime_test_0",
+    "aime_test_1",
+    "aime_test_2",
+    "aime_test_3",
+    "aime_test_4",
+    "aime_test_5",
+    "aime_test_6",
+    "aime_test_7",
+    "aime_test_8",
+    "aime_test_9",
+    "aime_test_10",
+    "aime_test_11",
+    "aime_test_12",
+    "aime_test_13",
+    "aime_test_14",
+    "aime_test_15",
+    "aime_test_16",
+    "aime_test_17",
+    "aime_test_18",
+    "aime_test_19",
+    "aime_test_20",
+    "aime_test_21",
+    "aime_test_22",
+    "aime_test_23",
+    "aime_test_24",
+    "aime_test_25",
+    "aime_test_26",
+    "aime_test_27",
+    "aime_test_28",
+    "aime_test_29"
+  ],
+  "seed_prompt_test_score": 0.0,
+  "seed_prompt_val_score": 0.022222222222222223
+}

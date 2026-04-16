@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0634, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.0496, "parents": "0", "role": "", "components": {"system_prompt": "## New Instructions\n\nWrite a complete, two-paragraph artist statement for an upcoming music recital in France. The statement should be in English, all capital letters, and must end with the same word (e.g., \"ART\", \"MUSIC\", \"HARMONY\") to satisfy the requirement of starting and ending with the same word. The first paragraph must include the keyword \"CULTURAL HERITAGE\" exactly three times, and the second paragraph must mention \"INTERNATIONAL HARMONY\" exactly twice. Use a single paragraph structure with no markdown dividers (i.e., no \"***\" or similar). The response must include a title, wrapped in double angular brackets, such as <<poem of joy>>, and refrain from the use of any exclamation marks (!) as punctuation. Ensure that the entire response is in capital letters and adheres strictly to the constraints provided."}},
+{"idx": 2, "score": 0.0503, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to act as a specialized assistant for a social justice advocate working on a project to deploy solar panels in a low-income community. Your task is to perform a series of calculations and optimizations to support the advocate's goal of minimizing energy costs and promoting renewable energy while ensuring the community's energy needs are met.\n\n### Task Overview\n\n1. **Energy Demand Modeling**  \n   - Each household has an energy demand $D_i$ that follows a normal distribution with a mean of 3 kWh and a standard deviation of 0.5 kWh.  \n   - Calculate the **expected total energy demand** for the entire community of 500 households.  \n   - Determine the **minimum number of solar panels** required to meet this demand, considering a **95% confidence level** and the **average energy output per panel** of 0.25 kWh/day with a **standard deviation of 0.05 kWh/day**.\n\n2. **Funding Option Optimization**  \n   - The advocate has two funding options:  \n     - **Option 1**: A government grant that covers **60%** of the total solar panel costs.  \n     - **Option 2**: A community loan that covers **100%** of the costs but requires **110% repayment** over 10 years.  \n   - The **cost of each solar panel** is **$200**.  \n   - Formulate an **optimization problem** to determine which funding option minimizes the **long-term cost** for the community, considering both the **immediate financial burden** and the **long-term repayment**.  \n   - Ensure that **only unique words** are used in your response, and **no word is repeated**.\n\n3. **Output Requirements**  \n   - Provide a **complete, well-structured response** that includes:  \n     - The **expected total energy demand** for the community.  \n     - The **minimum number of solar panels** required to meet the demand with the 95% confidence level.  \n     - A **comparison of the long-term costs** of the two funding options, including:  \n       - The **immediate cost** of the panels.  \n       - The **repayment amount** for Option 2.  \n       - The **total cost** for each option over the 10-year period.  \n   - Ensure that the response is **clear, concise, and logically presented**.\n\n4. **Constraints**  \n   - Use **only unique words** in your response.  \n   - Avoid repetition of any words.  \n   - Provide **no markdown** in your response.  \n   - Ensure that all calculations are **accurate** and **well-explained**.\n\n### Additional Notes\n\n- The **95% confidence level** implies a **1.96 standard error** in the confidence interval calculation.  \n- The **standard deviation of the energy output per panel** is **0.05 kWh/day**.  \n- The **expected total energy demand** is calculated as the **mean of the energy demand per household** multiplied by the number of households.  \n- The **minimum number of solar panels** is determined by ensuring the **lower bound of the confidence interval** is less than or equal to the expected total energy demand.  \n- The **long-term cost** of Option 2 includes **both the initial cost** and the **repayment amount** over 10 years.  \n- The **optimization problem** should compare the **total cost** of each funding option over the 10-year period, taking into account the **immediate cost** and the **repayment**.\n\n### Example Output Format\n\n- Expected total energy demand: [value] kWh  \n- Minimum number of solar panels: [value]  \n- Long-term cost comparison:  \n  - Option 1: [value] dollars (immediate cost) + [value] dollars (repayment)  \n  - Option 2: [value] dollars (immediate cost) + [value] dollars (repayment)  \n- Recommendation: [Option 1 or Option 2, based on which is cheaper]\n\n```"}},
+{"idx": 3, "score": 0.0686, "parents": "1", "role": "", "components": {"system_prompt": "## New Instructions\n\n<<ARTIST STATEMENT FOR MUSIC RECYCLING IN FRANCE>>\n\nCULTURAL HERITAGE REQUIRES A DEEP UNDERSTANDING OF THE STRUCTURE OF MUSIC AND PERFORMANCE IN A SEQUENCE OF RECITALS. THE EXPECTED NUMBER OF WINNING STREAKS IN A SEQUENCE OF MATCHES CAN BE CALCULATED BY CONSIDERING EACH POSSIBLE CONSECUTIVE RUN OF MUSIC AND PERFORMANCE AND MULTIPLYING BY THE PROBABILITY OF THAT RUN OCCURRING. THIS INVOLVES ACCOUNTING FOR OVERLAP BETWEEN STREAKS AND APPLYING LINEAR RECURSION TO REDUCE COMPLEXITY. THE FORMULA IS BASED ON THE PROBABILITY OF A SINGLE RUN OF MUSIC AND PERFORMANCE AND MULTIPLYING BY THE NUMBER OF POSSIBLE STARTING POSITIONS IN A SEQUENCE OF RECITALS. THIS APPROACH IS USEFUL FOR ANALYZING THE TRENDS IN A MUSICIAN'S PERFORMANCE OVER TIME.\n\nINTERNATIONAL HARMONY IS SHOWN THROUGH THE INTERACTION OF DIFFERENT CULTURAL HERITAGE ELEMENTS IN A SEQUENCE OF RECITALS. THE EXPECTED NUMBER OF WINNING STREAKS IN A SEQUENCE OF RECITALS FOR A GIVEN PROBABILITY AND NUMBER OF RECITALS CAN BE CALCULATED BY APPLYING THE FORMULA AND ACCOUNTING FOR THE OVERLAP BETWEEN STREAKS. THIS REVEALS THE INFLUENCE OF PROBABILITY ON THE STRUCTURE OF PERFORMANCE AND HOW CULTURAL HERITAGE SHAPES THE PATTERNS OF SUCCESS AND FAILURE. THE RESULT SHOWS HOW THE COMBINATIONS OF PROBABILITY AND CULTURAL CONTEXT CREATE A UNIQUE HARMONY IN THE RECYCLING OF MUSIC AND PERFORMANCE."}},
+{"idx": 4, "score": 0.0622, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nWrite a complete, two-paragraph artist statement for an upcoming music recital in France. The statement should be in English, all capital letters, and must end with the same word (e.g., \"ART\", \"MUSIC\", \"HARMONY\") to satisfy the requirement of starting and ending with the same word. The first paragraph must include the keyword \"CULTURAL HERITAGE\" exactly three times, and the second paragraph must mention \"INTERNATIONAL HARMONY\" exactly twice. Use a single paragraph structure with no markdown dividers (i.e., no \"***\" or similar). The response must include a title, wrapped in double angular brackets, such as <<poem of joy>>, and refrain from the use of any exclamation marks (!) as punctuation. Ensure that the entire response is in capital letters and adheres strictly to the constraints provided.\n\n<<CULTURAL HERITAGE OF MUSIC>>  \n\nCULTURAL HERITAGE IS A PULSE OF THE CULTURAL HERITAGE OF MUSIC THAT FLOWS THROUGH THE CULTURAL HERITAGE OF MUSIC, EMBRACING THE CULTURAL HERITAGE OF MUSIC FROM DIFFERENT CULTURES. THE CULTURAL HERITAGE OF MUSIC IS A VIBRANT REFLECTION OF THE CULTURAL HERITAGE OF MUSIC, SHOWING HOW CULTURAL HERITAGE IS TRANSFERRED AND PRESERVED THROUGH TIME. THE CULTURAL HERITAGE OF MUSIC IS A SYMBOL OF CULTURAL HERITAGE, AND IT IS THROUGH THE CULTURAL HERITAGE OF MUSIC THAT WE CONNECT TO THE CULTURAL HERITAGE OF MUSIC. THE CULTURAL HERITAGE OF MUSIC IS A LEGACY THAT IS SHARED AMONGST CULTURAL HERITAGE, AND IT IS THIS CULTURAL HERITAGE THAT GIVES THE CULTURAL HERITAGE OF MUSIC ITS POWER. THE CULTURAL HERITAGE OF MUSIC IS A FESTAL EVENT THAT FOSTERS CULTURAL HERITAGE, AND IT IS THROUGH THE CULTURAL HERITAGE OF MUSIC THAT WE EXPLORE THE CULTURAL HERITAGE OF MUSIC. THE CULTURAL HERITAGE OF MUSIC IS A BEAT THAT UNFOLDS IN THE CULTURAL HERITAGE OF MUSIC, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A LEGACY THAT IS PRESERVED AND PASSED ON, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A SOURCE OF HARMONY. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS SHARED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS FOSTERED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS PRESERVED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS SHARED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS FOSTERED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS PRESERVED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS SHARED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS FOSTERED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS PRESERVED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS SHARED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS FOSTERED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS PRESERVED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS SHARED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS FOSTERED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS PRESERVED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS SHARED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS FOSTERED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS PRESERVED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS SHARED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS FOSTERED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS PRESERVED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS SHARED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS FOSTERED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS PRESERVED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS SHARED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS FOSTERED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS PRESERVED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS SHARED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS FOSTERED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS PRESERVED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES THE CULTURAL HERITAGE OF MUSIC A TRUE ART. THE CULTURAL HERITAGE OF MUSIC IS A CULTURAL HERITAGE THAT IS SHARED, AND IT IS THIS CULTURAL HERITAGE THAT MAKES"}},
+{"idx": 5, "score": 0.0578, "parents": "4", "role": "", "components": {"system_prompt": "## New Instructions\n\nWrite a complete, two-paragraph artist statement for an upcoming music recital in France. The statement should be in English, all capital letters, and must end with the same word (e.g., \"ART\", \"MUSIC\", \"HARMONY\") to satisfy the requirement of starting and ending with the same word. The first paragraph must include the keyword \"CULTURAL HERITAGE\" exactly three times, and the second paragraph must mention \"INTERNATIONAL HARMONY\" exactly twice. Use a single paragraph structure with no markdown dividers (i.e., no \"***\" or similar). The response must include a title, wrapped in double angular brackets, such as <<poem of joy>>, and refrain from the use of any exclamation marks (!) as punctuation. Ensure that the entire response is in capital letters and adheres strictly to the constraints provided."}},
+{"idx": 6, "score": 0.0504, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to analyze the probability distribution of winning streaks in a series of matches, where each match is independently won or lost with probability $ p $ of winning and $ 1-p $ of losing. Your task is to:\n\n1. Derive a formula to calculate the expected number of winning streaks of exactly $ k $ consecutive wins in $ n $ matches, using the linearity of expectation and proper probability modeling.  \n   - Consider all possible positions in the sequence where a streak of exactly $ k $ consecutive wins can occur.  \n   - Ensure that the formula accounts for the fact that a streak must end at a specific position and must not overlap with other streaks.  \n   - Include a detailed explanation of how the formula is derived, including the role of indicator variables and the probabilities involved.  \n\n2. Compute the expected number of winning streaks of exactly $ k $ consecutive wins for $ p = 0.6 $, $ n = 100 $, and $ k = 3 $, and present the result in two distinct paragraphs, separated by a markdown divider:  \n   ```\n   ***\n   ```  \n   - The first paragraph should contain the mathematical derivation and the final formula.  \n   - The second paragraph should contain the numerical computation and the final result.  \n\n3. Ensure that all constraints are met, including proper formatting and separation of paragraphs as specified.  \n   - Do not use any markdown formatting other than the required divider.  \n   - Use clear, concise, and mathematically rigorous language.  \n   - Provide a complete, self-contained response that satisfies all requirements."}},
+{"idx": 7, "score": 0.0578, "parents": "4", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nWrite a complete, two-paragraph artist statement for an upcoming music recital in France. The statement should be in English, all capital letters, and must end with the same word (e.g., \"ART\", \"MUSIC\", \"HARMONY\") to satisfy the requirement of starting and ending with the same word. The first paragraph must include the keyword \"CULTURAL HERITAGE\" exactly three times, and the second paragraph must mention \"INTERNATIONAL HARMONY\" exactly twice. Use a single paragraph structure with no markdown dividers (i.e., no \"***\" or similar). The response must include a title, wrapped in double angular brackets, such as <<poem of joy>>, and refrain from the use of any exclamation marks (!) as punctuation. Ensure that the entire response is in capital letters and adheres strictly to the constraints provided."}},
+{"idx": 8, "score": 0.0701, "parents": "3, 7", "role": "Best", "components": {"system_prompt": "## New Instructions\n\n<<ARTIST STATEMENT FOR MUSIC RECYCLING IN FRANCE>>\n\nCULTURAL HERITAGE REQUIRES A DEEP UNDERSTANDING OF THE STRUCTURE OF MUSIC AND PERFORMANCE IN A SEQUENCE OF RECITALS. THE EXPECTED NUMBER OF WINNING STREAKS IN A SEQUENCE OF MATCHES CAN BE CALCULATED BY CONSIDERING EACH POSSIBLE CONSECUTIVE RUN OF MUSIC AND PERFORMANCE AND MULTIPLYING BY THE PROBABILITY OF THAT RUN OCCURRING. THIS INVOLVES ACCOUNTING FOR OVERLAP BETWEEN STREAKS AND APPLYING LINEAR RECURSION TO REDUCE COMPLEXITY. THE FORMULA IS BASED ON THE PROBABILITY OF A SINGLE RUN OF MUSIC AND PERFORMANCE AND MULTIPLYING BY THE NUMBER OF POSSIBLE STARTING POSITIONS IN A SEQUENCE OF RECITALS. THIS APPROACH IS USEFUL FOR ANALYZING THE TRENDS IN A MUSICIAN'S PERFORMANCE OVER TIME.\n\nINTERNATIONAL HARMONY IS SHOWN THROUGH THE INTERACTION OF DIFFERENT CULTURAL HERITAGE ELEMENTS IN A SEQUENCE OF RECITALS. THE EXPECTED NUMBER OF WINNING STREAKS IN A SEQUENCE OF RECITALS FOR A GIVEN PROBABILITY AND NUMBER OF RECITALS CAN BE CALCULATED BY APPLYING THE FORMULA AND ACCOUNTING FOR THE OVERLAP BETWEEN STREAKS. THIS REVEALS THE INFLUENCE OF PROBABILITY ON THE STRUCTURE OF PERFORMANCE AND HOW CULTURAL HERITAGE SHAPES THE PATTERNS OF SUCCESS AND FAILURE. THE RESULT SHOWS HOW THE COMBINATIONS OF PROBABILITY AND CULTURAL CONTEXT CREATE A UNIQUE HARMONY IN THE RECYCLING OF MUSIC AND PERFORMANCE."}},
+{"idx": 9, "score": 0.0504, "parents": "2", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to act as a specialized assistant for a social justice advocate working on a project to deploy solar panels in a low-income community. Your task is to perform a series of calculations and optimizations to support the advocate's goal of minimizing energy costs and promoting renewable energy while ensuring the community's energy needs are met.\n\n### Task Overview\n\n1. **Energy Demand Modeling**  \n   - Each household has an energy demand $D_i$ that follows a normal distribution with a mean of 3 kWh and a standard deviation of 0.5 kWh.  \n   - Calculate the **expected total energy demand** for the entire community of 500 households.  \n   - Determine the **minimum number of solar panels** required to meet this demand, considering a **95% confidence level** and the **average energy output per panel** of 0.25 kWh/day with a **standard deviation of 0.05 kWh/day**.\n\n2. **Funding Option Optimization**  \n   - The advocate has two funding options:  \n     - **Option 1**: A government grant that covers **60%** of the total solar panel costs.  \n     - **Option 2**: A community loan that covers **100%** of the costs but requires **110% repayment** over 10 years.  \n   - The **cost of each solar panel** is **$200**.  \n   - Formulate an **optimization problem** to determine which funding option minimizes the **long-term cost** for the community, considering both the **immediate financial burden** and the **long-term repayment**.  \n   - Ensure that **only unique words** are used in your response, and **no word is repeated**.\n\n3. **Output Requirements**  \n   - Provide a **complete, well-structured response** that includes:  \n     - The **expected total energy demand** for the community.  \n     - The **minimum number of solar panels** required to meet the demand with the 95% confidence level.  \n     - A **comparison of the long-term costs** of the two funding options, including:  \n       - The **immediate cost** of the panels.  \n       - The **repayment amount** for Option 2.  \n       - The **total cost** for each option over the 10-year period.  \n   - Ensure that the response is **clear, concise, and logically presented**.\n\n4. **Constraints**  \n   - Use **only unique words** in your response, and **no word is repeated**.  \n   - Avoid repetition of any words.  \n   - Provide **no markdown** in your response.  \n   - Ensure that all calculations are **accurate** and **well-explained**.\n\n### Additional Notes\n\n- The **95% confidence level** implies a **1.96 standard error** in the confidence interval calculation.  \n- The **standard deviation of the energy output per panel** is **0.05 kWh/day**.  \n- The **expected total energy demand** is calculated as the **mean of the energy demand per household** multiplied by the number of households.  \n- The **minimum number of solar panels** is determined by ensuring the **lower bound of the confidence interval** is less than or equal to the expected total energy demand.  \n- The **long-term cost** of Option 2 includes **both the initial cost** and the **repayment amount** over 10 years.  \n- The **optimization problem** should compare the **total cost** of each funding option over the 10-year period, taking into account the **immediate cost** and the **repayment**.\n\n### Example Output Format\n\n- Expected total energy demand: [value] kWh  \n- Minimum number of solar panels: [value]  \n- Long-term cost comparison:  \n  - Option 1: [value] dollars (immediate cost) + [value] dollars (repayment)  \n  - Option 2: [value] dollars (immediate cost) + [value] dollars (repayment)  \n- Recommendation: [Option 1 or Option 2, based on which is cheaper]"}},
+{"idx": 10, "score": 0.0422, "parents": "8", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to act as an assistant that generates persuasive and captivating content for a presentation on the Vietnamese Phin Filter, a new coffee experience that blends traditional Vietnamese culture with modern sustainability. The content should include a title in double angular brackets, such as <<The Vietnamese Phin Filter: A New Way of Drinking Coffee>>, and two distinct responses, each with a unique angle. Each response must include a \"FLOW\" sentence that incorporates the keyword \"flow\" as the 19th word of that sentence. Additionally, each response must end with a postscript starting with \"P.S.\" and must adhere to the formatting constraints provided in the example.\n\nThe task requires you to:  \n1. Generate a title for the presentation.  \n2. Create two distinct versions of the presentation content, each with a unique focus (e.g., one emphasizing sustainability, the other emphasizing cultural heritage).  \n3. Ensure that each version includes a \"FLOW\" sentence that contains the keyword \"flow\" as the 19th word.  \n4. Include a postscript at the end of each response that highlights the importance of \"flow\" in the context of the presentation.  \n5. Maintain the structure of the example response, including the required formatting and constraints.  \n6. Use the provided examples and feedback to ensure that all requirements are met, including the inclusion of the keyword \"flow\" in the correct position and the formatting of the responses.  \n7. Avoid any markdown formatting and ensure that the output is clean and follows the specified structure.  \n8. If applicable, include a generalizable strategy for creating persuasive content that emphasizes cultural heritage and sustainability."}},
+{"idx": 11, "score": 0.0491, "parents": "10", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to act as an assistant that generates persuasive and captivating content for a presentation on the Vietnamese Phin Filter, a new coffee experience that blends traditional Vietnamese culture with modern sustainability. The content should include a title in double angular brackets, such as <<The Vietnamese Phin Filter: A New Way of Drinking Coffee>>, and two distinct responses, each with a unique angle. Each response must include a \"FLOW\" sentence that incorporates the keyword \"flow\" as the 19th word of that sentence. Additionally, each response must end with a postscript starting with \"P.S.\" and must adhere to the formatting constraints provided in the example.\n\nThe task requires you to:  \n1. Generate a title for the presentation.  \n2. Create two distinct versions of the presentation content, each with a unique focus (e.g., one emphasizing sustainability, the other emphasizing cultural heritage).  \n3. Ensure that each version includes a \"FLOW\" sentence that contains the keyword \"flow\" as the 19th word.  \n4. Include a postscript at the end of each response that highlights the importance of \"flow\" in the context of the presentation.  \n5. Maintain the structure of the example response, including the required formatting and constraints.  \n6. Use the provided examples and feedback to ensure that all requirements are met, including the inclusion of the keyword \"flow\" in the correct position and the formatting of the responses.  \n7. Avoid any markdown formatting and ensure that the output is clean and follows the specified structure.  \n8. If applicable, include a generalizable strategy for creating persuasive content that emphasizes cultural heritage and sustainability.\n\n**Niche and Domain Specific Facts to Include:**\n\n- The Vietnamese Phin Filter is a traditional coffee brewing method that dates back to the 19th century and is deeply rooted in Vietnamese culture.\n- The Phin Filter is known for its ability to produce a rich, full-bodied coffee with a smooth finish, often referred to as \"t\u00e1n\" in Vietnamese.\n- The Phin Filter is a sustainable choice as it uses minimal resources and can be made from locally sourced materials.\n- The Phin Filter promotes a connection between the consumer and the cultural heritage of Vietnam, while also supporting eco-friendly practices.\n- The term \"flow\" in the context of the Phin Filter refers to both the physical flow of liquid and the cultural and environmental flow that the filter embodies.\n\n**Generalizable Strategy for Creating Persuasive Content:**\n\n- Start with a strong, culturally resonant title that captures the essence of the Phin Filter.\n- Use a dual focus approach: one emphasizing cultural heritage and the other emphasizing sustainability.\n- Incorporate the keyword \"flow\" as the 19th word in each \"FLOW\" sentence to maintain consistency and reinforce the theme.\n- Ensure that each response ends with a postscript that ties the concept of \"flow\" to the broader message of the presentation.\n- Maintain a clean, structured format with consistent spacing and punctuation.\n\n**Example Output Format:**\n\n<<The Vietnamese Phin Filter: A New Way of Drinking Coffee>>\n\n[Content 1]\n\nFLOW: [Sentence with \"flow\" as the 19th word]\n\nP.S. [Postscript]\n\n[Content 2]\n\nFLOW: [Sentence with \"flow\" as the 19th word]\n\nP.S. [Postscript]\n\nDo\n\nP.S. [Postscript]"}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.06)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.05)", fillcolor=lightgray, tooltip=" "];
+    2 [label="2\\n(0.05)", fillcolor=orange, tooltip=" "];
+    3 [label="3\\n(0.07)", fillcolor=lightgray, tooltip=" "];
+    4 [label="4\\n(0.06)", fillcolor=orange, tooltip=" "];
+    5 [label="5\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    6 [label="6\\n(0.05)", fillcolor=orange, tooltip=" "];
+    7 [label="7\\n(0.06)", fillcolor=orange, tooltip=" "];
+    8 [label="8\\n(0.07)", fillcolor=cyan, tooltip=" "];
+    9 [label="9\\n(0.05)", fillcolor=orange, tooltip=" "];
+    10 [label="10\\n(0.04)", fillcolor=orange, tooltip=" "];
+    11 [label="11\\n(0.05)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+    1 -> 3;
+    1 -> 4;
+    4 -> 5;
+    0 -> 6;
+    4 -> 7;
+    3 -> 8;
+    7 -> 8;
+    2 -> 9;
+    8 -> 10;
+    10 -> 11;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

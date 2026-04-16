@@ -1,0 +1,3 @@
+{
+    "response": "<<URL Swap Guide>>\n\nHere is the PHP code to replace the old URL with the new one in your string while handling multiple occurrences\n\n$oldUrl = 'http://stackoverflow.com/xyz1'\n$newUrl = 'http://yahoo.com/abc1'\n$subject = 'New post on the site <a href=\"http://stackoverflow.com/xyz1\">http://stackoverflow.com/xyz1</a></p> New post on the site <a href=\"http://stackoverflow.com/xyz1\">http://stackoverflow.com/xyz1</a></p>'\n\n$result = str_replace($oldUrl, $newUrl, $subject)\n\necho $result\n\nThis approach works for any number of repeating instances within the text\n\nA palindrome for you to enjoy is noon"
+}

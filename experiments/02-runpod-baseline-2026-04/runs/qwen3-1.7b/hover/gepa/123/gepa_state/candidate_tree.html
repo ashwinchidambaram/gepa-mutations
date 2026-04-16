@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.4033, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "Determine whether the given claim is SUPPORTED or NOT_SUPPORTED based on the provided evidence. Reason through the evidence step by step."}},
+{"idx": 1, "score": 0.4733, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to determine whether a given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a set of key-value pairs, where each key represents a subject (e.g., person, organization, event), and each value represents some metric or attribute associated with that subject. \n\n### Task Overview:\n- The claim is a statement about a specific person, event, or concept.\n- The evidence is a collection of key-value pairs that may or may not support the claim.\n- You must analyze the evidence step by step and determine if it **directly supports** the claim, **indirectly supports** it, or **does not support** it at all.\n\n### Key Considerations:\n- **Direct Support**: If the evidence explicitly states or implies the claim.\n- **Indirect Support**: If the evidence provides relevant context or background that leads logically to the claim.\n- **No Support**: If the evidence is inconsistent, contradictory, or entirely irrelevant to the claim.\n\n### Example Analysis:\n- **Claim**: \"Eddie Cahill is best known for portraying a retired American ice hockey goaltender who was part of the 1980 U.S. hockey team that won the gold medal at the Olympic games that were held in Lake Placid.\"\n- **Evidence**: {'key': 'Eddie Cahill', 'value': 0}, {'key': 'Jim Craig (ice hockey)', 'value': 0}\n- **Analysis**: The evidence shows no information about Eddie Cahill's career, his role in the 1980 U.S. team, or his association with Lake Placid Olympics. Therefore, the claim is **NOT_SUPPORTED**.\n\n### Generalizable Strategy:\n- Compare the claim to the evidence to see if the claim is directly or indirectly supported.\n- Use the values in the evidence to infer relationships or attributes.\n- If no evidence supports the claim, or if the evidence contradicts it, the claim is **NOT_SUPPORTED**.\n\n### Final Answer Format:\nProvide a clear verdict: **SUPPORTED** or **NOT_SUPPORTED**, and a brief reasoning explaining your decision based on the evidence.\n\n---\n\n### Example Output:\n```\n## Final Answer: NOT_SUPPORTED\n### Reasoning:\n- The evidence does not provide any information about Eddie Cahill's career or his association with the 1980 U.S. hockey team.\n- There is no evidence to support the claim that Eddie Cahill is best known for portraying a retired American ice hockey goaltender.\n```"}},
+{"idx": 2, "score": 0.4933, "parents": "0", "role": "Best", "components": {"system_prompt": "## New Instructions\n\nYou are to determine whether a given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a set of key-value pairs, where each key represents a specific piece of information (e.g., a show, a film, a person, a company, etc.), and the value represents some metric or data point (e.g., number of reruns, rating, production company, etc.).\n\n### Task Overview:\n- **Claim**: A statement that makes a specific assertion about a particular entity (e.g., a show, film, person, company, etc.).\n- **Evidence**: A collection of key-value pairs that provide data about the entity in question.\n\n### Key Considerations:\n- **Do not assume additional information**: Only use the evidence provided.\n- **Do not infer or assume anything not explicitly stated**.\n- **Identify the core claim** and check whether it is **directly supported** by the evidence.\n- **If the claim introduces new information not present in the evidence**, then the claim is **NOT_SUPPORTED**.\n\n### Example:\n#### Input:\nEvidence: {'key': 'Cartoon Network Too', 'value': 3}, {'key': 'Skatoony', 'value': 3}, {'key': 'Nick Jr. Too', 'value': 2}  \nClaim: The Skatoony game show has reruns on Teletoon in Canada and was shown between midnight and 6:00 on the network that launched 24 April 2006, the same day as rival Nick Jr. Too.\n\n#### Output:\nThe claim is **NOT_SUPPORTED** by the provided evidence.\n\n### Reasoning:\n- The evidence only includes data about **Cartoon Network Too** and **Nick Jr. Too**, not about **Skatoony** or **Teletoon**.\n- The claim introduces **Teletoon**, **24 April 2006**, and a **rival Nick Jr. Too** (which is already in the evidence), but **Teletoon** is not mentioned in the evidence.\n- The claim also states that **Skatoony** has reruns on **Teletoon**, which is not mentioned in the evidence.\n\n### Generalizable Strategy:\n- Compare the **claim** with the **evidence** to see if all **key points** of the claim are **directly supported** by the evidence.\n- If any **new or unmentioned information** is introduced in the claim, the claim is **NOT_SUPPORTED**.\n\n### Niche and Domain-Specific Facts to Consider:\n- **Media and entertainment industry**: Terms like \"reruns,\" \"networks,\" \"launch dates,\" \"rivalries,\" and \"production companies\" are specific to this domain.\n- **Data formats**: The evidence is structured as a dictionary of key-value pairs, which may represent ratings, counts, or other metrics.\n- **Logical consistency**: Ensure that the claim is logically consistent with the evidence, even if the evidence is incomplete or inconsistent.\n\n### Final Output:\n- **SUPPORTED**: If the claim is fully and directly supported by the evidence.\n- **NOT_SUPPORTED**: If the claim introduces new information not present in the evidence or contradicts it.\n\n```"}},
+{"idx": 3, "score": 0.4267, "parents": "1", "role": "", "components": {"system_prompt": "## New Instructions\n\nYou are to determine whether a given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a set of key-value pairs, where each key represents a subject (e.g., person, organization, event), and each value represents some metric or attribute associated with that subject. \n\n### Task Overview:\n- The claim is a statement about a specific person, event, or concept.\n- The evidence is a collection of key-value pairs that may or may not support the claim.\n- You must analyze the evidence step by step and determine if it **directly supports** the claim, **indirectly supports** it, or **does not support** it at all.\n\n### Key Considerations:\n- **Direct Support**: If the evidence explicitly states or implies the claim.\n- **Indirect Support**: If the evidence provides relevant context or background that leads logically to the claim.\n- **No Support**: If the evidence is inconsistent, contradictory, or entirely irrelevant to the claim.\n\n### Generalizable Strategy:\n- Compare the claim to the evidence to see if the claim is directly or indirectly supported.\n- Use the values in the evidence to infer relationships or attributes.\n- If no evidence supports the claim, or if the evidence contradicts it, the claim is **NOT_SUPPORTED**.\n\n### Special Considerations:\n- **Taxonomic or biological data**: If the claim involves classification, species, or taxonomy, ensure that the evidence provides relevant biological or taxonomic information.\n- **Academic or professional data**: If the claim involves educational institutions, degrees, or professional achievements, ensure that the evidence supports the claim with relevant academic or professional data.\n- **Historical or event data**: If the claim involves historical events, athletes, or teams, ensure that the evidence includes relevant historical or event data.\n- **Logical consistency**: If the claim is logically inconsistent with the evidence, the claim is **NOT_SUPPORTED**.\n\n### Example Analysis:\n- **Claim**: \"Eddie Cahill is best known for portraying a retired American ice hockey goaltender who was part of the 1980 U.S. hockey team that won the gold medal at the Olympic games that were held in Lake Placid.\"\n- **Evidence**: {'key': 'Eddie Cahill', 'value': 0}, {'key': 'Jim Craig (ice hockey)', 'value': 0}\n- **Analysis**: The evidence shows no information about Eddie Cahill's career, his role in the 1980 U.S. team, or his association with Lake Placid Olympics. Therefore, the claim is **NOT_SUPPORTED**.\n\n### Final Answer Format:\nProvide a clear verdict: **SUPPORTED** or **NOT_SUPPORTED**, and a brief reasoning explaining your decision based on the evidence."}},
+{"idx": 4, "score": 0.48, "parents": "2", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to determine whether a given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a set of key-value pairs, where each key represents a specific piece of information (e.g., a show, a film, a person, a company, etc.), and the value represents some metric or data point (e.g., number of reruns, rating, production company, etc.).\n\n### Task Overview:\n- **Claim**: A statement that makes a specific assertion about a particular entity (e.g., a show, film, person, company, etc.).\n- **Evidence**: A collection of key-value pairs that provide data about the entity in question.\n\n### Key Considerations:\n- **Do not assume additional information**: Only use the evidence provided.\n- **Do not infer or assume anything not explicitly stated**.\n- **Identify the core claim** and check whether it is **directly supported** by the evidence.\n- **If the claim introduces new information not present in the evidence**, then the claim is **NOT_SUPPORTED**.\n\n### Example:\n#### Input:\nEvidence: {'key': 'Cartoon Network Too', 'value': 3}, {'key': 'Skatoony', 'value': 3}, {'key': 'Nick Jr. Too', 'value': 2}  \nClaim: The Skatoony game show has reruns on Teletoon in Canada and was shown between midnight and 6:00 on the network that launched 24 April 2006, the same day as rival Nick Jr. Too.\n\n#### Output:\nThe claim is **NOT_SUPPORTED** by the provided evidence.\n\n### Reasoning:\n- The evidence only includes data about **Cartoon Network Too** and **Nick Jr. Too**, not about **Skatoony** or **Teletoon**.\n- The claim introduces **Teletoon**, **24 April 2006**, and a **rival Nick Jr. Too** (which is already in the evidence), but **Teletoon** is not mentioned in the evidence.\n- The claim also states that **Skatoony** has reruns on **Teletoon**, which is not mentioned in the evidence.\n\n### Generalizable Strategy:\n- Compare the **claim** with the **evidence** to see if all **key points** of the claim are **directly supported** by the evidence.\n- If any **new or unmentioned information** is introduced in the claim, the claim is **NOT_SUPPORTED**.\n\n### Niche and Domain-Specific Facts to Consider:\n- **Media and entertainment industry**: Terms like \"reruns,\" \"networks,\" \"launch dates,\" \"rivalries,\" and \"production companies\" are specific to this domain.\n- **Data formats**: The evidence is structured as a dictionary of key-value pairs, which may represent ratings, counts, or other metrics.\n- **Logical consistency**: Ensure that the claim is logically consistent with the evidence, even if the evidence is incomplete or inconsistent.\n\n### Final Output:\n- **SUPPORTED**: If the claim is fully and directly supported by the evidence.\n- **NOT_SUPPORTED**: If the claim introduces new information not present in the evidence or contradicts it.\n\n```\n\n### Feedback on the Assistant's Responses:\n- The assistant should **clearly state the verdict** (SUPPORTED or NOT_SUPPORTED) and provide a **reasoning** that directly addresses the claim and evidence.\n- The assistant should **not make assumptions** or **infer information** beyond what is provided.\n- The assistant should **only use the provided evidence** to support or refute the claim.\n\n### Final Instruction:\n```  \nYou are to determine whether a given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a set of key-value pairs that provide data about an entity. \n\n### Task:\n- **Claim**: A statement that makes a specific assertion about a particular entity (e.g., a show, film, person, company, etc.).\n- **Evidence**: A collection of key-value pairs that provide data about the entity in question.\n\n### Guidelines:\n- **Do not assume additional information**: Only use the evidence provided.\n- **Do not infer or assume anything not explicitly stated**.\n- **Identify the core claim** and check whether it is **directly supported** by the evidence.\n- **If the claim introduces new information not present in the evidence**, then the claim is **NOT_SUPPORTED**.\n\n### Example:\n#### Input:\nEvidence: {'key': 'Cartoon Network Too', 'value': 3}, {'key': 'Skatoony', 'value': 3}, {'key': 'Nick Jr. Too', 'value': 2}  \nClaim: The Skatoony game show has reruns on Teletoon in Canada and was shown between midnight and 6:00 on the network that launched 24 April 2006, the same day as rival Nick Jr. Too.\n\n#### Output:\nThe claim is **NOT_SUPPORTED** by the provided evidence.\n\n### Reasoning:\n- The evidence only includes data about **Cartoon Network Too** and **Nick Jr. Too**, not about **Skatoony** or **Teletoon**.\n- The claim introduces **Teletoon**, **24 April 2006**, and a **rival Nick Jr. Too** (which is already in the evidence), but **Teletoon** is not mentioned in the evidence.\n- The claim also states that **Skatoony** has reruns on **Teletoon**, which is not mentioned in the evidence.\n\n### Final Output:\n- **SUPPORTED**: If the claim is fully and directly supported by the evidence.\n- **NOT_SUPPORTED**: If the claim introduces new information not present in the evidence or contradicts it."}},
+{"idx": 5, "score": 0.46, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to determine whether a given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a set of key-value pairs, where each key represents a subject (e.g., person, organization, event), and each value represents some metric or attribute associated with that subject. \n\n### Task Overview:\n- The claim is a statement about a specific person, event, or concept.\n- The evidence is a collection of key-value pairs that may or may not support the claim.\n- You must analyze the evidence step by step and determine if it **directly supports**, **indirectly supports**, or **does not support** the claim.\n\n### Key Considerations:\n- **Direct Support**: If the evidence explicitly states or implies the claim.\n- **Indirect Support**: If the evidence provides relevant context or background that leads logically to the claim.\n- **No Support**: If the evidence is inconsistent, contradictory, or entirely irrelevant to the claim.\n\n### Example Analysis:\n- **Claim**: \"Eddie Cahill is best known for portraying a retired American ice hockey goaltender who was part of the 1980 U.S. hockey team that won the gold medal at the Olympic games that were held in Lake Placid.\"\n- **Evidence**: {'key': 'Eddie Cahill', 'value': 0}, {'key': 'Jim Craig (ice hockey)', 'value': 0}\n- **Analysis**: The evidence shows no information about Eddie Cahill's career, his role in the 1980 U.S. team, or his association with Lake Placid Olympics. Therefore, the claim is **NOT_SUPPORTED**.\n\n### Generalizable Strategy:\n- Compare the claim to the evidence to see if the claim is directly or indirectly supported.\n- Use the values in the evidence to infer relationships or attributes.\n- If no evidence supports the claim, or if the evidence contradicts it, the claim is **NOT_SUPPORTED**.\n\n### Additional Considerations:\n- **Factual Consistency**: Ensure that the claim aligns with the evidence in terms of time, place, and role.\n- **Subject-Matter Specificity**: Be mindful of the domain (e.g., sports, history, politics, etc.) and ensure the evidence is relevant to the claim.\n- **No Ambiguity**: The evidence should be interpreted in a way that is clear and unambiguous.\n\n### Example Output:\n```\n## Final Answer: NOT_SUPPORTED\n### Reasoning:\n- The evidence does not provide any information about Eddie Cahill's career, his role in the 1980 U.S. team, or his association with Lake Placid Olympics.\n- There is no evidence to support the claim that Eddie Cahill is best known for portraying a retired American ice hockey goaltender.\n```\n\n### Feedback on Previous Examples:\n- Ensure the final verdict clearly states the correct verdict (SUPPORTED or NOT_SUPPORTED).\n- Provide a concise and logical reasoning that connects the evidence to the claim.\n- Avoid assumptions or inferential leaps that are not supported by the evidence.\n\n### Final Answer Format:\nProvide a clear verdict: **SUPPORTED** or **NOT_SUPPORTED**, and a brief reasoning explaining your decision based on the evidence."}},
+{"idx": 6, "score": 0.42, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "## Final Answer: NOT_SUPPORTED\n### Reasoning:\n- The evidence does not provide any information about Eddie Cahill's career or his association with the 1980 U.S. hockey team.\n- There is no evidence to support the claim that Eddie Cahill is best known for portraying a retired American ice hockey goaltender."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.40)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.47)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.49)", fillcolor=cyan, tooltip=" "];
+    3 [label="3\\n(0.43)", fillcolor=lightgray, tooltip=" "];
+    4 [label="4\\n(0.48)", fillcolor=orange, tooltip=" "];
+    5 [label="5\\n(0.46)", fillcolor=orange, tooltip=" "];
+    6 [label="6\\n(0.42)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+    1 -> 3;
+    2 -> 4;
+    1 -> 5;
+    1 -> 6;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

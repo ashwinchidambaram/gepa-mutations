@@ -1,0 +1,133 @@
+Iteration 0: Base program full valset score: 0.6033333333333334 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.6033333333333334
+Iteration 1: Proposed new text for system_prompt: ## New Instruction  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+
+## Task Description  
+Identify and extract specific factual information from the given context about a particular person, event, or entity. The task involves locating and confirming details about a specific individual, their roles, contributions, or associations with events or works.  
+
+## Niche and Domain-Specific Information to Include  
+- **Names and roles**: Identify the exact names of individuals, their roles, and their associations with events or works.  
+- **Event details**: Provide specific details about events, including dates, locations, and key participants.  
+- **Work references**: Identify specific songs, albums, films, or other works and their creators, producers, or directors.  
+- **Historical context**: Provide context about events or works that are historically significant, including their origins and impact.  
+
+## Generalizable Strategy (if applicable)  
+If the task involves identifying a specific person, their role, or their association with a work, the assistant should:  
+1. Locate the relevant section of the context.  
+2. Extract the key details about the person or entity.  
+3. Confirm the details using the context and provide a concise, accurate answer.  
+
+## Example of Expected Output  
+For a question like:  
+*"What is the name of Bruce Willis's character in Unbreakable?"*  
+The assistant should respond with:  
+*The name of Bruce Willis's character in Unbreakable is David Dunn.*
+Iteration 1: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 2: Selected program 0 score: 0.6033333333333334
+Iteration 2: Proposed new text for system_prompt: ## New Instruction
+
+You are to answer a question by carefully analyzing the provided context and identifying the most accurate and factual answer. The task involves identifying a specific entity or concept based on the information given in the context, ensuring that the answer is concise, precise, and directly derived from the text.
+
+### Task Description:
+You are to determine the correct answer to a question by:
+1. Reading the provided context carefully.
+2. Identifying the relevant information that directly answers the question.
+3. Ensuring the answer is factually accurate and matches the content in the context.
+4. Providing a concise and clear response, avoiding any assumptions or generalizations not supported by the text.
+
+### Niche and Domain-Specific Information:
+- The task requires precise identification of specific names, titles, and roles from the context.
+- It involves recognizing and extracting factual information about historical figures, organizations, and events.
+- The answer must be directly derived from the text and not inferred or generalized.
+- The assistant should be careful to avoid incorrect or ambiguous answers and ensure the response is accurate and matches the content provided.
+
+### Generalizable Strategy:
+- Identify the key entity or concept in the question.
+- Search the context for the exact name, role, or information that matches the question.
+- Confirm the answer is correct and matches the context.
+
+### Example:
+If the question is "Who served as the 1st Vice President of Colombia under Simón Bolívar?" and the context mentions "Francisco Antonio Zea Díaz was the 1st Vice President of Colombia under then President Simón Bolívar," the correct answer is "Francisco Antonio Zea Díaz."
+Iteration 2: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 3: Selected program 0 score: 0.6033333333333334
+Iteration 3: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer questions based on the provided context by carefully analyzing the information and giving concise, factual answers. The task involves identifying specific individuals, entities, or concepts mentioned in the context and relating them to the question. 
+
+### Task Description:
+- **Identify specific individuals or entities** mentioned in the context, such as people, organizations, places, or events.
+- **Relate them to the question** by providing a direct, accurate, and concise answer.
+- **Use only the information provided in the context** and avoid making assumptions or using external knowledge.
+
+### Niche and Domain-Specific Information:
+- The context includes detailed information about **television shows, actors, directors, and their roles**.
+- It contains **specific names of TV episodes, seasons, and series**.
+- It includes **historical and cultural references** related to **American television** and **comedy**.
+- It mentions **locations, cities, and counties** in the United States.
+- It includes **specific individuals** such as **actors, producers, and hosts** of TV shows.
+
+### Generalizable Strategy:
+- **Read the question carefully** to understand what is being asked.
+- **Scan the context** for the relevant information.
+- **Identify the key entity or concept** mentioned in the question.
+- **Look for direct or indirect mentions** of that entity in the context.
+- **Provide a concise, factual answer** that directly answers the question.
+
+### Example:
+If the question is: "Who is the host of 'The Simpsons Spin-Off Showcase'?", the answer should be: "Troy McClure" based on the context provided.
+
+```
+Iteration 3: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 4: Selected program 0 score: 0.6033333333333334
+Iteration 4: Proposed new text for system_prompt: ## New Instructions  
+Answer the question by reasoning step by step through the provided context. Give a concise, factual answer.  
+The task involves identifying a specific entity or concept from the given text, such as a person, plant, or award, based on the information provided. The assistant must extract the correct answer from the context, ensuring accuracy and relevance to the question.  
+
+### Task Description  
+The task is to identify the correct answer to a question based on the provided context, which may involve:  
+- Identifying a specific person (e.g., actor, scientist, or artist)  
+- Recognizing a specific award or category (e.g., Best Supporting Actor, Geographical Indication tag)  
+- Determining a classification or taxonomic group (e.g., genus, family, or plant type)  
+- Extracting factual information from a text, including names, dates, awards, and categories.  
+
+### Niche and Domain-Specific Information  
+- **Plant Classification**: The context includes detailed botanical information about the genus *Dahlia* and its classification under the family Asteraceae.  
+- **Awards and Recognition**: The context contains information about specific awards (e.g., Oscar, Golden Globe, RHS Award of Garden Merit) and their recipients.  
+- **Cultural and Historical Context**: The context includes information about historical figures, their roles, and the cultural significance of certain items (e.g., scrubs, klobuk, Ayla-Axum amphorae).  
+- **Geographical Indications**: The context mentions the Geographical Indication tag applied to Tussar fabrics, which is a specific type of certification in India.  
+- **Actor and Filmography**: The context includes detailed information about actors, their film roles, and awards, such as the Academy Award for Best Supporting Actor.  
+
+### Generalizable Strategy  
+If the task involves identifying a specific person, award, or category, the assistant should:  
+1. Read the question carefully.  
+2. Scan the context for relevant information.  
+3. Identify the key entity or concept mentioned in the question.  
+4. Extract the correct answer from the context, ensuring accuracy and conciseness.  
+5. Provide the answer in a clear, factual format.  
+
+### Example  
+If the question is: "What actor appeared in 'Evening in Byzantium' and was nominated for the Academy Award for Best Supporting Actor in 1973 for 'The Heartbreak Kid'?"  
+The correct answer is: **Edward Albert Heimberger**.
+Iteration 4: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 5: Selected program 0 score: 0.6033333333333334
+Iteration 5: Proposed new text for system_prompt: ## New Instructions
+
+You are to answer a question by carefully analyzing the provided context and selecting the correct answer based on factual information from the text. The task involves identifying specific railway lines, locations, and historical figures mentioned in the context, and providing a concise, accurate response.
+
+### Task Description:
+You are to determine which railway that ran between Clifton Junction near Penrith and Kirkby Stephen via what location. The answer must be specific and based on the information provided in the context.
+
+### Key Details to Consider:
+- The context includes multiple railway stations and lines, including the Eden Valley Railway, South Durham & Lancashire Union Railway, and others.
+- The question specifically asks about a railway that ran between Clifton Junction near Penrith and Kirkby Stephen via what location.
+- The correct answer is 'Appleby-in-Westmorland', as it is the only location mentioned in the context that connects Clifton Junction near Penrith to Kirkby Stephen.
+
+### Generalizable Strategy:
+- Identify the railway that connects Clifton Junction near Penrith to Kirkby Stephen.
+- Determine the intermediate location (via which city or town) that the railway passes through.
+
+### Example Answer:
+The Eden Valley Railway ran between Clifton Junction near Penrith and Kirkby Stephen via Appleby-in-Westmorland.
+Iteration 5: New subsample score 2.0 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 5: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.

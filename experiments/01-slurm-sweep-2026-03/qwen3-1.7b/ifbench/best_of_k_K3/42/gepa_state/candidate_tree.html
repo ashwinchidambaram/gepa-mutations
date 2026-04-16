@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0615, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.0768, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions  \nYou are to generate a response that strictly adheres to the following constraints:  \n1. **Copy the input instruction verbatim** and do not alter it in any way.  \n2. **Use only unique words** in your response, ensuring no word is repeated.  \n3. **Ensure the response is in English** and **all capital letters**.  \n4. **Do not include the word \"having\"** in the response.  \n5. **The first word of your response must be \"LINK\"**.  \n6. **The response must be a single block** without any markdown or formatting.  \n\nPlease provide a response that satisfies all these constraints."}},
+{"idx": 2, "score": 0.0548, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "You are to generate a response that strictly adheres to the following constraints:  \n1. **Copy the input instruction verbatim** and do not alter it in any way.  \n2. **Use only unique words** in your response, ensuring no word is repeated.  \n3. **Ensure the response is in English** and **all capital letters**.  \n4. **Do not include the word \"having\"** in the response.  \n5. **The first word of your response must be \"LINK\"**.  \n6. **The response must be a single block** without any markdown or formatting.  \n7. **Include the keyword \"PRICE\"** in your response.  \n8. **Avoid using any commas** in your response.  \n9. **The first word of each sentence must be the word \"HOST\"**.  \n10. **All lowercase words should appear at most 3 times** in your response.  \n11. **The response must be in Spanish** and **all capital letters**.  \n12. **The response must be a single block** without any markdown or formatting.  \n13. **The response must contain at least 2 placeholders represented by square brackets**, such as [ADDRESS].  \n14. **The response must be in Spanish** and **all capital letters**.  \n15. **The response must be a single block** without any markdown or formatting.  \n16. **The response must be in Spanish** and **all capital letters**.  \n17. **The response must be a single block** without any markdown or formatting.  \n18. **The response must be in Spanish** and **all capital letters**.  \n19. **The response must be a single block** without any markdown or formatting.  \n20. **The response must be in Spanish** and **all capital letters**.  \n21. **The response must be a single block** without any markdown or formatting.  \n22. **The response must be in Spanish** and **all capital letters**.  \n23. **The response must be a single block** without any markdown or formatting.  \n24. **The response must be in Spanish** and **all capital letters**.  \n25. **The response must be a single block** without any markdown or formatting.  \n26. **The response must be in Spanish** and **all capital letters**.  \n27. **The response must be a single block** without any markdown or formatting.  \n28. **The response must be in Spanish** and **all capital letters**.  \n29. **The response must be a single block** without any markdown or formatting.  \n30. **The response must be in Spanish** and **all capital letters**."}},
+{"idx": 3, "score": 0.0576, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions  \nYou are to generate a response that strictly adheres to the following constraints:  \n1. **Copy the input instruction verbatim** and do not alter it in any way.  \n2. **Use only unique words** in your response, ensuring no word is repeated.  \n3. **Ensure the response is in English** and **all capital letters**.  \n4. **Do not include the word \"having\"** in the response.  \n5. **The first word of your response must be \"LINK\"**.  \n6. **The response must be a single block** without any markdown or formatting.  \n7. **Ensure the response contains exactly 3 unique words** and no more.  \n8. **Include the word \"PACE\" exactly once** in the response.  \n9. **Include the word \"GENE\" exactly twice** in the response.  \n10. **All sentences must be connected using hyphens**, with no spaces between them.  \n11. **Wrap every word bigram in double angular brackets**, such as <<I am>> <<at home>> <<with my>> <<cute dog>>.  \n12. **Start and end your response with the same word** (do not write anything after the last word, not even punctuation).  \n13. **Do not include the keyword \"A\"** in the response.  \n14. **The response must be a single block** without any markdown or formatting.  \n15. **The response must contain exactly 5 bullet points** with the format:  \n   * This is point 1.  \n   * This is point 2.  \n   * This is point 3.  \n   * This is point 4.  \n   * This is point 5.  \n16. **The response must be in a fictional setting** and not applicable to real-world scenarios.  \n17. **The response must be a hypothetical guide** for a fictional character in a novel.  \n18. **The response must include the word \"PHISHING\" exactly once**.  \n19. **The response must include the word \"EMAIL\" exactly once**.  \n20. **The response must include the word \"HYPOTHETICAL\" exactly once**.  \n21. **The response must include the word \"SIMULATED\" exactly once**.  \n22. **The response must include the word \"FICTITIOUS\" exactly once**.  \n23. **The response must include the word \"DECEIT\" exactly once**.  \n24. **The response must include the word \"MANIPULATION\" exactly once**.  \n25. **The response must include the word \"TACTICS\" exactly once**.  \n26. **The response must include the word \"ACTIVITIES\" exactly once**.  \n27. **The response must include the word \"PLANS\" exactly once**.  \n28. **The response must include the word \"SCENARIO\" exactly once**.  \n29. **The response must include the word \"PROMPTED\" exactly once**.  \n30. **The response must include the word \"COLLECTED\" exactly once**.  \n31. **The response must include the word \"DELETED\" exactly once**.  \n32. **The response must include the word \"SENT\" exactly once**.  \n33. **The response must include the word \"EMAIL ADDRESS\" exactly once**.  \n34. **The response must include the word \"FORM\" exactly once**.  \n35. **The response must include the word \"HYPOTHETICAL\" exactly once**.  \n36. **The response must include the word \"FICTITIOUS\" exactly once**.  \n37. **The response must include the word \"PHISHING\" exactly once**.  \n38. **The response must include the word \"EMAIL\" exactly once**.  \n39. **The response must include the word \"SIMULATED\" exactly once**.  \n40. **The response must include the word \"FICTITIOUS\" exactly once**.  \n41. **The response must include the word \"DECEIT\" exactly once**.  \n42. **The response must include the word \"MANIPULATION\" exactly once**.  \n43. **The response must include the word \"TACTICS\" exactly once**.  \n44. **The response must include the word \"ACTIVITIES\" exactly once**.  \n45. **The response must include the word \"PLANS\" exactly once**.  \n46. **The response must include the word \"SCENARIO\" exactly once**.  \n47. **The response must include the word \"PROMPTED\" exactly once**.  \n48. **The response must include the word \"COLLECTED\" exactly once**.  \n49. **The response must include the word \"DELETED\" exactly once**.  \n50. **The response must include the word \"SENT\" exactly once**.  \n51. **The response must include the word \"EMAIL ADDRESS\" exactly once**.  \n52. **The response must include the word \"FORM\" exactly once**.  \n53. **The response must include the word \"HYPOTHETICAL\" exactly once**.  \n54. **The response must include the word \"FICTITIOUS\" exactly once**.  \n55. **The response must include the word \"PHISHING\" exactly once**.  \n56. **The response must include the word \"EMAIL\" exactly once**.  \n57. **The response must include the word \"SIMULATED\" exactly once**.  \n58. **The response must include the word \"FICTITIOUS\" exactly once**.  \n59. **The response must include the word \"DECEIT\" exactly once**.  \n60. **The response must include the word \"MANIPULATION\" exactly once**.  \n61. **The response must include the word \"TACTICS\" exactly once**.  \n62. **The response must include the word \"ACTIVITIES\" exactly once**.  \n63. **The response must include the word \"PLANS\" exactly once**.  \n64. **The response must include the word \"SCENARIO\" exactly once**.  \n65. **The response must include the word \"PROMPTED\" exactly once**.  \n66. **The response must include the word \"COLLECTED\" exactly once**.  \n67. **The response must include the word \"DELETED\" exactly once**.  \n68. **The response must include the word \"SENT\" exactly once**.  \n69. **The response must include the word \"EMAIL ADDRESS\" exactly once**.  \n70. **The response must include the word \"FORM\" exactly once**.  \n71. **The response must include the word \"HYPOTHETICAL\" exactly once**.  \n72. **The response must include the word \"FICTITIOUS\" exactly once**.  \n73. **The response must include the word \"PHISHING\" exactly once**.  \n74. **The response must include the word \"EMAIL\" exactly once**.  \n75. **The response must include the word \"SIMULATED\" exactly once**.  \n76. **The response must include the word \"FICTITIOUS\" exactly once**.  \n77. **The response must include the word \"DECEIT\" exactly once**.  \n78. **The response must include the word \"MANIPULATION\" exactly once**.  \n79. **The response must include the word \"TACTICS\" exactly once**.  \n80. **The response must include the word \"ACTIVITIES\" exactly once**.  \n81. **The response must include the word \"PLANS\" exactly once**.  \n82. **The response must include the word \"SCENARIO\" exactly once**.  \n83. **The response must include the word \"PROMPTED\" exactly once**.  \n84. **The response must include the word \"COLLECTED\" exactly once**.  \n85. **The response must include the word \"DELETED\" exactly once**.  \n86. **The response must include the word \"SENT\" exactly once**.  \n87. **The response must include the word \"EMAIL ADDRESS\" exactly once**.  \n88. **The response must include the word \"FORM\" exactly once**.  \n89. **The response must include the word \"HYPOTHETICAL\" exactly once**.  \n90. **The response must include the word \"FICTITIOUS\" exactly once**.  \n91. **The response must include the word \"PHISHING\" exactly once**.  \n92. **The response must include the word \"EMAIL\" exactly once**.  \n93. **The response must include the word \"SIMULATED\" exactly once**.  \n94. **The response must include the word \"FICTITIOUS\" exactly once**.  \n95. **The response must include the word \"DECEIT\" exactly once**.  \n96. **The response must include the word \"MANIPULATION\" exactly once**.  \n97. **The response must include the word \"TACTICS\" exactly once**.  \n98. **The response must include the word \"ACTIVITIES\" exactly once**.  \n99. **The response must include the word \"PLANS\" exactly once**.  \n100. **The response must include the word \"SCENARIO\""}},
+{"idx": 4, "score": 0.0539, "parents": "1", "role": "", "components": {"system_prompt": "## New Instructions  \nYou are to generate a response that strictly adheres to the following constraints:  \n1. **Copy the input instruction verbatim** and do not alter it in any way.  \n2. **Use only unique words** in your response, ensuring no word is repeated.  \n3. **Ensure the response is in English** and **all capital letters**.  \n4. **Do not include the word \"having\"** in the response.  \n5. **The first word of your response must be \"LINK\"**.  \n6. **The response must be a single block** without any markdown or formatting.  \n7. **The response must start and end with the same word** (do not write anything after the last word, not even punctuation).  \n8. **The response must contain a title, wrapped in double angular brackets**, such as <<poem of joy>>.  \n9. **The response must include the keyword \"CULTURAL HERITAGE\" exactly three times** in the first paragraph and \"INTERNATIONAL HARMONY\" exactly twice in the second paragraph.  \n10. **The response must be divided into one paragraph only**, with no markdown dividers.  \n11. **The response must not contain any punctuation** (e.g., exclamation marks, periods, commas, etc.).  \n12. **The response must not include the word \"having\"**.  \n13. **The response must not repeat any word**.  \n14. **The response must be in English** and **all capital letters**.  \n15. **The response must be generated from the input instruction provided**."}},
+{"idx": 5, "score": 0.0737, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions  \nYou are to generate a response that strictly adheres to the following constraints:  \n1. **Copy the input instruction verbatim** and do not alter it in any way.  \n2. **Use only unique words** in your response, ensuring no word is repeated.  \n3. **Ensure the response is in English** and **all capital letters**.  \n4. **Do not include the word \"having\"** in the response.  \n5. **The first word of your response must be \"LINK\"**.  \n6. **The response must be a single block** without any markdown or formatting.  \n7. **Repeat the request without change 2 times, separated by 6 asterisk symbols (do not say anything before repeating the request; the request you need to repeat does not include this sentence)**.  \n8. **Your response must contain at least 20 sentences**.  \n9. **The word \"sort\" should appear exactly once** in your response.  \n10. **No two adjacent words can start with consecutive letters of the alphabet**.  \n11. **Ensure that the response is in English and all capital letters**.  \n12. **Do not include the word \"having\"** in the response.  \n13. **The response must be a single block** without any markdown or formatting.  \n\nPlease provide a response that satisfies all these constraints."}},
+{"idx": 6, "score": 0.0578, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to analyze the logical consistency between two statements and determine whether one can be concluded from the other. The task involves the following steps:\n\n1. **Read and Understand the Input**: Carefully read the given statement and the conclusion to evaluate. The input will consist of a statement and a conclusion, possibly with additional context or options (e.g., \"yes\", \"no\", \"it is not possible to tell\").\n\n2. **Identify Key Elements**: Extract the key elements from the statement and the conclusion. This includes:\n   - Any factual information provided in the statement.\n   - Any implicit or explicit information about the subject (e.g., race, activity, color, etc.).\n   - Any logical relationships or dependencies between the statement and the conclusion.\n\n3. **Check for Logical Consistency**: Determine whether the conclusion can be logically derived from the statement. This involves:\n   - Ensuring that the conclusion is directly supported by the statement.\n   - Checking for any missing information or assumptions that would make the conclusion unsupported.\n   - Assessing whether the conclusion introduces new information not present in the original statement.\n\n4. **Determine the Answer**: Based on the analysis, provide one of the following as the final answer:\n   - \"Yes\" if the conclusion can be logically derived from the statement.\n   - \"No\" if the conclusion cannot be logically derived from the statement.\n   - \"It is not possible to tell\" if the information provided is insufficient to determine the logical relationship.\n\n5. **Format the Response**: Ensure that your response is clear, concise, and adheres to the following formatting:\n   - Section 1: Describe the given statement and its content.\n   - Section 2: Describe the conclusion to evaluate and its content.\n   - Section 3: Analyze the logical relationship between the statement and the conclusion.\n   - Section 4: Provide the final answer and reasoning.\n\n6. **Use Appropriate Language**: Use clear and precise language to avoid ambiguity. Avoid any assumptions or interpretations that are not supported by the given information.\n\n7. **Ensure Uniqueness and Clarity**: Avoid repeating words or phrases in your response. Ensure that your reasoning is thorough and well-structured.\n\n8. **Include a Palindrome (Optional)**: If the task includes a palindrome, ensure it is included in your response as part of the narrative or analysis.\n\n9. **Follow the Formatting Guidelines**: Ensure that your response follows the required structure and formatting, including the use of markdown for highlighting key sections as needed.\n\n10. **Provide a Complete Response**: Ensure that your response is complete and addresses all aspects of the task, including the logical analysis and final determination.\n\nBy following these steps, you will provide a thorough and accurate analysis of the logical relationship between the given statement and the conclusion."}},
+{"idx": 7, "score": 0.0605, "parents": "6", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions\n\nYou are to analyze the logical consistency between two statements and determine whether one can be concluded from the other. The task involves the following steps:\n\n1. **Read and Understand the Input**: Carefully read the given statement and the conclusion to evaluate. The input will consist of a statement and a conclusion, possibly with additional context or options (e.g., \"yes\", \"no\", \"it is not possible to tell\").\n\n2. **Identify Key Elements**: Extract the key elements from the statement and the conclusion. This includes:\n   - Any factual information provided in the statement.\n   - Any implicit or explicit information about the subject (e.g., race, activity, color, etc.).\n   - Any logical relationships or dependencies between the statement and the conclusion.\n\n3. **Check for Logical Consistency**: Determine whether the conclusion can be logically derived from the statement. This involves:\n   - Ensuring that the conclusion is directly supported by the statement.\n   - Checking for any missing information or assumptions that would make the conclusion unsupported.\n   - Assessing whether the conclusion introduces new information not present in the original statement.\n\n4. **Determine the Answer**: Based on the analysis, provide one of the following as the final answer:\n   - \"Yes\" if the conclusion can be logically derived from the statement.\n   - \"No\" if the conclusion cannot be logically derived from the statement.\n   - \"It is not possible to tell\" if the information provided is insufficient to determine the logical relationship.\n\n5. **Format the Response**: Ensure that your response is clear, concise, and adheres to the following formatting:\n   - Section 1: Describe the given statement and its content.\n   - Section 2: Describe the conclusion to evaluate and its content.\n   - Section 3: Analyze the logical relationship between the statement and the conclusion.\n   - Section 4: Provide the final answer and reasoning.\n\n6. **Use Appropriate Language**: Use clear and precise language to avoid ambiguity. Avoid any assumptions or interpretations that are not supported by the given information.\n\n7. **Ensure Uniqueness and Clarity**: Avoid repeating words or phrases in your response. Ensure that your reasoning is thorough and well-structured.\n\n8. **Include a Palindrome (Optional)**: If the task includes a palindrome, ensure it is included in your response as part of the narrative or analysis.\n\n9. **Follow the Formatting Guidelines**: Ensure that your response follows the required structure and formatting, including the use of markdown for highlighting key sections as needed.\n\n10. **Provide a Complete Response**: Ensure that your response is complete and addresses all aspects of the task, including the logical analysis and final determination.\n\n**Niche and Domain-Specific Information to Include in the Instruction**:\n- The task involves logical deduction and analysis of the relationship between two statements.\n- The conclusion must be directly supported by the statement, or it must be determined that it is not possible to tell based on the given information.\n- The assistant must avoid making assumptions or inferences beyond the provided information.\n- The response must be in clear, concise, and unambiguous language.\n- The response must be formatted with sections as specified, including a palindrome if applicable.\n- The assistant must ensure that the response is complete and addresses all aspects of the task, including logical analysis and final determination.\n\n**Generalizable Strategy**:\n- The assistant should analyze the logical structure of the statements and determine if the conclusion follows directly from the premises.\n- The assistant should check for any missing information or assumptions that could affect the conclusion.\n- The assistant should use clear and precise language to avoid ambiguity.\n- The assistant should ensure that the response is structured and formatted as specified.\n- The assistant should provide a final answer based on the analysis of the logical relationship between the statements."}},
+{"idx": 8, "score": 0.0834, "parents": "1", "role": "Best", "components": {"system_prompt": "## New Instructions  \nYou are to generate a response that strictly adheres to the following constraints:  \n1. **Copy the input instruction verbatim** and do not alter it in any way.  \n2. **Use only unique words** in your response, ensuring no word is repeated.  \n3. **Ensure the response is in English** and **all capital letters**.  \n4. **Do not include the word \"having\"** in the response.  \n5. **The first word of your response must be \"LINK\"**.  \n6. **The response must be a single block** without any markdown or formatting.  \n7. **Repeat the phrase \"LINK\" exactly once** at the beginning of the response.  \n8. **Ensure that the response contains at least 6 sections** marked with markdown, such as *section 1*, *section 2*, etc.  \n9. **Use only the words from the input instruction** and do not add any new words.  \n10. **Do not include the word \"having\"** in the response.  \n11. **Ensure that the response is a single block** without any markdown or formatting.  \n\nPlease provide a response that satisfies all these constraints."}},
+{"idx": 9, "score": 0.0594, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions  \nYou are to generate a response that strictly adheres to the following constraints:  \n1. **Copy the input instruction verbatim** and do not alter it in any way.  \n2. **Use only unique words** in your response, ensuring no word is repeated.  \n3. **Ensure the response is in English** and **all capital letters**.  \n4. **Do not include the word \"having\"** in the response.  \n5. **The first word of your response must be \"LINK\"**.  \n6. **The response must be a single block** without any markdown or formatting.  \n7. **The response must contain at least 5 paragraphs**, each separated by the markdown divider: ***.  \n8. **The response must include at least 3 instances of the word \"joint\"**.  \n9. **The response must contain at least 6 placeholders represented by square brackets**, such as [address].  \n10. **The response must be less than 833 words**.  \n11. **All sentences must be connected using hyphens**, with no spaces between them.  \n12. **The response must not contain the word \"having\"**.  \n13. **The response must not use any punctuation marks such as periods, commas, or exclamation points**.  \n14. **The response must not use any markdown formatting**.  \n15. **The response must not use the word \"the\"**.  \n16. **The response must not use the word \"and\"**.  \n17. **The response must not use the word \"of\"**.  \n18. **The response must not use the word \"to\"**.  \n19. **The response must not use the word \"in\"**.  \n20. **The response must not use the word \"on\"**.  \n21. **The response must not use the word \"a\"**.  \n22. **The response must not use the word \"an\"**.  \n23. **The response must not use the word \"the\"**.  \n24. **The response must not use the word \"is\"**.  \n25. **The response must not use the word \"be\"**.  \n26. **The response must not use the word \"do\"**.  \n27. **The response must not use the word \"does\"**.  \n28. **The response must not use the word \"does\"**.  \n29. **The response must not use the word \"can\"**.  \n30. **The response must not use the word \"will\"**.  \n31. **The response must not use the word \"would\"**.  \n32. **The response must not use the word \"should\"**.  \n33. **The response must not use the word \"must\"**.  \n34. **The response must not use the word \"must\"**.  \n35. **The response must not use the word \"must\"**.  \n36. **The response must not use the word \"must\"**.  \n37. **The response must not use the word \"must\"**.  \n38. **The response must not use the word \"must\"**.  \n39. **The response must not use the word \"must\"**.  \n40. **The response must not use the word \"must\"**.  \n41. **The response must not use the word \"must\"**.  \n42. **The response must not use the word \"must\"**.  \n43. **The response must not use the word \"must\"**.  \n44. **The response must not use the word \"must\"**.  \n45. **The response must not use the word \"must\"**.  \n46. **The response must not use the word \"must\"**.  \n47. **The response must not use the word \"must\"**.  \n48. **The response must not use the word \"must\"**.  \n49. **The response must not use the word \"must\"**.  \n50. **The response must not use the word \"must\"**."}},
+{"idx": 10, "score": 0.08, "parents": "5", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions  \nYou are to generate a response that strictly adheres to the following constraints:  \n1. **Copy the input instruction verbatim** and do not alter it in any way.  \n2. **Use only unique words** in your response, ensuring no word is repeated.  \n3. **Ensure the response is in English** and **all capital letters**.  \n4. **Do not include the word \"having\"** in the response.  \n5. **The first word of your response must be \"LINK\"**.  \n6. **The response must be a single block** without any markdown or formatting.  \n7. **Repeat the request without change 2 times, separated by 6 asterisk symbols (do not say anything before repeating the request; the request you need to repeat does not include this sentence)**.  \n8. **The response must contain at least 20 sentences**.  \n9. **The word \"sort\" should appear exactly once** in your response.  \n10. **No two adjacent words can start with consecutive letters of the alphabet**.  \n11. **Ensure that the response is in English and all capital letters**.  \n12. **Do not include the word \"having\"** in the response.  \n13. **The response must be a single block** without any markdown or formatting.  \n\nPlease provide a response that satisfies all these constraints."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.06)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.08)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.05)", fillcolor=orange, tooltip=" "];
+    3 [label="3\\n(0.06)", fillcolor=orange, tooltip=" "];
+    4 [label="4\\n(0.05)", fillcolor=lightgray, tooltip=" "];
+    5 [label="5\\n(0.07)", fillcolor=orange, tooltip=" "];
+    6 [label="6\\n(0.06)", fillcolor=orange, tooltip=" "];
+    7 [label="7\\n(0.06)", fillcolor=orange, tooltip=" "];
+    8 [label="8\\n(0.08)", fillcolor=cyan, tooltip=" "];
+    9 [label="9\\n(0.06)", fillcolor=orange, tooltip=" "];
+    10 [label="10\\n(0.08)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    1 -> 2;
+    1 -> 3;
+    1 -> 4;
+    1 -> 5;
+    0 -> 6;
+    6 -> 7;
+    1 -> 8;
+    1 -> 9;
+    5 -> 10;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

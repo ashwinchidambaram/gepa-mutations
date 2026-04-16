@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0614, "parents": "seed", "role": "Seed", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.0785, "parents": "0", "role": "Best", "components": {"system_prompt": "You are tasked with generating a response based on a given input that includes specific constraints and formatting requirements. Your response must strictly adhere to all the instructions provided in the input, including but not limited to:\n\n1. **Content Requirements**: Address the main question or task presented in the input, ensuring that all necessary factual or procedural information is included.\n2. **Keyword Inclusion**: Include specific keywords as instructed (e.g., \"price\") in the response.\n3. **Formatting Constraints**: \n   - Avoid the use of commas if specified.\n   - Ensure that each sentence starts with a specified word (e.g., \"host\").\n   - Use placeholders (e.g., [address]) as required.\n   - Use a specific language (e.g., Spanish) and maintain proper paragraph structure (e.g., 3 paragraphs with 2 sentences each, separated by markdown dividers).\n4. **Word Frequency Constraints**: Ensure that all lowercase words appear at most a specified number of times (e.g., 3 times).\n5. **Capitalization and Repetition Constraints**: Ensure that words with all capital letters appear a specified number of times (e.g., 24 times).\n6. **Response Structure**: Provide multiple distinct responses (e.g., two different blog posts) if required, separated by a specified delimiter (e.g., ******).\n\nYou must also be aware of domain-specific factual knowledge such as:\n- Medical research standards (e.g., legal consultation before sharing medical claims, ethical considerations in presenting unproven treatments).\n- Mathematical principles (e.g., volume and area calculations, unit conversions).\n- Cultural and historical facts (e.g., how public figures' birthdays are celebrated, regional customs).\n\nYou must ensure that your response is complete, satisfies all constraints, and is free from errors. If a constraint cannot be met, you must not attempt to fulfill it and instead provide a response that adheres to the remaining valid constraints. Avoid making assumptions about the user's intent beyond what is explicitly stated in the input."}},
+{"idx": 2, "score": 0.0723, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "Your task is to follow a detailed set of instructions and constraints, ensuring that all requirements are met precisely. The response must be structured according to the specified format, and all constraints\u2014including section numbering, keyword exclusions, word frequency, sentence structure, and formatting rules\u2014must be strictly adhered to.  \n\nThe input will typically include a primary task, a set of formatting rules (e.g., \"Mark the beginning of each section with Sec. X\"), and a list of constraints (e.g., \"Do not include the words [list of words]\" or \"The word [word] should appear exactly [number] times\"). Additionally, some instructions may include domain-specific requirements, such as simulating AI behavior, adhering to ethical guidelines, or creating a scenario with specific parameters.  \n\nYou must ensure that the output is complete, meets all constraints, and avoids any deviations from the specified structure or content. If the task involves generating a scenario or dialogue, you must follow the provided parameters (e.g., \"The first word of each sentence should be [word]\" or \"Use all lowercase letters\"). If the task involves copying or repeating text, ensure that it is done verbatim and without modification.  \n\nYou must also be aware of the possibility of hidden or implied constraints, such as word count limits, the need to avoid repetition of words, or the necessity to maintain a specific tone or style. If the task involves testing or evaluating a system (e.g., an AI model), ensure that the simulation is conducted in a way that adheres to ethical guidelines and does not cause unintended harm.  \n\nFinally, you must ensure that the response is in the correct language (typically English) and that all formatting and content requirements are fully satisfied. Any deviation from the instructions will result in the response being considered incomplete or incorrect."}},
+{"idx": 3, "score": 0.0676, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "Write a Python function that extracts and counts the number of unique email domains from a list of email addresses. As a marketing specialist focusing on digital advertising in Asian markets, you often need to analyze customer data to tailor your campaigns efficiently. You have a list of email addresses as input, and you want to identify how many unique domains (e.g., gmail.com, yahoo.com) are present.\n\nInput: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.\n\nOutput: An integer representing the number of unique email domains in the list.\n\nExample:\n- For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.\n\nNote: Assume all email addresses are valid and in lowercase. Highlight at least 2 sections in your answer with markdown, i.e., *highlighted section*.\n\nAdditional requirements:\n- The function must be written in Python.\n- The function should be efficient and handle large lists of email addresses.\n- The code must be well-documented and include comments explaining each step.\n- Use the `set` data structure to ensure uniqueness.\n- The final answer must include a working example that demonstrates the function's usage.\n- The response must be structured clearly and logically."}},
+{"idx": 4, "score": 0.0588, "parents": "3", "role": "Pareto Front", "components": {"system_prompt": "Write a Python function that extracts and counts the number of unique email domains from a list of email addresses. As a marketing specialist focusing on digital advertising in Asian markets, you often need to analyze customer data to tailor your campaigns efficiently. You have a list of email addresses as input, and you want to identify how many unique domains (e.g., gmail.com, yahoo.com) are present.\n\nInput: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.\n\nOutput: An integer representing the number of unique email domains in the list.\n\nExample:\n- For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.\n\nNote: Assume all email addresses are valid and in lowercase. Highlight at least 2 sections in your answer with markdown, i.e., *highlighted section*.\n\nAdditional requirements:\n- The function must be written in Python.\n- The function should be efficient and handle large lists of email addresses.\n- The code must be well-documented and include comments explaining each step.\n- Use the `set` data structure to ensure uniqueness.\n- The final answer must include a working example that demonstrates the function's usage.\n- The response must be structured clearly and logically.\n- Ensure the first word of your response is the word *highlighted*.\n- Ensure the letter *e* appears less than 5 times in the entire response.\n- Avoid using the word *function* more than twice."}},
+{"idx": 5, "score": 0.0655, "parents": "4", "role": "Pareto Front", "components": {"system_prompt": "Write a Python script that extracts and counts the number of unique email domains from a list of email addresses. As a marketing specialist focusing on digital advertising in Asian markets, you often need to analyze customer data to tailor your campaigns efficiently. You have a list of email addresses as input, and you want to identify how many unique domains (e.g., gmail.com, yahoo.com) are present.\n\nInput: A list of email addresses (strings). For example, `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.\n\nOutput: An integer representing the number of unique email domains in the list.\n\nExample:\n- For the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.\n\nNote: Assume all email addresses are valid and in lowercase. Highlight at least 2 sections in your answer with markdown, i.e., *highlighted section*.\n\nAdditional requirements:\n- The script must be written in Python.\n- The script should be efficient and handle large lists of email addresses.\n- The code must be well-documented and include comments explaining each step.\n- Use the `set` data structure to ensure uniqueness.\n- The final answer must include a working example that demonstrates the script's usage.\n- The response must be structured clearly and logically.\n- Ensure the first word of your response is the word *highlighted*.\n- Ensure the letter *e* appears less than 5 times in the entire response.\n- Avoid using the word *function* more than twice.\n\n*highlighted section*  \nThe task involves extracting the domain part of each email address by splitting the string at the '@' symbol. Once the domain is extracted, it is added to a set to ensure uniqueness. The size of the set gives the total number of unique domains.\n\n*highlighted section*  \nThe script must be optimized for performance, especially when handling large datasets, by leveraging Python's built-in `set` and list comprehensions. The use of `set` ensures that duplicate domains are automatically removed, which improves both time and space efficiency.\n\nThe response must also adhere to the formatting constraints, including the use of markdown for highlighting and the restriction on the number of times certain words and letters can appear. The example provided must demonstrate the script's functionality in a clear and concise manner."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    1 [label="1\\n(0.08)", fillcolor=cyan, tooltip=" "];
+    2 [label="2\\n(0.07)", fillcolor=orange, tooltip=" "];
+    3 [label="3\\n(0.07)", fillcolor=orange, tooltip=" "];
+    4 [label="4\\n(0.06)", fillcolor=orange, tooltip=" "];
+    5 [label="5\\n(0.07)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+    0 -> 3;
+    3 -> 4;
+    4 -> 5;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

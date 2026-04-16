@@ -1,0 +1,166 @@
+{
+  "benchmark": "pupa",
+  "seed": 789,
+  "total_metric_calls": 3976,
+  "total_iterations": 146,
+  "best_candidate_idx": 4,
+  "total_wall_clock_seconds": 3804.2692742347717,
+  "acceptance_rate": 0.3333333333333333,
+  "merge_acceptance_rate": 0.0,
+  "iterations": [
+    {
+      "iteration": 142,
+      "wall_clock_seconds": 124.62953090667725,
+      "proposal_accepted": false,
+      "candidate_idx": 12,
+      "candidate_score": 0.5564889788573999,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 1.5 not better than old score 1.95",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3768,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 143,
+      "wall_clock_seconds": 95.39125561714172,
+      "proposal_accepted": false,
+      "candidate_idx": 10,
+      "candidate_score": 0.5499334875650665,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": "New subsample score 1.95 not better than old score 2.0",
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3774,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 144,
+      "wall_clock_seconds": 9.285283327102661,
+      "proposal_accepted": false,
+      "candidate_idx": 11,
+      "candidate_score": 0.3314035087719298,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3777,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 145,
+      "wall_clock_seconds": 1331.2132024765015,
+      "proposal_accepted": true,
+      "candidate_idx": 5,
+      "candidate_score": 0.5777103013945118,
+      "new_candidate_idx": 34,
+      "new_score": 2.375,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 35,
+      "pareto_displaced": [],
+      "metric_calls_used": 3875,
+      "metric_calls_delta": 92
+    },
+    {
+      "iteration": 146,
+      "wall_clock_seconds": 8.65620231628418,
+      "proposal_accepted": false,
+      "candidate_idx": 34,
+      "candidate_score": 0.4887100443416233,
+      "new_candidate_idx": null,
+      "new_score": null,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": null,
+      "pareto_displaced": null,
+      "metric_calls_used": 3878,
+      "metric_calls_delta": 3
+    },
+    {
+      "iteration": 147,
+      "wall_clock_seconds": 1234.0213227272034,
+      "proposal_accepted": true,
+      "candidate_idx": 14,
+      "candidate_score": 0.6025281151596941,
+      "new_candidate_idx": 35,
+      "new_score": 2.25,
+      "rejection_reason": null,
+      "merge_attempted": false,
+      "merge_accepted": false,
+      "merge_rejected_reason": null,
+      "pareto_front_size": 36,
+      "pareto_displaced": [],
+      "metric_calls_used": 3976,
+      "metric_calls_delta": 92
+    }
+  ],
+  "valset_scores": [
+    {
+      "iteration": 0,
+      "candidate_idx": 0,
+      "average_score": 0.4731406003697025,
+      "is_best_program": true
+    },
+    {
+      "iteration": 145,
+      "candidate_idx": 34,
+      "average_score": 0.4887100443416233,
+      "is_best_program": false
+    },
+    {
+      "iteration": 147,
+      "candidate_idx": 35,
+      "average_score": 0.4875506072874494,
+      "is_best_program": false
+    }
+  ],
+  "convergence_curve": [
+    {
+      "rollout_idx": 3768,
+      "iteration": 142,
+      "running_best_val_score": 0.4731406003697025
+    },
+    {
+      "rollout_idx": 3774,
+      "iteration": 143,
+      "running_best_val_score": 0.4731406003697025
+    },
+    {
+      "rollout_idx": 3777,
+      "iteration": 144,
+      "running_best_val_score": 0.4731406003697025
+    },
+    {
+      "rollout_idx": 3875,
+      "iteration": 145,
+      "running_best_val_score": 0.4887100443416233
+    },
+    {
+      "rollout_idx": 3878,
+      "iteration": 146,
+      "running_best_val_score": 0.4887100443416233
+    },
+    {
+      "rollout_idx": 3976,
+      "iteration": 147,
+      "running_best_val_score": 0.4887100443416233
+    }
+  ]
+}

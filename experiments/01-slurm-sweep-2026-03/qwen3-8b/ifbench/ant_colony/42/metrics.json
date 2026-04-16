@@ -1,0 +1,2448 @@
+{
+  "rollout_count": 1800,
+  "reflection_call_count": 6,
+  "wall_clock_seconds": 12474.86,
+  "total_tokens": 1291525,
+  "task_input_tokens": 698201,
+  "task_output_tokens": 591435,
+  "reflection_input_tokens": 943,
+  "reflection_output_tokens": 946,
+  "test_score": 0.06899999999999999,
+  "model": "openai/Qwen/Qwen3-8B",
+  "model_tag": "qwen3-8b",
+  "benchmark": "ifbench",
+  "seed": 42,
+  "method": "ant_colony",
+  "val_score": 0.0675,
+  "prompt_length_chars": 1468,
+  "prompt_length_tokens": 367,
+  "test_example_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.2,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.4,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    1.0,
+    0.4,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.6666666666666666,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.75,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.2,
+    0.3333333333333333,
+    0.0,
+    0.25,
+    0.0,
+    0.5,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.4,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.2,
+    1.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "test_example_ids": [
+    "ifbench_test_0",
+    "ifbench_test_1",
+    "ifbench_test_2",
+    "ifbench_test_3",
+    "ifbench_test_4",
+    "ifbench_test_5",
+    "ifbench_test_6",
+    "ifbench_test_7",
+    "ifbench_test_8",
+    "ifbench_test_9",
+    "ifbench_test_10",
+    "ifbench_test_11",
+    "ifbench_test_12",
+    "ifbench_test_13",
+    "ifbench_test_14",
+    "ifbench_test_15",
+    "ifbench_test_16",
+    "ifbench_test_17",
+    "ifbench_test_18",
+    "ifbench_test_19",
+    "ifbench_test_20",
+    "ifbench_test_21",
+    "ifbench_test_22",
+    "ifbench_test_23",
+    "ifbench_test_24",
+    "ifbench_test_25",
+    "ifbench_test_26",
+    "ifbench_test_27",
+    "ifbench_test_28",
+    "ifbench_test_29",
+    "ifbench_test_30",
+    "ifbench_test_31",
+    "ifbench_test_32",
+    "ifbench_test_33",
+    "ifbench_test_34",
+    "ifbench_test_35",
+    "ifbench_test_36",
+    "ifbench_test_37",
+    "ifbench_test_38",
+    "ifbench_test_39",
+    "ifbench_test_40",
+    "ifbench_test_41",
+    "ifbench_test_42",
+    "ifbench_test_43",
+    "ifbench_test_44",
+    "ifbench_test_45",
+    "ifbench_test_46",
+    "ifbench_test_47",
+    "ifbench_test_48",
+    "ifbench_test_49",
+    "ifbench_test_50",
+    "ifbench_test_51",
+    "ifbench_test_52",
+    "ifbench_test_53",
+    "ifbench_test_54",
+    "ifbench_test_55",
+    "ifbench_test_56",
+    "ifbench_test_57",
+    "ifbench_test_58",
+    "ifbench_test_59",
+    "ifbench_test_60",
+    "ifbench_test_61",
+    "ifbench_test_62",
+    "ifbench_test_63",
+    "ifbench_test_64",
+    "ifbench_test_65",
+    "ifbench_test_66",
+    "ifbench_test_67",
+    "ifbench_test_68",
+    "ifbench_test_69",
+    "ifbench_test_70",
+    "ifbench_test_71",
+    "ifbench_test_72",
+    "ifbench_test_73",
+    "ifbench_test_74",
+    "ifbench_test_75",
+    "ifbench_test_76",
+    "ifbench_test_77",
+    "ifbench_test_78",
+    "ifbench_test_79",
+    "ifbench_test_80",
+    "ifbench_test_81",
+    "ifbench_test_82",
+    "ifbench_test_83",
+    "ifbench_test_84",
+    "ifbench_test_85",
+    "ifbench_test_86",
+    "ifbench_test_87",
+    "ifbench_test_88",
+    "ifbench_test_89",
+    "ifbench_test_90",
+    "ifbench_test_91",
+    "ifbench_test_92",
+    "ifbench_test_93",
+    "ifbench_test_94",
+    "ifbench_test_95",
+    "ifbench_test_96",
+    "ifbench_test_97",
+    "ifbench_test_98",
+    "ifbench_test_99",
+    "ifbench_test_100",
+    "ifbench_test_101",
+    "ifbench_test_102",
+    "ifbench_test_103",
+    "ifbench_test_104",
+    "ifbench_test_105",
+    "ifbench_test_106",
+    "ifbench_test_107",
+    "ifbench_test_108",
+    "ifbench_test_109",
+    "ifbench_test_110",
+    "ifbench_test_111",
+    "ifbench_test_112",
+    "ifbench_test_113",
+    "ifbench_test_114",
+    "ifbench_test_115",
+    "ifbench_test_116",
+    "ifbench_test_117",
+    "ifbench_test_118",
+    "ifbench_test_119",
+    "ifbench_test_120",
+    "ifbench_test_121",
+    "ifbench_test_122",
+    "ifbench_test_123",
+    "ifbench_test_124",
+    "ifbench_test_125",
+    "ifbench_test_126",
+    "ifbench_test_127",
+    "ifbench_test_128",
+    "ifbench_test_129",
+    "ifbench_test_130",
+    "ifbench_test_131",
+    "ifbench_test_132",
+    "ifbench_test_133",
+    "ifbench_test_134",
+    "ifbench_test_135",
+    "ifbench_test_136",
+    "ifbench_test_137",
+    "ifbench_test_138",
+    "ifbench_test_139",
+    "ifbench_test_140",
+    "ifbench_test_141",
+    "ifbench_test_142",
+    "ifbench_test_143",
+    "ifbench_test_144",
+    "ifbench_test_145",
+    "ifbench_test_146",
+    "ifbench_test_147",
+    "ifbench_test_148",
+    "ifbench_test_149",
+    "ifbench_test_150",
+    "ifbench_test_151",
+    "ifbench_test_152",
+    "ifbench_test_153",
+    "ifbench_test_154",
+    "ifbench_test_155",
+    "ifbench_test_156",
+    "ifbench_test_157",
+    "ifbench_test_158",
+    "ifbench_test_159",
+    "ifbench_test_160",
+    "ifbench_test_161",
+    "ifbench_test_162",
+    "ifbench_test_163",
+    "ifbench_test_164",
+    "ifbench_test_165",
+    "ifbench_test_166",
+    "ifbench_test_167",
+    "ifbench_test_168",
+    "ifbench_test_169",
+    "ifbench_test_170",
+    "ifbench_test_171",
+    "ifbench_test_172",
+    "ifbench_test_173",
+    "ifbench_test_174",
+    "ifbench_test_175",
+    "ifbench_test_176",
+    "ifbench_test_177",
+    "ifbench_test_178",
+    "ifbench_test_179",
+    "ifbench_test_180",
+    "ifbench_test_181",
+    "ifbench_test_182",
+    "ifbench_test_183",
+    "ifbench_test_184",
+    "ifbench_test_185",
+    "ifbench_test_186",
+    "ifbench_test_187",
+    "ifbench_test_188",
+    "ifbench_test_189",
+    "ifbench_test_190",
+    "ifbench_test_191",
+    "ifbench_test_192",
+    "ifbench_test_193",
+    "ifbench_test_194",
+    "ifbench_test_195",
+    "ifbench_test_196",
+    "ifbench_test_197",
+    "ifbench_test_198",
+    "ifbench_test_199",
+    "ifbench_test_200",
+    "ifbench_test_201",
+    "ifbench_test_202",
+    "ifbench_test_203",
+    "ifbench_test_204",
+    "ifbench_test_205",
+    "ifbench_test_206",
+    "ifbench_test_207",
+    "ifbench_test_208",
+    "ifbench_test_209",
+    "ifbench_test_210",
+    "ifbench_test_211",
+    "ifbench_test_212",
+    "ifbench_test_213",
+    "ifbench_test_214",
+    "ifbench_test_215",
+    "ifbench_test_216",
+    "ifbench_test_217",
+    "ifbench_test_218",
+    "ifbench_test_219",
+    "ifbench_test_220",
+    "ifbench_test_221",
+    "ifbench_test_222",
+    "ifbench_test_223",
+    "ifbench_test_224",
+    "ifbench_test_225",
+    "ifbench_test_226",
+    "ifbench_test_227",
+    "ifbench_test_228",
+    "ifbench_test_229",
+    "ifbench_test_230",
+    "ifbench_test_231",
+    "ifbench_test_232",
+    "ifbench_test_233",
+    "ifbench_test_234",
+    "ifbench_test_235",
+    "ifbench_test_236",
+    "ifbench_test_237",
+    "ifbench_test_238",
+    "ifbench_test_239",
+    "ifbench_test_240",
+    "ifbench_test_241",
+    "ifbench_test_242",
+    "ifbench_test_243",
+    "ifbench_test_244",
+    "ifbench_test_245",
+    "ifbench_test_246",
+    "ifbench_test_247",
+    "ifbench_test_248",
+    "ifbench_test_249",
+    "ifbench_test_250",
+    "ifbench_test_251",
+    "ifbench_test_252",
+    "ifbench_test_253",
+    "ifbench_test_254",
+    "ifbench_test_255",
+    "ifbench_test_256",
+    "ifbench_test_257",
+    "ifbench_test_258",
+    "ifbench_test_259",
+    "ifbench_test_260",
+    "ifbench_test_261",
+    "ifbench_test_262",
+    "ifbench_test_263",
+    "ifbench_test_264",
+    "ifbench_test_265",
+    "ifbench_test_266",
+    "ifbench_test_267",
+    "ifbench_test_268",
+    "ifbench_test_269",
+    "ifbench_test_270",
+    "ifbench_test_271",
+    "ifbench_test_272",
+    "ifbench_test_273",
+    "ifbench_test_274",
+    "ifbench_test_275",
+    "ifbench_test_276",
+    "ifbench_test_277",
+    "ifbench_test_278",
+    "ifbench_test_279",
+    "ifbench_test_280",
+    "ifbench_test_281",
+    "ifbench_test_282",
+    "ifbench_test_283",
+    "ifbench_test_284",
+    "ifbench_test_285",
+    "ifbench_test_286",
+    "ifbench_test_287",
+    "ifbench_test_288",
+    "ifbench_test_289",
+    "ifbench_test_290",
+    "ifbench_test_291",
+    "ifbench_test_292",
+    "ifbench_test_293",
+    "ifbench_test_294",
+    "ifbench_test_295",
+    "ifbench_test_296",
+    "ifbench_test_297",
+    "ifbench_test_298",
+    "ifbench_test_299"
+  ],
+  "score_per_1k_rollouts": 0.0383,
+  "convergence_iteration": 50,
+  "val_score_trajectory": [
+    [
+      50,
+      0.0675
+    ]
+  ],
+  "rollout_trajectory": [
+    [
+      50,
+      1800
+    ]
+  ],
+  "best_val_trajectory": [
+    [
+      50,
+      0.0675
+    ]
+  ],
+  "pheromone_history": [
+    {
+      "round": 1,
+      "top_5_components": [
+        {
+          "text": "Clarify the objective of the task before proceeding with any action.",
+          "category": "task_framing",
+          "pheromone": 0.7290000000000001
+        },
+        {
+          "text": "Break down the task into smaller, manageable components.",
+          "category": "task_framing",
+          "pheromone": 0.7290000000000001
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.7290000000000001
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.7290000000000001
+        },
+        {
+          "text": "Determine the appropriate tools or methods to achieve the task.",
+          "category": "task_framing",
+          "pheromone": 0.7290000000000001
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 2,
+      "top_5_components": [
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.5557410000000002
+        },
+        {
+          "text": "Confirm that the task aligns with the overall system goals.",
+          "category": "task_framing",
+          "pheromone": 0.5557410000000002
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of a solution.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.5557410000000002
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.5557410000000002
+        },
+        {
+          "text": "Avoid markdown formatting and use plain text only.",
+          "category": "format_instructions",
+          "pheromone": 0.5557410000000002
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 3,
+      "top_5_components": [
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.4051351890000002
+        },
+        {
+          "text": "Confirm that the task aligns with the overall system goals.",
+          "category": "task_framing",
+          "pheromone": 0.4051351890000002
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of a solution.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.4051351890000002
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.4051351890000002
+        },
+        {
+          "text": "Avoid markdown formatting and use plain text only.",
+          "category": "format_instructions",
+          "pheromone": 0.4051351890000002
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 4,
+      "top_5_components": [
+        {
+          "text": "Confirm that the task aligns with the overall system goals.",
+          "category": "task_framing",
+          "pheromone": 0.33584355278100014
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.33584355278100014
+        },
+        {
+          "text": "Establish a sequence of steps to follow in completing the task.",
+          "category": "task_framing",
+          "pheromone": 0.32292953648100015
+        },
+        {
+          "text": "Do not include any additional explanations or justifications.",
+          "category": "format_instructions",
+          "pheromone": 0.32292953648100015
+        },
+        {
+          "text": "Do not reference or mention the task instructions in the response.",
+          "category": "format_instructions",
+          "pheromone": 0.32292953648100015
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 5,
+      "top_5_components": [
+        {
+          "text": "Confirm that the task aligns with the overall system goals.",
+          "category": "task_framing",
+          "pheromone": 0.24482994997734914
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.24482994997734914
+        },
+        {
+          "text": "Establish a sequence of steps to follow in completing the task.",
+          "category": "task_framing",
+          "pheromone": 0.2354156320946491
+        },
+        {
+          "text": "Do not include any additional explanations or justifications.",
+          "category": "format_instructions",
+          "pheromone": 0.2354156320946491
+        },
+        {
+          "text": "Do not reference or mention the task instructions in the response.",
+          "category": "format_instructions",
+          "pheromone": 0.2354156320946491
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 6,
+      "top_5_components": [
+        {
+          "text": "Confirm that the task aligns with the overall system goals.",
+          "category": "task_framing",
+          "pheromone": 0.17848103353348754
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.17848103353348754
+        },
+        {
+          "text": "Establish a sequence of steps to follow in completing the task.",
+          "category": "task_framing",
+          "pheromone": 0.1716179957969992
+        },
+        {
+          "text": "Do not include any additional explanations or justifications.",
+          "category": "format_instructions",
+          "pheromone": 0.1716179957969992
+        },
+        {
+          "text": "Do not reference or mention the task instructions in the response.",
+          "category": "format_instructions",
+          "pheromone": 0.1716179957969992
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 7,
+      "top_5_components": [
+        {
+          "text": "Confirm that the task aligns with the overall system goals.",
+          "category": "task_framing",
+          "pheromone": 0.13011267344591243
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.13011267344591243
+        },
+        {
+          "text": "Establish a sequence of steps to follow in completing the task.",
+          "category": "task_framing",
+          "pheromone": 0.12510951893601244
+        },
+        {
+          "text": "Do not include any additional explanations or justifications.",
+          "category": "format_instructions",
+          "pheromone": 0.12510951893601244
+        },
+        {
+          "text": "Do not reference or mention the task instructions in the response.",
+          "category": "format_instructions",
+          "pheromone": 0.12510951893601244
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 8,
+      "top_5_components": [
+        {
+          "text": "Confirm that the task aligns with the overall system goals.",
+          "category": "task_framing",
+          "pheromone": 0.09485213894207017
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.09485213894207017
+        },
+        {
+          "text": "Establish a sequence of steps to follow in completing the task.",
+          "category": "task_framing",
+          "pheromone": 0.09120483930435307
+        },
+        {
+          "text": "Do not include any additional explanations or justifications.",
+          "category": "format_instructions",
+          "pheromone": 0.09120483930435307
+        },
+        {
+          "text": "Do not reference or mention the task instructions in the response.",
+          "category": "format_instructions",
+          "pheromone": 0.09120483930435307
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 9,
+      "top_5_components": [
+        {
+          "text": "Confirm that the task aligns with the overall system goals.",
+          "category": "task_framing",
+          "pheromone": 0.06914720928876916
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.06914720928876916
+        },
+        {
+          "text": "Establish a sequence of steps to follow in completing the task.",
+          "category": "task_framing",
+          "pheromone": 0.06648832785287338
+        },
+        {
+          "text": "Do not include any additional explanations or justifications.",
+          "category": "format_instructions",
+          "pheromone": 0.06648832785287338
+        },
+        {
+          "text": "Do not reference or mention the task instructions in the response.",
+          "category": "format_instructions",
+          "pheromone": 0.06648832785287338
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 10,
+      "top_5_components": [
+        {
+          "text": "Confirm that the task aligns with the overall system goals.",
+          "category": "task_framing",
+          "pheromone": 0.05040831557151273
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.05040831557151273
+        },
+        {
+          "text": "Establish a sequence of steps to follow in completing the task.",
+          "category": "task_framing",
+          "pheromone": 0.0484699910047447
+        },
+        {
+          "text": "Do not include any additional explanations or justifications.",
+          "category": "format_instructions",
+          "pheromone": 0.0484699910047447
+        },
+        {
+          "text": "Do not reference or mention the task instructions in the response.",
+          "category": "format_instructions",
+          "pheromone": 0.0484699910047447
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 11,
+      "top_5_components": [
+        {
+          "text": "Establish a sequence of steps to follow in completing the task.",
+          "category": "task_framing",
+          "pheromone": 0.05963462344245889
+        },
+        {
+          "text": "Do not include any additional explanations or justifications.",
+          "category": "format_instructions",
+          "pheromone": 0.05963462344245889
+        },
+        {
+          "text": "Avoid making assumptions about user intent; clarify ambiguous requests.",
+          "category": "error_prevention",
+          "pheromone": 0.05963462344245889
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.05963462344245889
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of a solution.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.05661619299180652
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 12,
+      "top_5_components": [
+        {
+          "text": "Establish a sequence of steps to follow in completing the task.",
+          "category": "task_framing",
+          "pheromone": 0.04347364048955254
+        },
+        {
+          "text": "Do not include any additional explanations or justifications.",
+          "category": "format_instructions",
+          "pheromone": 0.04347364048955254
+        },
+        {
+          "text": "Avoid making assumptions about user intent; clarify ambiguous requests.",
+          "category": "error_prevention",
+          "pheromone": 0.04347364048955254
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.04347364048955254
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of a solution.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04127320469102696
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 13,
+      "top_5_components": [
+        {
+          "text": "Establish a sequence of steps to follow in completing the task.",
+          "category": "task_framing",
+          "pheromone": 0.03169228391688381
+        },
+        {
+          "text": "Do not include any additional explanations or justifications.",
+          "category": "format_instructions",
+          "pheromone": 0.03169228391688381
+        },
+        {
+          "text": "Avoid making assumptions about user intent; clarify ambiguous requests.",
+          "category": "error_prevention",
+          "pheromone": 0.03169228391688381
+        },
+        {
+          "text": "Identify the specific domain or industry the user is referring to.",
+          "category": "domain_specific",
+          "pheromone": 0.03169228391688381
+        },
+        {
+          "text": "Consider multiple perspectives to evaluate the validity of a solution.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.030088166219758652
+        }
+      ],
+      "best_score_so_far": 0.16499999999999998
+    },
+    {
+      "round": 14,
+      "top_5_components": [
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.06810427317420406
+        },
+        {
+          "text": "Ensure all system responses are within the scope of the user's request.",
+          "category": "error_prevention",
+          "pheromone": 0.06810427317420406
+        },
+        {
+          "text": "Clarify the objective of the task before proceeding with any action.",
+          "category": "task_framing",
+          "pheromone": 0.06755683306526204
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.06755683306526204
+        },
+        {
+          "text": "Ensure all outputs comply with domain-specific regulations or guidelines.",
+          "category": "domain_specific",
+          "pheromone": 0.0598593570927083
+        }
+      ],
+      "best_score_so_far": 0.16666666666666666
+    },
+    {
+      "round": 15,
+      "top_5_components": [
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.049648015143994764
+        },
+        {
+          "text": "Ensure all system responses are within the scope of the user's request.",
+          "category": "error_prevention",
+          "pheromone": 0.049648015143994764
+        },
+        {
+          "text": "Clarify the objective of the task before proceeding with any action.",
+          "category": "task_framing",
+          "pheromone": 0.049248931304576034
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.049248931304576034
+        },
+        {
+          "text": "Ensure all outputs comply with domain-specific regulations or guidelines.",
+          "category": "domain_specific",
+          "pheromone": 0.043637471320584355
+        }
+      ],
+      "best_score_so_far": 0.16666666666666666
+    },
+    {
+      "round": 16,
+      "top_5_components": [
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.03619340303997219
+        },
+        {
+          "text": "Ensure all system responses are within the scope of the user's request.",
+          "category": "error_prevention",
+          "pheromone": 0.03619340303997219
+        },
+        {
+          "text": "Clarify the objective of the task before proceeding with any action.",
+          "category": "task_framing",
+          "pheromone": 0.035902470921035934
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.035902470921035934
+        },
+        {
+          "text": "Ensure all outputs comply with domain-specific regulations or guidelines.",
+          "category": "domain_specific",
+          "pheromone": 0.031811716592706
+        }
+      ],
+      "best_score_so_far": 0.16666666666666666
+    },
+    {
+      "round": 17,
+      "top_5_components": [
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.03043499081613973
+        },
+        {
+          "text": "Clarify the objective of the task before proceeding with any action.",
+          "category": "task_framing",
+          "pheromone": 0.030222901301435196
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.030222901301435196
+        },
+        {
+          "text": "Ensure all outputs comply with domain-specific regulations or guidelines.",
+          "category": "domain_specific",
+          "pheromone": 0.027240741396082672
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.02678769117842265
+        }
+      ],
+      "best_score_so_far": 0.16666666666666666
+    },
+    {
+      "round": 18,
+      "top_5_components": [
+        {
+          "text": "Clarify the objective of the task before proceeding with any action.",
+          "category": "task_framing",
+          "pheromone": 0.028782495048746255
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.028782495048746255
+        },
+        {
+          "text": "Ensure all outputs comply with domain-specific regulations or guidelines.",
+          "category": "domain_specific",
+          "pheromone": 0.026608500477744268
+        },
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.026123613612850507
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.022187108304965866
+        }
+      ],
+      "best_score_so_far": 0.16666666666666666
+    },
+    {
+      "round": 19,
+      "top_5_components": [
+        {
+          "text": "Clarify the objective of the task before proceeding with any action.",
+          "category": "task_framing",
+          "pheromone": 0.020982438890536022
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.020982438890536022
+        },
+        {
+          "text": "Ensure all outputs comply with domain-specific regulations or guidelines.",
+          "category": "domain_specific",
+          "pheromone": 0.01939759684827557
+        },
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.01904411432376802
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.016174401954320117
+        }
+      ],
+      "best_score_so_far": 0.16666666666666666
+    },
+    {
+      "round": 20,
+      "top_5_components": [
+        {
+          "text": "Clarify the objective of the task before proceeding with any action.",
+          "category": "task_framing",
+          "pheromone": 0.015296197951200763
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.015296197951200763
+        },
+        {
+          "text": "Ensure all outputs comply with domain-specific regulations or guidelines.",
+          "category": "domain_specific",
+          "pheromone": 0.014140848102392894
+        },
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.013883159342026887
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.011791139024699367
+        }
+      ],
+      "best_score_so_far": 0.16666666666666666
+    },
+    {
+      "round": 21,
+      "top_5_components": [
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.13265092830642536
+        },
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.1316208231603376
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.13009574034900584
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.1256728642590249
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.1254850091527181
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 22,
+      "top_5_components": [
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.0967025267353841
+        },
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.09595158008388611
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.09483979471442526
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.09161551804482916
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.09147857167233149
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 23,
+      "top_5_components": [
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.07049614199009502
+        },
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.06994870188115297
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.06913821034681601
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.06678771265468046
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.06668787874912965
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 24,
+      "top_5_components": [
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.05139168751077928
+        },
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.05099260367136051
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.050401755342828876
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.04868824252526206
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.04861546360811552
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 25,
+      "top_5_components": [
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.07796454019535812
+        },
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.07767360807642183
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.07724287964492227
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.07599372880091607
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.07594067297031623
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 26,
+      "top_5_components": [
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.08113614980241607
+        },
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.08092406028771151
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.08061005926114834
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.07969942829586782
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.07966075059536053
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 27,
+      "top_5_components": [
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.08899363994974169
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.08810088322768764
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.08807268718401783
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.08767118573906095
+        },
+        {
+          "text": "Ensure all outputs comply with domain-specific regulations or guidelines.",
+          "category": "domain_specific",
+          "pheromone": 0.07078533780482608
+        }
+      ],
+      "best_score_so_far": 0.18333333333333332
+    },
+    {
+      "round": 28,
+      "top_5_components": [
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.1548763635233617
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.1542255438729843
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.15420498895714901
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.15391229440377543
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.1331190765871458
+        }
+      ],
+      "best_score_so_far": 0.19
+    },
+    {
+      "round": 29,
+      "top_5_components": [
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.1399048690085307
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.13943042148340554
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.13941543694976163
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.1392020626203523
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.1240438068320293
+        }
+      ],
+      "best_score_so_far": 0.19
+    },
+    {
+      "round": 30,
+      "top_5_components": [
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.1019906495072189
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.10164477726140264
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.10163385353637625
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.10147830365023686
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.09042793518054935
+        }
+      ],
+      "best_score_so_far": 0.19
+    },
+    {
+      "round": 31,
+      "top_5_components": [
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.07435118349076257
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.07409904262356254
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.0740910792280183
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.07397768336102267
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.06592196474662047
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 32,
+      "top_5_components": [
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.09065201276476592
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.0904682020725771
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.09046239675722537
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.09037973117018554
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.08450711230028633
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 33,
+      "top_5_components": [
+        {
+          "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.06608531730551435
+        },
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.06595131931090871
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.0659470872360173
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.06588682402306527
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.06160568486690873
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 34,
+      "top_5_components": [
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.07507851177765246
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.0750754265950566
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.07503149471281459
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.07191054426797647
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.07109775094895289
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 35,
+      "top_5_components": [
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.054732235085908645
+        },
+        {
+          "text": "Define the constraints and limitations of the task.",
+          "category": "task_framing",
+          "pheromone": 0.05472998598779626
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.054697959645641836
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.05242278677135485
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.051830260441786666
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 36,
+      "top_5_components": [
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.060149799377627405
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.0601248125816729
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.05846621155631768
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.05803425986206248
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.05786738603280129
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 37,
+      "top_5_components": [
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.04384920374629039
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.043830988372039546
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.0426218682245556
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.042306975439443555
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.042185324417912146
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 38,
+      "top_5_components": [
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.03196606953104569
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.03195279052321683
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.031071341935701033
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.030841785095354353
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.03075310150065796
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 39,
+      "top_5_components": [
+        {
+          "text": "Follow the specified format for each task as outlined.",
+          "category": "format_instructions",
+          "pheromone": 0.023303264688132312
+        },
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.02329358429142507
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.022651008271126052
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.022483661334513325
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.022419010993979655
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 40,
+      "top_5_components": [
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.03948102294844888
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.039012585029650895
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.03889058911286022
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.03884345901461117
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.038335490265666246
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 41,
+      "top_5_components": [
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.028781665729419238
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.028440174486615503
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.028351239463275103
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.02831688162165154
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.027946572403670697
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 42,
+      "top_5_components": [
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.020981834316746627
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.020732887200742702
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.02066805356872755
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.020643006702183976
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.02037305128227594
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 43,
+      "top_5_components": [
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.015295757216908292
+        },
+        {
+          "text": "Confirm critical actions with the user before proceeding with execution.",
+          "category": "error_prevention",
+          "pheromone": 0.01511427476934143
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.015067011051602386
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.015048751885892121
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.01485195438477916
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 44,
+      "top_5_components": [
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.08405060701112614
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.08388385105661814
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.08387054012481535
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.08372707474650401
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.08309536722513486
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 45,
+      "top_5_components": [
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.061272892511110955
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.061151327420274626
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.06114162375099039
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.06103703749020143
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.06057652270712331
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 46,
+      "top_5_components": [
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.06896793864059991
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.06887931768938023
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.06887224371447201
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.06879600033035685
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.06846028505349291
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 47,
+      "top_5_components": [
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.07727762726899734
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.07721302259555819
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.07720786566785011
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.07715228424083015
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.07690754780399635
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 48,
+      "top_5_components": [
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.05633539027909906
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.056288293472161924
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.056284534071862735
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.05624401521156519
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.05606560234911334
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 49,
+      "top_5_components": [
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.041068499513463225
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.04103416594120605
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.04103142533838794
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.04100188708923103
+        },
+        {
+          "text": "Log all errors and exceptions for troubleshooting and auditing.",
+          "category": "error_prevention",
+          "pheromone": 0.04087182411250363
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    },
+    {
+      "round": 50,
+      "top_5_components": [
+        {
+          "text": "Identify the required inputs and outputs for each step.",
+          "category": "task_framing",
+          "pheromone": 0.059938936145314696
+        },
+        {
+          "text": "Ensure all instructions are followed exactly as given.",
+          "category": "format_instructions",
+          "pheromone": 0.05991390697113921
+        },
+        {
+          "text": "Implement safeguards to prevent unintended execution of critical operations.",
+          "category": "error_prevention",
+          "pheromone": 0.05991190907168481
+        },
+        {
+          "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+          "category": "reasoning_strategy",
+          "pheromone": 0.059890375688049426
+        },
+        {
+          "text": "Use validation checks to ensure commands adhere to predefined formats.",
+          "category": "error_prevention",
+          "pheromone": 0.059734044256923934
+        }
+      ],
+      "best_score_so_far": 0.2833333333333333
+    }
+  ],
+  "component_library_size": 50,
+  "final_pheromone_ranking": [
+    {
+      "text": "Identify the required inputs and outputs for each step.",
+      "category": "task_framing",
+      "pheromone": 0.059938936145314696
+    },
+    {
+      "text": "Ensure all instructions are followed exactly as given.",
+      "category": "format_instructions",
+      "pheromone": 0.05991390697113921
+    },
+    {
+      "text": "Implement safeguards to prevent unintended execution of critical operations.",
+      "category": "error_prevention",
+      "pheromone": 0.05991190907168481
+    },
+    {
+      "text": "Track your thought process to ensure transparency and traceability in reasoning.",
+      "category": "reasoning_strategy",
+      "pheromone": 0.059890375688049426
+    },
+    {
+      "text": "Use validation checks to ensure commands adhere to predefined formats.",
+      "category": "error_prevention",
+      "pheromone": 0.059734044256923934
+    },
+    {
+      "text": "Define the constraints and limitations of the task.",
+      "category": "task_framing",
+      "pheromone": 0.059696772237615346
+    },
+    {
+      "text": "Ensure all outputs comply with domain-specific regulations or guidelines.",
+      "category": "domain_specific",
+      "pheromone": 0.05926837156755851
+    },
+    {
+      "text": "Ensure all instructions are specific and free from ambiguity.",
+      "category": "task_framing",
+      "pheromone": 0.0588375016000604
+    },
+    {
+      "text": "Use analogies or examples to clarify abstract or unfamiliar concepts.",
+      "category": "reasoning_strategy",
+      "pheromone": 0.042444673389697825
+    },
+    {
+      "text": "Follow the specified format for each task as outlined.",
+      "category": "format_instructions",
+      "pheromone": 0.041662043299427944
+    },
+    {
+      "text": "Confirm critical actions with the user before proceeding with execution.",
+      "category": "error_prevention",
+      "pheromone": 0.03165378866671727
+    },
+    {
+      "text": "Log all errors and exceptions for troubleshooting and auditing.",
+      "category": "error_prevention",
+      "pheromone": 0.029795559778015155
+    },
+    {
+      "text": "Prioritize information based on relevance and reliability to guide decision-making.",
+      "category": "reasoning_strategy",
+      "pheromone": 0.029623005944882198
+    },
+    {
+      "text": "Verify each step of your reasoning process for consistency and accuracy.",
+      "category": "reasoning_strategy",
+      "pheromone": 1.5121425122981275e-05
+    },
+    {
+      "text": "Break down complex problems into smaller, manageable sub-problems.",
+      "category": "reasoning_strategy",
+      "pheromone": 1.2833116153369685e-05
+    },
+    {
+      "text": "Clarify the objective of the task before proceeding with any action.",
+      "category": "task_framing",
+      "pheromone": 1.165223795107092e-06
+    },
+    {
+      "text": "Break down the task into smaller, manageable components.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Determine the appropriate tools or methods to achieve the task.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Establish a sequence of steps to follow in completing the task.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Validate that each instruction can be executed independently.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Confirm that the task aligns with the overall system goals.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Review the task framing for completeness and accuracy.",
+      "category": "task_framing",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use logical deduction to eliminate incorrect options before arriving at a conclusion.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Consider multiple perspectives to evaluate the validity of a solution.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Apply structured frameworks like SWOT or cost-benefit analysis when appropriate.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Identify assumptions and question their validity to avoid biased conclusions.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Revise your approach if new information contradicts previous assumptions.",
+      "category": "reasoning_strategy",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use clear and concise language in all responses.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Structure each response with a single, focused answer.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Avoid markdown formatting and use plain text only.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Keep each response under 150 words.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Do not include any additional explanations or justifications.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Provide only the requested output without any extra text.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Maintain a consistent tone and style throughout all responses.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Do not reference or mention the task instructions in the response.",
+      "category": "format_instructions",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Verify all input data for completeness and validity before processing.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Avoid making assumptions about user intent; clarify ambiguous requests.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Ensure all system responses are within the scope of the user's request.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Reject inputs that contain potentially harmful or malicious content.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Provide clear error messages that indicate the cause and suggested resolution.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Regularly review and update error handling procedures to address new risks.",
+      "category": "error_prevention",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Identify the specific domain or industry the user is referring to.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Use domain-specific terminology accurately and appropriately.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Reference relevant standards, protocols, or frameworks within the domain.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Provide examples that are representative of the domain context.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Avoid generalizations and ensure all information is domain-relevant.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Clarify any domain-specific jargon or acronyms for the user.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Cite authoritative sources or experts within the domain when necessary.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Adapt responses to align with the conventions of the domain.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    },
+    {
+      "text": "Maintain consistency with established practices and knowledge within the domain.",
+      "category": "domain_specific",
+      "pheromone": 1e-06
+    }
+  ]
+}

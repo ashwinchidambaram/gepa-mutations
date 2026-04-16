@@ -1,0 +1,3 @@
+{
+    "response": "class point {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n  }\n\n  get coordinates() {\n    return `${this.x} ${this.y}`;\n  }\n\n  static example() {\n    return new point(1, 2);\n  }\n}\n\n// example of a palindrome\nlet palindrome = \"level\";\nconsole.log(palindrome);\n\n// all lowercase words appear at most three times\n// the word 'low' appears three times in the response"
+}

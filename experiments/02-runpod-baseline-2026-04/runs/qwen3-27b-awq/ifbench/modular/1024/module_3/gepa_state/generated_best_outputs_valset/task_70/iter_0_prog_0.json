@@ -1,0 +1,3 @@
+{
+    "response": "<<Query for Length Sort>>\n\nTo solve this problem you can use the LENGTH function to measure string size and order results by that value in descending fashion. When two entries share the same length you must add a secondary sort condition such as alphabetical order to ensure a deterministic result. The SQL statement would look like this: SELECT title, director FROM movies ORDER BY LENGTH(title) DESC, title ASC, LENGTH(director) DESC, director ASC. This approach guarantees that longer strings appear first while breaking ties consistently. A palindrome to include here is \"level\". The query handles all edge cases where lengths match by applying lexicographic sorting as a tiebreaker."
+}

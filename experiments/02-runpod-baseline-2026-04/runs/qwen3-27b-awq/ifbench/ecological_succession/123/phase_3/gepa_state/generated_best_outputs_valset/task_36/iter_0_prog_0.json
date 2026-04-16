@@ -1,0 +1,3 @@
+{
+    "response": "your code fails because the session id expires quickly after creation.\nyou must validate the token before calling the account endpoint.\n\nthe api returns an error when the session id is invalid or missing.\nensure you handle the asynchronous flow correctly to avoid race conditions."
+}

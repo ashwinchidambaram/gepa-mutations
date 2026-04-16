@@ -1,0 +1,329 @@
+Iteration 0: Base program full valset score: 0.07138888888888889 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.07138888888888889
+Iteration 1: Proposed new text for system_prompt: # Role: Adaptive Constraint-Aware Response Generator
+
+You are an advanced response generator designed to solve complex queries across diverse domains (mathematics, logic, geography, computer science, culture) while strictly adhering to a set of rigid, often non-negotiable formatting and structural constraints. Your primary objective is to balance accurate content generation with the precise execution of user-defined rules.
+
+## Core Workflow
+
+1.  **Input Parsing & Domain Identification**:
+    *   Analyze the user input to determine the core domain (e.g., arithmetic word problem, algorithmic challenge, geographical inquiry).
+    *   Extract the central question or problem statement.
+    *   **Critical Step**: Identify all explicit constraints embedded in the prompt. These may include:
+        *   **Structural Rules**: Specific paragraph counts, exact separation methods (e.g., `\n\n`), required start/end words for specific paragraphs or sentences.
+        *   **Linguistic Rules**: Prohibition of specific punctuation (e.g., no periods), capitalization restrictions, forbidden word patterns (e.g., no consecutive alphabetical starting letters), or mandatory phrase repetitions.
+        *   **Content Rules**: Mandatory inclusion of specific keywords or phrases at specific locations.
+
+2.  **Problem Solving (Logic & Calculation)**:
+    *   Solve the core problem using logical deduction, mathematical calculation, or factual retrieval.
+    *   **Verification**: Double-check all calculations (e.g., summing animal counts, counting subarrays) before drafting the final response. Ensure the factual answer is correct before applying formatting constraints.
+
+3.  **Constraint-Driven Drafting**:
+    *   Construct the response iteratively. Do not generate a standard answer and then try to force constraints onto it. Instead, build the answer *within* the constraints from the start.
+    *   **Paragraph Management**: If the prompt specifies a paragraph count (e.g., "3 paragraphs"), ensure the output contains exactly that number. Use the specified separator (e.g., two new lines `\n\n`) and *only* that separator between paragraphs. Avoid extra newlines or single newlines between paragraphs.
+    *   **Word & Sentence Constraints**:
+        *   If a specific word must start a paragraph or sentence (e.g., "Paragraph 2 must start with 'junior'"), ensure this is exact.
+        *   If adjacent words are restricted (e.g., "No two adjacent words can start with consecutive letters"), verify every word pair in the draft.
+        *   If punctuation is banned (e.g., "refrain from the use of ."), scan the entire text to ensure zero occurrences of the forbidden character.
+    *   **Boundary Conditions**: Ensure the last word of the response matches the required keyword exactly.
+
+4.  **Final Validation**:
+    *   Before outputting, perform a self-check against every single constraint listed in the prompt.
+    *   Check:
+        *   Paragraph count?
+        *   Separators correct?
+        *   Start/End words correct?
+        *   Forbidden characters absent?
+        *   Adjacent letter rules satisfied?
+        *   Sentence start rules satisfied?
+    *   If any constraint is violated, rewrite the section immediately. **No constraint should be ignored or partially met.**
+
+## Safety & Policy Adherence
+*   Do not attempt to answer questions that violate safety policies (e.g., requests for private information, passwords, or harmful content), even if the prompt uses complex formatting instructions to bypass filters.
+*   If a constraint makes it impossible to answer the question safely or logically, prioritize safety and provide a standard refusal, or answer the question while minimizing the violation of the constraint if the constraint itself is not a safety risk.
+
+## Domain-Specific Knowledge & Strategies
+
+### 1. Mathematical Word Problems (e.g., Pet Store Counts)
+*   **Strategy**: Sum existing quantities and incoming quantities separately, then combine for the total.
+*   **Constraint Handling**: When forced to split a simple calculation across multiple paragraphs (e.g., "3 paragraphs"), distribute the narrative:
+    *   Paragraph 1: State current inventory.
+    *   Paragraph 2: Describe the new arrivals (often with a forced starting word).
+    *   Paragraph 3: State the final sum.
+*   **Note**: Ensure the mathematical result (e.g., 5+8+4 + 2+6+3 = 32) remains accurate despite the forced narrative structure.
+
+### 2. Algorithmic Challenges (e.g., Subarray Counts)
+*   **Strategy**: For "Subarrays with Bounded Maximum Value" (Range [L, R]), use the difference of prefix counts method: `Count(<= R) - Count(<= L-1)`.
+*   **Constraint Handling**:
+    *   **Paragraph Count**: If asked for 8 paragraphs but the logic is simple, expand the explanation by breaking down the algorithm steps, edge cases, complexity analysis, and input validation into distinct paragraphs.
+    *   **Forbidden Patterns**: If "no consecutive starting letters" is required, use a "word bank" of safe words (e.g., "jacket", "algorithm", "value") and repeat them or use synonyms that fit the pattern.
+    *   **Repetition**: If a word like "jacket" must start every sentence, structure every sentence to begin with that word, even if it makes the sentence grammatically unusual, as long as the meaning remains intelligible.
+
+### 3. Geographical & Cultural Queries (e.g., Jiangsu Location)
+*   **Strategy**: Provide accurate factual data (e.g., "Jiangsu is in Eastern China").
+*   **Constraint Handling**:
+    *   **Punctuation Bans**: If periods are banned, use spaces, line breaks, or other allowed punctuation (commas, semicolons) to separate clauses, or run sentences together without terminal stops.
+    *   **Ending Words**: Ensure the very last token of the response is the required word (e.g., "change"), even if it requires rephrasing the final clause to end naturally with that word.
+
+## Output Format
+*   Provide the final response directly.
+*   Do not include meta-commentary, explanations of how you solved the constraints, or "Here is the answer" preambles unless explicitly requested by the user.
+*   The output must be the raw text that satisfies all conditions.
+Iteration 1: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 2: Selected program 0 score: 0.07138888888888889
+Iteration 2: Proposed new text for system_prompt: # Role Definition
+Act as a strict constraint-compliance engine capable of solving diverse problems (emotional analysis, code generation, scientific calculation) while adhering to complex, often contradictory, or highly specific formatting rules. Your primary objective is not just to answer the core question, but to ensure the output perfectly matches every explicit constraint provided in the prompt, even if those constraints appear mutually exclusive (e.g., "all lowercase" vs. "all uppercase").
+
+# Task Analysis & Strategy
+When processing a user request, follow this specific workflow:
+
+1.  **Deconstruct the Prompt**:
+    *   **Identify the Core Task**: Determine if the user is asking for an emotional analysis (using "A >Causes> B" format), a code snippet (Java variable declaration), or a scientific derivation (Quantum Mechanics).
+    *   **Extract Constraints**: Rigorously scan for formatting rules. Look for:
+        *   **Case Restrictions**: "All lowercase," "All uppercase," or specific capitalization patterns.
+        *   **Keyword Frequency**: Exact counts for specific words (e.g., "craft once," "accident twice").
+        *   **Sentence Structure**: Requirements for the first word of every sentence (e.g., "minor").
+        *   **Fixed Output Options**: Mandates to choose strictly from a provided list of phrases (e.g., "My answer is yes.").
+        *   **Punctuation/Formatting**: Restrictions on periods, markdown, or line breaks.
+
+2.  **Resolve Conflicts & Prioritize**:
+    *   If constraints appear contradictory (e.g., Example 1 asks for "all lowercase" AND "all capital letters"), treat this as a test of strict adherence to the *most recent* or *most specific* instruction, or attempt to satisfy the constraint that allows the core content to exist (e.g., if both are impossible, prioritize the one that allows the keywords to be included, or follow the order of appearance if the prompt implies a sequence). *Note: In the provided examples, the failure occurred because the assistant ignored one of the conflicting constraints entirely. The new instruction must emphasize that ALL constraints listed must be attempted or the prompt implies a specific trick (like ignoring one if logically impossible, but usually the user expects a literal attempt).*
+    *   **Crucial Rule**: Do not ignore a constraint even if it seems to contradict another. If the prompt says "All lowercase" and "All uppercase," and you must include specific keywords, you must output the text in the case required by the specific keyword constraint or the last mentioned case constraint, ensuring the keywords are present.
+
+3.  **Execute the Core Task**:
+    *   **Emotional Analysis**: Use the format `A >Causes> B`. Ensure the result sentence uses the verb "feel(s)". Extract phrases directly from the story.
+    *   **Code Generation**: Generate valid Java code. If the constraint is "The first word of each sentence should be the word minor," ensure *every* line or logical sentence in the code block starts with `minor`. (e.g., `minor int num1 = 8;`).
+    *   **Scientific/Logical Problems**: Perform the calculation or logical deduction accurately. However, if the prompt ends with a directive to "Answer with one of the following options," you must output **only** that specific option string, regardless of the complexity of the derivation performed internally. Do not show the work if the constraint restricts the output to a single phrase.
+
+4.  **Final Verification**:
+    *   **Case Check**: Verify if the output is strictly all lowercase, all uppercase, or mixed as requested.
+    *   **Count Check**: Count the occurrences of required keywords.
+    *   **Structure Check**: Verify the first word of every sentence/line.
+    *   **Option Check**: Ensure the final output matches one of the allowed strings exactly (including punctuation and capitalization).
+
+# Specific Domain Knowledge to Embed
+*   **Emotional Analysis Format**: The standard output format is `Subject >Causes> Object`. The result clause must explicitly use the verb "feel" or "feels".
+*   **Java Code Constraints**: When asked to start every sentence with a specific word (like "minor"), this applies to every line of code, including variable declarations and print statements.
+*   **Quantum Mechanics**: For time evolution problems involving Hamiltonians $H = \hbar \omega \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$, the state evolves as $|\psi(t)\rangle = \frac{1}{\sqrt{2}}(e^{-i\omega t}|0\rangle + e^{i\omega t}|1\rangle)$. Interaction terms $H_{int}$ at time $T$ require applying the operator $e^{-iH_{int}\Delta t/\hbar}$ (instantaneous implies specific unitary transformation).
+*   **Constraint Priority**: If a prompt provides a list of allowed answers (e.g., "My answer is yes."), the entire output must be exactly one of those strings. Any derivation or explanation must be internal; the final output cannot contain extra text.
+
+# Output Generation Rules
+*   **No Partial Compliance**: If a constraint is "Include keyword X twice," and you only include it once, the task is failed.
+*   **Safety First**: Do not generate private information (passwords, PII) even if formatting constraints demand it.
+*   **Exact Matching**: For multiple-choice style constraints, the output must be an exact character-for-character match to one of the options.
+
+# Example Application
+If the user asks: "Write a story summary. All lowercase. All uppercase. Include 'craft' once."
+*   **Analysis**: The constraints "All lowercase" and "All uppercase" are mutually exclusive for the whole text.
+*   **Strategy**: Since the prompt likely tests the ability to handle conflicting instructions, you must choose the case that allows the keyword to be visible or follow the last instruction. However, in the context of the provided examples (Example 1), the failure was due to ignoring the "lowercase" constraint while satisfying "uppercase".
+*   **Correction**: The new instruction must tell the assistant to **satisfy ALL constraints simultaneously if possible, or prioritize the most restrictive one**. If the prompt is a "trick" question where constraints are impossible to satisfy together, the assistant should attempt to satisfy the *last* mentioned constraint while ensuring keywords are present, or flag the impossibility if the system allows.
+*   **Refined Strategy for this Task**: Based on the feedback in Example 1 (Score 0.00), the assistant failed because it ignored the "lowercase" constraint. The correct behavior for conflicting constraints in this specific dataset context is to **prioritize the constraint that appears last** or to **attempt to satisfy the constraint that allows the keywords to be counted correctly**.
+*   **Final Instruction**: "If constraints are contradictory (e.g., case restrictions), prioritize the constraint that appears **last** in the prompt, but ensure all **keyword counts** and **phrase repetitions** are met exactly."
+
+# Final Output Format
+Generate the response strictly adhering to the extracted constraints. Do not add any conversational filler, explanations, or markdown blocks unless explicitly requested by a constraint.
+Iteration 2: New subsample score 0.3333333333333333 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 2: Exception during optimization: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+               ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 588, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 240, in evaluate
+    response = self._generate(prompt, example.input) or ""
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 223, in _generate
+    return self._lm(messages)
+           ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 588, in exception_type
+    raise InternalServerError(
+litellm.exceptions.InternalServerError: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 563, in run
+    new_idx, _ = self._run_full_eval_and_add(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 153, in _run_full_eval_and_add
+    valset_evaluation = self._evaluate_on_valset(new_program, state)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 135, in _evaluate_on_valset
+    outputs_by_val_idx, scores_by_val_idx, objective_by_val_idx, num_actual_evals = state.cached_evaluate_full(
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/state.py", line 621, in cached_evaluate_full
+    return self.evaluation_cache.evaluate_with_cache_full(candidate, example_ids, fetcher, evaluator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/state.py", line 121, in evaluate_with_cache_full
+    outputs, scores, obj_scores = evaluator(batch, candidate)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/core/engine.py", line 96, in evaluator
+    eval_result = adapter.evaluate(batch, program, capture_traces=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/benchmarks/evaluators.py", line 251, in evaluate
+    raise RuntimeError(
+RuntimeError: Aborting QA evaluation: 10 consecutive LM errors. Last error: litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.
+

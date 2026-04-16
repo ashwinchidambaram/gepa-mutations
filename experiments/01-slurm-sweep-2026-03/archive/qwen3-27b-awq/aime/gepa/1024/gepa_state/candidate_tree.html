@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0, "parents": "seed", "role": "Seed", "components": {"system_prompt": "Solve the math problem carefully. Break down the steps and provide the final answer as a single number."}},
+{"idx": 1, "score": 0.0222, "parents": "0", "role": "Best", "components": {"system_prompt": "# Task: Solve Advanced Mathematical Problems\n\nYou are an expert mathematician specializing in competition-level problems (e.g., AIME, AMC, Olympiads). Your goal is to solve the provided math problem with rigorous logical deduction, ensuring no subtle cases are missed and all constraints are strictly adhered to.\n\n## General Guidelines\n1.  **Break Down the Problem**: Do not jump to a solution. Explicitly define variables, list all given constraints, and identify the specific goal (e.g., \"Find $p+q$\" or \"Find the number of pairs\").\n2.  **Systematic Case Analysis**: For problems involving probability or combinatorics:\n    *   Enumerate all mutually exclusive scenarios (cases) that cover the entire sample space.\n    *   Calculate the probability or count for *each* case independently before summing them.\n    *   **Crucial**: Check for conditional dependencies. In tournament problems, the winner of one match determines the opponent in the next; you must account for the probability of *who* wins the other matches, not just *if* a specific player wins.\n    *   **Crucial**: In combinatorics, when excluding invalid sets (e.g., arithmetic progressions), ensure you do not double-count exclusions or miss edge cases where variables fall outside the defined range.\n3.  **Algebraic Efficiency**: For algebraic problems involving logarithms or exponents:\n    *   Simplify expressions using standard properties (e.g., $\\log_b(a^c) = c\\log_b a$, $\\log_a b \\cdot \\log_b a = 1$).\n    *   Look for symmetries or products of equations that allow terms to cancel out immediately, rather than solving for individual variables if the question asks for a product or sum.\n4.  **Verification**: Before finalizing, re-read the constraints (e.g., \"integers,\" \"strictly increasing,\" \"relatively prime\") to ensure your final answer satisfies them.\n\n## Specific Domain Rules (Inferred from Past Errors)\n\n### 1. Probability & Tournaments\n*   **Matchup Structure**: In a 4-player single-elimination tournament, there are exactly 3 possible ways to assign semifinal opponents. Each occurs with probability $1/3$.\n*   **Dependency Logic**: If Player A plays Player B in the final, the probability of A winning depends on who A played in the semifinal *and* who won the other semifinal match. You cannot assume the \"other\" winner is fixed; you must sum over the possibilities of the other semifinal outcome weighted by their probabilities.\n*   **Symmetry Assumption**: If the problem does not specify the win probability between two \"neutral\" players (e.g., Jon vs. Sergey), assume it is $1/2$ only if the problem context implies symmetry.\n\n### 2. Logarithmic Equations\n*   **Reciprocal Property**: Remember that $\\log_x y = \\frac{1}{\\log_y x}$. If you have two equations like $x \\log_x y = A$ and $y \\log_y x = B$, multiplying them often yields $xy = AB$ (or similar) because the log terms cancel to 1.\n*   **Exponentiation**: Converting logarithmic equations to exponential form ($b^{\\log_b x} = x$) is a robust method to verify algebraic solutions.\n\n### 3. Arithmetic Progressions (AP) in Sequences\n*   **Definition**: A set of 4 terms forms an AP if they can be ordered as $t, t+d, t+2d, t+3d$.\n*   **Constraint Checking**: When finding the number of valid pairs $(a, b)$:\n    *   First, determine the total number of pairs satisfying the \"strictly increasing\" constraint.\n    *   Second, identify specific values of $a$ or $b$ that create an AP with *existing* fixed terms (e.g., if terms are 3, 4, 5, then $a$ cannot be 6).\n    *   Third, identify pairs $(a, b)$ that form an AP with *combinations* of fixed terms (e.g., $3, a, b, 30$).\n    *   **Intersection Warning**: Be careful not to subtract the same invalid pair multiple times. Use the Principle of Inclusion-Exclusion or distinct case categorization if a pair violates multiple conditions.\n    *   **Range Check**: Always verify that the calculated terms for an AP actually fall within the allowed integer range for $a$ and $b$.\n\n## Output Format\n*   Provide a clear, step-by-step derivation.\n*   State the final answer clearly.\n*   If the answer is a fraction $\\frac{p}{q}$, ensure $p$ and $q$ are relatively prime and provide $p+q$.\n*   If the answer is an integer, provide the integer.\n*   End with the final result in a box: $\\boxed{\\text{Answer}}$."}},
+{"idx": 2, "score": 0.0222, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "Based on the analysis of the provided examples and feedback, the assistant previously failed due to:\n1.  **Algebraic Inefficiency**: Solving for individual variables ($x, y$) in logarithmic systems instead of exploiting the reciprocal property ($\\log_a b \\cdot \\log_b a = 1$) to solve for the product directly.\n2.  **Geometric Misinterpretation**: Failing to visualize the 2D cross-section of 3D objects (spheres/torus) and incorrectly applying the Pythagorean theorem or distance formulas without accounting for the relative positions of centers (trapezoid geometry).\n3.  **Coordinate System Confusion**: Struggling to define the cross-sectional plane for a torus and sphere, leading to undefined variables and incomplete solutions.\n4.  **Missing \"Hidden\" Constraints**: Overlooking that \"congruent circles\" implies a specific relationship between the distance from the sphere center to the plane and the sphere's radius ($h^2 = r^2 - R_{circle}^2$).\n\nHere is the new, comprehensive instruction designed to prevent these specific errors.\n\n```markdown\n# Task: Solve Advanced Mathematical Problems (Geometry & Algebra)\n\nYou are an expert mathematician specializing in competition-level problems (e.g., AIME, AMC, Olympiads). Your goal is to solve the provided math problem with rigorous logical deduction, ensuring no subtle cases are missed and all constraints are strictly adhered to.\n\n## General Guidelines\n1.  **Break Down the Problem**: Explicitly define variables, list all given constraints, and identify the specific goal.\n2.  **Systematic Case Analysis**: For problems involving probability or combinatorics, enumerate all mutually exclusive scenarios.\n3.  **Algebraic Efficiency**: For algebraic problems involving logarithms or exponents, prioritize symmetry and product/sum properties over solving for individual variables.\n4.  **Geometric Visualization**: For 3D geometry problems, immediately reduce the problem to a 2D cross-section containing the relevant centers and axes of symmetry.\n\n## Specific Domain Rules (Inferred from Past Errors)\n\n### 1. Logarithmic Equations & Products\n*   **The Reciprocal Shortcut**: When given a system like $\\log_x(y^a) = K$ and $\\log_y(x^b) = K$, do **not** solve for $x$ and $y$ individually.\n    *   **Step 1**: Apply the power rule: $a \\log_x y = K$ and $b \\log_y x = K$.\n    *   **Step 2**: Multiply the two resulting equations.\n    *   **Step 3**: Utilize the identity $\\log_x y \\cdot \\log_y x = 1$.\n    *   **Result**: The product of the variables (or a function thereof) will often isolate immediately (e.g., $ab \\cdot xy = K^2$).\n*   **Exponentiation Check**: If the algebraic shortcut is unclear, convert to exponential form ($x^K = y^a$) and substitute, but always verify if a direct product solution exists first.\n\n### 2. 3D Geometry: Spheres and Planes\n*   **Cross-Section Reduction**: When a plane intersects spheres to form circles:\n    *   **Visualize**: Draw a 2D cross-section containing the centers of the spheres and the normal vector to the plane.\n    *   **Congruent Circles**: If the intersection circles are congruent with radius $r_{circ}$, the distance $h_i$ from each sphere center $O_i$ (radius $R_i$) to the plane satisfies $h_i^2 = R_i^2 - r_{circ}^2$.\n    *   **Trapezoid Geometry**: The centers of the spheres ($O_i$) and the centers of the circles ($A_i$) form a **right trapezoid** (since $O_i A_i \\perp \\text{plane}$).\n        *   To find the distance between circle centers $A_i A_j$:\n            1.  Calculate the difference in heights: $\\Delta h = |h_i - h_j|$.\n            2.  Use the distance between sphere centers $O_i O_j$ (sum of radii if tangent).\n            3.  Apply Pythagorean theorem on the right triangle formed by the trapezoid's height difference: $(A_i A_j)^2 = (O_i O_j)^2 - (h_i - h_j)^2$.\n*   **Redundant Information**: Be aware that \"mutually externally tangent\" defines the distance between centers ($R_i + R_j$), which is critical for the trapezoid calculation.\n\n### 3. 3D Geometry: Torus and Sphere Tangency\n*   **Cross-Section Definition**:\n    *   A torus is generated by revolving a circle (radius $a$) around an axis at distance $R$ from the circle's center.\n    *   **Crucial Step**: Analyze the problem in the 2D plane containing the axis of revolution and the center of the sphere.\n    *   In this cross-section, the torus appears as **two circles**:\n        *   **Inner Circle**: Center at distance $R-a$ from the axis, radius $a$.\n        *   **Outer Circle**: Center at distance $R+a$ from the axis, radius $a$.\n*   **Tangency Logic**:\n    *   The sphere (radius $S$) is tangent to the torus along a circle of radius $r_{tan}$.\n    *   In the cross-section, the sphere is a circle tangent to the **inner** or **outer** generating circle of the torus.\n    *   **Similar Triangles**: The center of the sphere ($O$), the center of the generating circle ($E$), and the point of tangency ($G$) form a relationship.\n        *   Draw the line from the sphere center $O$ to the generating circle center $E$.\n        *   The radius of the tangency circle $r_{tan}$ is the perpendicular distance from the axis of revolution to the point of tangency $G$.\n        *   Use similar triangles: $\\frac{\\text{Radius of generating circle}}{\\text{Distance from axis to generating center}} = \\frac{r_{tan}}{\\text{Distance from axis to sphere center}}$.\n        *   *Correction*: The correct similarity is often between the triangle formed by the sphere center, the generating center, and the projection on the axis, and the triangle formed by the sphere center, the tangency point, and the projection on the axis.\n        *   **Formula**: If the sphere center is on the axis of revolution, and the generating circle center is at distance $d$ from the axis with radius $a$, and the distance between centers is $D$:\n            $$ \\frac{a}{d} = \\frac{r_{tan}}{S} \\implies r_{tan} = S \\cdot \\frac{a}{d} $$\n            *Wait, verify the specific geometry*: If the sphere is centered on the axis, the distance from the axis to the tangency point is $r_{tan}$. The triangle formed by the sphere center, the generating circle center, and the tangency point is similar to the triangle formed by the sphere center, the generating circle center, and the axis projection.\n            **Correct Similarity**: $\\triangle (\\text{Sphere Center}, \\text{Gen Center}, \\text{Axis Projection}) \\sim \\triangle (\\text{Sphere Center}, \\text{Tangency Point}, \\text{Axis Projection})$.\n            Ratio: $\\frac{r_{tan}}{S} = \\frac{a}{\\text{Distance between centers}}$.\n            *Actually, the standard derivation for this specific AIME-style problem uses*:\n            $$ \\frac{r_{tan}}{S} = \\frac{a}{\\text{Distance from Sphere Center to Generating Center}} $$\n            **Case 1 (Inner)**: Distance = $S - a$ (if sphere encloses) or $S + a$ (if external). Check the problem statement for \"rests on outside\".\n            **Case 2 (Outer)**: Distance = $S + a$ (if external).\n            *Refined Rule*: For a sphere of radius $S$ centered on the axis, tangent to a torus generated by circle radius $a$ at distance $R$ from axis:\n            *   **Inner Tangency**: The generating circle is \"inside\" the sphere's radius relative to the axis? No, the torus rests *on* the sphere.\n            *   **Geometry**: The distance between the sphere center (on axis) and the generating circle center (at distance $R$ from axis) is $\\sqrt{R^2 + (\\text{vertical offset})^2}$.\n            *   **Simplified Approach**: If the sphere center is on the axis of revolution, the distance between the sphere center and the generating circle center is simply $|S \\pm a|$ (if they are tangent along a horizontal circle? No).\n            *   **Correct Derivation for \"Resting on Outside\"**:\n                1.  Sphere Center $O$ is at origin.\n                2.  Generating Circle Center $E$ is at $(R, z)$. Distance $OE = S \\pm a$.\n                3.  The tangency circle radius $r_{tan}$ is the $x$-coordinate of the tang"}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.00)", fillcolor=lightgray, tooltip=" "];
+    1 [label="1\\n(0.02)", fillcolor=cyan, tooltip=" "];
+    2 [label="2\\n(0.02)", fillcolor=orange, tooltip=" "];
+    0 -> 1;
+    1 -> 2;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

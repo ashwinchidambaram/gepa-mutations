@@ -1,3 +1,0 @@
-{
-    "response": "<<url switcher>>\n\nUse preg_replace to change urls in string\n\n$string = \"New post on the site <a href=\\\"http://stackoverflow.com/xyz1\\\">http://stackoverflow.com/xyz1</a></p>\";\n\n$replacement = \"http://yahoo.com/abc1\";\n\n$new_string = preg_replace('/https?:\\/\\/[^\"]+/i', $replacement, $string);\n\necho $new_string;\n\nPalindrome example is racecar\n\nNo dots used in response"
-}

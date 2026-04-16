@@ -1,0 +1,3 @@
+{
+    "response": "def build_tree(chars, tree):\n    for char in chars:\n        if char not in tree:\n            tree.append(char.lower())\n            build_tree(chars[1:], tree)\n\nsequence = \"Alphanumeric123\"\nbst = []\nbuild_tree(sequence, bst)\nThat's my answer."
+}

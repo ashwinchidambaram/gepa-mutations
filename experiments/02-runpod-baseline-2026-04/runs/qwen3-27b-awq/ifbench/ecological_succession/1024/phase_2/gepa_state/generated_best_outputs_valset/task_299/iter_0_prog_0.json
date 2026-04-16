@@ -1,0 +1,3 @@
+{
+    "response": "def build_tree(node, char):\n    if node is None:\n        return {'val': char, 'left': None, 'right': None}\n    if char < node['val']:\n        node['left'] = build_tree(node['left'], char)\n    elif char > node['val']:\n        node['right'] = build_tree(node['right'], char)\n    return node\n\nsequence = \"aBc123\"\nseen = set()\nroot = None\n\ndef process_recursive(seq, index):\n    global root, seen\n    if index >= len(seq):\n        return\n    char_lower = seq[index].lower()\n    if char_lower not in seen:\n        seen.add(char_lower)\n        root = build_tree(root, char_lower)\n    process_recursive(seq, index + 1)\n\nprocess_recursive(sequence, 0)\nThat's my answer."
+}

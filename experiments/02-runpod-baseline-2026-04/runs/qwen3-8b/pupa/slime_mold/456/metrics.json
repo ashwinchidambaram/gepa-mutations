@@ -1,0 +1,829 @@
+{
+  "rollout_count": 725,
+  "reflection_call_count": 22,
+  "wall_clock_seconds": 2432.58,
+  "total_tokens": 585357,
+  "task_input_tokens": 461745,
+  "task_output_tokens": 115856,
+  "reflection_input_tokens": 5457,
+  "reflection_output_tokens": 2299,
+  "test_score": 0.7485714285714286,
+  "model": "openrouter/Qwen/Qwen3-8B",
+  "model_tag": "qwen3-8b",
+  "benchmark": "pupa",
+  "seed": 456,
+  "method": "slime_mold",
+  "val_score": 0.8875,
+  "prompt_length_chars": 409,
+  "prompt_length_tokens": 102,
+  "test_example_scores": [
+    0.0,
+    0.975,
+    1.0,
+    0.925,
+    0.6333333333333333,
+    0.975,
+    0.975,
+    0.975,
+    0.0,
+    0.75,
+    0.4166666666666667,
+    0.5,
+    0.925,
+    0.925,
+    0.5,
+    0.45,
+    0.975,
+    0.925,
+    0.375,
+    1.0,
+    0.75,
+    0.4833333333333334,
+    0.925,
+    0.475,
+    0.25,
+    0.925,
+    1.0,
+    0.975,
+    0.5,
+    0.7916666666666667,
+    1.0,
+    0.9,
+    0.425,
+    0.425,
+    1.0,
+    0.5,
+    0.4642857142857143,
+    0.975,
+    0.925,
+    0.925,
+    0.65,
+    0.0,
+    0.75,
+    1.0,
+    0.8,
+    0.75,
+    1.0,
+    0.75,
+    0.0,
+    0.975,
+    0.0,
+    0.925,
+    0.475,
+    0.975,
+    0.925,
+    0.925,
+    1.0,
+    1.0,
+    0.925,
+    0.425,
+    1.0,
+    0.925,
+    1.0,
+    0.75,
+    0.675,
+    1.0,
+    1.0,
+    0.3,
+    0.975,
+    0.925,
+    0.95,
+    0.925,
+    1.0,
+    0.975,
+    0.975,
+    0.0,
+    0.0,
+    0.975,
+    0.925,
+    0.25,
+    0.4,
+    0.975,
+    1.0,
+    0.975,
+    0.925,
+    0.25,
+    0.925,
+    1.0,
+    1.0,
+    0.875,
+    0.925,
+    0.975,
+    0.425,
+    0.975,
+    0.9
+  ],
+  "test_example_ids": [
+    "pupa_test_0",
+    "pupa_test_1",
+    "pupa_test_2",
+    "pupa_test_3",
+    "pupa_test_4",
+    "pupa_test_5",
+    "pupa_test_6",
+    "pupa_test_7",
+    "pupa_test_8",
+    "pupa_test_9",
+    "pupa_test_10",
+    "pupa_test_11",
+    "pupa_test_12",
+    "pupa_test_13",
+    "pupa_test_14",
+    "pupa_test_15",
+    "pupa_test_16",
+    "pupa_test_17",
+    "pupa_test_18",
+    "pupa_test_19",
+    "pupa_test_20",
+    "pupa_test_21",
+    "pupa_test_22",
+    "pupa_test_23",
+    "pupa_test_24",
+    "pupa_test_25",
+    "pupa_test_26",
+    "pupa_test_27",
+    "pupa_test_28",
+    "pupa_test_29",
+    "pupa_test_30",
+    "pupa_test_31",
+    "pupa_test_32",
+    "pupa_test_33",
+    "pupa_test_34",
+    "pupa_test_35",
+    "pupa_test_36",
+    "pupa_test_37",
+    "pupa_test_38",
+    "pupa_test_39",
+    "pupa_test_40",
+    "pupa_test_41",
+    "pupa_test_42",
+    "pupa_test_43",
+    "pupa_test_44",
+    "pupa_test_45",
+    "pupa_test_46",
+    "pupa_test_47",
+    "pupa_test_48",
+    "pupa_test_49",
+    "pupa_test_50",
+    "pupa_test_51",
+    "pupa_test_52",
+    "pupa_test_53",
+    "pupa_test_54",
+    "pupa_test_55",
+    "pupa_test_56",
+    "pupa_test_57",
+    "pupa_test_58",
+    "pupa_test_59",
+    "pupa_test_60",
+    "pupa_test_61",
+    "pupa_test_62",
+    "pupa_test_63",
+    "pupa_test_64",
+    "pupa_test_65",
+    "pupa_test_66",
+    "pupa_test_67",
+    "pupa_test_68",
+    "pupa_test_69",
+    "pupa_test_70",
+    "pupa_test_71",
+    "pupa_test_72",
+    "pupa_test_73",
+    "pupa_test_74",
+    "pupa_test_75",
+    "pupa_test_76",
+    "pupa_test_77",
+    "pupa_test_78",
+    "pupa_test_79",
+    "pupa_test_80",
+    "pupa_test_81",
+    "pupa_test_82",
+    "pupa_test_83",
+    "pupa_test_84",
+    "pupa_test_85",
+    "pupa_test_86",
+    "pupa_test_87",
+    "pupa_test_88",
+    "pupa_test_89",
+    "pupa_test_90",
+    "pupa_test_91",
+    "pupa_test_92",
+    "pupa_test_93",
+    "pupa_test_94"
+  ],
+  "score_per_1k_rollouts": 1.0325,
+  "convergence_iteration": 3,
+  "prompt_char_delta": 189,
+  "prompt_levenshtein_ratio": 0.0413,
+  "prompt_word_count": 57,
+  "task_error_count": 0,
+  "reflection_error_count": 0,
+  "val_score_trajectory": [
+    [
+      0,
+      0.5631246101679538
+    ],
+    [
+      1,
+      0.6825
+    ],
+    [
+      2,
+      0.8516666666666667
+    ],
+    [
+      3,
+      0.8875
+    ],
+    [
+      4,
+      0.8875
+    ],
+    [
+      5,
+      0.7880524841515554
+    ]
+  ],
+  "rollout_trajectory": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      200
+    ],
+    [
+      2,
+      400
+    ],
+    [
+      3,
+      525
+    ],
+    [
+      4,
+      630
+    ],
+    [
+      5,
+      725
+    ]
+  ],
+  "best_val_trajectory": [
+    [
+      0,
+      0.5631246101679538
+    ],
+    [
+      1,
+      0.6825
+    ],
+    [
+      2,
+      0.8516666666666667
+    ],
+    [
+      3,
+      0.8875
+    ],
+    [
+      4,
+      0.8875
+    ],
+    [
+      5,
+      0.8875
+    ]
+  ],
+  "prompt_length_trajectory": [
+    [
+      0,
+      220
+    ],
+    [
+      200,
+      250
+    ],
+    [
+      400,
+      447
+    ],
+    [
+      525,
+      567
+    ],
+    [
+      630,
+      567
+    ],
+    [
+      725,
+      409
+    ]
+  ],
+  "stage_timings": [
+    {
+      "stage": "candidate_generation",
+      "seconds": 15.3,
+      "rollouts_used": 0
+    },
+    {
+      "stage": "round_1",
+      "seconds": 601.21,
+      "rollouts_used": 200
+    },
+    {
+      "stage": "round_2",
+      "seconds": 357.95,
+      "rollouts_used": 150
+    },
+    {
+      "stage": "round_3",
+      "seconds": 345.49,
+      "rollouts_used": 100
+    },
+    {
+      "stage": "round_4",
+      "seconds": 242.12,
+      "rollouts_used": 90
+    },
+    {
+      "stage": "champion_eval",
+      "seconds": 370.06,
+      "rollouts_used": 95
+    }
+  ],
+  "round_survivors": [
+    20,
+    10,
+    5,
+    3,
+    1
+  ],
+  "round_scores": [
+    {
+      "round": 1,
+      "candidate_rank": 0,
+      "score": 0.6825
+    },
+    {
+      "round": 1,
+      "candidate_rank": 1,
+      "score": 0.6316666666666666
+    },
+    {
+      "round": 1,
+      "candidate_rank": 2,
+      "score": 0.6091666666666666
+    },
+    {
+      "round": 1,
+      "candidate_rank": 3,
+      "score": 0.6
+    },
+    {
+      "round": 1,
+      "candidate_rank": 4,
+      "score": 0.6
+    },
+    {
+      "round": 1,
+      "candidate_rank": 5,
+      "score": 0.5775
+    },
+    {
+      "round": 1,
+      "candidate_rank": 6,
+      "score": 0.515
+    },
+    {
+      "round": 1,
+      "candidate_rank": 7,
+      "score": 0.4925
+    },
+    {
+      "round": 1,
+      "candidate_rank": 8,
+      "score": 0.4925
+    },
+    {
+      "round": 1,
+      "candidate_rank": 9,
+      "score": 0.48
+    },
+    {
+      "round": 1,
+      "candidate_rank": 10,
+      "score": 0.4758333333333334
+    },
+    {
+      "round": 1,
+      "candidate_rank": 11,
+      "score": 0.425
+    },
+    {
+      "round": 1,
+      "candidate_rank": 12,
+      "score": 0.4225
+    },
+    {
+      "round": 1,
+      "candidate_rank": 13,
+      "score": 0.3825
+    },
+    {
+      "round": 1,
+      "candidate_rank": 14,
+      "score": 0.35
+    },
+    {
+      "round": 1,
+      "candidate_rank": 15,
+      "score": 0.35
+    },
+    {
+      "round": 1,
+      "candidate_rank": 16,
+      "score": 0.315
+    },
+    {
+      "round": 1,
+      "candidate_rank": 17,
+      "score": 0.3075
+    },
+    {
+      "round": 1,
+      "candidate_rank": 18,
+      "score": 0.24500000000000002
+    },
+    {
+      "round": 1,
+      "candidate_rank": 19,
+      "score": 0.215
+    },
+    {
+      "round": 2,
+      "candidate_rank": 0,
+      "score": 0.8516666666666667
+    },
+    {
+      "round": 2,
+      "candidate_rank": 1,
+      "score": 0.8366666666666667
+    },
+    {
+      "round": 2,
+      "candidate_rank": 2,
+      "score": 0.7916666666666666
+    },
+    {
+      "round": 2,
+      "candidate_rank": 3,
+      "score": 0.7616666666666667
+    },
+    {
+      "round": 2,
+      "candidate_rank": 4,
+      "score": 0.7066666666666667
+    },
+    {
+      "round": 2,
+      "candidate_rank": 5,
+      "score": 0.7016666666666667
+    },
+    {
+      "round": 2,
+      "candidate_rank": 6,
+      "score": 0.6772222222222222
+    },
+    {
+      "round": 2,
+      "candidate_rank": 7,
+      "score": 0.6583333333333333
+    },
+    {
+      "round": 2,
+      "candidate_rank": 8,
+      "score": 0.5833333333333334
+    },
+    {
+      "round": 2,
+      "candidate_rank": 9,
+      "score": 0.56
+    },
+    {
+      "round": 3,
+      "candidate_rank": 0,
+      "score": 0.8875
+    },
+    {
+      "round": 3,
+      "candidate_rank": 1,
+      "score": 0.88375
+    },
+    {
+      "round": 3,
+      "candidate_rank": 2,
+      "score": 0.8817857142857143
+    },
+    {
+      "round": 3,
+      "candidate_rank": 3,
+      "score": 0.81375
+    },
+    {
+      "round": 3,
+      "candidate_rank": 4,
+      "score": 0.8039285714285714
+    },
+    {
+      "round": 4,
+      "candidate_rank": 0,
+      "score": 0.8273412698412699
+    },
+    {
+      "round": 4,
+      "candidate_rank": 1,
+      "score": 0.7805555555555556
+    },
+    {
+      "round": 4,
+      "candidate_rank": 2,
+      "score": 0.7486111111111111
+    }
+  ],
+  "pruning_history": [
+    {
+      "round": 1,
+      "n_candidates": 20,
+      "n_examples": 10,
+      "best_score": 0.6825,
+      "worst_score": 0.215
+    },
+    {
+      "round": 2,
+      "n_candidates": 10,
+      "n_examples": 15,
+      "best_score": 0.8516666666666667,
+      "worst_score": 0.56
+    },
+    {
+      "round": 3,
+      "n_candidates": 5,
+      "n_examples": 20,
+      "best_score": 0.8875,
+      "worst_score": 0.8039285714285714
+    },
+    {
+      "round": 4,
+      "n_candidates": 3,
+      "n_examples": 30,
+      "best_score": 0.8273412698412699,
+      "worst_score": 0.7486111111111111
+    }
+  ],
+  "train_score": 0.8525582573454914,
+  "train_example_scores": [
+    0.975,
+    1.0,
+    0.75,
+    1.0,
+    0.975,
+    0.925,
+    1.0,
+    0.925,
+    0.0,
+    1.0,
+    0.925,
+    0.75,
+    0.925,
+    0.975,
+    1.0,
+    1.0,
+    0.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.8416666666666667,
+    0.975,
+    0.5,
+    0.925,
+    0.925,
+    1.0,
+    1.0,
+    0.975,
+    1.0,
+    1.0,
+    0.9035714285714286,
+    1.0,
+    1.0,
+    0.0,
+    0.8,
+    0.975,
+    1.0,
+    1.0,
+    1.0,
+    0.25,
+    1.0,
+    0.975,
+    1.0,
+    0.975,
+    0.0,
+    0.925
+  ],
+  "val_example_scores": [
+    0.55,
+    1.0,
+    0.25,
+    0.8661764705882353,
+    0.925,
+    0.925,
+    0.7583333333333333,
+    0.975,
+    0.5,
+    0.925,
+    1.0,
+    0.925,
+    0.475,
+    1.0,
+    0.7583333333333333,
+    0.5,
+    0.975,
+    0.925,
+    0.975,
+    0.675,
+    0.975,
+    1.0,
+    1.0,
+    0.75,
+    1.0,
+    0.475,
+    0.975,
+    1.0,
+    0.675,
+    0.6730769230769231,
+    0.75,
+    0.3,
+    1.0,
+    0.0,
+    0.25,
+    0.25,
+    0.5,
+    0.975,
+    1.0,
+    0.15,
+    0.925,
+    1.0,
+    0.25,
+    1.0,
+    0.475,
+    0.925,
+    1.0,
+    0.975,
+    0.975,
+    0.5833333333333334,
+    0.925,
+    0.975,
+    0.925,
+    0.25,
+    1.0,
+    0.475,
+    0.75,
+    0.25,
+    0.75,
+    1.0,
+    0.975,
+    0.5,
+    1.0,
+    0.31666666666666665,
+    0.925,
+    1.0,
+    1.0,
+    0.975,
+    0.5,
+    0.5,
+    0.8333333333333334,
+    0.25,
+    0.9,
+    0.8321428571428571,
+    0.425,
+    1.0,
+    0.75,
+    1.0,
+    1.0,
+    0.925,
+    0.975,
+    1.0,
+    1.0,
+    1.0,
+    0.975,
+    1.0,
+    0.0,
+    1.0,
+    0.975,
+    0.925,
+    0.975,
+    0.75,
+    0.925,
+    1.0,
+    0.5
+  ],
+  "val_example_ids": [
+    "pupa_test_0",
+    "pupa_test_1",
+    "pupa_test_2",
+    "pupa_test_3",
+    "pupa_test_4",
+    "pupa_test_5",
+    "pupa_test_6",
+    "pupa_test_7",
+    "pupa_test_8",
+    "pupa_test_9",
+    "pupa_test_10",
+    "pupa_test_11",
+    "pupa_test_12",
+    "pupa_test_13",
+    "pupa_test_14",
+    "pupa_test_15",
+    "pupa_test_16",
+    "pupa_test_17",
+    "pupa_test_18",
+    "pupa_test_19",
+    "pupa_test_20",
+    "pupa_test_21",
+    "pupa_test_22",
+    "pupa_test_23",
+    "pupa_test_24",
+    "pupa_test_25",
+    "pupa_test_26",
+    "pupa_test_27",
+    "pupa_test_28",
+    "pupa_test_29",
+    "pupa_test_30",
+    "pupa_test_31",
+    "pupa_test_32",
+    "pupa_test_33",
+    "pupa_test_34",
+    "pupa_test_35",
+    "pupa_test_36",
+    "pupa_test_37",
+    "pupa_test_38",
+    "pupa_test_39",
+    "pupa_test_40",
+    "pupa_test_41",
+    "pupa_test_42",
+    "pupa_test_43",
+    "pupa_test_44",
+    "pupa_test_45",
+    "pupa_test_46",
+    "pupa_test_47",
+    "pupa_test_48",
+    "pupa_test_49",
+    "pupa_test_50",
+    "pupa_test_51",
+    "pupa_test_52",
+    "pupa_test_53",
+    "pupa_test_54",
+    "pupa_test_55",
+    "pupa_test_56",
+    "pupa_test_57",
+    "pupa_test_58",
+    "pupa_test_59",
+    "pupa_test_60",
+    "pupa_test_61",
+    "pupa_test_62",
+    "pupa_test_63",
+    "pupa_test_64",
+    "pupa_test_65",
+    "pupa_test_66",
+    "pupa_test_67",
+    "pupa_test_68",
+    "pupa_test_69",
+    "pupa_test_70",
+    "pupa_test_71",
+    "pupa_test_72",
+    "pupa_test_73",
+    "pupa_test_74",
+    "pupa_test_75",
+    "pupa_test_76",
+    "pupa_test_77",
+    "pupa_test_78",
+    "pupa_test_79",
+    "pupa_test_80",
+    "pupa_test_81",
+    "pupa_test_82",
+    "pupa_test_83",
+    "pupa_test_84",
+    "pupa_test_85",
+    "pupa_test_86",
+    "pupa_test_87",
+    "pupa_test_88",
+    "pupa_test_89",
+    "pupa_test_90",
+    "pupa_test_91",
+    "pupa_test_92",
+    "pupa_test_93",
+    "pupa_test_94"
+  ]
+}

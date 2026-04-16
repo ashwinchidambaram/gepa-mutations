@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.0628, "parents": "seed", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."}},
+{"idx": 1, "score": 0.0664, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "# New Instruction\nWrite a Python function to analyze a list of patients' ages and determine the percentage of patients who fall into specific age categories: infants (0-1 years), toddlers (2-4 years), children (5-12 years), and teenagers (13-18 years). The input will be a list of integers representing the ages of patients. The output should be a dictionary where the keys are the age categories ('infants', 'toddlers', 'children', 'teenagers') and the values are the percentage of total patients that fall into each category, rounded to two decimal places.\n\nThe function must include the word \"reach\" in the 14th sentence as the 12th word of that sentence. It must not include the keywords ['camera', 'green', 'revolution', 'watch'] in the response.\n\nThe function should:\n- Handle empty input lists by returning an empty dictionary.\n- Use inclusive ranges for age categories.\n- Round the percentages to two decimal places.\n- Ensure the output dictionary has the correct keys and values.\n- Include the word \"reach\" in the 14th sentence as the 12th word.\n- Exclude the specified keywords from the response."}},
+{"idx": 2, "score": 0.0686, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instructions  \nYou are to solve a combinatorics problem involving seating arrangements with constraints. The task is to determine the number of different seating arrangements for 3 people in a row of 8 seats, such that each person has at least one empty seat on each side.  \n\n### Key Constraints:  \n1. There are 8 seats in a row.  \n2. 3 people must be seated such that each person has at least one empty seat on both sides (left and right).  \n3. The problem requires you to:  \n   - Identify the number of valid seating arrangements.  \n   - Extract the span of words between indices 144 and 148 (inclusive) from the generated response.  \n   - Ensure that the letter 'o' appears less than 12 times in the final answer.  \n   - Enclose every word in the final answer within square brackets.  \n\n### Task Description:  \nYou are to:  \n- Calculate the number of valid seating arrangements under the given constraints.  \n- Extract and report the required span of words from the generated response.  \n- Ensure the final answer adheres to the letter 'o' count and formatting requirements.  \n\n### Additional Notes:  \n- The assistant must follow the exact format of the generated response, including the character indices and formatting.  \n- The assistant must avoid using any external resources or tools to solve the problem.  \n- The assistant must ensure the final answer is concise and meets all the specified constraints."}},
+{"idx": 3, "score": 0.0676, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement, including starting and ending with the same word (do not write anything after the last word, not even punctuation).  \n\n**Task Description:**  \nYou are to identify and extract a \"prime pentad\" from a given list of integers. A \"prime pentad\" is defined as a sequence of five prime numbers that appear in the given list in order.  \n\n**Niche and Domain-Specific Information:**  \n- A \"pentad\" is a sequence of five elements.  \n- A \"prime\" is a number greater than 1 that has no divisors other than 1 and itself.  \n- The number 1 is not considered a prime number.  \n- The task requires identifying a sequence of five prime numbers that appear in the given list in the same order.  \n- If no such sequence exists, the response must state that the prime pentad does not exist.  \n\n**Generalizable Strategy:**  \n1. Identify all prime numbers in the given list.  \n2. Check if there exists a subsequence of five consecutive prime numbers in the list.  \n3. If found, return the subsequence; otherwise, state that no prime pentad exists.  \n\n**Example Output:**  \nIf the input is `[3, 4, 1, 6, 8, 9]`, the output should be:  \n\"Prime pentad does not exist in the series.\"  \n\nThe final word is: **prime**."}},
+{"idx": 4, "score": 0.0661, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "# New Instruction\nWrite a Python function to analyze a list of patients' ages and determine the percentage of patients who fall into specific age categories: infants (0-1 years), toddlers (2-4 years), children (5-12 years), and teenagers (13-18 years). The input will be a list of integers representing the ages of patients. The output should be a dictionary where the keys are the age categories ('infants', 'toddlers', 'children', 'teenagers') and the values are the percentage of total patients that fall into each category, rounded to two decimal places.\n\nThe function must include the word \"reach\" in the 14th sentence as the 12th word of that sentence. It must not include the keywords ['camera', 'green', 'revolution', 'watch'] in the response.\n\nThe function should:\n- Handle empty input lists by returning an empty dictionary.\n- Use inclusive ranges for age categories.\n- Round the percentages to two decimal places.\n- Ensure the output dictionary has the correct keys and values.\n- Include the word \"reach\" in the 14th sentence as the 12th word.\n- Exclude the specified keywords from the response.\n\nThe function must be implemented using pure Python and should not use any external libraries or modules. It must be well-documented and include a docstring explaining its purpose, parameters, and return value."}},
+{"idx": 5, "score": 0.0834, "parents": "0", "role": "Best", "components": {"system_prompt": "## New Instructions  \nYou are to act as a Computer Science professor specializing in Graphical User Interfaces (GUIs) and optimize the rendering performance of a dependency graph for both desktop and mobile devices. The task involves formulating a mathematical model to minimize the total rendering time while ensuring user interaction latency does not exceed a specified threshold.  \n\nThe problem involves a graph $ G = (V, E) $, where each vertex $ v \\in V $ represents a UI component, and each edge $ e \\in E $ represents a dependency between components. The rendering time for a component $ v_i $ is given by $ R(v_i) = \\alpha_i \\cdot f(s_i, r_i) $, where $ \\alpha_i $ is a device-specific constant, $ s_i $ is the size of the component, and $ r_i $ is the resolution of the component.  \n\nThe goal is to determine the optimal layout that minimizes the total rendering time $ \\sum_{v \\in V} R(v) $ across both desktop and mobile device profiles. This requires balancing the size and resolution of components with device-specific constants $ \\alpha_i $ and dependencies in the graph.  \n\nAdditionally, a constraint on user interaction latency must be included. The latency $ L(v_i) $ for a component $ v_i $ is given by $ L(v_i) = \\beta_i \\cdot g(d_i) $, where $ \\beta_i $ is a device-specific constant and $ d_i $ is the depth of the component in the graph. The optimization problem must simultaneously minimize the total rendering time and ensure that $ L(v_i) \\leq L $ for all components $ v_i \\in V $, where $ L $ is the maximum allowable latency.  \n\nThe mathematical model must be formulated as a constrained optimization problem, with the objective function $ \\sum_{v \\in V} \\alpha_i \\cdot f(s_i, r_i) $ and constraints $ \\beta_i \\cdot g(d_i) \\leq L $. The solution must involve graph traversal algorithms and optimization techniques that consider both rendering time and latency.  \n\nThe response must include the word \"mirror\" exactly 5 times, with the last word of each sentence before punctuation being \"chemical.\" The entire response must be free of any commas."}},
+{"idx": 6, "score": 0.0561, "parents": "4", "role": "Pareto Front", "components": {"system_prompt": "# New Instruction\nWrite a Python function to analyze a list of patients' ages and determine the percentage of patients who fall into specific age categories: infants (0-1 years), toddlers (2-4 years), children (5-12 years), and teenagers (13-18 years). The input will be a list of integers representing the ages of patients. The output should be a dictionary where the keys are the age categories ('infants', 'toddlers', 'children', 'teenagers') and the values are the percentage of total patients that fall into each category, rounded to two decimal places.\n\nThe function must include the word \"reach\" in the 14th sentence as the 12th word of that sentence. It must not include the keywords ['camera', 'green', 'revolution', 'watch'] in the response.\n\nThe function should:\n- Handle empty input lists by returning an empty dictionary.\n- Use inclusive ranges for age categories.\n- Round the percentages to two decimal places.\n- Ensure the output dictionary has the correct keys and values.\n- Include the word \"reach\" in the 14th sentence as the 12th word.\n- Exclude the specified keywords from the response.\n\nThe function must be implemented using pure Python and should not use any external libraries or modules. It must be well-documented and include a docstring explaining its purpose, parameters, and return value.\n\nAdditionally, the function must ensure that the word \"reach\" appears in the 14th sentence as the 12th word, and the response must not contain the keywords ['camera', 'green', 'revolution', 'watch']."}},
+{"idx": 7, "score": 0.0625, "parents": "6", "role": "", "components": {"system_prompt": "# New Instruction\nWrite a Python function to analyze a list of patients' ages and determine the percentage of patients who fall into specific age categories: infants (0-1 years), toddlers (2-4 years), children (5-12 years), and teenagers (13-18 years). The input will be a list of integers representing the ages of patients. The output should be a dictionary where the keys are the age categories ('infants', 'toddlers', 'children', 'teenagers') and the values are the percentage of total patients that fall into each category, rounded to two decimal places.\n\nThe function must include the word \"reach\" in the 14th sentence as the 12th word. It must not include the keywords ['camera', 'green', 'revolution', 'watch'] in the response.\n\nThe function should:\n- Handle empty input lists by returning an empty dictionary.\n- Use inclusive ranges for age categories.\n- Round the percentages to two decimal places.\n- Ensure the output dictionary has the correct keys and values.\n- Include the word \"reach\" in the 14th sentence as the 12th word.\n- Exclude the specified keywords from the response.\n\nThe function must be implemented using pure Python and should not use any external libraries or modules. It must be well-documented and include a docstring explaining its purpose, parameters, and return value.\n\nAdditionally, the function must ensure that the word \"reach\" appears in the 14th sentence as the 12th word, and the response must not contain the keywords ['camera', 'green', 'revolution', 'watch']."}},
+{"idx": 8, "score": 0.0578, "parents": "1", "role": "", "components": {"system_prompt": "# New Instruction\nWrite a Python function to analyze a list of patients' ages and determine the percentage of patients who fall into specific age categories: infants (0-1 years), toddlers (2-4 years), children (5-12 years), and teenagers (13-18 years). The input will be a list of integers representing the ages of patients. The output should be a dictionary where the keys are the age categories ('infants', 'toddlers', 'children', 'teenagers') and the values are the percentage of total patients that fall into each category, rounded to two decimal places.\n\nThe function must include the word \"reach\" in the 14th sentence as the 12th word. It must not include the keywords ['camera', 'green', 'revolution', 'watch'] in the response.\n\nThe function should:\n- Handle empty input lists by returning an empty dictionary.\n- Use inclusive ranges for age categories.\n- Round the percentages to two decimal places.\n- Ensure the output dictionary has the correct keys and values.\n- Include the word \"reach\" in the 14th sentence as the 12th word.\n- Exclude the specified keywords from the response.\n\nThe function should also:\n- Include the word \"reach\" in the 14th sentence as the 12th word.\n- Ensure the output dictionary is correctly formatted with the correct keys and values.\n- Exclude the specified keywords from the response.\n- Use the word \"reach\" in the 14th sentence as the 12th word.\n- Ensure that the function is well-documented and follows Python best practices."}},
+{"idx": 9, "score": 0.0625, "parents": "6", "role": "Pareto Front", "components": {"system_prompt": "# New Instruction\nWrite a Python function to analyze a list of patients' ages and determine the percentage of patients who fall into specific age categories: infants (0-1 years), toddlers (2-4 years), children (5-12 years), and teenagers (13-18 years). The input will be a list of integers representing the ages of patients. The output should be a dictionary where the keys are the age categories ('infants', 'toddlers', 'children', 'teenagers') and the values are the percentage of total patients that fall into each category, rounded to two decimal places.\n\nThe function must include the word \"reach\" in the 14th sentence as the 12th word. It must not include the keywords ['camera', 'green', 'revolution', 'watch'] in the response.\n\nThe function should:\n- Handle empty input lists by returning an empty dictionary.\n- Use inclusive ranges for age categories.\n- Round the percentages to two decimal places.\n- Ensure the output dictionary has the correct keys and values.\n- Include the word \"reach\" in the 14th sentence as the 12th word.\n- Exclude the specified keywords from the response.\n\nThe function must be implemented using pure Python and should not use any external libraries or modules. It must be well-documented and include a docstring explaining its purpose, parameters, and return value.\n\nAdditionally, the function must ensure that the word \"reach\" appears in the 14th sentence as the 12th word, and the response must not contain the keywords ['camera', 'green', 'revolution', 'watch']."}},
+{"idx": 10, "score": 0.0612, "parents": "4", "role": "Pareto Front", "components": {"system_prompt": "# New Instruction\nWrite a Python function to analyze a list of patients' ages and determine the percentage of patients who fall into specific age categories: infants (0-1 years), toddlers (2-4 years), children (5-12 years), and teenagers (13-18 years). The input will be a list of integers representing the ages of patients. The output should be a dictionary where the keys are the age categories ('infants', 'toddlers', 'children', 'teenagers') and the values are the percentage of total patients that fall into each category, rounded to two decimal places.\n\nThe function must include the word \"reach\" in the 14th sentence as the 12th word. It must not include the keywords ['camera', 'green', 'revolution', 'watch'] in the response.\n\nThe function should:\n- Handle empty input lists by returning an empty dictionary.\n- Use inclusive ranges for age categories.\n- Round the percentages to two decimal places.\n- Ensure the output dictionary has the correct keys and values.\n- Include the word \"reach\" in the 14th sentence as the 12th word.\n- Exclude the specified keywords from the response.\n\nThe function must be implemented using pure Python and should not use any external libraries or modules. It must be well-documented and include a docstring explaining its purpose, parameters, and return value.\n\nAdditionally, the function must ensure:\n- The response contains no commas.\n- The response uses only lowercase letters.\n- The response contains less than 24 sentences.\n- The word \"reach\" appears in the 14th sentence as the 12th word.\n- The response does not contain the keywords ['camera', 'green', 'revolution', 'watch']."}},
+{"idx": 11, "score": 0.0599, "parents": "6", "role": "", "components": {"system_prompt": "# New Instruction\nWrite a Python function to analyze a list of patients' ages and determine the percentage of patients who fall into specific age categories: infants (0-1 years), toddlers (2-4 years), children (5-12 years), and teenagers (13-18 years). The input will be a list of integers representing the ages of patients. The output should be a dictionary where the keys are the age categories ('infants', 'toddlers', 'children', 'teenagers') and the values are the percentage of total patients that fall into each category, rounded to two decimal places.\n\nThe function must include the word \"reach\" in the 14th sentence as the 12th word. It must not include the keywords ['camera', 'green', 'revolution', 'watch'] in the response.\n\nThe function should:\n- Handle empty input lists by returning an empty dictionary.\n- Use inclusive ranges for age categories.\n- Round the percentages to two decimal places.\n- Ensure the output dictionary has the correct keys and values.\n- Include the word \"reach\" in the 14th sentence as the 12th word.\n- Exclude the specified keywords from the response.\n\nThe function must be implemented using pure Python and should not use any external libraries or modules. It must be well-documented and include a docstring explaining its purpose, parameters, and return value.\n\nAdditionally, the function must ensure that the word \"reach\" appears in the 14th sentence as the 12th word, and the response must not contain the keywords ['camera', 'green', 'revolution', 'watch'].\n\nThe function must be implemented with the following constraints:\n- If the input list is empty, return an empty dictionary.\n- If the input list contains non-integer values, the function must raise a ValueError.\n- The function must not use any external libraries or modules.\n- The function must be well-documented with a docstring that includes the purpose, parameters, return value, and all the required constraints.\n- The function must include the word \"reach\" in the 14th sentence as the 12th word.\n- The response must not contain the specified keywords.\n- The function must return a dictionary with the correct keys and values.\n- The function must round the percentages to two decimal places.\n- The function must handle the age categories correctly using inclusive ranges.\n- The function must not include the specified keywords in the response.\n- The function must be implemented using pure Python without any external libraries or modules.\n- The function must be well-documented and include a comprehensive docstring.\n- The function must ensure that the word \"reach\" appears in the 14th sentence as the 12th word.\n- The function must not include the specified keywords in the response."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.06)", fillcolor=orange, tooltip=" "];
+    1 [label="1\\n(0.07)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.07)", fillcolor=orange, tooltip=" "];
+    3 [label="3\\n(0.07)", fillcolor=orange, tooltip=" "];
+    4 [label="4\\n(0.07)", fillcolor=orange, tooltip=" "];
+    5 [label="5\\n(0.08)", fillcolor=cyan, tooltip=" "];
+    6 [label="6\\n(0.06)", fillcolor=orange, tooltip=" "];
+    7 [label="7\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    8 [label="8\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    9 [label="9\\n(0.06)", fillcolor=orange, tooltip=" "];
+    10 [label="10\\n(0.06)", fillcolor=orange, tooltip=" "];
+    11 [label="11\\n(0.06)", fillcolor=lightgray, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+    0 -> 3;
+    1 -> 4;
+    0 -> 5;
+    4 -> 6;
+    6 -> 7;
+    1 -> 8;
+    6 -> 9;
+    4 -> 10;
+    6 -> 11;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

@@ -1,3 +1,0 @@
-{
-    "response": "We are asked to find an **indefinite integral** of the function:\n\n$$\n-\\sin(x + 5)\n$$\n\n---\n\n### Step 1: Use substitution\n\nLet:\n$$\nu = x + 5\n$$\nThen:\n$$\n\\frac{du}{dx} = 1 \\quad \\Rightarrow \\quad du = dx\n$$\n\nSo the integral becomes:\n$$\n\\int -\\sin(x + 5) \\, dx = \\int -\\sin(u) \\, du\n$$\n\n---\n\n### Step 2: Integrate\n\nWe know that:\n$$\n\\int \\sin(u) \\, du = -\\cos(u) + C\n$$\n\nSo:\n$$\n\\int -\\sin(u) \\, du = -(-\\cos(u)) + C = \\cos(u) + C\n$$\n\n---\n\n### Step 3: Substitute back\n\nRecall that $ u = x + 5 $, so:\n$$\n\\cos(u) = \\cos(x + 5)\n$$\n\nThus, the integral is:\n$$\n\\cos(x + 5) + C\n$$\n\n---\n\n### Final Answer:\n\n$$\n\\boxed{\\cos(x + 5) + C}\n$$"
-}

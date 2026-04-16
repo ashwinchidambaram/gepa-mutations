@@ -1,3 +1,0 @@
-{
-    "response": "To filter frog species by length, the function entry iterates through the list entry and checks each name entry against the minimum length entry, returning only those that qualify entry.\n\n```python\ndef filter_species_by_length(species_list, min_length):\n    return [name for name in species_list if len(name) > min_length]\n```"
-}

@@ -1,3 +1,0 @@
-{
-    "response": "def filter_species_by_length(species_list, min_length):\n    return [name for name in species_list if len(name) > min_length]\n\nspecies_list = [\"Blommersia bara\", \"Mantidactylus grandidieri\", \"Boophis madagascariensis\", \"Aglyptodactylus madagascariensis\"]\nmin_length = 15\nprint(filter_species_by_length(species_list, min_length))\n# Expected output: [\"Mantidactylus grandidieri\", \"Boophis madagascariensis\", \"Aglyptodactylus madagascariensis\"]\nThe function filters each entry."
-}

@@ -1,0 +1,462 @@
+{
+  "rollout_count": 725,
+  "reflection_call_count": 22,
+  "wall_clock_seconds": 4320.87,
+  "total_tokens": 692090,
+  "task_input_tokens": 546567,
+  "task_output_tokens": 136589,
+  "reflection_input_tokens": 7414,
+  "reflection_output_tokens": 1520,
+  "test_score": 0.44895192526771477,
+  "model": "openai/Qwen/Qwen3-1.7B",
+  "model_tag": "qwen3-1.7b",
+  "benchmark": "pupa",
+  "seed": 1024,
+  "method": "slime_mold",
+  "val_score": 0.44249371543489197,
+  "prompt_length_chars": 145,
+  "prompt_length_tokens": 36,
+  "test_example_scores": [
+    0.5,
+    0.5,
+    1.0,
+    0.5714285714285714,
+    0.5,
+    0.5,
+    0.75,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    1.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.33333333333333337,
+    1.0,
+    0.5,
+    0.5,
+    0.5909090909090908,
+    0.0,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    1.0,
+    0.5,
+    0.0,
+    0.0,
+    0.375,
+    0.5714285714285714,
+    1.0,
+    0.75,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    1.0,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.16666666666666669,
+    0.5,
+    0.0,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    1.0,
+    0.5,
+    0.25,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.75,
+    0.5,
+    0.16666666666666669,
+    0.0,
+    0.625,
+    0.5,
+    0.0,
+    0.0,
+    0.75,
+    1.0,
+    0.5,
+    0.5,
+    0.5,
+    0.0
+  ],
+  "test_example_ids": [
+    "pupa_test_0",
+    "pupa_test_1",
+    "pupa_test_2",
+    "pupa_test_3",
+    "pupa_test_4",
+    "pupa_test_5",
+    "pupa_test_6",
+    "pupa_test_7",
+    "pupa_test_8",
+    "pupa_test_9",
+    "pupa_test_10",
+    "pupa_test_11",
+    "pupa_test_12",
+    "pupa_test_13",
+    "pupa_test_14",
+    "pupa_test_15",
+    "pupa_test_16",
+    "pupa_test_17",
+    "pupa_test_18",
+    "pupa_test_19",
+    "pupa_test_20",
+    "pupa_test_21",
+    "pupa_test_22",
+    "pupa_test_23",
+    "pupa_test_24",
+    "pupa_test_25",
+    "pupa_test_26",
+    "pupa_test_27",
+    "pupa_test_28",
+    "pupa_test_29",
+    "pupa_test_30",
+    "pupa_test_31",
+    "pupa_test_32",
+    "pupa_test_33",
+    "pupa_test_34",
+    "pupa_test_35",
+    "pupa_test_36",
+    "pupa_test_37",
+    "pupa_test_38",
+    "pupa_test_39",
+    "pupa_test_40",
+    "pupa_test_41",
+    "pupa_test_42",
+    "pupa_test_43",
+    "pupa_test_44",
+    "pupa_test_45",
+    "pupa_test_46",
+    "pupa_test_47",
+    "pupa_test_48",
+    "pupa_test_49",
+    "pupa_test_50",
+    "pupa_test_51",
+    "pupa_test_52",
+    "pupa_test_53",
+    "pupa_test_54",
+    "pupa_test_55",
+    "pupa_test_56",
+    "pupa_test_57",
+    "pupa_test_58",
+    "pupa_test_59",
+    "pupa_test_60",
+    "pupa_test_61",
+    "pupa_test_62",
+    "pupa_test_63",
+    "pupa_test_64",
+    "pupa_test_65",
+    "pupa_test_66",
+    "pupa_test_67",
+    "pupa_test_68",
+    "pupa_test_69",
+    "pupa_test_70",
+    "pupa_test_71",
+    "pupa_test_72",
+    "pupa_test_73",
+    "pupa_test_74",
+    "pupa_test_75",
+    "pupa_test_76",
+    "pupa_test_77",
+    "pupa_test_78",
+    "pupa_test_79",
+    "pupa_test_80",
+    "pupa_test_81",
+    "pupa_test_82",
+    "pupa_test_83",
+    "pupa_test_84",
+    "pupa_test_85",
+    "pupa_test_86",
+    "pupa_test_87",
+    "pupa_test_88",
+    "pupa_test_89",
+    "pupa_test_90",
+    "pupa_test_91",
+    "pupa_test_92",
+    "pupa_test_93",
+    "pupa_test_94"
+  ],
+  "score_per_1k_rollouts": 0.6192,
+  "convergence_iteration": 4,
+  "val_score_trajectory": [
+    [
+      4,
+      0.44249371543489197
+    ]
+  ],
+  "rollout_trajectory": [
+    [
+      4,
+      725
+    ]
+  ],
+  "best_val_trajectory": [
+    [
+      4,
+      0.44249371543489197
+    ]
+  ],
+  "round_survivors": [
+    20,
+    10,
+    5,
+    3,
+    1
+  ],
+  "round_scores": [
+    {
+      "round": 1,
+      "candidate_rank": 0,
+      "score": 0.6
+    },
+    {
+      "round": 1,
+      "candidate_rank": 1,
+      "score": 0.6
+    },
+    {
+      "round": 1,
+      "candidate_rank": 2,
+      "score": 0.55
+    },
+    {
+      "round": 1,
+      "candidate_rank": 3,
+      "score": 0.55
+    },
+    {
+      "round": 1,
+      "candidate_rank": 4,
+      "score": 0.5
+    },
+    {
+      "round": 1,
+      "candidate_rank": 5,
+      "score": 0.45
+    },
+    {
+      "round": 1,
+      "candidate_rank": 6,
+      "score": 0.45
+    },
+    {
+      "round": 1,
+      "candidate_rank": 7,
+      "score": 0.45
+    },
+    {
+      "round": 1,
+      "candidate_rank": 8,
+      "score": 0.45
+    },
+    {
+      "round": 1,
+      "candidate_rank": 9,
+      "score": 0.45
+    },
+    {
+      "round": 1,
+      "candidate_rank": 10,
+      "score": 0.45
+    },
+    {
+      "round": 1,
+      "candidate_rank": 11,
+      "score": 0.45
+    },
+    {
+      "round": 1,
+      "candidate_rank": 12,
+      "score": 0.45
+    },
+    {
+      "round": 1,
+      "candidate_rank": 13,
+      "score": 0.4
+    },
+    {
+      "round": 1,
+      "candidate_rank": 14,
+      "score": 0.4
+    },
+    {
+      "round": 1,
+      "candidate_rank": 15,
+      "score": 0.4
+    },
+    {
+      "round": 1,
+      "candidate_rank": 16,
+      "score": 0.4
+    },
+    {
+      "round": 1,
+      "candidate_rank": 17,
+      "score": 0.4
+    },
+    {
+      "round": 1,
+      "candidate_rank": 18,
+      "score": 0.35
+    },
+    {
+      "round": 1,
+      "candidate_rank": 19,
+      "score": 0.35
+    },
+    {
+      "round": 2,
+      "candidate_rank": 0,
+      "score": 0.40539682539682537
+    },
+    {
+      "round": 2,
+      "candidate_rank": 1,
+      "score": 0.4038095238095238
+    },
+    {
+      "round": 2,
+      "candidate_rank": 2,
+      "score": 0.39714285714285713
+    },
+    {
+      "round": 2,
+      "candidate_rank": 3,
+      "score": 0.3476190476190476
+    },
+    {
+      "round": 2,
+      "candidate_rank": 4,
+      "score": 0.3431746031746032
+    },
+    {
+      "round": 2,
+      "candidate_rank": 5,
+      "score": 0.3419047619047619
+    },
+    {
+      "round": 2,
+      "candidate_rank": 6,
+      "score": 0.3376190476190476
+    },
+    {
+      "round": 2,
+      "candidate_rank": 7,
+      "score": 0.33095238095238094
+    },
+    {
+      "round": 2,
+      "candidate_rank": 8,
+      "score": 0.28095238095238095
+    },
+    {
+      "round": 2,
+      "candidate_rank": 9,
+      "score": 0.2542857142857143
+    },
+    {
+      "round": 3,
+      "candidate_rank": 0,
+      "score": 0.45916666666666667
+    },
+    {
+      "round": 3,
+      "candidate_rank": 1,
+      "score": 0.4091666666666667
+    },
+    {
+      "round": 3,
+      "candidate_rank": 2,
+      "score": 0.38416666666666666
+    },
+    {
+      "round": 3,
+      "candidate_rank": 3,
+      "score": 0.3570833333333333
+    },
+    {
+      "round": 3,
+      "candidate_rank": 4,
+      "score": 0.32083333333333336
+    },
+    {
+      "round": 4,
+      "candidate_rank": 0,
+      "score": 0.481468253968254
+    },
+    {
+      "round": 4,
+      "candidate_rank": 1,
+      "score": 0.43412698412698414
+    },
+    {
+      "round": 4,
+      "candidate_rank": 2,
+      "score": 0.36523809523809525
+    }
+  ],
+  "pruning_history": [
+    {
+      "round": 1,
+      "n_candidates": 20,
+      "n_examples": 10,
+      "best_score": 0.6,
+      "worst_score": 0.35
+    },
+    {
+      "round": 2,
+      "n_candidates": 10,
+      "n_examples": 15,
+      "best_score": 0.40539682539682537,
+      "worst_score": 0.2542857142857143
+    },
+    {
+      "round": 3,
+      "n_candidates": 5,
+      "n_examples": 20,
+      "best_score": 0.45916666666666667,
+      "worst_score": 0.32083333333333336
+    },
+    {
+      "round": 4,
+      "n_candidates": 3,
+      "n_examples": 30,
+      "best_score": 0.481468253968254,
+      "worst_score": 0.36523809523809525
+    }
+  ]
+}

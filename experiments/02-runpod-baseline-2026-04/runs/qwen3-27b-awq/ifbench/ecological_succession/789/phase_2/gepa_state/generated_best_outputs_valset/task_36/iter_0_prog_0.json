@@ -1,0 +1,3 @@
+{
+    "response": "your code fails because session creation requires a valid api key before making any account requests to the tmdb server.\nyou must ensure the authentication parameters are correctly formatted and sent within the initial session request headers.\n\nthe error occurs when the server cannot verify your application credentials or the session id is already expired or invalid.\nplease check your tmdb dashboard to confirm your api key is active and matches the one used in your createSessionId function."
+}

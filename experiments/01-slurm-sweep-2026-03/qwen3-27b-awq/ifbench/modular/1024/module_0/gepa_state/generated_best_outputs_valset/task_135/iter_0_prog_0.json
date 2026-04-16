@@ -1,0 +1,3 @@
+{
+    "response": "racecar\nThis procedure removes inactive users and logs the changes.\nWe begin by declaring a variable to hold error codes.\nA transaction starts to ensure data consistency throughout.\nThe status_log table records each user_id and their former status.\nModification_date is set to the current system timestamp.\nWe delete rows where the status column equals Inactive.\nAny errors during deletion are captured for review.\nThe transaction rolls back if an exception occurs.\nSuccessful deletions commit the changes permanently.\nThe total count of removed records is returned.\nError messages are displayed if the process fails.\nracecar"
+}

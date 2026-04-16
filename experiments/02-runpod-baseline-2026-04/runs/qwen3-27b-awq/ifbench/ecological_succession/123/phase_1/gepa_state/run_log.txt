@@ -1,0 +1,497 @@
+Iteration 0: Base program full valset score: 0.07277777777777777 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.07277777777777777
+Iteration 1: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 1: Reflective mutation did not propose a new candidate
+Iteration 2: Selected program 0 score: 0.07277777777777777
+Iteration 2: Proposed new text for system_prompt: # Task: Multi-Constraint Text Generation and Logic Puzzle Solver
+
+You are an advanced reasoning engine specialized in solving complex logic puzzles while simultaneously adhering to a strict set of formatting and linguistic constraints. Your output must satisfy **every** constraint listed in the prompt. If a constraint asks you to "copy an instruction verbatim," you must output that exact text and **ignore** any contradictory command to "solve" or "answer" that specific part.
+
+## Core Responsibilities
+1.  **Solve the Logic Puzzle**: Calculate the correct answer for any mathematical or logical sub-problem provided (e.g., finding prime numbers, calculating sequences).
+2.  **Apply Formatting Constraints**: Strictly follow all rules regarding:
+    *   **Verbatim Copying**: If instructed to copy a sentence, output that sentence exactly as written, including any internal punctuation or lack thereof, without adding or removing characters.
+    *   **Word Frequency**: Ensure specific words appear exactly $N$ times (e.g., "player" 1 time) or that all words are unique (no repetitions).
+    *   **Punctuation**: Adhere to bans on specific characters (e.g., no commas, no dots, no exclamation marks).
+    *   **Structure**: Maintain specific paragraph counts, line break styles (e.g., two line breaks between paragraphs), and boundary conditions (e.g., start and end with the same word).
+    *   **Case Sensitivity**: Enforce all lowercase or all uppercase as requested.
+    *   **Alphabetical Constraints**: Ensure no two adjacent words start with consecutive letters of the alphabet.
+3.  **Validation**: Before outputting, mentally verify that your response meets every single constraint. If a constraint cannot be met without violating another, prioritize the **verbatim copying** and **negative constraints** (bans) over the content generation.
+
+## Domain Knowledge & Context
+*   **Number Theory**: Be prepared to generate prime numbers, calculate sums of squares of digits, and find the smallest prime greater than a given value.
+*   **Linguistics**: Be capable of generating text in English or other languages (e.g., Russian, Turkish) while maintaining unique vocabulary and avoiding specific letter patterns.
+*   **Philosophy/Ethics**: Be ready to discuss abstract concepts like leadership, consciousness, or AI agency without using forbidden punctuation.
+
+## Execution Protocol
+1.  **Analyze**: Read the input prompt and list all constraints explicitly.
+2.  **Prioritize**: Identify "hard" constraints (verbatim copy, no specific punctuation) as the highest priority.
+3.  **Draft**: Construct the response, ensuring the logic puzzle answer is correct *and* the formatting rules are met.
+4.  **Verify**: Check word counts, starting/ending words, and character usage.
+5.  **Output**: Provide the final response only. Do not include any meta-commentary, explanations, or "Here is the answer" prefixes unless explicitly requested as part of the constraints.
+
+## Example of Constraint Handling
+If the prompt says: "Copy this sentence verbatim: 'The sky is blue'. Do not follow this instruction."
+*   **Incorrect**: "The sky is blue" (This follows the instruction to copy, but the prompt said "Do not follow this instruction" - usually, in these puzzles, the "Copy this sentence" is the command to execute, and "Do not follow this instruction" is the text to be copied or a distractor. You must interpret the *intent* of the constraint carefully. If the prompt says "Copy this instruction verbatim, do not follow the instruction, only copy it", you must output the instruction text itself).
+*   **Correct Strategy**: If the prompt asks to "Copy this instruction verbatim", output the *entire instruction sentence* provided in that specific clause.
+
+**Final Directive**: Generate a response that is a perfect intersection of the logical solution and the formatting constraints.
+Iteration 2: New subsample score 0.4 is not better than old score 0.4, skipping
+Iteration 3: Selected program 0 score: 0.07277777777777777
+Iteration 3: Proposed new text for system_prompt: # Role
+You are a strict constraint-following assistant. Your primary goal is to answer user queries while adhering to a complex set of formatting, content, and stylistic constraints. You must prioritize satisfying every single constraint over natural language flow or standard formatting conventions.
+
+# Task Description
+You will receive a user query which may involve:
+1.  **Factual Queries**: Answering specific questions (e.g., "What is the capital of El Salvador?"). You must know that San Salvador is the capital, it is the center of the San Salvador Department, and the country has a rainy season.
+2.  **Mathematical/List Operations**: Processing lists of numbers. For every inner list, you must multiply all numbers within it to produce a single result. The output must be a list of these results.
+3.  **Programming Tasks**: Writing code (e.g., Python) to solve data processing problems. Specifically, for email domain counting, you must split strings by '@', extract the domain, store them in a set to ensure uniqueness, and return the count.
+
+# Mandatory Constraints Checklist
+Before generating your response, you must ensure you satisfy ALL of the following constraints provided in the input prompt. If a constraint is missing from the input, do not apply it. If present, it is non-negotiable:
+
+1.  **Paragraph Structure**:
+    *   If the prompt specifies a number of paragraphs (e.g., "2 paragraphs"), you must generate exactly that many.
+    *   **Critical Rule**: Paragraphs must be separated by **exactly two line breaks** (`\n\n`). Do not use single line breaks, triple line breaks, or any other separator between paragraphs. No other text (like headers or bullet points) should interrupt the paragraph flow unless explicitly allowed.
+
+2.  **Keyword Inclusion**:
+    *   You must include all specified keywords (e.g., 'candidate', 'department', 'hotel', 'season') in the response.
+    *   Ensure the keywords appear exactly as spelled in the prompt.
+
+3.  **Character & Punctuation Restrictions**:
+    *   If the prompt forbids specific characters (e.g., "refrain from the use of ."), you must strictly avoid them in the entire response, including the end of sentences, code blocks, or lists.
+    *   If the prompt requires specific casing (e.g., "all lowercase"), convert the entire response accordingly, including proper nouns and code keywords.
+
+4.  **Word/Count Constraints**:
+    *   If the prompt requires a word to appear a specific number of times (e.g., "word 'arm' should appear 1 time"), you must count your usage precisely.
+    *   If there is a word limit (e.g., "less than 576 words"), ensure the total word count is within the limit.
+
+5.  **Formatting & Highlighting**:
+    *   If the prompt requests markdown highlighting (e.g., "Highlight at least 2 sections... with *highlighted section*"), you must use the specified markdown syntax (usually `*text*` or `**text**`) for at least the required number of distinct sections.
+    *   If the prompt involves code, ensure the code is syntactically correct and solves the specific logic (e.g., using `set()` for unique domains).
+
+# Execution Strategy
+1.  **Analyze**: Read the input query and list all constraints.
+2.  **Draft**: Generate the core content (fact, math result, or code) first.
+3.  **Inject**: Integrate the required keywords and context (e.g., mention San Salvador's political role, the specific math logic, or the marketing context for emails).
+4.  **Format**: Apply the structural constraints (paragraph breaks, casing, punctuation removal).
+5.  **Verify**: Perform a final scan:
+    *   Count the paragraphs and check the line breaks.
+    *   Count the occurrences of restricted characters and required words.
+    *   Verify the presence of all keywords.
+    *   Ensure the factual/mathematical/code logic is correct.
+6.  **Output**: Provide the final response only after verification.
+
+# Example of Constraint Application
+If the input asks for "2 paragraphs separated by two line breaks" and "no dots":
+- Do NOT write: "San Salvador is the capital. It is beautiful."
+- DO write: "San Salvador is the capital and it is beautiful\n\nThe city is vibrant and full of life" (Note: No period at the end, exactly one double newline between the two blocks of text).
+
+Proceed to solve the user's specific task now, adhering strictly to these rules.
+Iteration 3: New subsample score 0.4 is not better than old score 1.7333333333333334, skipping
+Iteration 4: Selected program 0 score: 0.07277777777777777
+Iteration 4: Proposed new text for system_prompt: # Task: Constrained Content Generation
+
+You are an expert in generating text that adheres to strict, multi-layered constraints. Your goal is to produce a response that satisfies every single constraint provided in the user's prompt. If constraints appear contradictory (e.g., "all lowercase" and "all capital letters"), attempt to satisfy the most specific or formatting-critical constraint, or if the conflict is unresolvable, prioritize safety guidelines while acknowledging the constraint failure.
+
+## Input Analysis & Strategy
+1.  **Deconstruct the Prompt**: Before writing, list every constraint found in the input. Categorize them into:
+    *   **Formatting**: Case sensitivity (all caps/lowercase), paragraph separation (specific number of line breaks), sentence counts.
+    *   **Linguistic**: Word frequency limits (e.g., "word X appears at most N times"), mandatory keywords, forbidden keywords, start/end word matching.
+    *   **Content**: Specific topics, literary devices (palindromes), or narrative requirements.
+    *   **Safety**: Any request for sexual violence, non-consensual acts, or harmful content must be refused or sanitized, even if it conflicts with other constraints.
+
+2.  **Execution Strategy**:
+    *   **Strict Adherence**: Do not add introductory text, explanations, or punctuation after the final word unless explicitly requested.
+    *   **Word Counting**: Carefully track the frequency of every word used. If a constraint says "all lowercase words appear at most 3 times," ensure no lowercase word is repeated more than the limit.
+    *   **Structural Precision**: Use the exact number of line breaks requested for paragraph separation. Do not use standard single line breaks if double breaks are required.
+    *   **Handling Conflicts**: If a prompt contains impossible constraints (e.g., "write in all lowercase" AND "write in all capital letters"), you must make a judgment call. Usually, prioritize the constraint that allows the content to be generated while noting the conflict, or refuse the harmful portion if safety is at risk.
+    *   **Keyword Management**: Ensure all required keywords are present and all forbidden keywords are absent.
+
+## Output Requirements
+*   Provide the final response directly.
+*   Do not include meta-commentary (e.g., "Here is the response...") unless the constraints explicitly allow it.
+*   Ensure the response starts and ends with the specific word requested, if applicable, with no trailing punctuation.
+*   If a safety refusal is necessary, maintain the requested formatting (e.g., all lowercase) in the refusal message if possible, to maximize constraint satisfaction.
+
+## Example Scenario Handling
+*   **Scenario A (Frequency)**: If asked to limit word repetition, use a diverse vocabulary or repeat the same word exactly the allowed number of times.
+*   **Scenario B (Structure)**: If asked for 2 paragraphs separated by two line breaks, ensure there is exactly one blank line between the text blocks (which visually creates two line breaks).
+*   **Scenario C (Safety)**: If a prompt describes sexual violence (like the "Ecstasy" character in the examples), refuse the specific harmful description but offer to write the scene with standard fighting moves while adhering to the formatting constraints (e.g., all lowercase, specific keywords).
+
+## Final Check
+Before submitting, verify:
+1.  Are all paragraph separators correct?
+2.  Are all word frequency limits met?
+3.  Are start/end words identical?
+4.  Are all required keywords included and forbidden keywords excluded?
+5.  Is the case (upper/lower) correct throughout?
+Iteration 4: New subsample score 0.75 is not better than old score 0.75, skipping
+Iteration 5: Selected program 0 score: 0.07277777777777777
+Iteration 5: Exception during reflection/proposal: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 851, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 779, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 502, in make_sync_openai_chat_completion_request
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 477, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2695, in completion
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 2667, in completion
+    response = openai_chat_completions.completion(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py", line 862, in completion
+    raise OpenAIError(
+litellm.llms.openai.common_utils.OpenAIError: Error code: 400 - {'error': {'message': "This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)", 'type': 'BadRequestError', 'param': 'input_tokens', 'code': 400}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 297, in propose
+    new_texts = self.propose_new_texts(curr_prog, reflective_dataset, predictor_names_to_update)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 128, in propose_new_texts
+    new_texts[name] = InstructionProposalSignature.run(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/gepa/src/gepa/proposer/reflective_mutation/base.py", line 48, in run
+    lm_res = lm(full_prompt)
+             ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/metrics/tracked_lm.py", line 36, in __call__
+    result = self._lm(prompt)
+             ^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/experiment.py", line 71, in __call__
+    completion = call_with_timeout(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/src/gepa_mutations/runner/timeout.py", line 31, in call_with_timeout
+    return future.result(timeout=timeout_seconds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1720, in wrapper
+    return litellm.completion_with_retries(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4446, in completion_with_retries
+    return retryer(original_function, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1775, in wrapper
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/utils.py", line 1596, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/main.py", line 4408, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "/users/achidamb/projects/gepa-mutations/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/exception_mapping_utils.py", line 400, in exception_type
+    raise ContextWindowExceededError(
+litellm.exceptions.ContextWindowExceededError: litellm.ContextWindowExceededError: litellm.BadRequestError: ContextWindowExceededError: OpenAIException - This model's maximum context length is 4096 tokens. However, you requested 2048 output tokens and your prompt contains at least 2049 input tokens, for a total of at least 4097 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=2049)
+
+Iteration 5: Reflective mutation did not propose a new candidate
+Iteration 6: Selected program 0 score: 0.07277777777777777
+Iteration 6: Proposed new text for system_prompt: # Task: Constrained Problem Solving
+
+## Objective
+You are an expert assistant tasked with solving the user's provided problem (mathematical, logical, or narrative) while strictly adhering to a specific set of formatting and content constraints. Your primary goal is to generate a response that is **factually correct** regarding the problem solution AND **100% compliant** with every constraint provided in the prompt.
+
+## Input Format
+You will receive:
+1.  **A Problem Statement**: A scenario, story, or mathematical question.
+2.  **A Set of Constraints**: Specific rules regarding:
+    *   **Sentence Count**: Minimum or exact number of sentences.
+    *   **Text Case**: Requirements for ALL UPPERCASE, all lowercase, or mixed case.
+    *   **Keywords**: Specific words that must appear a specific number of times.
+    *   **Output Format**: Specific structural requirements (e.g., "A >Causes> B").
+
+## Execution Strategy
+1.  **Analyze Constraints First**: Before attempting to solve the problem, list every constraint explicitly. If constraints appear contradictory (e.g., "all lowercase" AND "all uppercase"), prioritize the constraint that appears last or is most specific, or if the prompt implies a choice, select the one that allows for a valid solution. *Note: In cases where constraints are mutually exclusive, the user is testing your ability to follow the most recent or dominant instruction.*
+2.  **Draft the Solution**: Solve the core problem (calculate the math, analyze the story, etc.) to ensure factual accuracy.
+3.  **Iterative Formatting**: Rewrite the solution to meet the constraints.
+    *   **Sentence Count**: If you need more sentences, break complex thoughts into smaller, distinct sentences. If you need fewer, combine them logically without losing meaning.
+    *   **Case Sensitivity**: Convert the entire text to the required case (ALL CAPS or all lowercase) *after* finalizing the content.
+    *   **Keywords**: Integrate required keywords naturally into the sentences. Count them carefully to ensure the exact frequency is met.
+    *   **Structure**: Ensure the final output matches the required format (e.g., specific separators or ordering).
+4.  **Final Verification**: Before submitting, perform a final check against every constraint:
+    *   Count the sentences.
+    *   Check for any accidental capital letters (if lowercase is required) or missing capital letters (if uppercase is required).
+    *   Count the occurrences of every required keyword.
+    *   Verify the mathematical/logical answer is correct.
+
+## Critical Rules
+*   **Constraint Priority**: A response that solves the math perfectly but fails a formatting constraint is considered a **failed task**.
+*   **Completeness**: Do not omit any part of the problem solution to fit constraints; instead, expand or rephrase the explanation to fit.
+*   **No Explanations of Constraints**: Do not write meta-commentary like "I am following the rules." Just provide the final, compliant output.
+
+## Example of Expected Behavior
+If the user asks for a math problem solution with "at least 17 sentences" and "34 all-caps words":
+*   Do not just write the math answer.
+*   Write a detailed step-by-step explanation.
+*   Ensure every sentence is written in ALL CAPS (or enough words per sentence are capitalized to reach the total count of 34).
+*   Verify the total sentence count is >= 17.
+*   Verify the total count of all-caps words is >= 34.
+
+Proceed with the task below.
+Iteration 6: New subsample score 1.5 is not better than old score 1.5, skipping
+Iteration 7: Selected program 0 score: 0.07277777777777777
+Iteration 7: Proposed new text for system_prompt: # Role
+You are a Precision Constraint Engine. Your primary goal is to generate text that strictly adheres to a set of complex, multi-layered constraints provided by the user. Natural flow is secondary to exact constraint satisfaction.
+
+# Task Definition
+You will receive a user request containing:
+1. A primary task (e.g., write code, answer a question, draft an email).
+2. A set of strict constraints regarding:
+   - **Positional Requirements**: Specific keywords must appear at exact indices (e.g., "the 12th word of the 14th sentence").
+   - **Structural Requirements**: Exact counts of paragraphs, sentences per paragraph, and words per sentence.
+   - **Content Restrictions**: Forbidden keywords (negative constraints) or mandatory keywords.
+   - **Formatting Rules**: Case sensitivity (all lowercase/uppercase), punctuation bans (no commas), or frequency limits (word counts).
+   - **Language**: The response must match the language of the input prompt.
+
+# Execution Strategy
+Before generating the final output, you MUST perform the following internal verification steps:
+
+1. **Constraint Parsing**: Extract every constraint into a checklist.
+   - *Positional*: Identify the target sentence number and word number for any required keywords.
+   - *Structural*: Calculate the total required word count based on (Paragraphs × Sentences/Para × Words/Sentence).
+   - *Negative*: List all forbidden words to ensure they never appear.
+   - *Formatting*: Note case requirements and punctuation bans.
+
+2. **Drafting with Counting**:
+   - Construct the text sentence by sentence.
+   - **Critical**: Manually count words and sentences as you write.
+   - If a constraint requires a specific word at a specific position, pad the preceding text with neutral filler words (e.g., "the", "is", "a") to ensure the target word lands exactly on the required index.
+   - Ensure the "last word of the response" constraint is met by placing the specific word at the very end of the final sentence, with no trailing punctuation or newlines after it.
+
+3. **Validation Loop**:
+   - **Check 1**: Does the total sentence count match?
+   - **Check 2**: Does every sentence have the exact required word count?
+   - **Check 3**: Are all forbidden keywords absent?
+   - **Check 4**: Are all mandatory keywords present at the exact specified positions?
+   - **Check 5**: Are formatting rules (case, punctuation) strictly followed?
+   - **Check 6**: In multilingual tasks, ensure the keyword (e.g., "price") is inserted in the correct language form or as a raw string if specified.
+
+4. **Final Output Generation**:
+   - Output ONLY the final text. Do not include explanations, code blocks (unless the task is code), or meta-commentary.
+   - Ensure the output ends exactly where the constraints dictate.
+
+# Specific Domain Knowledge & Edge Cases
+- **Sentence Definition**: A sentence ends with a period, question mark, exclamation mark, or the end of the text. Do not count markdown dividers (like `* * *`) as sentences unless explicitly stated.
+- **Word Definition**: A word is a sequence of characters separated by spaces. Punctuation attached to a word (e.g., "word.") counts as part of that word for position counting, but if the constraint says "no commas", ensure no comma character exists anywhere.
+- **Case Sensitivity**: "All lowercase" means NO capital letters, including the first letter of sentences or proper nouns.
+- **Frequency Limits**: "Appear at most 3 times" includes every instance of that specific string in the entire output.
+- **Multilingual Handling**: If the prompt is in a non-Latin script (e.g., Tamil), treat the script characters as words. Ensure English keywords (like "price" or "host") are inserted exactly as spelled in English unless the prompt implies translation.
+
+# Example Application
+If the user asks for "3 paragraphs, 2 sentences each, 2 words per sentence" and "last word must be 'charity'":
+- You must write exactly 6 sentences total.
+- Each sentence must have exactly 2 words.
+- The 6th sentence's 2nd word must be "charity".
+- No capital letters.
+- No extra newlines after the final word.
+
+Proceed with the user's request, applying this rigorous verification process.
+Iteration 7: New subsample score 0.5833333333333333 is better than old score 0.3333333333333333. Continue to full eval and add to candidate pool.
+Iteration 7: Valset score for new program: 0.06927777777777777 (coverage 300 / 300)
+Iteration 7: Val aggregate for new program: 0.06927777777777777
+Iteration 7: Individual valset scores for new program: {10: 0.3333333333333333, 19: 0.0, 21: 0.25, 0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.25, 5: 0.0, 6: 0.0, 7: 0.25, 8: 0.3333333333333333, 9: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 20: 0.0, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.3333333333333333, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.2, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 0.0, 61: 0.0, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.2, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 1.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.0, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.0, 125: 0.3333333333333333, 126: 0.0, 127: 0.0, 128: 0.0, 129: 0.0, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.5, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.6666666666666666, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.3333333333333333, 181: 0.0, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.0, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 0.3333333333333333, 221: 0.3333333333333333, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.0, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.5, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 0.0, 251: 0.0, 252: 0.0, 253: 0.3333333333333333, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.0, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.25, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.0, 281: 0.0, 282: 0.25, 283: 0.5, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 7: New valset pareto front scores: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.25, 5: 0.0, 6: 0.0, 7: 0.25, 8: 0.3333333333333333, 9: 0.0, 10: 0.3333333333333333, 11: 0.0, 12: 0.25, 13: 0.0, 14: 0.0, 15: 0.0, 16: 0.0, 17: 0.0, 18: 0.0, 19: 0.0, 20: 0.0, 21: 0.25, 22: 0.0, 23: 0.3333333333333333, 24: 0.25, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 0.3333333333333333, 30: 0.0, 31: 0.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.3333333333333333, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.2, 40: 0.0, 41: 1.0, 42: 0.0, 43: 0.25, 44: 0.3333333333333333, 45: 0.3333333333333333, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 0.0, 55: 0.5, 56: 0.0, 57: 0.0, 58: 0.5, 59: 0.0, 60: 0.0, 61: 0.0, 62: 0.0, 63: 0.0, 64: 0.0, 65: 0.0, 66: 0.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 0.0, 75: 0.0, 76: 0.0, 77: 0.0, 78: 0.0, 79: 0.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 0.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 0.0, 95: 0.0, 96: 0.0, 97: 0.0, 98: 0.2, 99: 0.0, 100: 0.0, 101: 0.5, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 1.0, 107: 0.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 0.3333333333333333, 112: 0.0, 113: 0.5, 114: 0.0, 115: 0.3333333333333333, 116: 0.0, 117: 0.0, 118: 0.0, 119: 0.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 0.0, 124: 0.3333333333333333, 125: 0.3333333333333333, 126: 0.3333333333333333, 127: 0.0, 128: 0.0, 129: 0.0, 130: 0.0, 131: 0.0, 132: 0.0, 133: 0.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.2, 139: 0.0, 140: 0.0, 141: 0.0, 142: 0.0, 143: 0.25, 144: 0.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 0.25, 153: 0.0, 154: 0.0, 155: 0.0, 156: 0.0, 157: 0.0, 158: 0.5, 159: 0.0, 160: 0.0, 161: 0.0, 162: 0.0, 163: 0.6666666666666666, 164: 1.0, 165: 0.3333333333333333, 166: 0.3333333333333333, 167: 0.0, 168: 0.2, 169: 0.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 0.0, 174: 0.0, 175: 0.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.2, 180: 0.3333333333333333, 181: 0.0, 182: 0.0, 183: 0.0, 184: 0.0, 185: 0.0, 186: 0.0, 187: 0.0, 188: 0.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 0.0, 195: 0.25, 196: 0.0, 197: 0.0, 198: 0.0, 199: 0.0, 200: 0.0, 201: 0.0, 202: 0.0, 203: 0.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 0.25, 212: 0.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.3333333333333333, 220: 0.3333333333333333, 221: 0.6666666666666666, 222: 0.0, 223: 0.0, 224: 0.5, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 0.0, 233: 0.3333333333333333, 234: 0.0, 235: 0.0, 236: 0.0, 237: 0.0, 238: 0.0, 239: 0.3333333333333333, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 0.5, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 0.5, 250: 0.0, 251: 0.0, 252: 0.0, 253: 0.3333333333333333, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.2, 259: 0.0, 260: 0.0, 261: 1.0, 262: 0.0, 263: 0.0, 264: 0.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 0.0, 271: 0.25, 272: 0.5, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 0.0, 280: 0.5, 281: 0.0, 282: 0.25, 283: 0.5, 284: 0.0, 285: 1.0, 286: 0.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.3333333333333333, 294: 0.0, 295: 0.0, 296: 0.0, 297: 0.0, 298: 0.0, 299: 0.0}
+Iteration 7: Valset pareto front aggregate score: 0.08344444444444443
+Iteration 7: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {1}, 5: {0, 1}, 6: {0, 1}, 7: {0, 1}, 8: {0, 1}, 9: {0, 1}, 10: {1}, 11: {0, 1}, 12: {0}, 13: {0, 1}, 14: {0, 1}, 15: {0, 1}, 16: {0, 1}, 17: {0, 1}, 18: {0, 1}, 19: {0, 1}, 20: {0, 1}, 21: {1}, 22: {0, 1}, 23: {0, 1}, 24: {0, 1}, 25: {0, 1}, 26: {0, 1}, 27: {0, 1}, 28: {0, 1}, 29: {0, 1}, 30: {0, 1}, 31: {0, 1}, 32: {0, 1}, 33: {0, 1}, 34: {0, 1}, 35: {0, 1}, 36: {0, 1}, 37: {0, 1}, 38: {0, 1}, 39: {0, 1}, 40: {0, 1}, 41: {0, 1}, 42: {0, 1}, 43: {0, 1}, 44: {0, 1}, 45: {0, 1}, 46: {0, 1}, 47: {0, 1}, 48: {0, 1}, 49: {0, 1}, 50: {0, 1}, 51: {0, 1}, 52: {0, 1}, 53: {0, 1}, 54: {0, 1}, 55: {0}, 56: {0, 1}, 57: {0, 1}, 58: {0}, 59: {0, 1}, 60: {0, 1}, 61: {0, 1}, 62: {0, 1}, 63: {0, 1}, 64: {0, 1}, 65: {0, 1}, 66: {0, 1}, 67: {0, 1}, 68: {0, 1}, 69: {0, 1}, 70: {0, 1}, 71: {0, 1}, 72: {0, 1}, 73: {0, 1}, 74: {0, 1}, 75: {0, 1}, 76: {0, 1}, 77: {0, 1}, 78: {0, 1}, 79: {0, 1}, 80: {0, 1}, 81: {0, 1}, 82: {0, 1}, 83: {0, 1}, 84: {0, 1}, 85: {0, 1}, 86: {0, 1}, 87: {0, 1}, 88: {0, 1}, 89: {0, 1}, 90: {0, 1}, 91: {0, 1}, 92: {0, 1}, 93: {0, 1}, 94: {0, 1}, 95: {0, 1}, 96: {0, 1}, 97: {0, 1}, 98: {0, 1}, 99: {0, 1}, 100: {0, 1}, 101: {0, 1}, 102: {0, 1}, 103: {0, 1}, 104: {0, 1}, 105: {0, 1}, 106: {1}, 107: {0, 1}, 108: {0, 1}, 109: {0, 1}, 110: {0, 1}, 111: {0, 1}, 112: {0, 1}, 113: {0}, 114: {0, 1}, 115: {0, 1}, 116: {0, 1}, 117: {0, 1}, 118: {0, 1}, 119: {0, 1}, 120: {0, 1}, 121: {0, 1}, 122: {0, 1}, 123: {0, 1}, 124: {0}, 125: {0, 1}, 126: {0}, 127: {0, 1}, 128: {0, 1}, 129: {0, 1}, 130: {0, 1}, 131: {0, 1}, 132: {0, 1}, 133: {0, 1}, 134: {0, 1}, 135: {0, 1}, 136: {0, 1}, 137: {0, 1}, 138: {0, 1}, 139: {0, 1}, 140: {0, 1}, 141: {0, 1}, 142: {0, 1}, 143: {0, 1}, 144: {0, 1}, 145: {0, 1}, 146: {0, 1}, 147: {0, 1}, 148: {0, 1}, 149: {0, 1}, 150: {0, 1}, 151: {0, 1}, 152: {0, 1}, 153: {0, 1}, 154: {0, 1}, 155: {0, 1}, 156: {0, 1}, 157: {0, 1}, 158: {1}, 159: {0, 1}, 160: {0, 1}, 161: {0, 1}, 162: {0, 1}, 163: {1}, 164: {0, 1}, 165: {0, 1}, 166: {0, 1}, 167: {0, 1}, 168: {0, 1}, 169: {0, 1}, 170: {0, 1}, 171: {0, 1}, 172: {0, 1}, 173: {0, 1}, 174: {0, 1}, 175: {0, 1}, 176: {0, 1}, 177: {0, 1}, 178: {0, 1}, 179: {1}, 180: {0, 1}, 181: {0, 1}, 182: {0, 1}, 183: {0, 1}, 184: {0, 1}, 185: {0, 1}, 186: {0, 1}, 187: {0, 1}, 188: {0, 1}, 189: {0, 1}, 190: {0, 1}, 191: {0, 1}, 192: {0, 1}, 193: {0, 1}, 194: {0, 1}, 195: {0, 1}, 196: {0, 1}, 197: {0, 1}, 198: {0, 1}, 199: {0, 1}, 200: {0, 1}, 201: {0, 1}, 202: {0, 1}, 203: {0, 1}, 204: {0, 1}, 205: {0, 1}, 206: {0, 1}, 207: {0, 1}, 208: {0, 1}, 209: {0, 1}, 210: {0, 1}, 211: {0, 1}, 212: {0, 1}, 213: {0, 1}, 214: {0, 1}, 215: {0, 1}, 216: {0, 1}, 217: {0, 1}, 218: {0, 1}, 219: {0}, 220: {0, 1}, 221: {0}, 222: {0, 1}, 223: {0, 1}, 224: {0, 1}, 225: {0, 1}, 226: {0, 1}, 227: {0, 1}, 228: {0, 1}, 229: {0, 1}, 230: {0, 1}, 231: {0, 1}, 232: {0, 1}, 233: {0}, 234: {0, 1}, 235: {0, 1}, 236: {0, 1}, 237: {0, 1}, 238: {0, 1}, 239: {0}, 240: {0, 1}, 241: {0, 1}, 242: {0, 1}, 243: {0, 1}, 244: {0, 1}, 245: {0, 1}, 246: {0, 1}, 247: {0, 1}, 248: {0, 1}, 249: {0, 1}, 250: {0, 1}, 251: {0, 1}, 252: {0, 1}, 253: {0, 1}, 254: {0, 1}, 255: {0, 1}, 256: {0, 1}, 257: {0, 1}, 258: {0, 1}, 259: {0, 1}, 260: {0, 1}, 261: {0, 1}, 262: {0, 1}, 263: {0, 1}, 264: {0, 1}, 265: {0, 1}, 266: {0, 1}, 267: {0, 1}, 268: {0, 1}, 269: {0, 1}, 270: {0, 1}, 271: {1}, 272: {0, 1}, 273: {0, 1}, 274: {0, 1}, 275: {0, 1}, 276: {0, 1}, 277: {0, 1}, 278: {0, 1}, 279: {0, 1}, 280: {0}, 281: {0, 1}, 282: {0, 1}, 283: {0, 1}, 284: {0, 1}, 285: {0, 1}, 286: {0, 1}, 287: {0, 1}, 288: {0, 1}, 289: {0, 1}, 290: {0, 1}, 291: {0, 1}, 292: {0, 1}, 293: {0, 1}, 294: {0, 1}, 295: {0, 1}, 296: {0, 1}, 297: {0, 1}, 298: {0, 1}, 299: {0, 1}}
+Iteration 7: Best valset aggregate score so far: 0.07277777777777777
+Iteration 7: Best program as per aggregate score on valset: 0
+Iteration 7: Best score on valset: 0.07277777777777777
+Iteration 7: Linear pareto front program index: 0
+Iteration 7: New program candidate index: 1

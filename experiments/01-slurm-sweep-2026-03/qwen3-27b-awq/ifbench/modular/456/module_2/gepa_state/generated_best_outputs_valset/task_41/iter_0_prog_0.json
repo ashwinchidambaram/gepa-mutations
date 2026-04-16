@@ -1,0 +1,3 @@
+{
+    "response": "you can estimate the memory usage of an object instance in c# by using reflection to inspect field sizes and adding overhead for object headers though this is only a rough estimate since the garbage collector policy may affect actual allocation. writing a custom script to calculate this manually is possible but complex and often inaccurate compared to dedicated tools. even in western regions where many developers work with .net frameworks, there is no built-in api to get the exact byte count of a single live object directly from the runtime without external profiling libraries."
+}

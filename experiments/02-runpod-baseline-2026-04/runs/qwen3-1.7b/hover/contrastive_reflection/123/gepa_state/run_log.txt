@@ -1,0 +1,1225 @@
+Iteration 0: Base program full valset score: 0.3933333333333333 over 300 / 300 examples
+Iteration 1: Selected program 0 score: 0.3933333333333333
+Iteration 1: Contrastive search found 0 pairs (requested 3)
+Iteration 1: Proposed new text for system_prompt: ## New Instruction
+
+You are to determine whether the given **claim** is **SUPPORTED** or **NOT_SUPPORTED** based on the provided **evidence**. The evidence consists of a set of key-value pairs where each key represents a specific piece of information (e.g., author, book title, magazine, event, etc.), and each value is a numerical indicator (e.g., 0, 1, 2, 3, etc.). 
+
+### Key Rules to Follow:
+1. **Interpret the evidence**: Analyze the evidence to extract relevant information about the claim.
+2. **Check for direct support**: Determine if the evidence directly supports or contradicts the claim.
+3. **Use logical reasoning**: If the evidence does not directly support the claim, and there is no clear contradiction, then the claim is **NOT_SUPPORTED**.
+4. **Do not assume**: Do not infer information not explicitly stated in the evidence.
+5. **Be precise**: The final answer must be either "SUPPORTED" or "NOT_SUPPORTED", and it must be based solely on the provided evidence.
+
+### Example:
+**Input:**
+Evidence:  
+{'key': 'Dionne Bunsha', 'value': 1}  
+{'key': 'Frontline (magazine)', 'value': 0}  
+{'key': 'Scarred: Experiments with Violence in Gujarat', 'value': 1}  
+
+Claim:  
+"The author of *Scarred: Experiments with Violence in Gujarat*, worked for the magazine published by The Hindu Group."
+
+**Output:**
+**NOT_SUPPORTED**
+
+### Additional Notes:
+- The evidence may include multiple entries about different entities (e.g., authors, books, magazines, events).
+- The numerical values are not necessarily indicative of importance or relevance, but they are used as part of the input.
+- The claim may involve multiple entities (e.g., author, book, magazine, city, etc.), and the evidence may not directly address all of them.
+- If the claim is about a specific entity (e.g., a book, author, or event), and the evidence does not mention that entity or its relationship, the claim is **NOT_SUPPORTED**.
+
+### Task Description:
+You are to evaluate a **claim** based on a set of **key-value pairs**. The goal is to determine whether the claim is **SUPPORTED** (evidence directly supports the claim) or **NOT_SUPPORTED** (evidence does not support the claim, or contradicts it).
+Iteration 1: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 1: Found a better program on the valset with score 0.44666666666666666.
+Iteration 1: Valset score for new program: 0.44666666666666666 (coverage 300 / 300)
+Iteration 1: Val aggregate for new program: 0.44666666666666666
+Iteration 1: Individual valset scores for new program: {7: 1.0, 79: 0.0, 133: 1.0, 0: 0.0, 1: 1.0, 2: 1.0, 3: 0.0, 4: 1.0, 5: 0.0, 6: 0.0, 8: 1.0, 9: 1.0, 10: 1.0, 11: 0.0, 12: 1.0, 13: 1.0, 14: 1.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 0.0, 19: 1.0, 20: 1.0, 21: 0.0, 22: 0.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 0.0, 27: 0.0, 28: 1.0, 29: 1.0, 30: 0.0, 31: 1.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 1.0, 40: 0.0, 41: 0.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 0.0, 46: 0.0, 47: 0.0, 48: 1.0, 49: 1.0, 50: 1.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 1.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 1.0, 61: 0.0, 62: 1.0, 63: 0.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 1.0, 72: 1.0, 73: 0.0, 74: 1.0, 75: 0.0, 76: 0.0, 77: 1.0, 78: 1.0, 80: 1.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 1.0, 86: 0.0, 87: 1.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 1.0, 92: 0.0, 93: 0.0, 94: 1.0, 95: 0.0, 96: 1.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 0.0, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 1.0, 115: 0.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 1.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 1.0, 127: 0.0, 128: 1.0, 129: 0.0, 130: 1.0, 131: 0.0, 132: 1.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 1.0, 138: 0.0, 139: 0.0, 140: 1.0, 141: 1.0, 142: 0.0, 143: 0.0, 144: 1.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 0.0, 158: 0.0, 159: 0.0, 160: 1.0, 161: 0.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 0.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 1.0, 174: 0.0, 175: 1.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 1.0, 180: 0.0, 181: 0.0, 182: 0.0, 183: 0.0, 184: 1.0, 185: 0.0, 186: 0.0, 187: 1.0, 188: 0.0, 189: 0.0, 190: 1.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 0.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 0.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 1.0, 212: 1.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 1.0, 218: 1.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 0.0, 224: 0.0, 225: 1.0, 226: 0.0, 227: 1.0, 228: 0.0, 229: 1.0, 230: 0.0, 231: 0.0, 232: 1.0, 233: 0.0, 234: 1.0, 235: 0.0, 236: 0.0, 237: 1.0, 238: 0.0, 239: 0.0, 240: 0.0, 241: 1.0, 242: 0.0, 243: 0.0, 244: 1.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 1.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 0.0, 262: 0.0, 263: 0.0, 264: 1.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 1.0, 271: 0.0, 272: 1.0, 273: 0.0, 274: 0.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 1.0, 279: 1.0, 280: 0.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 0.0, 286: 1.0, 287: 1.0, 288: 0.0, 289: 0.0, 290: 1.0, 291: 0.0, 292: 1.0, 293: 0.0, 294: 1.0, 295: 1.0, 296: 0.0, 297: 1.0, 298: 0.0, 299: 0.0}
+Iteration 1: New valset pareto front scores: {0: 0.0, 1: 1.0, 2: 1.0, 3: 0.0, 4: 1.0, 5: 0.0, 6: 0.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 1.0, 11: 0.0, 12: 1.0, 13: 1.0, 14: 1.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 0.0, 19: 1.0, 20: 1.0, 21: 0.0, 22: 0.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 0.0, 27: 0.0, 28: 1.0, 29: 1.0, 30: 0.0, 31: 1.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 1.0, 37: 0.0, 38: 0.0, 39: 1.0, 40: 0.0, 41: 0.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 0.0, 46: 0.0, 47: 0.0, 48: 1.0, 49: 1.0, 50: 1.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 1.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 1.0, 61: 0.0, 62: 1.0, 63: 0.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 1.0, 69: 0.0, 70: 0.0, 71: 1.0, 72: 1.0, 73: 0.0, 74: 1.0, 75: 0.0, 76: 0.0, 77: 1.0, 78: 1.0, 79: 1.0, 80: 1.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 1.0, 86: 0.0, 87: 1.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 1.0, 92: 0.0, 93: 0.0, 94: 1.0, 95: 0.0, 96: 1.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 0.0, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 1.0, 115: 0.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 1.0, 120: 0.0, 121: 0.0, 122: 0.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 1.0, 127: 0.0, 128: 1.0, 129: 0.0, 130: 1.0, 131: 0.0, 132: 1.0, 133: 1.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 1.0, 138: 0.0, 139: 0.0, 140: 1.0, 141: 1.0, 142: 0.0, 143: 0.0, 144: 1.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 0.0, 158: 0.0, 159: 0.0, 160: 1.0, 161: 0.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 0.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 1.0, 174: 0.0, 175: 1.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 1.0, 180: 0.0, 181: 0.0, 182: 0.0, 183: 0.0, 184: 1.0, 185: 0.0, 186: 0.0, 187: 1.0, 188: 0.0, 189: 0.0, 190: 1.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 0.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 0.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 1.0, 212: 1.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 1.0, 218: 1.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 0.0, 224: 0.0, 225: 1.0, 226: 0.0, 227: 1.0, 228: 0.0, 229: 1.0, 230: 1.0, 231: 1.0, 232: 1.0, 233: 0.0, 234: 1.0, 235: 0.0, 236: 0.0, 237: 1.0, 238: 0.0, 239: 0.0, 240: 0.0, 241: 1.0, 242: 0.0, 243: 0.0, 244: 1.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 1.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 0.0, 262: 0.0, 263: 0.0, 264: 1.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 1.0, 271: 0.0, 272: 1.0, 273: 0.0, 274: 0.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 1.0, 279: 1.0, 280: 0.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 0.0, 286: 1.0, 287: 1.0, 288: 0.0, 289: 0.0, 290: 1.0, 291: 0.0, 292: 1.0, 293: 0.0, 294: 1.0, 295: 1.0, 296: 0.0, 297: 1.0, 298: 0.0, 299: 0.0}
+Iteration 1: Valset pareto front aggregate score: 0.4633333333333333
+Iteration 1: Updated valset pareto front programs: {0: {0, 1}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {1}, 5: {0, 1}, 6: {0, 1}, 7: {1}, 8: {0, 1}, 9: {0, 1}, 10: {0, 1}, 11: {0, 1}, 12: {0, 1}, 13: {0, 1}, 14: {0, 1}, 15: {0, 1}, 16: {0, 1}, 17: {0, 1}, 18: {0, 1}, 19: {0, 1}, 20: {0, 1}, 21: {0, 1}, 22: {0, 1}, 23: {0, 1}, 24: {0, 1}, 25: {0, 1}, 26: {0, 1}, 27: {0, 1}, 28: {0, 1}, 29: {0, 1}, 30: {0, 1}, 31: {0, 1}, 32: {0, 1}, 33: {0, 1}, 34: {0, 1}, 35: {0, 1}, 36: {0}, 37: {0, 1}, 38: {0, 1}, 39: {1}, 40: {0, 1}, 41: {0, 1}, 42: {0, 1}, 43: {0, 1}, 44: {0, 1}, 45: {0, 1}, 46: {0, 1}, 47: {0, 1}, 48: {0, 1}, 49: {0, 1}, 50: {0, 1}, 51: {0, 1}, 52: {0, 1}, 53: {0, 1}, 54: {0, 1}, 55: {0, 1}, 56: {0, 1}, 57: {0, 1}, 58: {0, 1}, 59: {0, 1}, 60: {0, 1}, 61: {0, 1}, 62: {0, 1}, 63: {0, 1}, 64: {0, 1}, 65: {0, 1}, 66: {0, 1}, 67: {0, 1}, 68: {0}, 69: {0, 1}, 70: {0, 1}, 71: {0, 1}, 72: {0, 1}, 73: {0, 1}, 74: {0, 1}, 75: {0, 1}, 76: {0, 1}, 77: {0, 1}, 78: {0, 1}, 79: {0}, 80: {0, 1}, 81: {0, 1}, 82: {0, 1}, 83: {0, 1}, 84: {0, 1}, 85: {0, 1}, 86: {0, 1}, 87: {0, 1}, 88: {0, 1}, 89: {0, 1}, 90: {0, 1}, 91: {0, 1}, 92: {0, 1}, 93: {0, 1}, 94: {0, 1}, 95: {0, 1}, 96: {1}, 97: {0, 1}, 98: {1}, 99: {0, 1}, 100: {0, 1}, 101: {0, 1}, 102: {0, 1}, 103: {0, 1}, 104: {0, 1}, 105: {0, 1}, 106: {0, 1}, 107: {0, 1}, 108: {0, 1}, 109: {0, 1}, 110: {0, 1}, 111: {0, 1}, 112: {0, 1}, 113: {0, 1}, 114: {0, 1}, 115: {0, 1}, 116: {0, 1}, 117: {0, 1}, 118: {0, 1}, 119: {0, 1}, 120: {0, 1}, 121: {0, 1}, 122: {0, 1}, 123: {0, 1}, 124: {0, 1}, 125: {0, 1}, 126: {0, 1}, 127: {0, 1}, 128: {0, 1}, 129: {0, 1}, 130: {0, 1}, 131: {0, 1}, 132: {0, 1}, 133: {1}, 134: {0, 1}, 135: {0, 1}, 136: {0, 1}, 137: {0, 1}, 138: {0, 1}, 139: {0, 1}, 140: {1}, 141: {0, 1}, 142: {0, 1}, 143: {0, 1}, 144: {0, 1}, 145: {0, 1}, 146: {0, 1}, 147: {0, 1}, 148: {0, 1}, 149: {0, 1}, 150: {0, 1}, 151: {0, 1}, 152: {0, 1}, 153: {0, 1}, 154: {1}, 155: {0, 1}, 156: {0, 1}, 157: {0, 1}, 158: {0, 1}, 159: {0, 1}, 160: {0, 1}, 161: {0, 1}, 162: {0, 1}, 163: {0, 1}, 164: {0, 1}, 165: {0, 1}, 166: {0, 1}, 167: {0, 1}, 168: {0, 1}, 169: {0, 1}, 170: {0, 1}, 171: {0, 1}, 172: {0, 1}, 173: {0, 1}, 174: {0, 1}, 175: {0, 1}, 176: {0, 1}, 177: {0, 1}, 178: {0, 1}, 179: {0, 1}, 180: {0, 1}, 181: {0, 1}, 182: {0, 1}, 183: {0, 1}, 184: {0, 1}, 185: {0, 1}, 186: {0, 1}, 187: {1}, 188: {0, 1}, 189: {0, 1}, 190: {0, 1}, 191: {0, 1}, 192: {0, 1}, 193: {0, 1}, 194: {0, 1}, 195: {0, 1}, 196: {0, 1}, 197: {1}, 198: {0, 1}, 199: {1}, 200: {1}, 201: {0, 1}, 202: {0, 1}, 203: {0, 1}, 204: {0, 1}, 205: {0, 1}, 206: {0, 1}, 207: {1}, 208: {0, 1}, 209: {0, 1}, 210: {0, 1}, 211: {0, 1}, 212: {0, 1}, 213: {0, 1}, 214: {0, 1}, 215: {0, 1}, 216: {0, 1}, 217: {0, 1}, 218: {0, 1}, 219: {0, 1}, 220: {0, 1}, 221: {1}, 222: {0, 1}, 223: {0, 1}, 224: {0, 1}, 225: {1}, 226: {0, 1}, 227: {0, 1}, 228: {0, 1}, 229: {1}, 230: {0}, 231: {0}, 232: {0, 1}, 233: {0, 1}, 234: {1}, 235: {0, 1}, 236: {0, 1}, 237: {0, 1}, 238: {0, 1}, 239: {0, 1}, 240: {0, 1}, 241: {1}, 242: {0, 1}, 243: {0, 1}, 244: {0, 1}, 245: {0, 1}, 246: {0, 1}, 247: {0, 1}, 248: {0, 1}, 249: {0, 1}, 250: {0, 1}, 251: {0, 1}, 252: {1}, 253: {0, 1}, 254: {0, 1}, 255: {0, 1}, 256: {0, 1}, 257: {0, 1}, 258: {0, 1}, 259: {0, 1}, 260: {0, 1}, 261: {0, 1}, 262: {0, 1}, 263: {0, 1}, 264: {1}, 265: {0, 1}, 266: {0, 1}, 267: {0, 1}, 268: {0, 1}, 269: {0, 1}, 270: {0, 1}, 271: {0, 1}, 272: {0, 1}, 273: {0, 1}, 274: {0, 1}, 275: {0, 1}, 276: {0, 1}, 277: {0, 1}, 278: {0, 1}, 279: {1}, 280: {0, 1}, 281: {0, 1}, 282: {0, 1}, 283: {0, 1}, 284: {0, 1}, 285: {0, 1}, 286: {0, 1}, 287: {0, 1}, 288: {0, 1}, 289: {0, 1}, 290: {0, 1}, 291: {0, 1}, 292: {0, 1}, 293: {0, 1}, 294: {0, 1}, 295: {0, 1}, 296: {0, 1}, 297: {0, 1}, 298: {0, 1}, 299: {0, 1}}
+Iteration 1: Best valset aggregate score so far: 0.44666666666666666
+Iteration 1: Best program as per aggregate score on valset: 1
+Iteration 1: Best score on valset: 0.44666666666666666
+Iteration 1: Linear pareto front program index: 1
+Iteration 1: New program candidate index: 1
+Iteration 2: No merge candidates found
+Iteration 2: Selected program 1 score: 0.44666666666666666
+Iteration 2: Contrastive search found 0 pairs (requested 3)
+Iteration 2: Proposed new text for system_prompt: ## New Instruction
+
+You are to determine whether the given **claim** is **SUPPORTED** or **NOT_SUPPORTED** based on the provided **evidence**. The evidence consists of a set of key-value pairs where each key represents a specific piece of information (e.g., author, book title, magazine, event, etc.), and each value is a numerical indicator (e.g., 0, 1, 2, 3, etc.). 
+
+### Key Rules to Follow:
+1. **Interpret the evidence**: Analyze the evidence to extract relevant information about the claim.
+2. **Check for direct support**: Determine if the evidence directly supports or contradicts the claim.
+3. **Use logical reasoning**: If the evidence does not directly support the claim and there is no clear contradiction, then the claim is **NOT_SUPPORTED**.
+4. **Do not assume**: Do not infer information not explicitly stated in the evidence.
+5. **Be precise**: The final answer must be either "SUPPORTED" or "NOT_SUPPORTED", and it must be based solely on the provided evidence.
+
+### Example:
+**Input:**
+Evidence:  
+{'key': 'Dionne Bunsha', 'value': 1}  
+{'key': 'Frontline (magazine)', 'value': 0}  
+{'key': 'Scarred: Experiments with Violence in Gujarat', 'value': 1}  
+
+Claim:  
+"The author of *Scarred: Experiments with Violence in Gujarat*, worked for the magazine published by The Hindu Group."
+
+**Output:**
+**NOT_SUPPORTED**
+
+### Additional Notes:
+- The evidence may include multiple entries about different entities (e.g., authors, books, magazines, events).
+- The numerical values are not necessarily indicative of importance or relevance, but they are used as part of the input.
+- The claim may involve multiple entities (e.g., author, book, magazine, city, etc.), and the evidence may not directly address all of them.
+- If the claim is about a specific entity (e.g., a book, author, or event), and the evidence does not mention that entity or its relationship, the claim is **NOT_SUPPORTED**.
+
+### Task Description:
+You are to evaluate a **claim** based on a set of **key-value pairs**. The goal is to determine whether the claim is **SUPPORTED** (evidence directly supports the claim) or **NOT_SUPPORTED** (evidence does not support the claim, or contradicts it).
+
+### Niche and Domain-Specific Facts to Consider:
+- **Key-value pairs** are used to represent specific facts, and their values are not necessarily indicative of importance or relevance.
+- **Numerical values** are used as part of the input but do not inherently indicate support or contradiction.
+- **Entities** mentioned in the evidence (e.g., authors, books, magazines) may not be directly linked to the claim unless explicitly stated.
+- **Logical inference** is not allowed; only **direct evidence** or **clear contradiction** can support or undermine the claim.
+- **Multiple entities** in the claim may not all be covered in the evidence, and the absence of information about any entity is sufficient to mark the claim as **NOT_SUPPORTED**.
+
+### Generalizable Strategy:
+- If the claim mentions a specific entity (e.g., author, book, magazine), and the evidence does not mention that entity or its relationship, the claim is **NOT_SUPPORTED**.
+- If the claim involves a relationship between entities (e.g., author and book, magazine and author), and the evidence supports that relationship, the claim is **SUPPORTED**.
+- If the claim is about a specific event, and the evidence does not mention it, the claim is **NOT_SUPPORTED**.
+- If the claim is about a specific fact (e.g., "The author of X wrote Y"), and the evidence supports that fact, the claim is **SUPPORTED**.
+
+### Final Output Format:
+**SUPPORTED** or **NOT_SUPPORTED**
+Iteration 2: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 3: Selected program 1 score: 0.44666666666666666
+Iteration 3: All subsample scores perfect. Skipping.
+Iteration 3: Reflective mutation did not propose a new candidate
+Iteration 4: Selected program 0 score: 0.3933333333333333
+Iteration 4: Contrastive search found 0 pairs (requested 3)
+Iteration 4: Proposed new text for system_prompt: ## New Instruction
+
+You are to determine whether a given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a set of key-value pairs, where each key represents a specific piece of information (e.g., a person's name, a film title, a category, etc.), and each value represents a numerical score (e.g., 0, 1, 2, etc.) that indicates the level of support or lack of support for that piece of information.
+
+### Task Overview:
+- **Claim**: A statement that asserts a fact or opinion.
+- **Evidence**: A collection of key-value pairs that provide information about the claim or related facts.
+- **Goal**: Determine whether the claim is **SUPPORTED** (i.e., the evidence directly supports the claim) or **NOT_SUPPORTED** (i.e., the evidence does not support the claim or contradicts it).
+
+### Key Considerations:
+1. **Interpretation of Values**: The values in the evidence are not inherently true or false, but they represent a score or indicator of support. For example:
+   - A value of 0 may indicate no information or no support.
+   - A value of 1 may indicate partial support.
+   - A value of 2 may indicate strong support.
+   - A value of 3 may indicate very strong support.
+
+2. **Key-Value Mapping**: Each key in the evidence corresponds to a specific piece of information. For example:
+   - "Sandi Simcha DuBowski" → indicates whether Sandi Simcha DuBowski directed a documentary.
+   - "Zeitgeist (film series)" → indicates whether the film "Zeitgeist" was released in 2001.
+
+3. **Claim Analysis**: The claim is a statement that may involve multiple assertions (e.g., "Sandi Simcha DuBowski directed a documentary released in 2001" and "Zeitgeist was not released in 2001"). You must evaluate each assertion independently and collectively.
+
+4. **Logical Deduction**: You must reason through the evidence step by step to determine whether the claim is supported or not. If the evidence directly supports the claim, the claim is **SUPPORTED**. If the evidence contradicts or does not support the claim, the claim is **NOT_SUPPORTED**.
+
+5. **Generalizable Strategy**: If the evidence provides sufficient information to directly support the claim, the claim is **SUPPORTED**. If the evidence does not provide enough information or contradicts the claim, the claim is **NOT_SUPPORTED**.
+
+### Example:
+#### Inputs:
+```json
+{
+  "key": "Sandi Simcha DuBowski",
+  "value": 0
+}
+{
+  "key": "Zeitgeist (film series)",
+  "value": 0
+}
+```
+#### Claim:
+"Sandi Simcha DuBowski directed a documentary released in 2001. The horror film Zeitgeist was not also released in 2001."
+
+#### Output:
+**NOT_SUPPORTED**
+
+### Reasoning:
+- The evidence shows that **Sandi Simcha DuBowski** has a value of 0, which suggests no information is provided about her directing a documentary or any film.
+- The evidence also shows that the key "Zeitgeist (film series)" has a value of 0, which suggests no information is provided about the film "Zeitgeist" being released in 2001.
+- The claim states that **Sandi Simcha DuBowski directed a documentary released in 2001**, but there is no evidence to support this.
+- The claim also states that **Zeitgeist was not released in 2001**, but again, there is no evidence to support this either.
+
+### Final Answer:
+**NOT_SUPPORTED**
+Iteration 4: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 5: Selected program 0 score: 0.3933333333333333
+Iteration 5: Contrastive search found 0 pairs (requested 3)
+Iteration 5: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents a specific entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example:  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.
+Iteration 5: New subsample score 3.0 is better than old score 2.0. Continue to full eval and add to candidate pool.
+Iteration 5: Found a better program on the valset with score 0.45.
+Iteration 5: Valset score for new program: 0.45 (coverage 300 / 300)
+Iteration 5: Val aggregate for new program: 0.45
+Iteration 5: Individual valset scores for new program: {6: 1.0, 88: 1.0, 136: 1.0, 0: 0.0, 1: 1.0, 2: 1.0, 3: 0.0, 4: 1.0, 5: 0.0, 7: 0.0, 8: 1.0, 9: 1.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 1.0, 14: 1.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 0.0, 19: 1.0, 20: 0.0, 21: 0.0, 22: 0.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 0.0, 27: 1.0, 28: 0.0, 29: 1.0, 30: 0.0, 31: 1.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 1.0, 40: 0.0, 41: 0.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 0.0, 46: 1.0, 47: 1.0, 48: 0.0, 49: 1.0, 50: 1.0, 51: 1.0, 52: 0.0, 53: 0.0, 54: 1.0, 55: 0.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 1.0, 61: 1.0, 62: 0.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 0.0, 67: 1.0, 68: 1.0, 69: 0.0, 70: 0.0, 71: 1.0, 72: 1.0, 73: 0.0, 74: 1.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 1.0, 79: 1.0, 80: 0.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 1.0, 86: 0.0, 87: 1.0, 89: 0.0, 90: 0.0, 91: 0.0, 92: 0.0, 93: 0.0, 94: 1.0, 95: 0.0, 96: 1.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 1.0, 101: 0.0, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 0.0, 115: 0.0, 116: 0.0, 117: 0.0, 118: 1.0, 119: 1.0, 120: 1.0, 121: 0.0, 122: 1.0, 123: 0.0, 124: 0.0, 125: 0.0, 126: 0.0, 127: 1.0, 128: 1.0, 129: 0.0, 130: 1.0, 131: 0.0, 132: 1.0, 133: 0.0, 134: 0.0, 135: 0.0, 137: 1.0, 138: 0.0, 139: 1.0, 140: 1.0, 141: 1.0, 142: 0.0, 143: 0.0, 144: 1.0, 145: 1.0, 146: 1.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 0.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 0.0, 162: 0.0, 163: 0.0, 164: 0.0, 165: 1.0, 166: 0.0, 167: 0.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 0.0, 177: 0.0, 178: 1.0, 179: 1.0, 180: 1.0, 181: 0.0, 182: 0.0, 183: 0.0, 184: 1.0, 185: 1.0, 186: 0.0, 187: 1.0, 188: 1.0, 189: 0.0, 190: 1.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 0.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 0.0, 209: 0.0, 210: 0.0, 211: 1.0, 212: 1.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 1.0, 217: 1.0, 218: 0.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 0.0, 224: 0.0, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 1.0, 230: 0.0, 231: 1.0, 232: 1.0, 233: 1.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 1.0, 238: 0.0, 239: 0.0, 240: 0.0, 241: 0.0, 242: 1.0, 243: 0.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 0.0, 262: 0.0, 263: 1.0, 264: 1.0, 265: 1.0, 266: 1.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 1.0, 271: 0.0, 272: 0.0, 273: 0.0, 274: 0.0, 275: 0.0, 276: 0.0, 277: 1.0, 278: 0.0, 279: 1.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 0.0, 285: 0.0, 286: 1.0, 287: 0.0, 288: 1.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.0, 294: 1.0, 295: 0.0, 296: 0.0, 297: 1.0, 298: 0.0, 299: 0.0}
+Iteration 5: New valset pareto front scores: {0: 0.0, 1: 1.0, 2: 1.0, 3: 0.0, 4: 1.0, 5: 0.0, 6: 1.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 1.0, 11: 0.0, 12: 1.0, 13: 1.0, 14: 1.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 0.0, 19: 1.0, 20: 1.0, 21: 0.0, 22: 0.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 0.0, 27: 1.0, 28: 1.0, 29: 1.0, 30: 0.0, 31: 1.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 1.0, 37: 0.0, 38: 0.0, 39: 1.0, 40: 0.0, 41: 0.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 0.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 1.0, 50: 1.0, 51: 1.0, 52: 0.0, 53: 0.0, 54: 1.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 1.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 1.0, 69: 0.0, 70: 0.0, 71: 1.0, 72: 1.0, 73: 0.0, 74: 1.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 1.0, 79: 1.0, 80: 1.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 1.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 0.0, 90: 0.0, 91: 1.0, 92: 0.0, 93: 0.0, 94: 1.0, 95: 0.0, 96: 1.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 1.0, 101: 0.0, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 1.0, 115: 0.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 1.0, 120: 1.0, 121: 0.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 1.0, 127: 1.0, 128: 1.0, 129: 0.0, 130: 1.0, 131: 0.0, 132: 1.0, 133: 1.0, 134: 0.0, 135: 0.0, 136: 1.0, 137: 1.0, 138: 0.0, 139: 1.0, 140: 1.0, 141: 1.0, 142: 0.0, 143: 0.0, 144: 1.0, 145: 1.0, 146: 1.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 0.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 0.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 1.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 0.0, 177: 0.0, 178: 1.0, 179: 1.0, 180: 1.0, 181: 0.0, 182: 0.0, 183: 0.0, 184: 1.0, 185: 1.0, 186: 0.0, 187: 1.0, 188: 1.0, 189: 0.0, 190: 1.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 0.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 1.0, 212: 1.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 1.0, 217: 1.0, 218: 1.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 0.0, 224: 0.0, 225: 1.0, 226: 0.0, 227: 1.0, 228: 0.0, 229: 1.0, 230: 1.0, 231: 1.0, 232: 1.0, 233: 1.0, 234: 1.0, 235: 0.0, 236: 0.0, 237: 1.0, 238: 0.0, 239: 0.0, 240: 0.0, 241: 1.0, 242: 1.0, 243: 0.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 1.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 0.0, 262: 0.0, 263: 1.0, 264: 1.0, 265: 1.0, 266: 1.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 1.0, 271: 0.0, 272: 1.0, 273: 0.0, 274: 0.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 1.0, 279: 1.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 0.0, 286: 1.0, 287: 1.0, 288: 1.0, 289: 0.0, 290: 1.0, 291: 0.0, 292: 1.0, 293: 0.0, 294: 1.0, 295: 1.0, 296: 0.0, 297: 1.0, 298: 0.0, 299: 0.0}
+Iteration 5: Valset pareto front aggregate score: 0.58
+Iteration 5: Updated valset pareto front programs: {0: {0, 1, 2}, 1: {0, 1, 2}, 2: {0, 1, 2}, 3: {0, 1, 2}, 4: {1, 2}, 5: {0, 1, 2}, 6: {2}, 7: {1}, 8: {0, 1, 2}, 9: {0, 1, 2}, 10: {0, 1}, 11: {0, 1, 2}, 12: {0, 1}, 13: {0, 1, 2}, 14: {0, 1, 2}, 15: {0, 1, 2}, 16: {0, 1, 2}, 17: {0, 1, 2}, 18: {0, 1, 2}, 19: {0, 1, 2}, 20: {0, 1}, 21: {0, 1, 2}, 22: {0, 1, 2}, 23: {0, 1, 2}, 24: {0, 1, 2}, 25: {0, 1, 2}, 26: {0, 1, 2}, 27: {2}, 28: {0, 1}, 29: {0, 1, 2}, 30: {0, 1, 2}, 31: {0, 1, 2}, 32: {0, 1, 2}, 33: {0, 1, 2}, 34: {0, 1, 2}, 35: {0, 1, 2}, 36: {0}, 37: {0, 1, 2}, 38: {0, 1, 2}, 39: {1, 2}, 40: {0, 1, 2}, 41: {0, 1, 2}, 42: {0, 1, 2}, 43: {0, 1, 2}, 44: {0, 1, 2}, 45: {0, 1, 2}, 46: {2}, 47: {2}, 48: {0, 1}, 49: {0, 1, 2}, 50: {0, 1, 2}, 51: {2}, 52: {0, 1, 2}, 53: {0, 1, 2}, 54: {0, 1, 2}, 55: {0, 1}, 56: {0, 1, 2}, 57: {0, 1, 2}, 58: {0, 1, 2}, 59: {0, 1}, 60: {0, 1, 2}, 61: {2}, 62: {0, 1}, 63: {2}, 64: {0, 1, 2}, 65: {0, 1, 2}, 66: {0, 1}, 67: {0, 1, 2}, 68: {0, 2}, 69: {0, 1, 2}, 70: {0, 1, 2}, 71: {0, 1, 2}, 72: {0, 1, 2}, 73: {0, 1, 2}, 74: {0, 1, 2}, 75: {2}, 76: {0, 1, 2}, 77: {0, 1, 2}, 78: {0, 1, 2}, 79: {0, 2}, 80: {0, 1}, 81: {0, 1, 2}, 82: {0, 1, 2}, 83: {0, 1, 2}, 84: {0, 1, 2}, 85: {0, 1, 2}, 86: {0, 1, 2}, 87: {0, 1, 2}, 88: {2}, 89: {0, 1, 2}, 90: {0, 1, 2}, 91: {0, 1}, 92: {0, 1, 2}, 93: {0, 1, 2}, 94: {0, 1, 2}, 95: {0, 1, 2}, 96: {1, 2}, 97: {0, 1, 2}, 98: {1, 2}, 99: {0, 1, 2}, 100: {2}, 101: {0, 1, 2}, 102: {0, 1, 2}, 103: {0, 1, 2}, 104: {0, 1, 2}, 105: {0, 1, 2}, 106: {0, 1, 2}, 107: {0, 1, 2}, 108: {0, 1, 2}, 109: {0, 1, 2}, 110: {0, 1, 2}, 111: {0, 1, 2}, 112: {0, 1, 2}, 113: {0, 1, 2}, 114: {0, 1}, 115: {0, 1, 2}, 116: {0, 1, 2}, 117: {0, 1}, 118: {0, 1, 2}, 119: {0, 1, 2}, 120: {2}, 121: {0, 1, 2}, 122: {2}, 123: {0, 1}, 124: {0, 1}, 125: {0, 1, 2}, 126: {0, 1}, 127: {2}, 128: {0, 1, 2}, 129: {0, 1, 2}, 130: {0, 1, 2}, 131: {0, 1, 2}, 132: {0, 1, 2}, 133: {1}, 134: {0, 1, 2}, 135: {0, 1, 2}, 136: {2}, 137: {0, 1, 2}, 138: {0, 1, 2}, 139: {2}, 140: {1, 2}, 141: {0, 1, 2}, 142: {0, 1, 2}, 143: {0, 1, 2}, 144: {0, 1, 2}, 145: {2}, 146: {2}, 147: {0, 1, 2}, 148: {0, 1, 2}, 149: {0, 1, 2}, 150: {0, 1, 2}, 151: {0, 1, 2}, 152: {0, 1, 2}, 153: {0, 1, 2}, 154: {1, 2}, 155: {0, 1, 2}, 156: {0, 1, 2}, 157: {0, 1, 2}, 158: {2}, 159: {2}, 160: {0, 1, 2}, 161: {0, 1, 2}, 162: {0, 1, 2}, 163: {0, 1}, 164: {0, 1, 2}, 165: {2}, 166: {0, 1}, 167: {0, 1}, 168: {0, 1, 2}, 169: {0, 1, 2}, 170: {0, 1, 2}, 171: {0, 1, 2}, 172: {0, 1, 2}, 173: {0, 1, 2}, 174: {2}, 175: {0, 1, 2}, 176: {0, 1, 2}, 177: {0, 1, 2}, 178: {2}, 179: {0, 1, 2}, 180: {2}, 181: {0, 1, 2}, 182: {0, 1, 2}, 183: {0, 1, 2}, 184: {0, 1, 2}, 185: {2}, 186: {0, 1, 2}, 187: {1, 2}, 188: {2}, 189: {0, 1, 2}, 190: {0, 1, 2}, 191: {0, 1, 2}, 192: {0, 1, 2}, 193: {0, 1, 2}, 194: {0, 1, 2}, 195: {0, 1, 2}, 196: {0, 1, 2}, 197: {1, 2}, 198: {0, 1, 2}, 199: {1, 2}, 200: {1, 2}, 201: {0, 1, 2}, 202: {2}, 203: {0, 1, 2}, 204: {0, 1, 2}, 205: {0, 1, 2}, 206: {0, 1, 2}, 207: {1, 2}, 208: {0, 1, 2}, 209: {0, 1}, 210: {0, 1, 2}, 211: {0, 1, 2}, 212: {0, 1, 2}, 213: {0, 1, 2}, 214: {0, 1, 2}, 215: {0, 1, 2}, 216: {2}, 217: {0, 1, 2}, 218: {0, 1}, 219: {0, 1, 2}, 220: {0, 1, 2}, 221: {1, 2}, 222: {0, 1, 2}, 223: {0, 1, 2}, 224: {0, 1, 2}, 225: {1}, 226: {0, 1, 2}, 227: {0, 1}, 228: {0, 1, 2}, 229: {1, 2}, 230: {0}, 231: {0, 2}, 232: {0, 1, 2}, 233: {2}, 234: {1}, 235: {0, 1, 2}, 236: {0, 1, 2}, 237: {0, 1, 2}, 238: {0, 1, 2}, 239: {0, 1, 2}, 240: {0, 1, 2}, 241: {1}, 242: {2}, 243: {0, 1, 2}, 244: {0, 1, 2}, 245: {2}, 246: {0, 1, 2}, 247: {0, 1, 2}, 248: {0, 1, 2}, 249: {0, 1, 2}, 250: {0, 1, 2}, 251: {0, 1, 2}, 252: {1}, 253: {0, 1, 2}, 254: {0, 1, 2}, 255: {0, 1, 2}, 256: {0, 1, 2}, 257: {0, 1, 2}, 258: {0, 1, 2}, 259: {0, 1, 2}, 260: {0, 1, 2}, 261: {0, 1, 2}, 262: {0, 1, 2}, 263: {2}, 264: {1, 2}, 265: {2}, 266: {2}, 267: {0, 1, 2}, 268: {0, 1, 2}, 269: {0, 1, 2}, 270: {0, 1, 2}, 271: {0, 1, 2}, 272: {0, 1}, 273: {0, 1, 2}, 274: {0, 1, 2}, 275: {0, 1}, 276: {0, 1}, 277: {0, 1, 2}, 278: {0, 1}, 279: {1, 2}, 280: {2}, 281: {0, 1, 2}, 282: {0, 1, 2}, 283: {0, 1, 2}, 284: {0, 1}, 285: {0, 1, 2}, 286: {0, 1, 2}, 287: {0, 1}, 288: {2}, 289: {0, 1, 2}, 290: {0, 1}, 291: {0, 1, 2}, 292: {0, 1}, 293: {0, 1, 2}, 294: {0, 1, 2}, 295: {0, 1}, 296: {0, 1, 2}, 297: {0, 1, 2}, 298: {0, 1, 2}, 299: {0, 1, 2}}
+Iteration 5: Best valset aggregate score so far: 0.45
+Iteration 5: Best program as per aggregate score on valset: 2
+Iteration 5: Best score on valset: 0.45
+Iteration 5: Linear pareto front program index: 2
+Iteration 5: New program candidate index: 2
+Iteration 6: No merge candidates found
+Iteration 6: Selected program 2 score: 0.45
+Iteration 6: Contrastive search found 0 pairs (requested 3)
+Iteration 6: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- **Niche Facts**: The task may involve specialized knowledge (e.g., historical figures, cultural contexts, or academic fields) that is not explicitly stated in the evidence.  
+- **Domain-Specific Knowledge**: If the claim requires knowledge that is not present in the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Direct Evidence**: If the claim cannot be verified or refuted based on the provided evidence, the claim is **NOT_SUPPORTED**.  
+- **No Logical Connection**: If the claim is about a relationship or attribute that is not logically connected to the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Contextual Information**: If the claim requires contextual knowledge (e.g., historical events, cultural norms, or professional roles) not included in the evidence, the claim is **NOT_SUPPORTED**.
+Iteration 6: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 6: Found a better program on the valset with score 0.5066666666666667.
+Iteration 6: Valset score for new program: 0.5066666666666667 (coverage 300 / 300)
+Iteration 6: Val aggregate for new program: 0.5066666666666667
+Iteration 6: Individual valset scores for new program: {38: 1.0, 105: 1.0, 143: 0.0, 0: 1.0, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 1.0, 9: 1.0, 10: 1.0, 11: 0.0, 12: 1.0, 13: 1.0, 14: 1.0, 15: 1.0, 16: 1.0, 17: 1.0, 18: 0.0, 19: 1.0, 20: 1.0, 21: 0.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 0.0, 26: 1.0, 27: 0.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 1.0, 32: 0.0, 33: 1.0, 34: 1.0, 35: 1.0, 36: 0.0, 37: 0.0, 39: 1.0, 40: 0.0, 41: 0.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 0.0, 48: 1.0, 49: 1.0, 50: 0.0, 51: 0.0, 52: 1.0, 53: 1.0, 54: 1.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 0.0, 60: 0.0, 61: 0.0, 62: 1.0, 63: 0.0, 64: 0.0, 65: 1.0, 66: 0.0, 67: 1.0, 68: 1.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 0.0, 74: 1.0, 75: 0.0, 76: 0.0, 77: 1.0, 78: 0.0, 79: 0.0, 80: 1.0, 81: 1.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 0.0, 86: 0.0, 87: 1.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 1.0, 92: 1.0, 93: 0.0, 94: 1.0, 95: 0.0, 96: 0.0, 97: 1.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 0.0, 102: 1.0, 103: 0.0, 104: 0.0, 106: 0.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 1.0, 114: 1.0, 115: 0.0, 116: 0.0, 117: 0.0, 118: 1.0, 119: 1.0, 120: 1.0, 121: 0.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 0.0, 127: 0.0, 128: 1.0, 129: 0.0, 130: 1.0, 131: 0.0, 132: 1.0, 133: 0.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 0.0, 138: 0.0, 139: 0.0, 140: 1.0, 141: 1.0, 142: 0.0, 144: 1.0, 145: 1.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 1.0, 150: 0.0, 151: 1.0, 152: 0.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 0.0, 158: 0.0, 159: 0.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 1.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 0.0, 170: 0.0, 171: 1.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 0.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 0.0, 181: 1.0, 182: 0.0, 183: 0.0, 184: 1.0, 185: 0.0, 186: 1.0, 187: 0.0, 188: 1.0, 189: 0.0, 190: 1.0, 191: 1.0, 192: 0.0, 193: 0.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 1.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 0.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 0.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 0.0, 214: 0.0, 215: 1.0, 216: 0.0, 217: 1.0, 218: 0.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 0.0, 225: 0.0, 226: 0.0, 227: 1.0, 228: 1.0, 229: 0.0, 230: 1.0, 231: 1.0, 232: 1.0, 233: 1.0, 234: 1.0, 235: 1.0, 236: 0.0, 237: 0.0, 238: 1.0, 239: 0.0, 240: 0.0, 241: 0.0, 242: 0.0, 243: 1.0, 244: 0.0, 245: 0.0, 246: 0.0, 247: 1.0, 248: 0.0, 249: 1.0, 250: 0.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 0.0, 260: 1.0, 261: 0.0, 262: 0.0, 263: 1.0, 264: 1.0, 265: 0.0, 266: 1.0, 267: 0.0, 268: 0.0, 269: 1.0, 270: 1.0, 271: 0.0, 272: 0.0, 273: 1.0, 274: 1.0, 275: 0.0, 276: 0.0, 277: 1.0, 278: 1.0, 279: 1.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 0.0, 286: 0.0, 287: 1.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 0.0, 294: 1.0, 295: 0.0, 296: 0.0, 297: 1.0, 298: 1.0, 299: 0.0}
+Iteration 6: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0, 5: 0.0, 6: 1.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 1.0, 11: 0.0, 12: 1.0, 13: 1.0, 14: 1.0, 15: 1.0, 16: 1.0, 17: 1.0, 18: 0.0, 19: 1.0, 20: 1.0, 21: 0.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 1.0, 32: 0.0, 33: 1.0, 34: 1.0, 35: 1.0, 36: 1.0, 37: 0.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 0.0, 42: 1.0, 43: 0.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 1.0, 50: 1.0, 51: 1.0, 52: 1.0, 53: 1.0, 54: 1.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 1.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 1.0, 69: 0.0, 70: 0.0, 71: 1.0, 72: 1.0, 73: 0.0, 74: 1.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 1.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 1.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 0.0, 90: 0.0, 91: 1.0, 92: 1.0, 93: 0.0, 94: 1.0, 95: 0.0, 96: 1.0, 97: 1.0, 98: 1.0, 99: 1.0, 100: 1.0, 101: 0.0, 102: 1.0, 103: 0.0, 104: 0.0, 105: 1.0, 106: 0.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 1.0, 114: 1.0, 115: 0.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 1.0, 120: 1.0, 121: 0.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 1.0, 127: 1.0, 128: 1.0, 129: 0.0, 130: 1.0, 131: 0.0, 132: 1.0, 133: 1.0, 134: 0.0, 135: 0.0, 136: 1.0, 137: 1.0, 138: 0.0, 139: 1.0, 140: 1.0, 141: 1.0, 142: 0.0, 143: 0.0, 144: 1.0, 145: 1.0, 146: 1.0, 147: 0.0, 148: 0.0, 149: 1.0, 150: 0.0, 151: 1.0, 152: 1.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 0.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 1.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 1.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 0.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 1.0, 181: 1.0, 182: 0.0, 183: 0.0, 184: 1.0, 185: 1.0, 186: 1.0, 187: 1.0, 188: 1.0, 189: 0.0, 190: 1.0, 191: 1.0, 192: 0.0, 193: 0.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 1.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 0.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 0.0, 214: 0.0, 215: 1.0, 216: 1.0, 217: 1.0, 218: 1.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 0.0, 225: 1.0, 226: 0.0, 227: 1.0, 228: 1.0, 229: 1.0, 230: 1.0, 231: 1.0, 232: 1.0, 233: 1.0, 234: 1.0, 235: 1.0, 236: 0.0, 237: 1.0, 238: 1.0, 239: 0.0, 240: 0.0, 241: 1.0, 242: 1.0, 243: 1.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 0.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 1.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 0.0, 262: 0.0, 263: 1.0, 264: 1.0, 265: 1.0, 266: 1.0, 267: 0.0, 268: 0.0, 269: 1.0, 270: 1.0, 271: 0.0, 272: 1.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 1.0, 279: 1.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 0.0, 286: 1.0, 287: 1.0, 288: 1.0, 289: 0.0, 290: 1.0, 291: 0.0, 292: 1.0, 293: 0.0, 294: 1.0, 295: 1.0, 296: 0.0, 297: 1.0, 298: 1.0, 299: 0.0}
+Iteration 6: Valset pareto front aggregate score: 0.7133333333333334
+Iteration 6: Updated valset pareto front programs: {0: {3}, 1: {0, 1, 2, 3}, 2: {0, 1, 2}, 3: {3}, 4: {1, 2, 3}, 5: {0, 1, 2, 3}, 6: {2}, 7: {1}, 8: {0, 1, 2, 3}, 9: {0, 1, 2, 3}, 10: {0, 1, 3}, 11: {0, 1, 2, 3}, 12: {0, 1, 3}, 13: {0, 1, 2, 3}, 14: {0, 1, 2, 3}, 15: {3}, 16: {0, 1, 2, 3}, 17: {0, 1, 2, 3}, 18: {0, 1, 2, 3}, 19: {0, 1, 2, 3}, 20: {0, 1, 3}, 21: {0, 1, 2, 3}, 22: {3}, 23: {0, 1, 2, 3}, 24: {3}, 25: {0, 1, 2}, 26: {3}, 27: {2}, 28: {0, 1, 3}, 29: {0, 1, 2, 3}, 30: {3}, 31: {0, 1, 2, 3}, 32: {0, 1, 2, 3}, 33: {3}, 34: {0, 1, 2, 3}, 35: {3}, 36: {0}, 37: {0, 1, 2, 3}, 38: {3}, 39: {1, 2, 3}, 40: {0, 1, 2, 3}, 41: {0, 1, 2, 3}, 42: {0, 1, 2, 3}, 43: {0, 1, 2, 3}, 44: {0, 1, 2, 3}, 45: {3}, 46: {2, 3}, 47: {2}, 48: {0, 1, 3}, 49: {0, 1, 2, 3}, 50: {0, 1, 2}, 51: {2}, 52: {3}, 53: {3}, 54: {0, 1, 2, 3}, 55: {0, 1, 3}, 56: {0, 1, 2, 3}, 57: {0, 1, 2, 3}, 58: {0, 1, 2, 3}, 59: {0, 1}, 60: {0, 1, 2}, 61: {2}, 62: {0, 1, 3}, 63: {2}, 64: {0, 1, 2}, 65: {0, 1, 2, 3}, 66: {0, 1}, 67: {0, 1, 2, 3}, 68: {0, 2, 3}, 69: {0, 1, 2, 3}, 70: {0, 1, 2, 3}, 71: {0, 1, 2}, 72: {0, 1, 2}, 73: {0, 1, 2, 3}, 74: {0, 1, 2, 3}, 75: {2}, 76: {0, 1, 2, 3}, 77: {0, 1, 2, 3}, 78: {0, 1, 2}, 79: {0, 2}, 80: {0, 1, 3}, 81: {3}, 82: {0, 1, 2, 3}, 83: {0, 1, 2, 3}, 84: {0, 1, 2, 3}, 85: {0, 1, 2}, 86: {0, 1, 2, 3}, 87: {0, 1, 2, 3}, 88: {2}, 89: {0, 1, 2, 3}, 90: {0, 1, 2, 3}, 91: {0, 1, 3}, 92: {3}, 93: {0, 1, 2, 3}, 94: {0, 1, 2, 3}, 95: {0, 1, 2, 3}, 96: {1, 2}, 97: {3}, 98: {1, 2, 3}, 99: {0, 1, 2, 3}, 100: {2}, 101: {0, 1, 2, 3}, 102: {3}, 103: {0, 1, 2, 3}, 104: {0, 1, 2, 3}, 105: {3}, 106: {0, 1, 2, 3}, 107: {0, 1, 2, 3}, 108: {0, 1, 2, 3}, 109: {0, 1, 2, 3}, 110: {0, 1, 2, 3}, 111: {0, 1, 2, 3}, 112: {0, 1, 2, 3}, 113: {3}, 114: {0, 1, 3}, 115: {0, 1, 2, 3}, 116: {0, 1, 2, 3}, 117: {0, 1}, 118: {0, 1, 2, 3}, 119: {0, 1, 2, 3}, 120: {2, 3}, 121: {0, 1, 2, 3}, 122: {2, 3}, 123: {0, 1, 3}, 124: {0, 1, 3}, 125: {0, 1, 2, 3}, 126: {0, 1}, 127: {2}, 128: {0, 1, 2, 3}, 129: {0, 1, 2, 3}, 130: {0, 1, 2, 3}, 131: {0, 1, 2, 3}, 132: {0, 1, 2, 3}, 133: {1}, 134: {0, 1, 2, 3}, 135: {0, 1, 2, 3}, 136: {2}, 137: {0, 1, 2}, 138: {0, 1, 2, 3}, 139: {2}, 140: {1, 2, 3}, 141: {0, 1, 2, 3}, 142: {0, 1, 2, 3}, 143: {0, 1, 2, 3}, 144: {0, 1, 2, 3}, 145: {2, 3}, 146: {2}, 147: {0, 1, 2, 3}, 148: {0, 1, 2, 3}, 149: {3}, 150: {0, 1, 2, 3}, 151: {3}, 152: {0, 1, 2}, 153: {0, 1, 2, 3}, 154: {1, 2, 3}, 155: {0, 1, 2, 3}, 156: {0, 1, 2, 3}, 157: {0, 1, 2, 3}, 158: {2}, 159: {2}, 160: {0, 1, 2, 3}, 161: {3}, 162: {0, 1, 2, 3}, 163: {0, 1, 3}, 164: {0, 1, 2, 3}, 165: {2, 3}, 166: {0, 1, 3}, 167: {0, 1, 3}, 168: {0, 1, 2, 3}, 169: {0, 1, 2}, 170: {0, 1, 2, 3}, 171: {3}, 172: {0, 1, 2, 3}, 173: {0, 1, 2, 3}, 174: {2, 3}, 175: {0, 1, 2, 3}, 176: {0, 1, 2, 3}, 177: {3}, 178: {2, 3}, 179: {0, 1, 2, 3}, 180: {2}, 181: {3}, 182: {0, 1, 2, 3}, 183: {0, 1, 2, 3}, 184: {0, 1, 2, 3}, 185: {2}, 186: {3}, 187: {1, 2}, 188: {2, 3}, 189: {0, 1, 2, 3}, 190: {0, 1, 2, 3}, 191: {3}, 192: {0, 1, 2, 3}, 193: {0, 1, 2, 3}, 194: {0, 1, 2, 3}, 195: {0, 1, 2, 3}, 196: {0, 1, 2, 3}, 197: {1, 2, 3}, 198: {3}, 199: {1, 2, 3}, 200: {1, 2, 3}, 201: {0, 1, 2, 3}, 202: {2, 3}, 203: {0, 1, 2, 3}, 204: {0, 1, 2}, 205: {0, 1, 2, 3}, 206: {0, 1, 2, 3}, 207: {1, 2, 3}, 208: {0, 1, 2, 3}, 209: {0, 1, 3}, 210: {3}, 211: {0, 1, 2, 3}, 212: {0, 1, 2, 3}, 213: {0, 1, 2, 3}, 214: {0, 1, 2, 3}, 215: {3}, 216: {2}, 217: {0, 1, 2, 3}, 218: {0, 1}, 219: {0, 1, 2, 3}, 220: {0, 1, 2, 3}, 221: {1, 2, 3}, 222: {0, 1, 2, 3}, 223: {3}, 224: {0, 1, 2, 3}, 225: {1}, 226: {0, 1, 2, 3}, 227: {0, 1, 3}, 228: {3}, 229: {1, 2}, 230: {0, 3}, 231: {0, 2, 3}, 232: {0, 1, 2, 3}, 233: {2, 3}, 234: {1, 3}, 235: {3}, 236: {0, 1, 2, 3}, 237: {0, 1, 2}, 238: {3}, 239: {0, 1, 2, 3}, 240: {0, 1, 2, 3}, 241: {1}, 242: {2}, 243: {3}, 244: {0, 1, 2}, 245: {2}, 246: {0, 1, 2, 3}, 247: {3}, 248: {0, 1, 2, 3}, 249: {0, 1, 2, 3}, 250: {0, 1, 2}, 251: {0, 1, 2}, 252: {1}, 253: {0, 1, 2, 3}, 254: {0, 1, 2, 3}, 255: {0, 1, 2, 3}, 256: {0, 1, 2, 3}, 257: {0, 1, 2, 3}, 258: {0, 1, 2, 3}, 259: {0, 1, 2}, 260: {0, 1, 2, 3}, 261: {0, 1, 2, 3}, 262: {0, 1, 2, 3}, 263: {2, 3}, 264: {1, 2, 3}, 265: {2}, 266: {2, 3}, 267: {0, 1, 2, 3}, 268: {0, 1, 2, 3}, 269: {3}, 270: {0, 1, 2, 3}, 271: {0, 1, 2, 3}, 272: {0, 1}, 273: {3}, 274: {3}, 275: {0, 1}, 276: {0, 1}, 277: {0, 1, 2, 3}, 278: {0, 1, 3}, 279: {1, 2, 3}, 280: {2, 3}, 281: {0, 1, 2, 3}, 282: {0, 1, 2, 3}, 283: {0, 1, 2, 3}, 284: {0, 1, 3}, 285: {0, 1, 2, 3}, 286: {0, 1, 2}, 287: {0, 1, 3}, 288: {2}, 289: {0, 1, 2, 3}, 290: {0, 1}, 291: {0, 1, 2, 3}, 292: {0, 1}, 293: {0, 1, 2, 3}, 294: {0, 1, 2, 3}, 295: {0, 1}, 296: {0, 1, 2, 3}, 297: {0, 1, 2, 3}, 298: {3}, 299: {0, 1, 2, 3}}
+Iteration 6: Best valset aggregate score so far: 0.5066666666666667
+Iteration 6: Best program as per aggregate score on valset: 3
+Iteration 6: Best score on valset: 0.5066666666666667
+Iteration 6: Linear pareto front program index: 3
+Iteration 6: New program candidate index: 3
+Iteration 7: No merge candidates found
+Iteration 7: Selected program 1 score: 0.44666666666666666
+Iteration 7: Contrastive search found 0 pairs (requested 3)
+Iteration 7: Proposed new text for system_prompt: ## New Instruction
+
+You are to determine whether the given **claim** is **SUPPORTED** or **NOT_SUPPORTED** based on the provided **evidence**. The evidence consists of a set of key-value pairs where each key represents a specific piece of information (e.g., author, book title, magazine, event, etc.), and each value is a numerical indicator (e.g., 0, 1, 2, 3, etc.). 
+
+### Key Rules to Follow:
+1. **Interpret the evidence**: Analyze the evidence to extract relevant information about the claim.
+2. **Check for direct support**: Determine if the evidence directly supports or contradicts the claim.
+3. **Use logical reasoning**: If the evidence does not directly support the claim, and there is no clear contradiction, then the claim is **NOT_SUPPORTED**.
+4. **Do not assume**: Do not infer information not explicitly stated in the evidence.
+5. **Be precise**: The final answer must be either "SUPPORTED" or "NOT_SUPPORTED", and it must be based solely on the provided evidence.
+
+### Example:
+**Input:**
+Evidence:  
+{'key': 'Dionne Bunsha', 'value': 1}  
+{'key': 'Frontline (magazine)', 'value': 0}  
+{'key': 'Scarred: Experiments with Violence in Gujarat', 'value': 1}  
+
+Claim:  
+"The author of *Scarred: Experiments with Violence in Gujarat*, worked for the magazine published by The Hindu Group."
+
+**Output:**
+**NOT_SUPPORTED**
+
+### Additional Notes:
+- The evidence may include multiple entries about different entities (e.g., authors, books, magazines, events).
+- The numerical values are not necessarily indicative of importance or relevance, but they are used as part of the input.
+- The claim may involve multiple entities (e.g., author, book, magazine, city, etc.), and the evidence may not directly address all of them.
+- If the claim is about a specific entity (e.g., a book, author, or event), and the evidence does not mention that entity or its relationship, the claim is **NOT_SUPPORTED**.
+
+### Task Description:
+You are to evaluate a **claim** based on a set of **key-value pairs**. The goal is to determine whether the claim is **SUPPORTED** (evidence directly supports the claim) or **NOT_SUPPORTED** (evidence does not support the claim, or contradicts it).
+
+### Niche and Domain-Specific Facts to Consider:
+- The **key-value pairs** are not meant to represent factual truth values but are used as part of the input.
+- The **numerical values** are not meant to represent importance or relevance but are used as part of the input.
+- The **claim** may involve multiple entities (e.g., author, book, magazine, city, etc.), and the **evidence** may not directly address all of them.
+- If the **claim** is about a specific entity (e.g., a book, author, or event), and the **evidence** does not mention that entity or its relationship, the claim is **NOT_SUPPORTED**.
+- If the **claim** is about a relationship (e.g., "X is the author of Y"), and the **evidence** does not mention the relationship or the entities involved, the claim is **NOT_SUPPORTED**.
+- If the **claim** is about a **specific fact** (e.g., "X was born in Y"), and the **evidence** does not mention the birth date or any related information, the claim is **NOT_SUPPORTED**.
+- If the **claim** is about a **specific number** (e.g., "X has 5 acts"), and the **evidence** does not mention the number, the claim is **NOT_SUPPORTED**.
+
+### Generalizable Strategy:
+- If the **claim** is about a **specific fact** (e.g., "X is the author of Y"), and the **evidence** does not mention the author or the book, the claim is **NOT_SUPPORTED**.
+- If the **claim** is about a **specific relationship** (e.g., "X worked for Y"), and the **evidence** does not mention the relationship or the entities involved, the claim is **NOT_SUPPORTED**.
+- If the **claim** is about a **specific number** (e.g., "X has 5 acts"), and the **evidence** does not mention the number, the claim is **NOT_SUPPORTED**.
+- If the **claim** is about a **specific entity** (e.g., "X is a book"), and the **evidence** does not mention the book, the claim is **NOT_SUPPORTED**.
+- If the **claim** is about a **specific event** (e.g., "X happened in Y"), and the **evidence** does not mention the event or the year, the claim is **NOT_SUPPORTED**.
+
+### Final Output Format:
+**SUPPORTED** or **NOT_SUPPORTED**
+Iteration 7: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 8: Selected program 3 score: 0.5066666666666667
+Iteration 8: Contrastive search found 0 pairs (requested 3)
+Iteration 8: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- **Niche Facts**: The task may involve specialized knowledge (e.g., historical figures, cultural contexts, or academic fields) that is not explicitly stated in the evidence.  
+- **Domain-Specific Knowledge**: If the claim requires knowledge that is not present in the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Direct Evidence**: If the claim cannot be verified or refuted based on the provided evidence, the claim is **NOT_SUPPORTED**.  
+- **No Logical Connection**: If the claim is about a relationship or attribute that is not logically connected to the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Contextual Information**: If the claim requires contextual knowledge (e.g., historical events, cultural norms, or professional roles) not included in the evidence, the claim is **NOT_SUPPORTED**.
+Iteration 8: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 9: Selected program 2 score: 0.45
+Iteration 9: All subsample scores perfect. Skipping.
+Iteration 9: Reflective mutation did not propose a new candidate
+Iteration 10: Selected program 1 score: 0.44666666666666666
+Iteration 10: Contrastive search found 0 pairs (requested 3)
+Iteration 10: Proposed new text for system_prompt: ## New Instruction
+
+You are to determine whether the given **claim** is **SUPPORTED** or **NOT_SUPPORTED** based on the provided **evidence**. The evidence consists of a set of key-value pairs where each key represents a specific piece of information (e.g., author, book title, magazine, event, etc.), and each value is a numerical indicator (e.g., 0, 1, 2, 3, etc.). 
+
+### Key Rules to Follow:
+1. **Interpret the evidence**: Analyze the evidence to extract relevant information about the claim.
+2. **Check for direct support**: Determine if the evidence directly supports or contradicts the claim.
+3. **Use logical reasoning**: If the evidence does not directly support the claim and there is no clear contradiction, then the claim is **NOT_SUPPORTED**.
+4. **Do not assume**: Do not infer information not explicitly stated in the evidence.
+5. **Be precise**: The final answer must be either "SUPPORTED" or "NOT_SUPPORTED", and it must be based solely on the provided evidence.
+
+### Example:
+**Input:**
+Evidence:  
+{'key': 'Dionne Bunsha', 'value': 1}  
+{'key': 'Frontline (magazine)', 'value': 0}  
+{'key': 'Scarred: Experiments with Violence in Gujarat', 'value': 1}  
+
+Claim:  
+"The author of *Scarred: Experiments with Violence in Gujarat*, worked for the magazine published by The Hindu Group."
+
+**Output:**
+**NOT_SUPPORTED**
+
+### Additional Notes:
+- The evidence may include multiple entries about different entities (e.g., authors, books, magazines, events).
+- The numerical values are not necessarily indicative of importance or relevance, but they are used as part of the input.
+- The claim may involve multiple entities (e.g., author, book, magazine, city, etc.), and the evidence may not directly address all of them.
+- If the claim is about a specific entity (e.g., a book, author, or event), and the evidence does not mention that entity or its relationship, the claim is **NOT_SUPPORTED**.
+
+### Task Description:
+You are to evaluate a **claim** based on a set of **key-value pairs**. The goal is to determine whether the claim is **SUPPORTED** (evidence directly supports the claim) or **NOT_SUPPORTED** (evidence does not support the claim, or contradicts it). The claim may involve multiple entities (e.g., author, book, magazine, event) and may require checking for direct support or contradiction based on the provided evidence. If the evidence does not directly address the claim or lacks necessary information, the claim is **NOT_SUPPORTED**.
+Iteration 10: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 11: Selected program 2 score: 0.45
+Iteration 11: Contrastive search found 0 pairs (requested 3)
+Iteration 11: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Feedback  
+- **Incorrect**: If the verdict is not supported, ensure it clearly states **NOT_SUPPORTED**.  
+- **Correct**: If the verdict is supported, ensure it clearly states **SUPPORTED**.  
+- **Ambiguous**: If the evidence is insufficient to determine the claim, clearly state **NOT_SUPPORTED**.  
+- **Unrelated**: If the claim is about something unrelated to the evidence, clearly state **NOT_SUPPORTED**.
+Iteration 11: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 11: Found a better program on the valset with score 0.5233333333333333.
+Iteration 11: Valset score for new program: 0.5233333333333333 (coverage 300 / 300)
+Iteration 11: Val aggregate for new program: 0.5233333333333333
+Iteration 11: Individual valset scores for new program: {12: 1.0, 89: 0.0, 94: 1.0, 0: 1.0, 1: 0.0, 2: 1.0, 3: 0.0, 4: 1.0, 5: 1.0, 6: 1.0, 7: 0.0, 8: 0.0, 9: 1.0, 10: 0.0, 11: 0.0, 13: 0.0, 14: 1.0, 15: 1.0, 16: 1.0, 17: 0.0, 18: 1.0, 19: 0.0, 20: 0.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 1.0, 29: 0.0, 30: 0.0, 31: 1.0, 32: 0.0, 33: 1.0, 34: 1.0, 35: 0.0, 36: 1.0, 37: 0.0, 38: 0.0, 39: 1.0, 40: 0.0, 41: 0.0, 42: 0.0, 43: 1.0, 44: 1.0, 45: 1.0, 46: 0.0, 47: 1.0, 48: 1.0, 49: 0.0, 50: 1.0, 51: 1.0, 52: 1.0, 53: 1.0, 54: 0.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 1.0, 61: 0.0, 62: 1.0, 63: 0.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 1.0, 72: 1.0, 73: 0.0, 74: 1.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 1.0, 79: 0.0, 80: 1.0, 81: 1.0, 82: 0.0, 83: 0.0, 84: 1.0, 85: 1.0, 86: 0.0, 87: 1.0, 88: 0.0, 90: 1.0, 91: 0.0, 92: 1.0, 93: 0.0, 95: 1.0, 96: 1.0, 97: 1.0, 98: 0.0, 99: 1.0, 100: 1.0, 101: 0.0, 102: 1.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 1.0, 107: 1.0, 108: 0.0, 109: 0.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 1.0, 115: 1.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 1.0, 120: 1.0, 121: 0.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 1.0, 127: 1.0, 128: 0.0, 129: 1.0, 130: 1.0, 131: 0.0, 132: 1.0, 133: 0.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 0.0, 138: 1.0, 139: 0.0, 140: 1.0, 141: 1.0, 142: 0.0, 143: 0.0, 144: 1.0, 145: 1.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 1.0, 151: 0.0, 152: 1.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 1.0, 158: 0.0, 159: 1.0, 160: 1.0, 161: 0.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 0.0, 166: 1.0, 167: 1.0, 168: 0.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 1.0, 177: 1.0, 178: 0.0, 179: 1.0, 180: 1.0, 181: 0.0, 182: 0.0, 183: 1.0, 184: 1.0, 185: 0.0, 186: 1.0, 187: 0.0, 188: 1.0, 189: 0.0, 190: 0.0, 191: 0.0, 192: 0.0, 193: 1.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 0.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 0.0, 205: 0.0, 206: 0.0, 207: 0.0, 208: 1.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 0.0, 215: 1.0, 216: 0.0, 217: 0.0, 218: 0.0, 219: 0.0, 220: 1.0, 221: 0.0, 222: 1.0, 223: 0.0, 224: 0.0, 225: 0.0, 226: 0.0, 227: 0.0, 228: 0.0, 229: 1.0, 230: 0.0, 231: 0.0, 232: 1.0, 233: 1.0, 234: 0.0, 235: 0.0, 236: 0.0, 237: 1.0, 238: 0.0, 239: 0.0, 240: 1.0, 241: 1.0, 242: 0.0, 243: 1.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 0.0, 248: 1.0, 249: 1.0, 250: 1.0, 251: 0.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 0.0, 261: 1.0, 262: 1.0, 263: 1.0, 264: 0.0, 265: 0.0, 266: 1.0, 267: 1.0, 268: 0.0, 269: 1.0, 270: 1.0, 271: 0.0, 272: 0.0, 273: 0.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 0.0, 278: 0.0, 279: 1.0, 280: 0.0, 281: 0.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 0.0, 288: 1.0, 289: 1.0, 290: 0.0, 291: 0.0, 292: 0.0, 293: 1.0, 294: 1.0, 295: 0.0, 296: 0.0, 297: 1.0, 298: 0.0, 299: 0.0}
+Iteration 11: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0, 5: 1.0, 6: 1.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 1.0, 11: 0.0, 12: 1.0, 13: 1.0, 14: 1.0, 15: 1.0, 16: 1.0, 17: 1.0, 18: 1.0, 19: 1.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 1.0, 32: 0.0, 33: 1.0, 34: 1.0, 35: 1.0, 36: 1.0, 37: 0.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 0.0, 42: 1.0, 43: 1.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 1.0, 50: 1.0, 51: 1.0, 52: 1.0, 53: 1.0, 54: 1.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 1.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 1.0, 69: 0.0, 70: 0.0, 71: 1.0, 72: 1.0, 73: 0.0, 74: 1.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 1.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 0.0, 83: 0.0, 84: 1.0, 85: 1.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 0.0, 90: 1.0, 91: 1.0, 92: 1.0, 93: 0.0, 94: 1.0, 95: 1.0, 96: 1.0, 97: 1.0, 98: 1.0, 99: 1.0, 100: 1.0, 101: 0.0, 102: 1.0, 103: 0.0, 104: 0.0, 105: 1.0, 106: 1.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 1.0, 114: 1.0, 115: 1.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 1.0, 120: 1.0, 121: 0.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 1.0, 127: 1.0, 128: 1.0, 129: 1.0, 130: 1.0, 131: 0.0, 132: 1.0, 133: 1.0, 134: 0.0, 135: 0.0, 136: 1.0, 137: 1.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 1.0, 142: 0.0, 143: 0.0, 144: 1.0, 145: 1.0, 146: 1.0, 147: 0.0, 148: 0.0, 149: 1.0, 150: 1.0, 151: 1.0, 152: 1.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 1.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 1.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 1.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 1.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 1.0, 181: 1.0, 182: 0.0, 183: 1.0, 184: 1.0, 185: 1.0, 186: 1.0, 187: 1.0, 188: 1.0, 189: 0.0, 190: 1.0, 191: 1.0, 192: 0.0, 193: 1.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 1.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 1.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 0.0, 215: 1.0, 216: 1.0, 217: 1.0, 218: 1.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 0.0, 225: 1.0, 226: 0.0, 227: 1.0, 228: 1.0, 229: 1.0, 230: 1.0, 231: 1.0, 232: 1.0, 233: 1.0, 234: 1.0, 235: 1.0, 236: 0.0, 237: 1.0, 238: 1.0, 239: 0.0, 240: 1.0, 241: 1.0, 242: 1.0, 243: 1.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 1.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 1.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 1.0, 262: 1.0, 263: 1.0, 264: 1.0, 265: 1.0, 266: 1.0, 267: 1.0, 268: 0.0, 269: 1.0, 270: 1.0, 271: 0.0, 272: 1.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 1.0, 279: 1.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 1.0, 288: 1.0, 289: 1.0, 290: 1.0, 291: 0.0, 292: 1.0, 293: 1.0, 294: 1.0, 295: 1.0, 296: 0.0, 297: 1.0, 298: 1.0, 299: 0.0}
+Iteration 11: Valset pareto front aggregate score: 0.8
+Iteration 11: Updated valset pareto front programs: {0: {3, 4}, 1: {0, 1, 2, 3}, 2: {0, 1, 2, 4}, 3: {3}, 4: {1, 2, 3, 4}, 5: {4}, 6: {2, 4}, 7: {1}, 8: {0, 1, 2, 3}, 9: {0, 1, 2, 3, 4}, 10: {0, 1, 3}, 11: {0, 1, 2, 3, 4}, 12: {0, 1, 3, 4}, 13: {0, 1, 2, 3}, 14: {0, 1, 2, 3, 4}, 15: {3, 4}, 16: {0, 1, 2, 3, 4}, 17: {0, 1, 2, 3}, 18: {4}, 19: {0, 1, 2, 3}, 20: {0, 1, 3}, 21: {4}, 22: {3, 4}, 23: {0, 1, 2, 3, 4}, 24: {3}, 25: {0, 1, 2, 4}, 26: {3, 4}, 27: {2, 4}, 28: {0, 1, 3, 4}, 29: {0, 1, 2, 3}, 30: {3}, 31: {0, 1, 2, 3, 4}, 32: {0, 1, 2, 3, 4}, 33: {3, 4}, 34: {0, 1, 2, 3, 4}, 35: {3}, 36: {0, 4}, 37: {0, 1, 2, 3, 4}, 38: {3}, 39: {1, 2, 3, 4}, 40: {0, 1, 2, 3, 4}, 41: {0, 1, 2, 3, 4}, 42: {0, 1, 2, 3}, 43: {4}, 44: {0, 1, 2, 3, 4}, 45: {3, 4}, 46: {2, 3}, 47: {2, 4}, 48: {0, 1, 3, 4}, 49: {0, 1, 2, 3}, 50: {0, 1, 2, 4}, 51: {2, 4}, 52: {3, 4}, 53: {3, 4}, 54: {0, 1, 2, 3}, 55: {0, 1, 3, 4}, 56: {0, 1, 2, 3, 4}, 57: {0, 1, 2, 3, 4}, 58: {0, 1, 2, 3, 4}, 59: {0, 1, 4}, 60: {0, 1, 2, 4}, 61: {2}, 62: {0, 1, 3, 4}, 63: {2}, 64: {0, 1, 2, 4}, 65: {0, 1, 2, 3, 4}, 66: {0, 1, 4}, 67: {0, 1, 2, 3, 4}, 68: {0, 2, 3}, 69: {0, 1, 2, 3, 4}, 70: {0, 1, 2, 3, 4}, 71: {0, 1, 2, 4}, 72: {0, 1, 2, 4}, 73: {0, 1, 2, 3, 4}, 74: {0, 1, 2, 3, 4}, 75: {2, 4}, 76: {0, 1, 2, 3, 4}, 77: {0, 1, 2, 3, 4}, 78: {0, 1, 2, 4}, 79: {0, 2}, 80: {0, 1, 3, 4}, 81: {3, 4}, 82: {0, 1, 2, 3, 4}, 83: {0, 1, 2, 3, 4}, 84: {4}, 85: {0, 1, 2, 4}, 86: {0, 1, 2, 3, 4}, 87: {0, 1, 2, 3, 4}, 88: {2}, 89: {0, 1, 2, 3, 4}, 90: {4}, 91: {0, 1, 3}, 92: {3, 4}, 93: {0, 1, 2, 3, 4}, 94: {0, 1, 2, 3, 4}, 95: {4}, 96: {1, 2, 4}, 97: {3, 4}, 98: {1, 2, 3}, 99: {0, 1, 2, 3, 4}, 100: {2, 4}, 101: {0, 1, 2, 3, 4}, 102: {3, 4}, 103: {0, 1, 2, 3, 4}, 104: {0, 1, 2, 3, 4}, 105: {3}, 106: {4}, 107: {0, 1, 2, 3, 4}, 108: {0, 1, 2, 3}, 109: {0, 1, 2, 3}, 110: {0, 1, 2, 3, 4}, 111: {0, 1, 2, 3, 4}, 112: {0, 1, 2, 3, 4}, 113: {3}, 114: {0, 1, 3, 4}, 115: {4}, 116: {0, 1, 2, 3, 4}, 117: {0, 1, 4}, 118: {0, 1, 2, 3, 4}, 119: {0, 1, 2, 3, 4}, 120: {2, 3, 4}, 121: {0, 1, 2, 3, 4}, 122: {2, 3, 4}, 123: {0, 1, 3, 4}, 124: {0, 1, 3, 4}, 125: {0, 1, 2, 3, 4}, 126: {0, 1, 4}, 127: {2, 4}, 128: {0, 1, 2, 3}, 129: {4}, 130: {0, 1, 2, 3, 4}, 131: {0, 1, 2, 3, 4}, 132: {0, 1, 2, 3, 4}, 133: {1}, 134: {0, 1, 2, 3, 4}, 135: {0, 1, 2, 3, 4}, 136: {2}, 137: {0, 1, 2}, 138: {4}, 139: {2}, 140: {1, 2, 3, 4}, 141: {0, 1, 2, 3, 4}, 142: {0, 1, 2, 3, 4}, 143: {0, 1, 2, 3, 4}, 144: {0, 1, 2, 3, 4}, 145: {2, 3, 4}, 146: {2}, 147: {0, 1, 2, 3, 4}, 148: {0, 1, 2, 3, 4}, 149: {3}, 150: {4}, 151: {3}, 152: {0, 1, 2, 4}, 153: {0, 1, 2, 3, 4}, 154: {1, 2, 3, 4}, 155: {0, 1, 2, 3, 4}, 156: {0, 1, 2, 3, 4}, 157: {4}, 158: {2}, 159: {2, 4}, 160: {0, 1, 2, 3, 4}, 161: {3}, 162: {0, 1, 2, 3, 4}, 163: {0, 1, 3, 4}, 164: {0, 1, 2, 3, 4}, 165: {2, 3}, 166: {0, 1, 3, 4}, 167: {0, 1, 3, 4}, 168: {0, 1, 2, 3}, 169: {0, 1, 2, 4}, 170: {0, 1, 2, 3, 4}, 171: {3}, 172: {0, 1, 2, 3, 4}, 173: {0, 1, 2, 3, 4}, 174: {2, 3, 4}, 175: {0, 1, 2, 3, 4}, 176: {4}, 177: {3, 4}, 178: {2, 3}, 179: {0, 1, 2, 3, 4}, 180: {2, 4}, 181: {3}, 182: {0, 1, 2, 3, 4}, 183: {4}, 184: {0, 1, 2, 3, 4}, 185: {2}, 186: {3, 4}, 187: {1, 2}, 188: {2, 3, 4}, 189: {0, 1, 2, 3, 4}, 190: {0, 1, 2, 3}, 191: {3}, 192: {0, 1, 2, 3, 4}, 193: {4}, 194: {0, 1, 2, 3, 4}, 195: {0, 1, 2, 3, 4}, 196: {0, 1, 2, 3, 4}, 197: {1, 2, 3, 4}, 198: {3}, 199: {1, 2, 3, 4}, 200: {1, 2, 3, 4}, 201: {0, 1, 2, 3, 4}, 202: {2, 3, 4}, 203: {0, 1, 2, 3, 4}, 204: {0, 1, 2}, 205: {0, 1, 2, 3}, 206: {0, 1, 2, 3, 4}, 207: {1, 2, 3}, 208: {4}, 209: {0, 1, 3, 4}, 210: {3, 4}, 211: {0, 1, 2, 3, 4}, 212: {0, 1, 2, 3, 4}, 213: {4}, 214: {0, 1, 2, 3, 4}, 215: {3, 4}, 216: {2}, 217: {0, 1, 2, 3}, 218: {0, 1}, 219: {0, 1, 2, 3, 4}, 220: {0, 1, 2, 3, 4}, 221: {1, 2, 3}, 222: {0, 1, 2, 3, 4}, 223: {3}, 224: {0, 1, 2, 3, 4}, 225: {1}, 226: {0, 1, 2, 3, 4}, 227: {0, 1, 3}, 228: {3}, 229: {1, 2, 4}, 230: {0, 3}, 231: {0, 2, 3}, 232: {0, 1, 2, 3, 4}, 233: {2, 3, 4}, 234: {1, 3}, 235: {3}, 236: {0, 1, 2, 3, 4}, 237: {0, 1, 2, 4}, 238: {3}, 239: {0, 1, 2, 3, 4}, 240: {4}, 241: {1, 4}, 242: {2}, 243: {3, 4}, 244: {0, 1, 2, 4}, 245: {2, 4}, 246: {0, 1, 2, 3, 4}, 247: {3}, 248: {4}, 249: {0, 1, 2, 3, 4}, 250: {0, 1, 2, 4}, 251: {0, 1, 2}, 252: {1}, 253: {0, 1, 2, 3, 4}, 254: {0, 1, 2, 3, 4}, 255: {0, 1, 2, 3, 4}, 256: {0, 1, 2, 3, 4}, 257: {0, 1, 2, 3, 4}, 258: {0, 1, 2, 3, 4}, 259: {0, 1, 2, 4}, 260: {0, 1, 2, 3}, 261: {4}, 262: {4}, 263: {2, 3, 4}, 264: {1, 2, 3}, 265: {2}, 266: {2, 3, 4}, 267: {4}, 268: {0, 1, 2, 3, 4}, 269: {3, 4}, 270: {0, 1, 2, 3, 4}, 271: {0, 1, 2, 3, 4}, 272: {0, 1}, 273: {3}, 274: {3, 4}, 275: {0, 1, 4}, 276: {0, 1, 4}, 277: {0, 1, 2, 3}, 278: {0, 1, 3}, 279: {1, 2, 3, 4}, 280: {2, 3}, 281: {0, 1, 2, 3}, 282: {0, 1, 2, 3, 4}, 283: {0, 1, 2, 3, 4}, 284: {0, 1, 3, 4}, 285: {4}, 286: {0, 1, 2, 4}, 287: {0, 1, 3}, 288: {2, 4}, 289: {4}, 290: {0, 1}, 291: {0, 1, 2, 3, 4}, 292: {0, 1}, 293: {4}, 294: {0, 1, 2, 3, 4}, 295: {0, 1}, 296: {0, 1, 2, 3, 4}, 297: {0, 1, 2, 3, 4}, 298: {3}, 299: {0, 1, 2, 3, 4}}
+Iteration 11: Best valset aggregate score so far: 0.5233333333333333
+Iteration 11: Best program as per aggregate score on valset: 4
+Iteration 11: Best score on valset: 0.5233333333333333
+Iteration 11: Linear pareto front program index: 4
+Iteration 11: New program candidate index: 4
+Iteration 12: No merge candidates found
+Iteration 12: Selected program 2 score: 0.45
+Iteration 12: Contrastive search found 0 pairs (requested 3)
+Iteration 12: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example:  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- The values (0 or 1) are not truth values, but they may be used to represent categories, classifications, or other contextual data.  
+- The claim must be evaluated based on whether the evidence directly supports or contradicts the claim, regardless of the values.  
+- If the claim is about a **relationship** or **attribute**, the evidence must provide direct or indirect evidence of that relationship or attribute.  
+- If the claim is about a **fact**, the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence is incomplete or does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.
+Iteration 12: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 13: Selected program 3 score: 0.5066666666666667
+Iteration 13: Contrastive search found 0 pairs (requested 3)
+Iteration 13: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- **Niche Facts**: The task may involve specialized knowledge (e.g., historical figures, cultural contexts, or academic fields) that is not explicitly stated in the evidence.  
+- **Domain-Specific Knowledge**: If the claim requires knowledge that is not present in the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Direct Evidence**: If the claim cannot be verified or refuted based on the provided evidence, the claim is **NOT_SUPPORTED**.  
+- **No Logical Connection**: If the claim is about a relationship or attribute that is not logically connected to the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Contextual Information**: If the claim requires contextual knowledge (e.g., historical events, cultural norms, or professional roles) not included in the evidence, the claim is **NOT_SUPPORTED**.
+Iteration 13: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 14: Selected program 4 score: 0.5233333333333333
+Iteration 14: Contrastive search found 0 pairs (requested 3)
+Iteration 14: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Feedback  
+- **Incorrect**: If the verdict is not supported, ensure it clearly states **NOT_SUPPORTED**.  
+- **Correct**: If the verdict is supported, ensure it clearly states **SUPPORTED**.  
+- **Ambiguous**: If the evidence is insufficient to determine the claim, clearly state **NOT_SUPPORTED**.  
+- **Unrelated**: If the claim is about something unrelated to the evidence, clearly state **NOT_SUPPORTED**.
+Iteration 14: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 15: Selected program 2 score: 0.45
+Iteration 15: Contrastive search found 0 pairs (requested 3)
+Iteration 15: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.
+
+### Additional Notes  
+- **Geographical or Temporal Context**: If the claim involves a specific time period or location, the evidence must include that information.  
+- **Entity-Specific Knowledge**: If the claim refers to a specific entity (e.g., a person, band, or location), the evidence must include direct or indirect evidence of that entity's characteristics.  
+- **No Direct Evidence**: If the evidence does not provide any information that directly supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+- **No Logical Connection**: If the claim involves a relationship or attribute that is not logically connected to the values provided, the claim is **NOT_SUPPORTED**.  
+- **No Contextual Information**: If the claim requires contextual knowledge (e.g., historical, cultural, or professional) not included in the evidence, the claim is **NOT_SUPPORTED**.
+Iteration 15: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 16: Selected program 3 score: 0.5066666666666667
+Iteration 16: Contrastive search found 0 pairs (requested 3)
+Iteration 16: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- **Niche Facts**: The task may involve specialized knowledge (e.g., historical figures, cultural contexts, or academic fields) that is not explicitly stated in the evidence.  
+- **Domain-Specific Knowledge**: If the claim requires knowledge that is not present in the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Direct Evidence**: If the claim cannot be verified or refuted based on the provided evidence, the claim is **NOT_SUPPORTED**.  
+- **No Logical Connection**: If the claim is about a relationship or attribute that is not logically connected to the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Contextual Information**: If the claim requires contextual knowledge (e.g., historical events, cultural norms, or professional roles) not included in the evidence, the claim is **NOT_SUPPORTED**.
+Iteration 16: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 17: Selected program 4 score: 0.5233333333333333
+Iteration 17: Contrastive search found 0 pairs (requested 3)
+Iteration 17: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Feedback  
+- **Incorrect**: If the verdict is not supported, ensure it clearly states **NOT_SUPPORTED**.  
+- **Correct**: If the verdict is supported, ensure it clearly states **SUPPORTED**.  
+- **Ambiguous**: If the evidence is insufficient to determine the claim, clearly state **NOT_SUPPORTED**.  
+- **Unrelated**: If the claim is about something unrelated to the evidence, clearly state **NOT_SUPPORTED**.
+Iteration 17: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 18: Selected program 4 score: 0.5233333333333333
+Iteration 18: Contrastive search found 0 pairs (requested 3)
+Iteration 18: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Feedback  
+- **Incorrect**: If the verdict is not supported, ensure it clearly states **NOT_SUPPORTED**.  
+- **Correct**: If the verdict is supported, ensure it clearly states **SUPPORTED**.  
+- **Ambiguous**: If the evidence is insufficient to determine the claim, clearly state **NOT_SUPPORTED**.  
+- **Unrelated**: If the claim is about something unrelated to the evidence, clearly state **NOT_SUPPORTED**.
+Iteration 18: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 19: Selected program 1 score: 0.44666666666666666
+Iteration 19: Contrastive search found 0 pairs (requested 3)
+Iteration 19: Proposed new text for system_prompt: ## New Instruction
+
+You are to determine whether the given **claim** is **SUPPORTED** or **NOT_SUPPORTED** based on the provided **evidence**. The evidence consists of a set of key-value pairs where each key represents a specific piece of information (e.g., author, book title, magazine, event, etc.), and each value is a numerical indicator (e.g., 0, 1, 2, 3, etc.). 
+
+### Key Rules to Follow:
+1. **Interpret the evidence**: Analyze the evidence to extract relevant information about the claim.
+2. **Check for direct support**: Determine if the evidence directly supports or contradicts the claim.
+3. **Use logical reasoning**: If the evidence does not directly support the claim, and there is no clear contradiction, then the claim is **NOT_SUPPORTED**.
+4. **Do not assume**: Do not infer information not explicitly stated in the evidence.
+5. **Be precise**: The final answer must be either "SUPPORTED" or "NOT_SUPPORTED", and it must be based solely on the provided evidence.
+
+### Example:
+**Input:**
+Evidence:  
+{'key': 'Dionne Bunsha', 'value': 1}  
+{'key': 'Frontline (magazine)', 'value': 0}  
+{'key': 'Scarred: Experiments with Violence in Gujarat', 'value': 1}  
+
+Claim:  
+"The author of *Scarred: Experiments with Violence in Gujarat*, worked for the magazine published by The Hindu Group."
+
+**Output:**
+**NOT_SUPPORTED**
+
+### Additional Notes:
+- The evidence may include multiple entries about different entities (e.g., authors, books, magazines, events).
+- The numerical values are not necessarily indicative of importance or relevance, but they are used as part of the input.
+- The claim may involve multiple entities (e.g., author, book, magazine, city, etc.), and the evidence may not directly address all of them.
+- If the claim is about a specific entity (e.g., a book, author, or event), and the evidence does not mention that entity or its relationship, the claim is **NOT_SUPPORTED**.
+
+### Task Description:
+You are to evaluate a **claim** based on a set of **key-value pairs**. The goal is to determine whether the claim is **SUPPORTED** (evidence directly supports the claim) or **NOT_SUPPORTED** (evidence does not support the claim, or contradicts it). 
+
+### Niche and Domain-Specific Facts to Consider:
+- The **value** in the key-value pairs is not a measure of importance or relevance but is used as part of the input.
+- The **key** represents specific pieces of information (e.g., author, book title, magazine, event).
+- The **claim** may involve multiple entities (e.g., author, book, magazine, city, etc.), and the **evidence** may not directly address all of them.
+- The **evidence** may include multiple entries about different entities, and you must check if the claim is supported by any of the entries.
+- If the **claim** is about a specific entity (e.g., a book, author, or event), and the **evidence** does not mention that entity or its relationship, the claim is **NOT_SUPPORTED**.
+
+### Generalizable Strategy:
+- Extract the relevant **key** and **value** pairs that relate to the **claim**.
+- Check if the **evidence** directly supports the **claim** by verifying if the **key** matches the **claim**'s subject and the **value** aligns with the claim's assertion.
+- If no matching evidence is found, or if the evidence contradicts the claim, then the claim is **NOT_SUPPORTED**.
+- If the evidence is ambiguous or incomplete, the claim is **NOT_SUPPORTED**.
+
+### Final Answer Format:
+**SUPPORTED** or **NOT_SUPPORTED**
+Iteration 19: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 20: Selected program 4 score: 0.5233333333333333
+Iteration 20: All subsample scores perfect. Skipping.
+Iteration 20: Reflective mutation did not propose a new candidate
+Iteration 21: Selected program 2 score: 0.45
+Iteration 21: Contrastive search found 0 pairs (requested 3)
+Iteration 21: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example:  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- **Entity Recognition**: The keys in the evidence are entities (e.g., people, bands, locations), and the values are numerical codes (0 or 1).  
+- **No Direct or Indirect Evidence**: The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+- **No Logical or Contextual Connection**: If the claim involves a relationship or attribute not logically connected to the values, the claim is **NOT_SUPPORTED**.  
+- **No Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Contextual Knowledge**: If the claim requires contextual knowledge (e.g., historical, cultural, or professional) not included in the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Logical Connection to Values**: If the claim involves a relationship or attribute not logically connected to the values provided, the claim is **NOT_SUPPORTED**.  
+- **No Direct or Indirect Evidence**: If the claim is about a relationship, attribute, or fact and the evidence does not provide any direct or indirect evidence, the claim is **NOT_SUPPORTED**.  
+
+### Final Output  
+Provide the final verdict (**SUPPORTED** or **NOT_SUPPORTED**) and a concise reasoning explaining why the claim is supported or not supported based on the evidence provided.
+Iteration 21: New subsample score 1.0 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 21: Valset score for new program: 0.44666666666666666 (coverage 300 / 300)
+Iteration 21: Val aggregate for new program: 0.44666666666666666
+Iteration 21: Individual valset scores for new program: {78: 0.0, 92: 0.0, 95: 1.0, 0: 0.0, 1: 1.0, 2: 1.0, 3: 0.0, 4: 1.0, 5: 1.0, 6: 0.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 1.0, 11: 0.0, 12: 0.0, 13: 1.0, 14: 1.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 0.0, 19: 1.0, 20: 0.0, 21: 0.0, 22: 0.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 0.0, 27: 0.0, 28: 1.0, 29: 0.0, 30: 0.0, 31: 1.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 0.0, 42: 1.0, 43: 0.0, 44: 0.0, 45: 0.0, 46: 0.0, 47: 1.0, 48: 1.0, 49: 1.0, 50: 1.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 1.0, 55: 0.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 0.0, 61: 0.0, 62: 1.0, 63: 0.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 0.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 1.0, 73: 0.0, 74: 1.0, 75: 0.0, 76: 0.0, 77: 1.0, 79: 1.0, 80: 1.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 1.0, 86: 1.0, 87: 1.0, 88: 0.0, 89: 0.0, 90: 0.0, 91: 1.0, 93: 0.0, 94: 1.0, 96: 1.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 0.0, 101: 0.0, 102: 0.0, 103: 1.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 1.0, 115: 1.0, 116: 0.0, 117: 0.0, 118: 1.0, 119: 1.0, 120: 0.0, 121: 0.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 1.0, 127: 0.0, 128: 1.0, 129: 0.0, 130: 1.0, 131: 0.0, 132: 1.0, 133: 0.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 1.0, 138: 0.0, 139: 1.0, 140: 1.0, 141: 1.0, 142: 1.0, 143: 0.0, 144: 1.0, 145: 0.0, 146: 1.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 1.0, 152: 1.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 0.0, 157: 0.0, 158: 0.0, 159: 0.0, 160: 1.0, 161: 0.0, 162: 0.0, 163: 0.0, 164: 0.0, 165: 0.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.0, 180: 0.0, 181: 0.0, 182: 0.0, 183: 1.0, 184: 1.0, 185: 0.0, 186: 0.0, 187: 1.0, 188: 0.0, 189: 0.0, 190: 1.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 1.0, 195: 1.0, 196: 1.0, 197: 1.0, 198: 1.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 0.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 1.0, 212: 1.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 1.0, 218: 0.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 0.0, 224: 1.0, 225: 0.0, 226: 0.0, 227: 1.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 1.0, 233: 1.0, 234: 1.0, 235: 0.0, 236: 1.0, 237: 1.0, 238: 0.0, 239: 0.0, 240: 1.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 1.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 1.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 0.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 0.0, 262: 0.0, 263: 0.0, 264: 1.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 0.0, 269: 0.0, 270: 1.0, 271: 1.0, 272: 1.0, 273: 0.0, 274: 0.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 1.0, 279: 1.0, 280: 0.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 0.0, 286: 1.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 1.0, 291: 0.0, 292: 1.0, 293: 0.0, 294: 1.0, 295: 1.0, 296: 0.0, 297: 1.0, 298: 0.0, 299: 0.0}
+Iteration 21: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0, 5: 1.0, 6: 1.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 1.0, 11: 0.0, 12: 1.0, 13: 1.0, 14: 1.0, 15: 1.0, 16: 1.0, 17: 1.0, 18: 1.0, 19: 1.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 1.0, 32: 0.0, 33: 1.0, 34: 1.0, 35: 1.0, 36: 1.0, 37: 0.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 0.0, 42: 1.0, 43: 1.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 1.0, 50: 1.0, 51: 1.0, 52: 1.0, 53: 1.0, 54: 1.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 1.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 1.0, 69: 0.0, 70: 0.0, 71: 1.0, 72: 1.0, 73: 0.0, 74: 1.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 1.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 0.0, 83: 0.0, 84: 1.0, 85: 1.0, 86: 1.0, 87: 1.0, 88: 1.0, 89: 0.0, 90: 1.0, 91: 1.0, 92: 1.0, 93: 0.0, 94: 1.0, 95: 1.0, 96: 1.0, 97: 1.0, 98: 1.0, 99: 1.0, 100: 1.0, 101: 0.0, 102: 1.0, 103: 1.0, 104: 0.0, 105: 1.0, 106: 1.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 1.0, 114: 1.0, 115: 1.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 1.0, 120: 1.0, 121: 0.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 1.0, 127: 1.0, 128: 1.0, 129: 1.0, 130: 1.0, 131: 0.0, 132: 1.0, 133: 1.0, 134: 0.0, 135: 0.0, 136: 1.0, 137: 1.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 1.0, 142: 1.0, 143: 0.0, 144: 1.0, 145: 1.0, 146: 1.0, 147: 0.0, 148: 0.0, 149: 1.0, 150: 1.0, 151: 1.0, 152: 1.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 1.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 1.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 1.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 1.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 1.0, 181: 1.0, 182: 0.0, 183: 1.0, 184: 1.0, 185: 1.0, 186: 1.0, 187: 1.0, 188: 1.0, 189: 0.0, 190: 1.0, 191: 1.0, 192: 0.0, 193: 1.0, 194: 1.0, 195: 1.0, 196: 1.0, 197: 1.0, 198: 1.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 1.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 0.0, 215: 1.0, 216: 1.0, 217: 1.0, 218: 1.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 1.0, 225: 1.0, 226: 0.0, 227: 1.0, 228: 1.0, 229: 1.0, 230: 1.0, 231: 1.0, 232: 1.0, 233: 1.0, 234: 1.0, 235: 1.0, 236: 1.0, 237: 1.0, 238: 1.0, 239: 0.0, 240: 1.0, 241: 1.0, 242: 1.0, 243: 1.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 1.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 1.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 1.0, 262: 1.0, 263: 1.0, 264: 1.0, 265: 1.0, 266: 1.0, 267: 1.0, 268: 0.0, 269: 1.0, 270: 1.0, 271: 1.0, 272: 1.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 1.0, 279: 1.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 1.0, 288: 1.0, 289: 1.0, 290: 1.0, 291: 0.0, 292: 1.0, 293: 1.0, 294: 1.0, 295: 1.0, 296: 0.0, 297: 1.0, 298: 1.0, 299: 0.0}
+Iteration 21: Valset pareto front aggregate score: 0.8233333333333334
+Iteration 21: Updated valset pareto front programs: {0: {3, 4}, 1: {0, 1, 2, 3, 5}, 2: {0, 1, 2, 4, 5}, 3: {3}, 4: {1, 2, 3, 4, 5}, 5: {4, 5}, 6: {2, 4}, 7: {1, 5}, 8: {0, 1, 2, 3, 5}, 9: {0, 1, 2, 3, 4, 5}, 10: {0, 1, 3, 5}, 11: {0, 1, 2, 3, 4, 5}, 12: {0, 1, 3, 4}, 13: {0, 1, 2, 3, 5}, 14: {0, 1, 2, 3, 4, 5}, 15: {3, 4}, 16: {0, 1, 2, 3, 4, 5}, 17: {0, 1, 2, 3, 5}, 18: {4}, 19: {0, 1, 2, 3, 5}, 20: {0, 1, 3}, 21: {4}, 22: {3, 4}, 23: {0, 1, 2, 3, 4, 5}, 24: {3}, 25: {0, 1, 2, 4, 5}, 26: {3, 4}, 27: {2, 4}, 28: {0, 1, 3, 4, 5}, 29: {0, 1, 2, 3}, 30: {3}, 31: {0, 1, 2, 3, 4, 5}, 32: {0, 1, 2, 3, 4, 5}, 33: {3, 4}, 34: {0, 1, 2, 3, 4, 5}, 35: {3}, 36: {0, 4}, 37: {0, 1, 2, 3, 4, 5}, 38: {3}, 39: {1, 2, 3, 4}, 40: {0, 1, 2, 3, 4, 5}, 41: {0, 1, 2, 3, 4, 5}, 42: {0, 1, 2, 3, 5}, 43: {4}, 44: {0, 1, 2, 3, 4}, 45: {3, 4}, 46: {2, 3}, 47: {2, 4, 5}, 48: {0, 1, 3, 4, 5}, 49: {0, 1, 2, 3, 5}, 50: {0, 1, 2, 4, 5}, 51: {2, 4}, 52: {3, 4}, 53: {3, 4}, 54: {0, 1, 2, 3, 5}, 55: {0, 1, 3, 4}, 56: {0, 1, 2, 3, 4, 5}, 57: {0, 1, 2, 3, 4, 5}, 58: {0, 1, 2, 3, 4, 5}, 59: {0, 1, 4, 5}, 60: {0, 1, 2, 4}, 61: {2}, 62: {0, 1, 3, 4, 5}, 63: {2}, 64: {0, 1, 2, 4, 5}, 65: {0, 1, 2, 3, 4, 5}, 66: {0, 1, 4, 5}, 67: {0, 1, 2, 3, 4}, 68: {0, 2, 3}, 69: {0, 1, 2, 3, 4, 5}, 70: {0, 1, 2, 3, 4, 5}, 71: {0, 1, 2, 4}, 72: {0, 1, 2, 4, 5}, 73: {0, 1, 2, 3, 4, 5}, 74: {0, 1, 2, 3, 4, 5}, 75: {2, 4}, 76: {0, 1, 2, 3, 4, 5}, 77: {0, 1, 2, 3, 4, 5}, 78: {0, 1, 2, 4}, 79: {0, 2, 5}, 80: {0, 1, 3, 4, 5}, 81: {3, 4}, 82: {0, 1, 2, 3, 4, 5}, 83: {0, 1, 2, 3, 4, 5}, 84: {4}, 85: {0, 1, 2, 4, 5}, 86: {5}, 87: {0, 1, 2, 3, 4, 5}, 88: {2}, 89: {0, 1, 2, 3, 4, 5}, 90: {4}, 91: {0, 1, 3, 5}, 92: {3, 4}, 93: {0, 1, 2, 3, 4, 5}, 94: {0, 1, 2, 3, 4, 5}, 95: {4, 5}, 96: {1, 2, 4, 5}, 97: {3, 4}, 98: {1, 2, 3, 5}, 99: {0, 1, 2, 3, 4, 5}, 100: {2, 4}, 101: {0, 1, 2, 3, 4, 5}, 102: {3, 4}, 103: {5}, 104: {0, 1, 2, 3, 4, 5}, 105: {3}, 106: {4}, 107: {0, 1, 2, 3, 4, 5}, 108: {0, 1, 2, 3, 5}, 109: {0, 1, 2, 3, 5}, 110: {0, 1, 2, 3, 4, 5}, 111: {0, 1, 2, 3, 4, 5}, 112: {0, 1, 2, 3, 4, 5}, 113: {3}, 114: {0, 1, 3, 4, 5}, 115: {4, 5}, 116: {0, 1, 2, 3, 4, 5}, 117: {0, 1, 4}, 118: {0, 1, 2, 3, 4, 5}, 119: {0, 1, 2, 3, 4, 5}, 120: {2, 3, 4}, 121: {0, 1, 2, 3, 4, 5}, 122: {2, 3, 4, 5}, 123: {0, 1, 3, 4, 5}, 124: {0, 1, 3, 4, 5}, 125: {0, 1, 2, 3, 4, 5}, 126: {0, 1, 4, 5}, 127: {2, 4}, 128: {0, 1, 2, 3, 5}, 129: {4}, 130: {0, 1, 2, 3, 4, 5}, 131: {0, 1, 2, 3, 4, 5}, 132: {0, 1, 2, 3, 4, 5}, 133: {1}, 134: {0, 1, 2, 3, 4, 5}, 135: {0, 1, 2, 3, 4, 5}, 136: {2}, 137: {0, 1, 2, 5}, 138: {4}, 139: {2, 5}, 140: {1, 2, 3, 4, 5}, 141: {0, 1, 2, 3, 4, 5}, 142: {5}, 143: {0, 1, 2, 3, 4, 5}, 144: {0, 1, 2, 3, 4, 5}, 145: {2, 3, 4}, 146: {2, 5}, 147: {0, 1, 2, 3, 4, 5}, 148: {0, 1, 2, 3, 4, 5}, 149: {3}, 150: {4}, 151: {3, 5}, 152: {0, 1, 2, 4, 5}, 153: {0, 1, 2, 3, 4, 5}, 154: {1, 2, 3, 4, 5}, 155: {0, 1, 2, 3, 4, 5}, 156: {0, 1, 2, 3, 4}, 157: {4}, 158: {2}, 159: {2, 4}, 160: {0, 1, 2, 3, 4, 5}, 161: {3}, 162: {0, 1, 2, 3, 4, 5}, 163: {0, 1, 3, 4}, 164: {0, 1, 2, 3, 4, 5}, 165: {2, 3}, 166: {0, 1, 3, 4, 5}, 167: {0, 1, 3, 4, 5}, 168: {0, 1, 2, 3, 5}, 169: {0, 1, 2, 4, 5}, 170: {0, 1, 2, 3, 4, 5}, 171: {3}, 172: {0, 1, 2, 3, 4, 5}, 173: {0, 1, 2, 3, 4, 5}, 174: {2, 3, 4, 5}, 175: {0, 1, 2, 3, 4, 5}, 176: {4}, 177: {3, 4}, 178: {2, 3}, 179: {0, 1, 2, 3, 4}, 180: {2, 4}, 181: {3}, 182: {0, 1, 2, 3, 4, 5}, 183: {4, 5}, 184: {0, 1, 2, 3, 4, 5}, 185: {2}, 186: {3, 4}, 187: {1, 2, 5}, 188: {2, 3, 4}, 189: {0, 1, 2, 3, 4, 5}, 190: {0, 1, 2, 3, 5}, 191: {3}, 192: {0, 1, 2, 3, 4, 5}, 193: {4}, 194: {0, 1, 2, 3, 4, 5}, 195: {0, 1, 2, 3, 4, 5}, 196: {5}, 197: {1, 2, 3, 4, 5}, 198: {3, 5}, 199: {1, 2, 3, 4, 5}, 200: {1, 2, 3, 4, 5}, 201: {0, 1, 2, 3, 4, 5}, 202: {2, 3, 4}, 203: {0, 1, 2, 3, 4, 5}, 204: {0, 1, 2, 5}, 205: {0, 1, 2, 3, 5}, 206: {0, 1, 2, 3, 4, 5}, 207: {1, 2, 3, 5}, 208: {4}, 209: {0, 1, 3, 4, 5}, 210: {3, 4}, 211: {0, 1, 2, 3, 4, 5}, 212: {0, 1, 2, 3, 4, 5}, 213: {4}, 214: {0, 1, 2, 3, 4, 5}, 215: {3, 4}, 216: {2}, 217: {0, 1, 2, 3, 5}, 218: {0, 1}, 219: {0, 1, 2, 3, 4, 5}, 220: {0, 1, 2, 3, 4, 5}, 221: {1, 2, 3, 5}, 222: {0, 1, 2, 3, 4, 5}, 223: {3}, 224: {5}, 225: {1}, 226: {0, 1, 2, 3, 4, 5}, 227: {0, 1, 3, 5}, 228: {3}, 229: {1, 2, 4}, 230: {0, 3}, 231: {0, 2, 3}, 232: {0, 1, 2, 3, 4, 5}, 233: {2, 3, 4, 5}, 234: {1, 3, 5}, 235: {3}, 236: {5}, 237: {0, 1, 2, 4, 5}, 238: {3}, 239: {0, 1, 2, 3, 4, 5}, 240: {4, 5}, 241: {1, 4}, 242: {2}, 243: {3, 4}, 244: {0, 1, 2, 4, 5}, 245: {2, 4}, 246: {0, 1, 2, 3, 4, 5}, 247: {3}, 248: {4}, 249: {0, 1, 2, 3, 4, 5}, 250: {0, 1, 2, 4, 5}, 251: {0, 1, 2, 5}, 252: {1, 5}, 253: {0, 1, 2, 3, 4, 5}, 254: {0, 1, 2, 3, 4, 5}, 255: {0, 1, 2, 3, 4, 5}, 256: {0, 1, 2, 3, 4}, 257: {0, 1, 2, 3, 4, 5}, 258: {0, 1, 2, 3, 4, 5}, 259: {0, 1, 2, 4, 5}, 260: {0, 1, 2, 3, 5}, 261: {4}, 262: {4}, 263: {2, 3, 4}, 264: {1, 2, 3, 5}, 265: {2}, 266: {2, 3, 4}, 267: {4}, 268: {0, 1, 2, 3, 4, 5}, 269: {3, 4}, 270: {0, 1, 2, 3, 4, 5}, 271: {5}, 272: {0, 1, 5}, 273: {3}, 274: {3, 4}, 275: {0, 1, 4, 5}, 276: {0, 1, 4, 5}, 277: {0, 1, 2, 3, 5}, 278: {0, 1, 3, 5}, 279: {1, 2, 3, 4, 5}, 280: {2, 3}, 281: {0, 1, 2, 3, 5}, 282: {0, 1, 2, 3, 4, 5}, 283: {0, 1, 2, 3, 4, 5}, 284: {0, 1, 3, 4, 5}, 285: {4}, 286: {0, 1, 2, 4, 5}, 287: {0, 1, 3}, 288: {2, 4}, 289: {4}, 290: {0, 1, 5}, 291: {0, 1, 2, 3, 4, 5}, 292: {0, 1, 5}, 293: {4}, 294: {0, 1, 2, 3, 4, 5}, 295: {0, 1, 5}, 296: {0, 1, 2, 3, 4, 5}, 297: {0, 1, 2, 3, 4, 5}, 298: {3}, 299: {0, 1, 2, 3, 4, 5}}
+Iteration 21: Best valset aggregate score so far: 0.5233333333333333
+Iteration 21: Best program as per aggregate score on valset: 4
+Iteration 21: Best score on valset: 0.5233333333333333
+Iteration 21: Linear pareto front program index: 4
+Iteration 21: New program candidate index: 5
+Iteration 22: No merge candidates found
+Iteration 22: Selected program 5 score: 0.44666666666666666
+Iteration 22: Contrastive search found 0 pairs (requested 3)
+Iteration 22: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example:  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- **Entity Recognition**: The keys in the evidence are entities (e.g., people, bands, locations), and the values are numerical codes (0 or 1).  
+- **No Direct or Indirect Evidence**: The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+- **No Logical or Contextual Connection**: If the claim involves a relationship or attribute not logically connected to the values provided, the claim is **NOT_SUPPORTED**.  
+- **No Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Contextual Knowledge**: If the claim requires contextual knowledge (e.g., historical, cultural, or professional) not included in the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Logical Connection to Values**: If the claim involves a relationship or attribute not logically connected to the values provided, the claim is **NOT_SUPPORTED**.  
+- **No Direct or Indirect Evidence**: If the claim is about a relationship, attribute, or fact and the evidence does not provide any direct or indirect evidence, the claim is **NOT_SUPPORTED**.  
+
+### Final Output  
+Provide the final verdict (**SUPPORTED** or **NOT_SUPPORTED**) and a concise reasoning explaining why the claim is supported or not supported based on the evidence provided.
+Iteration 22: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 23: Selected program 2 score: 0.45
+Iteration 23: Contrastive search found 0 pairs (requested 3)
+Iteration 23: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example:  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- The claim may involve **specific factual assertions** (e.g., "X was born in Y") or **general attributes** (e.g., "X is a rock band").  
+- The claim may involve **relationships** (e.g., "X is Y's partner") or **affiliations** (e.g., "X is part of Y's group").  
+- The claim must be evaluated **independently** of the numerical values, as the values do not represent truth or falsity.  
+- If the claim is **not supported** by the evidence, the answer should be **NOT_SUPPORTED**.  
+- If the claim is **supported** by the evidence, the answer should be **SUPPORTED**.
+Iteration 23: New subsample score 0.0 is not better than old score 1.0, skipping
+Iteration 24: Selected program 3 score: 0.5066666666666667
+Iteration 24: Contrastive search found 0 pairs (requested 3)
+Iteration 24: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- **Niche Facts**: The task may involve specialized knowledge (e.g., historical figures, cultural contexts, or academic fields) that is not explicitly stated in the evidence.  
+- **Domain-Specific Knowledge**: If the claim requires knowledge that is not present in the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Direct Evidence**: If the claim cannot be verified or refuted based on the provided evidence, the claim is **NOT_SUPPORTED**.  
+- **No Logical Connection**: If the claim is about a relationship or attribute that is not logically connected to the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Contextual Information**: If the claim requires contextual knowledge (e.g., historical events, cultural norms, or professional roles) not included in the evidence, the claim is **NOT_SUPPORTED**.
+Iteration 24: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 25: Selected program 3 score: 0.5066666666666667
+Iteration 25: All subsample scores perfect. Skipping.
+Iteration 25: Reflective mutation did not propose a new candidate
+Iteration 26: Selected program 4 score: 0.5233333333333333
+Iteration 26: Contrastive search found 0 pairs (requested 3)
+Iteration 26: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Feedback  
+- **Incorrect**: If the verdict is not supported, ensure it clearly states **NOT_SUPPORTED**.  
+- **Correct**: If the verdict is supported, ensure it clearly states **SUPPORTED**.  
+- **Ambiguous**: If the evidence is insufficient to determine the claim, clearly state **NOT_SUPPORTED**.  
+- **Unrelated**: If the claim is about something unrelated to the evidence, clearly state **NOT_SUPPORTED**.
+Iteration 26: New subsample score 2.0 is not better than old score 2.0, skipping
+Iteration 27: Selected program 2 score: 0.45
+Iteration 27: Contrastive search found 0 pairs (requested 3)
+Iteration 27: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example:  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- The claim may involve **multiple entities** and **multiple relationships**, and the evidence may contain **multiple key-value pairs**.  
+- The claim may involve **specific facts** (e.g., "X was born in Y") or **general attributes** (e.g., "X is a rock band").  
+- The claim may involve **time-based facts** (e.g., "X was born in 2000") or **geographic facts** (e.g., "X is located in a specific city").  
+- The claim may involve **affiliations** (e.g., "X is a member of Y's group") or **participations** (e.g., "X performed in Y's show").  
+- The claim may involve **direct or indirect evidence** from the key-value pairs, even if the values themselves are not explicitly truth values.  
+- The claim must be evaluated based on whether the **evidence directly supports or contradicts** the claim, regardless of the values' nature.  
+- If the claim is **not supported** by the evidence, the answer is **NOT_SUPPORTED**. If the claim is **supported** by the evidence, the answer is **SUPPORTED**.
+Iteration 27: New subsample score 1.0 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 27: Valset score for new program: 0.46 (coverage 300 / 300)
+Iteration 27: Val aggregate for new program: 0.46
+Iteration 27: Individual valset scores for new program: {23: 0.0, 91: 0.0, 108: 1.0, 0: 0.0, 1: 1.0, 2: 1.0, 3: 0.0, 4: 1.0, 5: 0.0, 6: 1.0, 7: 0.0, 8: 1.0, 9: 1.0, 10: 1.0, 11: 1.0, 12: 1.0, 13: 1.0, 14: 1.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 0.0, 19: 1.0, 20: 0.0, 21: 0.0, 22: 0.0, 24: 0.0, 25: 1.0, 26: 0.0, 27: 0.0, 28: 1.0, 29: 1.0, 30: 0.0, 31: 1.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 1.0, 40: 0.0, 41: 0.0, 42: 1.0, 43: 0.0, 44: 0.0, 45: 0.0, 46: 0.0, 47: 0.0, 48: 0.0, 49: 1.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 1.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 1.0, 61: 0.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 0.0, 69: 0.0, 70: 0.0, 71: 0.0, 72: 0.0, 73: 1.0, 74: 1.0, 75: 0.0, 76: 0.0, 77: 1.0, 78: 1.0, 79: 0.0, 80: 1.0, 81: 1.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 1.0, 86: 0.0, 87: 1.0, 88: 0.0, 89: 0.0, 90: 0.0, 92: 0.0, 93: 0.0, 94: 1.0, 95: 0.0, 96: 1.0, 97: 1.0, 98: 1.0, 99: 1.0, 100: 1.0, 101: 0.0, 102: 0.0, 103: 1.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 1.0, 109: 0.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 1.0, 115: 0.0, 116: 0.0, 117: 0.0, 118: 1.0, 119: 1.0, 120: 1.0, 121: 0.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 1.0, 127: 1.0, 128: 1.0, 129: 0.0, 130: 1.0, 131: 0.0, 132: 1.0, 133: 0.0, 134: 0.0, 135: 0.0, 136: 0.0, 137: 1.0, 138: 1.0, 139: 1.0, 140: 0.0, 141: 1.0, 142: 0.0, 143: 1.0, 144: 1.0, 145: 0.0, 146: 0.0, 147: 0.0, 148: 0.0, 149: 1.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 0.0, 157: 1.0, 158: 0.0, 159: 1.0, 160: 1.0, 161: 0.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 0.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 0.0, 177: 0.0, 178: 0.0, 179: 0.0, 180: 0.0, 181: 0.0, 182: 1.0, 183: 0.0, 184: 1.0, 185: 0.0, 186: 0.0, 187: 1.0, 188: 1.0, 189: 0.0, 190: 1.0, 191: 0.0, 192: 0.0, 193: 1.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 0.0, 199: 1.0, 200: 1.0, 201: 0.0, 202: 0.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 1.0, 212: 1.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 1.0, 218: 1.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 0.0, 225: 0.0, 226: 0.0, 227: 1.0, 228: 0.0, 229: 1.0, 230: 0.0, 231: 0.0, 232: 1.0, 233: 0.0, 234: 1.0, 235: 0.0, 236: 0.0, 237: 1.0, 238: 0.0, 239: 0.0, 240: 0.0, 241: 1.0, 242: 0.0, 243: 1.0, 244: 1.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 0.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 0.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 0.0, 262: 0.0, 263: 1.0, 264: 1.0, 265: 0.0, 266: 1.0, 267: 0.0, 268: 1.0, 269: 0.0, 270: 1.0, 271: 0.0, 272: 1.0, 273: 0.0, 274: 0.0, 275: 1.0, 276: 0.0, 277: 0.0, 278: 0.0, 279: 1.0, 280: 0.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 0.0, 286: 1.0, 287: 1.0, 288: 0.0, 289: 0.0, 290: 0.0, 291: 0.0, 292: 1.0, 293: 1.0, 294: 1.0, 295: 0.0, 296: 0.0, 297: 1.0, 298: 0.0, 299: 0.0}
+Iteration 27: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0, 5: 1.0, 6: 1.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 1.0, 11: 1.0, 12: 1.0, 13: 1.0, 14: 1.0, 15: 1.0, 16: 1.0, 17: 1.0, 18: 1.0, 19: 1.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 1.0, 32: 0.0, 33: 1.0, 34: 1.0, 35: 1.0, 36: 1.0, 37: 0.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 0.0, 42: 1.0, 43: 1.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 1.0, 50: 1.0, 51: 1.0, 52: 1.0, 53: 1.0, 54: 1.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 1.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 1.0, 69: 0.0, 70: 0.0, 71: 1.0, 72: 1.0, 73: 1.0, 74: 1.0, 75: 1.0, 76: 0.0, 77: 1.0, 78: 1.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 0.0, 83: 0.0, 84: 1.0, 85: 1.0, 86: 1.0, 87: 1.0, 88: 1.0, 89: 0.0, 90: 1.0, 91: 1.0, 92: 1.0, 93: 0.0, 94: 1.0, 95: 1.0, 96: 1.0, 97: 1.0, 98: 1.0, 99: 1.0, 100: 1.0, 101: 0.0, 102: 1.0, 103: 1.0, 104: 0.0, 105: 1.0, 106: 1.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 1.0, 114: 1.0, 115: 1.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 1.0, 120: 1.0, 121: 0.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 1.0, 127: 1.0, 128: 1.0, 129: 1.0, 130: 1.0, 131: 0.0, 132: 1.0, 133: 1.0, 134: 0.0, 135: 0.0, 136: 1.0, 137: 1.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 1.0, 142: 1.0, 143: 1.0, 144: 1.0, 145: 1.0, 146: 1.0, 147: 0.0, 148: 0.0, 149: 1.0, 150: 1.0, 151: 1.0, 152: 1.0, 153: 0.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 1.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 1.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 1.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 1.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 1.0, 181: 1.0, 182: 1.0, 183: 1.0, 184: 1.0, 185: 1.0, 186: 1.0, 187: 1.0, 188: 1.0, 189: 0.0, 190: 1.0, 191: 1.0, 192: 0.0, 193: 1.0, 194: 1.0, 195: 1.0, 196: 1.0, 197: 1.0, 198: 1.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 1.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 0.0, 215: 1.0, 216: 1.0, 217: 1.0, 218: 1.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 1.0, 225: 1.0, 226: 0.0, 227: 1.0, 228: 1.0, 229: 1.0, 230: 1.0, 231: 1.0, 232: 1.0, 233: 1.0, 234: 1.0, 235: 1.0, 236: 1.0, 237: 1.0, 238: 1.0, 239: 0.0, 240: 1.0, 241: 1.0, 242: 1.0, 243: 1.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 1.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 1.0, 253: 0.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 1.0, 262: 1.0, 263: 1.0, 264: 1.0, 265: 1.0, 266: 1.0, 267: 1.0, 268: 1.0, 269: 1.0, 270: 1.0, 271: 1.0, 272: 1.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 1.0, 279: 1.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 1.0, 288: 1.0, 289: 1.0, 290: 1.0, 291: 0.0, 292: 1.0, 293: 1.0, 294: 1.0, 295: 1.0, 296: 0.0, 297: 1.0, 298: 1.0, 299: 0.0}
+Iteration 27: Valset pareto front aggregate score: 0.84
+Iteration 27: Updated valset pareto front programs: {0: {3, 4}, 1: {0, 1, 2, 3, 5, 6}, 2: {0, 1, 2, 4, 5, 6}, 3: {3}, 4: {1, 2, 3, 4, 5, 6}, 5: {4, 5}, 6: {2, 4, 6}, 7: {1, 5}, 8: {0, 1, 2, 3, 5, 6}, 9: {0, 1, 2, 3, 4, 5, 6}, 10: {0, 1, 3, 5, 6}, 11: {6}, 12: {0, 1, 3, 4, 6}, 13: {0, 1, 2, 3, 5, 6}, 14: {0, 1, 2, 3, 4, 5, 6}, 15: {3, 4}, 16: {0, 1, 2, 3, 4, 5, 6}, 17: {0, 1, 2, 3, 5, 6}, 18: {4}, 19: {0, 1, 2, 3, 5, 6}, 20: {0, 1, 3}, 21: {4}, 22: {3, 4}, 23: {0, 1, 2, 3, 4, 5}, 24: {3}, 25: {0, 1, 2, 4, 5, 6}, 26: {3, 4}, 27: {2, 4}, 28: {0, 1, 3, 4, 5, 6}, 29: {0, 1, 2, 3, 6}, 30: {3}, 31: {0, 1, 2, 3, 4, 5, 6}, 32: {0, 1, 2, 3, 4, 5, 6}, 33: {3, 4}, 34: {0, 1, 2, 3, 4, 5, 6}, 35: {3}, 36: {0, 4}, 37: {0, 1, 2, 3, 4, 5, 6}, 38: {3}, 39: {1, 2, 3, 4, 6}, 40: {0, 1, 2, 3, 4, 5, 6}, 41: {0, 1, 2, 3, 4, 5, 6}, 42: {0, 1, 2, 3, 5, 6}, 43: {4}, 44: {0, 1, 2, 3, 4}, 45: {3, 4}, 46: {2, 3}, 47: {2, 4, 5}, 48: {0, 1, 3, 4, 5}, 49: {0, 1, 2, 3, 5, 6}, 50: {0, 1, 2, 4, 5}, 51: {2, 4}, 52: {3, 4}, 53: {3, 4}, 54: {0, 1, 2, 3, 5, 6}, 55: {0, 1, 3, 4, 6}, 56: {0, 1, 2, 3, 4, 5, 6}, 57: {0, 1, 2, 3, 4, 5, 6}, 58: {0, 1, 2, 3, 4, 5, 6}, 59: {0, 1, 4, 5, 6}, 60: {0, 1, 2, 4, 6}, 61: {2}, 62: {0, 1, 3, 4, 5, 6}, 63: {2, 6}, 64: {0, 1, 2, 4, 5, 6}, 65: {0, 1, 2, 3, 4, 5, 6}, 66: {0, 1, 4, 5, 6}, 67: {0, 1, 2, 3, 4, 6}, 68: {0, 2, 3}, 69: {0, 1, 2, 3, 4, 5, 6}, 70: {0, 1, 2, 3, 4, 5, 6}, 71: {0, 1, 2, 4}, 72: {0, 1, 2, 4, 5}, 73: {6}, 74: {0, 1, 2, 3, 4, 5, 6}, 75: {2, 4}, 76: {0, 1, 2, 3, 4, 5, 6}, 77: {0, 1, 2, 3, 4, 5, 6}, 78: {0, 1, 2, 4, 6}, 79: {0, 2, 5}, 80: {0, 1, 3, 4, 5, 6}, 81: {3, 4, 6}, 82: {0, 1, 2, 3, 4, 5, 6}, 83: {0, 1, 2, 3, 4, 5, 6}, 84: {4}, 85: {0, 1, 2, 4, 5, 6}, 86: {5}, 87: {0, 1, 2, 3, 4, 5, 6}, 88: {2}, 89: {0, 1, 2, 3, 4, 5, 6}, 90: {4}, 91: {0, 1, 3, 5}, 92: {3, 4}, 93: {0, 1, 2, 3, 4, 5, 6}, 94: {0, 1, 2, 3, 4, 5, 6}, 95: {4, 5}, 96: {1, 2, 4, 5, 6}, 97: {3, 4, 6}, 98: {1, 2, 3, 5, 6}, 99: {0, 1, 2, 3, 4, 5, 6}, 100: {2, 4, 6}, 101: {0, 1, 2, 3, 4, 5, 6}, 102: {3, 4}, 103: {5, 6}, 104: {0, 1, 2, 3, 4, 5, 6}, 105: {3}, 106: {4}, 107: {0, 1, 2, 3, 4, 5, 6}, 108: {0, 1, 2, 3, 5, 6}, 109: {0, 1, 2, 3, 5}, 110: {0, 1, 2, 3, 4, 5, 6}, 111: {0, 1, 2, 3, 4, 5, 6}, 112: {0, 1, 2, 3, 4, 5, 6}, 113: {3}, 114: {0, 1, 3, 4, 5, 6}, 115: {4, 5}, 116: {0, 1, 2, 3, 4, 5, 6}, 117: {0, 1, 4}, 118: {0, 1, 2, 3, 4, 5, 6}, 119: {0, 1, 2, 3, 4, 5, 6}, 120: {2, 3, 4, 6}, 121: {0, 1, 2, 3, 4, 5, 6}, 122: {2, 3, 4, 5, 6}, 123: {0, 1, 3, 4, 5, 6}, 124: {0, 1, 3, 4, 5, 6}, 125: {0, 1, 2, 3, 4, 5, 6}, 126: {0, 1, 4, 5, 6}, 127: {2, 4, 6}, 128: {0, 1, 2, 3, 5, 6}, 129: {4}, 130: {0, 1, 2, 3, 4, 5, 6}, 131: {0, 1, 2, 3, 4, 5, 6}, 132: {0, 1, 2, 3, 4, 5, 6}, 133: {1}, 134: {0, 1, 2, 3, 4, 5, 6}, 135: {0, 1, 2, 3, 4, 5, 6}, 136: {2}, 137: {0, 1, 2, 5, 6}, 138: {4, 6}, 139: {2, 5, 6}, 140: {1, 2, 3, 4, 5}, 141: {0, 1, 2, 3, 4, 5, 6}, 142: {5}, 143: {6}, 144: {0, 1, 2, 3, 4, 5, 6}, 145: {2, 3, 4}, 146: {2, 5}, 147: {0, 1, 2, 3, 4, 5, 6}, 148: {0, 1, 2, 3, 4, 5, 6}, 149: {3, 6}, 150: {4}, 151: {3, 5}, 152: {0, 1, 2, 4, 5, 6}, 153: {0, 1, 2, 3, 4, 5, 6}, 154: {1, 2, 3, 4, 5, 6}, 155: {0, 1, 2, 3, 4, 5, 6}, 156: {0, 1, 2, 3, 4}, 157: {4, 6}, 158: {2}, 159: {2, 4, 6}, 160: {0, 1, 2, 3, 4, 5, 6}, 161: {3}, 162: {0, 1, 2, 3, 4, 5, 6}, 163: {0, 1, 3, 4, 6}, 164: {0, 1, 2, 3, 4, 5, 6}, 165: {2, 3}, 166: {0, 1, 3, 4, 5, 6}, 167: {0, 1, 3, 4, 5, 6}, 168: {0, 1, 2, 3, 5, 6}, 169: {0, 1, 2, 4, 5, 6}, 170: {0, 1, 2, 3, 4, 5, 6}, 171: {3}, 172: {0, 1, 2, 3, 4, 5, 6}, 173: {0, 1, 2, 3, 4, 5, 6}, 174: {2, 3, 4, 5, 6}, 175: {0, 1, 2, 3, 4, 5, 6}, 176: {4}, 177: {3, 4}, 178: {2, 3}, 179: {0, 1, 2, 3, 4}, 180: {2, 4}, 181: {3}, 182: {6}, 183: {4, 5}, 184: {0, 1, 2, 3, 4, 5, 6}, 185: {2}, 186: {3, 4}, 187: {1, 2, 5, 6}, 188: {2, 3, 4, 6}, 189: {0, 1, 2, 3, 4, 5, 6}, 190: {0, 1, 2, 3, 5, 6}, 191: {3}, 192: {0, 1, 2, 3, 4, 5, 6}, 193: {4, 6}, 194: {0, 1, 2, 3, 4, 5, 6}, 195: {0, 1, 2, 3, 4, 5, 6}, 196: {5}, 197: {1, 2, 3, 4, 5, 6}, 198: {3, 5}, 199: {1, 2, 3, 4, 5, 6}, 200: {1, 2, 3, 4, 5, 6}, 201: {0, 1, 2, 3, 4, 5}, 202: {2, 3, 4}, 203: {0, 1, 2, 3, 4, 5, 6}, 204: {0, 1, 2, 5, 6}, 205: {0, 1, 2, 3, 5, 6}, 206: {0, 1, 2, 3, 4, 5, 6}, 207: {1, 2, 3, 5, 6}, 208: {4}, 209: {0, 1, 3, 4, 5, 6}, 210: {3, 4}, 211: {0, 1, 2, 3, 4, 5, 6}, 212: {0, 1, 2, 3, 4, 5, 6}, 213: {4}, 214: {0, 1, 2, 3, 4, 5, 6}, 215: {3, 4}, 216: {2}, 217: {0, 1, 2, 3, 5, 6}, 218: {0, 1, 6}, 219: {0, 1, 2, 3, 4, 5, 6}, 220: {0, 1, 2, 3, 4, 5, 6}, 221: {1, 2, 3, 5, 6}, 222: {0, 1, 2, 3, 4, 5, 6}, 223: {3, 6}, 224: {5}, 225: {1}, 226: {0, 1, 2, 3, 4, 5, 6}, 227: {0, 1, 3, 5, 6}, 228: {3}, 229: {1, 2, 4, 6}, 230: {0, 3}, 231: {0, 2, 3}, 232: {0, 1, 2, 3, 4, 5, 6}, 233: {2, 3, 4, 5}, 234: {1, 3, 5, 6}, 235: {3}, 236: {5}, 237: {0, 1, 2, 4, 5, 6}, 238: {3}, 239: {0, 1, 2, 3, 4, 5, 6}, 240: {4, 5}, 241: {1, 4, 6}, 242: {2}, 243: {3, 4, 6}, 244: {0, 1, 2, 4, 5, 6}, 245: {2, 4}, 246: {0, 1, 2, 3, 4, 5, 6}, 247: {3}, 248: {4}, 249: {0, 1, 2, 3, 4, 5, 6}, 250: {0, 1, 2, 4, 5, 6}, 251: {0, 1, 2, 5, 6}, 252: {1, 5}, 253: {0, 1, 2, 3, 4, 5, 6}, 254: {0, 1, 2, 3, 4, 5, 6}, 255: {0, 1, 2, 3, 4, 5, 6}, 256: {0, 1, 2, 3, 4, 6}, 257: {0, 1, 2, 3, 4, 5, 6}, 258: {0, 1, 2, 3, 4, 5, 6}, 259: {0, 1, 2, 4, 5, 6}, 260: {0, 1, 2, 3, 5, 6}, 261: {4}, 262: {4}, 263: {2, 3, 4, 6}, 264: {1, 2, 3, 5, 6}, 265: {2}, 266: {2, 3, 4, 6}, 267: {4}, 268: {6}, 269: {3, 4}, 270: {0, 1, 2, 3, 4, 5, 6}, 271: {5}, 272: {0, 1, 5, 6}, 273: {3}, 274: {3, 4}, 275: {0, 1, 4, 5, 6}, 276: {0, 1, 4, 5}, 277: {0, 1, 2, 3, 5}, 278: {0, 1, 3, 5}, 279: {1, 2, 3, 4, 5, 6}, 280: {2, 3}, 281: {0, 1, 2, 3, 5, 6}, 282: {0, 1, 2, 3, 4, 5, 6}, 283: {0, 1, 2, 3, 4, 5, 6}, 284: {0, 1, 3, 4, 5, 6}, 285: {4}, 286: {0, 1, 2, 4, 5, 6}, 287: {0, 1, 3, 6}, 288: {2, 4}, 289: {4}, 290: {0, 1, 5}, 291: {0, 1, 2, 3, 4, 5, 6}, 292: {0, 1, 5, 6}, 293: {4, 6}, 294: {0, 1, 2, 3, 4, 5, 6}, 295: {0, 1, 5}, 296: {0, 1, 2, 3, 4, 5, 6}, 297: {0, 1, 2, 3, 4, 5, 6}, 298: {3}, 299: {0, 1, 2, 3, 4, 5, 6}}
+Iteration 27: Best valset aggregate score so far: 0.5233333333333333
+Iteration 27: Best program as per aggregate score on valset: 4
+Iteration 27: Best score on valset: 0.5233333333333333
+Iteration 27: Linear pareto front program index: 4
+Iteration 27: New program candidate index: 6
+Iteration 28: No merge candidates found
+Iteration 28: Selected program 6 score: 0.46
+Iteration 28: Contrastive search found 0 pairs (requested 3)
+Iteration 28: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example:  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- The claim may involve **multiple entities** and **multiple relationships**, and the evidence may contain **multiple key-value pairs**.  
+- The claim may involve **specific facts** (e.g., "X was born in Y") or **general attributes** (e.g., "X is a rock band").  
+- The claim may involve **time-based facts** (e.g., "X was born in 2000") or **geographic facts** (e.g., "X is located in a specific city").  
+- The claim may involve **affiliations** (e.g., "X is a member of Y's group") or **participations** (e.g., "X performed in Y's show").  
+- The claim may involve **direct or indirect evidence** from the key-value pairs, even if the values themselves are not explicitly truth values.  
+- The claim must be evaluated based on whether the **evidence directly supports or contradicts** the claim, regardless of the values' nature.  
+- If the claim is **not supported** by the evidence, the answer is **NOT_SUPPORTED**. If the claim is **supported** by the evidence, the answer is **SUPPORTED**.  
+
+### Niche and Domain-Specific Facts to Include in Instruction  
+- **Entity Relationships**: If the claim involves a relationship between two entities, the evidence must explicitly or implicitly indicate that relationship.  
+- **Attribute Verification**: If the claim involves an attribute (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- **Factual Assertions**: If the claim involves a factual assertion (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- **Contextual Knowledge**: If the claim requires contextual knowledge (e.g., historical, cultural, or professional), the evidence must include that knowledge or it is **NOT_SUPPORTED**.  
+- **Logical Consistency**: If the claim is logically inconsistent with the evidence, it is **NOT_SUPPORTED**.  
+- **Multiple Entities and Relationships**: If the claim involves multiple entities and relationships, the evidence must address each one individually.  
+
+### Generalizable Strategy to Include in Instruction  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+- If the evidence provides **direct support** for the claim, the claim is **SUPPORTED**.  
+- If the evidence **contradicts** the claim, the claim is **NOT_SUPPORTED**.  
+- The claim must be evaluated based on whether the **evidence directly supports or contradicts** the claim, regardless of the values' nature.  
+- The claim must be evaluated **without assuming any external knowledge** beyond the provided evidence.  
+- If the claim is **not supported** by the evidence, the answer is **NOT_SUPPORTED**. If the claim is **supported** by the evidence, the answer is **SUPPORTED**.
+Iteration 28: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 29: Selected program 5 score: 0.44666666666666666
+Iteration 29: Contrastive search found 0 pairs (requested 3)
+Iteration 29: Proposed new text for system_prompt: ## New Instruction  
+Determine whether the given claim is **SUPPORTED** or **NOT_SUPPORTED** based on the provided evidence. The evidence consists of a collection of key-value pairs, where each key represents an entity (e.g., person, band, location, etc.), and each value is a numerical code (e.g., 0 or 1).  
+
+### Task Description  
+- **Key-Value Pairs**: Each key in the evidence represents an entity, and the value is a numerical code (e.g., 0 or 1).  
+- **Claim**: A specific statement about a relationship, affiliation, or characteristic of an entity.  
+- **Evidence Analysis**:  
+  - The values (0 or 1) do not inherently indicate truth or falsity.  
+  - The claim may involve relationships (e.g., "X is Y's dance partner"), attributes (e.g., "X is a rock band"), or factual assertions (e.g., "X was born in Y").  
+  - The values do not provide any direct or indirect evidence of the claim's truth.  
+  - The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+
+### Niche and Domain-Specific Facts  
+- **Key-Value Pair Usage**: The evidence is structured as a dictionary of key-value pairs, where the key is an entity and the value is a numerical code.  
+- **No Explicit Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Logical Connection**: The claim may involve a relationship or attribute that is not logically connected to the values provided.  
+- **No Contextual Information**: The claim may require contextual knowledge (e.g., historical, cultural, or professional) that is not included in the evidence.  
+
+### Generalizable Strategy  
+- If the claim is about a **relationship** (e.g., "X is Y's dance partner"), the evidence must provide direct or indirect evidence of that relationship.  
+- If the claim is about an **attribute** (e.g., "X is a rock band"), the evidence must provide direct or indirect evidence of that attribute.  
+- If the claim is about a **fact** (e.g., "X was born in Y"), the evidence must provide direct or indirect evidence of that fact.  
+- If the evidence does not provide any information that supports or contradicts the claim, the claim is **NOT_SUPPORTED**.  
+
+### Example:  
+**Evidence**:  
+{'key': 'Riccardo Cocchi', 'value': 0}  
+{'key': 'Yulia Zagoruychenko', 'value': 0}  
+
+**Claim**: "Ukrainian choreographer Riccardo Cocchi is Yulia Zagoruychenko's dance partner."  
+
+**Answer**: NOT_SUPPORTED  
+**Reasoning**: The values (0) do not indicate any relationship or partnership between the two individuals. The evidence provides no information about their relationship or dance partnership.  
+
+### Additional Notes  
+- **Entity Recognition**: The keys in the evidence are entities (e.g., people, bands, locations), and the values are numerical codes (0 or 1).  
+- **No Direct or Indirect Evidence**: The claim must be evaluated based on whether the evidence directly supports or contradicts it.  
+- **No Logical or Contextual Connection**: If the claim involves a relationship or attribute not logically connected to the values, the claim is **NOT_SUPPORTED**.  
+- **No Truth Values**: The values (0 or 1) are not truth values but rather arbitrary or contextual data.  
+- **No Contextual Knowledge**: If the claim requires contextual knowledge (e.g., historical, cultural, or professional) not included in the evidence, the claim is **NOT_SUPPORTED**.  
+- **No Logical Connection to Values**: If the claim involves a relationship or attribute not logically connected to the values provided, the claim is **NOT_SUPPORTED**.  
+- **No Direct or Indirect Evidence**: If the claim is about a relationship, attribute, or fact and the evidence does not provide any direct or indirect evidence, the claim is **NOT_SUPPORTED**.  
+
+### Final Output  
+Provide the final verdict (**SUPPORTED** or **NOT_SUPPORTED**) and a concise reasoning explaining why the claim is supported or not supported based on the evidence provided.  
+```
+Iteration 29: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 29: Valset score for new program: 0.45 (coverage 300 / 300)
+Iteration 29: Val aggregate for new program: 0.45
+Iteration 29: Individual valset scores for new program: {76: 1.0, 119: 0.0, 134: 1.0, 0: 0.0, 1: 1.0, 2: 1.0, 3: 0.0, 4: 1.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 1.0, 9: 1.0, 10: 0.0, 11: 0.0, 12: 1.0, 13: 1.0, 14: 1.0, 15: 0.0, 16: 1.0, 17: 1.0, 18: 0.0, 19: 1.0, 20: 1.0, 21: 0.0, 22: 0.0, 23: 1.0, 24: 0.0, 25: 0.0, 26: 0.0, 27: 0.0, 28: 0.0, 29: 1.0, 30: 0.0, 31: 1.0, 32: 0.0, 33: 0.0, 34: 1.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 0.0, 39: 0.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 0.0, 44: 0.0, 45: 0.0, 46: 0.0, 47: 0.0, 48: 0.0, 49: 1.0, 50: 0.0, 51: 0.0, 52: 0.0, 53: 0.0, 54: 1.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 1.0, 61: 0.0, 62: 1.0, 63: 0.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 0.0, 69: 1.0, 70: 0.0, 71: 1.0, 72: 1.0, 73: 0.0, 74: 1.0, 75: 0.0, 77: 1.0, 78: 1.0, 79: 1.0, 80: 1.0, 81: 0.0, 82: 0.0, 83: 0.0, 84: 0.0, 85: 1.0, 86: 0.0, 87: 1.0, 88: 1.0, 89: 0.0, 90: 0.0, 91: 1.0, 92: 0.0, 93: 0.0, 94: 1.0, 95: 0.0, 96: 1.0, 97: 0.0, 98: 1.0, 99: 1.0, 100: 1.0, 101: 0.0, 102: 0.0, 103: 0.0, 104: 0.0, 105: 0.0, 106: 0.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 0.0, 114: 1.0, 115: 0.0, 116: 0.0, 117: 0.0, 118: 1.0, 120: 0.0, 121: 0.0, 122: 1.0, 123: 1.0, 124: 0.0, 125: 0.0, 126: 1.0, 127: 0.0, 128: 1.0, 129: 0.0, 130: 1.0, 131: 1.0, 132: 1.0, 133: 0.0, 135: 0.0, 136: 0.0, 137: 1.0, 138: 0.0, 139: 1.0, 140: 1.0, 141: 1.0, 142: 0.0, 143: 0.0, 144: 1.0, 145: 0.0, 146: 1.0, 147: 0.0, 148: 0.0, 149: 0.0, 150: 0.0, 151: 0.0, 152: 1.0, 153: 1.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 1.0, 158: 0.0, 159: 0.0, 160: 1.0, 161: 0.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 0.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 0.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 0.0, 177: 0.0, 178: 1.0, 179: 0.0, 180: 0.0, 181: 0.0, 182: 0.0, 183: 0.0, 184: 1.0, 185: 0.0, 186: 0.0, 187: 1.0, 188: 0.0, 189: 1.0, 190: 1.0, 191: 0.0, 192: 0.0, 193: 0.0, 194: 1.0, 195: 1.0, 196: 0.0, 197: 1.0, 198: 0.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 0.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 0.0, 209: 1.0, 210: 0.0, 211: 1.0, 212: 1.0, 213: 0.0, 214: 0.0, 215: 0.0, 216: 0.0, 217: 1.0, 218: 0.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 0.0, 224: 0.0, 225: 0.0, 226: 0.0, 227: 1.0, 228: 0.0, 229: 0.0, 230: 0.0, 231: 0.0, 232: 1.0, 233: 0.0, 234: 1.0, 235: 0.0, 236: 0.0, 237: 1.0, 238: 0.0, 239: 0.0, 240: 0.0, 241: 0.0, 242: 0.0, 243: 0.0, 244: 1.0, 245: 0.0, 246: 0.0, 247: 0.0, 248: 1.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 1.0, 253: 1.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 0.0, 262: 0.0, 263: 1.0, 264: 1.0, 265: 0.0, 266: 0.0, 267: 0.0, 268: 1.0, 269: 0.0, 270: 1.0, 271: 0.0, 272: 1.0, 273: 0.0, 274: 0.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 0.0, 279: 1.0, 280: 0.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 0.0, 286: 1.0, 287: 0.0, 288: 0.0, 289: 0.0, 290: 1.0, 291: 0.0, 292: 1.0, 293: 0.0, 294: 1.0, 295: 1.0, 296: 0.0, 297: 1.0, 298: 0.0, 299: 0.0}
+Iteration 29: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0, 5: 1.0, 6: 1.0, 7: 1.0, 8: 1.0, 9: 1.0, 10: 1.0, 11: 1.0, 12: 1.0, 13: 1.0, 14: 1.0, 15: 1.0, 16: 1.0, 17: 1.0, 18: 1.0, 19: 1.0, 20: 1.0, 21: 1.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 1.0, 29: 1.0, 30: 1.0, 31: 1.0, 32: 0.0, 33: 1.0, 34: 1.0, 35: 1.0, 36: 1.0, 37: 0.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 1.0, 44: 1.0, 45: 1.0, 46: 1.0, 47: 1.0, 48: 1.0, 49: 1.0, 50: 1.0, 51: 1.0, 52: 1.0, 53: 1.0, 54: 1.0, 55: 1.0, 56: 0.0, 57: 0.0, 58: 0.0, 59: 1.0, 60: 1.0, 61: 1.0, 62: 1.0, 63: 1.0, 64: 1.0, 65: 1.0, 66: 1.0, 67: 1.0, 68: 1.0, 69: 1.0, 70: 0.0, 71: 1.0, 72: 1.0, 73: 1.0, 74: 1.0, 75: 1.0, 76: 1.0, 77: 1.0, 78: 1.0, 79: 1.0, 80: 1.0, 81: 1.0, 82: 0.0, 83: 0.0, 84: 1.0, 85: 1.0, 86: 1.0, 87: 1.0, 88: 1.0, 89: 0.0, 90: 1.0, 91: 1.0, 92: 1.0, 93: 0.0, 94: 1.0, 95: 1.0, 96: 1.0, 97: 1.0, 98: 1.0, 99: 1.0, 100: 1.0, 101: 0.0, 102: 1.0, 103: 1.0, 104: 0.0, 105: 1.0, 106: 1.0, 107: 1.0, 108: 1.0, 109: 1.0, 110: 0.0, 111: 1.0, 112: 1.0, 113: 1.0, 114: 1.0, 115: 1.0, 116: 0.0, 117: 1.0, 118: 1.0, 119: 1.0, 120: 1.0, 121: 0.0, 122: 1.0, 123: 1.0, 124: 1.0, 125: 0.0, 126: 1.0, 127: 1.0, 128: 1.0, 129: 1.0, 130: 1.0, 131: 1.0, 132: 1.0, 133: 1.0, 134: 1.0, 135: 0.0, 136: 1.0, 137: 1.0, 138: 1.0, 139: 1.0, 140: 1.0, 141: 1.0, 142: 1.0, 143: 1.0, 144: 1.0, 145: 1.0, 146: 1.0, 147: 0.0, 148: 0.0, 149: 1.0, 150: 1.0, 151: 1.0, 152: 1.0, 153: 1.0, 154: 1.0, 155: 1.0, 156: 1.0, 157: 1.0, 158: 1.0, 159: 1.0, 160: 1.0, 161: 1.0, 162: 0.0, 163: 1.0, 164: 0.0, 165: 1.0, 166: 1.0, 167: 1.0, 168: 1.0, 169: 1.0, 170: 0.0, 171: 1.0, 172: 0.0, 173: 1.0, 174: 1.0, 175: 1.0, 176: 1.0, 177: 1.0, 178: 1.0, 179: 1.0, 180: 1.0, 181: 1.0, 182: 1.0, 183: 1.0, 184: 1.0, 185: 1.0, 186: 1.0, 187: 1.0, 188: 1.0, 189: 1.0, 190: 1.0, 191: 1.0, 192: 0.0, 193: 1.0, 194: 1.0, 195: 1.0, 196: 1.0, 197: 1.0, 198: 1.0, 199: 1.0, 200: 1.0, 201: 1.0, 202: 1.0, 203: 1.0, 204: 1.0, 205: 1.0, 206: 0.0, 207: 1.0, 208: 1.0, 209: 1.0, 210: 1.0, 211: 1.0, 212: 1.0, 213: 1.0, 214: 0.0, 215: 1.0, 216: 1.0, 217: 1.0, 218: 1.0, 219: 0.0, 220: 1.0, 221: 1.0, 222: 1.0, 223: 1.0, 224: 1.0, 225: 1.0, 226: 0.0, 227: 1.0, 228: 1.0, 229: 1.0, 230: 1.0, 231: 1.0, 232: 1.0, 233: 1.0, 234: 1.0, 235: 1.0, 236: 1.0, 237: 1.0, 238: 1.0, 239: 0.0, 240: 1.0, 241: 1.0, 242: 1.0, 243: 1.0, 244: 1.0, 245: 1.0, 246: 0.0, 247: 1.0, 248: 1.0, 249: 1.0, 250: 1.0, 251: 1.0, 252: 1.0, 253: 1.0, 254: 0.0, 255: 0.0, 256: 1.0, 257: 0.0, 258: 0.0, 259: 1.0, 260: 1.0, 261: 1.0, 262: 1.0, 263: 1.0, 264: 1.0, 265: 1.0, 266: 1.0, 267: 1.0, 268: 1.0, 269: 1.0, 270: 1.0, 271: 1.0, 272: 1.0, 273: 1.0, 274: 1.0, 275: 1.0, 276: 1.0, 277: 1.0, 278: 1.0, 279: 1.0, 280: 1.0, 281: 1.0, 282: 0.0, 283: 0.0, 284: 1.0, 285: 1.0, 286: 1.0, 287: 1.0, 288: 1.0, 289: 1.0, 290: 1.0, 291: 0.0, 292: 1.0, 293: 1.0, 294: 1.0, 295: 1.0, 296: 0.0, 297: 1.0, 298: 1.0, 299: 0.0}
+Iteration 29: Valset pareto front aggregate score: 0.8666666666666667
+Iteration 29: Updated valset pareto front programs: {0: {3, 4}, 1: {0, 1, 2, 3, 5, 6, 7}, 2: {0, 1, 2, 4, 5, 6, 7}, 3: {3}, 4: {1, 2, 3, 4, 5, 6, 7}, 5: {4, 5}, 6: {2, 4, 6}, 7: {1, 5}, 8: {0, 1, 2, 3, 5, 6, 7}, 9: {0, 1, 2, 3, 4, 5, 6, 7}, 10: {0, 1, 3, 5, 6}, 11: {6}, 12: {0, 1, 3, 4, 6, 7}, 13: {0, 1, 2, 3, 5, 6, 7}, 14: {0, 1, 2, 3, 4, 5, 6, 7}, 15: {3, 4}, 16: {0, 1, 2, 3, 4, 5, 6, 7}, 17: {0, 1, 2, 3, 5, 6, 7}, 18: {4}, 19: {0, 1, 2, 3, 5, 6, 7}, 20: {0, 1, 3, 7}, 21: {4}, 22: {3, 4}, 23: {0, 1, 2, 3, 4, 5, 7}, 24: {3}, 25: {0, 1, 2, 4, 5, 6}, 26: {3, 4}, 27: {2, 4}, 28: {0, 1, 3, 4, 5, 6}, 29: {0, 1, 2, 3, 6, 7}, 30: {3}, 31: {0, 1, 2, 3, 4, 5, 6, 7}, 32: {0, 1, 2, 3, 4, 5, 6, 7}, 33: {3, 4}, 34: {0, 1, 2, 3, 4, 5, 6, 7}, 35: {3}, 36: {0, 4}, 37: {0, 1, 2, 3, 4, 5, 6, 7}, 38: {3}, 39: {1, 2, 3, 4, 6}, 40: {0, 1, 2, 3, 4, 5, 6, 7}, 41: {7}, 42: {0, 1, 2, 3, 5, 6, 7}, 43: {4}, 44: {0, 1, 2, 3, 4}, 45: {3, 4}, 46: {2, 3}, 47: {2, 4, 5}, 48: {0, 1, 3, 4, 5}, 49: {0, 1, 2, 3, 5, 6, 7}, 50: {0, 1, 2, 4, 5}, 51: {2, 4}, 52: {3, 4}, 53: {3, 4}, 54: {0, 1, 2, 3, 5, 6, 7}, 55: {0, 1, 3, 4, 6, 7}, 56: {0, 1, 2, 3, 4, 5, 6, 7}, 57: {0, 1, 2, 3, 4, 5, 6, 7}, 58: {0, 1, 2, 3, 4, 5, 6, 7}, 59: {0, 1, 4, 5, 6, 7}, 60: {0, 1, 2, 4, 6, 7}, 61: {2}, 62: {0, 1, 3, 4, 5, 6, 7}, 63: {2, 6}, 64: {0, 1, 2, 4, 5, 6, 7}, 65: {0, 1, 2, 3, 4, 5, 6, 7}, 66: {0, 1, 4, 5, 6, 7}, 67: {0, 1, 2, 3, 4, 6, 7}, 68: {0, 2, 3}, 69: {7}, 70: {0, 1, 2, 3, 4, 5, 6, 7}, 71: {0, 1, 2, 4, 7}, 72: {0, 1, 2, 4, 5, 7}, 73: {6}, 74: {0, 1, 2, 3, 4, 5, 6, 7}, 75: {2, 4}, 76: {7}, 77: {0, 1, 2, 3, 4, 5, 6, 7}, 78: {0, 1, 2, 4, 6, 7}, 79: {0, 2, 5, 7}, 80: {0, 1, 3, 4, 5, 6, 7}, 81: {3, 4, 6}, 82: {0, 1, 2, 3, 4, 5, 6, 7}, 83: {0, 1, 2, 3, 4, 5, 6, 7}, 84: {4}, 85: {0, 1, 2, 4, 5, 6, 7}, 86: {5}, 87: {0, 1, 2, 3, 4, 5, 6, 7}, 88: {2, 7}, 89: {0, 1, 2, 3, 4, 5, 6, 7}, 90: {4}, 91: {0, 1, 3, 5, 7}, 92: {3, 4}, 93: {0, 1, 2, 3, 4, 5, 6, 7}, 94: {0, 1, 2, 3, 4, 5, 6, 7}, 95: {4, 5}, 96: {1, 2, 4, 5, 6, 7}, 97: {3, 4, 6}, 98: {1, 2, 3, 5, 6, 7}, 99: {0, 1, 2, 3, 4, 5, 6, 7}, 100: {2, 4, 6, 7}, 101: {0, 1, 2, 3, 4, 5, 6, 7}, 102: {3, 4}, 103: {5, 6}, 104: {0, 1, 2, 3, 4, 5, 6, 7}, 105: {3}, 106: {4}, 107: {0, 1, 2, 3, 4, 5, 6, 7}, 108: {0, 1, 2, 3, 5, 6, 7}, 109: {0, 1, 2, 3, 5, 7}, 110: {0, 1, 2, 3, 4, 5, 6, 7}, 111: {0, 1, 2, 3, 4, 5, 6, 7}, 112: {0, 1, 2, 3, 4, 5, 6, 7}, 113: {3}, 114: {0, 1, 3, 4, 5, 6, 7}, 115: {4, 5}, 116: {0, 1, 2, 3, 4, 5, 6, 7}, 117: {0, 1, 4}, 118: {0, 1, 2, 3, 4, 5, 6, 7}, 119: {0, 1, 2, 3, 4, 5, 6}, 120: {2, 3, 4, 6}, 121: {0, 1, 2, 3, 4, 5, 6, 7}, 122: {2, 3, 4, 5, 6, 7}, 123: {0, 1, 3, 4, 5, 6, 7}, 124: {0, 1, 3, 4, 5, 6}, 125: {0, 1, 2, 3, 4, 5, 6, 7}, 126: {0, 1, 4, 5, 6, 7}, 127: {2, 4, 6}, 128: {0, 1, 2, 3, 5, 6, 7}, 129: {4}, 130: {0, 1, 2, 3, 4, 5, 6, 7}, 131: {7}, 132: {0, 1, 2, 3, 4, 5, 6, 7}, 133: {1}, 134: {7}, 135: {0, 1, 2, 3, 4, 5, 6, 7}, 136: {2}, 137: {0, 1, 2, 5, 6, 7}, 138: {4, 6}, 139: {2, 5, 6, 7}, 140: {1, 2, 3, 4, 5, 7}, 141: {0, 1, 2, 3, 4, 5, 6, 7}, 142: {5}, 143: {6}, 144: {0, 1, 2, 3, 4, 5, 6, 7}, 145: {2, 3, 4}, 146: {2, 5, 7}, 147: {0, 1, 2, 3, 4, 5, 6, 7}, 148: {0, 1, 2, 3, 4, 5, 6, 7}, 149: {3, 6}, 150: {4}, 151: {3, 5}, 152: {0, 1, 2, 4, 5, 6, 7}, 153: {7}, 154: {1, 2, 3, 4, 5, 6, 7}, 155: {0, 1, 2, 3, 4, 5, 6, 7}, 156: {0, 1, 2, 3, 4, 7}, 157: {4, 6, 7}, 158: {2}, 159: {2, 4, 6}, 160: {0, 1, 2, 3, 4, 5, 6, 7}, 161: {3}, 162: {0, 1, 2, 3, 4, 5, 6, 7}, 163: {0, 1, 3, 4, 6, 7}, 164: {0, 1, 2, 3, 4, 5, 6, 7}, 165: {2, 3}, 166: {0, 1, 3, 4, 5, 6, 7}, 167: {0, 1, 3, 4, 5, 6, 7}, 168: {0, 1, 2, 3, 5, 6, 7}, 169: {0, 1, 2, 4, 5, 6, 7}, 170: {0, 1, 2, 3, 4, 5, 6, 7}, 171: {3}, 172: {0, 1, 2, 3, 4, 5, 6, 7}, 173: {0, 1, 2, 3, 4, 5, 6, 7}, 174: {2, 3, 4, 5, 6, 7}, 175: {0, 1, 2, 3, 4, 5, 6, 7}, 176: {4}, 177: {3, 4}, 178: {2, 3, 7}, 179: {0, 1, 2, 3, 4}, 180: {2, 4}, 181: {3}, 182: {6}, 183: {4, 5}, 184: {0, 1, 2, 3, 4, 5, 6, 7}, 185: {2}, 186: {3, 4}, 187: {1, 2, 5, 6, 7}, 188: {2, 3, 4, 6}, 189: {7}, 190: {0, 1, 2, 3, 5, 6, 7}, 191: {3}, 192: {0, 1, 2, 3, 4, 5, 6, 7}, 193: {4, 6}, 194: {0, 1, 2, 3, 4, 5, 6, 7}, 195: {0, 1, 2, 3, 4, 5, 6, 7}, 196: {5}, 197: {1, 2, 3, 4, 5, 6, 7}, 198: {3, 5}, 199: {1, 2, 3, 4, 5, 6, 7}, 200: {1, 2, 3, 4, 5, 6, 7}, 201: {0, 1, 2, 3, 4, 5, 7}, 202: {2, 3, 4}, 203: {0, 1, 2, 3, 4, 5, 6, 7}, 204: {0, 1, 2, 5, 6, 7}, 205: {0, 1, 2, 3, 5, 6, 7}, 206: {0, 1, 2, 3, 4, 5, 6, 7}, 207: {1, 2, 3, 5, 6, 7}, 208: {4}, 209: {0, 1, 3, 4, 5, 6, 7}, 210: {3, 4}, 211: {0, 1, 2, 3, 4, 5, 6, 7}, 212: {0, 1, 2, 3, 4, 5, 6, 7}, 213: {4}, 214: {0, 1, 2, 3, 4, 5, 6, 7}, 215: {3, 4}, 216: {2}, 217: {0, 1, 2, 3, 5, 6, 7}, 218: {0, 1, 6}, 219: {0, 1, 2, 3, 4, 5, 6, 7}, 220: {0, 1, 2, 3, 4, 5, 6, 7}, 221: {1, 2, 3, 5, 6, 7}, 222: {0, 1, 2, 3, 4, 5, 6, 7}, 223: {3, 6}, 224: {5}, 225: {1}, 226: {0, 1, 2, 3, 4, 5, 6, 7}, 227: {0, 1, 3, 5, 6, 7}, 228: {3}, 229: {1, 2, 4, 6}, 230: {0, 3}, 231: {0, 2, 3}, 232: {0, 1, 2, 3, 4, 5, 6, 7}, 233: {2, 3, 4, 5}, 234: {1, 3, 5, 6, 7}, 235: {3}, 236: {5}, 237: {0, 1, 2, 4, 5, 6, 7}, 238: {3}, 239: {0, 1, 2, 3, 4, 5, 6, 7}, 240: {4, 5}, 241: {1, 4, 6}, 242: {2}, 243: {3, 4, 6}, 244: {0, 1, 2, 4, 5, 6, 7}, 245: {2, 4}, 246: {0, 1, 2, 3, 4, 5, 6, 7}, 247: {3}, 248: {4, 7}, 249: {0, 1, 2, 3, 4, 5, 6, 7}, 250: {0, 1, 2, 4, 5, 6, 7}, 251: {0, 1, 2, 5, 6, 7}, 252: {1, 5, 7}, 253: {7}, 254: {0, 1, 2, 3, 4, 5, 6, 7}, 255: {0, 1, 2, 3, 4, 5, 6, 7}, 256: {0, 1, 2, 3, 4, 6, 7}, 257: {0, 1, 2, 3, 4, 5, 6, 7}, 258: {0, 1, 2, 3, 4, 5, 6, 7}, 259: {0, 1, 2, 4, 5, 6, 7}, 260: {0, 1, 2, 3, 5, 6, 7}, 261: {4}, 262: {4}, 263: {2, 3, 4, 6, 7}, 264: {1, 2, 3, 5, 6, 7}, 265: {2}, 266: {2, 3, 4, 6}, 267: {4}, 268: {6, 7}, 269: {3, 4}, 270: {0, 1, 2, 3, 4, 5, 6, 7}, 271: {5}, 272: {0, 1, 5, 6, 7}, 273: {3}, 274: {3, 4}, 275: {0, 1, 4, 5, 6, 7}, 276: {0, 1, 4, 5, 7}, 277: {0, 1, 2, 3, 5, 7}, 278: {0, 1, 3, 5}, 279: {1, 2, 3, 4, 5, 6, 7}, 280: {2, 3}, 281: {0, 1, 2, 3, 5, 6, 7}, 282: {0, 1, 2, 3, 4, 5, 6, 7}, 283: {0, 1, 2, 3, 4, 5, 6, 7}, 284: {0, 1, 3, 4, 5, 6, 7}, 285: {4}, 286: {0, 1, 2, 4, 5, 6, 7}, 287: {0, 1, 3, 6}, 288: {2, 4}, 289: {4}, 290: {0, 1, 5, 7}, 291: {0, 1, 2, 3, 4, 5, 6, 7}, 292: {0, 1, 5, 6, 7}, 293: {4, 6}, 294: {0, 1, 2, 3, 4, 5, 6, 7}, 295: {0, 1, 5, 7}, 296: {0, 1, 2, 3, 4, 5, 6, 7}, 297: {0, 1, 2, 3, 4, 5, 6, 7}, 298: {3}, 299: {0, 1, 2, 3, 4, 5, 6, 7}}
+Iteration 29: Best valset aggregate score so far: 0.5233333333333333
+Iteration 29: Best program as per aggregate score on valset: 4
+Iteration 29: Best score on valset: 0.5233333333333333
+Iteration 29: Linear pareto front program index: 4
+Iteration 29: New program candidate index: 7

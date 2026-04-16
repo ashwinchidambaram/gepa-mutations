@@ -1,0 +1,3 @@
+{
+    "response": "\"Every cloud has a silver lining.  \nEvery cloud has a golden lining.  \nEvery cloud has a bright lining.  \n\"  \n\"def organize_medieval_items(items):  \n    organized = {}  \n    for item in items:  \n        first_letter = item[0].lower()  \n        if first_letter not in organized:  \n            organized[first_letter] = []  \n        organized[first_letter].append(item)  \n    for key in organized:  \n        organized[key].sort()  \n    return organized  \n\nprint(organize_medieval_items([\\\"dragon\\\", \\\"castle\\\", \\\"sword\\\", \\\"shield\\\", \\\"dagger\\\", \\\"crown\\\"]))\""
+}

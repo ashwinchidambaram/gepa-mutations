@@ -1,0 +1,30 @@
+{
+  "benchmark": "ifbench",
+  "seed": 789,
+  "subset": null,
+  "method_name": "slime_mold",
+  "model": "openrouter/Qwen/Qwen3-8B",
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 20,
+  "max_metric_calls": 3593,
+  "n_initial_candidates": 20,
+  "pruning_schedule": [
+    [
+      10,
+      10
+    ],
+    [
+      15,
+      5
+    ],
+    [
+      20,
+      3
+    ],
+    [
+      30,
+      1
+    ]
+  ]
+}

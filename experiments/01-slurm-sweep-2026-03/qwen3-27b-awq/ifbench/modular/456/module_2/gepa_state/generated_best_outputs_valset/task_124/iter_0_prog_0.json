@@ -1,0 +1,3 @@
+{
+    "response": "incident def count_politicians(articles, politician_names):\nincident import re\nincident counts = {name: 0 for name in politician_names}\nincident for article in articles:\nincident clean_article = re.sub(r'[^\\w\\s]', ' ', article.lower())\nincident for name in politician_names:\nincident name_lower = name.lower()\nincident matches = re.findall(r'\\b' + re.escape(name_lower) + r'\\b', clean_article)\nincident counts[name] += len(matches)\nincident return counts"
+}
