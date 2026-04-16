@@ -96,12 +96,12 @@ _pilot() {
     echo "Runs:    6 total"
     echo "Logs:    $LOG_DIR/pilot.log"
     echo ""
-    # --workers 1: run methods strictly sequentially. Avoids the parallelism
-    # crash we hit during smoke (vLLM dropped its GPU allocation under
-    # gepa+slime_mold concurrent load). Doubles wall-clock to ~18 hr but
-    # eliminates that risk entirely.
+    # --workers 2: run two methods in parallel (one pair at a time).
+    # Combined with TEST_EVAL_WORKERS=5 above and the vLLM CUDA-graph
+    # restart (no --enforce-eager), max 10 concurrent LM requests on vLLM —
+    # half what crashed us during smoke. Wall-clock ~9 hr for 6 runs.
     .venv/bin/python scripts/run_all_local.py \
-        --workers 1 \
+        --workers 2 \
         --seeds 555,999,1337 \
         --method gepa slime_mold \
         --benchmark hotpotqa \
