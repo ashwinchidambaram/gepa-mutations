@@ -512,6 +512,20 @@ def _build_digest(
 # Worker function (runs in subprocess for isolation)
 # ---------------------------------------------------------------------------
 
+_STALL_CHECK_INTERVAL = 300   # check every 5 minutes
+_STALL_THRESHOLD = 1800       # 30 min with no rollout progress → stalled
+
+
+def _read_rollout_count(exp: Experiment) -> int | None:
+    """Read current rollout count from the experiment's progress file."""
+    progress_path = exp.result_path.parent / "gepa_state" / "progress.json"
+    try:
+        data = json.loads(progress_path.read_text())
+        return data.get("rollouts_used", 0)
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return None
+
+
 def _run_experiment(exp: Experiment, subset: int | None = None, max_metric_calls: int | None = None) -> dict:
     """Run one experiment. Returns result dict."""
     start = time.time()
@@ -525,17 +539,50 @@ def _run_experiment(exp: Experiment, subset: int | None = None, max_metric_calls
     project_root = str(Path(__file__).parent.parent)
 
     try:
-        result = subprocess.run(
+        proc = subprocess.Popen(
             cmd,
             cwd=project_root,
-            capture_output=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
             text=True,
-            timeout=72000,  # 10 hour hard limit per run
         )
+
+        last_rollouts = None
+        last_progress_time = time.time()
+
+        while True:
+            try:
+                proc.wait(timeout=_STALL_CHECK_INTERVAL)
+                break  # process finished
+            except subprocess.TimeoutExpired:
+                pass  # still running — check for stall
+
+            current_rollouts = _read_rollout_count(exp)
+            now = time.time()
+
+            if current_rollouts is not None:
+                if last_rollouts is None or current_rollouts > last_rollouts:
+                    last_rollouts = current_rollouts
+                    last_progress_time = now
+                elif now - last_progress_time > _STALL_THRESHOLD:
+                    elapsed = now - start
+                    log.error(
+                        f"STALLED {exp} after {elapsed:.0f}s — "
+                        f"rollouts stuck at {current_rollouts} for {_STALL_THRESHOLD}s"
+                    )
+                    proc.kill()
+                    proc.wait()
+                    return {"exp": str(exp), "status": "stalled", "elapsed": elapsed}
+            else:
+                # No progress file yet (startup phase) — reset timer
+                last_progress_time = now
+
         elapsed = time.time() - start
 
-        if result.returncode != 0:
-            error_tail = result.stderr[-500:] if result.stderr else result.stdout[-500:]
+        if proc.returncode != 0:
+            stderr_out = proc.stderr.read() if proc.stderr else ""
+            stdout_out = proc.stdout.read() if proc.stdout else ""
+            error_tail = stderr_out[-500:] if stderr_out else stdout_out[-500:]
             log.error(f"FAILED {exp} ({elapsed:.0f}s): {error_tail}")
             return {
                 "exp": str(exp),
@@ -558,10 +605,6 @@ def _run_experiment(exp: Experiment, subset: int | None = None, max_metric_calls
         log.info(f"DONE   {exp} ({elapsed:.0f}s) score={score} train={train}")
         return {"exp": str(exp), "status": "ok", "elapsed": elapsed, "score": score}
 
-    except subprocess.TimeoutExpired:
-        elapsed = time.time() - start
-        log.error(f"TIMEOUT {exp} after {elapsed:.0f}s")
-        return {"exp": str(exp), "status": "timeout", "elapsed": elapsed}
     except Exception as e:
         elapsed = time.time() - start
         log.error(f"ERROR  {exp} ({elapsed:.0f}s): {e}")
