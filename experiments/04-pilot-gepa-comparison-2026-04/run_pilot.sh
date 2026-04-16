@@ -22,6 +22,10 @@ export API_BASE_URL="$VLLM_URL"
 # OpenRouter regardless of api_base. See scripts/launch_mac_sweep.sh for
 # the same convention.
 export MODEL_PREFIX="openai"
+# vLLM accepts any non-empty api_key, but litellm requires the field to be set
+# when MODEL_PREFIX=openai (it expects OpenAI auth headers).
+export API_KEY="${API_KEY:-EMPTY}"
+export OPENAI_API_KEY="${OPENAI_API_KEY:-EMPTY}"
 export EXPERIMENT_LOGS_DIR="$LOG_DIR"
 
 _usage() {
