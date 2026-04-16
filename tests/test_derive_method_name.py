@@ -4,16 +4,17 @@ import importlib.util
 import pathlib
 import pytest
 
-# Import naming.py directly to avoid triggering slime_mold/__init__.py
-# (which requires the full gepa_mutations dependency stack not available in test env)
+# Load naming.py directly to avoid triggering slime_mold/__init__.py which
+# imports runner.py which requires the full gepa_mutations environment.
 _naming_path = (
     pathlib.Path(__file__).parent.parent
     / "methods" / "slime_mold" / "slime_mold" / "naming.py"
 )
 _spec = importlib.util.spec_from_file_location("slime_mold.naming", _naming_path)
+assert _spec is not None and _spec.loader is not None
 _naming_mod = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_naming_mod)
-_derive_method_name = _naming_mod._derive_method_name
+_derive_method_name = _naming_mod._derive_method_name  # type: ignore[attr-defined]
 
 
 # All 14 combinations and their expected names

@@ -5,9 +5,7 @@ import sys
 import types
 import pytest
 
-# Import colony.py directly to avoid triggering slime_mold/__init__.py
-# (which requires the full gepa_mutations dependency stack not available in test env)
-# We stub out the heavy dependencies first.
+# Stub gepa_mutations dependencies that colony.py imports transitively
 for _mod_name in [
     "gepa_mutations",
     "gepa_mutations.metrics",
@@ -16,22 +14,21 @@ for _mod_name in [
 ]:
     if _mod_name not in sys.modules:
         sys.modules[_mod_name] = types.ModuleType(_mod_name)
+sys.modules["gepa_mutations.metrics.collector"].MetricsCollector = object  # type: ignore[attr-defined]
+sys.modules["gepa_mutations.metrics.standalone_eval"].evaluate_prompt = lambda *_a, **_kw: None  # type: ignore[attr-defined]
 
-# Provide MetricsCollector stub
-sys.modules["gepa_mutations.metrics.collector"].MetricsCollector = object  # type: ignore
-sys.modules["gepa_mutations.metrics.standalone_eval"].evaluate_prompt = lambda *a, **kw: None  # type: ignore
-
+# Load colony.py directly (bypasses slime_mold/__init__.py → runner.py chain)
 _colony_path = (
     pathlib.Path(__file__).parent.parent
     / "methods" / "slime_mold" / "slime_mold" / "colony.py"
 )
 _spec = importlib.util.spec_from_file_location("slime_mold.colony", _colony_path)
+assert _spec is not None and _spec.loader is not None
 _colony_mod = importlib.util.module_from_spec(_spec)
 sys.modules["slime_mold.colony"] = _colony_mod
 _spec.loader.exec_module(_colony_mod)
-
-_parse_discovered_skills = _colony_mod._parse_discovered_skills
-PRESCRIBED_STRATEGIES = _colony_mod.PRESCRIBED_STRATEGIES
+_parse_discovered_skills = _colony_mod._parse_discovered_skills  # type: ignore[attr-defined]
+PRESCRIBED_STRATEGIES = _colony_mod.PRESCRIBED_STRATEGIES  # type: ignore[attr-defined]
 
 
 GOOD_OUTPUT = """1. Multi-hop entity tracking: The ability to chain facts across multiple paragraphs to arrive at an answer. Failure: stops at first hop, answering from a single paragraph.
