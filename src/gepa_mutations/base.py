@@ -91,7 +91,10 @@ def build_reflection_lm(settings: Settings) -> LM:
 
 
 def build_qa_task_lm(settings: Settings) -> LM:
-    """Build the task LM for QA benchmarks (direct LiteLLM calls)."""
+    """Build the task LM for QA benchmarks (direct LiteLLM calls).
+
+    Also available as ``build_task_lm`` (legacy alias used by method runners).
+    """
     return LM(
         model_id(settings),
         temperature=settings.gepa_temperature,
@@ -101,6 +104,10 @@ def build_qa_task_lm(settings: Settings) -> LM:
         timeout=settings.lm_timeout,
         **api_base_kwargs(settings),
     )
+
+
+# Legacy alias — many method runners import this name
+build_task_lm = build_qa_task_lm
 
 
 def evaluate_on_test(
