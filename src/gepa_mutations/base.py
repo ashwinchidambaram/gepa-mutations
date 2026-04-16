@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import threading
 import time
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from dataclasses import dataclass
 from typing import Any
 
@@ -140,6 +140,14 @@ def evaluate_on_test(
 
 _MAX_CONSECUTIVE_TEST_ERRORS = 10
 
+# Test-evaluation deadlines. Our orchestrator kills any subprocess that shows
+# no progress for _STALL_THRESHOLD=1800s, so we give the test eval itself a
+# deadline below that. If we hit it, we return partial results + raise so the
+# orchestrator logs the incident rather than silently hanging and losing the
+# entire run's result.json.
+_TEST_EVAL_TOTAL_TIMEOUT_SECONDS = 1500   # 25 min total (orchestrator kills at 30 min)
+_TEST_EVAL_IDLE_TIMEOUT_SECONDS = 300     # if nothing completes for 5 min, consider stalled
+
 
 def _evaluate_qa(
     prompt: dict[str, str], testset: list, lm: LM, adapter, workers: int = 10
@@ -203,8 +211,68 @@ def _evaluate_qa(
 
         return score, response
 
-    with ThreadPoolExecutor(max_workers=workers) as pool:
-        results = list(pool.map(eval_one, testset))
+    # Timeout-aware replacement for the previous `list(pool.map(eval_one, testset))`.
+    # The old version would block forever if ANY single LM call hung (e.g., litellm
+    # retry loop not respecting its timeout, or vLLM accepting but never returning).
+    # We observed this during the exp-04 pilot on gepa and slime_mold alike.
+    #
+    # New strategy:
+    #   - submit all tasks, track by index so we can write results in order
+    #   - wait with FIRST_COMPLETED and an idle-timeout (_TEST_EVAL_IDLE_TIMEOUT_SECONDS)
+    #   - also enforce a total deadline (_TEST_EVAL_TOTAL_TIMEOUT_SECONDS)
+    #   - on either timeout, cancel pending futures, raise a RuntimeError so the
+    #     caller can distinguish hang-abort from normal completion
+    #   - use shutdown(wait=False, cancel_futures=True) so we don't hang on stuck
+    #     worker threads (they leak, but we exit cleanly)
+    pool = ThreadPoolExecutor(max_workers=workers)
+    try:
+        future_to_idx = {pool.submit(eval_one, ex): i for i, ex in enumerate(testset)}
+        results: list[tuple[float, str]] = [(0.0, "")] * len(testset)
+        pending = set(future_to_idx.keys())
+        eval_start = time.time()
+
+        while pending:
+            elapsed = time.time() - eval_start
+            time_budget = _TEST_EVAL_TOTAL_TIMEOUT_SECONDS - elapsed
+            if time_budget <= 0:
+                with lock:
+                    if not abort_exc:
+                        abort_exc.append(RuntimeError(
+                            f"Test eval exceeded total timeout "
+                            f"{_TEST_EVAL_TOTAL_TIMEOUT_SECONDS}s. "
+                            f"Completed: {len(testset) - len(pending)}/{len(testset)}"
+                        ))
+                break
+
+            wait_timeout = min(_TEST_EVAL_IDLE_TIMEOUT_SECONDS, time_budget)
+            done, _ = wait(pending, timeout=wait_timeout, return_when=FIRST_COMPLETED)
+
+            if not done:
+                # Nothing finished in wait_timeout — every worker is stuck.
+                with lock:
+                    if not abort_exc:
+                        abort_exc.append(RuntimeError(
+                            f"Test eval idle: no completion in {wait_timeout:.0f}s. "
+                            f"Completed: {len(testset) - len(pending)}/{len(testset)}"
+                        ))
+                break
+
+            for fut in done:
+                pending.discard(fut)
+                idx = future_to_idx[fut]
+                try:
+                    results[idx] = fut.result(timeout=1)  # done, should be fast
+                except Exception:
+                    results[idx] = (0.0, "")
+
+        # Cancel whatever's still pending; shutdown below will not wait on them.
+        for fut in pending:
+            fut.cancel()
+    finally:
+        # Abandon stuck threads instead of blocking the main thread on their
+        # completion. Stuck threads leak FDs and memory but we're about to exit
+        # the subprocess anyway (either via error or clean return).
+        pool.shutdown(wait=False, cancel_futures=True)
 
     if abort_exc:
         raise abort_exc[0]
