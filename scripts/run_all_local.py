@@ -86,6 +86,8 @@ METHODS = [
     "gepa", "best_of_k_K3", "contrastive_reflection", "failure_stratified_k_K3",
     "synaptic_pruning", "tournament", "slime_mold", "ant_colony",
     "active_minibatch", "contrastive_synthesis", "ecological_succession", "modular",
+    "slime_mold_prescribed8", "slime_mold_inductive_k5",
+    "slime_mold_inductive_k5_crosspollin", "slime_mold_inductive_k5_refresh_expand",
 ]
 SEEDS = [42, 123, 456, 789, 1024]
 
@@ -97,6 +99,10 @@ METHOD_PRIORITY = {
     "ant_colony": 5, "active_minibatch": 6, "ecological_succession": 7,
     "modular": 8, "contrastive_synthesis": 9,
     "contrastive_reflection": 10, "failure_stratified_k_K3": 11,
+    "slime_mold_prescribed8": 12,
+    "slime_mold_inductive_k5": 13,
+    "slime_mold_inductive_k5_crosspollin": 14,
+    "slime_mold_inductive_k5_refresh_expand": 15,
 }
 
 # Benchmark run order: fastest wall-clock first (actual durations, not paper rollout budget)
@@ -172,12 +178,26 @@ METHOD_COMMANDS = {
     "failure_stratified_k_K3": lambda bm, seed, subset, mmc: _mutation_cmd("failure_stratified_k", bm, seed, 3, subset, mmc),
     "synaptic_pruning": lambda bm, seed, subset, mmc: _mutation_cmd("synaptic_pruning", bm, seed, None, subset, mmc),
     "tournament": lambda bm, seed, subset, mmc: _mutation_cmd("tournament", bm, seed, None, subset, mmc),
-    "slime_mold": lambda bm, seed, subset, mmc: _mutation_cmd("slime_mold", bm, seed, None, subset, mmc),
+    "slime_mold": lambda bm, seed, subset, mmc: _slime_mold_cmd(bm, seed, subset, mmc, strategy_mode="personality"),
     "ant_colony": lambda bm, seed, subset, mmc: _mutation_cmd("ant_colony", bm, seed, None, subset, mmc),
     "active_minibatch": lambda bm, seed, subset, mmc: _mutation_cmd("active_minibatch", bm, seed, None, subset, mmc),
     "contrastive_synthesis": lambda bm, seed, subset, mmc: _mutation_cmd("contrastive_synthesis", bm, seed, None, subset, mmc),
     "ecological_succession": lambda bm, seed, subset, mmc: _mutation_cmd("ecological_succession", bm, seed, None, subset, mmc),
     "modular": lambda bm, seed, subset, mmc: _mutation_cmd("modular", bm, seed, None, subset, mmc),
+    # Tier 1 Slime Mold variants (Phase 3-8 parameterization)
+    "slime_mold_prescribed8": lambda bm, seed, subset, mmc: _slime_mold_cmd(
+        bm, seed, subset, mmc, strategy_mode="prescribed8"
+    ),
+    "slime_mold_inductive_k5": lambda bm, seed, subset, mmc: _slime_mold_cmd(
+        bm, seed, subset, mmc, strategy_mode="inductive", k=5
+    ),
+    "slime_mold_inductive_k5_crosspollin": lambda bm, seed, subset, mmc: _slime_mold_cmd(
+        bm, seed, subset, mmc, strategy_mode="inductive", k=5, mutation_mode="crosspollin"
+    ),
+    "slime_mold_inductive_k5_refresh_expand": lambda bm, seed, subset, mmc: _slime_mold_cmd(
+        bm, seed, subset, mmc,
+        strategy_mode="inductive", k=5, mutation_mode="crosspollin", refresh_mode="expand",
+    ),
 }
 
 logging.basicConfig(
@@ -281,6 +301,35 @@ def _mutation_cmd(mutation: str, benchmark: str, seed: int, k: int | None, subse
         cmd += ["--subset", str(subset)]
     if max_metric_calls is not None:
         cmd += ["--max-metric-calls", str(max_metric_calls)]
+    return cmd
+
+
+def _slime_mold_cmd(
+    benchmark: str,
+    seed: int,
+    subset: int | None,
+    max_metric_calls: int | None,
+    strategy_mode: str = "personality",
+    k: int | None = None,
+    mutation_mode: str = "blind",
+    refresh_mode: str = "none",
+) -> list[str]:
+    """Build command to run slime_mold runner with Tier 1 flags."""
+    script = Path(__file__).parent.parent / "methods/slime_mold/slime_mold/runner.py"
+    cmd = [
+        _venv_python(), str(script),
+        "--benchmark", benchmark,
+        "--seed", str(seed),
+        "--strategy-mode", strategy_mode,
+        "--mutation-mode", mutation_mode,
+        "--refresh-mode", refresh_mode,
+    ]
+    if k is not None:
+        cmd.extend(["--k", str(k)])
+    if subset is not None:
+        cmd.extend(["--subset", str(subset)])
+    if max_metric_calls is not None:
+        cmd.extend(["--max-metric-calls", str(max_metric_calls)])
     return cmd
 
 
@@ -625,7 +674,16 @@ def main() -> None:
     parser.add_argument("--smoke-test", action="store_true", help="Run with subset=5 (quick validation)")
     parser.add_argument("--max-metric-calls", type=int, default=None,
                         help="Override rollout budget for all runs (default: paper budget)")
+    parser.add_argument(
+        "--runs-dir", type=str, default=None,
+        help="Override runs directory (default: use 'runs/' symlink in repo root). "
+             "Sets RUNS_DIR env var for subprocesses.",
+    )
     args = parser.parse_args()
+
+    # Propagate --runs-dir to subprocesses via env var
+    if args.runs_dir:
+        os.environ["RUNS_DIR"] = args.runs_dir
 
     # Ensure logs dir exists
     Path("logs").mkdir(exist_ok=True)
@@ -808,8 +866,17 @@ def main() -> None:
     gepa_sc = scores.get("gepa")
     gepa_mean = sum(gepa_sc) / len(gepa_sc) if gepa_sc else None
 
+    # Build set of methods that actually produced results (filter summary to completed only)
+    completed_methods = set()
+    for exp in experiments:
+        if exp.is_done:
+            completed_methods.add(exp.method)
+    # Also include methods that completed during this run
+    completed_methods.update(scores.keys())
+    methods_to_summarize = [m for m in METHODS if m in completed_methods]
+
     result_lines: list[str] = []
-    for m in METHODS:
+    for m in methods_to_summarize:
         sc = scores.get(m, [])
         if sc:
             mean = sum(sc) / len(sc)
