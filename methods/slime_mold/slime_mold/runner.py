@@ -29,7 +29,14 @@ from gepa_mutations.metrics.tracked_lm import TrackedLM
 from gepa_mutations.runner.experiment import BENCHMARK_SEED_PROMPTS, SEED_PROMPT, ExperimentResult
 from gepa_mutations.storage.local import save_result
 
-from slime_mold.colony import generate_diverse_prompts, mutate_prompt, run_pruning_round
+from slime_mold.colony import (
+    PRESCRIBED_STRATEGIES,
+    discover_strategies,
+    generate_diverse_prompts,
+    generate_specialized_prompt,
+    mutate_prompt,
+    run_pruning_round,
+)
 from slime_mold.naming import _derive_method_name
 
 console = Console()
@@ -71,12 +78,8 @@ def run_slime_mold(
     Returns:
         ExperimentResult with test/val scores, best prompt, and diagnostics.
     """
-    # Phase 3: raise early for unsupported modes (implementations in Phases 4-8)
-    if strategy_mode != "personality":
-        raise NotImplementedError(
-            f"strategy_mode={strategy_mode} will be implemented in Phase 4. "
-            f"Only 'personality' is supported in Phase 3."
-        )
+    # Phase 4 note: strategy_mode dispatch is implemented below in candidate generation.
+    # Phases 7-8: raise early for unsupported modes
     if mutation_mode != "blind":
         raise NotImplementedError(f"mutation_mode={mutation_mode} will be implemented in Phase 7")
     if refresh_mode != "none":
@@ -142,23 +145,89 @@ def run_slime_mold(
                                prompt_length=len(seed_prompt))
 
     # =========================================================================
-    # 5. Generate diverse candidates (19 + seed = 20 total)
+    # 5. Generate diverse candidates (dispatch on strategy_mode)
     # =========================================================================
-    console.print(f"\n[bold cyan]Generating diverse candidates...[/bold cyan]")
+    console.print(f"\n[bold cyan]Generating diverse candidates (mode={strategy_mode})...[/bold cyan]")
     _stage_start = time.time()
     _stage_rollouts_start = collector.rollout_count
-    diverse = generate_diverse_prompts(
-        reflection_lm=tracked_reflection,
-        seed_prompt=seed_prompt,
-        n=19,
-        task_description=task_description,
-        rng=rng,
-    )
-    candidates: list[str] = [seed_prompt] + diverse[:19]
-    # Ensure exactly 20
-    while len(candidates) < 20:
-        candidates.append(seed_prompt)
-    candidates = candidates[:20]
+
+    discovery_outputs: list[dict] = []
+    strategies_used: list = []
+
+    if strategy_mode == "personality":
+        # EXISTING CODE PATH — 4 personality strategies → 19 candidates + seed = 20 total
+        diverse = generate_diverse_prompts(
+            reflection_lm=tracked_reflection,
+            seed_prompt=seed_prompt,
+            n=19,
+            task_description=task_description,
+            rng=rng,
+        )
+        candidates: list[str] = [seed_prompt] + diverse[:19]
+        while len(candidates) < 20:
+            candidates.append(seed_prompt)
+        candidates = candidates[:20]
+
+    elif strategy_mode == "prescribed8":
+        # 8 prescribed strategies × 3 prompts each = 24 + seed = 25 total
+        strategies_used = list(PRESCRIBED_STRATEGIES)
+        candidates = [seed_prompt]
+        for strategy in strategies_used:
+            specialized = generate_specialized_prompt(
+                reflection_lm=tracked_reflection,
+                strategy=strategy,
+                task_description=task_description,
+                seed_prompt=seed_prompt,
+                examples=trainset,
+                n=3,
+                rng=rng,
+            )
+            candidates.extend(specialized[:3])
+        # Pad if any generations failed
+        while len(candidates) < 25:
+            candidates.append(seed_prompt)
+        candidates = candidates[:25]
+
+    elif strategy_mode == "inductive":
+        # Discover k strategies, generate 4 prompts each = 4k + seed
+        strategies_used, raw_disc, fallback = discover_strategies(
+            reflection_lm=tracked_reflection,
+            benchmark=benchmark,
+            task_description=task_description,
+            examples=trainset,
+            k=k,
+            rng=rng,
+        )
+        discovery_outputs.append({
+            "pass": "initial",
+            "k_requested": k,
+            "raw_llm_output": raw_disc,
+            "fallback_used": fallback,
+            "skills": [
+                {"name": s.name, "description": s.description, "failure_pattern": s.failure_pattern}
+                for s in strategies_used
+            ],
+        })
+        candidates = [seed_prompt]
+        for strategy in strategies_used:
+            specialized = generate_specialized_prompt(
+                reflection_lm=tracked_reflection,
+                strategy=strategy,
+                task_description=task_description,
+                seed_prompt=seed_prompt,
+                examples=trainset,
+                n=4,
+                rng=rng,
+            )
+            candidates.extend(specialized[:4])
+        # Final pool size is 4*k + 1 (or 4 * len(strategies_used) + 1 for adaptive)
+        target = 4 * len(strategies_used) + 1
+        while len(candidates) < target:
+            candidates.append(seed_prompt)
+        candidates = candidates[:target]
+
+    else:
+        raise ValueError(f"Unknown strategy_mode: {strategy_mode}")
 
     console.print(f"  Generated {len(candidates)} candidates (including seed)")
     collector.method_specific.setdefault("stage_timings", []).append({
@@ -174,6 +243,13 @@ def run_slime_mold(
         "round_survivors": [len(candidates)],
         "round_scores": [],
         "pruning_history": [],
+        "strategy_mode": strategy_mode,
+        "k": k,
+        "strategies_used": [
+            {"name": s.name, "description": s.description, "source": s.source}
+            for s in strategies_used
+        ],
+        "discovery_outputs": discovery_outputs,
     }
 
     _running_best_score = 0.0
