@@ -1,9 +1,11 @@
 # Design: Inductive Strategy Discovery for Slime Mold
 
-**Date:** 2026-04-15
+**Date:** 2026-04-15 (last revised 2026-04-16 after bar-raiser review)
 **Model:** Qwen3-8B (bf16) — GEPA paper's primary model
-**Deployment:** RunPod, 2x RTX 4090
-**Budget:** 2,000 LLM calls per run
+**Deployment:** RunPod, 1x A40 48GB (with A40 throughput smoke benchmark before commit; fallback 1x RTX 4090)
+**Budget:** 2,500 rollouts per run (hard cap); reflection calls tracked separately
+
+> **⚠️ For final decisions, see the "Review Resolutions (Final)" section at the end of this document. That section supersedes any earlier content where they conflict.**
 
 ---
 
@@ -647,3 +649,249 @@ One subplot per benchmark, all methods overlaid, mean +/- std shading. The money
 - **Tournament with inductive discovery:** Apply discovery to Tournament's frozen-pool generation.
 - **Multi-perspective discovery:** Run Phase 1 2-3 times with different framings, deduplicate.
 - **Larger pool (40):** Scale pool to 40 candidates. Try after free improvements are tested.
+
+---
+---
+
+# Review Resolutions (Final)
+
+This section reflects the final design after a bar-raiser review (2026-04-16). Where it conflicts with earlier content in this document, these decisions win.
+
+## Terminology
+
+Use consistently throughout this experiment, in code, logs, and reports:
+
+- **"rollouts"** — evaluation calls on data examples (train/val/test). These are enforced by `--max-metric-calls`.
+- **"reflection calls"** — discovery, generation, and mutation LLM calls. Tracked separately in `collector.reflection_call_count`.
+- **"total LLM work"** — rollouts + reflection calls + test_eval. The honest resource count.
+- **"budget"** — the `--max-metric-calls` flag value. Currently 2,500. Does NOT include reflection calls or test eval.
+
+## Tier 1 — Final 5 Methods
+
+| # | Method | Strategies | Mutation | Refresh | Pool | Cascade |
+|---|--------|-----------|----------|---------|------|---------|
+| 1 | `slime_mold` | 4 personality | blind | none | 20 | 20→10→5→3→1 |
+| 2 | `slime_mold_prescribed8` | 8 universal | blind | none | 25 | 25→13→7→3→1 |
+| 3 | `slime_mold_inductive_k5` | inductive K=5 | blind | none | 21 | 21→11→6→3→1 |
+| 4 | `slime_mold_inductive_k5_crosspollin` | inductive K=5 | cross-pollination | none | 21 | 21→11→6→3→1 |
+| 5 | `slime_mold_inductive_k5_refresh_expand` | inductive K=5 | cross-pollination | expand (+8 at R2) | 21→(R2=19) | 21→11→(+8)=19→10→3→1 |
+
+**Swapped from original Tier 1:** removed `refresh_replace`, added `inductive_k5` (blind). This gives clean isolation:
+- 1 vs 2: strategy quality (personality → universal)
+- 1 vs 3: inductive discovery alone (no cross-pollination)
+- 2 vs 3: task-adaptiveness (prescribed vs discovered)
+- 3 vs 4: cross-pollination effect
+- 4 vs 5: refresh effect
+
+**Cascade rule:** Halve each round, floor at 3, final = 1. Applied uniformly to all methods including baseline for consistency.
+
+## Final Call Count Estimates (measured + projected)
+
+Per-run rollouts by benchmark (post-cascade standardization, including 200 hold-out trajectory rollouts):
+
+| Method | HotpotQA | HOVER | PUPA | IFBench | Avg |
+|--------|----------|-------|------|---------|-----|
+| M1 baseline | ~807 | ~1,452 | ~1,042 | ~1,452 | ~1,188 |
+| M2 prescribed8 | ~869 | ~1,574 | ~1,164 | ~1,574 | ~1,295 |
+| M3 inductive_k5 (blind) | ~814 | ~1,464 | ~1,054 | ~1,464 | ~1,199 |
+| M4 inductive_k5_crosspollin | ~814 | ~1,464 | ~1,054 | ~1,464 | ~1,199 |
+| M5 inductive_k5_refresh_expand | ~857 | ~1,587 | ~1,177 | ~1,587 | ~1,302 |
+
+**Includes:** cascade rollouts + mutation probes + reflection calls + champion val eval + test eval + 200 hold-out trajectory rollouts (~50 × 4 rounds).
+
+**Budget cap at 2,500 rollouts** gives ~2x headroom even for the most expensive benchmark.
+
+## Tier 1 Total Workload
+
+- 5 methods × 5 seeds × 4 benchmarks = **100 runs**
+- Plus 5 methods × 5 extra seeds × HotpotQA = **25 extra runs** (for variance claim statistical power)
+- **Total: 125 runs**
+- **Total rollouts:** ~120,000-130,000
+
+## Comparison Against GEPA Baseline
+
+Measured GEPA on qwen3-8b:
+- IFBench: ~4,090 total LLM calls
+- PUPA: ~4,135 total LLM calls
+
+**Our efficiency story:** Slime Mold variants use ~1,050-1,300 rollouts + test eval per run. 3-7x cheaper than GEPA depending on benchmark.
+
+**Caveat:** No HOVER or HotpotQA GEPA data on 8B exists. For those comparisons, either (a) run GEPA on 8B for those benchmarks (~4 hrs × 5 seeds = 20 extra hrs), or (b) frame the paper as Slime Mold variant comparisons with GEPA efficiency noted only where we have data.
+
+## Hardware & Deployment
+
+**Primary choice: 1x A40 48GB on RunPod** (~$0.47/hr)
+
+Rationale:
+- Qwen3-8B bf16 fits in 16GB → 32GB free for vLLM KV cache (vs 8GB on RTX 4090)
+- Larger batches → estimated 2x throughput vs RTX 4090
+- Same or cheaper total cost
+
+**Pre-launch smoke benchmark (required):** Before committing Tier 1:
+1. Provision 1x A40 pod
+2. Run 1 smoke test (5 examples × 1 method, ~10 min)
+3. Measure throughput in calls/sec
+4. If ≥1.5x RTX 4090 baseline (0.4+ calls/sec), commit Tier 1 on A40
+5. If underperforms, fall back to 1x RTX 4090
+
+**Estimated Tier 1 wall time at A40 throughput (~0.55 calls/sec):**
+- 125K rollouts ÷ 0.55 = ~63 hours = ~2.6 days
+- Cost: 63 × $0.47 = **~$30**
+
+Fallback 1x RTX 4090: ~125 hours = ~5 days at ~$47. Both cheaper than original 2x4090 plan.
+
+## Final Decisions by Review Item
+
+### Blockers (all resolved)
+
+**B1. Stall detection:** Runner writes `gepa_state/progress.json` after each round and mutation batch with current `rollouts_used`. Adds hard 2-hour wall-clock timeout per subprocess in `run_all_local.py`. Both mechanisms active simultaneously.
+
+**B2. Method name derivation:** Build `_derive_method_name(strategy_mode, k, mutation_mode, refresh_mode) → str` helper in runner. All 14 combinations produce unique directory names. Unit test validates this. `save_result(method=derived_name)`.
+
+**B3. Budget definition:** Separate tracking, rollouts-only enforcement. `max_metric_calls` caps rollouts only (2,500). `reflection_call_count` tracked but not capped. Every trajectory point logs both (`cumulative_rollouts`, `cumulative_reflection_calls`, `best_score`).
+
+**B4. Cross-pollination failure matrix:**
+- **Threshold:** Binary, 0.5 (scores ≥0.5 pass, <0.5 fail)
+- **Scope:** Reset per round; matrix built from that round's eval only
+- **Tiebreaker:** Prefer cross-strategy donor (different strategy from survivor), break ties by highest score on survivor's failed examples
+- **Logging:** Every mutation records `cross_pollination_events` entry with full metadata (survivor/donor strategies, shared failures, `cross_strategy: bool`, `no_donor_found: bool`)
+- **Fallback:** If no donor exists (all candidates failed on same examples), fall back to blind mutation with `no_donor_found: true` flag
+- **Implementation:** Modify `run_pruning_round` to return per-example scores. Build matrix post-evaluation.
+
+**B5. Tier 1 isolation:** Done via Tier 1 final list above.
+
+### Important (all resolved)
+
+**I1. Sample size:** 10 seeds on HotpotQA, 5 on other benchmarks. Paired analysis (same seed across methods) for "does X help" claims. If budget gets tight, drop HotpotQA to 5 seeds.
+
+**I2. Hold-out trajectory:** 50 fixed trainset examples sampled at run start (same across seeds for a benchmark). Evaluate best-so-far prompt on these 50 at end of each round + at run start. Adds ~200 rollouts/run. Gives comparable trajectory points across methods.
+
+**I3. Call counts:** Rebuilt from measurements (see table above). Budget = 2,500 rollouts.
+
+**I4. Adaptive K preflight probe:** Before committing methods 11-14 (full matrix K=adaptive arm), run `discover_strategies(k=None)` 3 times each on all 4 benchmarks. If K range across benchmarks < 2, skip methods 11-14 and document "adaptive K is not actually task-adaptive on 8B" as a finding.
+
+**I5. Discovery quality preflight:** Manual inspection. 3 benchmarks × 3 seeds = 9 discovery outputs, read by hand. If outputs are benchmark-specific and concrete (e.g., "multi-hop entity tracking" vs "careful reading"), proceed. If generic/uniform, **stop and reconsider** — don't proceed on a known failure mode. Include 1-2 example discoveries per benchmark in the final report.
+
+**I6. Refresh pool management:** R1 prunes normally (21→11 for K=5). Refresh generates ~8 new candidates. R2 pool = 11 survivors + 8 new = 19. All 19 re-evaluated fresh on 15 R2 examples. Simple, clean, priors ignored.
+
+**I7. Cascade standardization:** Halve each round, floor at 3, final = 1. Applied to all methods.
+
+**I8. Re-run baselines:** Don't reuse old qwen3-8b slime_mold data. All methods run fresh against current evaluator versions.
+
+**I9. Single-backend vLLM:** Moot with 1x GPU. If we upgrade to 2 GPUs later, add per-backend health polling to `_health_monitor`.
+
+### Minor & Nitpick (all resolved)
+
+**M1:** Leave `task_description` as-is.
+
+**M2:** Discovery parser retries once on <K outputs. If still <K, fall back to prescribed-8 strategies with `discovery_fallback: true` in metadata and a loud log warning.
+
+**M3:** Migration in own commit. Tag `pre-experiment-3` before migration.
+
+**M4:** Add `--runs-dir` flag to `run_all_local.py` for explicit experiment path override. Symlink remains default.
+
+**M5:** `hard_example_threshold` configurable, default 0.7. Log `hard_examples_found_count` per refresh.
+
+**M6:** Telegram final summary filters to methods that produced results in this run.
+
+**M7, M8:** Full spec consistency pass done via this section.
+
+**N1:** Test eval uses `workers=8`. Logged in config snapshot.
+
+**N2:** Same 5 seeds across experiments accepted as within-experiment consistency measure.
+
+**N3:** Money plot spec formalized: x=cumulative_rollouts, y=best_score_so_far (on hold-out), one line per method (mean across seeds), ±1σ shading, one subplot per benchmark. Implemented in `scripts/live_dashboard.py`.
+
+**N4:** Terminology standardized (see Terminology section above).
+
+**N5:** `analysis/` at repo root = cross-experiment comparison plots only. Empty during this experiment; populated once experiment completes and we want comparisons vs prior experiments.
+
+## Data Collection Schema
+
+Every run's `metrics.json` must include (for analysis integrity):
+
+```python
+{
+    # Existing fields (keep all)
+    "rollout_count": int,
+    "reflection_call_count": int,
+    "test_score": float,
+    "val_score": float,
+    "val_score_trajectory": list[{
+        "iteration": int,
+        "cumulative_rollouts": int,
+        "cumulative_reflection_calls": int,
+        "score_on_holdout": float,
+        "best_so_far": float,
+        "prompt_length": int,
+    }],
+    
+    # New required fields
+    "method": str,               # derived method name
+    "early_stopped": false,      # always false (we removed early stopping)
+    "convergence_round": int,    # round at which best_score stopped improving (for analysis)
+    "discovery_fallback": bool,  # true if discovery failed and we padded with prescribed-8
+    "discovery_outputs": list[{  # raw discovery LLM outputs per discovery call
+        "pass": "initial" | "refresh",
+        "k_requested": int | None,
+        "skills": list[{"name": str, "description": str, "failure_pattern": str}],
+        "raw_llm_output": str,   # for manual inspection
+    }],
+    "hard_examples_found_count": int,  # only for refresh variants
+    "cross_pollination_events": list[{
+        "round": int,
+        "survivor_candidate_idx": int,
+        "survivor_strategy": str,
+        "survivor_score": float,
+        "survivor_failed_examples": list[int],
+        "donor_candidate_idx": int | None,
+        "donor_strategy": str | None,
+        "shared_failures_covered": int,
+        "donor_score_on_failures": float | None,
+        "cross_strategy": bool,
+        "no_donor_found": bool,
+    }],
+}
+```
+
+## Pre-Flight Checklist (run before Tier 1)
+
+1. **Code ready:**
+   - [ ] `_derive_method_name` helper with unit test covering all 14 combinations
+   - [ ] Runner accepts `--strategy-mode`, `--k`, `--mutation-mode`, `--refresh-mode` flags
+   - [ ] Progress writer (writes `gepa_state/progress.json` after each round)
+   - [ ] Hard 2-hour wall-clock timeout in `run_all_local.py`
+   - [ ] Discovery function with fallback to prescribed-8 on failure
+   - [ ] Cross-pollination failure matrix + event logging
+   - [ ] Hold-out trajectory evaluator (50 examples, evaluated per round)
+   - [ ] All 14 method names registered in `METHODS` and `METHOD_COMMANDS`
+   - [ ] `--runs-dir` flag for explicit experiment path
+
+2. **Infrastructure:**
+   - [ ] A40 throughput smoke benchmark complete
+   - [ ] vLLM server running with `enable_thinking: False`
+   - [ ] `.env` has `TELEGRAM_BOT_TOKEN`
+   - [ ] `EXPERIMENT_LOGS_DIR` env var set
+
+3. **Data migration:**
+   - [ ] Tag `pre-experiment-3` created
+   - [ ] `experiments/01-slurm-sweep-2026-03/` created with README
+   - [ ] `experiments/02-runpod-baseline-2026-04/` created with README  
+   - [ ] `experiments/03-inductive-discovery-2026-04/` created with README, spec.md symlink
+   - [ ] Root `runs/` symlinks to active experiment
+
+4. **Quality preflight:**
+   - [ ] Run inductive discovery 9 times (3 benchmarks × 3 seeds), manually inspect outputs
+   - [ ] Decision point: are discoveries benchmark-specific and concrete? **If no, STOP.**
+   - [ ] Smoke test all 5 Tier 1 methods on HotpotQA (5 examples each)
+   - [ ] Verify `is_done` correctly identifies new method names (won't re-run completed)
+
+5. **Execution order once greenlit:**
+   - [ ] Tier 1 on HotpotQA first (10 seeds, 5 methods = 50 runs, ~4-6 hours)
+   - [ ] Git commit after HotpotQA complete
+   - [ ] Then HOVER, PUPA, IFBench (5 seeds each, 15 runs each, ~8 hours each)
+   - [ ] Git commit after each benchmark
+   - [ ] Run `validate_results.py --validate-schema` after Tier 1 complete
+   - [ ] Generate analysis plots to `experiments/03-.../plots/`
+   - [ ] Write `report.md` with findings
+   - [ ] Tag `exp-03-complete` when done
