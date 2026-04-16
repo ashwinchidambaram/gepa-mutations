@@ -5,17 +5,27 @@ import sys
 import types
 import pytest
 
-# Stub gepa_mutations dependencies that colony.py imports transitively
-for _mod_name in [
-    "gepa_mutations",
-    "gepa_mutations.metrics",
-    "gepa_mutations.metrics.collector",
-    "gepa_mutations.metrics.standalone_eval",
-]:
-    if _mod_name not in sys.modules:
-        sys.modules[_mod_name] = types.ModuleType(_mod_name)
-sys.modules["gepa_mutations.metrics.collector"].MetricsCollector = object  # type: ignore[attr-defined]
-sys.modules["gepa_mutations.metrics.standalone_eval"].evaluate_prompt = lambda *_a, **_kw: None  # type: ignore[attr-defined]
+# Stub gepa_mutations dependencies that colony.py imports transitively.
+# Only install stubs if the real implementation isn't already loaded (avoids
+# clobbering MetricsCollector for test_trajectory_point.py when run together).
+def _needs_stub(mod_name: str, attr: str) -> bool:
+    mod = sys.modules.get(mod_name)
+    if mod is None:
+        return True
+    val = getattr(mod, attr, None)
+    return val is None or val is object
+
+if _needs_stub("gepa_mutations.metrics.collector", "MetricsCollector"):
+    for _mod_name in [
+        "gepa_mutations",
+        "gepa_mutations.metrics",
+        "gepa_mutations.metrics.collector",
+        "gepa_mutations.metrics.standalone_eval",
+    ]:
+        if _mod_name not in sys.modules:
+            sys.modules[_mod_name] = types.ModuleType(_mod_name)
+    sys.modules["gepa_mutations.metrics.collector"].MetricsCollector = object  # type: ignore[attr-defined]
+    sys.modules["gepa_mutations.metrics.standalone_eval"].evaluate_prompt = lambda *_a, **_kw: None  # type: ignore[attr-defined]
 
 # Load colony.py directly (bypasses slime_mold/__init__.py → runner.py chain)
 _colony_path = (

@@ -502,6 +502,153 @@ def mutate_prompt(
 
 
 # ---------------------------------------------------------------------------
+# Cross-pollination helpers
+# ---------------------------------------------------------------------------
+
+
+def build_failure_matrix(
+    per_example_scores: dict[int, dict[int, float]],
+    threshold: float = 0.5,
+) -> dict[int, set[int]]:
+    """Build a matrix of which candidates failed on which examples.
+
+    Args:
+        per_example_scores: {candidate_idx: {example_id: score}}
+        threshold: scores >= threshold count as passes, < as failures
+
+    Returns:
+        {candidate_idx: set_of_failed_example_ids}
+    """
+    return {
+        cand_idx: {ex_id for ex_id, score in ex_scores.items() if score < threshold}
+        for cand_idx, ex_scores in per_example_scores.items()
+    }
+
+
+def find_donor(
+    survivor_idx: int,
+    survivor_strategy: str,
+    failure_matrix: dict[int, set[int]],
+    per_example_scores: dict[int, dict[int, float]],
+    strategies: dict[int, str],
+    threshold: float = 0.5,
+) -> dict | None:
+    """Find the best donor candidate for the survivor's failures.
+
+    Tiebreaker: (1) cross-strategy first, (2) higher score on survivor failures, (3) lower idx.
+    Returns None if no donor covers any of the survivor's failures.
+
+    Returns a dict with all fields for cross_pollination_events logging:
+        donor_candidate_idx, donor_strategy, shared_failures_covered,
+        donor_score_on_failures, cross_strategy, no_donor_found
+    """
+    survivor_failures = failure_matrix.get(survivor_idx, set())
+    if not survivor_failures:
+        return None
+
+    best: tuple | None = None  # (cross_rank, coverage, mean_score, neg_cand_idx, cand_idx)
+
+    for cand_idx, cand_strategy in strategies.items():
+        if cand_idx == survivor_idx:
+            continue
+
+        cand_scores = per_example_scores.get(cand_idx, {})
+        covered = {
+            ex_id for ex_id in survivor_failures
+            if cand_scores.get(ex_id, 0.0) >= threshold
+        }
+        coverage = len(covered)
+        if coverage == 0:
+            continue
+
+        scores_on_failures = [
+            cand_scores.get(ex_id, 0.0) for ex_id in survivor_failures
+        ]
+        mean_score = sum(scores_on_failures) / len(scores_on_failures) if scores_on_failures else 0.0
+
+        is_cross = cand_strategy != survivor_strategy
+        cross_rank = 1 if is_cross else 0
+
+        # Tiebreaker: higher is better for cross_rank, coverage, mean_score; lower cand_idx wins
+        key = (cross_rank, coverage, mean_score, -cand_idx)
+        if best is None or key > best[:4]:
+            best = (*key, cand_idx)
+
+    if best is None:
+        return None
+
+    cross_rank, coverage, mean_score, _, cand_idx = best
+    return {
+        "donor_candidate_idx": cand_idx,
+        "donor_strategy": strategies.get(cand_idx),
+        "shared_failures_covered": coverage,
+        "donor_score_on_failures": mean_score,
+        "cross_strategy": cross_rank == 1,
+        "no_donor_found": False,
+    }
+
+
+def mutate_prompt_with_context(
+    reflection_lm: Any,
+    prompt: str,
+    score: float,
+    failures: list[dict[str, Any]],
+    survivor_strategy: str | None = None,
+    donor_strategy: str | None = None,
+    donor_prompt: str | None = None,
+) -> str:
+    """Generate an improved prompt with strategy context + optional donor technique.
+
+    If donor_strategy and donor_prompt are provided, includes them as cross-pollination hint.
+    Otherwise falls back to strategy-aware blind mutation.
+    """
+    failure_text = ""
+    if failures:
+        lines = []
+        for f in failures[:5]:
+            lines.append(
+                f"  Input: {str(f.get('input', ''))[:300]}\n"
+                f"  Expected: {str(f.get('expected', ''))[:200]}\n"
+                f"  Got: {str(f.get('got', ''))[:200]}"
+            )
+        failure_text = "\n\nFailed examples:\n" + "\n\n".join(lines)
+
+    strategy_ctx = ""
+    if survivor_strategy:
+        strategy_ctx = f"\n\nThis prompt was designed using the {survivor_strategy} approach."
+
+    donor_ctx = ""
+    if donor_strategy and donor_prompt:
+        donor_truncated = donor_prompt[:500] if len(donor_prompt) > 500 else donor_prompt
+        donor_ctx = (
+            f"\n\nAnother prompt using the {donor_strategy} approach succeeded on "
+            f"some of the examples this prompt failed on. Here is that prompt's approach:\n"
+            f"---\n{donor_truncated}\n---\n\n"
+            f"Consider incorporating insights from the {donor_strategy} approach "
+            f"while preserving the strengths of this prompt's {survivor_strategy or 'original'} approach."
+        )
+
+    mutation_prompt = (
+        f"You are improving a system prompt for an AI assistant.\n\n"
+        f"Current prompt:\n{prompt}\n\n"
+        f"This prompt achieved a score of {score:.3f} (higher is better, max 1.0)."
+        f"{strategy_ctx}"
+        f"{failure_text}"
+        f"{donor_ctx}\n\n"
+        f"Improve this prompt to fix the failures while keeping what already works. "
+        f"Output ONLY the improved prompt text — no explanations or commentary."
+    )
+    try:
+        result = reflection_lm(mutation_prompt)
+        result = result.strip()
+        if result:
+            return result
+    except Exception:
+        pass
+    return prompt
+
+
+# ---------------------------------------------------------------------------
 # Pruning round
 # ---------------------------------------------------------------------------
 
@@ -513,7 +660,7 @@ def run_pruning_round(
     n_examples: int,
     collector: MetricsCollector,
     rng: random.Random,
-) -> tuple[list[str], list[float], list[int]]:
+) -> tuple[list[str], list[float], list[int], dict[int, dict[int, float]]]:
     """Evaluate all candidates on a random subset of trainset examples.
 
     Args:
@@ -525,22 +672,33 @@ def run_pruning_round(
         rng: Seeded random for reproducible example selection.
 
     Returns:
-        (sorted_candidates, sorted_scores, sorted_original_indices)
+        (sorted_candidates, sorted_scores, sorted_original_indices, per_example_scores)
         Sorted descending by score (best first).
+        per_example_scores: {sorted_position: {example_id: score}}
     """
     n_examples = min(n_examples, len(trainset))
     indices = rng.sample(range(len(trainset)), k=n_examples)
 
     scores: list[float] = []
-    for prompt_text in candidates:
+    per_example_matrix: dict[int, dict[int, float]] = {}
+    for orig_idx, prompt_text in enumerate(candidates):
         candidate = {"system_prompt": prompt_text}
-        score, _ = evaluate_prompt(adapter, trainset, candidate, collector, indices=indices)
+        score, per_ex_scores = evaluate_prompt(adapter, trainset, candidate, collector, indices=indices)
         scores.append(score)
+        per_example_matrix[orig_idx] = {
+            ex_id: ex_score for ex_id, ex_score in zip(indices, per_ex_scores)
+        }
 
     # Sort descending by score
     ranked = sorted(zip(scores, candidates, range(len(candidates))), key=lambda x: -x[0])
     sorted_scores = [r[0] for r in ranked]
     sorted_candidates = [r[1] for r in ranked]
-    sorted_indices = [r[2] for r in ranked]
+    sorted_orig_indices = [r[2] for r in ranked]
 
-    return sorted_candidates, sorted_scores, sorted_indices
+    # Remap per_example_matrix to use sorted positions as keys
+    sorted_matrix = {
+        sorted_pos: per_example_matrix[orig_idx]
+        for sorted_pos, orig_idx in enumerate(sorted_orig_indices)
+    }
+
+    return sorted_candidates, sorted_scores, sorted_orig_indices, sorted_matrix

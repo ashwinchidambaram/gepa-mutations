@@ -31,10 +31,13 @@ from gepa_mutations.storage.local import save_result
 
 from slime_mold.colony import (
     PRESCRIBED_STRATEGIES,
+    build_failure_matrix,
     discover_strategies,
+    find_donor,
     generate_diverse_prompts,
     generate_specialized_prompt,
     mutate_prompt,
+    mutate_prompt_with_context,
     run_pruning_round,
 )
 from slime_mold.naming import _derive_method_name
@@ -131,9 +134,7 @@ def run_slime_mold(
         ExperimentResult with test/val scores, best prompt, and diagnostics.
     """
     # Phase 4 note: strategy_mode dispatch is implemented below in candidate generation.
-    # Phases 7-8: raise early for unsupported modes
-    if mutation_mode != "blind":
-        raise NotImplementedError(f"mutation_mode={mutation_mode} will be implemented in Phase 7")
+    # Phase 8: raise early for unsupported refresh mode
     if refresh_mode != "none":
         raise NotImplementedError(f"refresh_mode={refresh_mode} will be implemented in Phase 8")
 
@@ -224,6 +225,10 @@ def run_slime_mold(
     discovery_outputs: list[dict] = []
     strategies_used: list = []
 
+    # candidate_strategies[i] tracks the strategy name for candidates[i]
+    # Used by crosspollin mutation to identify donor cross-strategy preference
+    candidate_strategies: list[str] = []
+
     if strategy_mode == "personality":
         # EXISTING CODE PATH — 4 personality strategies → 19 candidates + seed = 20 total
         diverse = generate_diverse_prompts(
@@ -237,11 +242,13 @@ def run_slime_mold(
         while len(candidates) < 20:
             candidates.append(seed_prompt)
         candidates = candidates[:20]
+        candidate_strategies = ["personality"] * len(candidates)
 
     elif strategy_mode == "prescribed8":
         # 8 prescribed strategies × 3 prompts each = 24 + seed = 25 total
         strategies_used = list(PRESCRIBED_STRATEGIES)
         candidates = [seed_prompt]
+        candidate_strategies = ["seed"]
         for strategy in strategies_used:
             specialized = generate_specialized_prompt(
                 reflection_lm=tracked_reflection,
@@ -252,11 +259,15 @@ def run_slime_mold(
                 n=3,
                 rng=rng,
             )
-            candidates.extend(specialized[:3])
+            for p in specialized[:3]:
+                candidates.append(p)
+                candidate_strategies.append(strategy.name)
         # Pad if any generations failed
         while len(candidates) < 25:
             candidates.append(seed_prompt)
+            candidate_strategies.append("seed")
         candidates = candidates[:25]
+        candidate_strategies = candidate_strategies[:25]
 
     elif strategy_mode == "inductive":
         # Discover k strategies, generate 4 prompts each = 4k + seed
@@ -279,6 +290,7 @@ def run_slime_mold(
             ],
         })
         candidates = [seed_prompt]
+        candidate_strategies = ["seed"]
         for strategy in strategies_used:
             specialized = generate_specialized_prompt(
                 reflection_lm=tracked_reflection,
@@ -289,12 +301,16 @@ def run_slime_mold(
                 n=4,
                 rng=rng,
             )
-            candidates.extend(specialized[:4])
+            for p in specialized[:4]:
+                candidates.append(p)
+                candidate_strategies.append(strategy.name)
         # Final pool size is 4*k + 1 (or 4 * len(strategies_used) + 1 for adaptive)
         target = 4 * len(strategies_used) + 1
         while len(candidates) < target:
             candidates.append(seed_prompt)
+            candidate_strategies.append("seed")
         candidates = candidates[:target]
+        candidate_strategies = candidate_strategies[:target]
 
     else:
         raise ValueError(f"Unknown strategy_mode: {strategy_mode}")
@@ -343,7 +359,7 @@ def run_slime_mold(
         _stage_rollouts_start = collector.rollout_count
 
         # Evaluate all candidates for this round
-        sorted_candidates, sorted_scores, _ = run_pruning_round(
+        sorted_candidates, sorted_scores, sorted_orig_indices, per_example_scores = run_pruning_round(
             adapter=adapter,
             candidates=candidates,
             trainset=trainset,
@@ -351,6 +367,12 @@ def run_slime_mold(
             collector=collector,
             rng=rng,
         )
+
+        # Build sorted_pos_to_strategy from sorted_orig_indices
+        sorted_pos_to_strategy = {
+            pos: (candidate_strategies[orig_idx] if orig_idx < len(candidate_strategies) else "unknown")
+            for pos, orig_idx in enumerate(sorted_orig_indices)
+        }
 
         # Record per-candidate scores
         for rank, (score, cand_text) in enumerate(zip(sorted_scores, sorted_candidates)):
@@ -418,7 +440,12 @@ def run_slime_mold(
         if round_idx < len(_PRUNING_SCHEDULE) - 1:
             console.print(f"  Mutating {len(survivors)} survivors...")
             mutated: list[str] = []
-            for prompt_text, score in zip(survivors, survivor_scores):
+            mutated_strategies: list[str] = []
+
+            # Build failure matrix once per round for crosspollin mode
+            round_failure_matrix = build_failure_matrix(per_example_scores, threshold=0.5) if mutation_mode == "crosspollin" else {}
+
+            for survivor_pos, (prompt_text, score) in enumerate(zip(survivors, survivor_scores)):
                 # Gather some failure examples for the mutation call
                 # We re-eval on a small sample to get failure info
                 failure_sample_indices = rng.sample(
@@ -444,16 +471,74 @@ def run_slime_mold(
                     except Exception:
                         pass
 
-                improved = mutate_prompt(
-                    reflection_lm=tracked_reflection,
-                    prompt=prompt_text,
-                    score=score,
-                    failures=failures,
-                )
+                if mutation_mode == "crosspollin":
+                    survivor_strategy = sorted_pos_to_strategy.get(survivor_pos, "unknown")
+
+                    donor_result = find_donor(
+                        survivor_idx=survivor_pos,
+                        survivor_strategy=survivor_strategy,
+                        failure_matrix=round_failure_matrix,
+                        per_example_scores=per_example_scores,
+                        strategies=sorted_pos_to_strategy,
+                        threshold=0.5,
+                    )
+
+                    event: dict[str, Any] = {
+                        "round": round_num,
+                        "survivor_candidate_idx": survivor_pos,
+                        "survivor_strategy": survivor_strategy,
+                        "survivor_score": score,
+                        "survivor_failed_examples": sorted(round_failure_matrix.get(survivor_pos, set())),
+                        "donor_candidate_idx": None,
+                        "donor_strategy": None,
+                        "shared_failures_covered": 0,
+                        "donor_score_on_failures": None,
+                        "cross_strategy": False,
+                        "no_donor_found": True,
+                    }
+
+                    if donor_result is not None:
+                        donor_idx = donor_result["donor_candidate_idx"]
+                        donor_prompt_text = sorted_candidates[donor_idx]
+                        event.update(donor_result)
+                        improved = mutate_prompt_with_context(
+                            reflection_lm=tracked_reflection,
+                            prompt=prompt_text,
+                            score=score,
+                            failures=failures,
+                            survivor_strategy=survivor_strategy,
+                            donor_strategy=donor_result["donor_strategy"],
+                            donor_prompt=donor_prompt_text,
+                        )
+                    else:
+                        improved = mutate_prompt_with_context(
+                            reflection_lm=tracked_reflection,
+                            prompt=prompt_text,
+                            score=score,
+                            failures=failures,
+                            survivor_strategy=survivor_strategy,
+                        )
+
+                    method_specific.setdefault("cross_pollination_events", []).append(event)
+                else:
+                    improved = mutate_prompt(
+                        reflection_lm=tracked_reflection,
+                        prompt=prompt_text,
+                        score=score,
+                        failures=failures,
+                    )
+
                 mutated.append(improved)
+                # Mutated survivors keep their strategy (prompt improved, not replaced)
+                mutated_strategies.append(sorted_pos_to_strategy.get(survivor_pos, "unknown"))
+
             candidates = mutated
+            candidate_strategies = mutated_strategies
         else:
             candidates = survivors
+            candidate_strategies = [
+                sorted_pos_to_strategy.get(pos, "unknown") for pos in range(len(survivors))
+            ]
 
     # =========================================================================
     # 7. Champion: the single surviving candidate
