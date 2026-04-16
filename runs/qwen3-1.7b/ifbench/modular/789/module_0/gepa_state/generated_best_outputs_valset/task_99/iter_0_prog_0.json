@@ -1,3 +1,0 @@
-{
-    "response": "1. **Define the function role**: Create a Python function that processes a list of species names and filters out those that meet a specified length requirement.  \n2. **Apply constraints**: Ensure the function takes a list of strings and an integer, and returns a filtered list of strings.  \n3. **Generate output format**: Return a list of species names that are longer than the specified minimum number of characters.  \n4. **Prevent errors**: Ensure the function handles edge cases, such as empty lists or invalid input types, and returns appropriate results.\n\n```python\ndef filter_species_by_length(species_list, min_length):\n    return [species for species in species_list if len(species) > min_length]\n```"
-}

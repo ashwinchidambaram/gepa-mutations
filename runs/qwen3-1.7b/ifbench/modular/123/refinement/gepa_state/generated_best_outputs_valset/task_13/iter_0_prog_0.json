@@ -1,3 +1,0 @@
-{
-    "response": "Given the sequence $\\{a_n\\}$ where the sum of the first $n$ terms is $S_n = n^2 - 3n$, we are to find $a_6$.\n\nWe know that:\n$$\na_n = S_n - S_{n-1}\n$$\n\nCompute $S_6$ and $S_5$:\n\n$$\nS_6 = 6^2 - 3 \\cdot 6 = 36 - 18 = 18\n$$\n$$\nS_5 = 5^2 - 3 \\cdot 5 = 25 - 15 = 10\n$$\n\nNow compute $a_6$:\n\n$$\na_6 = S_6 - S_5 = 18 - 10 = 8\n$$\n\n$$\n\\boxed{8}\n$$"
-}

@@ -1,3 +1,0 @@
-{
-    "response": "```python\ndef calculate_landscaping_cost(services):\n    rates = {\n        \"Lawn Mowing\": 50,\n        \"Tree Trimming\": 60,\n        \"Flower Planting\": 40,\n        \"General Cleanup\": 30\n    }\n    \n    total_cost = 0.0\n    \n    for service, hours in services:\n        total_cost += hours * rates[service]\n    \n    total_cost *= 0.8  # 20% discount\n    \n    return total_cost\n```\n\nThis function calculates the total cost of landscaping services by multiplying the number of hours by the standard rate for each service, summing up the total, and then applying a 20% discount. The function returns the final discounted cost as a float."
-}

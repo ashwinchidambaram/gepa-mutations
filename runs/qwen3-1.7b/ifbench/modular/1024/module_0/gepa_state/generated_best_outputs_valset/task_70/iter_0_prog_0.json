@@ -1,3 +1,0 @@
-{
-    "response": "<<The pen is mightier than sword>>  \ncreate table movie_info (title varchar(255), director varchar(255));  \ninsert into movie_info values ('alice in wonderland', 'james hodges'),  \n('the dark knight', 'bruce wayne'),  \n('batman', 'wayne kling'),  \n('the wizard of oz', 'lucas erg'),  \n('the lion king', 'robert allan');  \n\nselect title, director, length(title) as title_length, length(director) as director_length  \nfrom movie_info  \norder by title_length desc, director_length desc;  \n\nthe pen is mightier than sword  \nthe pen is mightier than sword  \n\nthe pen is mightier than sword  \nthe pen is mightier than sword"
-}

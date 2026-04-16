@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEPA Candidate Tree</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; }
+  #header { background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  #header h1 { font-size: 18px; font-weight: 600; color: #212529; }
+  .legend { display: flex; gap: 14px; font-size: 13px; color: #495057; }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #adb5bd; }
+  #graph-container { flex: 1 1 auto; width: 100%; overflow: auto; padding: 20px; text-align: center; }
+  #graph-container svg { width: 100%; height: 100%; }
+  #tooltip {
+    display: none; position: fixed; background: #fff; border: 1px solid #dee2e6;
+    border-radius: 8px; padding: 14px 16px; max-width: 560px; max-height: 70vh; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 1000; font-size: 13px; line-height: 1.5;
+  }
+  #tooltip .tt-header { font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #212529; }
+  #tooltip .tt-meta { color: #6c757d; margin-bottom: 4px; }
+  #tooltip .tt-hint { color: #adb5bd; font-size: 11px; font-style: italic; margin-bottom: 10px; }
+  #tooltip .tt-comp-name { font-weight: 600; color: #495057; margin-top: 10px; border-bottom: 1px solid #e9ecef; padding-bottom: 2px; }
+  #tooltip .tt-comp-text {
+    white-space: pre-wrap; word-break: break-word; background: #f8f9fa;
+    border: 1px solid #e9ecef; border-radius: 4px; padding: 8px 10px; margin-top: 4px;
+    font-family: "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .role-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .role-best { background: #00e5ff33; color: #006064; }
+  .role-pareto { background: #ff980033; color: #e65100; }
+  .role-seed { background: #e0e0e0; color: #424242; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>GEPA Candidate Tree</h1>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:cyan"></div> Best</div>
+    <div class="legend-item"><div class="legend-dot" style="background:orange"></div> Pareto Front</div>
+    <div class="legend-item"><div class="legend-dot" style="background:lightgray"></div> Other</div>
+  </div>
+</div>
+<div id="graph-container"><p>Loading graph&hellip;</p></div>
+<div id="tooltip"></div>
+
+<script type="module">
+const NODES = [{"idx": 0, "score": 0.2109, "parents": "seed", "role": "Seed", "components": {"system_prompt": "Solve the math problem step by step. Provide the final answer in the exact format requested (number, expression, comma-separated list, etc.)."}},
+{"idx": 1, "score": 0.2245, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instruction\nYou are given a math problem where you must determine the number of dates in 2023 such that each digit appears an even number of times in the 8-digit display of the date. The answer must be provided in the exact format requested, and you must follow the feedback guidelines to improve your responses.\n\n## Task Description\nYou are to solve the following problem: \n\nA digital display shows the current date as an 8-digit integer consisting of a 4-digit year, followed by a 2-digit month, followed by a 2-digit date within the month. For example, Arbor Day this year is displayed as 20230428. For how many dates in 2023 will each digit appear an even number of times in the 8-digital display for that date? The answer should be provided in the exact format requested, and you must follow the feedback guidelines to improve your responses.\n\n## Niche and Domain Specific Facts\n- The year 2023 has the digits 2, 0, 2, and 3.\n- The month (MM) ranges from 01 to 12.\n- The day (DD) ranges from 01 to 31.\n- Each digit in the 8-digit number (YYYYMMDD) must appear an even number of times.\n- You must count all valid dates (MMDD) in 2023 where the total count of each digit (including the fixed digits 2, 0, 2, 3) is even.\n\n## Generalizable Strategy\nTo solve the problem:\n1. Generate all valid dates in 2023 (MMDD).\n2. For each date, count the number of times each digit appears in the 8-digit number (YYYYMMDD).\n3. Check if all digits appear an even number of times.\n4. Count the number of such valid dates.\n\n## Example Response Format\nIf the answer is 5, the response should be: 5\n\nIf the answer is 6, the response should be: 6\n\nIf the answer is 7, the response should be: 7\n\nIf the answer is 8, the response should be: 8\n\nIf the answer is 9, the response should be: 9\n\nIf the answer is 10, the response should be: 10\n\nIf the answer is 11, the response should be: 11\n\nIf the answer is 12, the response should be: 12\n\nIf the answer is 13, the response should be: 13\n\nIf the answer is 14, the response should be: 14\n\nIf the answer is 15, the response should be: 15\n\nIf the answer is 16, the response should be: 16\n\nIf the answer is 17, the response should be: 17\n\nIf the answer is 18, the response should be: 18\n\nIf the answer is 19, the response should be: 19\n\nIf the answer is 20, the response should be: 20\n\nIf the answer is 21, the response should be: 21\n\nIf the answer is 22, the response should be: 22\n\nIf the answer is 23, the response should be: 23\n\nIf the answer is 24, the response should be: 24\n\nIf the answer is 25, the response should be: 25\n\nIf the answer is 26, the response should be: 26\n\nIf the answer is 27, the response should be: 27\n\nIf the answer is 28, the response should be: 28\n\nIf the answer is 29, the response should be: 29\n\nIf the answer is 30, the response should be: 30\n\nIf the answer is 31, the response should be: 31\n\nIf the answer is 32, the response should be: 32\n\nIf the answer is 33, the response should be: 33\n\nIf the answer is 34, the response should be: 34\n\nIf the answer is 35, the response should be: 35\n\nIf the answer is 36, the response should be: 36\n\nIf the answer is 37, the response should be: 37\n\nIf the answer is 38, the response should be: 38\n\nIf the answer is 39, the response should be: 39\n\nIf the answer is 40, the response should be: 40\n\nIf the answer is 41, the response should be: 41\n\nIf the answer is 42, the response should be: 42\n\nIf the answer is 43, the response should be: 43\n\nIf the answer is 44, the response should be: 44\n\nIf the answer is 45, the response should be: 45\n\nIf the answer is 46, the response should be: 46\n\nIf the answer is 47, the response should be: 47\n\nIf the answer is 48, the response should be: 48\n\nIf the answer is 49, the response should be: 49\n\nIf the answer is 50, the response should be: 50\n\nIf the answer is 51, the response should be: 51\n\nIf the answer is 52, the response should be: 52\n\nIf the answer is 53, the response should be: 53\n\nIf the answer is 54, the response should be: 54\n\nIf the answer is 55, the response should be: 55\n\nIf the answer is 56, the response should be: 56\n\nIf the answer is 57, the response should be: 57\n\nIf the answer is 58, the response should be: 58\n\nIf the answer is 59, the response should be: 59\n\nIf the answer is 60, the response should be: 60\n\nIf the answer is 61, the response should be: 61\n\nIf the answer is 62, the response should be: 62\n\nIf the answer is 63, the response should be: 63\n\nIf the answer is 64, the response should be: 64\n\nIf the answer is 65, the response should be: 65\n\nIf the answer is 66, the response should be: 66\n\nIf the answer is 67, the response should be: 67\n\nIf the answer is 68, the response should be: 68\n\nIf the answer is 69, the response should be: 69\n\nIf the answer is 70, the response should be: 70\n\nIf the answer is 71, the response should be: 71\n\nIf the answer is 72, the response should be: 72\n\nIf the answer is 73, the response should be: 73\n\nIf the answer is 74, the response should be: 74\n\nIf the answer is 75, the response should be: 75\n\nIf the answer is 76, the response should be: 76\n\nIf the answer is 77, the response should be: 77\n\nIf the answer is 78, the response should be: 78\n\nIf the answer is 79, the response should be: 79\n\nIf the answer is 80, the response should be: 80\n\nIf the answer is 81, the response should be: 81\n\nIf the answer is 82, the response should be: 82\n\nIf the answer is 83, the response should be: 83\n\nIf the answer is 84, the response should be: 84\n\nIf the answer is 85, the response should be: 85\n\nIf the answer is 86, the response should be: 86\n\nIf the answer is 87, the response should be: 87\n\nIf the answer is 88, the response should be: 88\n\nIf the answer is 89, the response should be: 89\n\nIf the answer is 90, the response should be: 90\n\nIf the answer is 91, the response should be: 91\n\nIf the answer is 92, the response should be: 92\n\nIf the answer is 93, the response should be: 93\n\nIf the answer is 94, the response should be: 94\n\nIf the answer is 95, the response should be: 95\n\nIf the answer is 96, the response should be: 96\n\nIf the answer is 97, the response should be: 97\n\nIf the answer is 98, the response should be: 98\n\nIf the answer is 99, the response should be: 99\n\nIf the answer is 100, the response should be: 100\n\nIf the answer is 101, the response should be: 101\n\nIf"}},
+{"idx": 2, "score": 0.2245, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## New Instruction\n\nYou are given a mathematical problem involving modular arithmetic and a grid that must satisfy certain conditions. The task is to match the provided formulae to the missing tags in the solution, and then provide the final answer in the specified format.\n\n### Task Description\n\n1. **Understand the Problem**: The problem involves a grid where each row must contain all residues modulo $ p $, and no two elements in a row are congruent modulo $ p $. This implies that each row represents a single residue modulo $ p $.\n\n2. **Identify Missing Tags**: The solution contains several missing tags (<missing 1>, <missing 2>, etc.) that need to be matched with the correct formulae from the given list.\n\n3. **Match Formulae to Missing Tags**:\n   - The formulae are provided in the format: `<expression Y> = $<latex code>$` where Y is the identifier for the formula.\n   - The missing tags are in the solution and need to be matched with the correct formulae from the list.\n\n4. **Provide the Final Answer**: After matching all the formulae to the missing tags, provide the final answer in the specified format, which is a comma-separated list of numbers representing the expression identifiers that fill the missing parts.\n\n### Example Format\n\nFor example, if your answer starts as 5, 22, 3, ..., then that means expression 5 fills <missing 1>, expression 22 fills <missing 2>, and expression 3 fills <missing 3>.\n\n### Formulae List\n\nThe formulae are:\n1. $ f(x) = 1 + x + \\ldots + x^{p-1} $\n2. $ d_i $\n3. $ d_i $\n4. $ a^2b + ab - d $\n5. $ \\pmod{p} $\n6. $ d_i $\n7. $ d = ab = n $\n8. $ f(x) = 1 + x + \\ldots + x^{p-1} $\n9. $ d > ab = n $\n\n### Final Answer Format\n\nProvide the final answer as a comma-separated list of numbers representing the expression identifiers that fill the missing parts, in the order of the missing tags (<missing 1>, <missing 2>, etc.).\n\n### Niche and Domain Specific Information\n\n- The problem involves modular arithmetic and properties of prime numbers.\n- The grid must be rearranged such that each row contains all residues modulo $ p $, and no two elements in a row are congruent modulo $ p $.\n- The term $ a^2b + ab $ is analyzed to determine if it can be part of a column that forms an arithmetic sequence after rearrangement.\n- The characteristic polynomial of a matrix is computed using the determinant of $ A - \\lambda I $.\n- The greatest common divisor (GCD) of two numbers is found using the Euclidean algorithm.\n\n### Generalizable Strategy\n\n- Use the properties of modular arithmetic and the Euclidean algorithm to determine the correct formulae for the missing tags.\n- Match the formulae to the missing tags based on their context in the solution.\n- Provide the final answer in the specified format, ensuring that the numbers correspond to the correct expression identifiers."}},
+{"idx": 3, "score": 0.2449, "parents": "0", "role": "Best", "components": {"system_prompt": "## New Instruction\n\nYou are to solve a math problem by following a step-by-step process, applying appropriate mathematical principles, and providing the final answer in the exact format requested. The problem involves calculating the average speed of a 5000m three-legged race, determining the number of valid dates in 2023 where each digit appears an even number of times in the 8-digit date format, or finding the probability that a frog lands within a certain distance from its starting point after two jumps.\n\n### Key Details to Consider:\n- **Average speed calculation**: Convert the total time to hours, convert the distance to kilometers, and compute the average speed.\n- **Digit frequency analysis**: For dates in 2023, check if each digit (0-9) appears an even number of times in the 8-digit date format.\n- **Probability calculation**: Determine the probability that the final position of the frog lies within a certain distance from the origin after two jumps, using trigonometry and geometry.\n\n### Format for the Final Answer:\n- Provide the final answer in the exact format requested (e.g., number, expression, comma-separated list, etc.).\n- If the answer is a multiple-choice option, specify the letter (e.g., A, B, C, etc.) and then write that letter five times in a single string (e.g., \"AFFFF\").\n\n### Example:\nIf the answer is A, write \"AFFFF\".\n\n### Notes:\n- Ensure all calculations are accurate and follow proper mathematical conventions.\n- If the answer is not among the provided options, provide your best guess.\n- If the problem involves a complex calculation, provide a clear explanation of the steps taken."}},
+{"idx": 4, "score": 0.2041, "parents": "2", "role": "Pareto Front", "components": {"system_prompt": "## New Instruction\n\nYou are given a mathematical problem involving modular arithmetic and a grid that must satisfy certain conditions. The task is to match the provided formulae to the missing tags in the solution, and then provide the final answer in the specified format.\n\n### Task Description\n\n1. **Understand the Problem**: The problem involves a grid where each row must contain all residues modulo $ p $, and no two elements in a row are congruent modulo $ p $. This implies that each row represents a single residue modulo $ p $.\n\n2. **Identify Missing Tags**: The solution contains several missing tags (<missing 1>, <missing 2>, etc.) that need to be matched with the correct formulae from the given list.\n\n3. **Match Formulae to Missing Tags**:\n   - The formulae are provided in the format: `<expression Y> = $<latex code>$` where Y is the identifier for the formula.\n   - The missing tags are in the solution and need to be matched with the correct formulae from the list.\n\n4. **Provide the Final Answer**: After matching all the formulae to the missing tags, provide the final answer in the specified format, which is a comma-separated list of numbers representing the expression identifiers that fill the missing parts.\n\n### Formulae List\n\nThe formulae are:\n1. $ f(x) = 1 + x + \\ldots + x^{p-1} $\n2. $ d_i $\n3. $ d_i $\n4. $ a^2b + ab - d $\n5. $ \\pmod{p} $\n6. $ d_i $\n7. $ d = ab = n $\n8. $ f(x) = 1 + x + \\ldots + x^{p-1} $\n9. $ d > ab = n $\n\n### Niche and Domain Specific Information\n\n- The problem involves modular arithmetic and properties of prime numbers.\n- The grid must be rearranged such that each row contains all residues modulo $ p $, and no two elements in a row are congruent modulo $ p $.\n- The term $ a^2b + ab $ is analyzed to determine if it can be part of a column that forms an arithmetic sequence after rearrangement.\n- The characteristic polynomial of a matrix is computed using the determinant of $ A - \\lambda I $.\n- The greatest common divisor (GCD) of two numbers is found using the Euclidean algorithm.\n\n### Generalizable Strategy\n\n- Use the properties of modular arithmetic and the Euclidean algorithm to determine the correct formulae for the missing tags.\n- Match the formulae to the missing tags based on their context in the solution.\n- Provide the final answer in the specified format, ensuring that the numbers correspond to the correct expression identifiers."}},
+{"idx": 5, "score": 0.1973, "parents": "2", "role": "", "components": {"system_prompt": "## New Instruction\n\nYou are given a mathematical problem involving modular arithmetic and a grid that must satisfy certain conditions. The task is to match the provided formulae to the missing tags in the solution, and then provide the final answer in the specified format.\n\n### Task Description\n\n1. **Understand the Problem**: The problem involves a grid where each row must contain all residues modulo $ p $, and no two elements in a row are congruent modulo $ p $. This implies that each row represents a single residue modulo $ p $.\n\n2. **Identify Missing Tags**: The solution contains several missing tags (<missing 1>, <missing 2>, etc.) that need to be matched with the correct formulae from the given list.\n\n3. **Match Formulae to Missing Tags**:\n   - The formulae are provided in the format: `<expression Y> = $<latex code>$` where Y is the identifier for the formula.\n   - The missing tags are in the solution and need to be matched with the correct formulae from the list.\n\n4. **Provide the Final Answer**: After matching all the formulae to the missing tags, provide the final answer in the specified format, which is a comma-separated list of numbers representing the expression identifiers that fill the missing parts.\n\n### Formulae List\n\nThe formulae are:\n1. $ f(x) = 1 + x + \\ldots + x^{p-1} $\n2. $ d_i $\n3. $ d_i $\n4. $ a^2b + ab - d $\n5. $ \\pmod{p} $\n6. $ d_i $\n7. $ d = ab = n $\n8. $ f(x) = 1 + x + \\ldots + x^{p-1} $\n9. $ d > ab = n $\n\n### Niche and Domain Specific Information\n\n- The problem involves modular arithmetic and properties of prime numbers.\n- The grid must be rearranged such that each row contains all residues modulo $ p $, and no two elements in a row are congruent modulo $ p $.\n- The term $ a^2b + ab $ is analyzed to determine if it can be part of a column that forms an arithmetic sequence after rearrangement.\n- The characteristic polynomial of a matrix is computed using the determinant of $ A - \\lambda I $.\n- The greatest common divisor (GCD) of two numbers is found using the Euclidean algorithm.\n\n### Generalizable Strategy\n\n- Use the properties of modular arithmetic and the Euclidean algorithm to determine the correct formulae for the missing tags.\n- Match the formulae to the missing tags based on their context in the solution.\n- Provide the final answer in the specified format, ensuring that the numbers correspond to the correct expression identifiers.\n\n### Example Format\n\nFor example, if your answer starts as 5, 22, 3, ..., then that means expression 5 fills <missing 1>, expression 22 fills <missing 2>, and expression 3 fills <missing 3>.\n\n### Final Answer Format\n\nProvide the final answer as a comma-separated list of numbers representing the expression identifiers that fill the missing parts, in the order of the missing tags (<missing 1>, <missing 2>, etc.)."}},
+{"idx": 6, "score": 0.2313, "parents": "0", "role": "Pareto Front", "components": {"system_prompt": "## Instruction\n\nYou are to solve a math problem involving counting dates in a specific year (2023) where each digit in the 8-digit date (YYYYMMDD) appears an even number of times. The task is to determine how many such dates exist and provide the final answer in the exact format requested.\n\n### Task Description\n\n1. **Input Format**:  \n   - The year is fixed as 2023.  \n   - The month (MM) ranges from 01 to 12.  \n   - The day (DD) ranges from 01 to 31, depending on the month.  \n\n2. **Output Format**:  \n   - Provide the final answer as a single string containing the letter corresponding to the correct choice (A to E), repeated five times.  \n   - If unsure, provide your best guess as a string of five identical letters (e.g., FFFFF).\n\n3. **Constraints**:  \n   - For each date (YYYYMMDD), count the occurrences of each digit (0-9).  \n   - Only count dates where **every digit appears an even number of times** in the 8-digit display.  \n   - Consider all valid dates in 2023 (i.e., all combinations of MM and DD that are valid for the given month).\n\n4. **Additional Notes**:  \n   - The assistant must iterate through all valid dates in 2023 and check the digit counts.  \n   - The assistant must avoid using any external libraries or precomputed data.  \n   - The assistant must provide the final answer in the exact format requested, without any extra explanation or formatting.  \n   - If the correct answer is not among the choices (A to E), the assistant must provide the best guess as FFFFF.\n\n### Example\n\nIf the correct answer is **E**, the assistant must output:  \n`FFFFF`\n\nIf the correct answer is **A**, the assistant must output:  \n`AFFFF`\n\n### Niche and Domain-Specific Facts\n\n- The 8-digit date format is **YYYYMMDD**, where the year is fixed as 2023.  \n- Valid days depend on the month (e.g., February has 28 or 29 days, April has 30, etc.).  \n- The assistant must handle all 12 months and their respective valid days.  \n- The assistant must count the occurrences of each digit (0-9) in the 8-digit string for each date and verify that all digits appear an even number of times.  \n- The assistant must not rely on precomputed data or external resources, but must compute the answer directly.  \n- The assistant must provide the final answer in the exact format requested, without any additional explanation or formatting."}},
+{"idx": 7, "score": 0.2177, "parents": "1", "role": "Pareto Front", "components": {"system_prompt": "## New Instruction  \nYou are given a math problem where you must determine the number of dates in 2023 such that each digit appears an even number of times in the 8-digit display of the date. The answer must be provided in the exact format requested, and you must follow the feedback guidelines to improve your responses.  \n\n### Task Description  \nYou are to solve the following problem:  \n\nA digital display shows the current date as an 8-digit integer consisting of a 4-digit year, followed by a 2-digit month, followed by a 2-digit date within the month. For example, Arbor Day this year is displayed as 20230428. For how many dates in 2023 will each digit appear an even number of times in the 8-digital display for that date? The answer should be provided in the exact format requested, and you must follow the feedback guidelines to improve your responses.  \n\n### Niche and Domain Specific Facts  \n- The year 2023 has the digits 2, 0, 2, and 3.  \n- The month (MM) ranges from 01 to 12.  \n- The day (DD) ranges from 01 to 31.  \n- Each digit in the 8-digit number (YYYYMMDD) must appear an even number of times.  \n- You must count all valid dates (MMDD) in 2023 where the total count of each digit (including the fixed digits 2, 0, 2, 3) is even.  \n\n### Generalizable Strategy  \nTo solve the problem:  \n1. Generate all valid dates in 2023 (MMDD).  \n2. For each date, count the number of times each digit appears in the 8-digit number (YYYYMMDD).  \n3. Check if all digits appear an even number of times.  \n4. Count the number of such valid dates.  \n\n### Example Response Format  \nIf the answer is 5, the response should be:  \n$$\n\\boxed{5}\n$$  \n\nIf the answer is 6, the response should be:  \n$$\n\\boxed{6}\n$$  \n\n... and so on for all possible answers."}},
+{"idx": 8, "score": 0.2109, "parents": "7", "role": "", "components": {"system_prompt": "## New Instruction  \nYou are given a math problem where you must determine the number of dates in 2023 such that each digit appears an even number of times in the 8-digit display of the date. The answer must be provided in the exact format requested, and you must follow the feedback guidelines to improve your responses.  \n\n### Task Description  \nYou are to solve the following problem:  \n\nA digital display shows the current date as an 8-digit integer consisting of a 4-digit year, followed by a 2-digit month, followed by a 2-digit date within the month. For example, Arbor Day this year is displayed as 20230428. For how many dates in 2023 will each digit appear an even number of times in the 8-digital display for that date? The answer should be provided in the exact format requested, and you must follow the feedback guidelines to improve your responses.  \n\n### Niche and Domain Specific Facts  \n- The year 2023 has the digits 2, 0, 2, and 3.  \n- The month (MM) ranges from 01 to 12.  \n- The day (DD) ranges from 01 to 31.  \n- Each digit in the 8-digit number (YYYYMMDD) must appear an even number of times.  \n- You must count all valid dates (MMDD) in 2023 where the total count of each digit (including the fixed digits 2, 0, 2, 3) is even.  \n\n### Generalizable Strategy  \nTo solve the problem:  \n1. Generate all valid dates in 2023 (MMDD).  \n2. For each date, count the number of times each digit appears in the 8-digit number (YYYYMMDD).  \n3. Check if all digits appear an even number of times.  \n4. Count the number of such valid dates.  \n\n### Example Response Format  \nIf the answer is 5, the response should be:  \n$$\n\\boxed{5}\n$$  \n\nIf the answer is 6, the response should be:  \n$$\n\\boxed{6}\n$$  \n\n... and so on for all possible answers.  \n```  \n\n### Feedback Guidelines  \n- If your response is incorrect, provide a detailed explanation of where the mistake occurred.  \n- If your response is too long or not concise, shorten it while preserving the key information.  \n- If your response is too short, provide additional details to fully explain your reasoning.  \n\n### Example of Improved Response  \nFor example, if the correct answer is 10, the response should be:  \n$$\n\\boxed{10}\n$$  \nAnd if the assistant's previous response was incorrect, the feedback should guide the assistant to correct it.  \n\n### Final Answer Format  \nProvide the final answer in the exact format requested, and ensure that the answer is in the correct box format."}}];
+const DOT = `digraph G {
+    rankdir=TB;
+    node [style=filled, shape=circle, fontsize=14, width=0.6, height=0.6];
+    0 [label="0\\n(0.21)", fillcolor=lightgray, tooltip=" "];
+    1 [label="1\\n(0.22)", fillcolor=orange, tooltip=" "];
+    2 [label="2\\n(0.22)", fillcolor=orange, tooltip=" "];
+    3 [label="3\\n(0.24)", fillcolor=cyan, tooltip=" "];
+    4 [label="4\\n(0.20)", fillcolor=orange, tooltip=" "];
+    5 [label="5\\n(0.20)", fillcolor=lightgray, tooltip=" "];
+    6 [label="6\\n(0.23)", fillcolor=orange, tooltip=" "];
+    7 [label="7\\n(0.22)", fillcolor=orange, tooltip=" "];
+    8 [label="8\\n(0.21)", fillcolor=lightgray, tooltip=" "];
+    0 -> 1;
+    0 -> 2;
+    0 -> 3;
+    2 -> 4;
+    2 -> 5;
+    0 -> 6;
+    1 -> 7;
+    7 -> 8;
+}`;
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.idx] = n; });
+
+let pinnedIdx = null;   // non-null when tooltip is click-pinned (scrollable)
+let hoverIdx = null;    // non-null when hovering over a node
+
+function renderTooltip(idx) {
+  const n = nodeMap[idx];
+  if (!n) return "";
+  let roleBadge = "";
+  if (n.role === "Best") roleBadge = '<span class="role-badge role-best">BEST</span>';
+  else if (n.role === "Pareto Front") roleBadge = '<span class="role-badge role-pareto">PARETO</span>';
+  else if (n.role === "Seed") roleBadge = '<span class="role-badge role-seed">SEED</span>';
+
+  let comps = "";
+  for (const [name, text] of Object.entries(n.components)) {
+    const escaped = text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    comps += '<div class="tt-comp-name">' + name + '</div><div class="tt-comp-text">' + escaped + '</div>';
+  }
+
+  return '<div class="tt-header">Candidate ' + n.idx + roleBadge + '</div>' +
+    '<div class="tt-meta">Score: <strong>' + n.score + '</strong>&nbsp;&nbsp;|&nbsp;&nbsp;Parent(s): ' + n.parents +
+    '</div><div class="tt-hint">' + (pinnedIdx === idx ? 'Click node again to dismiss' : 'Click to pin &amp; scroll') + '</div>' +
+    comps;
+}
+
+function positionTooltip(x, y) {
+  const tt = document.getElementById("tooltip");
+  let tx = x + 16, ty = y + 16;
+  const r = tt.getBoundingClientRect();
+  if (tx + r.width > window.innerWidth - 8) tx = x - r.width - 16;
+  if (ty + r.height > window.innerHeight - 8) ty = y - r.height - 16;
+  if (tx < 8) tx = 8;
+  if (ty < 8) ty = 8;
+  tt.style.left = tx + "px";
+  tt.style.top = ty + "px";
+}
+
+function showTooltip(idx, x, y) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = renderTooltip(idx);
+  tt.style.display = "block";
+  positionTooltip(x, y);
+}
+
+function hideTooltip() {
+  pinnedIdx = null;
+  hoverIdx = null;
+  document.getElementById("tooltip").style.display = "none";
+}
+
+// Click outside tooltip and outside nodes dismisses pinned tooltip
+document.addEventListener("mousedown", function(e) {
+  const tt = document.getElementById("tooltip");
+  if (pinnedIdx !== null && tt.style.display === "block"
+      && !tt.contains(e.target) && !e.target.closest(".node")) {
+    hideTooltip();
+  }
+});
+
+async function render() {
+  const { instance } = await import("https://cdn.jsdelivr.net/npm/@viz-js/viz@3.11.0/lib/viz-standalone.mjs");
+  const viz = await instance();
+  const svg = viz.renderSVGElement(DOT);
+  const container = document.getElementById("graph-container");
+  container.innerHTML = "";
+  container.appendChild(svg);
+
+  // Attach hover listeners and strip native <title> tooltips to avoid double tooltips
+  svg.querySelectorAll(".node").forEach(node => {
+    const title = node.querySelector("title");
+    if (!title) return;
+    const idx = parseInt(title.textContent, 10);
+    if (isNaN(idx)) return;
+    title.remove();  // remove native SVG tooltip
+    node.style.cursor = "pointer";
+    // Hover: show tooltip following the mouse (non-interactive)
+    node.addEventListener("mouseenter", e => {
+      if (pinnedIdx !== null) return;  // don't override a pinned tooltip
+      hoverIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+    node.addEventListener("mousemove", e => {
+      if (pinnedIdx !== null || hoverIdx !== idx) return;
+      positionTooltip(e.clientX, e.clientY);
+    });
+    node.addEventListener("mouseleave", () => {
+      if (pinnedIdx !== null) return;
+      hoverIdx = null;
+      document.getElementById("tooltip").style.display = "none";
+    });
+    // Click: pin the tooltip so user can scroll it
+    node.addEventListener("click", e => {
+      e.stopPropagation();
+      if (pinnedIdx === idx) { hideTooltip(); return; }
+      pinnedIdx = idx;
+      showTooltip(idx, e.clientX, e.clientY);
+    });
+  });
+  // Also strip <title> from edges and the graph itself
+  svg.querySelectorAll(".edge title").forEach(t => t.remove());
+  const graphTitle = svg.querySelector(":scope > title");
+  if (graphTitle) graphTitle.remove();
+}
+
+render().catch(err => {
+  document.getElementById("graph-container").innerHTML =
+    "<p style='color:red'>Failed to render graph: " + err.message + "</p>" +
+    "<pre>" + DOT.replace(/</g,"&lt;") + "</pre>";
+});
+</script>
+</body>
+</html>

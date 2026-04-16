@@ -1,3 +1,0 @@
-{
-    "response": "<<palindrome in php>>\n\n$text = \"New post on the site <a href=\\\"http://stackoverflow.com/xyz1\\\">http://stackoverflow.com/xyz1</a></p>\";\n\n$original_url = \"http://stackoverflow.com/xyz1\";\n$replacement_url = \"http://yahoo.com/abc1\";\n\n$text = str_replace($original_url, $replacement_url, $text);\n\necho $text;\n\nThis code replaces the URL in the string with the new one. The palindrome in the response is \"palindrome\", which is a simple and common example of a palindrome."
-}

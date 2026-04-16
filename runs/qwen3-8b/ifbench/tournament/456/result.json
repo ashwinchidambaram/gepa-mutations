@@ -2,20 +2,103 @@
   "benchmark": "ifbench",
   "method": "tournament",
   "seed": 456,
-  "test_score": 0.07305555555555555,
-  "val_score": 0.07444444444444444,
+  "test_score": 0.06572222222222222,
+  "val_score": 0.07194444444444444,
+  "train_score": 0.0801111111111111,
   "best_prompt": {
-    "system_prompt": "10. To ensure accuracy, break down the task into smaller parts and check each one against the constraints. Provide a complete response that meets every requirement."
+    "system_prompt": "**Prompt 4 (Analogy-Based):**  \nImagine the task is like building a house. You need a solid foundation (understanding the instructions), proper structure (meeting all constraints), and finishing touches (a complete response). Think of each instruction as a brick and each constraint as a rule. Build your answer carefully, ensuring every part is in place and nothing is missing."
   },
   "rollout_count": 1504,
-  "wall_clock_seconds": 10570.502333164215,
-  "num_candidates": 0,
+  "wall_clock_seconds": 16856.700862407684,
+  "num_candidates": 20,
+  "all_candidates": [
+    {
+      "system_prompt": "**Prompt 4 (Analogy-Based):**  \nImagine the task is like building a house. You need a solid foundation (understanding the instructions), proper structure (meeting all constraints), and finishing touches (a complete response). Think of each instruction as a brick and each constraint as a rule. Build your answer carefully, ensuring every part is in place and nothing is missing.",
+      "val_score": 0.07194444444444444
+    },
+    {
+      "system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 8:**  \nAdhere to the instructions and ensure that all constraints are fully met. Your response must be complete and accurate. Present your answer in a structured format, using a numbered list to outline each step clearly.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**11.** Adhere to the instructions precisely and ensure that all constraints are fully satisfied. Provide a complete, accurate, and well-structured response that meets every requirement.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "14. Consider using a template or framework to structure your response. This can help ensure consistency and that all constraints are met systematically.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "Sure! Here are 16 diverse system prompts for the task you've described. Each prompt varies in level of detail and specificity, ranging from very concise to highly detailed.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 3 (Direct Answer):**  \nProvide a complete response that directly addresses the task. Ensure that all instructions and constraints are met without adding extra information. Keep your answer concise and focused on fulfilling the requirements precisely.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "6. Write your response in a structured format, clearly separating each part of the task. This will help you stay organized and prevent missing any key elements.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**4.** Please follow the instructions exactly and ensure that all constraints are adhered to. Your response must be complete and fulfill every requirement without exception.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**10.** You must follow the given instructions thoroughly and satisfy all constraints. Your response should be complete, detailed, and fully aligned with the task's requirements.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 15 (Contextual Understanding):**  \nUnderstand the context of the task. What is the purpose of the response? What is the audience expecting? Use this understanding to guide your answer, making sure it is not only complete but also appropriate and well-structured.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 2:**  \nCarefully follow the instructions and ensure that all constraints are fully met. Your response must be complete and accurate. Present your answer in a paragraph format, clearly stating each step in a logical sequence.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "Sure! Below are 16 diverse system prompts for the given task. Each prompt uses a different reasoning strategy to guide the response, ensuring a complete and accurate answer that meets all constraints.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**6.** You must follow the instructions precisely and satisfy all constraints. Provide a complete and detailed response that meets every requirement without any deviation.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**13.** You are to perform the task by strictly following the instructions and meeting all constraints. Your response must be complete, accurate, and fully satisfy every requirement without exception.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "8. Implement a constraint validation process where you ensure each part of your answer adheres strictly to the given requirements. This will help avoid any oversight.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 10 (Metaphor-Based):**  \nThink of the task as solving a complex puzzle. Each instruction is a piece, and each constraint is a rule. Your job is to assemble the puzzle correctly, ensuring that no piece is missing and that all rules are followed. Once the puzzle is complete, present your answer clearly and fully.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**3.** You are to follow the instructions precisely and meet all specified constraints. Provide a complete and thorough response that satisfies every requirement.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 14 (Error Checking):**  \nImagine you are proofreading a document. You must check for any errors or omissions. Apply this same process to your response: ensure that every instruction is followed, every constraint is met, and the final answer is complete and accurate.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "5. Think through the possible ways you might misinterpret the task. Identify and avoid these pitfalls by carefully analyzing each constraint and instruction.",
+      "val_score": null
+    }
+  ],
   "test_example_scores": [
     0.0,
     0.0,
     0.0,
     0.2,
-    0.0,
+    0.25,
     0.0,
     0.0,
     0.0,
@@ -109,46 +192,46 @@
     0.0,
     0.0,
     0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    1.0,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
     0.6666666666666666,
     0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.25,
-    0.0,
-    1.0,
-    0.4,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.3333333333333333,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.25,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.6666666666666666,
-    0.0,
     0.5,
     0.0,
     0.0,
@@ -184,7 +267,7 @@
     0.0,
     0.0,
     0.0,
-    0.5,
+    0.0,
     0.0,
     0.5,
     0.0,
@@ -201,7 +284,7 @@
     0.0,
     0.0,
     0.0,
-    0.75,
+    0.25,
     0.0,
     0.0,
     0.0,
@@ -267,13 +350,13 @@
     0.0,
     0.0,
     0.0,
-    0.3333333333333333,
     0.0,
-    0.3333333333333333,
+    0.0,
+    0.0,
     0.0,
     0.2,
     1.0,
-    0.5,
+    0.25,
     0.6666666666666666,
     0.0,
     0.0,
@@ -613,5 +696,7 @@
     "ifbench_test_297",
     "ifbench_test_298",
     "ifbench_test_299"
-  ]
+  ],
+  "seed_prompt_test_score": 0.07238888888888888,
+  "seed_prompt_val_score": 0.07127777777777777
 }

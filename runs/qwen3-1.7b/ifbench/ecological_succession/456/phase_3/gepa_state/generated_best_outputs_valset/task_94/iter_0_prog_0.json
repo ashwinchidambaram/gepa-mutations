@@ -1,3 +1,0 @@
-{
-    "response": "SECTION 1  \nimport google.cloud.bigtable  \nfrom google.cloud import bigtable  \nimport pandas as pd  \nfrom sklearn.ensemble import IsolationForest  \nimport numpy as np  \n\nclient = bigtable.Client(project=\"your-project-id\")  \ninstance = client.instance(\"your-instance-id\")  \ntable = instance.table(\"your-table-name\")  \n\nrows = table.read_rows()  \ndata = []  \nfor row in rows:  \n    data.append(row.cells)  \n\ndf = pd.DataFrame(data)  \ndf.columns = [cell.name for cell in df[0]]  \n\nmodel = IsolationForest(contamination=0.01)  \nmodel.fit(df)  \n\nanomalies = model.predict(df)  \nanomalies_df = df[anomalies == -1]  \n\nis there anything else i can help with?"
-}

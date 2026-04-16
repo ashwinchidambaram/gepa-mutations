@@ -1,3 +1,0 @@
-{
-    "response": "<<organizing records>>  \ncreate table movie_data (title varchar(255), director varchar(255));  \n\n-- query to sort by title length in descending order  \nselect title, director from movie_data  \norder by length(title) desc, length(director) desc;  \n\n-- example palindrome  \n\"racecar\" is a palindrome.  \n\nThe pen is mightier than sword  \nThe pen is mightier than sword  \n\nend with the same word: sword"
-}

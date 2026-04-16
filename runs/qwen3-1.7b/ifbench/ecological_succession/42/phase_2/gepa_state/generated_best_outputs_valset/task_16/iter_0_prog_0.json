@@ -1,3 +1,0 @@
-{
-    "response": "```python\nimport json\n\ndef calculate_average_effectiveness(feedback, treatment_name):\n    # Filter feedback for the specified treatment\n    filtered_feedback = [patient for patient in feedback if treatment_name in patient[\"treatments\"]]\n    \n    # Calculate the average effectiveness\n    if not filtered_feedback:\n        return 0.0\n    \n    total_effectiveness = sum(patient[\"treatments\"][treatment_name] for patient in filtered_feedback)\n    average = total_effectiveness / len(filtered_feedback)\n    \n    return round(average, 2)\n```\n\n```json\n{\n    \"average_effectiveness\": 6.0\n}\n```"
-}

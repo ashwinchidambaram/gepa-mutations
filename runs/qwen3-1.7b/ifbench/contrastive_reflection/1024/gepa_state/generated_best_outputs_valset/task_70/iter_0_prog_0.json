@@ -1,3 +1,3 @@
 {
-    "response": "<<The Art of Poetry>>  \nSELECT title, director  \nFROM movies  \nORDER BY LENGTH(title) DESC, LENGTH(director) DESC;\n\nThis SQL query sorts the records in the `title` and `director` columns in descending order based on their character length. If two entries have the same length, they are ordered alphabetically (though the `DESC` clause ensures that the primary key is sorted in descending order, which implicitly handles ties).\n\nA palindrome in this response is: **\"poetry is art\"**."
+    "response": "<<The Palindrome of the Sky>>  \nSELECT title, director  \nFROM movies  \nORDER BY LENGTH(title) DESC, LENGTH(director) DESC;\n\nThis SQL query sorts the records in the `title` and `director` columns in descending order based on their character length. If two entries have the same length, they are ordered alphabetically. A palindrome, \"A man, a plan, a canal: Panama,\" is included in the response."
 }

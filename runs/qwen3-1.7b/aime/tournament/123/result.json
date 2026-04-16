@@ -1,0 +1,158 @@
+{
+  "benchmark": "aime",
+  "method": "tournament",
+  "seed": 123,
+  "test_score": 0.0,
+  "val_score": 0.022222222222222223,
+  "train_score": 0.022222222222222223,
+  "best_prompt": {
+    "system_prompt": "11. **Prompt:** Apply constraints to the problem and solve it step-by-step. Ensure that all operations are performed correctly and that the final answer is a single number."
+  },
+  "rollout_count": 994,
+  "wall_clock_seconds": 7636.722575187683,
+  "num_candidates": 19,
+  "all_candidates": [
+    {
+      "system_prompt": "11. **Prompt:** Apply constraints to the problem and solve it step-by-step. Ensure that all operations are performed correctly and that the final answer is a single number.",
+      "val_score": 0.022222222222222223
+    },
+    {
+      "system_prompt": "Solve the math problem carefully. Break down the steps and provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "8. **Analogy-based reasoning**:  \n   Use a familiar scenario to model the math problem, then apply the same logic to solve it.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 7 (List of 16 Prompts with Variations):**  \n- Break the problem into smaller parts.  \n- Identify the mathematical operations.  \n- Perform the calculations in order.  \n- Check for errors in the process.  \n- Present the final answer as a single number.  \n- Apply the correct order of operations.  \n- Ensure the answer is accurate.  \n- Use the right mathematical rules.  \n- Perform calculations step by step.  \n- Verify each step.  \n- Present the final answer.  \n- Use a systematic approach.  \n- Ensure clarity in the solution.  \n- Check for arithmetic errors.  \n- Provide the final answer as a single number.  \n- Review the solution for consistency.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 15 (List of 16 Prompts with Different Instructions):**  \n1. Break the problem into smaller parts.  \n2. Identify the operations.  \n3. Perform the calculations.  \n4. Check for errors.  \n5. Present the answer.  \n6. Apply the correct order.  \n7. Use the right rules.  \n8. Perform the steps.  \n9. Verify each step.  \n10. Ensure accuracy.  \n11. Present the answer.  \n12. Use a systematic method.  \n13. Check for consistency.  \n14. Present the final answer.  \n15. Ensure it's a single number.  \n16. Review the solution.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "1. Solve the following arithmetic problem: 2 + 3 * 4. Provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "8. Evaluate 4 * (5 - 3) + 6. Break down the operations and provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "12. **Analogy-based reasoning**:  \n    Use a common analogy to help visualize the math problem, then apply the analogy to solve it.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "15. **Direct answer**:  \n    Provide the final answer in a single number, without any explanation or additional steps.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "7. Solve 9 - (6 + 3) * 2. Show the steps and provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "13. **Chain-of-thought reasoning**:  \n    Think through the problem in a detailed, logical sequence, considering all possible approaches and ensuring the answer is consistent with the problem's requirements.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "5. **Prompt:** Use a systematic approach to solve the problem. Check each calculation and ensure that the final answer is consistent with the problem's requirements.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 1 (Bullet Points):**  \n- Break down the problem into smaller parts.  \n- Identify the mathematical operations needed.  \n- Perform calculations step by step.  \n- Verify each step for accuracy.  \n- Provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "10. **Prompt:** Solve the problem by first understanding the question fully. Then, break it down into smaller parts and check each part for accuracy before proceeding.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 8 (List of 16 Prompts with Different Formatting):**  \n1. Break down the problem.  \n2. Identify the operations.  \n3. Perform calculations.  \n4. Check for errors.  \n5. Present the answer.  \n6. Apply the correct order.  \n7. Use the right rules.  \n8. Perform step by step.  \n9. Verify each step.  \n10. Ensure accuracy.  \n11. Present the answer.  \n12. Use a systematic method.  \n13. Check for consistency.  \n14. Present the final answer.  \n15. Ensure it's a single number.  \n16. Review the solution.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "1. **Prompt:** Solve the following math problem carefully, breaking down each step and ensuring no errors are made. Provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 4 (JSON Format):**  \n```json\n{\n  \"task\": \"Solve the math problem\",\n  \"steps\": [\n    \"Read the problem carefully and understand what is being asked.\",\n    \"Identify the numbers and operations involved.\",\n    \"Apply the correct mathematical rules.\",\n    \"Perform the operations in the correct order.\",\n    \"Check for any errors in calculations.\",\n    \"Present the final answer as a single number.\"\n  ]\n}\n```",
+      "val_score": null
+    },
+    {
+      "system_prompt": "10. Solve 10 - 2 * 5 + 3. Break down the operations and provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "6. Calculate 7 - 3 * 2 + 5. Break down the operations and provide the final answer as a single number.",
+      "val_score": null
+    }
+  ],
+  "test_example_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "test_example_ids": [
+    "aime_test_0",
+    "aime_test_1",
+    "aime_test_2",
+    "aime_test_3",
+    "aime_test_4",
+    "aime_test_5",
+    "aime_test_6",
+    "aime_test_7",
+    "aime_test_8",
+    "aime_test_9",
+    "aime_test_10",
+    "aime_test_11",
+    "aime_test_12",
+    "aime_test_13",
+    "aime_test_14",
+    "aime_test_15",
+    "aime_test_16",
+    "aime_test_17",
+    "aime_test_18",
+    "aime_test_19",
+    "aime_test_20",
+    "aime_test_21",
+    "aime_test_22",
+    "aime_test_23",
+    "aime_test_24",
+    "aime_test_25",
+    "aime_test_26",
+    "aime_test_27",
+    "aime_test_28",
+    "aime_test_29"
+  ],
+  "seed_prompt_test_score": 0.0,
+  "seed_prompt_val_score": 0.0
+}

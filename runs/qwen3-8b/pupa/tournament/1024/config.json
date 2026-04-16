@@ -1,0 +1,22 @@
+{
+  "benchmark": "pupa",
+  "seed": 1024,
+  "subset": null,
+  "method": "tournament",
+  "model": "openrouter/Qwen/Qwen3-8B",
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 20,
+  "rollout_budget": 3936,
+  "pool_size": 64,
+  "n_gen_calls": 4,
+  "prompts_per_call": 16,
+  "round_examples": [
+    5,
+    7,
+    10,
+    15,
+    20
+  ],
+  "bracket_depth": 6
+}

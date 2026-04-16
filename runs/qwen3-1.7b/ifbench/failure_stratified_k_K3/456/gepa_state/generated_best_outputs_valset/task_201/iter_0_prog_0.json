@@ -1,3 +1,0 @@
-{
-    "response": "<<replacing URLs in PHP>>\n\n<?php  \n// Example string with a URL  \n$str = \"New post on the site <a href=\\\"http://stackoverflow.com/xyz1\\\">http://stackoverflow.com/xyz1</a></p>\";\n\n// Replace the URL with the new one  \n$str = str_replace(\"http://stackoverflow.com/xyz1\", \"http://yahoo.com/abc1\", $str);\n\n// Output the modified string  \necho $str;\n?>\n\nThis code will replace the URL in the string with the new one. It works for any occurrence of the URL in the string. \n\nHere's a palindrome in the response:  \n**\"A man, a plan, a canal: Panama\"**"
-}

@@ -1,0 +1,3 @@
+{
+    "response": "Yes we can check how long it took for udp packet to be sent to server like ping but only one direction\n\nTo do this we can use the System.Net.Sockets namespace and create a udp client\n\nWe can start a timer when we send the packet and stop it when we receive the response\n\nWe can then calculate the elapsed time and display it\n\nThis method is useful for measuring the round trip time of a udp packet\n\nWe can also handle errors and exceptions that may occur during the process\n\nThis approach is efficient and provides accurate timing information\n\nWe can also use the System.Diagnostics.Stopwatch class for more precise timing\n\nThis method is suitable for applications that require precise timing of network packets"
+}

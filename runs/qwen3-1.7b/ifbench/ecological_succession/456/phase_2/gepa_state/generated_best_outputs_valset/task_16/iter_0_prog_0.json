@@ -1,3 +1,0 @@
-{
-    "response": "def calculate_average_effectiveness(feedback, treatment_name):\n    treatments = []\n    for patient in feedback:\n        if treatment_name in patient[\"treatments\"]:\n            treatments.append(patient[\"treatments\"][treatment_name])\n    if not treatments:\n        return 0.0\n    return round(sum(treatments) / len(treatments), 2)"
-}

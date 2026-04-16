@@ -1,7 +1,10 @@
 {
   "model": "Qwen/Qwen3-8B",
-  "base_url": "http://10.0.10.65:8130/v1",
+  "base_url": "http://localhost:8125/v1",
   "method": "baseline",
   "benchmark": "hotpotqa",
-  "seed": 42
+  "seed": 42,
+  "train_size": 150,
+  "val_size": 300,
+  "test_size": 300
 }

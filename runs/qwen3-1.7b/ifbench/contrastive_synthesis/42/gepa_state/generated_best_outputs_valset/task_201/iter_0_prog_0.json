@@ -1,3 +1,0 @@
-{
-    "response": "<<palindrome puzzle>>  \n\nIn PHP, you can replace a URL in a string using the `str_replace()` function. Here's an example of how to do it:\n\n```php\n$str = \"New post on the site <a href=\\\"http://stackoverflow.com/xyz1\\\">http://stackoverflow.com/xyz1</a></p>\";\n$oldUrl = \"http://stackoverflow.com/xyz1\";\n$newUrl = \"http://yahoo.com/abc1\";\n\n$str = str_replace($oldUrl, $newUrl, $str);\necho $str;\n```\n\nThis code will replace the URL `http://stackoverflow.com/xyz1` with `http://yahoo.com/abc1` in the string.  \n\nHere is a palindrome in the response:  \n**\"A man, a plan, a canal: Panama\"**"
-}

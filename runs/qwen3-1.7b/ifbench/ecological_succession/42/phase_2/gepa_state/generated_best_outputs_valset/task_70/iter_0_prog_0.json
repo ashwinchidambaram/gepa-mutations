@@ -1,3 +1,0 @@
-{
-    "response": "<<organizing titles and directors>>  \n\nSELECT title, director  \nFROM movies  \nORDER BY LENGTH(title) DESC, LENGTH(director) DESC  \n\nThis query sorts the titles and directors in descending order of their character length. If two entries have the same length, they are ordered alphabetically. The result will be a list of movies and their directors, sorted by the length of their names.  \n\nThe palindrome used in this response is \"abba\".  \n\n---\n\n**response 1**  \nthe titles are ordered by length  \nthe directors are sorted by length too  \n\n**response 2**  \nthe results are arranged by length  \nthe data is presented in a clear way"
-}

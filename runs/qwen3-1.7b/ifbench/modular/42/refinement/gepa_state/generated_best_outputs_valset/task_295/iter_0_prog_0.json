@@ -1,3 +1,0 @@
-{
-    "response": "const Point = class {  \n  constructor(x, y) {  \n    this.x = x;  \n    this.y = y;  \n  }  \n\n  isPalindrome() {  \n    return this.x.toString() === this.x.toString().split('').reverse().join('');  \n  }  \n};  \n\nplayer  \nconst point = new Point(12, 34);  \nconsole.log(point.isPalindrome());"
-}

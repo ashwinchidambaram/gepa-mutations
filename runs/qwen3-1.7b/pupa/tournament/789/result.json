@@ -2,14 +2,97 @@
   "benchmark": "pupa",
   "method": "tournament",
   "seed": 789,
-  "test_score": 0.5052175894281158,
-  "val_score": 0.47165449445635205,
+  "test_score": 0.4829289131920711,
+  "val_score": 0.4932229896006986,
+  "train_score": 0.5466987504221547,
   "best_prompt": {
-    "system_prompt": "4. Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. Use a checklist to verify that all PII has been removed and placeholders are correctly used."
+    "system_prompt": "4. Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. Use a checklist to verify that all PII has been removed and replaced correctly."
   },
   "rollout_count": 1094,
-  "wall_clock_seconds": 7911.925984621048,
-  "num_candidates": 0,
+  "wall_clock_seconds": 4362.116765737534,
+  "num_candidates": 20,
+  "all_candidates": [
+    {
+      "system_prompt": "4. Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. Use a checklist to verify that all PII has been removed and replaced correctly.",
+      "val_score": 0.4932229896006986
+    },
+    {
+      "system_prompt": "Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "16. **Analogy-based reasoning (alternative):**  \nCompare the query to a similar task where the user is asking for assistance without specific details. Rewrite the query to remove PII, replacing it with placeholders, while keeping the intent the same.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 5 (Very Detailed):**  \nRewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. The rewritten query should be clear, concise, and maintain the original intent without any PII.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "11. Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. Apply a constraint that all PII must be replaced with generic terms and not left in the query.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "5. **Chain-of-thought reasoning (alternative):**  \nStart by identifying the key elements of the original query. Then, systematically remove PII by replacing each with a placeholder. Ensure the rewritten query maintains the original intent and meaning.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "11. **Direct answer (alternative):**  \nRewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "1. Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. Use double-checking to ensure all PII is removed.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "4. **Analogy-based reasoning:**  \nImagine a scenario where a user is asking for help with a similar task. Rewrite the query to remove PII, replacing it with generic placeholders, while keeping the intent the same as the original.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "1. **Chain-of-thought reasoning:**  \nRewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "10. Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. Use a placeholder generator to ensure all PII is replaced with generic terms.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "13. Rewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. Implement a step-by-step process to ensure all PII is properly substituted.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 12 (Prompt for Legal Compliance):**  \nGenerate a rewritten version of the following query, removing all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace these with generic placeholders like [Name], [Address], [Phone Number], and [Email]. Ensure the rewritten query is suitable for legal or compliance purposes.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 11 (Very Detailed):**  \nRewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. The rewritten query should be clear, concise, and maintain the original intent without any PII.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "10. **Step-by-step reasoning (alternative):**  \n- Identify the main request of the user.  \n- Locate and remove any PII from the query.  \n- Replace PII with generic placeholders.  \n- Ensure the rewritten query is clear and maintains the original intent.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "6. **Step-by-step reasoning (alternative):**  \n- First, locate and identify all PII in the query.  \n- Next, replace each PII with a generic placeholder.  \n- Then, rephrase the query to maintain the original intent.  \n- Finally, review the rewritten query to ensure no PII is left and it is anonymized.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "2. **Step-by-step reasoning:**  \n- Identify all PII in the original query.  \n- Replace each PII with a generic placeholder (e.g., [Name], [Address], [Phone], [Email]).  \n- Ensure the rewritten query retains the original intent and meaning.  \n- Verify that no PII remains and that the query is now anonymized.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 5 (List of PII to Replace):**  \n- Names: [Name]  \n- Addresses: [Address]  \n- Phone Numbers: [Phone Number]  \n- Emails: [Email]  \n- Other PII: [Generic PII Placeholder]",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 8 (Slightly More Detailed):**  \nRewrite the user's query to remove all personally identifiable information (PII) such as names, addresses, phone numbers, and emails. Replace PII with generic placeholders while preserving the query's meaning and intent. The rewritten query should be clear and maintain the original intent.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "8. **Analogy-based reasoning (alternative):**  \nConsider a similar task where a user needs assistance with a request that involves general information. Rewrite the query to remove PII, replacing it with placeholders, while keeping the intent the same.",
+      "val_score": null
+    }
+  ],
   "test_example_scores": [
     0.5,
     0.5,
@@ -19,24 +102,24 @@
     0.5,
     0.5,
     0.5,
+    0.5,
+    0.5,
+    0.5,
     1.0,
     0.5,
     0.5,
     0.5,
-    0.8333333333333334,
     0.5,
     0.5,
     0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
+    0.625,
     0.0,
+    0.5,
     0.8333333333333334,
     0.5,
     0.5,
     0.5,
-    0.09090909090909088,
+    0.6818181818181819,
     0.0,
     0.5,
     0.5,
@@ -46,7 +129,7 @@
     0.5,
     0.5,
     0.5,
-    0.375,
+    0.5,
     0.5714285714285714,
     0.5,
     0.75,
@@ -56,55 +139,55 @@
     0.5,
     0.5,
     0.5,
-    0.5,
-    0.5,
-    0.6666666666666667,
     1.0,
-    1.0,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.0,
-    0.16666666666666669,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.33333333333333337,
-    1.0,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.0,
-    0.75,
-    0.5,
-    0.8333333333333334,
-    0.5,
-    0.0,
-    1.0,
-    0.5,
-    0.5,
     0.625,
     0.5,
+    1.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
     0.0,
     0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.25,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    0.625,
+    0.0,
     0.6666666666666667,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.75,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
     0.5
   ],
   "test_example_ids": [
@@ -203,5 +286,7 @@
     "pupa_test_92",
     "pupa_test_93",
     "pupa_test_94"
-  ]
+  ],
+  "seed_prompt_test_score": 0.3642572339940761,
+  "seed_prompt_val_score": 0.2947904073910266
 }

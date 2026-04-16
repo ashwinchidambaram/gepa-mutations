@@ -1,0 +1,3 @@
+{
+    "response": "To find the indefinite integral of the function $ 7 \\sin(1 - 7x) $, we use substitution.\n\n---\n\n### Step 1: Let $ u = 1 - 7x $\n\nThen, $ \\frac{du}{dx} = -7 $, so $ du = -7 \\, dx $, or $ dx = -\\frac{1}{7} \\, du $\n\n---\n\n### Step 2: Rewrite the integral in terms of $ u $\n\n$$\n\\int 7 \\sin(1 - 7x) \\, dx = \\int 7 \\sin(u) \\left(-\\frac{1}{7}\\right) \\, du\n$$\n\n$$\n= -\\int \\sin(u) \\, du\n$$\n\n---\n\n### Step 3: Integrate with respect to $ u $\n\n$$\n-\\int \\sin(u) \\, du = -(-\\cos(u)) + C = \\cos(u) + C\n$$\n\n---\n\n### Step 4: Substitute back in terms of $ x $\n\n$$\n\\cos(u) = \\cos(1 - 7x)\n$$\n\nSo, the integral is:\n\n$$\n\\cos(1 - 7x) + C\n$$\n\n---\n\n### Final Answer:\n\n$$\n\\boxed{\\cos(1 - 7x) + C}\n$$"
+}

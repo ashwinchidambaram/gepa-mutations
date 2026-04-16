@@ -1,3 +1,0 @@
-{
-    "response": "<<palindrome in php>>\n\n$string = \"New post on the site <a href=\\\"http://stackoverflow.com/xyz1\\\">http://stackoverflow.com/xyz1</a></p>\";\n\n$originalUrl = \"http://stackoverflow.com/xyz1\";\n$replacementUrl = \"http://yahoo.com/abc1\";\n\n$string = str_replace($originalUrl, $replacementUrl, $string);\n\necho $string;\n\nThis code replaces the URL in the string with the new one. It works for repeating strings as well. \n\nHere is a palindrome in the response:  \n**\"A man, a plan, a canal: Panama\"**"
-}

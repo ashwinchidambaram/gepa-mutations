@@ -3,11 +3,11 @@
   "seed": 1024,
   "subset": null,
   "use_merge": true,
-  "model": "openai/Qwen/Qwen3-1.7B",
+  "model": "openrouter/Qwen/Qwen3-1.7B",
   "temperature": 0.6,
   "top_p": 0.95,
   "top_k": 20,
-  "max_context": 20000,
+  "max_context": 16384,
   "rollout_budget": 3593,
   "candidate_selection": "pareto",
   "frontier_type": "instance",
@@ -15,5 +15,9 @@
   "skip_perfect_score": true,
   "perfect_score": 1.0,
   "max_merge_invocations": 5,
-  "cache_evaluation": true
+  "cache_evaluation": true,
+  "train_size": 150,
+  "val_size": 300,
+  "test_size": 300,
+  "gepa_base_url": "http://localhost:8125/v1"
 }

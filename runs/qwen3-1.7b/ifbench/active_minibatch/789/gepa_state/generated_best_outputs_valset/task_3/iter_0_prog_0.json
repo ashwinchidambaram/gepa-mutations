@@ -1,3 +1,0 @@
-{
-    "response": "```python\ndef calculate_landscaping_cost(services):\n    rates = {\n        \"Lawn Mowing\": 50,\n        \"Tree Trimming\": 60,\n        \"Flower Planting\": 40,\n        \"General Cleanup\": 30\n    }\n    \n    total_cost = 0.0\n    \n    for service, hours in services:\n        total_cost += hours * rates[service]\n    \n    total_cost *= 0.8  # 20% discount\n    \n    return total_cost\n```\n\nExample usage:\n```python\nservices = [\n    (\"Lawn Mowing\", 10),\n    (\"Tree Trimming\", 5),\n    (\"Flower Planting\", 8),\n    (\"General Cleanup\", 12)\n]\n\nprint(calculate_landscaping_cost(services))\n```"
-}

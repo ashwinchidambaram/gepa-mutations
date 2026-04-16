@@ -1,3 +1,0 @@
-{
-    "response": "```python\ndef determine_freshness(produce_list):\n    fresh = []\n    okay = []\n    old = []\n    \n    for name, days in produce_list:\n        if 0 <= days <= 2:\n            fresh.append(name)\n        elif 3 <= days <= 5:\n            okay.append(name)\n        else:\n            old.append(name)\n    \n    return fresh + okay + old\n```\n\nthe pen is mightier than sword  \n*highlighted section*  \nthe pen is mightier than sword  \n\n* * *  \n\nthe pen is mightier than sword  \nthe pen is mightier than sword  \nthe pen is mightier than sword  \n\nthe pen is mightier than sword  \nthe pen is mightier than sword  \nthe pen is mightier than sword"
-}

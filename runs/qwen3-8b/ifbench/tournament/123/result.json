@@ -2,14 +2,93 @@
   "benchmark": "ifbench",
   "method": "tournament",
   "seed": 123,
-  "test_score": 0.07222222222222223,
-  "val_score": 0.0753888888888889,
+  "test_score": 0.07083333333333333,
+  "val_score": 0.0761111111111111,
+  "train_score": 0.07066666666666667,
   "best_prompt": {
-    "system_prompt": "**Prompt 12:**\nWrite your answer in a Q&A format. Answer the question \"How will you complete the task?\" by listing all the steps and ensuring that each answer fully satisfies the given constraints."
+    "system_prompt": "Sure! Here are 16 diverse system prompts for the given task, varying in level of detail and specificity:"
   },
   "rollout_count": 1504,
-  "wall_clock_seconds": 10801.20838356018,
-  "num_candidates": 0,
+  "wall_clock_seconds": 17425.154977798462,
+  "num_candidates": 19,
+  "all_candidates": [
+    {
+      "system_prompt": "Sure! Here are 16 diverse system prompts for the given task, varying in level of detail and specificity:",
+      "val_score": 0.0761111111111111
+    },
+    {
+      "system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 6: Scenario-Based Reasoning**  \nVisualize the task as a real-world scenario. Imagine you're a project manager tasked with completing a complex project. You need to follow every instruction carefully to meet deadlines and requirements. Ensure that your response mirrors this structured, detail-oriented approach.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "7. Outline the steps to make a basic omelet. Use a numbered list and include variations for different fillings and cooking styles.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "15. Create a flowchart in text form that outlines the process of meal planning. Include decision points such as dietary preferences, time constraints, and budget.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**7.** Follow the instructions precisely, and ensure that all constraints are satisfied. Your response should be complete, thorough, and fully compliant with the task's requirements.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 10: Iterative Reasoning**  \nApproach the task in cycles. First, draft a response. Then, review it for completeness. Identify any missing elements or constraints and refine the response. Repeat this process until you are confident that all requirements are fully met.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 13: Visual Reasoning**  \nImagine the task as a diagram or flowchart. Each instruction is a node, and each constraint is a connection. Ensure that all nodes are properly connected and that the final output is complete and accurate.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "11. Follow the instructions precisely and make sure your response is fully compliant with all constraints. Think through the task from start to finish and double-check that each part is addressed correctly.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**6.** Carefully follow the instructions and ensure that every constraint is met. Your response must be complete, detailed, and fully satisfy all given requirements.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 11: Logical Deduction**  \nUse logic to determine what must be true based on the given instructions. If an instruction is not met, what implications does that have? Ensure that your response logically follows from the given constraints and fully satisfies all requirements.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "5. List all the constraints provided and cross-check your response against each one. Avoid making assumptions and stick strictly to the instructions. If in doubt, re-read the task to confirm understanding.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "1. Write a detailed step-by-step guide on how to prepare a classic tomato sauce from scratch. Include ingredients, quantities, and cooking instructions. Ensure the guide is easy to follow and suitable for beginners.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "10. Provide a complete response that fully satisfies all the constraints. To prevent mistakes, consider potential misinterpretations and clarify any ambiguities. Ensure your answer is thorough and accurate.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "8. Describe the process of making a homemade pizza dough, including the ingredients, preparation time, and resting requirements. Format the response in a clear paragraph.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "1. Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement. Double-check your work to avoid any common mistakes such as missing steps or incomplete answers.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "4. Generate a JSON object containing a recipe for a simple stir-fry. Include the title, ingredients, and instructions as key-value pairs.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**9.** Please read and follow the instructions carefully. Ensure that all constraints are satisfied, and your response is complete, detailed, and fully meets the given requirements.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**5.** You must adhere strictly to the instructions and fulfill all constraints. Your response should be comprehensive, complete, and fully meet every requirement specified.",
+      "val_score": null
+    }
+  ],
   "test_example_scores": [
     0.0,
     0.0,
@@ -26,7 +105,7 @@
     0.0,
     0.0,
     0.0,
-    0.25,
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -67,11 +146,11 @@
     0.0,
     0.0,
     0.4,
+    0.3333333333333333,
     0.0,
     0.0,
     0.0,
-    0.0,
-    0.0,
+    1.0,
     0.0,
     0.0,
     0.0,
@@ -109,7 +188,7 @@
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.6666666666666666,
     0.0,
     0.0,
     0.0,
@@ -147,7 +226,7 @@
     0.0,
     0.0,
     0.0,
-    0.3333333333333333,
+    0.6666666666666666,
     0.0,
     0.5,
     0.0,
@@ -159,7 +238,7 @@
     0.0,
     0.0,
     0.0,
-    1.0,
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -197,16 +276,16 @@
     0.0,
     0.0,
     0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.25,
     0.0,
     0.0,
     0.0,
     0.0,
     0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
     0.0,
     0.0,
     0.5,
@@ -269,12 +348,12 @@
     0.5,
     0.0,
     0.0,
-    0.3333333333333333,
-    0.3333333333333333,
+    0.0,
+    0.0,
     0.2,
     1.0,
-    0.25,
     0.0,
+    0.6666666666666666,
     0.0,
     0.0,
     0.0,
@@ -613,5 +692,7 @@
     "ifbench_test_297",
     "ifbench_test_298",
     "ifbench_test_299"
-  ]
+  ],
+  "seed_prompt_test_score": 0.06666666666666667,
+  "seed_prompt_val_score": 0.07172222222222221
 }

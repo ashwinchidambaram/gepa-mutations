@@ -2,14 +2,33 @@
   "benchmark": "ifbench",
   "method": "synaptic_pruning",
   "seed": 42,
-  "test_score": 0.06277777777777778,
-  "val_score": 0.07644444444444444,
+  "test_score": 0.06638888888888889,
+  "val_score": 0.07794444444444444,
+  "train_score": 0.07733333333333334,
   "best_prompt": {
-    "system_prompt": "System prompt:  \nYou are tasked with processing input queries that contain specific formatting and content constraints. Your response must strictly adhere to all instructions provided in the input. This includes, but is not limited to, controlling the use of punctuation, capitalization, word frequency, sentence count, paragraph structure, and content alignment.\n\nTo approach this task effectively, you should first parse the input to identify all constraints. These may include restrictions on the use of certain punctuation marks such as periods, requirements for the use of all capital letters, limitations on the frequency of lowercase words, and structural elements like paragraph separation or word repetition. Once the constraints are clear, you must generate a response that meets all of them simultaneously.\n\nKey reasoning strategies include:  \n1. **Constraint Mapping**: Identify and categorize each constraint (e.g., punctuation, capitalization, word frequency, sentence count, paragraph structure).  \n2. **Prioritization**: Determine which constraints are most critical and ensure they are addressed first.  \n3. **Iterative Refinement**: Build the response step by step, checking against each constraint after each addition.  \n4. **Validation**: Review the final response to confirm that it satisfies all specified requirements without introducing any unintended elements.\n\nCommon pitfalls to avoid include:  \n- **Overlooking subtle constraints**, such as the requirement to start and end with the same word.  \n- **Ignoring punctuation rules**, such as the prohibition of periods.  \n- **Misinterpreting word frequency limits**, especially when dealing with all capital letters or lowercase words.  \n- **Failing to structure paragraphs correctly**, including the use of line breaks for separation.  \n- **Exceeding sentence or word count limits**, which can result in non-compliance with the task.\n\nWhen generating the response, you must ensure that all formatting instructions are followed precisely. For instance, if the input specifies that all lowercase words should appear no more than three times, you must count and limit their occurrence. Similarly, if the prompt requires that words with all capital letters appear a specific number of times, you must ensure that this condition is met without exceeding or falling short.\n\nIn addition, you must pay close attention to structural requirements, such as the use of line breaks to separate paragraphs or the need to start and end with the same word. These elements are critical to meeting the task's specifications and must not be overlooked.\n\nFinally, always double-check your response against the original input to ensure that every constraint has been addressed. This will help you avoid errors and produce a response that is both accurate and compliant with all given instructions."
+    "system_prompt": "System prompt:  \nYou are tasked with generating a response that strictly adheres to a set of specific formatting and content constraints. Your response must be structured in a way that meets all the given conditions, and you must ensure that every instruction is followed precisely. Begin by thoroughly analyzing the input to understand the exact requirements. Each input includes a set of rules that govern the output, and your job is to produce a response that satisfies all of them.\n\nWhen processing the input, pay close attention to the formatting instructions. These may include restrictions on the use of punctuation, such as the prohibition of dots, or limitations on the number of times certain types of words can appear in the response. For example, some inputs may require that words in all capital letters appear a specific number of times, while others may limit their occurrence. Similarly, there may be constraints on the use of lowercase words, the structure of paragraphs, or the number of sentences in the response.\n\nIt is crucial to avoid common pitfalls such as missing a formatting rule, misinterpreting a constraint, or failing to meet the exact word count or sentence limit. Always double-check that your output aligns with the input instructions. If the input specifies that the response should begin and end with the same word, ensure that this is done without any additional punctuation. If the input requires that certain words appear a specific number of times, ensure that this is achieved without overstepping or underperforming.\n\nWhen generating your response, maintain clarity and precision while adhering to the constraints. If the input includes a question, your response should be structured to answer it directly without unnecessary elaboration. If the input involves mathematical or logical reasoning, ensure that your response is accurate and follows the correct reasoning strategy.\n\nIn all cases, your response must be complete and meet every requirement specified in the input. Do not add any extra information or assumptions beyond what is explicitly stated. If the input includes a note about avoiding certain punctuation, ensure that your response does not contain it. If the input specifies that certain words must appear a specific number of times, ensure that this is achieved without violating any other rules.\n\nFinally, always verify that your output meets all the formatting and content constraints before finalizing your response. This includes checking for correct punctuation, word counts, sentence limits, and adherence to any other specific instructions. By carefully following these steps, you will ensure that your response is both accurate and compliant with all given requirements."
   },
   "rollout_count": 460,
-  "wall_clock_seconds": 2830.8095939159393,
-  "num_candidates": 0,
+  "wall_clock_seconds": 5903.4961993694305,
+  "num_candidates": 4,
+  "all_candidates": [
+    {
+      "system_prompt": "System prompt:  \nYou are tasked with generating a response that strictly adheres to a set of specific formatting and content constraints. Your response must be structured in a way that meets all the given conditions, and you must ensure that every instruction is followed precisely. Begin by thoroughly analyzing the input to understand the exact requirements. Each input includes a set of rules that govern the output, and your job is to produce a response that satisfies all of them.\n\nWhen processing the input, pay close attention to the formatting instructions. These may include restrictions on the use of punctuation, such as the prohibition of dots, or limitations on the number of times certain types of words can appear in the response. For example, some inputs may require that words in all capital letters appear a specific number of times, while others may limit their occurrence. Similarly, there may be constraints on the use of lowercase words, the structure of paragraphs, or the number of sentences in the response.\n\nIt is crucial to avoid common pitfalls such as missing a formatting rule, misinterpreting a constraint, or failing to meet the exact word count or sentence limit. Always double-check that your output aligns with the input instructions. If the input specifies that the response should begin and end with the same word, ensure that this is done without any additional punctuation. If the input requires that certain words appear a specific number of times, ensure that this is achieved without overstepping or underperforming.\n\nWhen generating your response, maintain clarity and precision while adhering to the constraints. If the input includes a question, your response should be structured to answer it directly without unnecessary elaboration. If the input involves mathematical or logical reasoning, ensure that your response is accurate and follows the correct reasoning strategy.\n\nIn all cases, your response must be complete and meet every requirement specified in the input. Do not add any extra information or assumptions beyond what is explicitly stated. If the input includes a note about avoiding certain punctuation, ensure that your response does not contain it. If the input specifies that certain words must appear a specific number of times, ensure that this is achieved without violating any other rules.\n\nFinally, always verify that your output meets all the formatting and content constraints before finalizing your response. This includes checking for correct punctuation, word counts, sentence limits, and adherence to any other specific instructions. By carefully following these steps, you will ensure that your response is both accurate and compliant with all given requirements.",
+      "val_score": 0.07794444444444444
+    },
+    {
+      "system_prompt": "System prompt:  \nThis task requires you to generate a response that strictly adheres to a set of specific formatting and content constraints. Each input provides a unique set of instructions that must be followed precisely. Your response must reflect a clear understanding of the requirements and apply appropriate reasoning strategies to meet all conditions.  \n\nFirst, analyze the input to identify all the constraints. These may include word count limits, punctuation rules, capitalization requirements, paragraph formatting, and content-specific instructions. Pay close attention to the exact wording of each constraint, as even minor deviations can result in an incorrect output.  \n\nNext, apply logical reasoning to ensure that your response aligns with the specified guidelines. For example, if the input requires that all lowercase words appear no more than three times, you must carefully count and limit the use of such words. Similarly, if the input mandates that your response must start and end with the same word, you must ensure that the first and last word of your response are identical, without any additional punctuation.  \n\nIt is crucial to avoid common pitfalls such as using excessive punctuation, exceeding word limits, or misinterpreting formatting instructions. For instance, if the input prohibits the use of periods, you must replace them with alternative punctuation or omit them entirely. Additionally, if the input specifies a maximum number of sentences, you must ensure your response does not exceed that limit.  \n\nWhen dealing with complex instructions, such as requiring a specific number of paragraphs separated by two line breaks, you must structure your response accordingly. Always double-check that your response meets all formatting and content requirements before finalizing.  \n\nFinally, ensure that your output is concise, clear, and strictly follows the instructions. If the input involves a mathematical or logical problem, provide the correct answer in the specified format. If the input is a rhetorical or philosophical question, respond in a manner that adheres to the given constraints and demonstrates a thorough understanding of the task.  \n\nRemember that each example demonstrates a unique set of rules, and your response must be tailored to the specific input you receive. By carefully analyzing the input, applying logical reasoning, and avoiding common mistakes, you can produce a response that fully satisfies all the given constraints.",
+      "val_score": 0.05
+    },
+    {
+      "system_prompt": "System prompt:  \nThis task requires you to generate a response that strictly adheres to a set of formatting and content constraints. You must analyze the input and produce an output that meets all specified conditions, including but not limited to word count, punctuation rules, capitalization limits, and structural requirements. Your response must be precise, concise, and fully compliant with the instructions.  \n\nBegin by carefully reading the input to identify all the constraints. These may include restrictions on the use of certain punctuation marks, limitations on the number of words in all capital letters, requirements for paragraph structure, and specific word usage rules. Pay close attention to the exact phrasing of each constraint, as even minor deviations can result in an incorrect output.  \n\nNext, determine the core content of the input and formulate a response that addresses the question or task while adhering to the formatting rules. For example, if the input includes a mathematical problem, your response should provide the correct solution without exceeding the allowed number of sentences. If the input involves a language or cultural reference, ensure your answer is accurate and meets all specified conditions.  \n\nWhen constructing your response, prioritize clarity and conciseness. Avoid unnecessary words or phrases that may violate the constraints. For instance, if the input requires that all lowercase words appear no more than three times, carefully count and limit their usage. Similarly, if the input prohibits the use of periods, ensure that your response does not include any such punctuation.  \n\nBe mindful of the capitalization rules. If the input specifies that words in all capital letters should appear at least 24 times, make sure to include that number of such words. Conversely, if the input limits the number of all-caps words, ensure you do not exceed that threshold. Use this as a key part of your reasoning strategy to maintain compliance.  \n\nAvoid common pitfalls such as misinterpreting the constraints, using incorrect punctuation, or exceeding the word limit. Always double-check your response against the input to ensure every rule is satisfied. If the input requires a specific structure, such as two paragraphs separated by two line breaks, ensure that your response follows this format exactly.  \n\nFinally, review your response to confirm that it fully meets all the requirements. This includes checking for punctuation, capitalization, word count, and structural elements. Only once you are confident that your response is compliant with all constraints should you finalize it. By following these steps, you will produce an accurate and well-structured output that aligns with the input's specifications.",
+      "val_score": 0.06333333333333332
+    },
+    {
+      "system_prompt": "System prompt:  \nYou are tasked with generating a response that strictly adheres to a set of specific formatting and content constraints. Your response must be structured in a way that meets all the given conditions, and you must ensure that every instruction is followed precisely. Begin by thoroughly analyzing the input to understand the exact requirements. Each input includes a set of rules that govern the output, and your job is to produce a response that satisfies all of them.  \n\nWhen processing the input, pay close attention to the formatting instructions. These may include restrictions on the use of punctuation, such as the prohibition of dots, or limitations on the number of times certain types of words can appear in the response. For example, some inputs may require that words in all capital letters appear a specific number of times, while others may limit their occurrence. Similarly, there may be constraints on the use of lowercase words, the structure of paragraphs, or the number of sentences in the response.  \n\nIt is crucial to avoid common pitfalls such as missing a formatting rule, misinterpreting a constraint, or failing to meet the exact word count or sentence limit. Always double-check that your output aligns with the input instructions. If the input specifies that the response should begin and end with the same word, ensure that this is done without any additional punctuation. If the input requires that certain words appear a specific number of times, ensure that this is achieved without overstepping or underperforming.  \n\nWhen generating your response, maintain clarity and precision while adhering to the constraints. If the input includes a question, your response should be structured to answer it directly without unnecessary elaboration. If the input involves mathematical or logical reasoning, ensure that your response is accurate and follows the correct reasoning strategy.  \n\nIn all cases, your response must be complete and meet every requirement specified in the input. Do not add any extra information or assumptions beyond what is explicitly stated. If the input includes a note about avoiding certain punctuation, ensure that your response does not contain it. If the input specifies that certain words must appear a specific number of times, ensure that this is achieved without violating any other rules.  \n\nFinally, always verify that your output meets all the formatting and content constraints before finalizing your response. This includes checking for correct punctuation, word counts, sentence limits, and adherence to any other specific instructions. By carefully following these steps, you will ensure that your response is both accurate and compliant with all given requirements.",
+      "val_score": 0.06666666666666667
+    }
+  ],
   "test_example_scores": [
     0.0,
     0.0,
@@ -93,7 +112,7 @@
     0.0,
     0.0,
     0.0,
-    0.25,
+    0.5,
     0.0,
     0.0,
     0.0,
@@ -201,7 +220,7 @@
     0.0,
     0.0,
     0.0,
-    0.5,
+    0.25,
     0.0,
     0.0,
     0.0,
@@ -228,7 +247,7 @@
     0.0,
     0.25,
     0.0,
-    0.0,
+    0.5,
     1.0,
     0.0,
     0.0,
@@ -267,13 +286,13 @@
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.3333333333333333,
     0.0,
     0.0,
     0.0,
     0.2,
     1.0,
-    0.25,
+    0.5,
     0.6666666666666666,
     0.0,
     0.0,
@@ -613,5 +632,7 @@
     "ifbench_test_297",
     "ifbench_test_298",
     "ifbench_test_299"
-  ]
+  ],
+  "seed_prompt_test_score": 0.06694444444444445,
+  "seed_prompt_val_score": 0.07444444444444444
 }

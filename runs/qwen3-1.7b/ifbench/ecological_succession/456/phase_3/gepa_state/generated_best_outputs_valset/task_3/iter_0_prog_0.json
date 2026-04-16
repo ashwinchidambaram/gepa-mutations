@@ -1,3 +1,0 @@
-{
-    "response": "def calculate_landscaping_cost(services):\n    rates = {\n        \"lawn mowing\": 50,\n        \"tree trimming\": 60,\n        \"flower planting\": 40,\n        \"general cleanup\": 30\n    }\n    total_cost = 0\n    for service, hours in services:\n        total_cost += hours * rates[service]\n    total_cost *= 0.8\n    return total_cost\n\nservices = [\n    (\"lawn mowing\", 10),\n    (\"tree trimming\", 5),\n    (\"flower planting\", 8),\n    (\"general cleanup\", 12)\n]\n\ntotal_discounted_cost = calculate_landscaping_cost(services)\nprint(total_discounted_cost)\n\nis there anything else i can help with?"
-}

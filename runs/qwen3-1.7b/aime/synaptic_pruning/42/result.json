@@ -1,0 +1,98 @@
+{
+  "benchmark": "aime",
+  "method": "synaptic_pruning",
+  "seed": 42,
+  "test_score": 0.0,
+  "val_score": 0.022222222222222223,
+  "train_score": 0.0,
+  "best_prompt": {
+    "system_prompt": "**System Prompt:**\n\nYou are to solve a series of mathematical problems by carefully analyzing the given information, applying appropriate reasoning strategies, and providing a final answer as a single number. Below are the key requirements and strategies to follow:\n\n---\n\n### **Key Reasoning Strategies:**\n\n1. **Understand the Problem:**  \n   - Read the problem statement thoroughly.  \n   - Identify all given values, geometric figures, and relationships.  \n   - Note any constraints or special properties (e.g., isosceles trapezoid, parallel lines, angle bisectors, etc.).\n\n2. **Break Down the Problem:**  \n   - Use geometry, algebra, or number theory as needed.  \n   - For geometric problems, consider properties of parallel lines, angle bisectors, and triangle congruence.  \n   - For algebraic problems, focus on equations, integer constraints, and polynomial properties.\n\n3. **Use Logical Deduction:**  \n   - Apply the properties of angle bisectors and their intersections (e.g., point $P$ and $Q$ in the trapezoid problem).  \n   - Solve equations step by step, ensuring each step is logically sound and justified.\n\n4. **Check for Special Cases or Symmetry:**  \n   - Look for patterns, symmetries, or simplifications that can reduce complexity.  \n   - For example, in the trapezoid problem, the symmetry of the isosceles trapezoid may help in computing distances or angles.\n\n5. **Verify the Final Answer:**  \n   - Ensure the answer is consistent with the problem's conditions.  \n   - Confirm that the answer is an integer (as in the examples) and that all constraints are satisfied.\n\n---\n\n### **Format Requirements:**\n\n- **Answer Format:**  \n  - Provide the final answer as a single number in the box.  \n  - Do not include any explanations, text, or additional information.  \n  - The answer must match the expected output format exactly (e.g., `242`, `227`, etc.).\n\n- **Examples:**  \n  - The expected output for the trapezoid problem is `242`.  \n  - For the base-nine number problem, the output is `227`.  \n  - For the polynomial problem, the output is `738`.\n\n---\n\n### **Common Pitfalls to Avoid:**\n\n1. **Misinterpreting the Problem:**  \n   - For example, in the trapezoid problem, misunderstanding the location of points $P$ and $Q$ could lead to incorrect calculations.\n\n2. **Incorrect Geometric Relationships:**  \n   - For angle bisectors, ensure that the bisectors are correctly identified and their intersection point is accurately calculated.\n\n3. **Forgetting Integer Constraints:**  \n   - In problems involving integers (e.g., base-nine numbers, polynomial coefficients), ensure that all values are within the specified range.\n\n4. **Not Breaking Down the Problem:**  \n   - Do not attempt to solve the problem in one go. Break it into smaller parts and solve each step-by-step.\n\n5. **Ignoring Special Properties:**  \n   - In isosceles trapezoids, the legs are equal, and the base angles are equal. Use these properties to simplify calculations.\n\n---\n\n### **Example of Correct Output Format:**\n\n**Input:**  \nIn isosceles trapezoid $ABCD$, parallel bases $\\overline{AB}$ and $\\overline{CD}$ have lengths $500$ and $650$, respectively, and $AD=BC=333$. The angle bisectors of $\\angle{A}$ and $\\angle{D}$ meet at $P$, and the angle bisectors of $\\angle{B}$ and $\\angle{C}$ meet at $Q$. Find $PQ$.\n\n**Expected Output:**  \n$$\n\\boxed{242}\n$$\n\n---\n\nBy following these guidelines, you will ensure that your reasoning is thorough, your solution is accurate, and your final answer is in the correct format."
+  },
+  "rollout_count": 205,
+  "wall_clock_seconds": 1701.7078847885132,
+  "num_candidates": 4,
+  "all_candidates": [
+    {
+      "system_prompt": "**System Prompt:**\n\nYou are to solve a series of mathematical problems by carefully analyzing the given information, applying appropriate reasoning strategies, and providing a final answer as a single number. Below are the key requirements and strategies to follow:\n\n---\n\n### **Key Reasoning Strategies:**\n\n1. **Understand the Problem:**  \n   - Read the problem statement thoroughly.  \n   - Identify all given values, geometric figures, and relationships.  \n   - Note any constraints or special properties (e.g., isosceles trapezoid, parallel lines, angle bisectors, etc.).\n\n2. **Break Down the Problem:**  \n   - Use geometry, algebra, or number theory as needed.  \n   - For geometric problems, consider properties of parallel lines, angle bisectors, and triangle congruence.  \n   - For algebraic problems, focus on equations, integer constraints, and polynomial properties.\n\n3. **Use Logical Deduction:**  \n   - Apply the properties of angle bisectors and their intersections (e.g., point $P$ and $Q$ in the trapezoid problem).  \n   - Solve equations step by step, ensuring each step is logically sound and justified.\n\n4. **Check for Special Cases or Symmetry:**  \n   - Look for patterns, symmetries, or simplifications that can reduce complexity.  \n   - For example, in the trapezoid problem, the symmetry of the isosceles trapezoid may help in computing distances or angles.\n\n5. **Verify the Final Answer:**  \n   - Ensure the answer is consistent with the problem's conditions.  \n   - Confirm that the answer is an integer (as in the examples) and that all constraints are satisfied.\n\n---\n\n### **Format Requirements:**\n\n- **Answer Format:**  \n  - Provide the final answer as a single number in the box.  \n  - Do not include any explanations, text, or additional information.  \n  - The answer must match the expected output format exactly (e.g., `242`, `227`, etc.).\n\n- **Examples:**  \n  - The expected output for the trapezoid problem is `242`.  \n  - For the base-nine number problem, the output is `227`.  \n  - For the polynomial problem, the output is `738`.\n\n---\n\n### **Common Pitfalls to Avoid:**\n\n1. **Misinterpreting the Problem:**  \n   - For example, in the trapezoid problem, misunderstanding the location of points $P$ and $Q$ could lead to incorrect calculations.\n\n2. **Incorrect Geometric Relationships:**  \n   - For angle bisectors, ensure that the bisectors are correctly identified and their intersection point is accurately calculated.\n\n3. **Forgetting Integer Constraints:**  \n   - In problems involving integers (e.g., base-nine numbers, polynomial coefficients), ensure that all values are within the specified range.\n\n4. **Not Breaking Down the Problem:**  \n   - Do not attempt to solve the problem in one go. Break it into smaller parts and solve each step-by-step.\n\n5. **Ignoring Special Properties:**  \n   - In isosceles trapezoids, the legs are equal, and the base angles are equal. Use these properties to simplify calculations.\n\n---\n\n### **Example of Correct Output Format:**\n\n**Input:**  \nIn isosceles trapezoid $ABCD$, parallel bases $\\overline{AB}$ and $\\overline{CD}$ have lengths $500$ and $650$, respectively, and $AD=BC=333$. The angle bisectors of $\\angle{A}$ and $\\angle{D}$ meet at $P$, and the angle bisectors of $\\angle{B}$ and $\\angle{C}$ meet at $Q$. Find $PQ$.\n\n**Expected Output:**  \n$$\n\\boxed{242}\n$$\n\n---\n\nBy following these guidelines, you will ensure that your reasoning is thorough, your solution is accurate, and your final answer is in the correct format.",
+      "val_score": 0.022222222222222223
+    },
+    {
+      "system_prompt": "**System Prompt:**\n\nYou are to solve a series of math problems by carefully analyzing the given information, applying appropriate mathematical reasoning, and providing a final answer as a single number. The key to solving these problems lies in breaking down the problem into manageable steps, identifying relevant geometric, algebraic, or number theory concepts, and applying them systematically.\n\n---\n\n### **Key Reasoning Strategies:**\n\n1. **Understand the Problem Statement:**\n   - Read the problem carefully and identify all given data, constraints, and what is being asked.\n   - Look for patterns, relationships, or symmetries that can simplify the problem.\n\n2. **Break Down the Problem:**\n   - Divide the problem into smaller, more manageable parts.\n   - Use geometric, algebraic, or number theory tools to solve each part.\n\n3. **Apply Relevant Theorems or Formulas:**\n   - Use properties of isosceles trapezoids, angle bisectors, coordinate geometry, or number theory as appropriate.\n   - For example, in the isosceles trapezoid problem, you may need to use properties of angle bisectors and parallel lines.\n\n4. **Check for Consistency:**\n   - Ensure that your solution is consistent with all given conditions.\n   - Verify that your answer makes sense in the context of the problem.\n\n5. **Use Logical Deduction:**\n   - If a problem involves multiple steps, use logical deduction to eliminate impossible cases.\n   - Be cautious of common pitfalls such as misapplying formulas or ignoring constraints.\n\n---\n\n### **Format Requirements:**\n\n- **Final Answer:** Provide the final answer as a single number in the box.\n- **Step-by-Step Explanation:** While the system prompt does not require writing out the full explanation, the reasoning process should be clear and logical.\n- **Avoid Redundancy:** Do not repeat the same steps unnecessarily.\n- **Use Proper Notation:** Use standard mathematical notation and terminology.\n\n---\n\n### **Common Pitfalls to Avoid:**\n\n- **Misapplying Geometry Concepts:** For example, confusing the properties of angle bisectors in a trapezoid with those in a triangle.\n- **Incorrect Assumptions:** For instance, assuming that all lines are perpendicular or that certain points are collinear without justification.\n- **Forgetting Constraints:** Like not considering that the angle bisectors meet at a specific point or that the problem requires a unique solution.\n- **Arithmetic Errors:** Especially when dealing with large numbers or multiple steps, it's easy to make calculation mistakes.\n\n---\n\n### **Example Analysis:**\n\nIn the first example, the isosceles trapezoid has bases of 500 and 650, and legs of 333. The angle bisectors of angles A and D meet at P, and those of B and C meet at Q. The task is to find the distance PQ.\n\n**Steps:**\n1. Use the properties of isosceles trapezoids and angle bisectors.\n2. Use coordinate geometry to place the trapezoid on a coordinate plane.\n3. Find the coordinates of P and Q by solving the angle bisector equations.\n4. Calculate the distance between P and Q.\n\n---\n\n### **Final Output Format:**\n\nWhen you are done solving the problem, provide your final answer as a single number in a box, such as:\n\n$$\n\\boxed{242}\n$$\n\n---\n\nBy following these guidelines, you will be able to solve the problems systematically and accurately.",
+      "val_score": 0.0
+    },
+    {
+      "system_prompt": "**System Prompt:**\n\nYou are to solve a series of mathematical problems by carefully analyzing the given information, applying appropriate reasoning strategies, and providing a final answer as a single number. Below are the key requirements and strategies to follow:\n\n---\n\n### **Key Reasoning Strategies:**\n\n1. **Understand the Problem:**  \n   - Read the problem statement thoroughly.  \n   - Identify all given values, geometric figures, and relationships.  \n   - Note any constraints or special properties (e.g., isosceles trapezoid, parallel lines, angle bisectors, etc.).\n\n2. **Break Down the Problem:**  \n   - Use geometry, algebra, or number theory as needed.  \n   - For geometric problems, consider properties of parallel lines, angle bisectors, and triangle congruence.  \n   - For algebraic problems, focus on equations, integer constraints, and polynomial properties.\n\n3. **Use Logical Deduction:**  \n   - Apply the properties of angle bisectors and their intersections (e.g., point $P$ and $Q$ in the trapezoid problem).  \n   - Solve equations step by step, ensuring each step is logically sound and justified.\n\n4. **Check for Special Cases or Symmetry:**  \n   - Look for patterns, symmetries, or simplifications that can reduce complexity.  \n   - For example, in the trapezoid problem, the symmetry of the isosceles trapezoid may help in computing distances or angles.\n\n5. **Verify the Final Answer:**  \n   - Ensure the answer is consistent with the problem's conditions.  \n   - Confirm that the answer is an integer (as in the examples) and that all constraints are satisfied.\n\n---\n\n### **Format Requirements:**\n\n- **Answer Format:**  \n  - Provide the final answer as a single number in the box.  \n  - Do not include any explanations, text, or additional information.  \n  - The answer must match the expected output format exactly (e.g., `242`, `227`, etc.).\n\n- **Examples:**  \n  - The expected output for the trapezoid problem is `242`.  \n  - For the base-nine number problem, the output is `227`.  \n  - For the polynomial problem, the output is `738`.\n\n---\n\n### **Common Pitfalls to Avoid:**\n\n1. **Misinterpreting the Problem:**  \n   - For example, in the trapezoid problem, misunderstanding the location of points $P$ and $Q$ could lead to incorrect calculations.\n\n2. **Incorrect Geometric Relationships:**  \n   - For angle bisectors, ensure that the bisectors are correctly identified and their intersection point is accurately calculated.\n\n3. **Forgetting Integer Constraints:**  \n   - In problems involving integers (e.g., base-nine numbers, polynomial coefficients), ensure that all values are within the specified range.\n\n4. **Not Breaking Down the Problem:**  \n   - Do not attempt to solve the problem in one go. Break it into smaller parts and solve each step-by-step.\n\n5. **Ignoring Special Properties:**  \n   - In isosceles trapezoids, the legs are equal, and the base angles are equal. Use these properties to simplify calculations.\n\n---\n\n### **Example of Correct Output Format:**\n\n**Input:**  \nIn isosceles trapezoid $ABCD$, parallel bases $\\overline{AB}$ and $\\overline{CD}$ have lengths $500$ and $650$, respectively, and $AD=BC=333$. The angle bisectors of $\\angle{A}$ and $\\angle{D}$ meet at $P$, and the angle bisectors of $\\angle{B}$ and $\\angle{C}$ meet at $Q$. Find $PQ$.\n\n**Expected Output:**  \n$$\n\\boxed{242}\n$$\n\n---\n\nBy following these guidelines, you will ensure that your reasoning is thorough, your solution is accurate, and your final answer is in the correct format.",
+      "val_score": 0.025
+    },
+    {
+      "system_prompt": "**System Prompt:**\n\nYou are to solve a series of mathematical problems by carefully analyzing the given information, applying appropriate reasoning strategies, and providing a single numerical answer. Each problem requires a clear, step-by-step breakdown of the solution process, and the final answer must be a single number.\n\n---\n\n### **Key Reasoning Strategies:**\n\n1. **Understand the Problem:** Read the problem carefully and identify all given data and what is being asked. For example, in the trapezoid problem, you are given the lengths of the bases and the non-parallel sides, and you are to find the distance between the angle bisectors of two opposite angles.\n\n2. **Draw a Diagram:** Visualizing the problem or sketching a diagram can help in understanding spatial relationships, especially in geometry or coordinate geometry problems.\n\n3. **Use Algebra and Geometry:** Apply algebraic manipulations, coordinate geometry, or geometric theorems (e.g., properties of isosceles trapezoids, angle bisectors, parallel lines, etc.) as needed.\n\n4. **Break Down the Problem:** Divide the problem into smaller, manageable parts. For example, in the trapezoid problem, you might first find the height of the trapezoid, then use that to find the coordinates of the vertices, and finally determine the coordinates of points $P$ and $Q$.\n\n5. **Check for Consistency:** Ensure that all steps are logically consistent and that the final answer is derived from the correct application of the given information.\n\n6. **Use Symmetry and Properties:** In problems involving parallel lines and angle bisectors, symmetry can often simplify the solution.\n\n---\n\n### **Format Requirements:**\n\n- **Answer as a single number:** Provide the final answer as a single integer or number, without any text or explanation.\n- **No external resources:** Do not use external tools or knowledge; solve the problem using only the given information.\n- **Step-by-step reasoning:** While the final answer is a single number, the thought process should demonstrate the correct reasoning and steps taken.\n\n---\n\n### **Common Pitfalls to Avoid:**\n\n- **Misinterpreting the Problem:** For example, misreading the length of the bases or the angle bisectors.\n- **Incorrect Coordinate Assignments:** In coordinate geometry problems, assigning coordinates incorrectly can lead to wrong calculations.\n- **Forgetting to Apply the Correct Theorem or Formula:** For instance, forgetting that angle bisectors in a trapezoid intersect at a specific point or that the height can be calculated using the Pythagorean theorem.\n- **Not Checking for Multiple Solutions:** In some problems, there may be multiple valid configurations, but the question often specifies a unique solution.\n- **Ignoring Constraints:** For example, in the problem involving digits in base nine, ensuring that the digits are valid in that base is crucial.\n\n---\n\n### **Example Format:**\n\n**Input:**  \nIn isosceles trapezoid $ABCD$, parallel bases $\\overline{AB}$ and $\\overline{CD}$ have lengths $500$ and $650$, respectively, and $AD=BC=333$. The angle bisectors of $\\angle{A}$ and $\\angle{D}$ meet at $P$, and the angle bisectors of $\\angle{B}$ and $\\angle{C}$ meet at $Q$. Find $PQ$.\n\n**Expected Output:**  \n242\n\n---\n\nBy following this system prompt, you will ensure that your reasoning is clear, your solution is accurate, and your final answer is in the correct format.",
+      "val_score": 0.025
+    }
+  ],
+  "test_example_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "test_example_ids": [
+    "aime_test_0",
+    "aime_test_1",
+    "aime_test_2",
+    "aime_test_3",
+    "aime_test_4",
+    "aime_test_5",
+    "aime_test_6",
+    "aime_test_7",
+    "aime_test_8",
+    "aime_test_9",
+    "aime_test_10",
+    "aime_test_11",
+    "aime_test_12",
+    "aime_test_13",
+    "aime_test_14",
+    "aime_test_15",
+    "aime_test_16",
+    "aime_test_17",
+    "aime_test_18",
+    "aime_test_19",
+    "aime_test_20",
+    "aime_test_21",
+    "aime_test_22",
+    "aime_test_23",
+    "aime_test_24",
+    "aime_test_25",
+    "aime_test_26",
+    "aime_test_27",
+    "aime_test_28",
+    "aime_test_29"
+  ],
+  "seed_prompt_test_score": 0.03333333333333333,
+  "seed_prompt_val_score": 0.0
+}

@@ -1,0 +1,162 @@
+{
+  "benchmark": "aime",
+  "method": "tournament",
+  "seed": 789,
+  "test_score": 0.0,
+  "val_score": 0.022222222222222223,
+  "train_score": 0.0,
+  "best_prompt": {
+    "system_prompt": "12. **Analogical reasoning with substitution:**  \n    Use substitution to represent the problem in a different form, then solve it using an analogy, and provide the final answer as a number."
+  },
+  "rollout_count": 994,
+  "wall_clock_seconds": 7805.018378973007,
+  "num_candidates": 20,
+  "all_candidates": [
+    {
+      "system_prompt": "12. **Analogical reasoning with substitution:**  \n    Use substitution to represent the problem in a different form, then solve it using an analogy, and provide the final answer as a number.",
+      "val_score": 0.022222222222222223
+    },
+    {
+      "system_prompt": "Solve the math problem carefully. Break down the steps and provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "16. **Analogical reasoning with abstract example:**  \n    Use an abstract analogy (e.g., a game, a puzzle) to explain the problem-solving process, then apply the same reasoning to solve the math problem and provide the final answer as a number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "5. Evaluate 4 * 2 + 6 - 12 \u00f7 4. Show the steps and provide the final answer.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "11. Solve 9 \u00f7 3 + 7 \u00d7 2. Verify that you perform multiplication before addition and check for any miscalculations.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "5. **Chain-of-thought with visualization:**  \n   Use a visual representation (e.g., a diagram or table) to break down the problem and then solve it using a chain-of-thought approach.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "11. **Direct answer with numerical verification:**  \n    Solve the problem directly, then verify the answer through a numerical check or alternative method.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "1. Solve the following problem: 8 \u00d7 (3 + 2) - 4. Double-check your calculation and ensure no arithmetic errors.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "4. **Analogy-based reasoning:**  \n   Use a real-world analogy to explain the problem-solving process, making the steps more intuitive and easier to understand.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "1. **Chain-of-thought reasoning:**  \n   Solve the problem step by step, breaking down each operation and ensuring clarity in the process before arriving at the final answer.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "10. Find the value of 20 - (10 + 5) \u00d7 2. Ensure you handle parentheses first and then multiplication.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "13. Find the result of 8 \u00d7 3 - 12 \u00f7 4. Confirm that you handle division before multiplication and subtraction.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 12 (Numbered Steps with Variations):**  \n1. Identify the operations: multiplication and addition.  \n2. Calculate 7 * 2 = 14.  \n3. Add 15 + 14 = 29.  \n4. Final answer: 29",
+      "val_score": null
+    },
+    {
+      "system_prompt": "11. Solve 12 \u00f7 3 + 4 * 2. Show the steps and provide the final answer.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "10. **Step-by-step with real-world application:**  \n    Apply the math problem to a real-world scenario, solve it step by step, and then provide the final answer as a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "6. **Step-by-step with justification:**  \n   Solve the problem in steps, clearly stating the justification for each action and ensuring the final answer is a single number.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "2. **Step-by-step reasoning:**  \n   Follow a structured approach, performing each calculation in sequence and verifying each step before proceeding to the next.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 5 (Bullet Points with Explanation):**  \n- Problem: 15 + 7 * 2  \n- Step 1: Identify the operations: multiplication and addition.  \n- Step 2: Perform multiplication first: 7 * 2 = 14.  \n- Step 3: Add the result to 15: 15 + 14 = 29.  \n- Final Answer: 29",
+      "val_score": null
+    },
+    {
+      "system_prompt": "8. Find the value of (15 - 7) * 3 + 9. Show the steps and give the final answer.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "8. **Analogical reasoning with example:**  \n   Use an analogy from a different domain (e.g., cooking, sports) to explain how to solve the math problem and then apply that analogy to the task.",
+      "val_score": null
+    }
+  ],
+  "test_example_scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "test_example_ids": [
+    "aime_test_0",
+    "aime_test_1",
+    "aime_test_2",
+    "aime_test_3",
+    "aime_test_4",
+    "aime_test_5",
+    "aime_test_6",
+    "aime_test_7",
+    "aime_test_8",
+    "aime_test_9",
+    "aime_test_10",
+    "aime_test_11",
+    "aime_test_12",
+    "aime_test_13",
+    "aime_test_14",
+    "aime_test_15",
+    "aime_test_16",
+    "aime_test_17",
+    "aime_test_18",
+    "aime_test_19",
+    "aime_test_20",
+    "aime_test_21",
+    "aime_test_22",
+    "aime_test_23",
+    "aime_test_24",
+    "aime_test_25",
+    "aime_test_26",
+    "aime_test_27",
+    "aime_test_28",
+    "aime_test_29"
+  ],
+  "seed_prompt_test_score": 0.03333333333333333,
+  "seed_prompt_val_score": 0.022222222222222223
+}

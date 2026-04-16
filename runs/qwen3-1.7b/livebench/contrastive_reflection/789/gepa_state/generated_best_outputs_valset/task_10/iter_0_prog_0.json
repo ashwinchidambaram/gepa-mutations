@@ -1,0 +1,3 @@
+{
+    "response": "We are given the function:\n\n$$\n-\\sin(x + 5)\n$$\n\nWe are to find an **indefinite integral** of this function.\n\n### Step 1: Recall the integral of sine function\n\nThe integral of $\\sin(ax + b)$ is:\n\n$$\n\\int \\sin(ax + b) \\, dx = -\\frac{1}{a} \\cos(ax + b) + C\n$$\n\n### Step 2: Apply the formula\n\nHere, the function is:\n\n$$\n-\\sin(x + 5)\n$$\n\nThis is of the form $-\\sin(ax + b)$, where $a = 1$ and $b = 5$.\n\nSo,\n\n$$\n\\int -\\sin(x + 5) \\, dx = -\\int \\sin(x + 5) \\, dx\n$$\n\nUsing the formula:\n\n$$\n\\int \\sin(x + 5) \\, dx = -\\cos(x + 5)\n$$\n\nSo,\n\n$$\n\\int -\\sin(x + 5) \\, dx = -(-\\cos(x + 5)) + C = \\cos(x + 5) + C\n$$\n\n### Final Answer:\n\n$$\n\\boxed{\\cos(x + 5) + C}\n$$"
+}

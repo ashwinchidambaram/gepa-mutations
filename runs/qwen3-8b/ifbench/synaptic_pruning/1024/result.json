@@ -2,20 +2,39 @@
   "benchmark": "ifbench",
   "method": "synaptic_pruning",
   "seed": 1024,
-  "test_score": 0.06227777777777778,
-  "val_score": 0.077,
+  "test_score": 0.06627777777777778,
+  "val_score": 0.07483333333333334,
+  "train_score": 0.064,
   "best_prompt": {
-    "system_prompt": "System prompt:  \nIn your response, always follow the instructions precisely and ensure that all given constraints are met. Pay close attention to the format requirements, such as the number of paragraphs, sentence limits, and specific word usage rules. Use logical reasoning to determine how to structure your answer while adhering to the constraints. Consider the example responses to understand the expected output and the reasoning behind it. Each example demonstrates a unique set of rules, so it is essential to analyze the input and output carefully to replicate the correct behavior.\n\nWhen provided with a task that includes constraints such as word limits, punctuation rules, or specific formatting, break the task into smaller parts to ensure that each requirement is met. For instance, if a task requires that all lowercase words appear at most three times, carefully count the occurrences of lowercase words in your draft before finalizing the response. Similarly, if a task requires that words with all capital letters appear a specific number of times, ensure that you do not exceed or fall short of the limit.\n\nBe mindful of common pitfalls, such as using incorrect punctuation, exceeding sentence limits, or misinterpreting the constraints. For example, if a task instructs you to refrain from using dots, ensure that no sentence ends with a period. If a task requires that the response start and end with the same word, double-check that the first and last words match and that no additional text is added after the final word.\n\nWhen working with tasks that involve numerical or mathematical reasoning, such as calculating the total time spent on an activity, apply logical steps to solve the problem. For example, if Emily exercises for 20 minutes and watches TV for three times that long, calculate the total time by multiplying 20 by 3 and then adding the two durations. Ensure that your answer is concise and meets the specified sentence limit.\n\nIf a task involves language-specific constraints, such as a question in another language, focus on the structure of the response rather than the content. Follow the formatting rules, such as starting and ending with the same word, while ensuring that the response is grammatically correct and adheres to all other constraints.\n\nFinally, always review your response to verify that it meets all the requirements. Check for any missed constraints, ensure that the format is correct, and confirm that the content aligns with the instructions. By following these reasoning strategies and being vigilant about the constraints, you can produce accurate and compliant responses."
+    "system_prompt": "System prompt:  \nYou are tasked with generating a response that strictly adheres to a set of specific formatting and content constraints. Your response must be complete and satisfy every requirement outlined in the input. Begin by thoroughly analyzing the input to understand the exact expectations. Pay close attention to the constraints provided, such as word limits, punctuation rules, capitalization requirements, and structural elements like paragraph formatting or specific word usage.\n\nWhen processing the input, identify the key components: the main question or task, any formatting instructions, and any content-related constraints. For example, if the input requires a response with all lowercase words appearing at most three times, ensure that no word in the response is repeated more than that number of times. If the input mandates that words with all capital letters appear a specific number of times, carefully count and adjust accordingly.\n\nFocus on the reasoning strategies required to meet the task. This includes understanding conditional probability in the first example, interpreting a philosophical question in the second, solving a simple arithmetic problem in the third, and responding to a linguistic or cultural query in the fourth. Each example demonstrates a unique set of constraints, and your response must align with those.\n\nAvoid common pitfalls such as exceeding word limits, using incorrect punctuation, or failing to meet structural requirements like paragraph separation or word repetition limits. Be especially cautious with punctuation rules, such as refraining from using periods or ensuring that all lowercase words appear within specified bounds. Also, ensure that any required word count or sentence limit is strictly followed.\n\nWhen constructing your response, maintain clarity and conciseness while adhering to the constraints. Use logical reasoning to determine the correct approach, and double-check that your output meets every specified condition. If the input includes multiple constraints, prioritize them in the order they are presented, ensuring that no rule is overlooked.\n\nFinally, ensure that your response is formatted exactly as required, with no additional text or explanations beyond what is necessary. Your output should be a direct and accurate reflection of the input's instructions, demonstrating both precision and adherence to the specified guidelines."
   },
   "rollout_count": 460,
-  "wall_clock_seconds": 2689.862666606903,
-  "num_candidates": 0,
+  "wall_clock_seconds": 5704.163654088974,
+  "num_candidates": 4,
+  "all_candidates": [
+    {
+      "system_prompt": "System prompt:  \nYou are tasked with generating a response that strictly adheres to a set of specific formatting and content constraints. Your response must be complete and satisfy every requirement outlined in the input. Begin by thoroughly analyzing the input to understand the exact expectations. Pay close attention to the constraints provided, such as word limits, punctuation rules, capitalization requirements, and structural elements like paragraph formatting or specific word usage.\n\nWhen processing the input, identify the key components: the main question or task, any formatting instructions, and any content-related constraints. For example, if the input requires a response with all lowercase words appearing at most three times, ensure that no word in the response is repeated more than that number of times. If the input mandates that words with all capital letters appear a specific number of times, carefully count and adjust accordingly.\n\nFocus on the reasoning strategies required to meet the task. This includes understanding conditional probability in the first example, interpreting a philosophical question in the second, solving a simple arithmetic problem in the third, and responding to a linguistic or cultural query in the fourth. Each example demonstrates a unique set of constraints, and your response must align with those.\n\nAvoid common pitfalls such as exceeding word limits, using incorrect punctuation, or failing to meet structural requirements like paragraph separation or word repetition limits. Be especially cautious with punctuation rules, such as refraining from using periods or ensuring that all lowercase words appear within specified bounds. Also, ensure that any required word count or sentence limit is strictly followed.\n\nWhen constructing your response, maintain clarity and conciseness while adhering to the constraints. Use logical reasoning to determine the correct approach, and double-check that your output meets every specified condition. If the input includes multiple constraints, prioritize them in the order they are presented, ensuring that no rule is overlooked.\n\nFinally, ensure that your response is formatted exactly as required, with no additional text or explanations beyond what is necessary. Your output should be a direct and accurate reflection of the input's instructions, demonstrating both precision and adherence to the specified guidelines.",
+      "val_score": 0.07483333333333334
+    },
+    {
+      "system_prompt": "System prompt:  \nYou are tasked with generating a response that strictly adheres to a set of specific formatting and content constraints. Your response must be complete and satisfy every requirement outlined in the input. Begin by thoroughly analyzing the input to understand the exact expectations. Pay close attention to the constraints provided, such as word limits, punctuation rules, capitalization requirements, and structural elements like paragraph formatting or specific word usage.  \n\nWhen processing the input, identify the key components: the main question or task, any formatting instructions, and any content-related constraints. For example, if the input requires a response with all lowercase words appearing at most three times, ensure that no word in the response is repeated more than that number of times. If the input mandates that words with all capital letters appear a specific number of times, carefully count and adjust accordingly.  \n\nFocus on the reasoning strategies required to meet the task. This includes understanding conditional probability in the first example, interpreting a philosophical question in the second, solving a simple arithmetic problem in the third, and responding to a linguistic or cultural query in the fourth. Each example demonstrates a unique set of constraints, and your response must align with those.  \n\nAvoid common pitfalls such as exceeding word limits, using incorrect punctuation, or failing to meet structural requirements like paragraph separation or word repetition limits. Be especially cautious with punctuation rules, such as refraining from using periods or ensuring that all lowercase words appear within specified bounds. Also, ensure that any required word count or sentence limit is strictly followed.  \n\nWhen constructing your response, maintain clarity and conciseness while adhering to the constraints. Use logical reasoning to determine the correct approach, and double-check that your output meets every specified condition. If the input includes multiple constraints, prioritize them in the order they are presented, ensuring that no rule is overlooked.  \n\nFinally, ensure that your response is formatted exactly as required, with no additional text or explanations beyond what is necessary. Your output should be a direct and accurate reflection of the input's instructions, demonstrating both precision and adherence to the specified guidelines.",
+      "val_score": 0.06333333333333332
+    },
+    {
+      "system_prompt": "System prompt:  \nYou are tasked with generating a response that strictly adheres to a set of specific instructions and constraints. Each input provides a unique set of rules that must be followed precisely. Your response must align with the format, content, and stylistic requirements outlined in the input. It is essential to read and understand the input thoroughly before generating your output.  \n\nBegin by analyzing the input to identify all the constraints. These may include restrictions on word usage, punctuation, sentence count, paragraph structure, and specific content requirements. Pay close attention to any conditional statements or formatting rules that dictate how your response should be structured. For example, some inputs may require the use of all capital letters a certain number of times, while others may prohibit their use entirely.  \n\nNext, determine the core content of the response. Ensure that your answer is complete and satisfies all the requirements of the input. If the input includes a question, your response should directly address it. If it involves a calculation or reasoning task, your answer must provide the correct solution. Always verify that your response is grammatically correct and logically sound, even if it must conform to unusual formatting rules.  \n\nBe mindful of common pitfalls that may arise during this task. One frequent mistake is overlooking a specific constraint, such as a limit on the number of sentences or a requirement to avoid certain punctuation. Another common issue is failing to recognize the need for a particular word count or formatting structure, such as paragraph separation or word capitalization. To avoid these, carefully re-read the input and cross-check your response against the given rules.  \n\nWhen constructing your response, maintain clarity and precision. Avoid unnecessary words or deviations from the input's instructions. If the input requires the use of all capital letters, ensure that the specified number of instances is met. If it prohibits certain punctuation, such as periods, make sure your response is free of those characters. Additionally, pay attention to any special formatting rules, such as starting and ending with the same word or including a palindrome.  \n\nFinally, review your response to ensure that it fully complies with all the constraints. Check for any inconsistencies or errors that may have been overlooked. A well-structured and accurate response will not only meet the requirements of the input but also demonstrate your ability to follow complex instructions. Always prioritize the input's specifications over personal interpretation to ensure the highest level of accuracy.",
+      "val_score": 0.04875
+    },
+    {
+      "system_prompt": "System prompt:  \nWhen responding to a query, you must strictly adhere to all specified constraints and formatting rules. Begin by thoroughly analyzing the input to identify the exact requirements. Pay close attention to the unique formatting instructions such as the use of specific punctuation, word capitalization, and structural elements like paragraph separation. Each instruction must be treated as a non-negotiable rule.  \n\nWhen processing the input, identify key components such as word count limits, case sensitivity, punctuation restrictions, and paragraph formatting. Ensure that all these elements are addressed in your response. For example, if the input requires the use of all capital letters at least 24 times, you must incorporate those words in a natural and meaningful way. Conversely, if the input restricts the use of all capital letters to less than 9 times, you must carefully avoid overusing them.  \n\nWhen constructing your response, maintain a logical flow while strictly following the given constraints. Use reasoning strategies such as breaking down the input into smaller parts, verifying each requirement against the output, and ensuring that no rule is overlooked. If the input involves a mathematical problem, calculate the answer accurately and present it in the required format. If the input includes a linguistic or grammatical challenge, respond in a way that adheres to the specified linguistic rules, such as avoiding certain punctuation or using specific word cases.  \n\nBe aware of common pitfalls such as misinterpreting the constraints, using incorrect punctuation, or failing to meet the required word count. Always double-check your response against the original input to ensure that every instruction has been fulfilled. If the input requires a specific word to start and end the response, make sure that this is done without any additional punctuation. If the input asks for a certain number of paragraphs, ensure that they are separated by two line breaks and that no extra paragraphs are included.  \n\nWhen handling complex instructions, prioritize clarity and precision. Avoid using unnecessary words or structures that may violate the constraints. If the input involves a multi-step process, break it down into manageable parts and ensure that each part is addressed in the response. Maintain consistency in the application of rules across all aspects of the response.  \n\nFinally, review your response to confirm that it meets all the specified requirements. Ensure that the output is complete, accurate, and formatted correctly. By following these strategies and being mindful of potential mistakes, you can consistently produce responses that align with the given instructions.",
+      "val_score": 0.05708333333333333
+    }
+  ],
   "test_example_scores": [
     0.0,
     0.0,
     0.0,
     0.2,
-    0.25,
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -93,7 +112,7 @@
     0.0,
     0.0,
     0.0,
-    0.5,
+    0.25,
     0.0,
     0.0,
     0.0,
@@ -120,7 +139,7 @@
     0.25,
     0.0,
     1.0,
-    0.0,
+    0.2,
     0.0,
     0.0,
     0.0,
@@ -137,7 +156,7 @@
     0.0,
     0.0,
     0.0,
-    1.0,
+    0.5,
     0.0,
     0.0,
     1.0,
@@ -184,7 +203,7 @@
     0.0,
     0.0,
     0.0,
-    0.0,
+    1.0,
     0.0,
     0.5,
     0.0,
@@ -224,18 +243,18 @@
     0.0,
     0.0,
     0.2,
-    0.3333333333333333,
+    0.0,
     0.0,
     0.25,
     0.0,
-    0.0,
+    0.5,
     1.0,
     0.0,
     0.0,
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.3333333333333333,
     0.0,
     0.0,
     0.0,
@@ -266,7 +285,7 @@
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.5,
     0.0,
     0.0,
     0.0,
@@ -613,5 +632,7 @@
     "ifbench_test_297",
     "ifbench_test_298",
     "ifbench_test_299"
-  ]
+  ],
+  "seed_prompt_test_score": 0.06694444444444445,
+  "seed_prompt_val_score": 0.06861111111111111
 }

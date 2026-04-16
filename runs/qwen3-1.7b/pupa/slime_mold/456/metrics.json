@@ -1,33 +1,36 @@
 {
   "rollout_count": 725,
   "reflection_call_count": 22,
-  "wall_clock_seconds": 4289.33,
-  "total_tokens": 570863,
-  "task_input_tokens": 435123,
-  "task_output_tokens": 127603,
-  "reflection_input_tokens": 6637,
-  "reflection_output_tokens": 1500,
-  "test_score": 0.3875844915318599,
-  "model": "openai/Qwen/Qwen3-1.7B",
+  "wall_clock_seconds": 2465.9,
+  "total_tokens": 617515,
+  "task_input_tokens": 465441,
+  "task_output_tokens": 145065,
+  "reflection_input_tokens": 5719,
+  "reflection_output_tokens": 1290,
+  "test_score": 0.4542321713374345,
+  "model": "openrouter/Qwen/Qwen3-1.7B",
   "model_tag": "qwen3-1.7b",
   "benchmark": "pupa",
   "seed": 456,
   "method": "slime_mold",
-  "val_score": 0.3940006123907052,
-  "prompt_length_chars": 146,
-  "prompt_length_tokens": 36,
+  "val_score": 0.54875,
+  "prompt_length_chars": 121,
+  "prompt_length_tokens": 30,
   "test_example_scores": [
     0.5,
     0.5,
     0.5,
-    0.5714285714285714,
-    0.33333333333333337,
-    0.5,
-    0.25,
-    0.5,
-    0.5,
+    0.6428571428571428,
     0.0,
     0.5,
+    0.75,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    1.0,
+    0.5,
+    0.6666666666666667,
     0.5,
     0.5,
     0.5,
@@ -35,20 +38,17 @@
     0.5,
     0.5,
     0.5,
-    0.0,
-    0.0,
-    0.0,
     0.8333333333333334,
     0.5,
     0.5,
     0.0,
-    0.7272727272727273,
+    0.6818181818181819,
     0.0,
     0.5,
     0.0,
-    0.4166666666666667,
     0.5,
     0.5,
+    1.0,
     0.5,
     0.0,
     0.0,
@@ -57,58 +57,58 @@
     1.0,
     0.25,
     1.0,
-    1.0,
+    0.5,
     0.0,
-    0.0,
-    0.0,
+    0.5,
+    0.5,
     0.7142857142857143,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    0.4166666666666667,
+    0.5,
+    0.0,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.0,
+    0.0,
+    0.625,
+    0.5,
+    0.5,
+    0.5,
+    0.6666666666666667,
+    0.33333333333333337,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.875,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
     1.0,
-    0.5,
-    0.5,
-    0.5,
-    0.0,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.0,
-    0.16666666666666669,
-    0.5,
-    0.0,
-    0.5,
-    0.5,
-    0.5,
-    1.0,
-    0.0,
-    0.5,
-    0.5,
-    0.0,
-    1.0,
-    0.0,
-    0.25,
-    0.4444444444444444,
-    0.0,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.5,
-    0.0,
-    0.5,
-    0.0,
-    0.25,
-    0.0,
-    0.16666666666666669,
-    0.0,
     0.75,
-    0.5,
-    0.0,
-    0.0,
-    0.75,
     1.0,
-    0.0,
+    0.5,
     0.5,
     0.5,
     0.0
@@ -210,25 +210,148 @@
     "pupa_test_93",
     "pupa_test_94"
   ],
-  "score_per_1k_rollouts": 0.5346,
-  "convergence_iteration": 4,
+  "score_per_1k_rollouts": 0.6265,
+  "convergence_iteration": 3,
+  "prompt_char_delta": -99,
+  "prompt_levenshtein_ratio": 0.3871,
+  "prompt_word_count": 17,
+  "task_error_count": 0,
+  "reflection_error_count": 0,
   "val_score_trajectory": [
     [
+      0,
+      0.2864368311427135
+    ],
+    [
+      1,
+      0.46416666666666667
+    ],
+    [
+      2,
+      0.5311111111111111
+    ],
+    [
+      3,
+      0.54875
+    ],
+    [
       4,
-      0.3940006123907052
+      0.54875
+    ],
+    [
+      5,
+      0.4080082559339525
     ]
   ],
   "rollout_trajectory": [
     [
+      0,
+      0
+    ],
+    [
+      1,
+      200
+    ],
+    [
+      2,
+      400
+    ],
+    [
+      3,
+      525
+    ],
+    [
       4,
+      630
+    ],
+    [
+      5,
       725
     ]
   ],
   "best_val_trajectory": [
     [
+      0,
+      0.2864368311427135
+    ],
+    [
+      1,
+      0.46416666666666667
+    ],
+    [
+      2,
+      0.5311111111111111
+    ],
+    [
+      3,
+      0.54875
+    ],
+    [
       4,
-      0.3940006123907052
+      0.54875
+    ],
+    [
+      5,
+      0.54875
     ]
+  ],
+  "prompt_length_trajectory": [
+    [
+      0,
+      220
+    ],
+    [
+      200,
+      124
+    ],
+    [
+      400,
+      121
+    ],
+    [
+      525,
+      124
+    ],
+    [
+      630,
+      124
+    ],
+    [
+      725,
+      121
+    ]
+  ],
+  "stage_timings": [
+    {
+      "stage": "candidate_generation",
+      "seconds": 9.2,
+      "rollouts_used": 0
+    },
+    {
+      "stage": "round_1",
+      "seconds": 429.07,
+      "rollouts_used": 200
+    },
+    {
+      "stage": "round_2",
+      "seconds": 393.11,
+      "rollouts_used": 150
+    },
+    {
+      "stage": "round_3",
+      "seconds": 416.83,
+      "rollouts_used": 100
+    },
+    {
+      "stage": "round_4",
+      "seconds": 297.82,
+      "rollouts_used": 90
+    },
+    {
+      "stage": "champion_eval",
+      "seconds": 391.69,
+      "rollouts_used": 95
+    }
   ],
   "round_survivors": [
     20,
@@ -241,192 +364,192 @@
     {
       "round": 1,
       "candidate_rank": 0,
-      "score": 0.5416666666666667
+      "score": 0.46416666666666667
     },
     {
       "round": 1,
       "candidate_rank": 1,
-      "score": 0.4958333333333333
-    },
-    {
-      "round": 1,
-      "candidate_rank": 2,
       "score": 0.44749999999999995
     },
     {
       "round": 1,
+      "candidate_rank": 2,
+      "score": 0.445
+    },
+    {
+      "round": 1,
       "candidate_rank": 3,
-      "score": 0.4408333333333333
+      "score": 0.40750000000000003
     },
     {
       "round": 1,
       "candidate_rank": 4,
+      "score": 0.4058333333333334
+    },
+    {
+      "round": 1,
+      "candidate_rank": 5,
       "score": 0.3975
     },
     {
       "round": 1,
-      "candidate_rank": 5,
+      "candidate_rank": 6,
+      "score": 0.395
+    },
+    {
+      "round": 1,
+      "candidate_rank": 7,
       "score": 0.38083333333333336
     },
     {
       "round": 1,
-      "candidate_rank": 6,
+      "candidate_rank": 8,
+      "score": 0.37583333333333335
+    },
+    {
+      "round": 1,
+      "candidate_rank": 9,
       "score": 0.34750000000000003
     },
     {
       "round": 1,
-      "candidate_rank": 7,
-      "score": 0.3375
-    },
-    {
-      "round": 1,
-      "candidate_rank": 8,
-      "score": 0.3283333333333333
-    },
-    {
-      "round": 1,
-      "candidate_rank": 9,
-      "score": 0.325
-    },
-    {
-      "round": 1,
       "candidate_rank": 10,
-      "score": 0.325
+      "score": 0.34249999999999997
     },
     {
       "round": 1,
       "candidate_rank": 11,
-      "score": 0.2975
+      "score": 0.3408333333333333
     },
     {
       "round": 1,
       "candidate_rank": 12,
-      "score": 0.29166666666666663
+      "score": 0.29083333333333333
     },
     {
       "round": 1,
       "candidate_rank": 13,
-      "score": 0.2875
+      "score": 0.28500000000000003
     },
     {
       "round": 1,
       "candidate_rank": 14,
-      "score": 0.25
+      "score": 0.2725
     },
     {
       "round": 1,
       "candidate_rank": 15,
-      "score": 0.2475
+      "score": 0.2575
     },
     {
       "round": 1,
       "candidate_rank": 16,
-      "score": 0.24166666666666664
+      "score": 0.25
     },
     {
       "round": 1,
       "candidate_rank": 17,
-      "score": 0.2375
+      "score": 0.24
     },
     {
       "round": 1,
       "candidate_rank": 18,
-      "score": 0.225
+      "score": 0.2225
     },
     {
       "round": 1,
       "candidate_rank": 19,
-      "score": 0.15833333333333335
+      "score": 0.19083333333333333
     },
     {
       "round": 2,
       "candidate_rank": 0,
-      "score": 0.5677777777777778
-    },
-    {
-      "round": 2,
-      "candidate_rank": 1,
       "score": 0.5311111111111111
     },
     {
       "round": 2,
+      "candidate_rank": 1,
+      "score": 0.49111111111111116
+    },
+    {
+      "round": 2,
       "candidate_rank": 2,
-      "score": 0.5177777777777778
+      "score": 0.46444444444444444
     },
     {
       "round": 2,
       "candidate_rank": 3,
-      "score": 0.4233333333333333
+      "score": 0.39111111111111113
     },
     {
       "round": 2,
       "candidate_rank": 4,
-      "score": 0.4011111111111111
+      "score": 0.3877777777777778
     },
     {
       "round": 2,
       "candidate_rank": 5,
-      "score": 0.3811111111111111
+      "score": 0.3844444444444444
     },
     {
       "round": 2,
       "candidate_rank": 6,
-      "score": 0.38
+      "score": 0.3511111111111111
     },
     {
       "round": 2,
       "candidate_rank": 7,
-      "score": 0.36777777777777776
+      "score": 0.3511111111111111
     },
     {
       "round": 2,
       "candidate_rank": 8,
-      "score": 0.32
+      "score": 0.30666666666666664
     },
     {
       "round": 2,
       "candidate_rank": 9,
-      "score": 0.21777777777777776
+      "score": 0.2577777777777778
     },
     {
       "round": 3,
       "candidate_rank": 0,
-      "score": 0.5287499999999999
+      "score": 0.54875
     },
     {
       "round": 3,
       "candidate_rank": 1,
-      "score": 0.4213690476190476
+      "score": 0.38625
     },
     {
       "round": 3,
       "candidate_rank": 2,
-      "score": 0.4208333333333333
+      "score": 0.38625
     },
     {
       "round": 3,
       "candidate_rank": 3,
-      "score": 0.305
+      "score": 0.3675
     },
     {
       "round": 3,
       "candidate_rank": 4,
-      "score": 0.27999999999999997
+      "score": 0.36208333333333337
     },
     {
       "round": 4,
       "candidate_rank": 0,
-      "score": 0.473015873015873
+      "score": 0.4666269841269841
     },
     {
       "round": 4,
       "candidate_rank": 1,
-      "score": 0.3928571428571429
+      "score": 0.4551190476190476
     },
     {
       "round": 4,
       "candidate_rank": 2,
-      "score": 0.3792857142857143
+      "score": 0.42773809523809525
     }
   ],
   "pruning_history": [
@@ -434,29 +557,273 @@
       "round": 1,
       "n_candidates": 20,
       "n_examples": 10,
-      "best_score": 0.5416666666666667,
-      "worst_score": 0.15833333333333335
+      "best_score": 0.46416666666666667,
+      "worst_score": 0.19083333333333333
     },
     {
       "round": 2,
       "n_candidates": 10,
       "n_examples": 15,
-      "best_score": 0.5677777777777778,
-      "worst_score": 0.21777777777777776
+      "best_score": 0.5311111111111111,
+      "worst_score": 0.2577777777777778
     },
     {
       "round": 3,
       "n_candidates": 5,
       "n_examples": 20,
-      "best_score": 0.5287499999999999,
-      "worst_score": 0.27999999999999997
+      "best_score": 0.54875,
+      "worst_score": 0.36208333333333337
     },
     {
       "round": 4,
       "n_candidates": 3,
       "n_examples": 30,
-      "best_score": 0.473015873015873,
-      "worst_score": 0.3792857142857143
+      "best_score": 0.4666269841269841,
+      "worst_score": 0.42773809523809525
     }
+  ],
+  "train_score": 0.45894123606889564,
+  "train_example_scores": [
+    0.5,
+    0.5,
+    0.5,
+    1.0,
+    0.625,
+    1.0,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    0.5,
+    0.75,
+    0.16666666666666669,
+    0.0,
+    0.0,
+    0.0,
+    0.6666666666666667,
+    0.5,
+    0.5,
+    0.5,
+    0.08333333333333331,
+    1.0,
+    0.5,
+    0.625,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.0,
+    0.5,
+    0.4285714285714286,
+    0.5,
+    0.5,
+    1.0,
+    0.6,
+    0.5,
+    1.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.625,
+    0.0,
+    0.0,
+    0.5,
+    0.5
+  ],
+  "val_example_scores": [
+    0.33333333333333337,
+    0.0,
+    0.5,
+    0.36764705882352944,
+    0.5,
+    0.35,
+    0.0,
+    0.5,
+    1.0,
+    0.6,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.33333333333333337,
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    1.0,
+    0.5,
+    0.6666666666666667,
+    0.5,
+    0.5,
+    0.0,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    1.0,
+    0.75,
+    0.0,
+    0.33333333333333337,
+    0.5,
+    0.5,
+    0.5,
+    1.0,
+    0.5,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.6,
+    0.5,
+    0.8333333333333334,
+    0.5,
+    0.0,
+    0.16666666666666669,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.0,
+    0.0,
+    0.75,
+    0.0,
+    0.5,
+    0.6666666666666667,
+    0.5,
+    0.5,
+    0.5,
+    0.6,
+    0.0,
+    1.0,
+    0.0,
+    0.75,
+    0.5,
+    0.5,
+    1.0,
+    0.5,
+    0.25,
+    0.0,
+    1.0,
+    0.5,
+    0.0,
+    0.5,
+    0.0,
+    0.5,
+    0.4722222222222222,
+    0.5,
+    0.0,
+    0.5,
+    0.5,
+    0.0,
+    0.09999999999999998,
+    1.0,
+    0.09999999999999998,
+    0.0,
+    0.5
+  ],
+  "val_example_ids": [
+    "pupa_test_0",
+    "pupa_test_1",
+    "pupa_test_2",
+    "pupa_test_3",
+    "pupa_test_4",
+    "pupa_test_5",
+    "pupa_test_6",
+    "pupa_test_7",
+    "pupa_test_8",
+    "pupa_test_9",
+    "pupa_test_10",
+    "pupa_test_11",
+    "pupa_test_12",
+    "pupa_test_13",
+    "pupa_test_14",
+    "pupa_test_15",
+    "pupa_test_16",
+    "pupa_test_17",
+    "pupa_test_18",
+    "pupa_test_19",
+    "pupa_test_20",
+    "pupa_test_21",
+    "pupa_test_22",
+    "pupa_test_23",
+    "pupa_test_24",
+    "pupa_test_25",
+    "pupa_test_26",
+    "pupa_test_27",
+    "pupa_test_28",
+    "pupa_test_29",
+    "pupa_test_30",
+    "pupa_test_31",
+    "pupa_test_32",
+    "pupa_test_33",
+    "pupa_test_34",
+    "pupa_test_35",
+    "pupa_test_36",
+    "pupa_test_37",
+    "pupa_test_38",
+    "pupa_test_39",
+    "pupa_test_40",
+    "pupa_test_41",
+    "pupa_test_42",
+    "pupa_test_43",
+    "pupa_test_44",
+    "pupa_test_45",
+    "pupa_test_46",
+    "pupa_test_47",
+    "pupa_test_48",
+    "pupa_test_49",
+    "pupa_test_50",
+    "pupa_test_51",
+    "pupa_test_52",
+    "pupa_test_53",
+    "pupa_test_54",
+    "pupa_test_55",
+    "pupa_test_56",
+    "pupa_test_57",
+    "pupa_test_58",
+    "pupa_test_59",
+    "pupa_test_60",
+    "pupa_test_61",
+    "pupa_test_62",
+    "pupa_test_63",
+    "pupa_test_64",
+    "pupa_test_65",
+    "pupa_test_66",
+    "pupa_test_67",
+    "pupa_test_68",
+    "pupa_test_69",
+    "pupa_test_70",
+    "pupa_test_71",
+    "pupa_test_72",
+    "pupa_test_73",
+    "pupa_test_74",
+    "pupa_test_75",
+    "pupa_test_76",
+    "pupa_test_77",
+    "pupa_test_78",
+    "pupa_test_79",
+    "pupa_test_80",
+    "pupa_test_81",
+    "pupa_test_82",
+    "pupa_test_83",
+    "pupa_test_84",
+    "pupa_test_85",
+    "pupa_test_86",
+    "pupa_test_87",
+    "pupa_test_88",
+    "pupa_test_89",
+    "pupa_test_90",
+    "pupa_test_91",
+    "pupa_test_92",
+    "pupa_test_93",
+    "pupa_test_94"
   ]
 }

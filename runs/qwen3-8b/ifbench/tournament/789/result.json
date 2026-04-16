@@ -2,14 +2,93 @@
   "benchmark": "ifbench",
   "method": "tournament",
   "seed": 789,
-  "test_score": 0.07055555555555557,
-  "val_score": 0.07200000000000001,
+  "test_score": 0.07205555555555555,
+  "val_score": 0.08288888888888889,
+  "train_score": 0.064,
   "best_prompt": {
-    "system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement."
+    "system_prompt": "**Prompt 3: Direct Answer Format**  \nProvide a concise and complete response that directly answers the task without unnecessary explanation. Ensure that all constraints are explicitly met. Avoid adding extra information or assumptions. The response should be clear, accurate, and fully aligned with the instructions."
   },
   "rollout_count": 1504,
-  "wall_clock_seconds": 10444.181287527084,
-  "num_candidates": 0,
+  "wall_clock_seconds": 15848.956823587418,
+  "num_candidates": 19,
+  "all_candidates": [
+    {
+      "system_prompt": "**Prompt 3: Direct Answer Format**  \nProvide a concise and complete response that directly answers the task without unnecessary explanation. Ensure that all constraints are explicitly met. Avoid adding extra information or assumptions. The response should be clear, accurate, and fully aligned with the instructions.",
+      "val_score": 0.08288888888888889
+    },
+    {
+      "system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 14: Comparative Analysis Strategy**  \nCompare the task to similar tasks or scenarios to identify patterns and best practices. Use this comparison to guide your reasoning and ensure that your approach is both efficient and effective. This strategy helps maintain consistency and ensures that all constraints are met through proven methods.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "Carefully read and follow all the instructions provided. Your response must be complete, precise, and fully satisfy every constraint outlined in the task.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "11.  \nComplete the task by adhering to all instructions and constraints. To prevent errors, consider potential misinterpretations and ensure your response is clear and accurate. Provide a thorough and correct answer that satisfies every requirement.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 9: Error Checking Strategy**  \nBefore finalizing your response, perform a thorough error check. Ask yourself: Did I miss any part of the task? Are all constraints satisfied? Is the response complete and accurate? Use a checklist or a review process to ensure that every requirement has been met and that the answer is free of errors.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "1.  \nFollow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement. Double-check your work to avoid any common mistakes, such as missing steps or misinterpreting the task.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 2: Step-by-Step Instruction Following**  \nFollow the instructions exactly as provided. Begin by reading the task carefully and identifying all the requirements. List each requirement and check them off one by one. Make sure that every part of the task is addressed, and that no constraint is overlooked. Once all parts are satisfied, present the final answer clearly and completely.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "Sure! Here are 16 diverse system prompts for the given task. Each prompt uses a different reasoning strategy and is separated by '",
+      "val_score": null
+    },
+    {
+      "system_prompt": "10.  \nCarefully read the instructions and follow them exactly. Make sure all constraints are met and your response is complete. Avoid common mistakes by reviewing your answer and ensuring it aligns with the task's requirements.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "13.  \nEnsure that you fully understand the task and follow the instructions without deviation. To avoid mistakes, identify and address common errors before finalizing your response. Provide a complete and accurate answer that meets all requirements.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 10 (Summary and details format):**  \nFollow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement. Start with a brief summary of your approach, followed by a detailed breakdown of each component or step you will address.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "Your task is to provide a complete response that strictly follows all the instructions and meets every constraint. Do not deviate from the given requirements and ensure full compliance.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 8: Constraint Mapping Strategy**  \nList all the constraints provided and map them to specific actions or outputs. Create a table or list where each constraint is paired with the corresponding requirement. This visual approach helps ensure that no constraint is missed and that each one is clearly addressed in the final response.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 4: Analogy-Based Reasoning**  \nThink of the task as a puzzle or a recipe. Just as a recipe requires following each step in order, the task requires adhering strictly to the instructions. Imagine the task as assembling a complex machine\u2014each part must be in the correct place and function properly. Use this analogy to guide your reasoning and ensure that every step is executed correctly.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "'.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 3 (Bullet points):**  \nFollow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement. Use bullet points to list all the key elements and requirements you will address in your response.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "Provide a complete and accurate response that fully adheres to all the instructions. Pay strict attention to every constraint and make sure your output is fully compliant.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 6: Role-Playing Strategy**  \nImagine you are a quality assurance specialist tasked with verifying that a product meets all specifications. You must inspect every component, check for compliance with standards, and ensure that nothing is overlooked. Apply this mindset to the task, treating it as a critical inspection process where precision and attention to detail are essential.",
+      "val_score": null
+    }
+  ],
   "test_example_scores": [
     0.0,
     0.0,
@@ -21,7 +100,7 @@
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.2,
     0.0,
     0.0,
     0.0,
@@ -67,11 +146,11 @@
     0.0,
     0.0,
     0.4,
+    0.3333333333333333,
     0.0,
     0.0,
     0.0,
-    0.0,
-    0.0,
+    1.0,
     0.0,
     0.0,
     0.0,
@@ -93,7 +172,7 @@
     0.0,
     0.0,
     0.0,
-    0.5,
+    0.25,
     0.0,
     0.0,
     0.0,
@@ -109,7 +188,7 @@
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.3333333333333333,
     0.0,
     0.0,
     0.0,
@@ -184,7 +263,7 @@
     0.0,
     0.0,
     0.0,
-    0.5,
+    0.0,
     0.0,
     0.5,
     0.0,
@@ -201,12 +280,12 @@
     0.0,
     0.0,
     0.0,
-    0.75,
+    0.25,
     0.0,
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.25,
     0.0,
     0.0,
     0.5,
@@ -224,7 +303,7 @@
     0.0,
     0.0,
     0.2,
-    0.3333333333333333,
+    0.0,
     0.0,
     0.25,
     0.0,
@@ -267,13 +346,13 @@
     0.0,
     0.0,
     0.5,
-    0.3333333333333333,
     0.0,
-    0.3333333333333333,
+    0.0,
+    0.0,
     0.0,
     0.2,
     1.0,
-    0.0,
+    0.25,
     0.6666666666666666,
     0.0,
     0.0,
@@ -287,7 +366,7 @@
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.3333333333333333,
     0.0,
     0.0,
     0.0,
@@ -613,5 +692,7 @@
     "ifbench_test_297",
     "ifbench_test_298",
     "ifbench_test_299"
-  ]
+  ],
+  "seed_prompt_test_score": 0.06555555555555556,
+  "seed_prompt_val_score": 0.07322222222222222
 }

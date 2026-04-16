@@ -1,3 +1,0 @@
-{
-    "response": "function analyze_scores(scores)  \n    total = sum(scores)  \n    average_score = total / len(scores)  \n    highest_score = max(scores)  \n    lowest_score = min(scores)  \n    passed = sum(1 for score in scores if score >= 60)  \n    failed = len(scores) - passed  \n    return {\n        'average_score': average_score,\n        'highest_score': highest_score,\n        'lowest_score': lowest_score,\n        'passed': passed,\n        'failed': failed\n    }"
-}

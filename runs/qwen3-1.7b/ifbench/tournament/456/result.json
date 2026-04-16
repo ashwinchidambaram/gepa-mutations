@@ -2,14 +2,97 @@
   "benchmark": "ifbench",
   "method": "tournament",
   "seed": 456,
-  "test_score": 0.06372222222222222,
-  "val_score": 0.06266666666666666,
+  "test_score": 0.08655555555555555,
+  "val_score": 0.06616666666666667,
+  "train_score": 0.08344444444444443,
   "best_prompt": {
-    "system_prompt": "**4. Analogy-based**  \nYou are to follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement. Use an analogy to explain the process and how it aligns with the task."
+    "system_prompt": "**System Prompt 1 (Bullet Points):**  \n- Follow the instructions carefully and ensure all constraints are met.  \n- Generate 16 distinct system prompts.  \n- Vary the output format instructions.  \n- Separate each prompt with '"
   },
   "rollout_count": 1504,
-  "wall_clock_seconds": 13479.513455867767,
-  "num_candidates": 0,
+  "wall_clock_seconds": 7770.803989648819,
+  "num_candidates": 20,
+  "all_candidates": [
+    {
+      "system_prompt": "**System Prompt 1 (Bullet Points):**  \n- Follow the instructions carefully and ensure all constraints are met.  \n- Generate 16 distinct system prompts.  \n- Vary the output format instructions.  \n- Separate each prompt with '",
+      "val_score": 0.06616666666666667
+    },
+    {
+      "system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "'.  \n- Provide a complete response that meets every requirement.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**11. Slightly Detailed**  \nYou are to follow instructions carefully, ensuring that all given constraints are satisfied. Provide a complete response that meets every requirement. If any constraints are unclear, ask for clarification. If any constraints are conflicting, resolve them in a way that maintains the integrity of the task.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 13:**  \nEnsure that the response is accurate and meets all requirements. Use a review process to verify that no constraints are violated. List common mistakes and address them in the final output.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "Sure! Here are 16 diverse system prompts for the task of following instructions carefully and ensuring all constraints are met. Each prompt varies in level of detail and specificity, from very concise to highly detailed:",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 3 (Direct Answer):**  \nYou are to follow the instructions carefully and ensure that all constraints are satisfied. Provide a direct answer that meets every requirement without additional explanation.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 5:**  \nEnsure that all requirements are met. Apply constraints as specified and verify that no exceptions are made. List the most common errors and prevent them by following the guidelines.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**4. Medium Detail**  \nYou are to follow instructions carefully, ensuring that all given constraints are satisfied. Provide a complete response that meets every requirement. If any constraints are unclear, ask for clarification. If any constraints are conflicting, resolve them in a way that maintains the integrity of the task.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**10. Very Detailed**  \nYou are to follow instructions carefully, ensuring that all given constraints are satisfied. Provide a complete response that meets every requirement. If any constraints are unclear, ask for clarification. If any constraints are conflicting, resolve them in a way that maintains the integrity of the task. If any constraints are not feasible, provide a response that adheres to the constraints as closely as possible. If any constraints are not met, re-express the response to meet all requirements.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 15 (Step-by-Step + Analogy + Direct Answer):**  \nYou are to follow the instructions carefully and ensure that all constraints are satisfied. Use a step-by-step reasoning strategy, an analogy-based approach, and provide a direct answer that meets every requirement.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "'.  \n5. Provide a complete response that meets every requirement.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "Certainly! Here are 16 diverse system prompts for the task of following instructions carefully and satisfying all given constraints, varying the reasoning strategies such as chain-of-thought, step-by-step, direct answer, and analogy-based approaches:",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**6. Very Detailed**  \nYou are to follow instructions carefully, ensuring that all given constraints are satisfied. Provide a complete response that meets every requirement. If any constraints are unclear, ask for clarification. If any constraints are conflicting, resolve them in a way that maintains the integrity of the task. If any constraints are not met, re-express the response to meet all requirements. If any constraints are not feasible, provide a response that adheres to the constraints as closely as possible.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**13. High Detail**  \nYou are to follow instructions carefully, ensuring that all given constraints are satisfied. Provide a complete response that meets every requirement. If any constraints are unclear, ask for clarification. If any constraints are conflicting, resolve them in a way that maintains the integrity of the task. If any constraints are not feasible, provide a response that adheres to the constraints as closely as possible.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 7:**  \nDouble-check every detail to ensure compliance with all constraints. List the most frequent errors and address them in the response. Maintain a clear and organized format.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 10 (Chain-of-Thought + Analogy + Direct Answer):**  \nYou are to follow the instructions carefully and ensure that all constraints are satisfied. Use a combination of chain-of-thought reasoning, analogy-based thinking, and provide a direct answer that meets every requirement.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**3. Moderate Detail**  \nYou are to follow instructions carefully, ensuring that all given constraints are satisfied. Provide a complete response that meets every requirement. If any constraints are ambiguous, clarify them before proceeding.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**System Prompt 14 (Direct Answer + Analogy):**  \nYou are to follow the instructions carefully and ensure that all constraints are satisfied. Provide a direct answer and use an analogy-based reasoning strategy to support the response.",
+      "val_score": null
+    },
+    {
+      "system_prompt": "**Prompt 4:**  \nMaintain accuracy throughout the process. Use a systematic approach to review each step. Highlight any potential errors and correct them before submission.",
+      "val_score": null
+    }
+  ],
   "test_example_scores": [
     0.0,
     0.0,
@@ -33,6 +116,7 @@
     0.0,
     0.0,
     0.5,
+    0.5,
     0.0,
     0.0,
     0.0,
@@ -46,7 +130,6 @@
     0.0,
     0.0,
     0.0,
-    0.25,
     0.0,
     0.0,
     0.0,
@@ -59,6 +142,19 @@
     0.0,
     0.0,
     0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.4,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
     0.0,
     0.0,
     0.0,
@@ -70,19 +166,6 @@
     0.0,
     0.0,
     0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
     0.3333333333333333,
     0.0,
     0.0,
@@ -109,7 +192,7 @@
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.6666666666666666,
     0.0,
     0.0,
     0.0,
@@ -120,7 +203,7 @@
     0.25,
     0.0,
     1.0,
-    0.4,
+    0.2,
     0.0,
     0.0,
     0.0,
@@ -130,7 +213,7 @@
     0.3333333333333333,
     0.0,
     0.0,
-    0.0,
+    0.3333333333333333,
     0.0,
     0.25,
     0.0,
@@ -159,7 +242,7 @@
     0.0,
     0.0,
     0.0,
-    0.0,
+    1.0,
     0.0,
     0.0,
     0.0,
@@ -168,7 +251,7 @@
     0.0,
     0.0,
     0.0,
-    0.25,
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -197,7 +280,7 @@
     0.0,
     0.0,
     0.0,
-    0.0,
+    1.0,
     0.0,
     0.0,
     0.0,
@@ -212,7 +295,7 @@
     0.5,
     0.0,
     0.0,
-    0.2,
+    0.6,
     0.0,
     0.0,
     0.0,
@@ -228,52 +311,52 @@
     0.0,
     0.25,
     0.0,
-    0.0,
+    0.5,
     1.0,
     0.0,
     0.0,
     0.0,
     0.4,
     0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
     0.3333333333333333,
+    0.0,
+    0.0,
+    0.6666666666666666,
+    0.3333333333333333,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.25,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
     0.0,
     0.0,
     0.0,
     0.5,
     0.0,
     0.0,
-    0.0,
-    0.0,
-    0.25,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.25,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
     0.3333333333333333,
     0.3333333333333333,
     0.2,
     1.0,
-    0.25,
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -613,5 +696,7 @@
     "ifbench_test_297",
     "ifbench_test_298",
     "ifbench_test_299"
-  ]
+  ],
+  "seed_prompt_test_score": 0.06483333333333333,
+  "seed_prompt_val_score": 0.05922222222222222
 }

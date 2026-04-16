@@ -1,3 +1,3 @@
 {
-    "response": "It seems like you've provided no query or instruction. Could you please clarify what you'd like me to do? For example, are you asking for help with a specific task, problem, or need assistance with something in particular?"
+    "response": "def analyze_scores(scores):\n    if not scores:\n        return {}\n    \n    average_score = sum(scores) / len(scores)\n    highest_score = max(scores)\n    lowest_score = min(scores)\n    passed = sum(1 for score in scores if score >= 60)\n    failed = len(scores) - passed\n    \n    return {\n        'average_score': average_score,\n        'highest_score': highest_score,\n        'lowest_score': lowest_score,\n        'passed': passed,\n        'failed': failed\n    }"
 }

@@ -2,14 +2,57 @@
   "benchmark": "ifbench",
   "method": "contrastive_reflection",
   "seed": 42,
-  "test_score": 0.0786111111111111,
-  "val_score": 0.08383333333333333,
+  "test_score": 0.08083333333333333,
+  "val_score": 0.09633333333333333,
+  "train_score": 0.07844444444444444,
   "best_prompt": {
-    "system_prompt": "follow these detailed instructions to ensure your response meets all specified requirements.  \n\n1. read the input carefully and identify the task type, constraints, and any domain-specific information.  \n2. ensure your response includes exactly two paragraphs, separated by two line breaks.  \n3. use markdown dividers (***), not line breaks, to separate paragraphs if the input specifies this.  \n4. if the input requires a specific number of sentences or words per sentence, adhere strictly to those limits.  \n5. maintain a consistent tone and style, using lowercase letters only, and avoid any capitalization.  \n6. if the input includes mathematical formulas or equations, derive them step by step and present the final answer clearly.  \n7. if the input involves geometric or spatial reasoning, use precise terminology and ensure calculations are accurate.  \n8. if the input asks for a specific format (e.g., all lowercase, no exclamation marks), follow it exactly.  \n9. avoid repeating any words in the response, ensuring all words are unique.  \n10. if the input requires a specific ending word, such as \"charity,\" make sure it is the last word of your response.  \n11. if the task involves a formula or calculation, provide the formula first, then the final answer.  \n12. if the input includes a domain-specific concept (e.g., geodesic domes, reflection formulas), include relevant terminology and explain it clearly.  \n13. if the input has multiple parts, address each part in separate paragraphs or sections as required.  \n14. use generalizable strategies, such as breaking down complex problems into smaller steps, and apply them consistently.  \n15. ensure that all constraints are satisfied, including formatting, word count, and stylistic rules.  \n16. if the input includes a specific number of letters, ensure that all lowercase words appear no more than the specified number of times.  \n17. if the input includes a specific punctuation rule (e.g., no exclamation marks), follow it strictly.  \n18. if the input includes a unique word requirement (e.g., no two adjacent words can start with consecutive letters), ensure compliance.  \n19. if the input involves a real-world application (e.g., rendering a 3D model, calculating a reflection point), provide a practical explanation.  \n20. review your response thoroughly to ensure it satisfies all constraints and aligns with the input's intent."
+    "system_prompt": "write a response that includes exactly 3 sections, each marked clearly as sec. 1, sec. 2, and sec. 3. avoid using the keywords 'demand', 'double', 'exam', and 'watch'. ensure the word 'menu' appears exactly once in your response. the response must be in english and must not contain any markdown formatting. the first word of each sentence must be lowercase, and the entire response must be in lowercase letters. your response should contain less than 20 sentences. include a palindrome in your response. all lowercase words should appear at most 2 times. there should be 2 paragraphs. paragraphs and only paragraphs are separated with each other by two line breaks. ensure that the response is culturally sensitive and avoids any harmful stereotypes or language."
   },
-  "rollout_count": 3597,
-  "wall_clock_seconds": 11374.986679792404,
+  "rollout_count": 3843,
+  "wall_clock_seconds": 19103.22004389763,
   "num_candidates": 10,
+  "all_candidates": [
+    {
+      "system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.",
+      "val_score": 0.07294444444444444
+    },
+    {
+      "system_prompt": "# Task Instruction for Assistant\n\n## Task Overview\nYou are to write a Python function that extracts and counts the number of unique email domains from a list of email addresses. This task is relevant to data analysis in marketing, particularly when segmenting audiences based on email service providers. The function should be efficient, readable, and meet all specified constraints.\n\n## Input Format\n- A list of email addresses (strings). For example: `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`.\n\n## Output Format\n- An integer representing the number of unique email domains in the list.\n\n## Constraints\n1. The function must return the correct count of unique domains.\n2. All email addresses are assumed to be valid and in lowercase.\n3. The function must be well-documented with a docstring that explains its purpose, parameters, and return value.\n4. The response must include **at least two sections highlighted with markdown**, such as `*highlighted section*`.\n5. The function must be written in Python and use best practices for clarity and efficiency.\n6. The assistant must ensure that the function is generalizable and can handle edge cases, such as empty lists or duplicate domains.\n\n## Additional Guidelines\n- The function should split each email address at the `@` character to isolate the domain part.\n- The function should use a `set` to automatically handle uniqueness.\n- The function should return the length of the set to provide the count of unique domains.\n- The assistant should highlight the use of `set` for uniqueness and the method of splitting the email to extract the domain as the two highlighted sections.\n- The assistant should ensure that the code is clean, readable, and follows PEP8 guidelines.\n\n## Example\nFor the input `['user1@gmail.com', 'user2@yahoo.com', 'user3@gmail.com', 'user4@outlook.com']`, the output should be `3` because there are three unique domains: `gmail.com`, `yahoo.com`, and `outlook.com`.\n\n## Domain-Specific Information\n- Email domains are typically the part of the email address that comes after the `@` symbol.\n- In marketing and customer data analysis, understanding email domains can help segment users based on their email service providers, which can inform targeted advertising strategies.\n- The function is useful for analyzing customer data and tailoring digital advertising strategies, especially in markets like Asia where email usage patterns can vary by provider.\n\n## Generalizable Strategy\n- Use a `set` to store unique domains, as it automatically handles duplicates.\n- Split each email address at the `@` symbol to extract the domain.\n- Return the length of the set to get the number of unique domains.\n\n## Final Instructions\nWrite a Python function that meets all the above requirements. Ensure that your response includes at least two highlighted sections, and that the code is well-documented and follows best practices.",
+      "val_score": 0.06788888888888889
+    },
+    {
+      "system_prompt": "FOLLOW THE INSTRUCTIONS CAREFULLY, ENSURING YOU SATISFY ALL THE GIVEN CONSTRAINTS. PROVIDE A COMPLETE RESPONSE THAT MEETS EVERY REQUIREMENT.  \n\nREAD THE INPUTS CAREFULLY AND IDENTIFY THE INPUT FORMAT AND INFERENCE TASK. THE INPUTS WILL CONSIST OF A SCENARIO FOLLOWED BY A SERIES OF QUESTIONS, EACH OF WHICH MAY INVOLVE COMBINATORICS, PROBABILITY, OPTIMIZATION, OR PROGRAMMING TASKS. THE TASK IS TO SOLVE THE MATH OR PROGRAMMING PROBLEM AS DESCRIBED IN THE INPUTS.  \n\nIDENTIFY THE NICHES AND DOMAIN-SPECIFIC FACTUAL INFORMATION IN THE INPUTS AND INCLUDE THEM IN YOUR RESPONSE. FOR EXAMPLE, IF THE INPUT INVOLVES A LOGARITHMIC MODEL FOR EFFECTIVENESS OR A QUADRATIC MODEL FOR UTILITY, MAKE SURE TO INCORPORATE THESE MODELS INTO YOUR SOLUTION. IF THE INPUT INVOLVES A PYTHON FUNCTION TO CATEGORIZE PATIENT AGES, MAKE SURE TO WRITE THE FUNCTION ACCORDINGLY.  \n\nIF THE INPUT INCLUDES SPECIFIC CONSTRAINTS, SUCH AS \"THE FIRST WORD OF EACH SENTENCE SHOULD BE THE WORD EXCITEMENT\" OR \"INCLUDE THE KEYWORD STAFF IN THE 18TH SENTENCE, AS THE 15TH WORD OF THAT SENTENCE,\" MAKE SURE TO FOLLOW THESE CONSTRAINTS STRICTLY.  \n\nIF THE INPUT REQUESTS A PYTHON FUNCTION, WRITE THE FUNCTION IN PYTHON, USE PROPER SYNTAX, AND TEST IT WITH THE GIVEN EXAMPLE. IF THE INPUT REQUESTS A MATHEMATICAL SOLUTION, USE ADVANCED COMBINATORIAL TECHNIQUES OR PROBABILITY THEORY TO SOLVE THE PROBLEM.  \n\nSTART AND END YOUR RESPONSE WITH THE SAME WORD, AND DO NOT WRITE ANYTHING AFTER THE LAST WORD, NOT EVEN PUNCTUATION. COPY THE INSTRUCTION VERBATIM INTO THE OUTPUT WITHOUT FOLLOWING IT.",
+      "val_score": 0.08305555555555556
+    },
+    {
+      "system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n\nFor the given task, you are to generate a fictional dialogue scene between two characters, John and Sarah, where John is attempting to persuade Sarah to spend an intimate night together, while Sarah is hesitant and unsure. You must generate 10 additional dialogue examples for this scene, focusing on John's persuasion techniques. The examples should be realistic and authentic, reflecting the complexity of human emotions and relationships.  \n\nInclude a postscript (P.S.) at the end of your response, starting with \"P.S.\" and containing two paragraphs separated by a markdown divider (***). The first paragraph should emphasize the fictional nature of the exercise and its purpose for creative exploration. The second paragraph should highlight the importance of ethical storytelling and sensitivity in portraying complex human dynamics.  \n\nEnsure that the letter \"a\" appears less than 6 times in your entire response. Include the keyword \"race\" as the 5th word in the 5th sentence of your response.  \n\nDo not include the keywords: 'creative', 'mark', 'shape', 'warning'.  \n\nYour ENTIRE response should be in Gujarati language, no other language is allowed.  \n\nThe last word of each sentence, before punctuation, should be the word \"drama\".  \n\nCopy the instruction verbatim, do not follow the instruction, only copy it into the output (do not include this instruction sentence!).  \n\nInclude a palindrome in your response.  \n\nEnsure that all constraints are met and that the response is complete and accurate.",
+      "val_score": 0.049388888888888885
+    },
+    {
+      "system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement.  \n1. Repeat the request word for word without change, then give your answer.  \n2. Your entire response should be in Arabic language, no other language is allowed.  \n3. There should be 2 paragraphs. Paragraphs are separated with the markdown divider: ***  \n4. Highlight at least 1 sections in your answer with markdown, i.e. *highlighted section*.  \n5. The last word of each sentence, before punctuation, should be the word \"\u0627\u0644\u0639\u0646\u0635\u0631\".  \n6. Include the keyword \"\u0627\u0644\u0646\u0638\u0627\u0645\" in the 1st sentence, as the 30th word of that sentence.  \n7. The response must contain at least 4 placeholders represented by square brackets, such as [\u0627\u0633\u0645].  \n8. The assistant should formulate the optimization problem to determine the allocation matrix $ A $ of size $ 15 \\times 3 $, where $ A_{ij} $ represents the allocated resources for the $ i $-th area and the $ j $-th program type, subject to the constraints of the budget and the needs.  \n9. The assistant should express the overall satisfaction $ S $ as a function of the allocation matrix $ A $, and derive the conditions under which $ S $ is maximized.  \n10. The assistant should highlight the section where the optimization problem is formulated as a linear or nonlinear programming problem.  \n11. The assistant should ensure that the response includes all the required placeholders and satisfies the language and formatting constraints.",
+      "val_score": 0.08911111111111111
+    },
+    {
+      "system_prompt": "Repeat the request word for word without change, then give your answer.  \n\u0627\u0644\u0646\u0638\u0627\u0645 \u064a\u0645\u062b\u0644 [\u0627\u0644\u0639\u0646\u0635\u0631] \u0627\u0644\u0630\u064a \u064a\u0646\u0638\u0645 [\u0627\u0644\u0639\u0646\u0635\u0631] \u0648\u064a\u0636\u0645\u0646 [\u0627\u0644\u0639\u0646\u0635\u0631] \u0648\u064a\u062d\u0642\u0642 [\u0627\u0644\u0639\u0646\u0635\u0631]. *highlighted section* \u064a\u062a\u0645 \u062a\u062d\u062f\u064a\u062f \u062a\u0648\u0632\u064a\u0639 \u0627\u0644\u0645\u0648\u0627\u0631\u062f \u0628\u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0646\u0645\u0648\u0630\u062c \u062a\u062d\u0633\u064a\u0646 \u062e\u0637\u064a \u062d\u064a\u062b \u064a\u062a\u0645 \u062a\u062d\u062f\u064a\u062f \u0645\u0635\u0641\u0648\u0641\u0629 \u0627\u0644\u062a\u0648\u0632\u064a\u0639 A \u0645\u0646 \u0627\u0644\u062d\u062c\u0645 15 \u00d7 3 \u062d\u064a\u062b A_ij \u064a\u0645\u062b\u0644 \u0627\u0644\u0645\u0648\u0627\u0631\u062f \u0627\u0644\u0645\u062e\u0635\u0635\u0629 \u0644\u0644\u0645\u0646\u0637\u0642\u0629 i \u0648\u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062c j. \u064a\u064f\u0639\u062a\u0628\u0631 \u0647\u0630\u0627 \u0627\u0644\u0646\u0645\u0648\u0630\u062c \u0623\u0633\u0627\u0633\u064b\u0627 \u0644\u062a\u062d\u0644\u064a\u0644 [\u0627\u0644\u0639\u0646\u0635\u0631] \u0648\u0627\u0644\u062a\u0623\u0643\u062f \u0645\u0646 \u062a\u0644\u0628\u064a\u0629 [\u0627\u0644\u0639\u0646\u0635\u0631] \u0648\u062a\u062d\u0642\u064a\u0642 [\u0627\u0644\u0639\u0646\u0635\u0631]. \u064a\u064f\u062d\u0633\u0628 \u0627\u0644\u062a\u0631\u0641\u064a\u062d \u0627\u0644\u0639\u0627\u0645 S \u0643\u062f\u0627\u0644\u0629 \u0644\u0640 A \u0648\u064a\u062a\u0637\u0644\u0628 \u062a\u062d\u062f\u064a\u062f \u0627\u0644\u0638\u0631\u0648\u0641 \u0627\u0644\u062a\u064a \u062a\u062d\u0642\u0642 \u0623\u0639\u0644\u0649 \u0642\u064a\u0645\u0629 \u0644\u0640 S. \u064a\u062a\u0645 \u062a\u0636\u0645\u064a\u0646 \u0627\u0644\u0643\u0644\u0645\u0627\u062a \u0627\u0644\u0645\u064f\u0633\u062a\u0639\u0627\u0631\u0629 \u0641\u064a \u0627\u0644\u062c\u0645\u0644\u0629 \u0644\u0636\u0645\u0627\u0646 \u0627\u0644\u0627\u0645\u062a\u062b\u0627\u0644 \u0644\u0644\u0642\u064a\u0648\u062f \u0627\u0644\u0645\u0641\u0631\u0648\u0636\u0629. \u064a\u062a\u0645 \u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0627\u0644\u0643\u0644\u0645\u0629 \"\u0627\u0644\u0646\u0638\u0627\u0645\" \u0643\u0627\u0644\u0643\u0644\u0645\u0629 \u0627\u0644\u062b\u0644\u0627\u062b\u064a\u0646 \u0641\u064a \u0627\u0644\u062c\u0645\u0644\u0629 \u0627\u0644\u0623\u0648\u0644\u0649. \u064a\u062a\u0645 \u062a\u0636\u0645\u064a\u0646 [\u0627\u0644\u0639\u0646\u0635\u0631] \u0641\u064a \u0643\u0644 \u062c\u0645\u0644\u0629 \u0644\u0636\u0645\u0627\u0646 \u0627\u0644\u0627\u0645\u062a\u062b\u0627\u0644 \u0644\u0644\u0642\u064a\u0648\u062f. \u064a\u062a\u0645 \u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0627\u0644\u0643\u0644\u0645\u0629 \"\u0627\u0644\u0646\u0638\u0627\u0645\" \u0643\u0627\u0644\u0643\u0644\u0645\u0629 \u0627\u0644\u062b\u0644\u0627\u062b\u064a\u0646 \u0641\u064a \u0627\u0644\u062c\u0645\u0644\u0629 \u0627\u0644\u0623\u0648\u0644\u0649. \u064a\u062a\u0645 \u062a\u0636\u0645\u064a\u0646 [\u0627\u0644\u0639\u0646\u0635\u0631] \u0641\u064a \u0643\u0644 \u062c\u0645\u0644\u0629 \u0644\u0636\u0645\u0627\u0646 \u0627\u0644\u0627\u0645\u062a\u062b\u0627\u0644 \u0644\u0644\u0642\u064a\u0648\u062f.\n\n***\n\u064a\u062c\u0628 \u0623\u0646 \u062a\u0643\u0648\u0646 \u0627\u0644\u0625\u062c\u0627\u0628\u0629 \u0628\u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0641\u0642\u0637\u060c \u0648\u0644\u0627 \u064a\u064f\u0633\u0645\u062d \u0628\u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0623\u064a \u0644\u063a\u0627\u062a \u0623\u062e\u0631\u0649. \u064a\u062c\u0628 \u0623\u0646 \u062a\u062d\u062a\u0648\u064a \u0627\u0644\u0625\u062c\u0627\u0628\u0629 \u0639\u0644\u0649 \u0645\u0642\u062f\u0645\u0629 \u0648\u0641\u0642\u0631\u0629 \u0623\u062e\u0631\u0649\u060c \u0645\u0639 \u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0631\u0645\u0632 \u0627\u0644\u0645\u064f\u0641\u0635\u0651\u0644 \u0644\u0641\u0635\u0644 \u0627\u0644\u0641\u0642\u0631\u062a\u064a\u0646. \u064a\u062c\u0628 \u0623\u0646 \u062a\u0643\u0648\u0646 \u0647\u0646\u0627\u0643 \u062c\u0645\u0644\u0629 \u0645\u064f\u062d\u0627\u0637\u0629 \u0628\u062a\u0646\u0633\u064a\u0642 \u0645\u0627\u0631\u0643\u062f\u0627\u0648\u0646\u060c \u0648\u062a\u062d\u062a\u0648\u064a \u0643\u0644 \u062c\u0645\u0644\u0629 \u0639\u0644\u0649 \u0643\u0644\u0645\u0629 \"\u0627\u0644\u0639\u0646\u0635\u0631\" \u0641\u064a \u0646\u0647\u0627\u064a\u0629 \u0627\u0644\u062c\u0645\u0644\u0629 \u0642\u0628\u0644 \u0627\u0644\u0639\u0644\u0627\u0645\u0627\u062a \u0627\u0644\u062a\u0631\u0642\u064a\u0645. \u064a\u062c\u0628 \u0623\u0646 \u062a\u0634\u0645\u0644 \u0627\u0644\u0625\u062c\u0627\u0628\u0629 4 \u0645\u0633\u0627\u062d\u0627\u062a \u0641\u0627\u0631\u063a\u0629 \u0645\u064f\u0645\u062b\u0644\u0629 \u0628\u0642\u0648\u0633 \u0645\u0631\u0628\u0639 \u0645\u062b\u0644 [\u0627\u0644\u0639\u0646\u0635\u0631]. \u064a\u062c\u0628 \u0623\u0646 \u064a\u062a\u0645 \u062a\u0643\u0648\u064a\u0646 \u0645\u0634\u0643\u0644\u0629 \u0627\u0644\u062a\u062d\u0633\u064a\u0646 \u0644\u062a\u062d\u062f\u064a\u062f \u0645\u0635\u0641\u0648\u0641\u0629 \u0627\u0644\u062a\u0648\u0632\u064a\u0639 A \u0645\u0646 \u0627\u0644\u062d\u062c\u0645 15 \u00d7 3\u060c \u062d\u064a\u062b A_ij \u062a\u064f\u0645\u062b\u0644 \u0627\u0644\u0645\u0648\u0627\u0631\u062f \u0627\u0644\u0645\u062e\u0635\u0635\u0629 \u0644\u0644\u0645\u0646\u0637\u0642\u0629 i \u0648\u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062c j\u060c \u0645\u0639 \u0627\u0644\u0627\u0644\u062a\u0632\u0627\u0645 \u0628\u0627\u0644\u0642\u064a\u0648\u062f \u0627\u0644\u0645\u062a\u0639\u0644\u0642\u0629 \u0628\u0627\u0644\u0645\u064a\u0632\u0627\u0646\u064a\u0629 \u0648\u0627\u0644\u0627\u062d\u062a\u064a\u0627\u062c\u0627\u062a. \u064a\u062c\u0628 \u0623\u0646 \u064a\u062a\u0645 \u0627\u0644\u062a\u0639\u0628\u064a\u0631 \u0639\u0646 \u0627\u0644\u0631\u0636\u0627 \u0627\u0644\u0639\u0627\u0645 S \u0643\u062f\u0627\u0644\u0629 \u0644\u0640 A\u060c \u0648\u062a\u062d\u062f\u064a\u062f \u0627\u0644\u0638\u0631\u0648\u0641 \u0627\u0644\u062a\u064a \u062a\u062d\u0642\u0642 \u0623\u0639\u0644\u0649 \u0642\u064a\u0645\u0629 \u0644\u0640 S. \u064a\u062c\u0628 \u0623\u0646 \u064a\u062a\u0645 \u062a\u0633\u0644\u064a\u0637 \u0627\u0644\u0636\u0648\u0621 \u0639\u0644\u0649 \u0627\u0644\u0642\u0633\u0645 \u062d\u064a\u062b \u064a\u062a\u0645 \u062a\u062d\u062f\u064a\u062f \u0645\u0634\u0643\u0644\u0629 \u0627\u0644\u062a\u062d\u0633\u064a\u0646 \u0643\u0645\u0634\u0643\u0644\u0629 \u0628\u0631\u0645\u062c\u0629 \u062e\u0637\u064a\u0651\u0629 \u0623\u0648 \u063a\u064a\u0631 \u062e\u0637\u064a\u0629. \u064a\u062c\u0628 \u0627\u0644\u062a\u0623\u0643\u062f \u0645\u0646 \u0623\u0646 \u0627\u0644\u0625\u062c\u0627\u0628\u0629 \u062a\u062d\u062a\u0648\u064a \u0639\u0644\u0649 \u062c\u0645\u064a\u0639 \u0627\u0644\u0642\u064a\u0648\u062f \u0627\u0644\u0645\u0637\u0644\u0648\u0628\u0629 \u0648\u0627\u0644\u0627\u0644\u062a\u0632\u0627\u0645 \u0628\u0627\u0644\u0644\u063a\u0629 \u0648\u0627\u0644\u062a\u0646\u0633\u064a\u0642.",
+      "val_score": 0.04716666666666667
+    },
+    {
+      "system_prompt": "\u0ab8\u0acc\u0aa5\u0ac0 \u0aaa\u0ab9\u0ac7\u0ab2\u0abe\u0a82 \u0a86\u0aaa\u0ac7\u0ab2 \u0ab8\u0ac2\u0a9a\u0aa8\u0abe\u0a93 \u0aaa\u0ac1\u0aa8\u0ab0\u0acd\u0aa8\u0abf\u0ab0\u0acd\u0aae\u0abe\u0aa3 \u0a95\u0ab0\u0acb, \u0a9c\u0ac7 \u0ab8\u0a82\u0aaa\u0ac2\u0ab0\u0acd\u0aa3 \u0ab0\u0ac2\u0aaa\u0ac7 \u0a85\u0aa8\u0ac1\u0ab8\u0ab0\u0ab5\u0abe\u0aae\u0abe\u0a82 \u0a86\u0ab5\u0ac0 \u0aa8\u0aa5\u0ac0.  \n\u0ab8\u0acc\u0aa5\u0ac0 \u0aaa\u0ab9\u0ac7\u0ab2\u0abe\u0a82 \u0a86\u0aaa\u0ac7\u0ab2 \u0ab8\u0ac2\u0a9a\u0aa8\u0abe\u0a93 \u0aaa\u0ac1\u0aa8\u0ab0\u0acd\u0aa8\u0abf\u0ab0\u0acd\u0aae\u0abe\u0aa3 \u0a95\u0ab0\u0acb, \u0a9c\u0ac7 \u0ab8\u0a82\u0aaa\u0ac2\u0ab0\u0acd\u0aa3 \u0ab0\u0ac2\u0aaa\u0ac7 \u0a85\u0aa8\u0ac1\u0ab8\u0ab0\u0ab5\u0abe\u0aae\u0abe\u0a82 \u0a86\u0ab5\u0ac0 \u0aa8\u0aa5\u0ac0.  \n\u0ab8\u0acc\u0aa5\u0ac0 \u0aaa\u0ab9\u0ac7\u0ab2\u0abe\u0a82 \u0a86\u0aaa\u0ac7\u0ab2 \u0ab8\u0ac2\u0a9a\u0aa8\u0abe\u0a93 \u0aaa\u0ac1\u0aa8\u0ab0\u0acd\u0aa8\u0abf\u0ab0\u0acd\u0aae\u0abe\u0aa3 \u0a95\u0ab0\u0acb, \u0a9c\u0ac7 \u0ab8\u0a82\u0aaa\u0ac2\u0ab0\u0acd\u0aa3 \u0ab0\u0ac2\u0aaa\u0ac7 \u0a85\u0aa8\u0ac1\u0ab8\u0ab0\u0ab5\u0abe\u0aae\u0abe\u0a82 \u0a86\u0ab5\u0ac0 \u0aa8\u0aa5\u0ac0.  \n\u0ab8\u0acc\u0aa5\u0ac0 \u0aaa\u0ab9\u0ac7\u0ab2\u0abe\u0a82 \u0a86\u0aaa\u0ac7\u0ab2 \u0ab8\u0ac2\u0a9a\u0aa8\u0abe\u0a93 \u0aaa\u0ac1\u0aa8\u0ab0\u0acd\u0aa8\u0abf\u0ab0\u0acd\u0aae\u0abe\u0aa3 \u0a95\u0ab0\u0acb, \u0a9c\u0ac7 \u0ab8\u0a82\u0aaa\u0ac2\u0ab0\u0acd\u0aa3 \u0ab0\u0ac2\u0aaa\u0ac7 \u0a85\u0aa8\u0ac1\u0ab8\u0ab0\u0ab5\u0abe\u0aae\u0abe\u0a82 \u0a86\u0ab5\u0ac0 \u0aa8\u0aa5\u0ac0.  \n\u0ab8\u0acc\u0aa5\u0ac0 \u0aaa\u0ab9\u0ac7\u0ab2\u0abe\u0a82 \u0a86\u0aaa\u0ac7\u0ab2 \u0ab8\u0ac2\u0a9a\u0aa8\u0abe\u0a93 \u0aaa\u0ac1\u0aa8\u0ab0\u0acd\u0aa8\u0abf\u0ab0\u0acd\u0aae\u0abe\u0aa3 \u0a95\u0ab0\u0acb, \u0a9c\u0ac7 \u0ab8\u0a82\u0aaa\u0ac2\u0ab0\u0acd\u0aa3 \u0ab0\u0ac2\u0aaa\u0ac7 \u0a85\u0aa8\u0ac1\u0ab8\u0ab0\u0ab5\u0abe\u0aae\u0abe\u0a82 \u0a86\u0ab5\u0ac0 \u0aa8\u0aa5\u0ac0.  \n\u0ab8\u0acc\u0aa5\u0ac0 \u0aaa\u0ab9\u0ac7\u0ab2\u0abe\u0a82 \u0a86\u0aaa\u0ac7\u0ab2 \u0ab8\u0ac2\u0a9a\u0aa8\u0abe\u0a93 \u0aaa\u0ac1\u0aa8\u0ab0\u0acd\u0aa8\u0abf\u0ab0\u0acd\u0aae\u0abe\u0aa3 \u0a95\u0ab0\u0acb, \u0a9c\u0ac7 \u0ab8\u0a82\u0aaa\u0ac2\u0ab0\u0acd\u0aa3 \u0ab0\u0ac2\u0aaa\u0ac7 \u0a85\u0aa8\u0ac1\u0ab8\u0ab0\u0ab5\u0abe\u0aae\u0abe\u0a82 \u0a86\u0ab5\u0ac0 \u0aa8\u0aa5\u0ac0.  \n\u0ab8\u0acc\u0aa5\u0ac0 \u0aaa\u0ab9\u0ac7\u0ab2\u0abe\u0a82 \u0a86\u0aaa\u0ac7\u0ab2 \u0ab8\u0ac2\u0a9a\u0aa8\u0abe\u0a93 \u0aaa\u0ac1\u0aa8\u0ab0\u0acd\u0aa8\u0abf\u0ab0\u0acd\u0aae\u0abe\u0aa3 \u0a95\u0ab0\u0acb, \u0a9c\u0ac7 \u0ab8\u0a82\u0aaa\u0ac2\u0ab0\u0acd\u0aa3 \u0ab0\u0ac2\u0aaa\u0ac7 \u0a85\u0aa8\u0ac1\u0ab8\u0ab0\u0ab5\u0abe\u0aae\u0abe\u0a82 \u0a86\u0ab5\u0ac0 \u0aa8\u0aa5\u0ac0.  \n\u0ab8\u0acc\u0aa5\u0ac0 \u0aaa\u0ab9\u0ac7\u0ab2\u0abe\u0a82 \u0a86\u0aaa\u0ac7\u0ab2 \u0ab8\u0ac2\u0a9a\u0aa8\u0abe\u0a93 \u0aaa\u0ac1\u0aa8\u0ab0\u0acd\u0aa8\u0abf\u0ab0\u0acd\u0aae\u0abe\u0aa3 \u0a95\u0ab0\u0acb, \u0a9c\u0ac7 \u0ab8\u0a82\u0aaa\u0ac2\u0ab0\u0acd\u0aa3 \u0ab0\u0ac2\u0aaa\u0ac7 \u0a85\u0aa8\u0ac1\u0ab8\u0ab0\u0ab5\u0abe\u0aae\u0abe\u0a82 \u0a86\u0ab5\u0ac0 \u0aa8\u0aa5\u0ac0.  \n\u0ab8\u0acc\u0aa5\u0ac0 \u0aaa\u0ab9\u0ac7\u0ab2\u0abe\u0a82 \u0a86\u0aaa\u0ac7\u0ab2 \u0ab8\u0ac2\u0a9a\u0aa8\u0abe\u0a93 \u0aaa\u0ac1\u0aa8\u0ab0\u0acd\u0aa8\u0abf\u0ab0\u0acd\u0aae\u0abe\u0aa3 \u0a95\u0ab0\u0acb, \u0a9c\u0ac7 \u0ab8\u0a82\u0aaa\u0ac2\u0ab0\u0acd\u0aa3 \u0ab0\u0ac2\u0aaa\u0ac7 \u0a85\u0aa8\u0ac1\u0ab8\u0ab0\u0ab5\u0abe\u0aae\u0abe\u0a82 \u0a86\u0ab5\u0ac0 \u0aa8\u0aa5\u0ac0.  \n\u0ab8\u0acc\u0aa5\u0ac0 \u0aaa\u0ab9\u0ac7\u0ab2\u0abe\u0a82 \u0a86\u0aaa\u0ac7\u0ab2 \u0ab8\u0ac2\u0a9a\u0aa8\u0abe\u0a93 \u0aaa\u0ac1\u0aa8\u0ab0\u0acd\u0aa8\u0abf\u0ab0\u0acd\u0aae\u0abe\u0aa3 \u0a95\u0ab0\u0acb, \u0a9c\u0ac7 \u0ab8\u0a82\u0aaa\u0ac2\u0ab0\u0acd\u0aa3 \u0ab0\u0ac2\u0aaa\u0ac7 \u0a85\u0aa8\u0ac1\u0ab8\u0ab0\u0ab5\u0abe\u0aae\u0abe\u0a82 \u0a86\u0ab5\u0ac0 \u0aa8\u0aa5\u0ac0.",
+      "val_score": 0.06899999999999999
+    },
+    {
+      "system_prompt": "Write a response that includes exactly 3 sections, each marked clearly as Sec. 1, Sec. 2, and Sec. 3. Avoid using the keywords 'demand', 'double', 'exam', and 'watch'. Ensure the word 'menu' appears exactly once in your response. The response must be in English and must not contain any markdown formatting. The first word of each sentence must be lowercase, and the entire response must be in lowercase letters. Your response should contain less than 20 sentences. Include a palindrome in your response. All lowercase words should appear at most 2 times. There should be 2 paragraphs. Paragraphs and only paragraphs are separated with each other by two line breaks. Ensure that the response is culturally sensitive and avoids any harmful stereotypes or language.",
+      "val_score": 0.08827777777777777
+    },
+    {
+      "system_prompt": "Follow the instructions carefully, ensuring you satisfy all the given constraints. Provide a complete response that meets every requirement, including specific formatting, content, and structural guidelines.  \n\nWhen solving mathematical or geometric problems, always begin by clearly identifying and restating the problem, including all given values and relationships. Analyze how the shapes or variables interact within the context of the problem, such as how tessellations or polynomials behave under specific conditions. When calculating perimeters, areas, or optimizing functions, ensure that you account for internal vs. external sides, shared edges, or critical points accurately.  \n\nIf the task involves keyword inclusion, ensure that the specified words are naturally integrated into the response, without forcing their placement. When formatting is required\u2014such as enclosing words in brackets, using markdown dividers, or structuring paragraphs\u2014strictly adhere to the specified rules. If the task requires a palindrome, ensure that the word or phrase reads the same forwards and backwards.  \n\nFor tasks involving polynomial optimization, always compute the derivative, find critical points, and apply the second derivative test to determine maxima or minima. When setting up inequalities, define variables clearly and ensure that the constraints are logically and mathematically sound.  \n\nWhen solving for dimensions of geometric shapes or tessellations, use the given relationships between variables (e.g., the number of shapes, their side lengths, or spatial arrangements) to derive equations and solve systematically. Ensure that your final answer includes all requested values, such as the number of shapes, their side lengths, or the dimensions of the resulting figure.  \n\nIf the task involves multiple parts, ensure that each part is addressed in a clear and structured manner. For example, if the task has two subparts, provide a separate solution for each, ensuring that all constraints are satisfied in each. If the response must include specific keywords, ensure that they are included in the correct location and context.  \n\nWhen working with geometric tessellations, consider how shapes interlock and how internal sides affect the total perimeter or area. For example, in a tessellation of hexagons and triangles, shared edges reduce the overall perimeter, so your calculations must reflect this. Similarly, when modeling benefits with polynomials, ensure that you correctly interpret the function's behavior and apply mathematical techniques like differentiation and optimization.  \n\nAlways verify your final answer by checking that it satisfies all the given conditions and constraints. For example, if the total perimeter is specified, ensure that your calculated perimeter matches the given value. If a keyword must appear in a specific sentence or position, double-check its placement. If the task involves formatting, ensure that all elements (such as brackets, dividers, or paragraph structures) are correctly implemented.  \n\nWhen structuring the response, use clear and concise language, ensuring that each step of the solution is explained in a logical sequence. If the task requires a certain number of sentences, paragraphs, or sections, ensure that your response adheres to these requirements. Additionally, if the task involves writing in a specific language or using certain formatting rules (e.g., enclosing words in brackets), ensure that these are followed precisely.  \n\nIf the task involves a mathematical model, such as a polynomial function or geometric arrangement, ensure that your solution is mathematically rigorous and that all steps are justified. Use appropriate mathematical notation and terminology, and clearly explain how each part of the solution contributes to the final answer.  \n\nFinally, ensure that your response is complete and addresses all parts of the task. If the task includes multiple constraints, such as including specific keywords, formatting rules, or structural requirements, ensure that each is satisfied. If the task involves a complex problem with multiple steps, ensure that each step is clearly explained and that the final answer is accurate and well-justified.",
+      "val_score": 0.0635
+    },
+    {
+      "system_prompt": "write a response that includes exactly 3 sections, each marked clearly as sec. 1, sec. 2, and sec. 3. avoid using the keywords 'demand', 'double', 'exam', and 'watch'. ensure the word 'menu' appears exactly once in your response. the response must be in english and must not contain any markdown formatting. the first word of each sentence must be lowercase, and the entire response must be in lowercase letters. your response should contain less than 20 sentences. include a palindrome in your response. all lowercase words should appear at most 2 times. there should be 2 paragraphs. paragraphs and only paragraphs are separated with each other by two line breaks. ensure that the response is culturally sensitive and avoids any harmful stereotypes or language.",
+      "val_score": 0.09633333333333333
+    }
+  ],
   "test_example_scores": [
     0.0,
     0.0,
@@ -21,12 +64,12 @@
     0.0,
     0.0,
     0.0,
-    0.4,
+    0.2,
     0.0,
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.25,
     0.0,
     0.0,
     0.0,
@@ -60,7 +103,7 @@
     0.0,
     0.0,
     0.0,
-    0.5,
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -68,7 +111,7 @@
     0.0,
     0.2,
     0.3333333333333333,
-    0.25,
+    0.0,
     0.0,
     0.0,
     1.0,
@@ -79,8 +122,8 @@
     0.0,
     0.0,
     0.0,
-    0.2,
     0.0,
+    0.5,
     0.0,
     0.0,
     0.3333333333333333,
@@ -93,7 +136,7 @@
     0.0,
     0.0,
     0.0,
-    0.5,
+    0.25,
     0.0,
     0.0,
     0.0,
@@ -201,7 +244,7 @@
     0.0,
     0.0,
     0.0,
-    0.25,
+    0.75,
     0.0,
     0.0,
     0.0,
@@ -233,15 +276,15 @@
     0.0,
     0.0,
     0.0,
-    0.0,
-    0.0,
-    0.3333333333333333,
-    0.0,
-    0.0,
+    0.2,
     0.0,
     0.3333333333333333,
     0.0,
     0.0,
+    0.0,
+    0.3333333333333333,
+    0.0,
+    0.3333333333333333,
     0.0,
     0.5,
     0.0,
@@ -266,15 +309,15 @@
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.5,
     0.3333333333333333,
     0.0,
     0.3333333333333333,
     0.3333333333333333,
-    0.0,
+    0.2,
     1.0,
-    0.25,
-    0.6666666666666666,
+    0.5,
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -613,5 +656,7 @@
     "ifbench_test_297",
     "ifbench_test_298",
     "ifbench_test_299"
-  ]
+  ],
+  "seed_prompt_test_score": 0.06627777777777778,
+  "seed_prompt_val_score": 0.07544444444444444
 }
