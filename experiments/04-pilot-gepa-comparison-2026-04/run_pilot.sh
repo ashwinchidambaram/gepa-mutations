@@ -26,6 +26,12 @@ export MODEL_PREFIX="openai"
 # when MODEL_PREFIX=openai (it expects OpenAI auth headers).
 export API_KEY="${API_KEY:-EMPTY}"
 export OPENAI_API_KEY="${OPENAI_API_KEY:-EMPTY}"
+
+# Reduce test_eval parallelism from default 10 → 5. The original setting
+# overwhelmed vLLM during the smoke test (GPU memory dropped to 0 mid-run).
+# 5 parallel workers per method × 1 sequential method = 5 max concurrent
+# requests on vLLM, well within A40's batch capacity.
+export TEST_EVAL_WORKERS="${TEST_EVAL_WORKERS:-5}"
 export EXPERIMENT_LOGS_DIR="$LOG_DIR"
 
 _usage() {
@@ -90,8 +96,12 @@ _pilot() {
     echo "Runs:    6 total"
     echo "Logs:    $LOG_DIR/pilot.log"
     echo ""
+    # --workers 1: run methods strictly sequentially. Avoids the parallelism
+    # crash we hit during smoke (vLLM dropped its GPU allocation under
+    # gepa+slime_mold concurrent load). Doubles wall-clock to ~18 hr but
+    # eliminates that risk entirely.
     .venv/bin/python scripts/run_all_local.py \
-        --workers 2 \
+        --workers 1 \
         --seeds 555,999,1337 \
         --method gepa slime_mold \
         --benchmark hotpotqa \
