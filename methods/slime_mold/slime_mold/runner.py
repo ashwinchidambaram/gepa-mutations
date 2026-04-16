@@ -30,10 +30,9 @@ from gepa_mutations.runner.experiment import BENCHMARK_SEED_PROMPTS, SEED_PROMPT
 from gepa_mutations.storage.local import save_result
 
 from slime_mold.colony import generate_diverse_prompts, mutate_prompt, run_pruning_round
+from slime_mold.naming import _derive_method_name
 
 console = Console()
-
-METHOD_NAME = "slime_mold"
 
 # Progressive pruning schedule: (n_examples_per_eval, keep_top_k)
 _PRUNING_SCHEDULE = [
@@ -50,6 +49,11 @@ def run_slime_mold(
     subset: int | None = None,
     max_metric_calls: int | None = None,
     settings: Settings | None = None,
+    # New Phase 3 parameters
+    strategy_mode: str = "personality",
+    k: int | None = None,
+    mutation_mode: str = "blind",
+    refresh_mode: str = "none",
 ) -> ExperimentResult:
     """Run the SMNO (Slime Mold Network Optimization) experiment.
 
@@ -59,10 +63,26 @@ def run_slime_mold(
         subset: If set, limit train/val to this many examples.
         max_metric_calls: Rollout budget override (defaults to paper budget).
         settings: Environment settings (loaded from .env if not provided).
+        strategy_mode: Strategy source: personality (baseline), prescribed8, or inductive.
+        k: Number of skills for inductive discovery (3, 5, or None for adaptive).
+        mutation_mode: Mutation approach: blind (current) or crosspollin.
+        refresh_mode: Refresh pass after R1: none, expand, or replace.
 
     Returns:
         ExperimentResult with test/val scores, best prompt, and diagnostics.
     """
+    # Phase 3: raise early for unsupported modes (implementations in Phases 4-8)
+    if strategy_mode != "personality":
+        raise NotImplementedError(
+            f"strategy_mode={strategy_mode} will be implemented in Phase 4. "
+            f"Only 'personality' is supported in Phase 3."
+        )
+    if mutation_mode != "blind":
+        raise NotImplementedError(f"mutation_mode={mutation_mode} will be implemented in Phase 7")
+    if refresh_mode != "none":
+        raise NotImplementedError(f"refresh_mode={refresh_mode} will be implemented in Phase 8")
+
+    method_name = _derive_method_name(strategy_mode, k, mutation_mode, refresh_mode)
     settings = settings or Settings()
     start_time = time.time()
     rng = random.Random(seed)
@@ -319,7 +339,7 @@ def run_slime_mold(
         "benchmark": benchmark,
         "seed": seed,
         "subset": subset,
-        "method_name": METHOD_NAME,
+        "method_name": method_name,
         "model": model_id(settings),
         "temperature": settings.gepa_temperature,
         "top_p": settings.gepa_top_p,
@@ -340,7 +360,7 @@ def run_slime_mold(
         model_tag=get_model_tag(settings),
         benchmark=benchmark,
         seed=seed,
-        method=METHOD_NAME,
+        method=method_name,
         seed_prompt=seed_prompt,
     )
     metrics_data["train_score"] = train_eval.score
@@ -357,7 +377,7 @@ def run_slime_mold(
         rollout_count=collector.rollout_count,
         config_snapshot=config_snapshot,
         wall_clock_seconds=wall_clock,
-        method=METHOD_NAME,
+        method=method_name,
         metrics=metrics_data,
         all_candidates=[{"system_prompt": c} for c in candidates],
         test_example_scores=test_eval.example_scores,
@@ -383,11 +403,11 @@ def run_slime_mold(
         result_data=exp_result.to_dict(),
         config_data=config_snapshot,
         metrics_data=metrics_data,
-        method=METHOD_NAME,
+        method=method_name,
         model_tag=mtagval,
         test_outputs=test_outputs,
     )
-    console.print(f"  Results saved to runs/{mtagval + '/' if mtagval else ''}{benchmark}/{METHOD_NAME}/{seed}/")
+    console.print(f"  Results saved to runs/{mtagval + '/' if mtagval else ''}{benchmark}/{method_name}/{seed}/")
 
     console.print(f"\n[bold green]SMNO complete![/bold green]")
     console.print(f"  Val score:  {val_score:.4f}")
@@ -424,6 +444,23 @@ if __name__ == "__main__":
         "--max-metric-calls", "-m", type=int, default=None,
         help="Rollout budget override (defaults to paper budget)"
     )
+    parser.add_argument(
+        "--strategy-mode", choices=["personality", "prescribed8", "inductive"],
+        default="personality",
+        help="Strategy source: personality (baseline), prescribed8 (8 universal), or inductive (discovered)"
+    )
+    parser.add_argument(
+        "--k", type=int, default=None,
+        help="Number of skills for inductive discovery (3, 5, or None for adaptive). Ignored for personality/prescribed8."
+    )
+    parser.add_argument(
+        "--mutation-mode", choices=["blind", "crosspollin"], default="blind",
+        help="Mutation approach: blind (current behavior) or crosspollin (strategy-aware with donor selection)"
+    )
+    parser.add_argument(
+        "--refresh-mode", choices=["none", "expand", "replace"], default="none",
+        help="Refresh pass after R1: none, expand (add new candidates), or replace (swap weakest)"
+    )
     args = parser.parse_args()
 
     run_slime_mold(
@@ -431,4 +468,8 @@ if __name__ == "__main__":
         seed=args.seed,
         subset=args.subset,
         max_metric_calls=args.max_metric_calls,
+        strategy_mode=args.strategy_mode,
+        k=args.k,
+        mutation_mode=args.mutation_mode,
+        refresh_mode=args.refresh_mode,
     )
