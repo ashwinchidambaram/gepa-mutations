@@ -19,7 +19,7 @@ from typing import Any
 
 from rich.console import Console
 
-from gepa_mutations.base import build_qa_task_lm, build_reflection_lm, evaluate_on_test
+from gepa_mutations.base import build_qa_task_lm, build_reflection_lm_for_model, evaluate_on_test
 from gepa_mutations.benchmarks.evaluators import get_adapter
 from gepa_mutations.benchmarks.loader import load_benchmark
 from gepa_mutations.config import PAPER_ROLLOUTS, Settings, model_tag as get_model_tag
@@ -178,7 +178,7 @@ def run_iso(
     tracked_task_lm = TrackedLM(qa_lm, collector, role="task")
     adapter = get_adapter(benchmark, task_lm=tracked_task_lm)
 
-    reflection_lm = build_reflection_lm(settings)
+    reflection_lm = build_reflection_lm_for_model(settings)
     tracked_reflection = TrackedLM(reflection_lm, collector, role="reflection")
 
     # =========================================================================

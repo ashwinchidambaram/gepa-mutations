@@ -38,6 +38,14 @@ class Settings(BaseSettings):
     model_prefix: str = "openrouter"
     api_key: str = ""
 
+    # Reflection/proposal model (Framing B analyzer factor).
+    # When set, reflection calls use this model instead of gepa_model.
+    # In GEPA: the reflector. In MIPROv2: the proposer. In ISO: discovery/mutation LM.
+    # Structurally analogous but mechanically distinct across methods.
+    reflection_model: str = ""       # empty = use gepa_model (self analyzer)
+    reflection_base_url: str = ""    # empty = use gepa_base_url
+    reflection_api_key: str = ""     # empty = use api_key
+
     # Test evaluation
     test_eval_workers: int = 10
 

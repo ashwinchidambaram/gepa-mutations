@@ -90,6 +90,36 @@ def build_reflection_lm(settings: Settings) -> LM:
     )
 
 
+def build_reflection_lm_for_model(settings: Settings) -> LM:
+    """Build the reflection LM, using a separate model when configured.
+
+    When settings.reflection_model is set, this builds an LM using that model
+    and endpoint (the 'external' analyzer level). Otherwise falls back to
+    build_reflection_lm() which uses the task model (the 'self' analyzer level).
+    """
+    if settings.reflection_model:
+        # Build kwargs for the separate reflection endpoint
+        kw: dict[str, Any] = {}
+        if settings.reflection_base_url:
+            kw["api_base"] = settings.reflection_base_url
+        elif settings.gepa_base_url:
+            kw["api_base"] = settings.gepa_base_url
+        api_key = settings.reflection_api_key or settings.api_key
+        if api_key:
+            kw["api_key"] = api_key
+        ref_model_id = f"{settings.model_prefix}/{settings.reflection_model}"
+        return LM(
+            ref_model_id,
+            temperature=settings.gepa_temperature,
+            max_tokens=settings.max_tokens_reflection,
+            top_p=settings.gepa_top_p,
+            top_k=settings.gepa_top_k,
+            timeout=settings.lm_timeout,
+            **kw,
+        )
+    return build_reflection_lm(settings)
+
+
 def build_qa_task_lm(settings: Settings) -> LM:
     """Build the task LM for QA benchmarks (direct LiteLLM calls).
 
