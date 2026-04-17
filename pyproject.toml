@@ -26,6 +26,7 @@ dependencies = [
     "gepa-contrastive-synthesis",
     "gepa-ecological-succession",
     "gepa-modular",
+    "gepa-miprov2",
 ]
 
 [project.scripts]
@@ -47,7 +48,7 @@ select = ["E", "F", "I", "W"]
 
 [tool.uv]
 # Exclude submodule and method packages from workspace discovery
-workspace = { exclude = ["gepa", "methods/best_of_k", "methods/contrastive_reflection", "methods/failure_stratified_k", "methods/synaptic_pruning", "methods/tournament", "methods/iso", "methods/ant_colony", "methods/active_minibatch", "methods/contrastive_synthesis", "methods/ecological_succession", "methods/modular"] }
+workspace = { exclude = ["gepa", "methods/best_of_k", "methods/contrastive_reflection", "methods/failure_stratified_k", "methods/synaptic_pruning", "methods/tournament", "methods/iso", "methods/ant_colony", "methods/active_minibatch", "methods/contrastive_synthesis", "methods/ecological_succession", "methods/modular", "methods/miprov2"] }
 
 [tool.uv.sources]
 gepa = { path = "./gepa", editable = true }
@@ -62,7 +63,8 @@ gepa-active-minibatch = { path = "./methods/active_minibatch", editable = true }
 gepa-contrastive-synthesis = { path = "./methods/contrastive_synthesis", editable = true }
 gepa-ecological-succession = { path = "./methods/ecological_succession", editable = true }
 gepa-modular = { path = "./methods/modular", editable = true }
+gepa-miprov2 = { path = "./methods/miprov2", editable = true }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = [".", "methods/iso"]
+pythonpath = [".", "methods/iso", "methods/miprov2"]

@@ -835,3 +835,22 @@ def get_adapter(benchmark: str, task_lm=None):
         return LiveBenchAdapter(task_lm)
     else:
         raise ValueError(f"Unknown benchmark: {benchmark}")
+
+
+def get_scorer(benchmark: str):
+    """Get a standalone scoring function for a benchmark.
+
+    Returns a callable (predicted: str, gold: str) -> float that scores
+    a prediction against the gold answer. Used by MIPROv2 integration
+    where the full adapter is not needed.
+    """
+    # Build a lightweight adapter without an LM — we only need _score()
+    adapter = get_adapter(benchmark, task_lm=None)
+
+    def scorer(predicted: str, gold: str) -> float:
+        # Create a minimal example with just the answer field
+        example = type("Example", (), {"answer": gold})()
+        score, _ = adapter._score(example, predicted)
+        return score
+
+    return scorer

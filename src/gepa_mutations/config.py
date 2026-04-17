@@ -97,6 +97,15 @@ PAPER_ROLLOUTS = {
         "hotpotqa": 24000, "ifbench": 24000, "aime": 24000,
         "hover": 24000, "livebench": 24000, "pupa": 24000,
     },
+    # MIPROv2: DSPy "light" defaults. auto="light" → n=6, val_size=100,
+    # num_trials=12 (1 predictor with demos). With minibatch=True (default):
+    # ~720 evals. Without minibatch: ~1200 evals. We use 1200 as the
+    # conservative "natural" budget (no minibatch, clean eval per trial).
+    # See docs/design_decisions.md §3 for full derivation.
+    "miprov2": {
+        "hotpotqa": 1200, "ifbench": 1200, "aime": 1200,
+        "hover": 1200, "livebench": 1200, "pupa": 1200,
+    },
 }
 
 # Paper hyperparameters
