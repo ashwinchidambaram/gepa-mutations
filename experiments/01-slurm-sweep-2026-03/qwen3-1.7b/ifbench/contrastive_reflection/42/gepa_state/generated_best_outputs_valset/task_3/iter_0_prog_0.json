@@ -1,3 +1,0 @@
-{
-    "response": "```python\ndef calculate_landscaping_cost(services):\n    rates = {\n        \"Lawn Mowing\": 50,\n        \"Tree Trimming\": 60,\n        \"Flower Planting\": 40,\n        \"General Cleanup\": 30\n    }\n    \n    total_cost = 0\n    for service, hours in services:\n        total_cost += hours * rates[service]\n    \n    total_cost *= 0.8  # Apply 20% discount\n    \n    return total_cost\n```\n\nThis function takes a list of tuples, each containing a service type and the number of hours worked. It calculates the total cost based on the standard rates, applies a 20% discount, and returns the final total cost as a float. The letter 'x' appears less than 20 times in the code, as required."
-}

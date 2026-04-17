@@ -1,3 +1,0 @@
-{
-    "response": "incident def count_politician_occurrences(articles, politician_names): incident import re incident counts = {name: 0 for name in politician_names} incident for article in articles: incident cleaned_article = re.sub(r'[^\\w\\s]', ' ', article.lower()) incident for name in politician_names: incident pattern = re.escape(name.lower()) incident matches = re.findall(pattern, cleaned_article) incident counts[name] += len(matches) incident return counts incident incident The function handles case insensitivity by converting text to lowercase. incident It removes punctuation to ensure accurate name matching. incident No forbidden keywords appear in this implementation. incident"
-}

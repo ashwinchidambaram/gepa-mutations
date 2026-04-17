@@ -1,3 +1,0 @@
-{
-    "response": "you need to sum the absolute differences for most elements but square the differences when the index is a multiple of three to solve this tricky problem. the key idea is to use prefix sums to calculate the total quickly without checking every single pair which would be too slow.\n\n***\nthis approach works well because the array is sorted so we can derive the sums in linear time and keep the complexity low. make sure to handle the special case for every third index carefully to get the correct output for your test cases."
-}

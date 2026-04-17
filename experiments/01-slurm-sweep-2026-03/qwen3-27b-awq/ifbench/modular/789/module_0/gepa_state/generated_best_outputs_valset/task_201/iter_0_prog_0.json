@@ -1,3 +1,0 @@
-{
-    "response": "<<PHP URL Swap Guide>>\n\nTo replace the old URL with the new one in your PHP string you can use str_replace or a regex pattern that targets the specific link text and href attributes. The key is to ensure the replacement happens for every occurrence in the string. Here is a simple code snippet using str_replace which works for repeating strings without needing complex regex logic if the URLs are exact matches. You can also use preg_replace if you need to handle dynamic paths or variations. Remember that the string must be processed before outputting it to the browser. A palindrome to keep in mind is noon which reads the same forward and backward. This solution ensures all instances of the old link are updated to the new one efficiently."
-}

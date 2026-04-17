@@ -1,3 +1,0 @@
-{
-    "response": "C# lacks built in one way timing for UDP sends\nYou must track time before and after send\nClient sends packet with timestamp\nServer replies with that timestamp\nClient calculates round trip then divides by two\nThis gives approximate one way delay\nNo direct API exists for this task"
-}

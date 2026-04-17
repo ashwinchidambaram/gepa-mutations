@@ -1,3 +1,0 @@
-{
-    "response": "<<PHP URL Swap Guide>>\n\nYou can solve this by using the str_replace function in PHP which handles multiple occurrences automatically. Here is the code snippet:\n\n$text = 'New post on the site <a href=\"http://stackoverflow.com/xyz1\">http://stackoverflow.com/xyz1</a></p>';\n$newText = str_replace('http://stackoverflow.com/xyz1', 'http://yahoo.com/abc1', $text);\necho $newText;\n\nThis approach works for repeating strings without needing regex. A palindrome to remember is noon."
-}

@@ -1,3 +1,0 @@
-{
-    "response": "<<The Palindrome Puzzle>>  \nSELECT title, director  \nFROM movies  \nORDER BY LENGTH(title) DESC, LENGTH(director) DESC;\n\nThis query sorts the records by the length of the `title` in descending order, and if two titles have the same length, it sorts by the length of the `director` in descending order. A palindrome is included in the response: **\"abba\"**."
-}

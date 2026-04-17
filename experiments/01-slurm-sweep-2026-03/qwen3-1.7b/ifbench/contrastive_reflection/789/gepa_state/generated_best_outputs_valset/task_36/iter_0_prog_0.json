@@ -1,3 +1,0 @@
-{
-    "response": "The error you're encountering while creating authentication likely stems from an issue with the `createSessionId()` function or the `moviesApi` setup. If `createSessionId()` is not properly generating a valid session ID, the API call to `/account?session_id=` will fail, leading to an error. Ensure that `createSessionId()` is correctly implemented and returns a valid session ID.\n\nAdditionally, the `logInUser` function is defined inside the `useEffect` hook, which means it will only run when `token` changes. However, if `token` is not yet available, the function will not execute, which could lead to unexpected behavior. Make sure that `token` is properly set before the effect is triggered."
-}

@@ -1,3 +1,0 @@
-{
-    "response": "def insert(node, char):\n    if node is None:\n        return {'val': char.lower(), 'left': None, 'right': None}\n    if char.lower() < node['val']:\n        node['left'] = insert(node['left'], char)\n    elif char.lower() > node['val']:\n        node['right'] = insert(node['right'], char)\n    return node\n\ndef process_sequence(seq, index, tree):\n    if index >= len(seq):\n        return tree\n    char = seq[index]\n    tree = insert(tree, char)\n    return process_sequence(seq, index + 1, tree)\n\nsequence = \"abc123\"\nroot = process_sequence(sequence, 0, None)\nThat's my answer."
-}

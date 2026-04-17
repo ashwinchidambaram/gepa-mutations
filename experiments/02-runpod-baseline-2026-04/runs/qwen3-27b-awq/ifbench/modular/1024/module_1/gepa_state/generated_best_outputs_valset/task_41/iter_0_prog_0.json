@@ -1,3 +1,0 @@
-{
-    "response": "you can estimate the memory usage of an object instance using a custom script that leverages the runtime library. the exact size depends on the garbage collection policy of your specific environment. while no direct api exists to get the precise byte count for a single object in a multi-threaded western codebase, you can use reflection or specialized libraries to approximate it. this approach helps identify large allocations like lists that are not being cleared properly."
-}

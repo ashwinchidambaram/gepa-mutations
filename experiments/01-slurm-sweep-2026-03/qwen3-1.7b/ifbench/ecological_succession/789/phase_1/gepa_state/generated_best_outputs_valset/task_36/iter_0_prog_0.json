@@ -1,3 +1,0 @@
-{
-    "response": "The error you're encountering while creating authentication with TMDB is likely due to an incorrect session ID being used or a missing authentication header. When creating a session ID, ensure that you include the necessary authentication tokens in the request headers. If the session ID is not properly generated or stored, the API may return an error.\n\nAdditionally, the code you provided uses `createSessionId()` which may not be correctly implemented. If `createSessionId()` is not returning a valid session ID or is not properly handling the authentication process, it could lead to the error. Make sure that the session ID is correctly passed to the API and that the API is configured to accept it for authentication."
-}

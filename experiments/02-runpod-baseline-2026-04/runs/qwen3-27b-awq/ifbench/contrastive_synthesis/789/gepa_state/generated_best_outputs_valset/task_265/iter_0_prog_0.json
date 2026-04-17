@@ -1,3 +1,0 @@
-{
-    "response": "C# lacks a native one-way UDP timer. You need server-side logic to record arrival time. The client sends data with a timestamp. The server compares its own clock to that value. This method requires synchronized clocks on both ends. Without sync the result will be wrong. NTP helps align time across machines. You can calculate the difference after the server receives the packet. This approach works for one-way measurement."
-}

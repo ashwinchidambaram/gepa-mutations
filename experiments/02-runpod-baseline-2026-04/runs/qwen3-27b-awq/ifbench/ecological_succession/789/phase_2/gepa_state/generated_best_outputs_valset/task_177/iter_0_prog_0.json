@@ -1,3 +1,0 @@
-{
-    "response": "<<optimal network plan>>\nsort edges by weight to find minimum spanning tree first.\npick d e with cost one mile for start.\nchoose c d with cost two miles next step.\nselect b e with cost three miles after that.\ntake d a with cost four miles now included.\nadd e f with cost four miles to finish.\ntotal cost sums to fourteen miles for all centers.\n* * *\nrun dijkstra from a to f using graph weights.\npath goes a to d then d to e.\ncontinue from e to f with cost four miles.\ntotal cost is nine miles for this route.\nsequence is a d e f for final answer."
-}

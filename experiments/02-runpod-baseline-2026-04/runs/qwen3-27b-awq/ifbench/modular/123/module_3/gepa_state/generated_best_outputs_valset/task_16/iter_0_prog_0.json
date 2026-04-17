@@ -1,3 +1,0 @@
-{
-    "response": "```json\n{\n  \"function_code\": \"def calculate_average_effectiveness(feedback, treatment_name):\\n    total_effectiveness = 0\\n    count = 0\\n    for patient in feedback:\\n        if treatment_name in patient[\\\"treatments\\\"]:\\n            total_effectiveness += patient[\\\"treatments\\\"][treatment_name]\\n            count += 1\\n    if count == 0:\\n        return 0.0\\n    return round(total_effectiveness / count, 2)\"\n}\n```"
-}

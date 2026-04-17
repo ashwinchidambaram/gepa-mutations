@@ -1,3 +1,0 @@
-{
-    "response": "<<PHP URL Swap Guide>>\n\nHere is the PHP code to replace URLs without using dots\n\n$text = \"New post on the site <a href=\\\"http://stackoverflow.com/xyz1\\\">http://stackoverflow.com/xyz1</a></p>\";\n$oldUrl = \"http://stackoverflow.com/xyz1\";\n$newUrl = \"http://yahoo.com/abc1\";\n$result = str_replace($oldUrl, $newUrl, $text);\necho $result;\n\nThis works for repeated instances as well\nlevel"
-}

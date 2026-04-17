@@ -1,3 +1,0 @@
-{
-    "response": "def insert(root, char):\n    if root is None:\n        return {'val': char, 'left': None, 'right': None}\n    if char < root['val']:\n        root['left'] = insert(root['left'], char)\n    elif char > root['val']:\n        root['right'] = insert(root['right'], char)\n    return root\n\nsequence = \"aBcDeFgHiJ\"\ntree = None\nprocessed = set()\nfor char in sequence:\n    lower_char = char.lower()\n    if lower_char not in processed:\n        tree = insert(tree, lower_char)\n        processed.add(lower_char)\n\nThat's my answer."
-}

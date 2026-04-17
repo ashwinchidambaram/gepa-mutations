@@ -1,3 +1,0 @@
-{
-    "response": "def filter_species_by_length(species_list, min_length):\n    \"\"\"\n    Filters a list of frog species names, returning only those with more than\n    the specified number of characters.\n    \"\"\"\n    return [name for name in species_list if len(name) > min_length]\n\n# Example usage\nspecies_list = [\"Blommersia bara\", \"Mantidactylus grandidieri\", \"Boophis madagascariensis\", \"Aglyptodactylus madagascariensis\"]\nmin_length = 15\nprint(filter_species_by_length(species_list, min_length))\n# Expected output: [\"Mantidactylus grandidieri\", \"Boophis madagascariensis\", \"Aglyptodactylus madagascariensis\"]"
-}

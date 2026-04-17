@@ -1,3 +1,0 @@
-{
-    "response": "<<vegetable>> <<actor>> <<bottom>> <<pack>> <<sick>> <<cost>>\n\ndef calculate_landscaping_cost(services):\n    rates = {\n        \"Lawn Mowing\": 50,\n        \"Tree Trimming\": 60,\n        \"Flower Planting\": 40,\n        \"General Cleanup\": 30\n    }\n    \n    total_cost = 0\n    for service, hours in services:\n        total_cost += hours * rates[service]\n    \n    discount = 0.20\n    total_cost *= (1 - discount)\n    \n    return total_cost\n\n# Example usage\nservices = [\n    (\"Lawn Mowing\", 10),\n    (\"Tree Trimming\", 5),\n    (\"Flower Planting\", 8),\n    (\"General Cleanup\", 12)\n]\n\ntotal_cost = calculate_landscaping_cost(services)\nprint(total_cost)\n\n<<cost>>"
-}

@@ -1,3 +1,0 @@
-{
-    "response": "The error occurs because the TMDB API requires a valid session ID that is created through the interactive authentication flow, not by generating one locally in your code. When you call createSessionId() in your client-side code, you are likely creating a random string that the server does not recognize as a valid session token, leading to an authentication failure.\n\nYou must first request a request token from the API, redirect the user to the official TMDB authentication URL, and then exchange the returned request token for a session ID after the user logs in successfully. Only after this server-verified exchange should you use the session ID to fetch account details or perform other authenticated requests."
-}

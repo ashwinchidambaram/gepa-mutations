@@ -1,3 +1,0 @@
-{
-    "response": "The error occurs because the TMDB API requires a valid session ID to be created through the authentication endpoint before you can fetch account data, and your current code attempts to create a session ID locally without calling the required API endpoint to initialize the session with the server.\n\nYou must first call the createSession endpoint with your API key to receive a valid session ID from TMDB, then use that returned session ID to fetch the user account data instead of generating a random or local session ID that the server does not recognize."
-}

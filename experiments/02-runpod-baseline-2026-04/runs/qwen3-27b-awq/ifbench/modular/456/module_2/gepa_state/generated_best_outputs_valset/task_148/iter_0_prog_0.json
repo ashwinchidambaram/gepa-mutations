@@ -1,3 +1,0 @@
-{
-    "response": "solution the final approach uses a virtual index mapping to interleave sorted halves while ensuring adjacent elements differ whenever possible. solution this method avoids full sorting by using a partition step to place the median in its correct position. solution the virtual index formula `f(i) = (1 + 2*i) % (n | 1)` guarantees the required zigzag pattern. solution negative integers are handled correctly because the comparison logic relies only on relative order. solution the algorithm runs in O(n) time and O(1) extra space if the median is found via quickselect."
-}

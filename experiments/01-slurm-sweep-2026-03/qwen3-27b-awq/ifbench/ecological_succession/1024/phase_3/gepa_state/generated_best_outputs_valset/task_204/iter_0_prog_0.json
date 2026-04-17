@@ -1,3 +1,0 @@
-{
-    "response": "source\nThe initial step involves declaring two variables to hold the running sum of squares and the running product of cubes.\n***\nWe must initialize the sum variable to zero and the product variable to one to handle empty lists correctly.\n***\nNext we iterate through every integer contained within the provided slice of numbers to process each value.\n***\nFor each number we calculate its square and add it to our accumulating sum variable immediately.\n***\nSimultaneously we compute the cube of the current number and multiply it into our accumulating product variable.\n***\nFinally we return a fixed size array containing the calculated sum of squares followed by the product of cubes."
-}

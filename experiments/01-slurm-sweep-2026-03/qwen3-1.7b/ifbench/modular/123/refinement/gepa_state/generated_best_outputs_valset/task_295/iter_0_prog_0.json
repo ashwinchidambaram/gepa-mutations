@@ -1,3 +1,0 @@
-{
-    "response": "class Vegetable {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n  }\n\n  get position() {\n    return `${this.x},${this.y}`;\n  }\n\n  static createPalindrome() {\n    return new Vegetable(10, 20);\n  }\n}\n\n// Example palindrome\nconst palindrome = \"javascript is fun and cool\";\nconsole.log(palindrome);\n\n// All lowercase words appear at most 3 times\nconst lowercaseWords = [\"javascript\", \"is\", \"fun\", \"and\", \"cool\"];\nconsole.log(lowercaseWords);"
-}

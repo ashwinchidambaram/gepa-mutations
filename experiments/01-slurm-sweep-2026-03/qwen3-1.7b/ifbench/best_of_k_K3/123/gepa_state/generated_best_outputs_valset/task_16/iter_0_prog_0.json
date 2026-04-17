@@ -1,3 +1,0 @@
-{
-    "response": "```python\ndef calculate_average_effectiveness(feedback, treatment_name):\n    # Initialize a list to store effectiveness ratings for the specified treatment\n    effectiveness_ratings = []\n    \n    # Iterate through each patient's feedback\n    for patient in feedback:\n        if treatment_name in patient[\"treatments\"]:\n            effectiveness_ratings.append(patient[\"treatments\"][treatment_name])\n    \n    # Calculate the average effectiveness\n    if effectiveness_ratings:\n        average = sum(effectiveness_ratings) / len(effectiveness_ratings)\n    else:\n        average = 0.0\n    \n    # Return the average rounded to two decimal places\n    return round(average, 2)\n```"
-}

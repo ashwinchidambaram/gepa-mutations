@@ -1,3 +1,0 @@
-{
-    "response": "radar\ncreate procedure clean_inactive_users()\nbegin\ndeclare exit handler for sqlexception\nrollback;\ninsert into status_log select user_id, status, now() from users where status = 'Inactive';\ndelete from users where status = 'Inactive';\ncommit;\nend;\nthe total count matches the expected result for this operation."
-}

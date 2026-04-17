@@ -1,3 +1,0 @@
-{
-    "response": "c# can we somehow check how long it took for udp packet to be sent to server, like ping but only one direction In your entire response, refrain from the use of any commas. In your response, the letter y should appear less than 18 times.\nNo direct method exists in c# to measure one way udp travel time. You need server side timestamps. Client sends time then server replies with difference. This gives round trip not one way. One way needs clock sync."
-}

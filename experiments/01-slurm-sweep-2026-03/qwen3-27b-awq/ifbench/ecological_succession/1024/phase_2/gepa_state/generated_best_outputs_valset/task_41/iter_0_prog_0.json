@@ -1,3 +1,0 @@
-{
-    "response": "you can estimate the memory usage of an object instance in c# by using the system.runtime.interopservices.marshal.sizeof method for value types or by writing a custom script to inspect managed heap data. there is no direct built-in policy to instantly show the exact size of a specific reference type instance without external tools. while western developers often rely on profilers, creating a simple script to trace allocations can help in multi-threaded environments. remember that garbage collection makes precise tracking difficult so any number you get is just an estimate."
-}

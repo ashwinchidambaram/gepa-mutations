@@ -1,3 +1,0 @@
-{
-    "response": "C# lacks a built-in way to measure one-way UDP send time. You must track timestamps at both ends. The client records the send moment. The server logs receipt time. Compare these values to find the delay. This method needs synchronized clocks. Without sync the result will be wrong."
-}

@@ -1,3 +1,0 @@
-{
-    "response": "Sub-problem 1:  \nThe number of rooms requiring attention follows a Poisson distribution with a mean of 20. The probability that exactly 15 rooms need attention is calculated using the Poisson probability formula:  \nP(X = 15) = (e^(-20) * 20^15) / 15!  \nThe result is approximately 0.0153  \n\nSub-problem 2:  \nThe concierge assists with 8 concerns and has a success rate of 90%. The probability that at least 7 of these concerns are resolved successfully is the sum of the probabilities of resolving exactly 7 and exactly 8 concerns.  \nUsing the binomial distribution formula:  \nP(X = 7) = C(8 7) * (0.9)^7 * (0.1)^1  \nP(X = 8) = C(8 8) * (0.9)^8 * (0.1)^0  \nAdding these probabilities gives approximately 0.3826"
-}

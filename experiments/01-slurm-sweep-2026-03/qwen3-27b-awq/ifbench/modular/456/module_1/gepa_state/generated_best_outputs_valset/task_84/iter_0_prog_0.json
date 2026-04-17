@@ -1,3 +1,0 @@
-{
-    "response": "Section 1\nhere is the code you asked for\n\nSection 2\ndef count_word(text, word):\n    t = text.lower()\n    w = word.lower()\n    import re\n    pattern = r'\\b' + re.escape(w) + r'\\b'\n    matches = re.findall(pattern, t)\n    return len(matches)\n\nSection 3\nthis function handles case issues well\n\nSection 4\nP.S.: Your response must have 4 sections. Mark the beginning of each section with Section X, such as:\nSection 1\n[content of section 1]\nSection 2\n[content of section 2] No two adjacent words can start with consecutive letters of the alphabet."
-}

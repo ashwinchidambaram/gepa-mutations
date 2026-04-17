@@ -1,3 +1,0 @@
-{
-    "response": "```python\nclass Node:\n    def __init__(self, char):\n        self.char = char.lower()\n        self.left = None\n        self.right = None\n\ndef insert(root, char):\n    if root is None:\n        return Node(char)\n    if char < root.char:\n        root.left = insert(root.left, char)\n    elif char > root.char:\n        root.right = insert(root.right, char)\n    return root\n\ndef process_string(s, index=0, root=None):\n    if index >= len(s):\n        return root\n    char = s[index]\n    root = insert(root, char)\n    return process_string(s, index + 1, root)\n\n# Predefined alphanumeric sequence\nsequence = \"Python3Programming123\"\n\n# Process the sequence and build the BST\nbst_root = process_string(sequence)\n```\n\nThat's my answer."
-}

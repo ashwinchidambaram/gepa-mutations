@@ -1,3 +1,0 @@
-{
-    "response": "<<The Palindrome of the Sky>>  \nSELECT title, director  \nFROM movies  \nORDER BY LENGTH(title) DESC, LENGTH(director) DESC;\n\nThis SQL query sorts the records in the `title` and `director` columns in descending order based on their character length. If two entries have the same length, they are ordered alphabetically (which is a default behavior in SQL when the second sort criterion is not specified). A palindrome, \"A man, a plan, a canal: Panama,\" is included in the response as requested."
-}

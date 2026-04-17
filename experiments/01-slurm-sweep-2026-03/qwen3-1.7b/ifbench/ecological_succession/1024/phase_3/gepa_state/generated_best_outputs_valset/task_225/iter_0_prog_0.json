@@ -1,3 +1,0 @@
-{
-    "response": "text  \nclass variableAssigner {  \n    public static void assignValue(String variable) {  \n        variable = \"New value\";  \n    }  \n}  \n\nclass variableConcatenator {  \n    public static String concatenate(String variable, String add) {  \n        return variable + add;  \n    }  \n}  \n\nclass variableComparator {  \n    public static boolean compare(String variable) {  \n        return variable.equals(\"Hello world\");  \n    }  \n}  \n\ntext  \nvariable = \"Hello world\";  \nSystem.out.println(variable);  \nvariableAssigner.assignValue(variable);  \nvariableConcatenator.concatenate(variable, \" world\");  \nvariableComparator.compare(variable);  \npiece  \npiece"
-}

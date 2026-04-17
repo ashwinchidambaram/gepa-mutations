@@ -1,3 +1,0 @@
-{
-    "response": "function\ndef analyze_scores(scores):\n    if not scores:\n        return {'average_score': 0, 'highest_score': 0, 'lowest_score': 0, 'passed': 0, 'failed': 0}\n    total = sum(scores)\n    average = total / len(scores)\n    highest = max(scores)\n    lowest = min(scores)\n    passed = sum(1 for s in scores if s >= 60)\n    failed = sum(1 for s in scores if s < 60)\n    return {'average_score': average, 'highest_score': highest, 'lowest_score': lowest, 'passed': passed, 'failed': failed}\nfunction"
-}

@@ -1,3 +1,0 @@
-{
-    "response": "<<string transformation with a twist>>\n\nto replace one url with another within a string in php you can use the str_replace function which works for repeating instances as well\n\nhere is an example of how to do this\n\n```php\n$string = 'new post on the site <a href=\"http://stackoverflow.com/xyz1\">http://stackoverflow.com/xyz1</a></p>';\n$old_url = 'http://stackoverflow.com/xyz1';\n$new_url = 'http://yahoo.com/abc1';\n\n$string = str_replace($old_url, $new_url, $string);\necho $string;\n```\n\nthis will replace all occurrences of the old url with the new one in the string\n\na palindrome is a word phrase or sequence that reads the same backward as forward such as madam or racecar"
-}

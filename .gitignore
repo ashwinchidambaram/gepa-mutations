@@ -61,6 +61,13 @@ logs/
 # runs/  — tracked for reproducibility
 # plots/  # temporarily tracked for data backup
 
+# Archived experiment data — large result sets not tracked in git
+archive/
+
+# Experiment run outputs (results, logs, checkpoints)
+experiments/*/runs/
+experiments/*/logs/
+
 # Compiler caches
 torchinductor_*/
 *.log

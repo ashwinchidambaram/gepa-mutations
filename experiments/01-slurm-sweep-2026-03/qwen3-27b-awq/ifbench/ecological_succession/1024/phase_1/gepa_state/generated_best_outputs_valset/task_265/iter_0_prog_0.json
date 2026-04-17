@@ -1,3 +1,0 @@
-{
-    "response": "C# lacks a direct method for one-way UDP timing. You need synchronized clocks on both ends. Record the send time locally. Ask the server to log receipt time. Compare the two timestamps later. This approach avoids round-trip delays."
-}

@@ -1,3 +1,0 @@
-{
-    "response": "In C# it is possible to measure the time it takes for a UDP packet to be sent to a server but this does not provide a round trip time like ping does. To measure the one way time you can record the time before sending the packet and then calculate the difference between that time and the time when the packet is sent. However UDP does not guarantee delivery or provide feedback about when the packet arrives at the server. Therefore you can only measure the time it takes to send the packet from your application not the actual time it takes to reach the server. This method gives you the local transmission time not the network travel time."
-}

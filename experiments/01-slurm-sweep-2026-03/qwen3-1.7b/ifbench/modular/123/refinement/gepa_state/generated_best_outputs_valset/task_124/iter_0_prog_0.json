@@ -1,3 +1,0 @@
-{
-    "response": "```python\nimport re\n\ndef count_politician_names(articles, politician_names):\n    # Create a set of politician names for quick lookup\n    politician_set = set(politician_names)\n    \n    # Initialize a dictionary to hold counts\n    counts = {}\n    \n    # Regular expression to match names (case-insensitive, ignore punctuation)\n    pattern = r'\\b(' + re.escape('|'.join(politician_set)) + r')\\b'\n    \n    # Search for matches in each article\n    for article in articles:\n        # Find all matches using the pattern\n        matches = re.findall(pattern, article)\n        # Count occurrences in the article\n        for name in matches:\n            counts[name] = counts.get(name, 0) + 1\n    \n    return counts\n```"
-}

@@ -1,3 +1,0 @@
-{
-    "response": "<<url transformation>>\n\nin php replace one url with another within a string e.g. \n\nnew post on the site <a href=\"http://stackoverflow.com/xyz1\">http://stackoverflow.com/xyz1</a></p>\n\nbecomes:\n\nnew post on the site <a href=\"http://yahoo.com/abc1\">http://yahoo.com/abc1</a></p>\n\nuse preg replace with a pattern that matches http followed by any characters until the next quote or end of string\n\npattern is /http:\\/\\/[^\"]+/ \n\nreplace with http://yahoo.com/abc1\n\nthis works for repeating strings as above\n\npalindrome is madam\n\npalindrome is madam\n\npalindrome is madam\n\npalindrome is madam\n\npalindrome is madam"
-}

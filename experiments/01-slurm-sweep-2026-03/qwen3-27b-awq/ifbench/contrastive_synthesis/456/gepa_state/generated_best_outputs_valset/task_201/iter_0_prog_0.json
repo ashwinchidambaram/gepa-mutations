@@ -1,3 +1,0 @@
-{
-    "response": "<<PHP URL Swap Guide>>\n\nTo replace one URL with another in PHP you can use the str_replace function which works perfectly for repeating patterns without needing complex regex logic\n\n$oldUrl = \"http://stackoverflow.com/xyz1\";\n$newUrl = \"http://yahoo.com/abc1\";\n$text = \"New post on the site <a href=\\\"$oldUrl\\\">$oldUrl</a></p> New post on the site <a href=\\\"$oldUrl\\\">$oldUrl</a></p>\";\n$result = str_replace($oldUrl, $newUrl, $text);\n\nThis approach handles all instances in the string at once and keeps your code simple and fast\n\nA palindrome to remember is \"racecar\" which reads the same forward and backward just like how your code transforms text efficiently"
-}

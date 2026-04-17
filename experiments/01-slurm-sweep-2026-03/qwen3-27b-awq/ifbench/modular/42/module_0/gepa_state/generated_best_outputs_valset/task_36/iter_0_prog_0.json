@@ -1,3 +1,0 @@
-{
-    "response": "The error likely stems from using a session ID that has already expired or was generated without proper validation against the TMDB API requirements before making the account request. You must ensure the session creation process completes successfully and returns a valid temporary token that the API recognizes for the subsequent user data fetch.\n\nVerify that your createSessionId function correctly handles the asynchronous response from the createSession endpoint and that you are not reusing an old session identifier stored in local storage. Implementing a try-catch block around the API calls will help you identify whether the failure occurs during session creation or during the account data retrieval phase."
-}

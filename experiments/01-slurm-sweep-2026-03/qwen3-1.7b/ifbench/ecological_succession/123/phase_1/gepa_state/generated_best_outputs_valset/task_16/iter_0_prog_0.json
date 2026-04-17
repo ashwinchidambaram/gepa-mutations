@@ -1,3 +1,0 @@
-{
-    "response": "```python\ndef calculate_average_effectiveness(feedback, treatment_name):\n    # Filter the feedback to include only those with the specified treatment\n    treatment_feedback = [\n        patient[\"treatments\"][treatment_name] for patient in feedback if treatment_name in patient[\"treatments\"]\n    ]\n    \n    # Calculate the average effectiveness\n    if not treatment_feedback:\n        return 0.0\n    else:\n        average = sum(treatment_feedback) / len(treatment_feedback)\n        return round(average, 2)\n```"
-}

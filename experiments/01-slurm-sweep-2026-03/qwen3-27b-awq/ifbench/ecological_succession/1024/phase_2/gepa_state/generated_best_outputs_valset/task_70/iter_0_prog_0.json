@@ -1,3 +1,0 @@
-{
-    "response": "<<SQL query for sorting by length>>\nto organize records in the title and director columns we use the length function in a descending order\nwhen lengths are equal we sort alphabetically to break the tie\nthe word noon is a palindrome that reads the same forward and backward\nselect title, director from movies order by length(title) desc, title, length(director) desc, director;"
-}

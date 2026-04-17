@@ -1,3 +1,0 @@
-{
-    "response": "scores\ndef analyze(scores):\n    avg = sum(scores)/len(scores)\n    high = max(scores)\n    low = min(scores)\n    pass_count = sum(1 for s in scores if s >= 60)\n    fail_count = len(scores) - pass_count\n    return {\n        'average_score': avg,\n        'highest_score': high,\n        'lowest_score': low,\n        'passed': pass_count,\n        'failed': fail_count\n    }\nscores"
-}

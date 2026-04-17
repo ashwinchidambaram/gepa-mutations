@@ -1,3 +1,0 @@
-{
-    "response": "The error likely occurs because the TMDb API requires a specific authentication flow where the session ID must be created with a valid request token before fetching account data, and your current code attempts to create the session and immediately use it without ensuring the request token is still valid or properly passed in the session creation step.\n\nYou should verify that the request token used to generate the session ID has not expired and that the createSessionId function correctly handles the API response to return a usable session ID, as the account endpoint will reject any session ID that was not generated through a valid and recent authentication handshake."
-}
