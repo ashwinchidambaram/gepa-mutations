@@ -27,7 +27,7 @@ REQUIRED_METRICS_FIELDS = [
     "total_tokens",
 ]
 
-STANDALONE_METHODS = ["synaptic_pruning", "slime_mold", "tournament"]
+STANDALONE_METHODS = ["synaptic_pruning", "iso", "tournament"]
 
 def validate_experiment(exp_dir: Path) -> list[str]:
     """Validate a single experiment directory. Returns list of error strings."""

@@ -1,14 +1,14 @@
-"""slime_mold: SMNO (Slime Mold Network Optimization) for prompt search.
+"""iso: ISO (Iterative Search Optimization) for prompt search.
 
 Uses progressive pruning of diverse candidate prompts, analogous to how
 slime mold networks optimize nutrient transport paths over multiple rounds.
 """
 
-from slime_mold.colony import generate_diverse_prompts, mutate_prompt, run_pruning_round
-from slime_mold.runner import run_slime_mold
+from iso.colony import generate_diverse_prompts, mutate_prompt, run_pruning_round
+from iso.runner import run_iso
 
 __all__ = [
-    "run_slime_mold",
+    "run_iso",
     "generate_diverse_prompts",
     "mutate_prompt",
     "run_pruning_round",

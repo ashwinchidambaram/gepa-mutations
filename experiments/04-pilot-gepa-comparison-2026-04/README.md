@@ -17,10 +17,10 @@ Two prompt-optimization algorithms running on the **same seed prompt** with the
 - **`gepa`** — reflective Pareto-frontier prompt search (Agrawal et al. 2025).
   Wraps `gepa.api.optimize` with the `DefaultAdapter` for single-prompt
   optimization. Already wired in `src/gepa_mutations/runner/experiment.py`.
-- **`slime_mold`** — personality-strategy variant (Analytical/Creative/Minimal/
+- **`iso`** — personality-strategy variant (Analytical/Creative/Minimal/
   Expert), the most-studied reference point from prior experiments. This is
   the default `--strategy-mode personality --mutation-mode blind --refresh-mode
-  none` configuration of `methods/slime_mold/slime_mold/runner.py`.
+  none` configuration of `methods/iso/iso/runner.py`.
 
 We are **not** including the inductive variants in this pilot. Those are still
 being prompt-engineered and would muddy a head-to-head against GEPA.
@@ -107,7 +107,7 @@ therefore not on the same comparison surface).
 
 Specifically:
 - `gepa` mean test score on the 3 pilot seeds = the forward GEPA reference
-- `slime_mold` mean test score on the 3 pilot seeds = the forward Slime Mold
+- `iso` mean test score on the 3 pilot seeds = the forward Slime Mold
   reference
 
 These are recorded in `analyze_summary.json` after the pilot completes.
@@ -121,7 +121,7 @@ After pod is provisioned with vLLM serving Qwen3-8B on port 8125:
 .venv/bin/python scripts/run_all_local.py \
     --workers 2 \
     --seeds 555,999,1337 \
-    --method gepa slime_mold \
+    --method gepa iso \
     --benchmark hotpotqa \
     --runs-dir experiments/04-pilot-gepa-comparison-2026-04/runs
 ```

@@ -170,7 +170,7 @@ if (i + 1) % 10 == 0:
 ## Issue 15: Metrics format split — proposer-replacement mutations don't write unified schema
 
 **Observed**: Two separate metrics systems exist and are not wired together:
-- `MetricsCollector` (`src/gepa_mutations/metrics/collector.py`) — the unified schema used by standalone search mutations (tournament, synaptic_pruning, slime_mold, ant_colony, ecological_succession, modular). Writes `rollout_count`, `total_tokens`, `score_per_1k_rollouts`, `prompt_length_tokens`, etc.
+- `MetricsCollector` (`src/gepa_mutations/metrics/collector.py`) — the unified schema used by standalone search mutations (tournament, synaptic_pruning, iso, ant_colony, ecological_succession, modular). Writes `rollout_count`, `total_tokens`, `score_per_1k_rollouts`, `prompt_length_tokens`, etc.
 - `MetricsCallback` (`src/gepa_mutations/runner/callbacks.py`) — GEPA's internal callback format used by the GEPA baseline and all proposer-replacement mutations (best_of_k, contrastive_reflection, failure_stratified_k, active_minibatch, contrastive_synthesis). Writes `total_metric_calls`, `iterations[]`, `valset_scores[]`, etc.
 
 Key fields missing from GEPA-baseline and proposer-replacement `metrics.json`:
@@ -200,7 +200,7 @@ The existing GEPA-internal `metrics.json` can be preserved (it contains useful p
 
 **Observed**: 7 of the 11 mutation runners `import dspy` and call `dspy.configure()`. The mutation algorithms themselves contain no DSPy logic, but a DSPy dependency leaks in through the AIME benchmark evaluation path.
 
-**Root cause**: `AIMEAdapter` in `evaluators.py` uses `dspy.Example`, `dspy.Prediction`, and `dspy.ChainOfThought` to run chain-of-thought math evaluation. Runners conditionally call `dspy.configure(lm=task_lm)` only when `benchmark == "aime"`. `base.py`'s `build_task_lm()` also returns a `dspy.LM` object consumed only by this path. The 4 standalone mutations (tournament, slime_mold, synaptic_pruning, ant_colony) already have no DSPy import.
+**Root cause**: `AIMEAdapter` in `evaluators.py` uses `dspy.Example`, `dspy.Prediction`, and `dspy.ChainOfThought` to run chain-of-thought math evaluation. Runners conditionally call `dspy.configure(lm=task_lm)` only when `benchmark == "aime"`. `base.py`'s `build_task_lm()` also returns a `dspy.LM` object consumed only by this path. The 4 standalone mutations (tournament, iso, synaptic_pruning, ant_colony) already have no DSPy import.
 
 **Impact**: Framework coupling makes it harder to swap evaluators or run on environments without DSPy installed. Conceptually, the mutations should be framework-agnostic.
 

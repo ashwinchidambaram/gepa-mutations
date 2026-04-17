@@ -214,7 +214,7 @@ def _evaluate_qa(
     # Timeout-aware replacement for the previous `list(pool.map(eval_one, testset))`.
     # The old version would block forever if ANY single LM call hung (e.g., litellm
     # retry loop not respecting its timeout, or vLLM accepting but never returning).
-    # We observed this during the exp-04 pilot on gepa and slime_mold alike.
+    # We observed this during the exp-04 pilot on gepa and iso alike.
     #
     # New strategy:
     #   - submit all tasks, track by index so we can write results in order

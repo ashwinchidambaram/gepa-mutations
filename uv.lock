@@ -1071,7 +1071,7 @@ dependencies = [
     { name = "gepa-ecological-succession" },
     { name = "gepa-failure-stratified-k" },
     { name = "gepa-modular" },
-    { name = "gepa-slime-mold" },
+    { name = "gepa-iso" },
     { name = "gepa-synaptic-pruning" },
     { name = "gepa-tournament" },
     { name = "matplotlib" },
@@ -1098,7 +1098,7 @@ requires-dist = [
     { name = "gepa-ecological-succession", editable = "methods/ecological_succession" },
     { name = "gepa-failure-stratified-k", editable = "methods/failure_stratified_k" },
     { name = "gepa-modular", editable = "methods/modular" },
-    { name = "gepa-slime-mold", editable = "methods/slime_mold" },
+    { name = "gepa-iso", editable = "methods/iso" },
     { name = "gepa-synaptic-pruning", editable = "methods/synaptic_pruning" },
     { name = "gepa-tournament", editable = "methods/tournament" },
     { name = "matplotlib" },
@@ -1112,9 +1112,9 @@ requires-dist = [
 ]
 
 [[package]]
-name = "gepa-slime-mold"
+name = "gepa-iso"
 version = "0.1.0"
-source = { editable = "methods/slime_mold" }
+source = { editable = "methods/iso" }
 dependencies = [
     { name = "gepa-mutations" },
 ]

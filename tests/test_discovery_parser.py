@@ -27,15 +27,15 @@ if _needs_stub("gepa_mutations.metrics.collector", "MetricsCollector"):
     sys.modules["gepa_mutations.metrics.collector"].MetricsCollector = object  # type: ignore[attr-defined]
     sys.modules["gepa_mutations.metrics.standalone_eval"].evaluate_prompt = lambda *_a, **_kw: None  # type: ignore[attr-defined]
 
-# Load colony.py directly (bypasses slime_mold/__init__.py → runner.py chain)
+# Load colony.py directly (bypasses iso/__init__.py → runner.py chain)
 _colony_path = (
     pathlib.Path(__file__).parent.parent
-    / "methods" / "slime_mold" / "slime_mold" / "colony.py"
+    / "methods" / "iso" / "iso" / "colony.py"
 )
-_spec = importlib.util.spec_from_file_location("slime_mold.colony", _colony_path)
+_spec = importlib.util.spec_from_file_location("iso.colony", _colony_path)
 assert _spec is not None and _spec.loader is not None
 _colony_mod = importlib.util.module_from_spec(_spec)
-sys.modules["slime_mold.colony"] = _colony_mod
+sys.modules["iso.colony"] = _colony_mod
 _spec.loader.exec_module(_colony_mod)
 _parse_discovered_skills = _colony_mod._parse_discovered_skills  # type: ignore[attr-defined]
 PRESCRIBED_STRATEGIES = _colony_mod.PRESCRIBED_STRATEGIES  # type: ignore[attr-defined]

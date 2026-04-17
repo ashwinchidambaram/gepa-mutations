@@ -12,11 +12,11 @@ Test whether inductive strategy discovery (LLM examines benchmark examples and i
 See `../../docs/superpowers/specs/2026-04-15-inductive-strategy-discovery-design.md`
 
 ## Methods Tested (Tier 1)
-1. slime_mold (baseline — 4 personality strategies, blind mutation)
-2. slime_mold_prescribed8 (8 universal problem-solving strategies, blind mutation)
-3. slime_mold_inductive_k5 (inductive discovery K=5, blind mutation)
-4. slime_mold_inductive_k5_crosspollin (inductive + cross-pollination mutation)
-5. slime_mold_inductive_k5_refresh_expand (full hybrid + refresh pass)
+1. iso (baseline — 4 personality strategies, blind mutation)
+2. iso_prescribed8 (8 universal problem-solving strategies, blind mutation)
+3. iso_inductive_k5 (inductive discovery K=5, blind mutation)
+4. iso_inductive_k5_crosspollin (inductive + cross-pollination mutation)
+5. iso_inductive_k5_refresh_expand (full hybrid + refresh pass)
 
 ## Benchmarks × Seeds
 hotpotqa × 10 seeds + {hover, pupa, ifbench} × 5 seeds = 125 runs

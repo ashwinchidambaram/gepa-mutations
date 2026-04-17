@@ -27,7 +27,7 @@ Determine which prompt optimization method produces the best prompts for the lea
 | **Inductive Discovery** | LLM examines benchmark examples, discovers task-specific skills, generates one prompt per skill | ~3-5 extra calls | `inductive-strategy-discovery.md` |
 | **Inductive + Refresh** | Discovery + one refresh pass after Round 1 using failure data | ~5-7 extra calls | `inductive-strategy-discovery.md` |
 | **Full Hybrid** | Inductive discovery + strategy-aware mutation + cross-pollination + 1 refresh | ~5-7 extra calls | both docs |
-| **Larger Pool (40)** | Double candidate pool from 20 to 40 | ~275-575 extra evaluation calls | `larger-slime-mold-pool.md` |
+| **Larger Pool (40)** | Double candidate pool from 20 to 40 | ~275-575 extra evaluation calls | `larger-iso-pool.md` |
 
 ### Composition Matrix
 
@@ -100,7 +100,7 @@ Every method logs this at every step (round for Slime Mold, iteration for GEPA):
 
 ```python
 {
-    "method": "slime_mold_inductive",
+    "method": "iso_inductive",
     "benchmark": "hotpotqa",
     "seed": 42,
     "step": 3,

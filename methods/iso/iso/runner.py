@@ -35,7 +35,7 @@ from gepa_mutations.runner.experiment import (
 )
 from gepa_mutations.storage.local import save_result
 
-from slime_mold.colony import (
+from iso.colony import (
     PRESCRIBED_STRATEGIES,
     build_failure_matrix,
     collect_hard_examples,
@@ -48,7 +48,7 @@ from slime_mold.colony import (
     mutate_prompt_with_context,
     run_pruning_round,
 )
-from slime_mold.naming import _derive_method_name
+from iso.naming import _derive_method_name
 
 console = Console()
 
@@ -103,7 +103,6 @@ def _evaluate_holdout(
     score, _ = evaluate_prompt(adapter, holdout_examples, candidate, collector)
     return score
 
-
 # Progressive pruning schedule: (n_examples_per_eval, keep_top_k)
 _PRUNING_SCHEDULE = [
     (10, 10),   # R1: 20 candidates × 10 examples = 200 rollouts → keep 10
@@ -113,7 +112,7 @@ _PRUNING_SCHEDULE = [
 ]
 
 
-def run_slime_mold(
+def run_iso(
     benchmark: str = "hotpotqa",
     seed: int = 42,
     subset: int | None = None,
@@ -813,7 +812,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    run_slime_mold(
+    run_iso(
         benchmark=args.benchmark,
         seed=args.seed,
         subset=args.subset,

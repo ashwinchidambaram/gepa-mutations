@@ -32,7 +32,7 @@ SNAPSHOT  = LOGS_DIR / ".multi_model_snapshot.json"
 BENCHMARKS = ["hotpotqa", "hover", "pupa", "ifbench", "livebench"]
 METHODS = [
     "gepa", "best_of_k_K3",
-    "synaptic_pruning", "tournament", "slime_mold",
+    "synaptic_pruning", "tournament", "iso",
     "ant_colony", "active_minibatch", "ecological_succession",
     "modular", "contrastive_synthesis",
     "contrastive_reflection", "failure_stratified_k_K3",
@@ -47,23 +47,23 @@ BENCHMARK_PRIORITY = {"ifbench": 0, "pupa": 1, "livebench": 2, "hotpotqa": 3, "h
 # Measured avg wall-clock (minutes) per (benchmark, method) from 27B runs.
 # Used to order the "Queued Next" display to match actual execution order.
 EXPERIMENT_DURATION_MINS: dict[tuple[str, str], float] = {
-    ("ifbench", "synaptic_pruning"): 30, ("ifbench", "slime_mold"): 89,
+    ("ifbench", "synaptic_pruning"): 30, ("ifbench", "iso"): 89,
     ("ifbench", "tournament"): 168, ("ifbench", "gepa"): 197,
     ("ifbench", "contrastive_reflection"): 215, ("ifbench", "best_of_k_K3"): 218,
     ("ifbench", "ant_colony"): 240,
-    ("pupa", "slime_mold"): 75, ("pupa", "synaptic_pruning"): 75,
+    ("pupa", "iso"): 75, ("pupa", "synaptic_pruning"): 75,
     ("pupa", "tournament"): 104, ("pupa", "best_of_k_K3"): 222,
     ("pupa", "contrastive_reflection"): 274, ("pupa", "gepa"): 328,
     ("livebench", "failure_stratified_k_K3"): 102, ("livebench", "synaptic_pruning"): 128,
-    ("livebench", "slime_mold"): 217, ("livebench", "contrastive_reflection"): 274,
+    ("livebench", "iso"): 217, ("livebench", "contrastive_reflection"): 274,
     ("livebench", "best_of_k_K3"): 317, ("livebench", "tournament"): 317,
     ("livebench", "gepa"): 355,
     ("hotpotqa", "modular"): 20, ("hotpotqa", "active_minibatch"): 27,
     ("hotpotqa", "contrastive_synthesis"): 28, ("hotpotqa", "ecological_succession"): 48,
     ("hotpotqa", "ant_colony"): 62, ("hotpotqa", "synaptic_pruning"): 100,
-    ("hotpotqa", "slime_mold"): 149, ("hotpotqa", "tournament"): 188,
+    ("hotpotqa", "iso"): 149, ("hotpotqa", "tournament"): 188,
     ("hotpotqa", "best_of_k_K3"): 235, ("hotpotqa", "gepa"): 490,
-    ("hover", "slime_mold"): 119, ("hover", "tournament"): 245,
+    ("hover", "iso"): 119, ("hover", "tournament"): 245,
     ("hover", "best_of_k_K3"): 313, ("hover", "gepa"): 391,
     ("hover", "contrastive_reflection"): 454, ("hover", "failure_stratified_k_K3"): 519,
 }

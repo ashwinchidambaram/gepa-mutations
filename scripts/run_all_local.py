@@ -84,10 +84,10 @@ _MODEL_TAG = _env_model_tag()
 BENCHMARKS = ["hotpotqa", "hover", "pupa", "ifbench", "livebench"]
 METHODS = [
     "gepa", "best_of_k_K3", "contrastive_reflection", "failure_stratified_k_K3",
-    "synaptic_pruning", "tournament", "slime_mold", "ant_colony",
+    "synaptic_pruning", "tournament", "iso", "ant_colony",
     "active_minibatch", "contrastive_synthesis", "ecological_succession", "modular",
-    "slime_mold_prescribed8", "slime_mold_inductive_k5",
-    "slime_mold_inductive_k5_crosspollin", "slime_mold_inductive_k5_refresh_expand",
+    "iso_prescribed8", "iso_inductive_k5",
+    "iso_inductive_k5_crosspollin", "iso_inductive_k5_refresh_expand",
 ]
 SEEDS = [42, 123, 456, 789, 1024]
 
@@ -95,14 +95,14 @@ SEEDS = [42, 123, 456, 789, 1024]
 # Used for (benchmark, method) pairs not in EXPERIMENT_DURATION_MINS.
 METHOD_PRIORITY = {
     "gepa": 0, "best_of_k_K3": 1,
-    "synaptic_pruning": 2, "slime_mold": 3, "tournament": 4,
+    "synaptic_pruning": 2, "iso": 3, "tournament": 4,
     "ant_colony": 5, "active_minibatch": 6, "ecological_succession": 7,
     "modular": 8, "contrastive_synthesis": 9,
     "contrastive_reflection": 10, "failure_stratified_k_K3": 11,
-    "slime_mold_prescribed8": 12,
-    "slime_mold_inductive_k5": 13,
-    "slime_mold_inductive_k5_crosspollin": 14,
-    "slime_mold_inductive_k5_refresh_expand": 15,
+    "iso_prescribed8": 12,
+    "iso_inductive_k5": 13,
+    "iso_inductive_k5_crosspollin": 14,
+    "iso_inductive_k5_refresh_expand": 15,
 }
 
 # Benchmark run order: fastest wall-clock first (actual durations, not paper rollout budget)
@@ -115,7 +115,7 @@ BENCHMARK_PRIORITY = {"ifbench": 0, "pupa": 1, "livebench": 2, "hotpotqa": 3, "h
 METHOD_TIER = {
     # Tier 0 — fast to medium mutations
     "modular": 0, "active_minibatch": 0, "contrastive_synthesis": 0,
-    "ecological_succession": 0, "synaptic_pruning": 0, "slime_mold": 0, "ant_colony": 0,
+    "ecological_succession": 0, "synaptic_pruning": 0, "iso": 0, "ant_colony": 0,
     # Tier 1 — heavy / rollout-heavy mutations
     "tournament": 1, "best_of_k_K3": 1, "failure_stratified_k_K3": 1, "contrastive_reflection": 1,
     # Tier 2 — gepa baseline (last, for final comparison)
@@ -128,14 +128,14 @@ METHOD_TIER = {
 EXPERIMENT_DURATION_MINS: dict[tuple[str, str], float] = {
     # ifbench
     ("ifbench", "synaptic_pruning"):        30,
-    ("ifbench", "slime_mold"):              89,
+    ("ifbench", "iso"):              89,
     ("ifbench", "tournament"):             168,
     ("ifbench", "gepa"):                   197,
     ("ifbench", "contrastive_reflection"): 215,
     ("ifbench", "best_of_k_K3"):           218,
     ("ifbench", "ant_colony"):             240,
     # pupa
-    ("pupa", "slime_mold"):                 75,
+    ("pupa", "iso"):                 75,
     ("pupa", "synaptic_pruning"):           75,
     ("pupa", "tournament"):                104,
     ("pupa", "best_of_k_K3"):             222,
@@ -144,7 +144,7 @@ EXPERIMENT_DURATION_MINS: dict[tuple[str, str], float] = {
     # livebench
     ("livebench", "failure_stratified_k_K3"): 102,
     ("livebench", "synaptic_pruning"):     128,
-    ("livebench", "slime_mold"):           217,
+    ("livebench", "iso"):           217,
     ("livebench", "contrastive_reflection"): 274,
     ("livebench", "best_of_k_K3"):         317,
     ("livebench", "tournament"):           317,
@@ -156,12 +156,12 @@ EXPERIMENT_DURATION_MINS: dict[tuple[str, str], float] = {
     ("hotpotqa", "ecological_succession"):  48,
     ("hotpotqa", "ant_colony"):             62,
     ("hotpotqa", "synaptic_pruning"):      100,
-    ("hotpotqa", "slime_mold"):            149,
+    ("hotpotqa", "iso"):            149,
     ("hotpotqa", "tournament"):            188,
     ("hotpotqa", "best_of_k_K3"):          235,
     ("hotpotqa", "gepa"):                  490,
     # hover
-    ("hover", "slime_mold"):               119,
+    ("hover", "iso"):               119,
     ("hover", "tournament"):               245,
     ("hover", "best_of_k_K3"):             313,
     ("hover", "gepa"):                     391,
@@ -178,23 +178,23 @@ METHOD_COMMANDS = {
     "failure_stratified_k_K3": lambda bm, seed, subset, mmc: _mutation_cmd("failure_stratified_k", bm, seed, 3, subset, mmc),
     "synaptic_pruning": lambda bm, seed, subset, mmc: _mutation_cmd("synaptic_pruning", bm, seed, None, subset, mmc),
     "tournament": lambda bm, seed, subset, mmc: _mutation_cmd("tournament", bm, seed, None, subset, mmc),
-    "slime_mold": lambda bm, seed, subset, mmc: _slime_mold_cmd(bm, seed, subset, mmc, strategy_mode="personality"),
+    "iso": lambda bm, seed, subset, mmc: _iso_cmd(bm, seed, subset, mmc, strategy_mode="personality"),
     "ant_colony": lambda bm, seed, subset, mmc: _mutation_cmd("ant_colony", bm, seed, None, subset, mmc),
     "active_minibatch": lambda bm, seed, subset, mmc: _mutation_cmd("active_minibatch", bm, seed, None, subset, mmc),
     "contrastive_synthesis": lambda bm, seed, subset, mmc: _mutation_cmd("contrastive_synthesis", bm, seed, None, subset, mmc),
     "ecological_succession": lambda bm, seed, subset, mmc: _mutation_cmd("ecological_succession", bm, seed, None, subset, mmc),
     "modular": lambda bm, seed, subset, mmc: _mutation_cmd("modular", bm, seed, None, subset, mmc),
-    # Tier 1 Slime Mold variants (Phase 3-8 parameterization)
-    "slime_mold_prescribed8": lambda bm, seed, subset, mmc: _slime_mold_cmd(
+    # Tier 1 ISO variants (Phase 3-8 parameterization)
+    "iso_prescribed8": lambda bm, seed, subset, mmc: _iso_cmd(
         bm, seed, subset, mmc, strategy_mode="prescribed8"
     ),
-    "slime_mold_inductive_k5": lambda bm, seed, subset, mmc: _slime_mold_cmd(
+    "iso_inductive_k5": lambda bm, seed, subset, mmc: _iso_cmd(
         bm, seed, subset, mmc, strategy_mode="inductive", k=5
     ),
-    "slime_mold_inductive_k5_crosspollin": lambda bm, seed, subset, mmc: _slime_mold_cmd(
+    "iso_inductive_k5_crosspollin": lambda bm, seed, subset, mmc: _iso_cmd(
         bm, seed, subset, mmc, strategy_mode="inductive", k=5, mutation_mode="crosspollin"
     ),
-    "slime_mold_inductive_k5_refresh_expand": lambda bm, seed, subset, mmc: _slime_mold_cmd(
+    "iso_inductive_k5_refresh_expand": lambda bm, seed, subset, mmc: _iso_cmd(
         bm, seed, subset, mmc,
         strategy_mode="inductive", k=5, mutation_mode="crosspollin", refresh_mode="expand",
     ),
@@ -289,7 +289,7 @@ def _mutation_cmd(mutation: str, benchmark: str, seed: int, k: int | None, subse
         "failure_stratified_k": "methods/failure_stratified_k/failure_stratified_k/runner.py",
         "synaptic_pruning": "methods/synaptic_pruning/synaptic_pruning/runner.py",
         "tournament": "methods/tournament/tournament/runner.py",
-        "slime_mold": "methods/slime_mold/slime_mold/runner.py",
+        "iso": "methods/iso/iso/runner.py",
         "ant_colony": "methods/ant_colony/ant_colony/runner.py",
         "active_minibatch": "methods/active_minibatch/active_minibatch/runner.py",
         "contrastive_synthesis": "methods/contrastive_synthesis/contrastive_synthesis/runner.py",
@@ -307,7 +307,7 @@ def _mutation_cmd(mutation: str, benchmark: str, seed: int, k: int | None, subse
     return cmd
 
 
-def _slime_mold_cmd(
+def _iso_cmd(
     benchmark: str,
     seed: int,
     subset: int | None,
@@ -317,8 +317,8 @@ def _slime_mold_cmd(
     mutation_mode: str = "blind",
     refresh_mode: str = "none",
 ) -> list[str]:
-    """Build command to run slime_mold runner with Tier 1 flags."""
-    script = Path(__file__).parent.parent / "methods/slime_mold/slime_mold/runner.py"
+    """Build command to run ISO runner with Tier 1 flags."""
+    script = Path(__file__).parent.parent / "methods/iso/iso/runner.py"
     cmd = [
         _venv_python(), str(script),
         "--benchmark", benchmark,

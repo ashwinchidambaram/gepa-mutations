@@ -20,8 +20,8 @@ from pathlib import Path
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
-# Add slime_mold to path (so we can import the production discovery function)
-sys.path.insert(0, str(Path(__file__).parent.parent / "methods" / "slime_mold"))
+# Add iso to path (so we can import the production discovery function)
+sys.path.insert(0, str(Path(__file__).parent.parent / "methods" / "iso"))
 
 from gepa_mutations.config import Settings
 from gepa_mutations.base import build_reflection_lm
@@ -30,7 +30,7 @@ from gepa_mutations.runner.experiment import (
     BENCHMARK_OUTPUT_SHAPES,
     BENCHMARK_TASK_INSTRUCTIONS,
 )
-from slime_mold.colony import discover_strategies
+from iso.colony import discover_strategies
 
 
 def format_examples(examples: list, max_examples: int = 10) -> str:

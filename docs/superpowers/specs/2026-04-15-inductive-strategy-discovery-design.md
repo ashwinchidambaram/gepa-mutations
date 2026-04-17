@@ -51,7 +51,7 @@ Skip AIME (8B can't solve math) and LiveBench (no method separation in previous 
 
 5 methods, 4 benchmarks, 5 seeds = 100 runs. ~15 hours on 2x RTX 4090. ~$12.
 
-### Method 1: `slime_mold` (existing baseline)
+### Method 1: `iso` (existing baseline)
 
 - **Strategies:** 4 personality (Analytical, Creative, Minimal, Expert)
 - **Pool:** 4 strategies x 5 prompts = 19 + seed = 20
@@ -60,7 +60,7 @@ Skip AIME (8B can't solve math) and LiveBench (no method separation in previous 
 - **Calls:** ~652
 - **Purpose:** Control. Already have partial data for qwen3-8b (PUPA, IFBench).
 
-### Method 2: `slime_mold_prescribed8`
+### Method 2: `iso_prescribed8`
 
 - **Strategies:** 8 universal problem-solving strategies:
   1. Divide & Conquer — break into sub-problems, solve easiest first, assemble
@@ -77,7 +77,7 @@ Skip AIME (8B can't solve math) and LiveBench (no method separation in previous 
 - **Calls:** ~748
 - **Purpose:** Tests whether smarter prescribed strategies help, without task-adaptiveness.
 
-### Method 3: `slime_mold_inductive_k5_crosspollin`
+### Method 3: `iso_inductive_k5_crosspollin`
 
 - **Strategies:** Inductive discovery (K=5 fixed). LLM examines 8-10 seed-dependent train examples, identifies 5 skills with failure patterns.
 - **Pool:** 5 skills x 4 prompts = 20 + seed = 21
@@ -86,7 +86,7 @@ Skip AIME (8B can't solve math) and LiveBench (no method separation in previous 
 - **Calls:** ~664
 - **Purpose:** The core experiment. Does task-adaptive generation + informed mutation help?
 
-### Method 4: `slime_mold_inductive_k5_refresh_expand`
+### Method 4: `iso_inductive_k5_refresh_expand`
 
 - **Strategies:** Same as Method 3
 - **Pool:** 21 initially, grows after refresh
@@ -95,7 +95,7 @@ Skip AIME (8B can't solve math) and LiveBench (no method separation in previous 
 - **Calls:** ~787
 - **Purpose:** Does a second discovery pass catch missed skills? Does expanding the pool help?
 
-### Method 5: `slime_mold_inductive_k5_refresh_replace`
+### Method 5: `iso_inductive_k5_refresh_replace`
 
 - **Strategies:** Same as Method 3
 - **Pool:** 21, stays constant after refresh
@@ -122,17 +122,17 @@ Skip AIME (8B can't solve math) and LiveBench (no method separation in previous 
 
 | # | Method | Strategies | Mutation | Refresh | Pool | Calls |
 |---|--------|-----------|----------|---------|------|-------|
-| 1 | `slime_mold` | 4 personality | blind | none | 20 | ~652 |
-| 2 | `slime_mold_prescribed8` | 8 universal | blind | none | 25 | ~748 |
+| 1 | `iso` | 4 personality | blind | none | 20 | ~652 |
+| 2 | `iso_prescribed8` | 8 universal | blind | none | 25 | ~748 |
 
 ### K=3 — small pool, tests if few high-quality strategies suffice (4 methods)
 
 | # | Method | Mutation | Refresh | Pool | Calls |
 |---|--------|----------|---------|------|-------|
-| 3 | `slime_mold_inductive_k3` | blind | none | 13 | ~457 |
-| 4 | `slime_mold_inductive_k3_crosspollin` | cross-pollination | none | 13 | ~457 |
-| 5 | `slime_mold_inductive_k3_refresh_expand` | cross-pollination | expand | 13->~21 | ~636 |
-| 6 | `slime_mold_inductive_k3_refresh_replace` | cross-pollination | replace | 13 | ~460 |
+| 3 | `iso_inductive_k3` | blind | none | 13 | ~457 |
+| 4 | `iso_inductive_k3_crosspollin` | cross-pollination | none | 13 | ~457 |
+| 5 | `iso_inductive_k3_refresh_expand` | cross-pollination | expand | 13->~21 | ~636 |
+| 6 | `iso_inductive_k3_refresh_replace` | cross-pollination | replace | 13 | ~460 |
 
 **What K=3 tests:** Can 3 well-chosen skills match 5? If so, we get comparable quality at 30% fewer calls.
 
@@ -142,10 +142,10 @@ Skip AIME (8B can't solve math) and LiveBench (no method separation in previous 
 
 | # | Method | Mutation | Refresh | Pool | Calls |
 |---|--------|----------|---------|------|-------|
-| 7 | `slime_mold_inductive_k5` | blind | none | 21 | ~664 |
-| 8 | `slime_mold_inductive_k5_crosspollin` | cross-pollination | none | 21 | ~664 |
-| 9 | `slime_mold_inductive_k5_refresh_expand` | cross-pollination | expand | 21->~29 | ~787 |
-| 10 | `slime_mold_inductive_k5_refresh_replace` | cross-pollination | replace | 21 | ~667 |
+| 7 | `iso_inductive_k5` | blind | none | 21 | ~664 |
+| 8 | `iso_inductive_k5_crosspollin` | cross-pollination | none | 21 | ~664 |
+| 9 | `iso_inductive_k5_refresh_expand` | cross-pollination | expand | 21->~29 | ~787 |
+| 10 | `iso_inductive_k5_refresh_replace` | cross-pollination | replace | 21 | ~667 |
 
 Tier 1 methods 3/4/5 correspond to full matrix #8, #9, #10.
 
@@ -155,10 +155,10 @@ Tier 1 methods 3/4/5 correspond to full matrix #8, #9, #10.
 
 | # | Method | Mutation | Refresh | Pool | Calls |
 |---|--------|----------|---------|------|-------|
-| 11 | `slime_mold_inductive_kadaptive` | blind | none | 4K+1 | ~747 |
-| 12 | `slime_mold_inductive_kadaptive_crosspollin` | cross-pollination | none | 4K+1 | ~747 |
-| 13 | `slime_mold_inductive_kadaptive_refresh_expand` | cross-pollination | expand | varies | ~870 |
-| 14 | `slime_mold_inductive_kadaptive_refresh_replace` | cross-pollination | replace | 4K+1 | ~750 |
+| 11 | `iso_inductive_kadaptive` | blind | none | 4K+1 | ~747 |
+| 12 | `iso_inductive_kadaptive_crosspollin` | cross-pollination | none | 4K+1 | ~747 |
+| 13 | `iso_inductive_kadaptive_refresh_expand` | cross-pollination | expand | varies | ~870 |
+| 14 | `iso_inductive_kadaptive_refresh_replace` | cross-pollination | replace | 4K+1 | ~750 |
 
 **What K=adaptive tests:** Does the model find different numbers of skills for different benchmarks? If K varies meaningfully (e.g., 4 for PUPA, 7 for HotpotQA), that's evidence discovery is genuinely task-adaptive. If it always says ~6, fixed K is more reliable.
 
@@ -290,7 +290,7 @@ def discover_refresh_strategies(
 Single runner function with config flags:
 
 ```python
-def run_slime_mold(
+def run_iso(
     benchmark, seed,
     strategy_mode="personality",  # "personality" | "prescribed8" | "inductive"
     k=None,                       # 3 | 5 | None (adaptive). Ignored for personality/prescribed8.
@@ -301,9 +301,9 @@ def run_slime_mold(
 ```
 
 **Method name derivation:**
-- `strategy_mode="personality"` -> `slime_mold`
-- `strategy_mode="prescribed8"` -> `slime_mold_prescribed8`
-- `strategy_mode="inductive", k=5, mutation_mode="crosspollin", refresh_mode="none"` -> `slime_mold_inductive_k5_crosspollin`
+- `strategy_mode="personality"` -> `iso`
+- `strategy_mode="prescribed8"` -> `iso_prescribed8`
+- `strategy_mode="inductive", k=5, mutation_mode="crosspollin", refresh_mode="none"` -> `iso_inductive_k5_crosspollin`
 - etc.
 
 **Pruning schedule scales with pool size:**
@@ -472,11 +472,11 @@ Reviewed `docs/issues.md` and `CLAUDE/known_bugs_and_fixes.md`. Most critical is
 
 1. **Register all 14 new method names in `run_all_local.py`.**
    - Add to `METHODS` list
-   - Add to `METHOD_COMMANDS` dict mapping each to the parameterized slime_mold runner with appropriate CLI flags
+   - Add to `METHOD_COMMANDS` dict mapping each to the parameterized iso runner with appropriate CLI flags
    - Add to `METHOD_PRIORITY` fallback ordering
    - Missing registration means orchestrator can't launch the method.
 
-2. **Parameterize the slime_mold runner to accept new flags.**
+2. **Parameterize the iso runner to accept new flags.**
    - Currently the runner hardcodes personality strategies and blind mutation
    - Add CLI args: `--strategy-mode`, `--k`, `--mutation-mode`, `--refresh-mode`
    - Method name derivation logic (mapping flags to method name for `save_result`)
@@ -598,11 +598,11 @@ Lightweight — reads JSON files, uses matplotlib/plotly, no dependencies beyond
 
 | Method | HotpotQA | HOVER | PUPA | IFBench | Mean |
 |--------|----------|-------|------|---------|------|
-| slime_mold (baseline) | X +/- Y | ... | ... | ... | ... |
-| slime_mold_prescribed8 | ... | ... | ... | ... | ... |
-| slime_mold_inductive_k5_crosspollin | ... | ... | ... | ... | ... |
-| slime_mold_inductive_k5_refresh_expand | ... | ... | ... | ... | ... |
-| slime_mold_inductive_k5_refresh_replace | ... | ... | ... | ... | ... |
+| iso (baseline) | X +/- Y | ... | ... | ... | ... |
+| iso_prescribed8 | ... | ... | ... | ... | ... |
+| iso_inductive_k5_crosspollin | ... | ... | ... | ... | ... |
+| iso_inductive_k5_refresh_expand | ... | ... | ... | ... | ... |
+| iso_inductive_k5_refresh_replace | ... | ... | ... | ... | ... |
 
 ### Table 2: Variance (std dev across seeds)
 
@@ -641,7 +641,7 @@ One subplot per benchmark, all methods overlaid, mean +/- std shading. The money
 1. **Discovery prompt format:** Numbered list vs JSON. Start with numbered list (simpler for 8B), add JSON fallback if parsing fails frequently.
 2. **Cross-pollination prompt section extraction:** How to extract the "relevant section" from a donor prompt. Start with including the full donor prompt (truncated to 500 chars) with the strategy label. Refine if mutation quality is poor.
 3. **Pruning schedule for refresh+expand:** When refresh adds candidates to R2, the schedule needs to handle variable pool sizes. Use the same approach: roughly halve each round, adjusting keep-k proportionally.
-4. **Existing baseline data:** Reuse qwen3-8b slime_mold results for PUPA and IFBench if evaluation setup is identical. Re-run HotpotQA and HOVER baselines since we don't have them.
+4. **Existing baseline data:** Reuse qwen3-8b iso results for PUPA and IFBench if evaluation setup is identical. Re-run HotpotQA and HOVER baselines since we don't have them.
 
 ## Future Ideas (not in scope)
 
@@ -670,11 +670,11 @@ Use consistently throughout this experiment, in code, logs, and reports:
 
 | # | Method | Strategies | Mutation | Refresh | Pool | Cascade |
 |---|--------|-----------|----------|---------|------|---------|
-| 1 | `slime_mold` | 4 personality | blind | none | 20 | 20→10→5→3→1 |
-| 2 | `slime_mold_prescribed8` | 8 universal | blind | none | 25 | 25→13→7→3→1 |
-| 3 | `slime_mold_inductive_k5` | inductive K=5 | blind | none | 21 | 21→11→6→3→1 |
-| 4 | `slime_mold_inductive_k5_crosspollin` | inductive K=5 | cross-pollination | none | 21 | 21→11→6→3→1 |
-| 5 | `slime_mold_inductive_k5_refresh_expand` | inductive K=5 | cross-pollination | expand (+8 at R2) | 21→(R2=19) | 21→11→(+8)=19→10→3→1 |
+| 1 | `iso` | 4 personality | blind | none | 20 | 20→10→5→3→1 |
+| 2 | `iso_prescribed8` | 8 universal | blind | none | 25 | 25→13→7→3→1 |
+| 3 | `iso_inductive_k5` | inductive K=5 | blind | none | 21 | 21→11→6→3→1 |
+| 4 | `iso_inductive_k5_crosspollin` | inductive K=5 | cross-pollination | none | 21 | 21→11→6→3→1 |
+| 5 | `iso_inductive_k5_refresh_expand` | inductive K=5 | cross-pollination | expand (+8 at R2) | 21→(R2=19) | 21→11→(+8)=19→10→3→1 |
 
 **Swapped from original Tier 1:** removed `refresh_replace`, added `inductive_k5` (blind). This gives clean isolation:
 - 1 vs 2: strategy quality (personality → universal)
@@ -776,7 +776,7 @@ Fallback 1x RTX 4090: ~125 hours = ~5 days at ~$47. Both cheaper than original 2
 
 **I7. Cascade standardization:** Halve each round, floor at 3, final = 1. Applied to all methods.
 
-**I8. Re-run baselines:** Don't reuse old qwen3-8b slime_mold data. All methods run fresh against current evaluator versions.
+**I8. Re-run baselines:** Don't reuse old qwen3-8b iso data. All methods run fresh against current evaluator versions.
 
 **I9. Single-backend vLLM:** Moot with 1x GPU. If we upgrade to 2 GPUs later, add per-backend health polling to `_health_monitor`.
 

@@ -24,7 +24,7 @@ except ImportError:  # pragma: no cover
     plt = None  # type: ignore[assignment]
 
 
-METHODS = ["gepa", "slime_mold"]
+METHODS = ["gepa", "iso"]
 EXPECTED_SEEDS = [555, 999, 1337]
 
 
@@ -114,7 +114,7 @@ def _classify_outcome(slime_mean: float, gepa_mean: float, slime_std: float, gep
 
     if delta >= 0.05:
         return (
-            "slime_mold_clearly_wins",
+            "iso_clearly_wins",
             "Slime Mold beats GEPA by ≥5% absolute with comparable variance. "
             "Proceed to full sweep across 4 benchmarks × 5 seeds × 2 methods.",
         )
@@ -235,7 +235,7 @@ def main() -> int:
 
     # Apply pre-registered decision matrix
     gepa = summary["methods"]["gepa"]
-    slime = summary["methods"]["slime_mold"]
+    slime = summary["methods"]["iso"]
     if gepa["n_runs"] > 0 and slime["n_runs"] > 0:
         outcome, recommendation = _classify_outcome(
             slime_mean=slime["test_score_mean"],
@@ -280,7 +280,7 @@ def main() -> int:
     if plt is not None:
         _plt = plt  # local alias for type narrowing
         fig, ax = _plt.subplots(figsize=(10, 6))
-        colors = {"gepa": "tab:blue", "slime_mold": "tab:orange"}
+        colors = {"gepa": "tab:blue", "iso": "tab:orange"}
         for method in METHODS:
             for r in by_method[method]:
                 traj = _trajectory_points(r["metrics"])

@@ -1,4 +1,4 @@
-"""Method name derivation for the SMNO (Slime Mold Network Optimization) runner.
+"""Method name derivation for the ISO runner.
 
 This module is intentionally kept free of heavy imports so it can be imported
 in tests without requiring the full dependency stack.
@@ -28,21 +28,23 @@ def _derive_method_name(
 
     Examples:
         >>> _derive_method_name("personality", None, "blind", "none")
-        'slime_mold'
+        'iso_personality'
         >>> _derive_method_name("inductive", 5, "crosspollin", "expand")
-        'slime_mold_inductive_k5_refresh_expand'
+        'iso_inductive_k5_refresh_expand'
     """
-    # Personality baseline (ignores k, mutation, refresh)
+    # Personality baseline
     if strategy_mode == "personality":
-        return "slime_mold"
+        if mutation_mode == "crosspollin":
+            return "iso_personality_crosspollin"
+        return "iso_personality"
 
     # Prescribed-8 baseline (uses fixed 8 strategies, blind mutation, no refresh)
     if strategy_mode == "prescribed8":
-        return "slime_mold_prescribed8"
+        return "iso_prescribed8"
 
     # Inductive: build up the name from parts
     if strategy_mode == "inductive":
-        parts = ["slime_mold", "inductive"]
+        parts = ["iso", "inductive"]
         parts.append("kadaptive" if k is None else f"k{k}")
 
         # Refresh takes precedence over crosspollin in naming

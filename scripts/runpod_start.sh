@@ -11,7 +11,7 @@ set -euo pipefail
 
 PHASE="${1:-1}"
 BENCHMARKS="hotpotqa hover pupa ifbench livebench aime"
-METHODS="gepa contrastive_reflection synaptic_pruning slime_mold tournament"
+METHODS="gepa contrastive_reflection synaptic_pruning iso tournament"
 
 echo "=== RunPod Sweep — Phase $PHASE ==="
 

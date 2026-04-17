@@ -266,7 +266,7 @@ doc = {
     "files":{},
 }
 
-out = "examples/renders/gepa_slime_mold_tree.excalidraw"
+out = "examples/renders/gepa_iso_tree.excalidraw"
 with open(out, "w") as f:
     json.dump(doc, f, indent=2)
 

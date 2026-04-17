@@ -8,7 +8,7 @@ set -euo pipefail
 
 PHASE="${1:-1}"
 BENCHMARKS="hotpotqa hover pupa ifbench livebench aime"
-METHODS="gepa contrastive_reflection synaptic_pruning slime_mold tournament"
+METHODS="gepa contrastive_reflection synaptic_pruning iso tournament"
 BRANCH="runpod/pod-b"
 
 echo "=== RunPod Pod B — Qwen3-8B ==="

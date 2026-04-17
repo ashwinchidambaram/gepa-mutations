@@ -61,11 +61,11 @@ _smoke() {
         --smoke-test --workers 4 \
         --seeds 42 \
         --method \
-            slime_mold \
-            slime_mold_prescribed8 \
-            slime_mold_inductive_k5 \
-            slime_mold_inductive_k5_crosspollin \
-            slime_mold_inductive_k5_refresh_expand \
+            iso \
+            iso_prescribed8 \
+            iso_inductive_k5 \
+            iso_inductive_k5_crosspollin \
+            iso_inductive_k5_refresh_expand \
         --benchmark hotpotqa 2>&1 | tee "$LOG_DIR/smoke.log"
 }
 
@@ -98,11 +98,11 @@ _tier1_benchmark() {
         --workers 8 \
         --seeds $seeds \
         --method \
-            slime_mold \
-            slime_mold_prescribed8 \
-            slime_mold_inductive_k5 \
-            slime_mold_inductive_k5_crosspollin \
-            slime_mold_inductive_k5_refresh_expand \
+            iso \
+            iso_prescribed8 \
+            iso_inductive_k5 \
+            iso_inductive_k5_crosspollin \
+            iso_inductive_k5_refresh_expand \
         --benchmark "$benchmark" 2>&1 | tee -a "$LOG_DIR/tier1_$benchmark.log"
 }
 

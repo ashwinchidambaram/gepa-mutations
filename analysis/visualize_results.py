@@ -39,7 +39,7 @@ METHOD_ORDER = [
     "gepa",
     "contrastive_reflection",
     "synaptic_pruning",
-    "slime_mold",
+    "iso",
     "tournament",
     "best_of_k_K3",
     "failure_stratified_k_K3",
@@ -51,7 +51,7 @@ METHOD_COLORS = {
     "gepa": "#1f77b4",
     "contrastive_reflection": "#2ca02c",
     "synaptic_pruning": "#d62728",
-    "slime_mold": "#9467bd",
+    "iso": "#9467bd",
     "tournament": "#ff7f0e",
     "best_of_k_K3": "#e377c2",
     "failure_stratified_k_K3": "#8c564b",
@@ -63,7 +63,7 @@ METHOD_LABELS = {
     "gepa": "GEPA",
     "contrastive_reflection": "Contrastive Refl.",
     "synaptic_pruning": "Synaptic Pruning",
-    "slime_mold": "Slime Mold",
+    "iso": "Slime Mold",
     "tournament": "Tournament",
     "best_of_k_K3": "Best-of-K (K=3)",
     "failure_stratified_k_K3": "Fail-Strat K (K=3)",
@@ -129,7 +129,7 @@ def load_convergence_curve(run_dir: Path, method: str):
         except Exception:
             pass
 
-    # Try metrics.json trajectories (tournament, slime_mold, synaptic_pruning)
+    # Try metrics.json trajectories (tournament, iso, synaptic_pruning)
     metrics_file = run_dir / "metrics.json"
     if metrics_file.exists():
         try:

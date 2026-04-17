@@ -76,7 +76,7 @@ measured on Qwen3-27B runs. For Gemma and Llama models, there's no timing data y
 experiments fall back to `METHOD_PRIORITY` order:
 
 ```
-gepa → best_of_k_K3 → synaptic_pruning → slime_mold → tournament → ant_colony →
+gepa → best_of_k_K3 → synaptic_pruning → iso → tournament → ant_colony →
 active_minibatch → ecological_succession → modular → contrastive_synthesis →
 contrastive_reflection → failure_stratified_k_K3
 ```

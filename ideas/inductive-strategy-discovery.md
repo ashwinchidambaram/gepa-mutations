@@ -207,7 +207,7 @@ Every method must log `(cumulative_llm_calls, best_score_so_far)` at every step 
 **What to log per step:**
 ```python
 {
-    "method": "slime_mold_inductive",
+    "method": "iso_inductive",
     "seed": 42,
     "step": 3,                    # round number or iteration
     "cumulative_llm_calls": 340,  # ALL calls: generation + mutation + evaluation

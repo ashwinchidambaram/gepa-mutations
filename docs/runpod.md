@@ -20,7 +20,7 @@ Based on analysis of 44 complete 5-seed results from the SLURM cluster sweep, we
 | `best_of_k_K3` | Proposer-Replacement | Never below baseline in any cell. Top performer on multiple benchmarks. The reliable choice. |
 | `contrastive_reflection` | Proposer-Replacement | Zero extra LLM cost, always above baseline. Good "free lunch" contrast vs Best-of-K's expensive approach. |
 | `synaptic_pruning` | Standalone Search | Best single result in the sweep (27B IFBench +8.7pp). 15-100x fewer rollouts than GEPA. The efficiency story. |
-| `slime_mold` | Standalone Search | Dominates PUPA across all model scales. Inter-round mutation mechanism is unique. |
+| `iso` | Standalone Search | Dominates PUPA across all model scales. Inter-round mutation mechanism is unique. |
 | `tournament` | Standalone Search | Strong on PUPA and 27B HotpotQA. Contrast with Slime Mold — same population-based approach but without refinement. |
 
 ### Dropped (6 methods)
@@ -205,7 +205,7 @@ GEPA_MODEL="Qwen/Qwen3-8B" GEPA_BASE_URL="http://localhost:8125/v1" \
 cd /workspace/gepa-mutations
 
 # Methods to run (trimmed from 12 to 6 based on SLURM sweep analysis)
-METHODS="gepa best_of_k_K3 contrastive_reflection synaptic_pruning slime_mold tournament"
+METHODS="gepa best_of_k_K3 contrastive_reflection synaptic_pruning iso tournament"
 
 # 1.7B orchestrator (all benchmarks)
 GEPA_MODEL="Qwen/Qwen3-1.7B" GEPA_BASE_URL="http://localhost:8127/v1" \
@@ -275,7 +275,7 @@ CUDA_VISIBLE_DEVICES=0 python -m vllm.entrypoints.openai.api_server \
   --port 8127
 
 # Launch 4B orchestrator (same 6 methods)
-METHODS="gepa best_of_k_K3 contrastive_reflection synaptic_pruning slime_mold tournament"
+METHODS="gepa best_of_k_K3 contrastive_reflection synaptic_pruning iso tournament"
 GEPA_MODEL="Qwen/Qwen3-4B" GEPA_BASE_URL="http://localhost:8127/v1" \
   python scripts/run_all_local.py --workers 8 --benchmark hotpotqa pupa ifbench \
   --method $METHODS \

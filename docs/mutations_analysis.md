@@ -112,7 +112,7 @@ Replace the GEPA loop entirely with a different search strategy. Typically use f
 | Mutation | Core change |
 |----------|------------|
 | `tournament` | 64-candidate single-elimination bracket |
-| `slime_mold` | Progressive pruning: 20→10→5→3→1 with inter-round mutation |
+| `iso` | Progressive pruning: 20→10→5→3→1 with inter-round mutation |
 | `ant_colony` | Pheromone-based reinforcement over atomic prompt components |
 | `synaptic_pruning` | One-shot: generate overspecified prompt, ablate sections, prune |
 
@@ -347,7 +347,7 @@ Based on 30 completed runs across 5 benchmarks and 3 models: hotpotqa/27b [n=5]:
 
 ---
 
-### 3.6 Slime Mold (`slime_mold`, SMNO)
+### 3.6 Slime Mold (`iso`, SMNO)
 
 #### 3.6.1 Motivation
 Tournament eliminates candidates purely by head-to-head comparison with no improvement. Slime Mold adds a failure-informed mutation step between rounds: surviving candidates are improved using failure information from the full round evaluation before the next round begins. This hybrid approach combines population-based exploration with targeted refinement, analogous to biological slime molds that extend pseudopodia toward nutrients and retract from poor paths while adapting their network structure.
@@ -647,7 +647,7 @@ A (mutation, model, benchmark) cell is considered **valid for comparison** when:
 | `failure_stratified_k` | 27b: hover (n=3), livebench (n=4) | More benchmarks + models | Insufficient |
 | `synaptic_pruning` | 27b+14b: 4 benchmarks × 5 seeds | Nearly ready | Nearly ready |
 | `tournament` | 27b+14b+8b: 5 benchmarks × 5 seeds | Ready for 27b | Ready |
-| `slime_mold` | 27b+14b: 5 benchmarks × 5 seeds | Ready for 27b | Ready |
+| `iso` | 27b+14b: 5 benchmarks × 5 seeds | Ready for 27b | Ready |
 | `ant_colony` | 27b: hotpotqa (n=1), ifbench (n=2) | ≥3 seeds on hotpotqa | Insufficient |
 | `active_minibatch` | 27b: hotpotqa (n=1); 1.7b: ifbench (n=2) | More seeds on all | Insufficient |
 | `contrastive_synthesis` | 1.7b: ifbench (n=2) | More benchmarks + seeds | Insufficient |
@@ -678,7 +678,7 @@ A (mutation, model, benchmark) cell is considered **valid for comparison** when:
 | `contrastive_synthesis` | Proposer-replacement | CPU contrastive mining → LLM distills principle | 1 (synthesis) | Same | Stable |
 | `active_minibatch` | Proposer-replacement | High-variance example selection for minibatch | 0 | Same | Stable |
 | `tournament` | Standalone search | 64-candidate single-elimination bracket | 4 (generation only) | ~1/5–1/10× | Stable; no checkpointing |
-| `slime_mold` | Standalone search | 20→1 progressive pruning + inter-round mutation | ~22 total | ~1/8–1/12× | Stable |
+| `iso` | Standalone search | 20→1 progressive pruning + inter-round mutation | ~22 total | ~1/8–1/12× | Stable |
 | `ant_colony` | Standalone search | Pheromone-reinforced component selection | ~6 total | ~1500 rollouts | Stable |
 | `synaptic_pruning` | Standalone search | One-shot generate-ablate-prune pipeline | ~5–10 total | ~1/7–1/15× | Stable |
 | `ecological_succession` | Curriculum | Easy→medium→all phase curriculum | Same as GEPA | GEPA + 3×N_train overhead | Stable; seed-sensitive |

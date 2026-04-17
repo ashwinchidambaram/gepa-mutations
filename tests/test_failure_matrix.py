@@ -34,12 +34,12 @@ if _needs_stub("gepa_mutations.metrics.collector", "MetricsCollector"):
 
 _colony_path = (
     pathlib.Path(__file__).parent.parent
-    / "methods" / "slime_mold" / "slime_mold" / "colony.py"
+    / "methods" / "iso" / "iso" / "colony.py"
 )
-_spec = importlib.util.spec_from_file_location("slime_mold.colony", _colony_path)
+_spec = importlib.util.spec_from_file_location("iso.colony", _colony_path)
 assert _spec is not None and _spec.loader is not None
 _colony_mod = importlib.util.module_from_spec(_spec)
-sys.modules["slime_mold.colony"] = _colony_mod
+sys.modules["iso.colony"] = _colony_mod
 _spec.loader.exec_module(_colony_mod)
 build_failure_matrix = _colony_mod.build_failure_matrix  # type: ignore[attr-defined]
 

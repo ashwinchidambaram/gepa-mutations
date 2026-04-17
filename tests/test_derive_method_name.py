@@ -1,43 +1,44 @@
-"""Test that _derive_method_name produces unique names for all 14 method variants."""
+"""Test that _derive_method_name produces unique names for all method variants."""
 
 import importlib.util
 import pathlib
 import pytest
 
-# Load naming.py directly to avoid triggering slime_mold/__init__.py which
+# Load naming.py directly to avoid triggering iso/__init__.py which
 # imports runner.py which requires the full gepa_mutations environment.
 _naming_path = (
     pathlib.Path(__file__).parent.parent
-    / "methods" / "slime_mold" / "slime_mold" / "naming.py"
+    / "methods" / "iso" / "iso" / "naming.py"
 )
-_spec = importlib.util.spec_from_file_location("slime_mold.naming", _naming_path)
+_spec = importlib.util.spec_from_file_location("iso.naming", _naming_path)
 assert _spec is not None and _spec.loader is not None
 _naming_mod = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_naming_mod)
 _derive_method_name = _naming_mod._derive_method_name  # type: ignore[attr-defined]
 
 
-# All 14 combinations and their expected names
+# All combinations and their expected names
 TEST_CASES = [
     # (strategy_mode, k, mutation_mode, refresh_mode, expected_name)
     # Baselines
-    ("personality", None, "blind", "none", "slime_mold"),
-    ("prescribed8", None, "blind", "none", "slime_mold_prescribed8"),
+    ("personality", None, "blind", "none", "iso_personality"),
+    ("personality", None, "crosspollin", "none", "iso_personality_crosspollin"),
+    ("prescribed8", None, "blind", "none", "iso_prescribed8"),
     # K=3
-    ("inductive", 3, "blind", "none", "slime_mold_inductive_k3"),
-    ("inductive", 3, "crosspollin", "none", "slime_mold_inductive_k3_crosspollin"),
-    ("inductive", 3, "crosspollin", "expand", "slime_mold_inductive_k3_refresh_expand"),
-    ("inductive", 3, "crosspollin", "replace", "slime_mold_inductive_k3_refresh_replace"),
+    ("inductive", 3, "blind", "none", "iso_inductive_k3"),
+    ("inductive", 3, "crosspollin", "none", "iso_inductive_k3_crosspollin"),
+    ("inductive", 3, "crosspollin", "expand", "iso_inductive_k3_refresh_expand"),
+    ("inductive", 3, "crosspollin", "replace", "iso_inductive_k3_refresh_replace"),
     # K=5
-    ("inductive", 5, "blind", "none", "slime_mold_inductive_k5"),
-    ("inductive", 5, "crosspollin", "none", "slime_mold_inductive_k5_crosspollin"),
-    ("inductive", 5, "crosspollin", "expand", "slime_mold_inductive_k5_refresh_expand"),
-    ("inductive", 5, "crosspollin", "replace", "slime_mold_inductive_k5_refresh_replace"),
+    ("inductive", 5, "blind", "none", "iso_inductive_k5"),
+    ("inductive", 5, "crosspollin", "none", "iso_inductive_k5_crosspollin"),
+    ("inductive", 5, "crosspollin", "expand", "iso_inductive_k5_refresh_expand"),
+    ("inductive", 5, "crosspollin", "replace", "iso_inductive_k5_refresh_replace"),
     # K=adaptive
-    ("inductive", None, "blind", "none", "slime_mold_inductive_kadaptive"),
-    ("inductive", None, "crosspollin", "none", "slime_mold_inductive_kadaptive_crosspollin"),
-    ("inductive", None, "crosspollin", "expand", "slime_mold_inductive_kadaptive_refresh_expand"),
-    ("inductive", None, "crosspollin", "replace", "slime_mold_inductive_kadaptive_refresh_replace"),
+    ("inductive", None, "blind", "none", "iso_inductive_kadaptive"),
+    ("inductive", None, "crosspollin", "none", "iso_inductive_kadaptive_crosspollin"),
+    ("inductive", None, "crosspollin", "expand", "iso_inductive_kadaptive_refresh_expand"),
+    ("inductive", None, "crosspollin", "replace", "iso_inductive_kadaptive_refresh_replace"),
 ]
 
 

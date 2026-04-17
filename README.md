@@ -86,7 +86,7 @@ python scripts/run_all_local.py --smoke-test --workers 4 \
 
 # Full experiment
 python scripts/run_all_local.py --workers 6 \
-  --benchmark hotpotqa --method gepa synaptic_pruning slime_mold \
+  --benchmark hotpotqa --method gepa synaptic_pruning iso \
   --seeds 42 123 456 789 1024
 ```
 
@@ -218,7 +218,7 @@ methods/
   gepa/                      Paper baseline (ICLR 2026 Oral)
   contrastive_reflection/    Augmented reflection with contrastive pairs
   synaptic_pruning/          One-shot generate-ablate-prune pipeline
-  slime_mold/                Progressive colony pruning (20→10→5→3→1)
+  iso/                       Progressive colony pruning (20→10→5→3→1)
   tournament/                64-candidate single-elimination bracket
   _experimental/             Methods in development (capo)
 scripts/

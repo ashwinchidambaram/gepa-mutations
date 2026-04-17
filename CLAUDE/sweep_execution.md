@@ -8,7 +8,7 @@ The sweep runs 300 experiments per model: 5 benchmarks × 12 methods × 5 seeds.
 Active benchmarks: `hotpotqa`, `hover`, `pupa`, `ifbench`, `livebench`
 
 Methods: `gepa`, `best_of_k_K3`, `contrastive_reflection`, `failure_stratified_k_K3`,
-`synaptic_pruning`, `tournament`, `slime_mold`, `ant_colony`,
+`synaptic_pruning`, `tournament`, `iso`, `ant_colony`,
 `active_minibatch`, `contrastive_synthesis`, `ecological_succession`, `modular`
 
 Seeds: `42, 123, 456, 789, 1024`

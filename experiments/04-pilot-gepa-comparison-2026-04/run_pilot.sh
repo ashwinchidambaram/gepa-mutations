@@ -35,7 +35,7 @@ export TEST_EVAL_WORKERS="${TEST_EVAL_WORKERS:-5}"
 
 # Bump per-subprocess wall-clock timeout from 2hr (default) → 8hr.
 # At --workers 2 with shared vLLM, runs take ~2.5hr. The 2hr default killed
-# slime_mold/seed=999 mid-run during the pilot's first attempt; user requested
+# iso/seed=999 mid-run during the pilot's first attempt; user requested
 # 8hr to give wide safety margin and keep n=3 per method.
 export WALL_CLOCK_TIMEOUT_SECONDS="${WALL_CLOCK_TIMEOUT_SECONDS:-28800}"
 export EXPERIMENT_LOGS_DIR="$LOG_DIR"
@@ -46,7 +46,7 @@ Usage: ${0##*/} [smoke|pilot|analyze|help]
 
   smoke    Tiny smoke test (subset 5, seed 555 only) — verifies both methods
            run end-to-end. ~5 min.
-  pilot    Full pilot: 6 runs (gepa + slime_mold × seeds 555,999,1337) at paper
+  pilot    Full pilot: 6 runs (gepa + iso × seeds 555,999,1337) at paper
            budget 6871. ~3 hrs per run, ~\$10-15 total cost.
   analyze  Run analyze.py on the completed runs.
   help     Show this message.
@@ -88,7 +88,7 @@ _smoke() {
         --smoke-test \
         --workers 2 \
         --seeds 555 \
-        --method gepa slime_mold \
+        --method gepa iso \
         --benchmark hotpotqa \
         --runs-dir "$RUNS_DIR" 2>&1 | tee "$LOG_DIR/smoke.log"
 }
@@ -96,7 +96,7 @@ _smoke() {
 _pilot() {
     _ensure_vllm
     echo "=== Pilot: GEPA vs Slime Mold on HotpotQA ==="
-    echo "Methods: gepa, slime_mold"
+    echo "Methods: gepa, iso"
     echo "Seeds:   555, 999, 1337"
     echo "Budget:  6871 rollouts each (paper default for HotpotQA)"
     echo "Runs:    6 total"
@@ -109,7 +109,7 @@ _pilot() {
     .venv/bin/python scripts/run_all_local.py \
         --workers 2 \
         --seeds 555,999,1337 \
-        --method gepa slime_mold \
+        --method gepa iso \
         --benchmark hotpotqa \
         --runs-dir "$RUNS_DIR" 2>&1 | tee "$LOG_DIR/pilot.log"
     echo ""

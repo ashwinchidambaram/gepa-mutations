@@ -14,11 +14,11 @@ import numpy as np
 
 
 TIER1_METHODS = [
-    "slime_mold",
-    "slime_mold_prescribed8",
-    "slime_mold_inductive_k5",
-    "slime_mold_inductive_k5_crosspollin",
-    "slime_mold_inductive_k5_refresh_expand",
+    "iso",
+    "iso_prescribed8",
+    "iso_inductive_k5",
+    "iso_inductive_k5_crosspollin",
+    "iso_inductive_k5_refresh_expand",
 ]
 BENCHMARKS = ["hotpotqa", "hover", "pupa", "ifbench"]
 DEFAULT_SEEDS = [42, 123, 456, 789, 1024]
@@ -184,7 +184,7 @@ def plot_mean_scores(results: dict, output_dir: Path):
         ax.bar(x, means, yerr=stds, capsize=3, color=bar_colors, alpha=0.8)
         ax.set_xticks(x)
         ax.set_xticklabels(
-            [m.replace("slime_mold_", "sm_").replace("slime_mold", "baseline")
+            [m.replace("iso_", "sm_").replace("iso", "baseline")
              for m in labels],
             rotation=45, ha="right", fontsize=8,
         )
@@ -224,7 +224,7 @@ def plot_variance_tracker(results: dict, output_dir: Path):
             x + (m_idx - len(TIER1_METHODS) / 2) * width + width / 2,
             stds,
             width,
-            label=method.replace("slime_mold_", "sm_").replace("slime_mold", "baseline"),
+            label=method.replace("iso_", "sm_").replace("iso", "baseline"),
             color=colors[m_idx % len(colors)],
             alpha=0.8,
         )
