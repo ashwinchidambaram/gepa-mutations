@@ -35,6 +35,14 @@ from gepa_mutations.runner.experiment import (
 )
 from gepa_mutations.storage.local import save_result
 
+try:
+    from iso_harness.experiment.checkpoint import save_checkpoint, load_latest_checkpoint
+    _CHECKPOINT_AVAILABLE = True
+except ImportError:
+    save_checkpoint = None  # type: ignore[assignment]
+    load_latest_checkpoint = None  # type: ignore[assignment]
+    _CHECKPOINT_AVAILABLE = False
+
 from iso.colony import (
     PRESCRIBED_STRATEGIES,
     build_failure_matrix,
@@ -124,6 +132,7 @@ def run_iso(
     mutation_mode: str = "blind",
     refresh_mode: str = "none",
     hard_example_threshold: float = 0.7,
+    run_dir: str | None = None,  # checkpoint directory for resume support
 ) -> ExperimentResult:
     """Run the SMNO (Slime Mold Network Optimization) experiment.
 
@@ -365,8 +374,30 @@ def run_iso(
     _running_best_score = 0.0
     _running_best_prompt = seed_prompt
 
+    # ---- Checkpoint resume ----
+    _resume_from_round = -1
+    if run_dir and _CHECKPOINT_AVAILABLE:
+        from pathlib import Path
+        _run_dir = Path(run_dir)
+        _existing = load_latest_checkpoint(_run_dir)
+        if _existing is not None:
+            _resume_from_round = _existing.round_num
+            # Restore candidates from checkpoint
+            candidates = [c.get("prompt", c.get("system_prompt", "")) for c in _existing.candidates]
+            candidate_strategies = [c.get("strategy", "unknown") for c in _existing.candidates]
+            # Restore metrics
+            collector.rollout_count = _existing.cumulative_rollouts
+            console.print(
+                f"[bold yellow]Resuming from checkpoint: round {_resume_from_round}, "
+                f"{len(candidates)} candidates, {_existing.cumulative_rollouts} rollouts[/bold yellow]"
+            )
+
     for round_idx, (n_examples, keep_k) in enumerate(_PRUNING_SCHEDULE):
         round_num = round_idx + 1
+        # Skip rounds already completed (resume support)
+        if _resume_from_round >= 0 and round_idx <= _resume_from_round:
+            console.print(f"  [dim]Skipping round {round_num} (already checkpointed)[/dim]")
+            continue
         if collector.rollout_count >= max_metric_calls:
             console.print(
                 f"\n[yellow]Budget exhausted before Round {round_num}; stopping early[/yellow]"
@@ -630,6 +661,24 @@ def run_iso(
             candidate_strategies = [
                 sorted_pos_to_strategy.get(pos, "unknown") for pos in range(len(survivors))
             ]
+
+        # ---- Checkpoint save ----
+        if run_dir and _CHECKPOINT_AVAILABLE:
+            from pathlib import Path
+            _candidate_dicts = [
+                {"prompt": c, "strategy": candidate_strategies[i] if i < len(candidate_strategies) else "unknown"}
+                for i, c in enumerate(candidates)
+            ]
+            save_checkpoint(
+                run_dir=Path(run_dir),
+                round_num=round_idx,
+                candidates=_candidate_dicts,
+                cumulative_rollouts=collector.rollout_count,
+                cumulative_tokens=(
+                    collector.task_input_tokens + collector.task_output_tokens
+                    + collector.reflection_input_tokens + collector.reflection_output_tokens
+                ),
+            )
 
     # =========================================================================
     # 7. Champion: the single surviving candidate
