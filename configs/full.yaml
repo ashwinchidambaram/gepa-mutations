@@ -1,0 +1,45 @@
+phase: full
+runpod_template_id: "<PIN_AT_IMPLEMENTATION>"
+
+models:
+  task:
+    model_id: Qwen/Qwen3-8B
+    hf_sha: "<PIN_AT_IMPLEMENTATION>"
+    dtype: bfloat16
+    max_model_len: 32768
+    temperature: 1.0
+    max_tokens: 8192
+  reflection:
+    model_id: Qwen/Qwen3-32B-AWQ
+    hf_sha: "<PIN_AT_IMPLEMENTATION>"
+    quantization: awq
+    max_model_len: 49152
+    temperature: 1.0
+    max_tokens: 32000
+
+run_matrix:
+  seeds: [0, 1, 2]
+  benchmarks:
+    hotpotqa:
+      budget_rollouts: 6500
+    aime:
+      budget_rollouts: 7000
+    pupa:
+      budget_rollouts: 3500
+    ifbench:
+      budget_rollouts: 3500
+    hover:
+      budget_rollouts: 2000
+    livebench:
+      budget_rollouts: 1500
+  optimizers: {}
+
+logging:
+  mlflow_tracking_uri: "file:///workspace/mlflow"
+  artifacts_dir: "/workspace/iso-experiment/phase_1_full/runs"
+
+monitoring:
+  gpu_poll_interval_sec: 30
+  kv_cache_poll_interval_sec: 60
+  disk_check_interval_min: 10
+  disk_min_free_gb: 20

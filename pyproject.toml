@@ -28,6 +28,10 @@ dependencies = [
     "gepa-modular",
     "gepa-miprov2",
     "gepa-random-search",
+    "mlflow>=3.0",
+    "pyyaml>=6.0",
+    "duckdb>=0.9",
+    "pyarrow>=14.0",
 ]
 
 [project.scripts]
@@ -38,7 +42,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/gepa_mutations"]
+packages = ["src/gepa_mutations", "src/iso_harness"]
 
 [tool.ruff]
 line-length = 100
@@ -69,4 +73,4 @@ gepa-random-search = { path = "./methods/random_search", editable = true }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = [".", "methods/iso", "methods/miprov2", "methods/random_search"]
+pythonpath = [".", "methods/iso", "methods/miprov2", "methods/random_search", "src/iso_harness"]
