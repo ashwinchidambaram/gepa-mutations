@@ -74,3 +74,8 @@ gepa-random-search = { path = "./methods/random_search", editable = true }
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = [".", "methods/iso", "methods/miprov2", "methods/random_search", "src/iso_harness"]
+markers = [
+    "live_server: requires running vLLM server(s)",
+    "slow: takes >30 seconds",
+    "local_only: only runs on researcher's local machine",
+]
