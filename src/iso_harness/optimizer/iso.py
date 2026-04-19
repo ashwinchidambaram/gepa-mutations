@@ -62,6 +62,7 @@ class ISO(Teleprompter):
         seed: int = 0,
         run_id: str | None = None,
         rollout_counter: RolloutCounter | None = None,
+        rollout_writer: Any = None,
         **kwargs,
     ):
         super().__init__()
@@ -73,6 +74,7 @@ class ISO(Teleprompter):
         self.seed = seed
         self.run_id = run_id or f"iso-{self.variant}-{seed}"
         self._rollout_counter = rollout_counter
+        self._rollout_writer = rollout_writer
         self._extra_config = kwargs
         self.config = self._build_config(self.variant, budget, seed, kwargs)
 
@@ -132,6 +134,7 @@ class ISO(Teleprompter):
             rng=random.Random(self.seed),
             trace_store=TraceStore(),
             rollout_counter=self._rollout_counter or RolloutCounter(),
+            rollout_writer=self._rollout_writer,
         )
 
         return iso_compile(student, trainset, valset, self.config, runtime)

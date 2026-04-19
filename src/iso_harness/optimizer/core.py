@@ -9,6 +9,7 @@ import logging
 from uuid import uuid4
 
 from iso_harness.optimizer.candidate import Candidate, MutationProposal
+from iso_harness.optimizer.checkpoint import save_checkpoint
 from iso_harness.optimizer.evaluation import evaluate_pool_multi_minibatch, evaluate_on_valset
 from iso_harness.optimizer.helpers import (
     apply_candidate_prompts,
@@ -140,6 +141,9 @@ def iso_compile(student, trainset, valset, config, runtime):
             )
             if merged:
                 pool.append(merged)
+
+        # Checkpoint after each round
+        save_checkpoint(pool, runtime, prev_top3_mean, plateau_rounds)
 
         # Update for next iteration
         prev_top3_mean = top3_mean

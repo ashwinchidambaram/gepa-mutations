@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import logging
+import uuid
+from datetime import datetime, timezone
 from statistics import mean, stdev
 
 from iso_harness.optimizer.candidate import Candidate, ModuleTrace
@@ -13,6 +15,36 @@ from iso_harness.optimizer.helpers import (
 from iso_harness.experiment.context import set_context
 
 logger = logging.getLogger("iso")
+
+
+def _log_rollout(runtime, candidate_id: str, example_id: str, score: float, feedback: str) -> None:
+    """Write a RolloutRecord to the runtime's rollout_writer if present."""
+    writer = runtime.rollout_writer
+    if writer is None:
+        return
+    try:
+        from iso_harness.experiment.schemas import RolloutRecord
+
+        record = RolloutRecord(
+            rollout_id=str(uuid.uuid4()),
+            run_id=runtime.run_id,
+            round_num=runtime.round_num,
+            candidate_id=candidate_id,
+            module_name=None,
+            example_id=example_id,
+            prompt="",  # raw prompt not available at evaluation level
+            response="",  # raw response not available at evaluation level
+            score=max(0.0, min(1.0, score)),
+            feedback=feedback,
+            metadata={},
+            tokens_input=0,
+            tokens_output=0,
+            latency_ms=0.0,
+            timestamp=datetime.now(timezone.utc),
+        )
+        writer.append(record)
+    except Exception as e:
+        logger.debug("Failed to log rollout: %s", e)
 
 
 def evaluate_pool_multi_minibatch(
@@ -51,6 +83,9 @@ def evaluate_pool_multi_minibatch(
                 per_example_scores[example_id] = score
                 per_example_feedback[example_id] = feedback
                 per_example_metadata[example_id] = metadata
+
+                # Log rollout to JSONL
+                _log_rollout(runtime, candidate.id, example_id, score, feedback)
 
                 # Persist trace for reflection step
                 runtime.trace_store.put(

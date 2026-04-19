@@ -166,6 +166,7 @@ class ISORuntime:
     trace_store: TraceStore
     rollout_counter: RolloutCounter
     round_num: int = 0
+    rollout_writer: Any = None  # Optional JSONLWriter for per-rollout JSONL logging
 
 
 # ---------------------------------------------------------------------------

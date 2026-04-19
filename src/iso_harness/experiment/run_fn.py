@@ -26,6 +26,8 @@ from gepa_mutations.benchmarks.loader import load_benchmark
 from gepa_mutations.config import Settings
 from iso_harness.experiment.config import ISOExperimentConfig
 from iso_harness.experiment.context import set_context
+from iso_harness.experiment.jsonl_writer import JSONLWriter
+from iso_harness.experiment.logging_lm import LoggingLM
 from iso_harness.experiment.orchestrator import BudgetEnforcer, RunSpec
 from iso_harness.experiment.reporter import generate_run_report
 
@@ -140,6 +142,14 @@ def make_run_fn(config: ISOExperimentConfig) -> Callable:
             task_lm = build_qa_task_lm(settings)
             reflection_lm = build_reflection_lm(settings)
 
+            # 3b. Wrap reflection LM with JSONL logging
+            reflection_writer = JSONLWriter(run_dir / "reflections.jsonl")
+            reflection_lm = LoggingLM(
+                lm=reflection_lm,
+                writer=reflection_writer,
+                role="reflection",
+            )
+
             # 4. Configure DSPy
             dspy.settings.configure(lm=task_lm)
 
@@ -173,6 +183,8 @@ def make_run_fn(config: ISOExperimentConfig) -> Callable:
                 # ---- ISO optimizer ----
                 from iso_harness.optimizer.iso import ISO
 
+                rollout_writer = JSONLWriter(run_dir / "rollouts.jsonl")
+
                 optimized = ISO(
                     variant=spec.optimizer,
                     metric=metric,
@@ -181,6 +193,7 @@ def make_run_fn(config: ISOExperimentConfig) -> Callable:
                     budget=spec.budget_rollouts,
                     seed=spec.seed,
                     run_id=spec.run_id,
+                    rollout_writer=rollout_writer,
                 ).compile(student, trainset=train, valset=val)
 
                 # Record rollouts (ISO's compile() tracks internally; approximate here)

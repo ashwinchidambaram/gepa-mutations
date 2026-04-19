@@ -132,7 +132,10 @@ def cross_mutate_elitist(
     if config.hooks.cross_mutate_only_when_improving and not pool_improved:
         return []
 
-    top3 = sorted(pool, key=lambda c: scores[c.id]["mean"], reverse=True)[:3]
+    # Filter to candidates that have been scored this round (new candidates from
+    # reflection mutations won't have scores yet and must be excluded).
+    scored = [c for c in pool if c.id in scores]
+    top3 = sorted(scored, key=lambda c: scores[c.id]["mean"], reverse=True)[:3]
     if len(top3) < 2:
         return []
 
@@ -174,7 +177,9 @@ def cross_mutate_exploration_preserving(
     Returns:
         List of newly created child candidates.
     """
-    ranked = sorted(pool, key=lambda c: scores[c.id]["mean"], reverse=True)
+    # Filter to candidates that have been scored this round.
+    scored = [c for c in pool if c.id in scores]
+    ranked = sorted(scored, key=lambda c: scores[c.id]["mean"], reverse=True)
     top3 = ranked[:3]
     mid_tier = ranked[3:8]
 
@@ -219,8 +224,10 @@ def cross_mutate_reflector_guided(
     Returns:
         List of newly created child candidates.
     """
+    # Filter to candidates that have been scored this round.
+    scored = [c for c in pool if c.id in scores]
     top_candidates = sorted(
-        pool, key=lambda c: scores[c.id]["mean"], reverse=True
+        scored, key=lambda c: scores[c.id]["mean"], reverse=True
     )[:8]
 
     pool_summary = [
