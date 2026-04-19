@@ -38,7 +38,7 @@ fi
 echo ""
 
 # Build Python command
-CMD="python -m iso_harness.experiment.orchestrator"
+CMD="python -m iso_harness.experiment"
 CMD="$CMD --config $CONFIG"
 
 if $SMOKE_TEST; then
