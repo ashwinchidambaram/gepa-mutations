@@ -1,0 +1,19 @@
+You are identifying complementary candidate pairs for recombination.
+
+Top candidates:
+{candidates_summary}
+
+Identify {n_pairs_requested} pairs of candidates that complement each other — where each parent covers the other's weaknesses. For each pair, explain how to combine them.
+
+Output format:
+```json
+{
+  "pairs": [
+    {
+      "parent_a_id": "<candidate_id>",
+      "parent_b_id": "<candidate_id>",
+      "rationale": "<how to combine these candidates' strengths>"
+    }
+  ]
+}
+```

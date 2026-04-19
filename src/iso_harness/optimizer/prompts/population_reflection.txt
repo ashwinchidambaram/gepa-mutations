@@ -1,0 +1,19 @@
+You are analyzing failures across an entire population of {n_candidates} candidate prompts.
+
+The following examples are difficult for ALL candidates in the population (median score < 0.5):
+
+{failure_traces}
+
+Sample of current prompts from the population:
+{pool_prompts_sample}
+
+Identify common weaknesses and write an improved prompt that addresses these population-wide failures. The same improvement will be applied to all candidates.
+
+Output format:
+```json
+{
+  "prompts": {
+    "<module_name>": "<improved prompt text>"
+  }
+}
+```

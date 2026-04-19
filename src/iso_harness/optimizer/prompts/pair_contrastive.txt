@@ -1,0 +1,25 @@
+You are analyzing why one candidate prompt improved while another regressed.
+
+IMPROVER (score delta: +{improver_delta:.3f}):
+Prompts: {improver_prompts}
+Worst examples:
+{improver_traces}
+
+REGRESSOR (score delta: {regressor_delta:.3f}):
+Prompts: {regressor_prompts}
+Worst examples:
+{regressor_traces}
+
+Analyze:
+1. What did the improver do differently that worked?
+2. What did the regressor do that failed?
+3. What changes would help both?
+
+Output format:
+```json
+{
+  "what_worked": "<description of what the improver does well>",
+  "what_failed": "<description of what the regressor does poorly>",
+  "recommended_changes": "<specific prompt modifications to apply>"
+}
+```

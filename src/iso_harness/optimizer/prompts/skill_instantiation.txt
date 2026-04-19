@@ -1,0 +1,21 @@
+You are writing a prompt to fix a specific failure mode in a compound AI system.
+
+Failure mode: {skill_label}
+Description: {skill_description}
+Target module: {target_module}
+
+Examples of this failure:
+{example_failures}
+
+Write an improved prompt for the target module that would prevent this failure mode. If target_module is null, write improved prompts for all modules.
+
+Keep the core task instruction intact — only add guidance to fix this specific failure mode.
+
+Output format:
+```json
+{
+  "prompts": {
+    "<module_name>": "<new prompt text>"
+  }
+}
+```

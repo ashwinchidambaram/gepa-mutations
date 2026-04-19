@@ -1,0 +1,22 @@
+You are improving a prompt for a compound AI system based on its performance.
+
+Current prompts:
+{current_prompts}
+
+Performance:
+- Mean score: {mean_score:.3f}
+- Score history: {score_history}
+
+Worst-performing examples (traces):
+{traces}
+
+Analyze why this prompt fails on these examples and write an improved version that addresses the specific failure patterns observed.
+
+Output format:
+```json
+{
+  "prompts": {
+    "<module_name>": "<improved prompt text>"
+  }
+}
+```

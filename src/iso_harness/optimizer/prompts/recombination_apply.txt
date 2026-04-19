@@ -1,0 +1,21 @@
+You are creating a child prompt by combining two parent prompts according to a specific rationale.
+
+Parent A prompts:
+{parent_a_prompts}
+
+Parent B prompts:
+{parent_b_prompts}
+
+Combination rationale:
+{rationale}
+
+Create the child prompt following the rationale above.
+
+Output format:
+```json
+{
+  "prompts": {
+    "<module_name>": "<combined prompt text>"
+  }
+}
+```

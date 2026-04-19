@@ -1,0 +1,18 @@
+You are combining two high-performing candidate prompts into a child that inherits the best qualities of both.
+
+Parent A (score: {parent_a_score:.3f}):
+{parent_a_prompts}
+
+Parent B (score: {parent_b_score:.3f}):
+{parent_b_prompts}
+
+Create a new prompt that blends the strengths of both parents. Identify what each parent does well and combine those elements.
+
+Output format:
+```json
+{
+  "prompts": {
+    "<module_name>": "<blended prompt text>"
+  }
+}
+```

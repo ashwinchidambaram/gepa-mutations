@@ -1,0 +1,29 @@
+You are analyzing failure patterns from a compound AI system evaluated on {n_failures} training examples.
+
+The system has the following LLM modules:
+{modules_text}
+
+Your task: cluster these failures into {n_min} to {n_max} distinct skill categories. Each cluster represents a coherent failure mode that might be fixed by improving a specific module's prompt.
+
+Failures (example_id, score, feedback, outputs-per-module):
+{failures_text}
+
+Output format:
+```json
+{
+  "clusters": [
+    {
+      "label": "<short snake_case label>",
+      "description": "<1-2 sentence description of the failure pattern>",
+      "target_module": "<module name from the list above, or null if not module-specific>",
+      "example_failure_ids": ["<example_id>", ...]
+    }
+  ]
+}
+```
+
+Guidelines:
+- Each cluster should represent a distinct and fixable pattern
+- Avoid vague clusters like "other failures" or "assorted mistakes"
+- If a module is clearly responsible, name it; if the failure spans multiple modules, use null
+- Between {n_min} and {n_max} clusters total — no more, no less

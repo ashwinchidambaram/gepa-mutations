@@ -1,0 +1,17 @@
+You are creating a variation of an existing prompt for a compound AI system.
+
+Current prompts:
+{current_prompts}
+
+Skill category: {skill_category}
+
+Write a meaningfully different prompt that addresses the same skill category but from a different angle. Vary the phrasing, emphasis, or strategy while preserving the core task instructions.
+
+Output format:
+```json
+{
+  "prompts": {
+    "<module_name>": "<new prompt text>"
+  }
+}
+```

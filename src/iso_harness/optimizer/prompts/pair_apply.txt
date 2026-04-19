@@ -1,0 +1,20 @@
+You are applying insights from a comparative analysis to improve a specific candidate's prompt.
+
+Current prompts:
+{current_prompts}
+
+Current mean score: {candidate_score:.3f}
+
+Insights from analysis:
+{insights}
+
+Rewrite the prompt incorporating these insights while preserving the core task instructions.
+
+Output format:
+```json
+{
+  "prompts": {
+    "<module_name>": "<improved prompt text>"
+  }
+}
+```
