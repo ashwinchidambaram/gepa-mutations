@@ -85,6 +85,9 @@ def iso_compile(student, trainset, valset, config, runtime):
         set_context(round_num=runtime.round_num)
         log_info(f"Round {runtime.round_num}: pool size = {len(pool)}")
 
+        # Clear traces from previous round (reflection already consumed them)
+        runtime.trace_store.clear_round()
+
         # Step 1: Multi-minibatch evaluation
         minibatches = sample_minibatches(
             trainset,

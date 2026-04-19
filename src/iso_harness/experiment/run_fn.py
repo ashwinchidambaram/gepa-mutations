@@ -182,8 +182,10 @@ def make_run_fn(config: ISOExperimentConfig) -> Callable:
             if optimizer_name in _ISO_VARIANTS or any(optimizer_name.startswith(p) for p in _ISO_PREFIXES):
                 # ---- ISO optimizer ----
                 from iso_harness.optimizer.iso import ISO
+                from iso_harness.optimizer.runtime import RolloutCounter
 
                 rollout_writer = JSONLWriter(run_dir / "rollouts.jsonl")
+                rollout_counter = RolloutCounter(enforcer=budget)
 
                 optimized = ISO(
                     variant=spec.optimizer,
@@ -193,11 +195,10 @@ def make_run_fn(config: ISOExperimentConfig) -> Callable:
                     budget=spec.budget_rollouts,
                     seed=spec.seed,
                     run_id=spec.run_id,
+                    rollout_counter=rollout_counter,
                     rollout_writer=rollout_writer,
+                    run_dir=run_dir,
                 ).compile(student, trainset=train, valset=val)
-
-                # Record rollouts (ISO's compile() tracks internally; approximate here)
-                budget.record_rollouts(spec.budget_rollouts)
 
                 val_score = _score_dataset(optimized, val, metric)
                 optimizer_label = spec.optimizer

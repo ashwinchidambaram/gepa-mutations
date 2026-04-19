@@ -167,6 +167,7 @@ class ISORuntime:
     rollout_counter: RolloutCounter
     round_num: int = 0
     rollout_writer: Any = None  # Optional JSONLWriter for per-rollout JSONL logging
+    run_dir: Any = None  # Optional Path for checkpoint/artifact output
 
 
 # ---------------------------------------------------------------------------

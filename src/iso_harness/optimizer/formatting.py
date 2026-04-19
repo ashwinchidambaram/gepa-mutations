@@ -131,10 +131,11 @@ def summarize_frontier(frontier: list) -> str:
     )
 
 
-def sample_prompts(pool: list, n: int) -> list[str]:
+def sample_prompts(pool: list, n: int, rng=None) -> list[str]:
     """Return prompt text from up to n random candidates in the pool."""
     import random as _random
-    sample = _random.sample(pool, min(n, len(pool))) if pool else []
+    _rng = rng if rng is not None else _random
+    sample = _rng.sample(pool, min(n, len(pool))) if pool else []
     result = []
     for candidate in sample:
         prompts = getattr(candidate, 'prompts_by_module', {})

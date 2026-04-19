@@ -9,7 +9,6 @@ from __future__ import annotations
 import json
 import logging
 import os
-import random
 from dataclasses import asdict
 from pathlib import Path
 
@@ -45,17 +44,23 @@ def save_checkpoint(
     prev_top3_mean: float,
     plateau_rounds: int,
 ) -> None:
-    """Write round-boundary checkpoint to runs/{run_id}/checkpoint/.
+    """Write round-boundary checkpoint to ``{run_dir}/checkpoint/``.
+
+    Uses ``runtime.run_dir`` if set, otherwise falls back to
+    ``runs/{run_id}/checkpoint/`` relative to CWD.
 
     Args:
         pool: Current candidate pool.
         runtime: Active ``ISORuntime`` instance (provides run_id, round_num,
-            rollout_counter, and seed).
+            rollout_counter, seed, and optionally run_dir).
         prev_top3_mean: Top-3 mean score from the previous round (used for
             plateau detection on resume).
         plateau_rounds: Number of consecutive non-improving rounds so far.
     """
-    checkpoint_dir = Path(f"runs/{runtime.run_id}/checkpoint")
+    base = getattr(runtime, "run_dir", None)
+    if base is None:
+        base = Path(f"runs/{runtime.run_id}")
+    checkpoint_dir = Path(base) / "checkpoint"
     checkpoint_dir.mkdir(parents=True, exist_ok=True)
 
     # Serialize candidates, keeping only resume-relevant fields to avoid
@@ -72,7 +77,7 @@ def save_checkpoint(
         "rollouts_consumed": runtime.rollout_counter.value(),
         "prev_top3_mean": prev_top3_mean,
         "plateau_rounds": plateau_rounds,
-        "rng_state": random.getstate(),
+        "rng_state": runtime.rng.getstate(),
         "seed": runtime.seed,
     }
 
@@ -90,12 +95,14 @@ def save_checkpoint(
     logger.info("Checkpoint saved at round %d", runtime.round_num)
 
 
-def load_checkpoint(run_id: str) -> dict | None:
+def load_checkpoint(run_id: str, run_dir: Path | str | None = None) -> dict | None:
     """Load latest checkpoint, or None if no checkpoint exists.
 
     Args:
-        run_id: Experiment run identifier used to locate the checkpoint
-            directory (``runs/{run_id}/checkpoint/iso_state.json``).
+        run_id: Experiment run identifier (used as fallback path).
+        run_dir: Explicit run directory. If provided, looks for
+            ``{run_dir}/checkpoint/iso_state.json``. Otherwise falls back
+            to ``runs/{run_id}/checkpoint/iso_state.json``.
 
     Returns:
         A dict with keys ``round_num``, ``pool`` (list of ``Candidate``),
@@ -108,7 +115,10 @@ def load_checkpoint(run_id: str) -> dict | None:
         (those are not serialized).  They will be re-evaluated in the next
         optimisation round.
     """
-    path = Path(f"runs/{run_id}/checkpoint/iso_state.json")
+    if run_dir is not None:
+        path = Path(run_dir) / "checkpoint" / "iso_state.json"
+    else:
+        path = Path(f"runs/{run_id}/checkpoint/iso_state.json")
     if not path.exists():
         return None
 

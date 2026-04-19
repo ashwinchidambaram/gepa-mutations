@@ -124,7 +124,7 @@ def reflect_population_level(
     prompt = prompt_template.format(
         n_candidates=len(pool),
         failure_traces=format_traces(traces),
-        pool_prompts_sample=sample_prompts(pool, n=3),
+        pool_prompts_sample=sample_prompts(pool, n=3, rng=runtime.rng),
     )
 
     try:

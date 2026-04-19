@@ -80,6 +80,8 @@ def evaluate_pool_multi_minibatch(
                 feedback = result["feedback"]
                 metadata = result.get("metadata", {})
 
+                runtime.rollout_counter.increment(1)
+
                 per_example_scores[example_id] = score
                 per_example_feedback[example_id] = feedback
                 per_example_metadata[example_id] = metadata
@@ -142,6 +144,7 @@ def evaluate_on_valset(
             example_id = getattr(example, 'id', str(id(example)))
             prediction = patched_student(**example.inputs())
             result = runtime.metric(example, prediction, trace=None, pred_name=None)
+            runtime.rollout_counter.increment(1)
             scores.append(result["score"])
 
         results[candidate.id] = mean(scores) if scores else 0.0
