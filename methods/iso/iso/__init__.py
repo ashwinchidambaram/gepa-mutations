@@ -5,7 +5,7 @@ slime mold networks optimize nutrient transport paths over multiple rounds.
 """
 
 from iso.colony import generate_diverse_prompts, mutate_prompt, run_pruning_round
-from iso.runner import run_iso
+from iso.runner_v1_archive import run_iso
 
 __all__ = [
     "run_iso",
