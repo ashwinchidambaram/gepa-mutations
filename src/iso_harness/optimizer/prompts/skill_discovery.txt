@@ -10,16 +10,16 @@ Failures (example_id, score, feedback, outputs-per-module):
 
 Output format:
 ```json
-{
+{{
   "clusters": [
-    {
+    {{
       "label": "<short snake_case label>",
       "description": "<1-2 sentence description of the failure pattern>",
       "target_module": "<module name from the list above, or null if not module-specific>",
       "example_failure_ids": ["<example_id>", ...]
-    }
+    }}
   ]
-}
+}}
 ```
 
 Guidelines:

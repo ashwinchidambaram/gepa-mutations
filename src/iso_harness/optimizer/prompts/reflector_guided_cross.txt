@@ -7,13 +7,13 @@ Identify {n_pairs_requested} pairs of candidates that complement each other — 
 
 Output format:
 ```json
-{
+{{
   "pairs": [
-    {
+    {{
       "parent_a_id": "<candidate_id>",
       "parent_b_id": "<candidate_id>",
       "rationale": "<how to combine these candidates' strengths>"
-    }
+    }}
   ]
-}
+}}
 ```
