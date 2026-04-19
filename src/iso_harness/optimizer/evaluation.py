@@ -145,7 +145,9 @@ def evaluate_on_valset(
             prediction = patched_student(**example.inputs())
             result = runtime.metric(example, prediction, trace=None, pred_name=None)
             runtime.rollout_counter.increment(1)
-            scores.append(result["score"])
+            score = result["score"]
+            _log_rollout(runtime, candidate.id, example_id, score, result.get("feedback", ""))
+            scores.append(score)
 
         results[candidate.id] = mean(scores) if scores else 0.0
 
