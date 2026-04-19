@@ -60,7 +60,10 @@ def main() -> None:
         orchestrator.dry_run(matrix)
         sys.exit(0)
 
-    results = orchestrator.execute(matrix, run_fn=None, strict_git=args.strict_git)
+    from iso_harness.experiment.run_fn import make_run_fn
+
+    run_fn = make_run_fn(config)
+    results = orchestrator.execute(matrix, run_fn=run_fn, strict_git=args.strict_git)
 
     # Print summary
     total = len(results)

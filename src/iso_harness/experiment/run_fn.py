@@ -149,7 +149,7 @@ def make_run_fn(config: ISOExperimentConfig) -> Callable:
             # 6. Build metric from benchmark evaluator
             adapter = get_adapter(spec.benchmark, task_lm=task_lm)
 
-            def metric(gold: Any, pred: Any, trace: Any = None, pred_name: str | None = None) -> dict:
+            def metric(gold: Any, pred: Any, trace: Any = None, pred_name: str | None = None) -> dict:  # noqa: ARG001
                 """ISO-style metric wrapping the benchmark adapter."""
                 # Extract string answer from DSPy prediction or string
                 if hasattr(pred, "answer"):
@@ -199,7 +199,7 @@ def make_run_fn(config: ISOExperimentConfig) -> Callable:
                     seed_candidate=seed_candidate,
                     trainset=train,
                     valset=val,
-                    adapter=adapter,
+                    adapter=adapter,  # type: ignore[arg-type]  # runtime-compatible
                     reflection_lm=reflection_lm,
                     max_metric_calls=spec.budget_rollouts,
                     seed=spec.seed,
@@ -223,11 +223,11 @@ def make_run_fn(config: ISOExperimentConfig) -> Callable:
                 try:
                     from dspy.teleprompt import MIPROv2
 
-                    num_trials = max(1, spec.budget_rollouts // max(len(val), 1))
+                    num_candidates = max(1, spec.budget_rollouts // max(len(val), 1))
                     optimized = MIPROv2(
                         metric=metric,
                         auto="medium",
-                        num_trials=num_trials,
+                        num_candidates=num_candidates,
                         seed=spec.seed,
                     ).compile(student, trainset=train, valset=val)
 
