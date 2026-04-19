@@ -1,0 +1,30 @@
+# Track 2: Meta-optimizers
+phase: pilot
+track: 2
+
+models:
+  task:
+    name: Qwen/Qwen3-8B
+    port: 8000
+  reflection:
+    name: Qwen/Qwen3-32B-AWQ
+    port: 8001
+  meta:
+    name: Qwen/Qwen3-32B-AWQ
+    port: 8001
+
+inner_variant: iso_tide
+
+meta_optimizers:
+  scout:
+    n_episodes: 50
+    surrogate_size: 20
+  cartographer:
+    n_episodes: 50
+    surrogate_size: 20
+    playbook_update_interval: 10
+  atlas:
+    n_episodes: 80
+    surrogate_size: 20
+
+benchmark: ifbench

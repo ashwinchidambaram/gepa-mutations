@@ -97,6 +97,77 @@ done
 TOTAL_END=$(date +%s)
 TOTAL_DURATION=$((TOTAL_END - TOTAL_START))
 
+# ---------------------------------------------------------------------------
+# V11-V16a: ISO Optimizer Validation
+# ---------------------------------------------------------------------------
+echo ""
+echo "=== V11-V16a: ISO Optimizer Validation ==="
+echo ""
+
+ISO_VALIDATIONS=(
+    "V11:SkillDiscovery:tests/validation/test_skill_discovery.py"
+    "V12:VariantIsolation:tests/validation/test_variants.py"
+    "V13:ReflectionScopes:tests/validation/test_reflection.py"
+    "V14:PruningRules:tests/validation/test_pruning.py"
+    "V15:MergeOperator:tests/validation/test_merge.py"
+    "V16a:E2ESmokeTest:tests/validation/test_iso_smoke.py"
+)
+
+for entry in "${ISO_VALIDATIONS[@]}"; do
+    IFS=':' read -r num name path <<< "$entry"
+
+    echo -n "[$num] $name... "
+    START=$(date +%s)
+
+    if [ -f "$path" ]; then
+        # V16a excludes live_server tests (mock-LM only)
+        PYTEST_EXTRA_ARGS=""
+        if [ "$num" = "V16a" ]; then
+            PYTEST_EXTRA_ARGS="-k not live_server"
+        fi
+
+        if python -m pytest "$path" -v --tb=short $PYTEST_EXTRA_ARGS 2>&1 \
+                | tee -a "$PROJECT_DIR/logs/validation_${num}.log" \
+                | tail -1 | grep -q "passed"; then
+            END=$(date +%s)
+            DURATION=$((END - START))
+            echo "PASS (${DURATION}s)"
+            echo "| $num | $name | ✓ PASS | ${DURATION}s |" >> "$REPORT"
+            PASS=$((PASS + 1))
+        else
+            END=$(date +%s)
+            DURATION=$((END - START))
+            echo "FAIL (${DURATION}s)"
+            echo "| $num | $name | ✗ FAIL | ${DURATION}s |" >> "$REPORT"
+            FAIL=$((FAIL + 1))
+
+            echo ""
+            echo "=== VALIDATION FAILED at $num: $name ==="
+            echo "See: logs/validation_${num}.log"
+
+            # Mark remaining ISO validations as skipped
+            SKIP=false
+            for remaining in "${ISO_VALIDATIONS[@]}"; do
+                IFS=':' read -r rnum rname rpath <<< "$remaining"
+                if [ "$SKIP" = true ]; then
+                    echo "| $rnum | $rname | — SKIP | — |" >> "$REPORT"
+                fi
+                if [ "$rnum" = "$num" ]; then
+                    SKIP=true
+                fi
+            done
+            break
+        fi
+    else
+        echo "SKIP (test file not found)"
+        echo "| $num | $name | — SKIP | — |" >> "$REPORT"
+    fi
+done
+
+# ---------------------------------------------------------------------------
+# Final summary
+# ---------------------------------------------------------------------------
+
 # Write summary to report
 cat >> "$REPORT" << EOF
 

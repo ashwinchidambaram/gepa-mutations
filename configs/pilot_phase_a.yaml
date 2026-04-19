@@ -1,0 +1,45 @@
+# Track 1: ISO variants + baselines
+phase: pilot
+track: 1
+
+models:
+  task:
+    name: Qwen/Qwen3-8B
+    port: 8000
+    max_tokens: 8192
+  reflection:
+    name: Qwen/Qwen3-32B-AWQ
+    port: 8001
+    max_tokens: 4096
+
+variants:
+  - iso_sprint
+  - iso_grove
+  - iso_tide
+  - iso_lens
+  - iso_storm
+
+baselines:
+  - gepa
+  - mipro
+
+benchmarks:
+  ifbench:
+    budget: 3500
+    seeds: [0, 1, 2]
+    subset_size: null
+
+smoke_test:
+  budget: 100
+  subset_size: 20
+  overrides:
+    n_discovery_examples: 5
+    target_skills_min: 2
+    target_skills_max: 3
+    mutations_per_seed: 0
+    minibatch_count: 2
+    minibatch_size: 2
+    pool_floor: 2
+    max_rounds: 3
+    merge_interval: 2
+    plateau_rounds_threshold: 99
