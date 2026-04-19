@@ -17,6 +17,7 @@ from iso_harness.optimizer.runtime import (
     runtime_context,
     set_current_runtime,
 )
+from iso_harness.optimizer.iso import ISO
 
 __all__ = [
     # candidate
@@ -34,4 +35,6 @@ __all__ = [
     "get_current_runtime",
     "runtime_context",
     "set_current_runtime",
+    # teleprompter
+    "ISO",
 ]
