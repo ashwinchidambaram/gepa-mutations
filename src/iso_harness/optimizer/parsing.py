@@ -19,7 +19,11 @@ def parse_json_from_response(response: str) -> dict:
       - Single quotes (converted to double)
     Raises ValueError if parsing fails after all fallbacks.
     """
-    text = str(response)
+    # Normalize: dspy.LM returns list[str]; extract first element
+    if isinstance(response, list):
+        text = response[0] if response else ""
+    else:
+        text = str(response)
 
     # Strategy 1: Extract from ```json ... ``` fences
     fence_match = re.search(r'```(?:json)?\s*\n?(.*?)\n?\s*```', text, re.DOTALL)
@@ -182,9 +186,9 @@ def parse_config_from_response(response: str) -> dict:
     return {k: v for k, v in data.items() if k in valid_keys}
 
 
-def extract_reasoning(response: str) -> str:
+def extract_reasoning(response: str | list) -> str:
     """Extract the LLM's reasoning preamble before the first JSON block."""
-    text = str(response)
+    text = response[0] if isinstance(response, list) else str(response)
 
     # Find the start of JSON (first { or ```)
     json_start = len(text)
@@ -197,13 +201,13 @@ def extract_reasoning(response: str) -> str:
     return reasoning
 
 
-def parse_playbook_from_response(response: str) -> str:
+def parse_playbook_from_response(response: str | list) -> str:
     """Extract playbook text from meta-optimizer response.
 
     The playbook is free-form text, not JSON. Return the full response
     after stripping any JSON blocks.
     """
-    text = str(response)
+    text = response[0] if isinstance(response, list) else str(response)
     # Remove any JSON blocks
     text = re.sub(r'```(?:json)?\s*\n?.*?\n?\s*```', '', text, flags=re.DOTALL)
     return text.strip()

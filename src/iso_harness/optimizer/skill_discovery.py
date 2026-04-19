@@ -129,7 +129,7 @@ def cluster_failures_via_llm(
                 # Add retry note before the retry call
                 prompt = prompt + "\n\nYour previous response did not match the required JSON schema. Please try again."
             response = runtime.reflection_lm(prompt)
-            cluster_dicts = parse_clusters_from_response(str(response))
+            cluster_dicts = parse_clusters_from_response(response)
 
             if not (target_n_min <= len(cluster_dicts) <= target_n_max):
                 last_error = f"Returned {len(cluster_dicts)} clusters, expected {target_n_min}-{target_n_max}"
@@ -208,7 +208,7 @@ def instantiate_candidate_from_skill(
     )
 
     response = runtime.reflection_lm(prompt)
-    new_prompts = parse_prompts_from_response(str(response))
+    new_prompts = parse_prompts_from_response(response)
 
     # Build prompts dict, preserving existing instructions where the reflector
     # didn't provide a new one for a given module.
@@ -261,7 +261,7 @@ def mutate_candidate(
 
     try:
         response = runtime.reflection_lm(prompt)
-        new_prompts = parse_prompts_from_response(str(response))
+        new_prompts = parse_prompts_from_response(response)
     except (ValueError, RuntimeError):
         # Fallback: copy the parent unchanged (still counts as a pool member)
         new_prompts = dict(candidate.prompts_by_module)

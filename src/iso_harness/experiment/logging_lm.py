@@ -43,7 +43,7 @@ class LoggingLM:
         self._role = role
         self._example_id_fn = example_id_fn
 
-    def __call__(self, prompt: str | list[dict[str, Any]]) -> str:
+    def __call__(self, prompt: str | list[dict[str, Any]]) -> str | list[str]:
         # Serialize prompt for logging
         if isinstance(prompt, str):
             prompt_text = prompt
@@ -53,6 +53,12 @@ class LoggingLM:
         start = time.perf_counter()
         result = self._lm(prompt)
         elapsed_ms = (time.perf_counter() - start) * 1000
+
+        # Normalize result for logging: dspy.LM returns list[str], others return str
+        if isinstance(result, list):
+            result_text = result[0] if result else ""
+        else:
+            result_text = str(result)
 
         # Read token usage from the innermost LM
         lm = self._lm
@@ -89,7 +95,7 @@ class LoggingLM:
                 module_name=None,
                 example_id=example_id,
                 prompt=prompt_text,
-                response=result,
+                response=result_text,
                 score=0.0,  # Score is filled in later by the evaluator
                 feedback="",
                 metadata={},
@@ -108,7 +114,7 @@ class LoggingLM:
                 target_module=None,
                 input_traces=[],
                 input_prompt=prompt_text,
-                output=result,
+                output=result_text,
                 parsed_candidate_before="",
                 parsed_candidate_after="",
                 diff="",
