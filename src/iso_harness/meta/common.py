@@ -90,6 +90,20 @@ def compute_constrained_reward(outcome: dict) -> float:
     return score
 
 
+def _compute_budget(config_overrides: dict) -> int:
+    """Compute rollout budget from config overrides.
+
+    Mirrors the MetaAction defaults: budget = max_rounds * minibatch_count *
+    minibatch_size * pool_size_seed.
+    """
+    return (
+        config_overrides.get("max_rounds", 10)
+        * config_overrides.get("minibatch_count", 5)
+        * config_overrides.get("minibatch_size", 4)
+        * config_overrides.get("pool_size_seed", 5)
+    )
+
+
 def run_iso_with_config(
     variant: str,
     benchmark: str,
@@ -97,40 +111,190 @@ def run_iso_with_config(
     config_overrides: dict,
     meta_lm: Any = None,
     seed: int = 0,
+    mock: bool = False,
 ) -> dict:
     """Run one ISO episode with overridden config.
 
     This is the inner loop call used by all meta-optimizers.
     Returns an outcome dict with: final_score, rollouts_consumed, tokens_consumed, budget.
 
-    Note: For now this is a stub that returns a mock outcome.
-    In production, it will call ISO.compile() with the overridden config
-    on a surrogate subset of the benchmark.
+    Args:
+        variant: ISO variant string (e.g. "iso_tide", "tide").
+        benchmark: Benchmark name (e.g. "ifbench", "hotpotqa").
+        subset_size: Number of training examples to use as surrogate subset.
+        config_overrides: Dict of ISOConfig field overrides (from MetaAction).
+        meta_lm: Unused — reserved for future meta-LM integration.
+        seed: Random seed for dataset sampling and ISO run.
+        mock: When True (or when ISO_META_MOCK=1 env var is set), return stub
+              outcome without running ISO. Useful for unit tests.
+
+    Returns:
+        Dict with keys: final_score, rollouts_consumed, tokens_consumed, budget.
+        On failure (mock=False only), also includes an "error" key.
     """
-    # TODO: Wire up to actual ISO.compile() when ready for live runs
-    # For now, return a placeholder that meta-optimizers can work with
+    import os
+
+    # Allow tests to enable mock mode globally via environment variable
+    _mock = mock or os.environ.get("ISO_META_MOCK", "").strip() in ("1", "true", "yes")
+
+    budget = _compute_budget(config_overrides)
+
     logger.info(
-        "run_iso_with_config: variant=%s, benchmark=%s, subset=%s, overrides=%s",
+        "run_iso_with_config: variant=%s, benchmark=%s, subset=%s, overrides=%s, mock=%s",
         variant,
         benchmark,
         subset_size,
         config_overrides,
+        _mock,
     )
 
-    # Calculate a pseudo-budget from overrides
-    budget = (
-        config_overrides.get("max_rounds", 10)
-        * config_overrides.get("minibatch_count", 5)
-        * config_overrides.get("minibatch_size", 4)
-        * config_overrides.get("pool_size_seed", 5)
-    )
+    if _mock:
+        return {
+            "final_score": 0.0,
+            "rollouts_consumed": 0,
+            "tokens_consumed": 0,
+            "budget": budget,
+        }
 
-    return {
-        "final_score": 0.0,  # Stub — real runs populate this
-        "rollouts_consumed": 0,
-        "tokens_consumed": 0,
-        "budget": budget,
-    }
+    # -----------------------------------------------------------------------
+    # Live path — run ISO on a surrogate subset
+    # -----------------------------------------------------------------------
+    try:
+        import random
+
+        import dspy
+
+        from gepa_mutations.base import build_qa_task_lm, build_reflection_lm
+        from gepa_mutations.benchmarks.evaluators import get_adapter
+        from gepa_mutations.benchmarks.loader import load_benchmark
+        from gepa_mutations.config import Settings
+        from iso_harness.optimizer.feedback_adapter import adapt_evaluator_to_feedback_fn
+        from iso_harness.optimizer.helpers import ensure_example_ids
+        from iso_harness.optimizer.iso import ISO
+        from iso_harness.optimizer.runtime import RolloutCounter
+
+        # 1. Load benchmark and subset the trainset
+        data = load_benchmark(benchmark, seed=seed)
+        train_full = data.train
+        val = data.val
+
+        rng = random.Random(seed)
+        if subset_size < len(train_full):
+            train = rng.sample(train_full, subset_size)
+        else:
+            train = list(train_full)
+
+        # Ensure examples have stable IDs
+        ensure_example_ids(train, prefix="train")
+        ensure_example_ids(val, prefix="val")
+
+        # 2. Build LMs from environment settings
+        settings = Settings()
+        task_lm = build_qa_task_lm(settings)
+        reflection_lm = build_reflection_lm(settings)
+
+        # 3. Configure DSPy task LM
+        dspy.settings.configure(lm=task_lm)
+
+        # 4. Build metric from benchmark evaluator
+        adapter = get_adapter(benchmark, task_lm=task_lm)
+
+        def _evaluator(gold: Any, pred: Any) -> tuple[float, str]:
+            """Extract string prediction and score via adapter."""
+            if hasattr(pred, "answer"):
+                pred_str = str(pred.answer)
+            elif isinstance(pred, str):
+                pred_str = pred
+            else:
+                pred_str = str(pred)
+            return adapter._score(gold, pred_str)
+
+        metric = adapt_evaluator_to_feedback_fn(_evaluator)
+
+        # 5. Build student DSPy module
+        class _QAStudent(dspy.Module):
+            def __init__(self):
+                super().__init__()
+                self.predict = dspy.Predict("question -> answer")
+
+            def forward(self, **kwargs):
+                question = kwargs.get("question") or kwargs.get("input", "")
+                return self.predict(question=question)
+
+        student = _QAStudent()
+
+        # 6. Build rollout counter for tracking
+        rollout_counter = RolloutCounter()
+
+        # 7. Map config_overrides to ISO constructor kwargs
+        # ISOConfig fields directly supported as kwargs in ISO.__init__ via _build_config
+        iso_kwargs: dict[str, Any] = {}
+        _iso_config_fields = {
+            "max_rounds", "mutations_per_seed", "minibatch_count",
+            "minibatch_size", "pool_floor", "plateau_rounds_threshold",
+            "plateau_tolerance", "n_discovery_examples",
+            "target_skills_min", "target_skills_max", "merge_interval",
+        }
+        for k, v in config_overrides.items():
+            if k in _iso_config_fields:
+                iso_kwargs[k] = v
+
+        # 8. Run ISO optimization
+        optimizer = ISO(
+            variant=variant,
+            metric=metric,
+            reflection_lm=reflection_lm,
+            task_lm=task_lm,
+            budget=budget,
+            seed=seed,
+            rollout_counter=rollout_counter,
+            **iso_kwargs,
+        )
+        optimized = optimizer.compile(student, trainset=train, valset=val)
+
+        # 9. Score optimized module on val set
+        val_scores = []
+        for example in val:
+            try:
+                question = getattr(example, "question", None) or getattr(example, "input", "")
+                pred = optimized(question=question)
+                result = metric(example, pred, trace=None, pred_name=None)
+                if isinstance(result, dict):
+                    val_scores.append(float(result.get("score", 0.0)))
+                else:
+                    val_scores.append(float(result))
+            except Exception as ex:
+                logger.debug("Val scoring error: %s", ex)
+                val_scores.append(0.0)
+
+        final_score = sum(val_scores) / len(val_scores) if val_scores else 0.0
+        rollouts_consumed = rollout_counter.value()
+
+        logger.info(
+            "run_iso_with_config complete: variant=%s benchmark=%s "
+            "final_score=%.4f rollouts=%d budget=%d",
+            variant, benchmark, final_score, rollouts_consumed, budget,
+        )
+
+        return {
+            "final_score": final_score,
+            "rollouts_consumed": rollouts_consumed,
+            "tokens_consumed": 0,  # token tracking not wired at meta level yet
+            "budget": budget,
+        }
+
+    except Exception as e:
+        logger.error(
+            "run_iso_with_config failed: variant=%s benchmark=%s error=%s: %s",
+            variant, benchmark, type(e).__name__, e,
+        )
+        return {
+            "final_score": 0.0,
+            "rollouts_consumed": 0,
+            "tokens_consumed": 0,
+            "budget": budget,
+            "error": str(e),
+        }
 
 
 def update_pareto_frontier(
