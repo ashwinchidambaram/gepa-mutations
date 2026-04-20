@@ -173,9 +173,27 @@ def _run_with_real_lm(opts):
     ensure_example_ids(trainset)
     ensure_example_ids(valset, prefix="val")
 
-    # Build LMs
-    task_lm = build_qa_task_lm(settings)
-    reflection_lm = build_reflection_lm(settings)
+    # Build LMs via dspy.LM for BaseLM compatibility
+    import os
+    model_name = settings.gepa_model or os.environ.get("GEPA_MODEL", "")
+    base_url = settings.gepa_base_url or os.environ.get("GEPA_BASE_URL", "")
+    refl_model = getattr(settings, "reflection_model", None) or os.environ.get("REFLECTION_MODEL", model_name)
+    refl_url = getattr(settings, "reflection_base_url", None) or os.environ.get("REFLECTION_BASE_URL", base_url)
+
+    task_lm = dspy.LM(
+        model=f"openai/{model_name}",
+        api_base=base_url,
+        api_key="not-needed",
+        temperature=0.6,
+        max_tokens=4096,
+    )
+    reflection_lm = dspy.LM(
+        model=f"openai/{refl_model}",
+        api_base=refl_url,
+        api_key="not-needed",
+        temperature=0.6,
+        max_tokens=4096,
+    )
     dspy.settings.configure(lm=task_lm)
 
     # Build student (simple QA for now)
