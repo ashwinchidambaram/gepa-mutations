@@ -180,19 +180,25 @@ def _run_with_real_lm(opts):
     refl_model = getattr(settings, "reflection_model", None) or os.environ.get("REFLECTION_MODEL", model_name)
     refl_url = getattr(settings, "reflection_base_url", None) or os.environ.get("REFLECTION_BASE_URL", base_url)
 
+    # Disable Qwen3 thinking mode via extra_body — prevents <think> blocks
+    # that waste tokens and break DSPy's structured output parsing
+    _no_think = {"chat_template_kwargs": {"enable_thinking": False}}
+
     task_lm = dspy.LM(
         model=f"openai/{model_name}",
         api_base=base_url,
         api_key="not-needed",
         temperature=0.6,
         max_tokens=2048,
+        extra_body=_no_think,
     )
     reflection_lm = dspy.LM(
         model=f"openai/{refl_model}",
         api_base=refl_url,
         api_key="not-needed",
         temperature=0.6,
-        max_tokens=1024,  # reflection produces short JSON, doesn't need long output
+        max_tokens=1024,
+        extra_body=_no_think,
     )
     dspy.settings.configure(lm=task_lm)
 

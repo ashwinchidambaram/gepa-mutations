@@ -25,6 +25,9 @@ def parse_json_from_response(response: str) -> dict:
     else:
         text = str(response)
 
+    # Strip <think>...</think> blocks (Qwen3 reasoning mode artifacts)
+    text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+
     # Strategy 1: Extract from ```json ... ``` fences
     fence_match = re.search(r'```(?:json)?\s*\n?(.*?)\n?\s*```', text, re.DOTALL)
     if fence_match:
@@ -189,6 +192,7 @@ def parse_config_from_response(response: str) -> dict:
 def extract_reasoning(response: str | list) -> str:
     """Extract the LLM's reasoning preamble before the first JSON block."""
     text = response[0] if isinstance(response, list) else str(response)
+    text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
 
     # Find the start of JSON (first { or ```)
     json_start = len(text)
@@ -205,9 +209,10 @@ def parse_playbook_from_response(response: str | list) -> str:
     """Extract playbook text from meta-optimizer response.
 
     The playbook is free-form text, not JSON. Return the full response
-    after stripping any JSON blocks.
+    after stripping any JSON blocks and think tags.
     """
     text = response[0] if isinstance(response, list) else str(response)
+    text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
     # Remove any JSON blocks
     text = re.sub(r'```(?:json)?\s*\n?.*?\n?\s*```', '', text, flags=re.DOTALL)
     return text.strip()

@@ -80,6 +80,9 @@ def main():
     # Build LMs directly via dspy.LM for BaseLM compatibility
     model_name = settings.gepa_model or os.environ.get("GEPA_MODEL", "")
     base_url = settings.gepa_base_url or os.environ.get("GEPA_BASE_URL", "")
+    # Disable Qwen3 thinking mode — prevents <think> blocks that break DSPy parsing
+    _no_think = {"chat_template_kwargs": {"enable_thinking": False}}
+
     task_lm = dspy.LM(
         model=f"openai/{model_name}",
         api_base=base_url,
@@ -87,6 +90,7 @@ def main():
         temperature=0.6,
         top_p=0.95,
         max_tokens=4096,
+        extra_body=_no_think,
     )
     # Use same model for reflection (single-model local setup)
     reflection_lm_raw = task_lm
