@@ -185,14 +185,14 @@ def _run_with_real_lm(opts):
         api_base=base_url,
         api_key="not-needed",
         temperature=0.6,
-        max_tokens=4096,
+        max_tokens=2048,
     )
     reflection_lm = dspy.LM(
         model=f"openai/{refl_model}",
         api_base=refl_url,
         api_key="not-needed",
         temperature=0.6,
-        max_tokens=4096,
+        max_tokens=1024,  # reflection produces short JSON, doesn't need long output
     )
     dspy.settings.configure(lm=task_lm)
 
