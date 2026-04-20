@@ -72,6 +72,7 @@ tmux new-session -d -s iso-task "
         --enable-prefix-caching \
         --disable-log-requests \
         --trust-remote-code \
+        --default-chat-template-kwargs '{\"enable_thinking\": false}' \
         2>&1 | tee $PROJECT_DIR/logs/vllm_task.log
 "
 
@@ -88,6 +89,7 @@ tmux new-session -d -s iso-reflection "
         --enable-prefix-caching \
         --disable-log-requests \
         --trust-remote-code \
+        --default-chat-template-kwargs '{\"enable_thinking\": false}' \
         2>&1 | tee $PROJECT_DIR/logs/vllm_reflection.log
 "
 
