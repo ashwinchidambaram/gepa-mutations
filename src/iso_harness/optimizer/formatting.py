@@ -9,7 +9,7 @@ from __future__ import annotations
 import json
 from typing import Any
 
-_MAX_FIELD_LEN = 500  # Truncate long fields to save tokens
+_MAX_FIELD_LEN = 200  # Truncate to ~first sentence — that's the signal
 
 
 def _truncate(s: str, max_len: int = _MAX_FIELD_LEN) -> str:
@@ -34,13 +34,12 @@ def format_failures(failures: list) -> str:
         module_outputs = getattr(f, 'module_outputs', f.get('module_outputs', {}) if isinstance(f, dict) else {})
 
         lines.append(f"--- Failure {i + 1} ---")
-        lines.append(f"Example ID: {example_id}")
-        lines.append(f"Score: {score:.3f}")
+        lines.append(f"ID: {example_id} | Score: {score:.3f}")
         lines.append(f"Feedback: {_truncate(str(feedback))}")
-        if module_outputs:
-            lines.append("Module outputs:")
+        # Only include module_outputs for multi-module (>1 module) — single-module duplicates prediction
+        if module_outputs and len(module_outputs) > 1:
             for mod_name, output in module_outputs.items():
-                lines.append(f"  {mod_name}: {_truncate(str(output))}")
+                lines.append(f"  {mod_name}: {_truncate(str(output), 150)}")
         lines.append("")
 
     return "\n".join(lines)
