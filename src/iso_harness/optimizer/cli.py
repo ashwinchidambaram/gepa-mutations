@@ -184,12 +184,23 @@ def _run_with_real_lm(opts):
             super().__init__()
             self.qa = dspy.Predict("question -> answer")
 
-        def forward(self, question):
+        def forward(self, **kwargs):
+            question = kwargs.get("question") or kwargs.get("input", "")
             return self.qa(question=question)
 
-    # Adapt evaluator
+    # Adapt evaluator — bridge adapter._score to ISO metric contract
     adapter = get_adapter(opts.benchmark, task_lm=task_lm)
-    metric = adapt_evaluator_to_feedback_fn(adapter.evaluate_single)
+
+    def _evaluator(gold, pred):
+        if hasattr(pred, "answer"):
+            pred_str = str(pred.answer)
+        elif isinstance(pred, str):
+            pred_str = pred
+        else:
+            pred_str = str(pred)
+        return adapter._score(gold, pred_str)
+
+    metric = adapt_evaluator_to_feedback_fn(_evaluator)
 
     # Extra config for smoke test
     extra = {}
