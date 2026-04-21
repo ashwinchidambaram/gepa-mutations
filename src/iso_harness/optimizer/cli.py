@@ -242,13 +242,28 @@ def _run_with_real_lm(opts):
             "plateau_rounds_threshold": 99,
         }
 
+    # Set up output directory, JSONL writers, and LoggingLM
+    from pathlib import Path
+    from iso_harness.experiment.jsonl_writer import JSONLWriter
+    from iso_harness.experiment.logging_lm import LoggingLM
+    from iso_harness.optimizer.runtime import RolloutCounter
+
+    run_dir = Path(opts.output_dir) if opts.output_dir else Path(f"runs/iso-{opts.variant}-{opts.seed}")
+    run_dir.mkdir(parents=True, exist_ok=True)
+
+    rollout_writer = JSONLWriter(run_dir / "rollouts.jsonl")
+    reflection_writer = JSONLWriter(run_dir / "reflections.jsonl")
+    reflection_lm_logged = LoggingLM(lm=reflection_lm, writer=reflection_writer, role="reflection")
+
     optimizer = ISO(
         variant=opts.variant,
         metric=metric,
-        reflection_lm=reflection_lm,
+        reflection_lm=reflection_lm_logged,
         task_lm=task_lm,
         budget=opts.budget,
         seed=opts.seed,
+        rollout_writer=rollout_writer,
+        run_dir=run_dir,
         **extra,
     )
 

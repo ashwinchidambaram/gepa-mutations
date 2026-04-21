@@ -73,8 +73,16 @@ def evaluate_pool_multi_minibatch(
             for example in batch:
                 example_id = getattr(example, 'id', str(id(example)))
 
-                prediction = patched_student(**example.inputs())
-                result = runtime.metric(example, prediction, trace=None, pred_name=None)
+                try:
+                    prediction = patched_student(**example.inputs())
+                    result = runtime.metric(example, prediction, trace=None, pred_name=None)
+                except Exception as e:
+                    logger.debug("Eval error on %s: %s", example_id, e)
+                    per_example_scores[example_id] = 0.0
+                    per_example_feedback[example_id] = f"error: {e}"
+                    per_example_metadata[example_id] = {}
+                    runtime.rollout_counter.increment(1)
+                    continue
 
                 score = result["score"]
                 feedback = result["feedback"]
@@ -142,12 +150,16 @@ def evaluate_on_valset(
         scores = []
         for example in valset:
             example_id = getattr(example, 'id', str(id(example)))
-            prediction = patched_student(**example.inputs())
-            result = runtime.metric(example, prediction, trace=None, pred_name=None)
-            runtime.rollout_counter.increment(1)
-            score = result["score"]
-            _log_rollout(runtime, candidate.id, example_id, score, result.get("feedback", ""))
-            scores.append(score)
+            try:
+                prediction = patched_student(**example.inputs())
+                result = runtime.metric(example, prediction, trace=None, pred_name=None)
+                runtime.rollout_counter.increment(1)
+                score = result["score"]
+                _log_rollout(runtime, candidate.id, example_id, score, result.get("feedback", ""))
+                scores.append(score)
+            except Exception as e:
+                logger.debug("Valset eval error on %s: %s", example_id, e)
+                scores.append(0.0)
 
         results[candidate.id] = mean(scores) if scores else 0.0
 
