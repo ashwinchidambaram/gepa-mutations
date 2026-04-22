@@ -175,7 +175,7 @@ def terminate(config, runtime, plateau_rounds, pool) -> bool:
     """Check termination conditions."""
     if runtime.rollout_counter.value() >= config.budget:
         return True
-    if len(pool) <= config.pool_floor:
+    if len(pool) < config.pool_floor:
         return True
     if plateau_rounds >= config.plateau_rounds_threshold:
         return True
