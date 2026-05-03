@@ -56,7 +56,9 @@ def save_state(optimizer: SCALPEL, path: str | Path) -> None:
         "lesson_book": optimizer.lesson_book.to_jsonable(),
         "rng_state": list(optimizer._rng.getstate()[1]),
         "rng_state_pos": optimizer._rng.getstate()[2],
-        "numpy_rng_state": _np_rng_state_to_jsonable(np.random.get_state()),
+        # np.random.get_state(legacy=True) returns a 5-tuple at runtime; the
+        # stub's union-typed return value isn't narrowed, hence the cast.
+        "numpy_rng_state": _np_rng_state_to_jsonable(np.random.get_state(legacy=True)),  # type: ignore[arg-type]
     }
 
     (p / "state.json").write_text(json.dumps(state, indent=2, default=str))
